@@ -33,7 +33,7 @@
 - **外層 `rev3-admin-root`**：把它們當 submodule 處理（gitlink + `.gitmodules`），每次外層 commit 可能含當下使用的 fork SHA pin 變動，也可能含其他追蹤檔（`CLAUDE.md` / `.specify/` / `specs/` / `docs/` 等）的正常 diff。**`base-web` 與 `rust-api` 這兩列 gitlink 只看到 SHA 字串前後不同**（不展開檔案 diff）；其他追蹤檔仍是一般 git diff。
 - **別人 clone 外層**：`git clone --recurse-submodules` 會拉 fork repo 到 base-web/ rust-api/（變正常 clone 而非 worktree，但內容相同）。
 
-**outer branch 模式**：default branch 為 `rev3-admin-root`；spec-kit 流程啟動時（完整 feature 工作流見 §3），`before_specify` mandatory pre-hook（`speckit.git.feature`，見 `.specify/extensions/git/scripts/bash/create-new-feature.sh`）會從當前 default 衍生短期 `<NNN>-<feature-name>` feature branch（命名與 `specs/<NNN>-<feature-name>/` 目錄對齊），spec docs（`spec.md` / `plan.md` / `tasks.md` / `checklists/`）+ 該 feature 對應的 submodule SHA pin 變動都落在這個 feature branch 上；feature 完成後 merge 回 `rev3-admin-root`。workspace-wide 設定 / 文件變動（`CLAUDE.md` / `.gitignore` / `.specify/` 結構等）可直接落 default branch。worktree（`base-web/` / `rust-api/`）維持各自長期分支不變、**不**為 feature 另開新分支。
+**outer branch 模式**：default branch 為 `rev3-admin-root`；spec-kit 流程啟動時（完整 feature 工作流見 §3），`before_specify` mandatory pre-hook（`speckit.git.feature`，見 `.specify/extensions/git/scripts/bash/create-new-feature-branch.sh`）會從當前 default 衍生短期 `<NNN>-<feature-name>` feature branch（命名與 `specs/<NNN>-<feature-name>/` 目錄對齊），spec docs（`spec.md` / `plan.md` / `tasks.md` / `checklists/`）+ 該 feature 對應的 submodule SHA pin 變動都落在這個 feature branch 上；feature 完成後 merge 回 `rev3-admin-root`。workspace-wide 設定 / 文件變動（`CLAUDE.md` / `.gitignore` / `.specify/` 結構等）可直接落 default branch。worktree（`base-web/` / `rust-api/`）維持各自長期分支不變、**不**為 feature 另開新分支。
 
 兩段式 commit 是日常工作流，詳見 §4 操作手冊。
 
@@ -385,13 +385,13 @@ rev3 整合的核心 docs 階層（⏳ 尚未建立），內容由「研究歷�
 
 **清理紀律**:
 - **檔案不能無限膨脹**,要簡寫摘要或定期清理
-- 只記:Current Focus / 待處理 todo / 已完成里程碑摘要 / Roadmap 狀態 / 跨 feature 待驗證項
+- 只記:Current Focus / Follow-up Backlog / 已完成里程碑摘要 / Roadmap & Phase 狀態 / 跨 feature 待驗證項
 - **不寫詳細設計理由 / 拍板理由 / 軌道定義**(那是 §7.2 DESIGN 的職責);如需引用、用 markdown link 指向 DESIGN 對應 anchor
 
 ### 7.4 其他相關文件
 
 - **`.specify/memory/constitution.md`** — v1.0.0 將從 DESIGN 拍板段 + 軌道清單提取凍結為**不可違反的權威**(更高層、需 amendment 流程才能改)
-- **`docs/INTEGRATION-MILESTONES.md`** ⏳ — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**§1 commit 里程碑表 + §2「✅ 完成+歸檔」(從 CHECKLIST §2 搬來的已完成 follow-up 細節)**;歸檔流程見 §7.5
+- **`docs/INTEGRATION-MILESTONES.md`** ⏳ — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**「commit 里程碑表」+「✅ 完成+歸檔」兩區(後者收 CHECKLIST「Follow-up Backlog」搬來的已完成 follow-up 細節)**;歸檔流程見 §7.5
 - **`docs/superpowers/000-base-web-docker-bootstrap.md`** ⏳ — 持久記憶 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + 可直接跑的 CDP node scripts 段)
 - **`docs/superpowers/<NNN>-<feature-name>.md`** — 每個 spec-kit feature 的 Phase 0 brainstorm 決策(見 §3 階段 0、DESIGN 拍板段)
 
@@ -413,9 +413,9 @@ feature 啟動  →  docs/superpowers/<NNN>-<feature-name>.md(brainstorm)
 **commit 完成歸檔流程**(任何 docs / feature commit 落地後,Claude 自動執行):
 
 1. **永久紀錄** — `docs/INTEGRATION-MILESTONES.md` 表尾 append 一行(commit hash + 日期 + 主題)
-2. **動態追蹤** — CHECKLIST §1「最新進展」加一條;若超過 **2 條**、刪最舊那條(滾動)
-3. **Phase 歸檔**(若該 commit 完成整個 Phase)— CHECKLIST §4 對應 Phase 改「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 拔細節 list;deliverable 詳細已在 DESIGN 的 deliverable 段、不重複
-4. **§2 follow-up 歸檔** — CHECKLIST §2 follow-up 完成後標「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 清 body;累積數節後**批次搬到 MILESTONES §2「✅ 完成+歸檔」**、CHECKLIST §2 原處留 1 行收合指標(`> ### §X ~ §Y 全完成+已歸檔(手動搬至 MILESTONES)`)。仍 open 的 follow-up 與仍 active 的索引(如 §2.1 鐵紀律)續留 CHECKLIST
+2. **動態追蹤** — CHECKLIST「Current Focus」區的「最新進展」加一條;若超過 **2 條**、刪最舊那條(滾動)
+3. **Phase 歸檔**(若該 commit 完成整個 Phase)— CHECKLIST「Roadmap & Phase 狀態」區對應 Phase 改「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 拔細節 list;deliverable 詳細已在 DESIGN 的 deliverable 段、不重複
+4. **follow-up 歸檔** — CHECKLIST「Follow-up Backlog」的 follow-up 完成後標「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 清 body;累積數節後**批次搬到 MILESTONES「✅ 完成+歸檔」區**、Follow-up Backlog 原處留 1 行收合指標(`> ### §X ~ §Y 全完成+已歸檔(手動搬至 MILESTONES)`)。仍 open 的 follow-up 與仍 active 的索引(如拍板項索引這類常駐索引)續留 CHECKLIST
 
 **紀律**:**CHECKLIST 永遠不膨脹** — 歷史 commit 在 MILESTONES.md / `git log`;設計詳細在 DESIGN;當前狀態在 CHECKLIST。
 
