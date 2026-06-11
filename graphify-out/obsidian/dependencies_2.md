@@ -1,0 +1,21 @@
+---
+source_file: "base-web/packages/axios/package.json"
+type: "code"
+community: "package.json"
+location: "L14"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/packagejson
+---
+
+# dependencies
+
+## Connections
+- [[@sautils_2]] - `contains` [EXTRACTED]
+- [[axios]] - `contains` [EXTRACTED]
+- [[axios-retry]] - `contains` [EXTRACTED]
+- [[package.json_2]] - `contains` [EXTRACTED]
+- [[qs]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/packagejson

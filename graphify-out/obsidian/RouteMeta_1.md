@@ -1,0 +1,24 @@
+---
+source_file: "fork260509-soybean-admin-docs/src/guide/router/intro.md"
+type: "concept"
+community: "RouteMeta"
+tags:
+  - graphify/concept
+  - graphify/EXTRACTED
+  - community/RouteMeta
+---
+
+# RouteMeta
+
+## Connections
+- [[Local SVG Icon Rendering]] - `references` [INFERRED]
+- [[Route Caching (keep-alive)]] - `references` [EXTRACTED]
+- [[Route Guard]] - `conceptually_related_to` [INFERRED]
+- [[Route Structure Conventions]] - `shares_data_with` [INFERRED]
+- [[RouteKey_2]] - `references` [EXTRACTED]
+- [[Static Route Mode]] - `references` [EXTRACTED]
+- [[System Routing Guide]] - `references` [EXTRACTED]
+- [[meta.constant 固定路由标记]] - `shares_data_with` [EXTRACTED]
+- [[meta.roles 路由角色权限]] - `shares_data_with` [EXTRACTED]
+
+#graphify/concept #graphify/EXTRACTED #community/RouteMeta

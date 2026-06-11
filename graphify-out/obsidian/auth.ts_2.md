@@ -1,0 +1,25 @@
+---
+source_file: "base-web/src/service-alova/api/auth.ts"
+type: "code"
+community: "User & Captcha APIs"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/User__Captcha_APIs
+---
+
+# auth.ts
+
+## Connections
+- [[alova_1]] - `imports` [EXTRACTED]
+- [[fetchCustomBackendError()_1]] - `contains` [EXTRACTED]
+- [[fetchGetUserInfo()_1]] - `contains` [EXTRACTED]
+- [[fetchLogin()_1]] - `contains` [EXTRACTED]
+- [[fetchRefreshToken()_1]] - `contains` [EXTRACTED]
+- [[index.ts_31]] - `imports_from` [EXTRACTED]
+- [[index.ts_30]] - `re_exports` [EXTRACTED]
+- [[sendCaptcha()]] - `contains` [EXTRACTED]
+- [[verifyCaptcha()]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs

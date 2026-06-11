@@ -48,6 +48,7 @@ graphify-out/.graphify_python
 graphify-out/.graphify_root
 graphify-out/.graphify_*.json
 graphify-out/.needs_update
+graphify-out/.vocab.txt
 # cost.json 是個人 token 用量帳單；manifest.json 是個人 incremental 基準（mtime/hash 因機而異）
 graphify-out/cost.json
 graphify-out/manifest.json

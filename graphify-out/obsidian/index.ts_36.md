@@ -1,0 +1,44 @@
+---
+source_file: "base-web/src/store/modules/tab/index.ts"
+type: "code"
+community: "Tab Management Utils"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Tab_Management_Utils
+---
+
+# index.ts
+
+## Connections
+- [[SetupStoreId]] - `imports` [EXTRACTED]
+- [[extractTabsByAllRoutes()]] - `imports` [EXTRACTED]
+- [[filterTabsByIds()]] - `imports` [EXTRACTED]
+- [[findTabByRouteName()]] - `imports` [EXTRACTED]
+- [[getAllTabs()]] - `imports` [EXTRACTED]
+- [[getDefaultHomeTab()]] - `imports` [EXTRACTED]
+- [[getFixedTabIds()]] - `imports` [EXTRACTED]
+- [[getTabByRoute()]] - `imports` [EXTRACTED]
+- [[getTabIdByRoute()]] - `imports` [EXTRACTED]
+- [[index.ts_21]] - `imports_from` [EXTRACTED]
+- [[index.ts_25]] - `imports_from` [EXTRACTED]
+- [[index.ts_33]] - `imports_from` [EXTRACTED]
+- [[index.ts_34]] - `imports_from` [EXTRACTED]
+- [[index.ts_35]] - `imports_from` [EXTRACTED]
+- [[index.ts_37]] - `imports_from` [EXTRACTED]
+- [[isTabInTabs()]] - `imports` [EXTRACTED]
+- [[localStg]] - `imports` [EXTRACTED]
+- [[reorderFixedTabs()]] - `imports` [EXTRACTED]
+- [[router]] - `imports` [EXTRACTED]
+- [[router.ts_1]] - `imports_from` [EXTRACTED]
+- [[shared.ts_7]] - `imports_from` [EXTRACTED]
+- [[storage.ts_1]] - `imports_from` [EXTRACTED]
+- [[updateTabByI18nKey()]] - `imports` [EXTRACTED]
+- [[updateTabsByI18nKey()]] - `imports` [EXTRACTED]
+- [[useRouteStore]] - `imports` [EXTRACTED]
+- [[useRouterPush()]] - `imports` [EXTRACTED]
+- [[useTabStore]] - `contains` [EXTRACTED]
+- [[useThemeStore]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Tab_Management_Utils

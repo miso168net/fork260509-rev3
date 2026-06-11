@@ -1,0 +1,48 @@
+---
+source_file: "base-web/src/store/modules/route/index.ts"
+type: "code"
+community: "SVG Icons & Route Utils"
+location: "L1"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/SVG_Icons__Route_Utils
+---
+
+# index.ts (36)
+
+## Connections
+- [[ROOT_ROUTE]] - `imports` [EXTRACTED]
+- [[SetupStoreId]] - `imports` [EXTRACTED]
+- [[builtin.ts]] - `imports_from` [EXTRACTED]
+- [[createStaticRoutes()]] - `imports` [EXTRACTED]
+- [[filterAuthRoutesByRoles()]] - `imports` [EXTRACTED]
+- [[getAuthVueRoutes()]] - `imports` [EXTRACTED]
+- [[getBreadcrumbsByRoute()]] - `imports` [EXTRACTED]
+- [[getCacheRouteNames()]] - `imports` [EXTRACTED]
+- [[getGlobalMenusByAuthRoutes()]] - `imports` [EXTRACTED]
+- [[getRouteName()]] - `imports` [EXTRACTED]
+- [[getRoutePath()]] - `imports` [EXTRACTED]
+- [[getSelectedMenuKeyPathByKey()]] - `imports` [EXTRACTED]
+- [[index.ts (22)]] - `imports_from` [EXTRACTED]
+- [[index.ts (23)]] - `imports_from` [EXTRACTED]
+- [[index.ts (26)]] - `imports_from` [EXTRACTED]
+- [[index.ts (28)]] - `imports_from` [EXTRACTED]
+- [[index.ts (29)]] - `imports_from` [EXTRACTED]
+- [[index.ts (34)]] - `imports_from` [EXTRACTED]
+- [[index.ts (35)]] - `imports_from` [EXTRACTED]
+- [[index.ts (37)]] - `imports_from` [EXTRACTED]
+- [[index.ts (8)]] - `imports_from` [EXTRACTED]
+- [[isRouteExistByRouteName()]] - `imports` [EXTRACTED]
+- [[route.ts]] - `imports_from` [EXTRACTED]
+- [[router]] - `imports` [EXTRACTED]
+- [[shared.ts (7)]] - `imports_from` [EXTRACTED]
+- [[sortRoutesByOrder()]] - `imports` [EXTRACTED]
+- [[transform.ts]] - `imports_from` [EXTRACTED]
+- [[transformMenuToSearchMenus()]] - `imports` [EXTRACTED]
+- [[updateLocaleOfGlobalMenus()]] - `imports` [EXTRACTED]
+- [[useAuthStore]] - `imports` [EXTRACTED]
+- [[useRouteStore]] - `contains` [EXTRACTED]
+- [[useTabStore]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/SVG_Icons__Route_Utils
