@@ -80,8 +80,8 @@ mock / demo 有、rev3 延續 rev2 刻意不做（實證：rev2 mock-only 稽核
 - **mock 不檢 Authorization**（無 Bearer 也回 success）→ 不模仿；全業務端點 Casbin enforce（§5.3）。
 - **mock `getConstantRoutes` 偶發 502** → 不模仿；100% 回 200。
 - **ApiFox 平台鑑權 header `apifoxToken`**（mock 平台層行為）→ 不模仿；rust-api 忽略 unknown header（§II §11.4）。
-- **`/auth/error` echo 工具端點**（消費者僅 demo 頁）：rev2 as-built 未提供 → ⚠️ rev3 維持不做（demo 頁不顯示、無呼叫者）。
-- **`/mock/getLastTime`**（alova demo 專用）→ 不做。
+- ~~**`/auth/error` echo 工具端點**：rev3 維持不做~~ → **✅ ⚠️c 翻案（2026-06-12）：做**。消費者實為兩頁 — `views/function/request/index.vue`（axios 主線）＋ `views/alova/request/index.vue`，兩頁均隨 ⚠️p 進 seed（Super-only）。
+- ~~**`/mock/getLastTime`**（alova demo 專用）→ 不做~~ → **✅ ⚠️c 翻案（2026-06-12）：做**（回 `{time: string}`；`alova/scenes` 三個 module〔polling／browser-visibility／network-toggle〕都打它）。`sendCaptcha`/`verifyCaptcha` 同包拍定 stub 雙模（⚠️m 殘餘範圍縮為 alt-login 4 流程排程）。
 - **demo menu 不入 `sys_menu` seed**：8 組 demo customRoutes（document/exception/multi-menu/iframe 等，constitution §I.2）在 dynamic mode 無 menu 列即不顯示；唯一例外 `function`/`function_toggle-auth` 已升真實 Casbin-enforced 選單（rev2 022、§I.2 v1.3.0 amend）；BUILD-CONFIG ★ 授權的 `pageExcludePatterns` **截至 2026-06-11（rev2 期實況）未動用**（as-built `base-web/build/plugins/router.ts` 無此欄位）。
 - **真實 SMS / wechat OAuth 流程**：（§9.3 拍板 §11.13）雙模的「真實 mode」明列為 rev3 v1 之後的後續版本 → rev3 v1 不做（stub 尾巴見 §1.2 註）。
 
@@ -296,7 +296,7 @@ mutation → `sys_operation_log`：`audit::mutate_in_txn`（`model/audit.rs`）�
 `casbin_rule` 單表三維度（`v2`= HTTP method→endpoint / `'menu'`→可見性 / `'button'`→按鈕）；RBAC model = `r=p=sub,obj,act`（model 另宣告 `g=_,_` role-of-role **但未使用**——subject 直接是 role code、無角色階層，與 §3.1「無 ptype='g' 列」對應）、matcher **三欄精確相等**（無 glob）、`R_SUPER` **逐端點列、無 `*` subject**；enforcer = boot 單例 **`Arc<RwLock<casbin::Enforcer>>`（無 decision cache；moka LRU 是 rev2 DESIGN 早期提案、as-built 未採）**，每請求對每個 DB-fresh role 呼叫 `enforce((role,path,method))`、policy 變更由 watcher reload 全量換入；`enforce_mw` per-route route_layer，subject = **DB-fresh role code**（非 JWT claims）。menu 走 `enforce((role,name,'menu'))`、button 走 `get_filtered_policy`（讀已載 policy、非 enforce）。詳機制與 §10 安全互引。
 
 ### §5.4 response envelope（universal）
-`{data, code, msg}`（**無 success bool**、`code`=**字串** `"0000"`）；`Role.id`/`MenuRoute.id`=**字串**；business 錯 = **`2222`**、`5xxx`=auth/infra（`5003`=HTTP 403；**`5000` 在 as-built live 路徑以 HTTP 200 信封送出**——`AppError::Internal`→HTTP 500 mapping 存在但無 handler 生產者，⚠️ rev3 須拍板一致化）、`3333/8888/7777` 為 auth 專用碼（§4）；`MenuType` 1=dir/2=menu；`Status` nullable。對齊 mock ground truth（§I.3）。**凍結碼表共 13 變體**（另含 1000 登入失敗、4040 接口不存在〔HTTP 404 fallback〕、7778/8889/9998/9999 保留碼）——完整矩陣收 §7.3。universal 例外：`/health`（plain text）與 `/metrics`（Prometheus exposition）為 infra 端點、不走 envelope。
+`{data, code, msg}`（**無 success bool**、`code`=**字串** `"0000"`）；id 型**逐欄位忠實 typings**（✅ ⚠️r 2026-06-12：`MenuRoute.id`/`userId`=string、`CommonRecord.id`/`parentId`/`MenuTree.id/pId`/`Role.id` 與 write payload `ids`=number — 推翻 rev2 §I.3「全字串」）；business 錯 = **`2222`**、`5xxx`=auth/infra（`5003`=HTTP 403；`5000`=HTTP 200 信封 — ✅ ⚠️e 2026-06-12 拍板一致化、500 mapping 標 test-only）、`3333/8888/7777` 為 auth 專用碼（§4）；`MenuType` 1=dir/2=menu；`Status` nullable。對齊權威序＝example typings 優先（§7 權威序裁決；mock 字串行為屬 mock 缺陷、不再對齊）。**凍結碼表共 13 變體**（另含 1000 登入失敗、4040 接口不存在〔HTTP 404 fallback〕、7778/8889/9998/9999 保留碼）——完整矩陣收 §7.3。universal 例外：`/health`（plain text）與 `/metrics`（Prometheus exposition）為 infra 端點、不走 envelope。
 
 ### §5.5 single-session gate（universal、機制在 §4.3）
 每受保護讀端在 verify 後、業務前掛 `is_current` gate（不過 → 7777）。橫切義務：**4 個認證 gate**（getUserInfo / getUserRoutes / isRouteExist / enforce_mw——route.rs 兩個是不同 endpoint、非「getUserRoutes×2」）一致掛載；另 refresh 端 pointer-first 檢查為第 5 掛點（§4.3）。此面只規定「掛」，狀態機本體在 §4.3。
@@ -322,7 +322,7 @@ list 端統一 `*SearchParams` filter DTO（user/role 有效 filter 欄；menu �
 【目的】admin 系統一半是前端。rev2 因 base-web 為權威 → 此章是「**對既有 base-web 的 screen inventory + 受管接線**」，非 from-scratch。
 
 ### §6.1 screen inventory
-**前提**：base-web 跑 **dynamic auth route mode**（`.env` `VITE_AUTH_ROUTE_MODE=dynamic`，rev2 014）——側欄與業務路由由 `GET /route/getUserRoutes` 下發（`sys_menu` 10 列 seed × Casbin menu-visibility 過濾，§5.3）；repo 內大量 demo view 留檔但**不下發、自然隱形**。
+**前提**：base-web 跑 **dynamic auth route mode**（`.env` `VITE_AUTH_ROUTE_MODE=dynamic`，rev2 014）——側欄與業務路由由 `GET /route/getUserRoutes` 下發（`sys_menu` seed × Casbin menu-visibility 過濾，§5.3）。**✅ ⚠️p 已決（2026-06-12，推翻 rev2 取向）**：demo view **全部進 sys_menu seed、初始僅勾給 R_SUPER** — 全集完整、可見性由 ROLE 勾選層（menu-auth-modal → casbin menu 維度）治理下放，與 rev2「不下發、自然隱形」相反；seed 與 policy 矩陣相應擴大、demo 頁後端依賴須逐頁盤點（已知 API 依賴僅 ⚠️c 完整包三頁）。
 
 | route 路徑 | view 檔（`base-web/src/views/`） | 主要 endpoint | 備註 |
 |---|---|---|---|
@@ -336,9 +336,12 @@ list 端統一 `*SearchParams` filter DTO（user/role 有效 filter 欄；menu �
 | `/manage/system-settings` | `manage/system-settings/index.vue` | getSystemSettings / updateSystemSetting | **rev2 新頁**（rev2 029）、Super-only |
 | `/manage/policy-archive` | `manage/policy-archive/index.vue` | getArchivedPolicies / restorePolicy | **rev2 新頁**（rev2 034 US5 治理回收桶 = §4.2 的 UI 面）、Super-only、seed 即 `protected=true` |
 | `/function/toggle-auth` | `function/toggle-auth/index.vue` | —（讀 userInfo.buttons） |（rev2 022）button-auth demo、唯一保留下發的 demo 頁（三角色可見） |
-| （不下發） | `about/` `alova/` `plugin/` `pro-naive/` `multi-menu/` `function/` 其餘、`user-center/` | — | demo / 佔位；dynamic mode 下 getUserRoutes 不含 → 不可達 |
+| `/alova/request`・`/alova/scenes` | `alova/request/index.vue`・`alova/scenes/index.vue`（5 modules） | `/auth/error`（echo）・`sendCaptcha`/`verifyCaptcha`（stub 雙模）・`/mock/getLastTime` | **⚠️c 完整包（2026-06-12）**：進 seed、Super-only 起步 |
+| `/function/request` | `function/request/index.vue` | `/auth/error`（axios 主線） | 同上完整包、Super-only |
+| `/plugin/excel` | `plugin/excel/index.vue` | `getUserList`（**既有官方端點**、Excel 匯出 demo 的資料源） | **⚠️p 盤點新發現**：無需新端點；治理注意 — 日後下放此頁給非 Super 角色時，該角色須同步勾 `getUserList` 的 endpoint policy（menu 可見 ≠ endpoint 可呼叫） |
+| 其餘 demo 全集（Super-only） | `about/` `plugin/` 其餘、`pro-naive/` `multi-menu/` `function/` 其餘、`user-center/` | — | **⚠️p（2026-06-12）**：全部進 seed、初始僅勾 R_SUPER；下放由 ROLE 勾選層治理。**✅ 依賴盤點完成（2026-06-12）**：三種呼叫型態全掃（`@/service` 匯入／alova instance 直用／demoRequest）— 除上列 4 頁外**零後端呼叫**；`demoRequest`（`otherBaseURL.demo` 線路）vanilla 零消費者、閒置；plugin 數頁內嵌外部資源 URL（vchart 資料/pdf 樣本等）屬前端資源、離線環境會影響該頁載入、非 rust-api 依賴 |
 
-- **L4 BUILD-CONFIG 實況**：constitution §III.2 授權 `build/plugins/router.ts` 加 `pageExcludePatterns` 隱藏 demo，但 as-built **未動用**（router.ts 無此欄位）——（rev2 014）dynamic mode 使 demo menu 根本不出現於 getUserRoutes，軌道授權成備援。⚠️ rev3 沿用 dynamic mode 即同樣免動 build 配置（待決①若動 router 結構亦不影響此層）。
+- **L4 BUILD-CONFIG 實況**：constitution §III.2 授權 `build/plugins/router.ts` 加 `pageExcludePatterns` 隱藏 demo，但 as-built **未動用**（router.ts 無此欄位）。**✅ ⚠️p 已決（2026-06-12）**：rev3 仍不動 build 配置，但理由翻轉 — 不是「不下發即隱形」，而是 **demo 全集進 seed、可見性交 ROLE 勾選層**；`pageExcludePatterns`／`hideInMenu` 皆不啟用（待決①若動 router 結構亦不影響此層）。
 
 ### §6.2 user flows
 - **登入→動態路由掛載**：`pwd-login.vue` → `authStore.login()`（`store/modules/auth/index.ts`）→ `fetchLogin`（`POST /auth/login`）→ `loginByToken`（存 token pair）→ `getUserInfo`（`fetchGetUserInfo` → `GET /auth/getUserInfo`）；route guard（`router/guard/route.ts`）→ `routeStore.initConstantRoute`（`fetchGetConstantRoutes`、公開）+ `initAuthRoute`（`fetchGetUserRoutes` → `{routes, home}`）→ vue-router 動態掛載。側欄選單 = 後端 Casbin enforce 過濾結果，**前端零過濾邏輯**（§I.2）。
@@ -381,6 +384,8 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 
 【目的】補 rev2 wire 三端「人工 grep 紀律」的痛點（史料見附錄 D），升為可機器校驗的契約。base-web 為權威 → wire 由前端期望定義（§6 → §7）；與資料脊椎衝突時 **wire 優先**（§0.1 雙脊椎宣告）。
 
+**官方規格權威序（對賬裁決，2026-06-12）**：「base-web 為權威」操作化為三層 — ① **example 實碼**（`typings/api/*.d.ts`＋`service/api/*.ts`＋`.env`＋`views/**`）＝ wire 唯一權威；② **官方 docs 站**（fork260509-soybean-admin-docs）＝ 解釋性文件，僅「紀律性約束」引為規範出處（實例：refreshToken 不得回 expiredTokenCodes 的死循環禁令〔guide/request/usage.md〕、history mode 須 SPA fallback〔faq〕）；③ **mock 實測**（rev2 MOCK-COVERAGE-AUDIT）＝ 補實碼觀察不到的 runtime 行為（User→User01 alias、502 偶發等）。三者衝突時依序裁決。已知文件滯後 2 處（2026-06-12 對賬實測，docs main 早於 example 凍結點、無契約級飄移）：docs 登入示例 `/auth/accounts/login {username}` ≠ 實碼 `/auth/login {userName}`、docs 未列 `.env` 實有的 `VITE_PROXY_LOG` — 均以實碼為準。
+
 ### §7.1 endpoint 全集
 > 盤點來源：base-web `src/service/api/{auth,route,system-manage,rev2-system-manage}.ts`（rev2 期檔名；波 -1 改名後 wrapper = `rev3-system-manage.ts`，附錄 A.2）共 **42 個 fetch 函式**，cross-check rust-api `server/src/main.rs` flat router **43 條 route**——其中 **35 條掛 `enforce_mw` route_layer**（`endpoint_coverage_lint` 鎖 `EXPECTED_ROUTE_COUNT=35`）、8 條不掛（public 或 JWT-in-handler）。對齊結果：**41 條兩端俱在；1 條 mock-only**（`/auth/error`）；`/health`/`/metrics` 為 rust-only infra、無 base-web caller。path 全集對齊 mock ground truth（rev2 史料，附錄 D）。
 > 形狀欄縮寫：`Api.*` 型別宣告於 `base-web/src/typings/api/{auth,route,system-manage,common}.d.ts`；`Api.SystemManage.` 前綴以下省略。另有 alova mock 7 endpoint 不經 `service/api/*`、不入本表（alova = base-web demo 頁另用的 request 庫，與 axios 主線並存；其 mock silent-fallback 為 rev2 已知風險）。
@@ -419,10 +424,13 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 **三端**（rev2 真實位置）：① rust 手寫 serde DTO（`server/src/handler/{auth,route,system_manage}.rs`，`rename_all = "camelCase"`）② base-web 型別 = `typings/api/*.d.ts` 全域宣告 + `service/api/*.ts` inline write-model ③ component state（`views/manage/**`）。rev2 機制 = **人工 grep 紀律**（成文於 rev2 設計文件與其 workspace 工作流），無任何機器校驗。
 
 **痛點實證（rev2）**：
-- **id/parentId string type-lie 引爆（rev2 025-I1 事件；史料 REVIEW-014-026，附錄 D）**：rust 把 `id`/`parent_id` 序列化為**字串**（§I.3 凍結），typings 卻宣告 `number`（`Common.CommonRecord.id`/`Menu.parentId`）且 `defaultTransform` 不轉型 →（rev2 016/017）潛伏無害，（rev2 025）`menu-operate-modal.vue` 對 wire `"0" === 0` 為 false → `effectiveLayout=''` 吃掉 component 前綴 = 可觀察 data-corruption。修法落消費端 `Number()` 正規化、wire 凍結不動。
+- **id/parentId string type-lie 引爆（rev2 025-I1 事件；史料 REVIEW-014-026，附錄 D）**：rust 把 `id`/`parent_id` 序列化為**字串**（§I.3 凍結），typings 卻宣告 `number`（`Common.CommonRecord.id`/`Menu.parentId`）且 `defaultTransform` 不轉型 →（rev2 016/017）潛伏無害，（rev2 025）`menu-operate-modal.vue` 對 wire `"0" === 0` 為 false → `effectiveLayout=''` 吃掉 component 前綴 = 可觀察 data-corruption。rev2 修法落消費端 `Number()` 正規化、wire 凍結不動。
+  **✅ rev3 拍板（⚠️r，2026-06-12）：根除謊言、不再偵測謊言** — 廢除「id 全字串」凍結，改**逐欄位忠實 typings**：`CommonRecord.id`/`Menu.parentId`/`MenuTree.id/pId`/`Role.id` 與 write payload `ids` → JSON **number**；`MenuRoute.id`/`userId` → **string**（typings 本來就如此宣告，route.d.ts:11/auth.d.ts:14）。DB 一律 i64 自增，轉換只發生在 rust-api **序列化邊界**；serializer 加 2^53 fail-loud 守衛（admin 量級實際差 9 個數量級、仍不默默假設）。效果：vanilla 消費端零補丁（`menu-operate-modal.vue:137` 的 `parentId === 0` 天生成立）、lie ledger 初始為空；rev2 的 `Number()` 正規化補丁在 rev3 移植時應**還原刪除**。本拍板推翻 rev2 §I.3/§11.10（登附錄 G ⚠️r、重鑄時同步）。
 - **grep 紀律本身會 rot**：rev2 設計文件內的示例 grep 至 2026-06-11 實掃時仍指向 `server/src/api/*.rs`，而實碼在 `server/src/handler/`——人工紀律無 CI 錨、目錄改名即靜默失準。
 
-**待決② 選項並陳**（本書不拍板）：
+**待決② ✅ 已決（2026-06-12）：C+ typings-as-oracle** — 選項分析保留如下供查考，拍板機制六點：① oracle＝權威端：一次性腳本自 `typings/api/*.d.ts`（含 wrapper `rev3-*.ts` 宣告）唯讀抽出 JSON Schema（不動官方檔；typings 凍結 → 僅 upstream rebase 後重抽）；② contract test 對 dev stack 實際回應驗 schema — 裁判是 typings 不是後端自己，025 類 lie 第一天即紅；③ **coverage gate**：rust router 註冊的每條 route 必有對應 contract case、缺＝CI 紅（`endpoint_coverage_lint` 概念延伸）；④ 碼表／HTTP status／保留碼從不發出＝table-driven case（來源＝§7.3 凍結表，含 ⚠️e 的 `5000`→200）；⑤ CDP capture 降為補充回歸 fixture（驗 User→User01 alias 等 runtime 行為、不當 shape oracle）；⑥ **lie ledger**：任何刻意偏離宣告的欄位須登顯式覆寫表（⚠️r 拍板後初始為空）。B 案留「endpoint 增速再評」條件。
+
+**選項並陳（歷史對照）**：
 
 | 選項 | 收益 | 代價 |
 |---|---|---|
@@ -430,7 +438,7 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 | B OpenAPI/schema + codegen 單一來源 | 三端收斂為一端，型別 lie 結構性消失 | 工具鏈+維護成本最高；§I.1 base-web typings 為權威 → 生成方向必須「typings/mock → 驗 rust」、不可反向覆蓋前端 |
 | C 輕量 contract test（CI 內 JSON shape assert） | 不動兩端源碼；可顯式斷言「刻意 lie」（string id）凍結事實 | 覆蓋靠人寫，新 endpoint 忘寫測試即退回 A |
 
-⚠️ 建議（待 user 親決②）：C 起步（成本低、先鎖 §I.3 凍結形），B 視 rev3 endpoint 增速再評估；若採 B，生成方向受 §I.1 約束如上。
+> 原 ⚠️ 建議（C-naive 起步）已被拍板取代 — C-naive 有兩個致命傷（snapshot fixture 會供奉 bug、覆蓋靠人手寫會衰減），拍板的 C+ 以「typings 當裁判＋coverage gate」分別堵死；見上方拍板紀錄與附錄 G 待決②。
 
 ### §7.3 envelope / pagination / error-code 完整矩陣
 > envelope 規範本體在 §5.4，此處只補 as-built 錨 + 完整碼表、不重複。as-built：`server/src/envelope.rs` —— `Res<T>` 宣告序 = 序列化序（`data`→`code`→`msg`；錯誤 `data:null` 不 skip、business error 走 HTTP 200）；`PageRes<T>` = `{current, size, total, records}`（camelCase、u64 JSON 數字、**無 `pages`/`success`**、空頁 `records:[]`）↔ base-web `Common.PaginatingQueryRecord<T>`。
@@ -450,17 +458,19 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 | `9998` | TokenInvalid9998 | 登录信息无效 | 200 | **零發出點**（保留；§4.1 refresh 明令不回） | EXPIRED_TOKEN_CODES |
 | `9999` | TokenExpiredAlt9999 | 登录已过期 | 200 | **零發出點**（保留；同上） | 同上 |
 | `4040` | NotFound | 接口不存在 | **404** | router `.fallback` → `AppError::NotFound`（`error.rs`） | — |
-| `5003` | PermissionDenied | 权限不足 | **403** | `enforce_mw` deny / role-lookup DB 失敗（`auth/enforce.rs`） | 顯示錯誤 |
-| `5000` | Internal | 服务器内部错误 | 200* | handler 內 `Res::err(Internal)`（DB/簽章失敗） | 顯示錯誤 |
+| `5003` | PermissionDenied | 权限不足 | **403** | `enforce_mw` deny / role-lookup DB 失敗（`auth/enforce.rs`） | axios 泛錯誤 toast（envelope msg **不上屏**：HTTP 403 時 `error.code≠BACKEND_ERROR_CODE`，前端只顯示 `Request failed with status code 403`） |
+| `5000` | Internal | 服务器内部错误 | 200 | handler 內 `Res::err(Internal)`（DB/簽章失敗） | 顯示錯誤 |
 
-- HTTP status 例外僅 2 條真實路徑：`4040`→404、`5003`→403；其餘全 HTTP 200 信封。*`AppError::Internal`→HTTP 500 已定義但 rev2 無 handler 生產者（`error.rs` 注記 test-only）——⚠️ rev3 須拍板 `5000` 的 HTTP status 配對並一致化、入 contract test（§7.2）。
-- 4 個保留碼（7778/8889/9998/9999）rust-api 從不發出、僅前端 `.env` 分組認得。⚠️ 建議 rev3 沿用 13 碼矩陣整組凍結（含保留碼）——前端分組行為是 base-web 既有事實（§I.1），刪碼會破 `.env` 對齊；待 user 覆核。
+- **非 200 路徑的前端可觀察性（2026-06-12 對賬實證）**：base-web 的 envelope msg 顯示通道（`onError` 取 `response.data.msg`）**僅在 HTTP 200 業務失敗時生效** — `4040`/`5003` 走 axios 原生錯誤，「接口不存在」「权限不足」不會上屏。屬既有事實、非 bug；若日後 UX 要求顯示中文訊息，二擇一另拍板：改該碼為 200 信封、或動前端攔截（§I.1 例外紀錄）。contract test 同時鎖 HTTP status 與此可觀察行為。
+- HTTP status 例外僅 2 條真實路徑：`4040`→404、`5003`→403；其餘全 HTTP 200 信封。**✅ ⚠️e 已決（2026-06-12）**：`5000` 一律 HTTP 200 信封（前端 msg 顯示通道僅 200 生效）；`AppError::Internal`→HTTP 500 mapping 標 test-only 或刪除；contract test 鎖 `5000`→200（§7.2 C+ 首批 case）。
+- 4 個保留碼（7778/8889/9998/9999）rust-api 從不發出、僅前端 `.env` 分組認得。**✅ ⚠️f 已決（2026-06-12）**：13 碼矩陣**整組凍結**（含保留碼）——前端分組行為是 base-web 既有事實（§I.1）、刪碼反要動 `.env`；contract test 斷言「後端從不發出保留碼」。
 
 ### §7.4 部署層 wire 細節
 **nginx 單入口**（`deploy/nginx/conf.d/_locations.inc`，dev/prod 兩 conf 共 include 同一份）：
 - `location /api/ { proxy_pass http://rust-api:21081/; }` —— **末尾 `/` = strip `/api` 前綴** → rust-api root routes（對外 `/api/auth/login` → 容器內 `/auth/login`）。轉發 header：`X-Real-IP`/`X-Forwarded-For`/`X-Forwarded-Proto`/`X-Request-Id`（`$request_id`）。
 - `location = /api/metrics { return 404; }` —— exact-match 擋塊先於 prefix match（rev2 032 FR-011：strip 規則會把任何 rust-api root route 對外暴露，「internal」端點必須逐條加擋塊）；內網 prometheus 直接 scrape `rust-api:21081/metrics`、不經 nginx。
 - `location /` → `base-web:21079`；`location = /health` nginx 自答 `ok`。`dev.conf` listen `21080` + `21443 ssl`；`prod.conf` listen 80（僅 `/health` 例外、其餘 301 → https）+ 443 ssl。
+- **SPA fallback 不變式（2026-06-12 對賬補載，官方紀律性約束）**：base-web 預設 `VITE_ROUTER_HISTORY_MODE=history`（`.env:29`），官方 FAQ 明文 prod 伺服器必須把所有非資產路徑 fallback 到 `index.html`（`try_files $uri $uri/ /index.html`），否則深鏈（如 `/manage/user`）直開或刷新 404。此義務由 **base-web 容器內 server** 承擔（front-nginx 只做 `location /` 轉發、不重複 fallback）；**acceptance 必含**：深鏈直開與 F5 刷新皆 200（rev2 as-built 容器已有此行為、但本書此前未載 — 自此為書面規格）。
 **base-web API base URL 來源**：
 - **dev**：`pnpm dev` = `vite --mode test` → `.env.test` 的 `VITE_SERVICE_BASE_URL=http://rust-api:21081`（rev2 013 BASE-WEB-ADAPT 由 ApiFox mock 切換）；`.env` `VITE_HTTP_PROXY=Y` → 瀏覽器實際打 vite `:21079` 的 `/proxy-default/*`、由 vite dev proxy rewrite 轉 rust-api（`build/config/proxy.ts`）。
 - **prod**：`deploy/Dockerfile.base-web.txt` 的 `ARG VITE_SERVICE_BASE_URL`（default = ApiFox mock URL）→ build 時寫入 `.env.prod.local`（mode=prod precedence 最高；vite `loadEnv` 不讀 process.env，故不能用 `ENV`）；`docker-compose.prod.yml` 注入 build-arg **`VITE_SERVICE_BASE_URL: /api`** → 瀏覽器同源 `/api/*` → front-nginx strip → rust-api。standalone `docker-compose.base-web.yml` 則取 host envvar `${VITE_SERVICE_BASE_URL:-ApiFox-mock}`。
@@ -861,7 +871,7 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 | # | 決策點 | 工程預設 ⚠️ | 所在章 | 最晚決策點 |
 |---|---|---|---|---|
 | 待決① | router 結構：維持 flat-in-main 還是重整 `router/` 樹 | 無強預設（as-built = flat + endpoint_coverage_lint 三源一致 @ 35，運作良好） | §1.5・§8.1 | 波 0 scaffold 前 |
-| 待決② | wire contract 機器化（OpenAPI／contract test／維持 grep） | C 輕量 contract test 起步、B 視 endpoint 增速再評 | §7.2 | 波 1 收尾前（首批契約成形時） |
+| 待決② | wire contract 機器化（OpenAPI／contract test／維持 grep） | ✅ 已決(2026-06-12)：**C+ typings-as-oracle** — typings 抽 JSON Schema 當裁判（唯讀、不動官方檔）＋ coverage gate（router 每條 route 必有 contract case、缺＝CI 紅）＋ 碼表 table-driven（§7.3）＋ CDP capture 降為補充回歸 fixture ＋ lie ledger（顯式覆寫帳本、初始空）；B 案留「endpoint 增速再評」 | §7.2 | ✅ 已決 |
 | 待決③ | 縱切第一刀：User 直刀 vs `system_settings` 打樣 | 傾向 A（User 直刀） | §8.3 | 波 1 開工前 |
 | 待決④ | 選擇性 FK | join 表（`sys_user_role`）加 FK、其餘維持零 | §3.1 | 第一條 migration 前（波 0） |
 | 待決⑤ | §3/§5 凍結邊界：哪些進 constitution、哪些留設計書 | archetype（§3.2）+ 行為島 invariants（§4）+ wire 碼表（§5.4/§7.3）入凍結；欄級字典與常數值留設計書 | §3・§9 章首注 | constitution-rev3 重鑄前（**波 -1**） |
@@ -871,21 +881,22 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 | 待決⑥d | 合規姿態升級 | 維持現姿態（§2 表 #4） | §2 | 對外／多租戶觸發時 |
 | ⚠️a | 效能／可用性數字 | p95 300/500ms/1s；99.5%/月 | §1.3 | 波 1 驗收前 |
 | ⚠️b | 審計查詢讀端 + UI 補做 | 補（Super-only；矩陣已預標 ⚠️） | §1.2・§5.0 | 波 2 排程前 |
-| ⚠️c | `/auth/error` | 維持不做 | §1.4 | 不阻塞（預設即不做） |
+| ⚠️c | `/auth/error` | ✅ 已決(2026-06-12)：**翻案 — 做**（echo 端點）。配套完整包：`alova/request`＋`alova/scenes`＋`function/request` 三 demo 頁進 sys_menu seed（初始僅勾 R_SUPER、下放交 ROLE 勾選層）；端點補 `/auth/error`＋`sendCaptcha`/`verifyCaptcha`（stub 雙模、⚠️m captcha 依賴就此解決）＋`/mock/getLastTime`（回 `{time}`）；§1.4 兩條「不做」同步翻案 | §1.4・§6.1 | ✅ 已決 |
 | ⚠️d | redis-stack image tag | 建 stack 當下即 pin 數字版 | §1.6 | 波 0 compose 定稿前 |
-| ⚠️e | `5000` 的 HTTP status 配對 | rev3 拍板（200 信封 or 啟用 500 mapping）並入 contract test | §5.4・§7.3 | 波 0 envelope 實作前 |
-| ⚠️f | 13 碼矩陣整組凍結（含 4 保留碼） | 沿用整組 | §7.3 | 同 ⚠️e |
+| ⚠️e | `5000` 的 HTTP status 配對 | ✅ 已決(2026-06-12)：**一律 HTTP 200 信封**（對齊前端 msg 顯示通道僅 200 生效＋「business error 走 200」總則）；`AppError::Internal`→HTTP 500 mapping 標 test-only 或刪除；contract test 鎖 `5000`→200 | §5.4・§7.3 | ✅ 已決 |
+| ⚠️f | 13 碼矩陣整組凍結（含 4 保留碼） | ✅ 已決(2026-06-12)：**整組凍結**（保留碼是前端 `.env` 分組實值、刪碼違 §I.1）；contract test 斷言「後端從不發出 7778/8889/9998/9999」 | §7.3 | ✅ 已決 |
 | ⚠️g | constitution 重鑄措辭（§I.5 `axum-casbin`＋§9.6 Q5 rev1 指涉） | `axum-casbin` 重鑄為「enforce 層全新寫（in-tree）」；Q5 改寫為對 rev2 source 的隔離／參照立場（user 親決） | §9.2・§9.6 | constitution-rev3 重鑄時（波 -1） |
 | ⚠️h | 排程性拍板重議（§9.3 表之拍板 §11.2/§11.8/§11.13） | 重議走 amendment、不默改 | §9.3 | 重議觸發時 |
 | ⚠️i | L4 授權模式 | 沿用「窄邊界 + 逐次擴邊」 | §9.5 | constitution-rev3 重鑄時（波 -1） |
 | ⚠️j | rust-api 源倉 | ✅ 已決(2026-06-12)：**沿用倉、換分支**——`fork260509-rev2-anew-rust-api` 倉名（含 rev2）為永久名保留、分支改 `rev3-admin-rust-api`（已落地） | 附錄 A | ✅ 已決 |
 | ⚠️k | migration 檔名 | 改短編號（`mNNN_<name>`） | 附錄 C | 第一條 migration 前（波 0） |
 | ⚠️l | settings 多 key 熱讀 | 需要時把單鍵 swap 推廣為 keyed map（設計變更、非預設） | §5.6 | 不阻塞（需要時） |
-| ⚠️m | §1.2 尾巴（alt-login stub 4 + captcha 2）入波或重議 | 入波（§8.2 待拍板刀位）；重議則走 §9.5 amendment | §1.2・§8.2 | 波 3 排程前 |
+| ⚠️m | §1.2 尾巴（alt-login stub 4 + captcha 2）入波或重議 | 入波（§8.2 待拍板刀位）；重議則走 §9.5 amendment。**註(2026-06-12)**：captcha 2 端點已隨 ⚠️c 完整包拍定（stub 雙模、alova/scenes 需要）— 本項殘餘範圍縮為 alt-login 4 流程 stub 的入波排程 | §1.2・§8.2 | 波 3 排程前 |
 | ⚠️n | 三 log 表 DB retention 政策 | rev3 v1 僅容量監控、retention defer | §1.3・§10.5 | 不阻塞（容量警示觸發時） |
 | ⚠️o | application-RI 驗證下沉 facade 層 | 維持 rev2 handler 層驗；下沉屬設計變更須明示 | §3.3 | 波 1 facade 設計時 |
-| ⚠️p | demo menu 隱藏機制 | 沿用 dynamic mode（免動 BUILD-CONFIG） | §6.1 | 波 0 route mode 定稿前 |
+| ⚠️p | demo menu 隱藏機制 | ✅ 已決(2026-06-12)：**翻案 — 全部 demo 頁進 sys_menu seed、初始僅勾給 R_SUPER**；「隱藏機制」議題消解（hideInMenu／pageExcludePatterns 皆不啟用），可見性全交 ROLE 勾選層（casbin menu 維度）治理下放。推翻 rev2 §11.5 的隱藏取向（constitution-rev3 重鑄時同步改寫、⚠️g 同梱）。配套盤點 **✅ 完成（2026-06-12）**：API 依賴者共 4 頁＝⚠️c 完整包三頁＋`plugin/excel`（用既有官方端點 `getUserList`、零新端點）；其餘 demo 頁純前端；`demoRequest` 線路 vanilla 閒置。詳 §6.1 表 | §6.1 | ✅ 已決 |
 | ⚠️q | worktree 內容起點（base-web／rust-api 帶不帶 rev2 程式碼） | ✅ 已決(2026-06-12)：base-web=**clean-slate 血緣**（自 `example` 衍生、已落地）＋**整批移植** `rev2-admin-base-web` 完成接線＋rev2→rev3 改名（附錄 A.2）；rust-api 依 §8 波次**從零重寫**（已落地、`main`@Initial commit） | §8.4 波 -1・附錄 A | ✅ 已決 |
+| ⚠️r | id 序列化策略（rev2「id 全字串」凍結存廢） | ✅ 已決(2026-06-12)：**廢除字串凍結 — 逐欄位忠實 typings**。DB 一律 i64 自增（BIGSERIAL）；僅在 rust-api **序列化邊界**對 typings 宣告 string 的欄位轉換（`MenuRoute.id`・`userId`）；其餘（`CommonRecord.id`/`parentId`/`MenuTree.id/pId`/`Role.id`、write payload `ids`）回 JSON number；serializer 加 2^53 fail-loud 守衛。**推翻 rev2 constitution §I.3／§11.10 的 string 拍板**（刻意偏離、constitution-rev3 重鑄時與 ⚠️g 同梱處理）；rev2 025-I1 類 type-lie 自此根除、lie ledger 初始為空 | §7.2・§9.2・§9.3 | ✅ 已決 |
 
 ---
 
