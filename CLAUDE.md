@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 目前處於起始狀態**：除本檔、`.specify/`、`.claude/skills/`、`.gitignore` 家族與三個 fork 源倉外，以下描述的結構（worktree／submodule／docs／specs／docker／deploy／graphify-out 等）絕大多數尚未落地；本檔先以**目標態**書寫，落地一項就拔該處 ⏳。
+> ⏳ **rev3 目前處於起始狀態**：除本檔、`.specify/`、`.claude/skills/`、`.gitignore` 家族與三個 fork 源倉外，以下描述的結構（docs／specs／docker／deploy／graphify-out 等）絕大多數尚未落地（worktree／submodule 已落地）；本檔先以**目標態**書寫，落地一項就拔該處 ⏳。
 
 ---
 
@@ -14,8 +14,8 @@
 | 命名 | 是什麼 | 對應目錄 | remote / 來源 | 在外層 git |
 |---|---|---|---|---|
 | `rev3-admin-root` | 傘狀 monorepo（**就是當前 workspace**） | `.` | `miso168net/fork260509-rev3.git` | 自身 |
-| `rev3-admin-base-web` | `fork260509-soybean-admin-base` 上的新分支（從 `example` 衍生） | `base-web/`（worktree ⏳） | push 回 `miso168net/fork260509-soybean-admin-base` 的 `rev3-admin-base-web` 分支 | submodule（記 SHA pin ⏳） |
-| `rev3-admin-rust-api` | `fork260509-rev2-anew-rust-api` 上的新分支（從 `main` 衍生） | `rust-api/`（worktree ⏳） | push 回 `miso168net/fork260509-rev2-anew-rust-api` 的 `rev3-admin-rust-api` 分支 | submodule（記 SHA pin ⏳） |
+| `rev3-admin-base-web` | `fork260509-soybean-admin-base` 上的新分支（從 `example` 衍生） | `base-web/`（worktree） | push 回 `miso168net/fork260509-soybean-admin-base` 的 `rev3-admin-base-web` 分支 | submodule（記 SHA pin） |
+| `rev3-admin-rust-api` | `fork260509-rev2-anew-rust-api` 上的新分支（從 `main` 衍生） | `rust-api/`（worktree） | push 回 `miso168net/fork260509-rev2-anew-rust-api` 的 `rev3-admin-rust-api` 分支 | submodule（記 SHA pin） |
 
 > **命名注意**：rust-api 的 fork 源倉 repo 名是 `fork260509-rev2-anew-rust-api`（rev2 字樣是 GitHub repo 永久名稱、**不隨工作區 rev3 改動**）；只有其上的 git **分支** 從 `rev2-admin-rust-api` 改為 `rev3-admin-rust-api`。
 
@@ -77,8 +77,8 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 ├── fork260509-soybean-admin-base/         ← Vue 3 starter，base-web worktree 源倉（gitignored，本機必留）
 ├── fork260509-soybean-admin-docs/         ← 文件站（gitignored，整合不用、僅參考；定期 §4.6 upstream rebase 取官方最新到 main）
 ├── fork260509-rev2-anew-rust-api/         ← Rust axum + Casbin backend，rust-api worktree 源倉（repo 名沿用 rev2、不變；gitignored，本機必留）
-├── base-web/                   ⏳          ← worktree + submodule（外層記 gitlink SHA；尚未建立）
-├── rust-api/                   ⏳          ← worktree + submodule（外層記 gitlink SHA；尚未建立）
+├── base-web/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
+├── rust-api/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
 ├── docker-compose.yml          ⏳          ← outer root compose（尚未建立；service：front-nginx/base-web/rust-api/postgres/redis-stack + migrate〔自動套〕/acme〔prod profile〕）；override = docker-compose.{dev,prod}.yml；另有 docker-compose.{base-web,rust-api}.yml standalone（見 §8.2）
 └── deploy/                     ⏳          ← 部署支援檔（尚未建立；nginx conf / secrets / dev-certs / cleanup 等；見 §8.2）
 ```
@@ -219,7 +219,7 @@ chore(submodule): bump rust-api 到 abc1234 — <fork 提交主旨>
 
 ### 4.3 session 開場健檢
 
-> ⏳ SessionStart hook 尚未落地（rev3 待建 `.claude/settings.json` 註冊 + `hook-git-submodule-SOP.sh` 腳本）；worktree（`base-web` / `rust-api`）尚未 add，下列檢查待 hook 與 worktree 落地後才完整觸發。
+> ⏳ SessionStart hook 尚未落地（rev3 待建 `.claude/settings.json` 註冊 + `hook-git-submodule-SOP.sh` 腳本）；worktree（`base-web` / `rust-api`）已 add（gitlink 已 pin），下列檢查待 hook 落地後即可完整觸發。
 
 每次 session 開頭由 `.claude/hook-git-submodule-SOP.sh`（SessionStart hook）自動執行並回報：
 
@@ -243,7 +243,7 @@ hook 另會 cat `docs/INTEGRATION-CHECKLIST.md` 全檔注入 session context（�
 
 ### 4.4 一次性初始化（worktree + 手寫 .gitmodules）
 
-> **⏳ rev3 尚未執行此步驟**（worktree 未建、submodule 未註冊；`git worktree list` 僅 root、`git submodule status` 為空）。
+> **✅ rev3 已執行此步驟 @ 2ec9cda**（worktree 已建、submodule 已註冊：base-web→rev3-admin-base-web、rust-api→rev3-admin-rust-api）。下列腳本範本仍供新機器重建 / 災後恢復 / 重新落地參考。
 > rev3 的兩條分支均已建好並 push 到 remote：`rev3-admin-base-web`（= `example` HEAD）、`rev3-admin-rust-api`（= `main` / Initial commit）；故下方 worktree add **皆不用 `-b`**、Step 2 的 push 也可跳過。
 > 下列為初始化腳本範本（亦適用 **新機器重建 / 災後恢復**）。
 
