@@ -11,6 +11,8 @@
 #   CLAUDE.md §3「新增 crate ⇒ acceptance 必含 prod image build」紀律看點:
 #   dev stage bind-mount 整個 rust-api/ 會遮住此處 COPY 缺口,只靠 dev 驗不到,
 #   必須跑 prod target image build 才會暴露缺行。
+#   （crate 若宣告 [[bench]]/[[example]] target,其檔案也須一併 COPY,否則
+#   manifest parse error——rev2 xdb benches 踩過,詳 rev2 版本此處註解。）
 
 # =====================================================================
 # Stage 1: builder — 產出 2 個 release binary 到 /out/
