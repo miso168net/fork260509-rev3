@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 -1 — repo 建構（進行中）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 -1 ✅ 全完成（2026-06-12）→ 波 0 地基 待啟動**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-12 constitution-rev3 v1.0.0 凍結＋波 -1 收口**:13 項拍板融入（含 ⚠️s fork-delta 紀律）、出口四項全綠（`167db96`,未 push）
 - **2026-06-12 波 -1 文件層全收齊＋hook 落地**:CHECKLIST/MILESTONES 落地＋外檔引用查驗＋§7.1 改定＋SessionStart hook 原樣承接（`4300b54`~`ed2a789`,未 push）
-- **2026-06-12 C 方案落地＋設計書歸位**:INTEGRATION-DESIGN.md 凍結藍圖＋INTEGRATION-DECISIONS.md 伴生活帳（附錄 G 27 條遷入）＋CLAUDE.md §7 紀律改版（`4724549`,已 push）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **constitution-rev3 重鑄凍結 v1.0.0**（波 -1 最後一項;前置拍板:⑤凍結邊界／⚠️g 措辭／⚠️i L4 模式,見 §5 索引）
+**下一步**: **波 0 — 地基**（infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段;定義與出口條件見 DESIGN §8.4;**波 0 前拍板**:①router 結構／④選擇性 FK／⚠️d redis tag／⚠️k migration 檔名,見 §5 索引;首個 spec-kit feature 自此起跑）
 
 ---
 
@@ -25,8 +25,9 @@
 
 > 僅當前波快照;完成波收縮為一行指 [DECISIONS §2](INTEGRATION-DECISIONS.md)。波次定義與出口條件見 DESIGN §8.4。
 
-- **波 -1 repo 建構（進行中）**:✅ worktree/submodule・設計書（歸位+C 方案）・graphify 建圖・000 bootstrap・CHECKLIST/MILESTONES 落地・SessionStart hook;⏳ constitution-rev3 重鑄 v1.0.0
-- 波 0 地基 ～ 波 4 observability:未開始
+- 波 -1 repo 建構:✅ 全完成 (2026-06-12) → 詳 [DECISIONS §2](INTEGRATION-DECISIONS.md)
+- **波 0 地基（待啟動・當前）**:infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段（DESIGN §8.4）
+- 波 1 第一刀 ～ 波 4 observability:未開始
 
 ---
 
@@ -43,6 +44,11 @@
 
 - [ ] `graphify update`（INTEGRATION-DESIGN 改名＋docs 新四檔落地後,圖譜增量同步）
 
+### 3.3 fork-delta 工具 follow-up（⚠️s 衍生）
+
+- [ ] `inline_coverage_lint` 候選:`grep -c rev3-inline` 對 spec 紀錄數,rebase 後驗足跡不丟失（rev2 endpoint_coverage_lint 同款思路;等 ⚠️q 移植 feature 一併評）
+- [ ] git 配套設定:`merge.conflictStyle=zdiff3` + `rerere.enabled=true`（base-web 源倉與 worktree;零成本、與 ⚠️s 註解互補）
+
 ---
 
 ## 4. 跨 feature 待驗證項
@@ -51,10 +57,9 @@
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 8**:待決② C+ typings-as-oracle｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️j rust-api 沿倉換分支｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings
+**已決 12**:待決② C+ typings-as-oracle｜待決⑤ 凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)
 
-**開放 19**(依最晚決策點分組):
-- 波 -1 constitution 重鑄前:⑤凍結邊界｜⚠️g constitution 措辭｜⚠️i L4 授權模式
+**開放 16**(依最晚決策點分組):
 - 波 0 前:①router 結構｜④選擇性 FK｜⚠️d redis-stack tag｜⚠️k migration 檔名
 - 波 1~3:③第一刀位｜⚠️a 效能數字｜⚠️o RI 下沉(波1)｜⚠️b 審計讀端(波2)｜⚠️m alt-login 入波(波3)
 - 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention

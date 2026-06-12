@@ -20,7 +20,7 @@
 | 待決② | wire contract 機器化（OpenAPI／contract test／維持 grep） | ✅ 已決(2026-06-12)：**C+ typings-as-oracle** — typings 抽 JSON Schema 當裁判（唯讀、不動官方檔）＋ coverage gate（router 每條 route 必有 contract case、缺＝CI 紅）＋ 碼表 table-driven（§7.3）＋ CDP capture 降為補充回歸 fixture ＋ lie ledger（顯式覆寫帳本、初始空）；B 案留「endpoint 增速再評」 | §7.2 | ✅ 已決 |
 | 待決③ | 縱切第一刀：User 直刀 vs `system_settings` 打樣 | 傾向 A（User 直刀） | §8.3 | 波 1 開工前 |
 | 待決④ | 選擇性 FK | join 表（`sys_user_role`）加 FK、其餘維持零 | §3.1 | 第一條 migration 前（波 0） |
-| 待決⑤ | §3/§5 凍結邊界：哪些進 constitution、哪些留設計書 | archetype（§3.2）+ 行為島 invariants（§4）+ wire 碼表（§5.4/§7.3）入凍結；欄級字典與常數值留設計書 | §3・§9 章首注 | constitution-rev3 重鑄前（**波 -1**） |
+| 待決⑤ | §3/§5 凍結邊界：哪些進 constitution、哪些留設計書 | ✅ 已決(2026-06-12)：**採工程預設** — archetype（§3.2 四變體 A/B/C/D 整組）+ 行為島 invariants（§4 三台狀態機）+ wire 碼表（§5.4/§7.3，含 PageRes 形與 envelope 例外）入凍結（constitution §I.6/§I.7/§I.3）；欄級字典與常數值（grace 秒數等）留設計書。配套：constitution §V.3 分級 — §I.7 方向性不變式反轉=MAJOR、其餘 invariant 細項調整=MINOR | §3・§9 章首注 | ✅ 已決 |
 | 待決⑥a | user-facing 儀表板 | rev3 v1 = 固定儀表板、0 新表（§2 表 #1） | §2 | 入波排程時（不 block 波 0-3） |
 | 待決⑥b | 報表匯出 PDF/CSV | rev3 v1 = 同步匯出、0 新表（§2 表 #2） | §2 | 同 ⑥a |
 | 待決⑥c | AES-256 靜態加密 | rev3 v1 = 磁碟/tablespace 層（§2 表 #3） | §2 | prod 部署定稿前（加密卷屬部署期決策） |
@@ -31,9 +31,9 @@
 | ⚠️d | redis-stack image tag | 建 stack 當下即 pin 數字版 | §1.6 | 波 0 compose 定稿前 |
 | ⚠️e | `5000` 的 HTTP status 配對 | ✅ 已決(2026-06-12)：**一律 HTTP 200 信封**（對齊前端 msg 顯示通道僅 200 生效＋「business error 走 200」總則）；`AppError::Internal`→HTTP 500 mapping 標 test-only 或刪除；contract test 鎖 `5000`→200 | §5.4・§7.3 | ✅ 已決 |
 | ⚠️f | 13 碼矩陣整組凍結（含 4 保留碼） | ✅ 已決(2026-06-12)：**整組凍結**（保留碼是前端 `.env` 分組實值、刪碼違 §I.1）；contract test 斷言「後端從不發出 7778/8889/9998/9999」 | §7.3 | ✅ 已決 |
-| ⚠️g | constitution 重鑄措辭（§I.5 `axum-casbin`＋§9.6 Q5 rev1 指涉） | `axum-casbin` 重鑄為「enforce 層全新寫（in-tree）」；Q5 改寫為對 rev2 source 的隔離／參照立場（user 親決） | §9.2・§9.6 | constitution-rev3 重鑄時（波 -1） |
+| ⚠️g | constitution 重鑄措辭（§I.5 `axum-casbin`＋§9.6 Q5 rev1 指涉） | ✅ 已決(2026-06-12)：`axum-casbin` 重鑄為「enforce 層全新寫（in-tree、無獨立 crate）」；Q5/§I.5 對 rev2 source 立場＝**受控參照** — 讀允許（grep/閱讀對照驗證）、拷貝禁止（重新打字消化）、**防回歸條款**（rev3 拍板已推翻的行為不得帶回）；工具 crate `sea-orm-adapter`/`xdb` 例外自 rev2 整檔拷貝 | §9.2・§9.6 | ✅ 已決 |
 | ⚠️h | 排程性拍板重議（§9.3 表之拍板 §11.2/§11.8/§11.13） | 重議走 amendment、不默改 | §9.3 | 重議觸發時 |
-| ⚠️i | L4 授權模式 | 沿用「窄邊界 + 逐次擴邊」 | §9.5 | constitution-rev3 重鑄時（波 -1） |
+| ⚠️i | L4 授權模式 | ✅ 已決(2026-06-12)：**窄邊界精神的 rev3 起點映射** — i-1：MODAL-WIRING ★ v1.0.0 即授五用途 (a)~(e)（rev2 五次擴邊已驗證過的邊界、⚠️q 整批移植立即需要；**新用途 (f) 起仍走 amendment**）；i-2：BUILD-CONFIG ★ **不收錄**（⚠️p 後議題消解、軌道清單 5→4〔1★〕，日後需 build 改動走 amendment 新授） | §9.5 | ✅ 已決 |
 | ⚠️j | rust-api 源倉 | ✅ 已決(2026-06-12)：**沿用倉、換分支**——`fork260509-rev2-anew-rust-api` 倉名（含 rev2）為永久名保留、分支改 `rev3-admin-rust-api`（已落地） | 附錄 A | ✅ 已決 |
 | ⚠️k | migration 檔名 | 改短編號（`mNNN_<name>`） | 附錄 C | 第一條 migration 前（波 0） |
 | ⚠️l | settings 多 key 熱讀 | 需要時把單鍵 swap 推廣為 keyed map（設計變更、非預設） | §5.6 | 不阻塞（需要時） |
@@ -43,6 +43,7 @@
 | ⚠️p | demo menu 隱藏機制 | ✅ 已決(2026-06-12)：**翻案 — 全部 demo 頁進 sys_menu seed、初始僅勾給 R_SUPER**；「隱藏機制」議題消解（hideInMenu／pageExcludePatterns 皆不啟用），可見性全交 ROLE 勾選層（casbin menu 維度）治理下放。推翻 rev2 §11.5 的隱藏取向（constitution-rev3 重鑄時同步改寫、⚠️g 同梱）。配套盤點 **✅ 完成（2026-06-12）**：API 依賴者共 4 頁＝⚠️c 完整包三頁＋`plugin/excel`（用既有官方端點 `getUserList`、零新端點）；其餘 demo 頁純前端；`demoRequest` 線路 vanilla 閒置。詳 §6.1 表 | §6.1 | ✅ 已決 |
 | ⚠️q | worktree 內容起點（base-web／rust-api 帶不帶 rev2 程式碼） | ✅ 已決(2026-06-12)：base-web=**clean-slate 血緣**（自 `example` 衍生、已落地）＋**整批移植** `rev2-admin-base-web` 完成接線＋rev2→rev3 改名（附錄 A.2）；rust-api 依 §8 波次**從零重寫**（已落地、`main`@Initial commit） | §8.4 波 -1・附錄 A | ✅ 已決 |
 | ⚠️r | id 序列化策略（rev2「id 全字串」凍結存廢） | ✅ 已決(2026-06-12)：**廢除字串凍結 — 逐欄位忠實 typings**。DB 一律 i64 自增（BIGSERIAL）；僅在 rust-api **序列化邊界**對 typings 宣告 string 的欄位轉換（`MenuRoute.id`・`userId`）；其餘（`CommonRecord.id`/`parentId`/`MenuTree.id/pId`/`Role.id`、write payload `ids`）回 JSON number；serializer 加 2^53 fail-loud 守衛。**推翻 rev2 constitution §I.3／§11.10 的 string 拍板**（刻意偏離、constitution-rev3 重鑄時與 ⚠️g 同梱處理）；rev2 025-I1 類 type-lie 自此根除、lie ledger 初始為空 | §7.2・§9.2・§9.3 | ✅ 已決 |
+| ⚠️s | fork-delta 執行紀律（授權後 inline／改值的變動方式） | ✅ 已決(2026-06-12)：**雙模式＋統一標記**（起因：upstream example 常態更新、rebase 須快速定位 fork 差異）— 修改型（MODAL-WIRING (a)(b)、ADAPT `.env` 改值等）**原行註解保留**緊鄰新行＋標記；新增型（(c)(d)(e) 插入/新檔）標記圈界、新檔僅檔頭一行；標記統一含 `rev3-inline` token（grep＝完整 fork patch set）；**rebase 同步紀律**（解衝突時註解原行更新為 upstream 現行版）；⚠️q 整批移植時修改型逐處補 example 原行註解（B 案）。落 constitution §III fork-delta 紀律＋§I.1＋Check Q2；inline_coverage_lint 候選登 CHECKLIST §3.3 | constitution §III（§9.4 重鑄時摺合） | ✅ 已決 |
 
 ---
 
@@ -51,16 +52,16 @@
 > 骨架衍生自 DESIGN §8.4 交付波次（波次定義／出口條件在彼、執行紀錄在此）。
 > **回填紀律**：波／Phase 完成後，as-built（feature 清單＋merge SHA＋日期）回填本節對應波；CHECKLIST「Roadmap & Phase 狀態」該波收縮為一行指本節。本節**永久留此、DESIGN 重鑄不摺**（執行帳不屬於藍圖 — rev2 §10 的 65 次補丁教訓）。
 
-### 波 -1 — repo 建構（進行中）
+### 波 -1 — repo 建構 ✅ 全完成（2026-06-12）
 
 - ✅ outer repo＋worktree/submodule 註冊（`2ec9cda`；⚠️j／⚠️q 拍板已落地）
 - ✅ CLAUDE.md-rev3／.gitignore 家族／.specify spec-kit 殼
-- ✅ 設計書入 docs/（`7fd1ac6`）＋拍板回填（`88f9011`）＋歸位改名 INTEGRATION-DESIGN.md（`4aa7c89`）
+- ✅ 設計書入 docs/（`7fd1ac6`）＋拍板回填（`88f9011`）＋歸位改名 INTEGRATION-DESIGN.md（`4aa7c89`）＋C 方案文件體系（DECISIONS/CHECKLIST/MILESTONES，`4724549`/`4300b54`）
 - ✅ graphify 首次建圖（`8f66fe0`，2060 nodes/311 communities）
 - ✅ base-web standalone 容器化＋mock wire ground truth 捕獲與對映（000：`46591c4`/`309099d`/`aea0e18`/`e898421`）
-- ✅ SessionStart hook（`.claude/settings.json`＋`hook-git-submodule-SOP.sh`；自 rev2 原樣承接、workspace-agnostic 零改動、實測健檢＋CHECKLIST 注入跑通）
-- ⏳ constitution-rev3 重鑄凍結 v1.0.0（重鑄注意：§V.2 amendment 提案位置條文須寫「DECISIONS §1」——rev2 快照原文是「DESIGN §11」、照抄會與 C 方案矛盾；rev3 版動線以 DESIGN §9.5 為準）
-- 出口條件：DESIGN §8.4 波 -1 列
+- ✅ SessionStart hook（`.claude/settings.json`＋`hook-git-submodule-SOP.sh`；自 rev2 原樣承接、workspace-agnostic 零改動、實測健檢＋CHECKLIST 注入跑通，`ed2a789`）
+- ✅ constitution-rev3 v1.0.0 重鑄凍結（`167db96`，獨立 commit；§9 快照 carry＋13 項拍板融入＋§V.2 提案位置=DECISIONS §1＋⚠️s fork-delta 紀律；雙輪驗證〔忠實度 8 項＋操作性 4 項〕後凍結）
+- ✅ 出口條件四項全綠（2026-06-12 驗）：session 健檢綠（hook 實測）／constitution v1.0.0 獨立 commit／設定・部署層 grep rev2 歸零（豁免：`fork260509-rev2-anew-rust-api` 倉永久名〔⚠️j〕與史料引用；`.gitignore`/`.graphifyignore` 2 處註解殘影同輪修正）／`/speckit-*` 指令可用（scripts＋skills 在位）
 
 ### 波 0 — 地基（未開始）
 
