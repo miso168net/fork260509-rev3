@@ -1,0 +1,74 @@
+{
+ "_source": "curl 直打 https://mock.apifox.cn/m1/3109515-0-default（非 base-web 流量；header apifoxToken=XL299... 必帶，出處 base-web/src/service/request/index.ts:17）",
+ "_capturedAt": "2026-06-12",
+ "_note": "補 CDP capture（base-web-capture.json）未覆蓋的 6 端點。round1=無 Authorization（捕到 mock 條件失敗路徑：getUserRoutes→3333、refreshToken dummy→8888）；round2=帶 capture login 取得的真 token（成功路徑）。curl 直送 ≠ 瀏覽器內 base-web 行為，CDP smoke 風險自覺見 000 文件。",
+ "round1_noAuth": [
+  {
+   "method": "GET",
+   "url": "/route/getConstantRoutes",
+   "reqBody": null,
+   "status": "200",
+   "body": "{\"data\":[{\"name\":\"login\",\"path\":\"/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?\",\"component\":\"layout.blank$view.login\",\"props\":true,\"meta\":{\"title\":\"login\",\"i18nKey\":\"route.login\",\"constant\":true,\"hideInMenu\":true}},{\"name\":\"403\",\"path\":\"/403\",\"component\":\"layout.blank$view.403\",\"meta\":{\"title\":\"403\",\"i18nKey\":\"route.403\",\"constant\":true,\"hideInMenu\":true}},{\"name\":\"404\",\"path\":\"/404\",\"component\":\"layout.blank$view.404\",\"meta\":{\"title\":\"404\",\"i18nKey\":\"route.404\",\"constant\":true,\"hideInMenu\":true}},{\"name\":\"500\",\"path\":\"/500\",\"component\":\"layout.blank$view.500\",\"meta\":{\"title\":\"500\",\"i18nKey\":\"route.500\",\"constant\":true,\"hideInMenu\":true}}],\"code\":\"0000\",\"msg\":\"请求成功\"}"
+  },
+  {
+   "method": "GET",
+   "url": "/route/getUserRoutes",
+   "reqBody": null,
+   "status": "200",
+   "body": "{\"data\":null,\"code\":\"3333\",\"msg\":\"用户已失效或不存在\"}"
+  },
+  {
+   "method": "GET",
+   "url": "/route/isRouteExist?routeName=home",
+   "reqBody": null,
+   "status": "200",
+   "body": "{\"data\":true,\"code\":\"0000\",\"msg\":\"请求成功\"}"
+  },
+  {
+   "method": "GET",
+   "url": "/systemManage/getMenuTree",
+   "reqBody": null,
+   "status": "200",
+   "body": "{\"data\":[{\"id\":1,\"label\":\"首页\",\"pId\":0},{\"id\":2,\"label\":\"功能\",\"pId\":0,\"children\":[{\"id\":3,\"label\":\"多标签页\",\"pId\":2},{\"id\":4,\"label\":\"标签页\",\"pId\":2}]},{\"id\":5,\"label\":\"异常页\",\"pId\":0,\"children\":[{\"id\":6,\"label\":\"403\",\"pId\":5},{\"id\":7,\"label\":\"404\",\"pId\":5},{\"id\":8,\"label\":\"500\",\"pId\":5}]},{\"id\":9,\"label\":\"多级菜单\",\"pId\":0,\"children\":[{\"id\":10,\"label\":\"一级子菜单1\",\"pId\":9,\"children\":[{\"id\":11,\"label\":\"二级子菜单\",\"pId\":10}]},{\"id\":12,\"label\":\"一级子菜单2\",\"pId\":9,\"children\":[{\"id\":14,\"label\":\"二级子菜单2\",\"pId\":12,\"children\":[{\"id\":15,\"label\":\"三级菜单\",\"pId\":14}]}]}]},{\"id\":16,\"label\":\"系统管理\",\"pId\":0,\"children\":[{\"id\":17,\"label\":\"用户管理\",\"pId\":16},{\"id\":18,\"label\":\"角色管理\",\"pId\":16},{\"id\":19,\"label\":\"菜单管理\",\"pId\":16},{\"id\":20,\"label\":\"用户详情\",\"pId\":16}]},{\"id\":21,\"label\":\"关于\",\"pId\":0}],\"code\":\"0000\",\"msg\":\"请求成功\"}"
+  },
+  {
+   "method": "GET",
+   "url": "/systemManage/getUserList?current=1&size=10",
+   "reqBody": null,
+   "status": "200",
+   "body": "{\"data\":{\"records\":[{\"id\":1,\"createBy\":\"Matthew Perez\",\"createTime\":\"1976-07-31 13:04:42\",\"updateBy\":\"Dorothy Clark\",\"updateTime\":\"2025-03-20 00:18:11\",\"status\":\"1\",\"userName\":\"fzF7ZqEZ\",\"userGender\":\"2\",\"nickName\":\"Karen Walker\",\"userPhone\":\"16620774158\",\"userEmail\":\"w.zksbk@yvkq.mp\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":2,\"createBy\":\"Jeffrey Brown\",\"createTime\":\"1981-12-19 07:04:36\",\"updateBy\":\"Angela Thompson\",\"updateTime\":\"1993-04-28 00:10:51\",\"status\":\"2\",\"userName\":\"lObDSmdMnCly\",\"userGender\":\"1\",\"nickName\":\"Amy Johnson\",\"userPhone\":\"13826987482\",\"userEmail\":\"o.oyf@ngi.au\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":3,\"createBy\":\"Kimberly Rodriguez\",\"createTime\":\"2025-12-17 22:58:48\",\"updateBy\":\"Cynthia Lopez\",\"updateTime\":\"1992-12-14 18:50:32\",\"status\":\"2\",\"userName\":\"W1twOz7FAwyjN\",\"userGender\":\"1\",\"nickName\":\"Larry Jackson\",\"userPhone\":\"15831012666\",\"userEmail\":\"a.bkig@cpwfvex.sl\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":4,\"createBy\":\"Frank Walker\",\"createTime\":\"2003-05-16 02:23:29\",\"updateBy\":\"Sandra Miller\",\"updateTime\":\"2003-02-28 17:27:22\",\"status\":\"2\",\"userName\":\"GGPJsrdlv1J1\",\"userGender\":\"2\",\"nickName\":\"Linda Jones\",\"userPhone\":\"13787565657\",\"userEmail\":\"d.igivig@yhnum.si\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":5,\"createBy\":\"Anthony Walker\",\"createTime\":\"1991-10-26 05:49:51\",\"updateBy\":\"Angela Martinez\",\"updateTime\":\"2004-10-27 16:53:23\",\"status\":\"2\",\"userName\":\"CjHJuywuztuM\",\"userGender\":\"2\",\"nickName\":\"Mary Davis\",\"userPhone\":\"15577753158\",\"userEmail\":\"q.cddov@czjnsk.et\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":6,\"createBy\":\"Scott Jackson\",\"createTime\":\"1993-11-09 22:17:06\",\"updateBy\":\"Karen Harris\",\"updateTime\":\"1984-10-30 10:08:40\",\"status\":\"2\",\"userName\":\"FTkFs3kQB\",\"userGender\":\"1\",\"nickName\":\"Donald Lopez\",\"userPhone\":\"16656222885\",\"userEmail\":\"v.yqzujff@adrj.ni\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":7,\"createBy\":\"Jessica Hall\",\"createTime\":\"1987-10-02 13:35:52\",\"updateBy\":\"David Taylor\",\"updateTime\":\"2016-04-07 13:04:24\",\"status\":\"1\",\"userName\":\"jrNq1CqJi1TLrIIR\",\"userGender\":\"2\",\"nickName\":\"Donna Hall\",\"userPhone\":\"13284823881\",\"userEmail\":\"b.jhxsuxcxz@qbrsle.net.cn\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":8,\"createBy\":\"Patricia Anderson\",\"createTime\":\"2017-08-03 11:43:19\",\"updateBy\":\"Carol Martin\",\"updateTime\":\"1998-09-16 11:13:33\",\"status\":\"1\",\"userName\":\"L0Hs3J3PJZUxcE\",\"userGender\":\"2\",\"nickName\":\"Ruth Harris\",\"userPhone\":\"15575665468\",\"userEmail\":\"k.gvmrvp@cgfywzuvm.ad\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":9,\"createBy\":\"Amy Rodriguez\",\"createTime\":\"1977-11-02 08:19:05\",\"updateBy\":\"Melissa Hernandez\",\"updateTime\":\"1999-04-07 15:58:02\",\"status\":\"1\",\"userName\":\"MHr0JUl5nC0ah\",\"userGender\":\"1\",\"nickName\":\"Jennifer Clark\",\"userPhone\":\"13062715324\",\"userEmail\":\"e.gjdg@wxqwa.hk\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]},{\"id\":10,\"createBy\":\"Betty Lee\",\"createTime\":\"2020-01-03 08:39:47\",\"updateBy\":\"Maria Harris\",\"updateTime\":\"1989-11-29 13:48:36\",\"status\":\"1\",\"userName\":\"wQdOglmzS6Q\",\"userGender\":\"1\",\"nickName\":\"Jennifer Lee\",\"userPhone\":\"17631288447\",\"userEmail\":\"c.fdefygrjbv@ylgwl.ly\",\"userRoles\":[\"R_XVRTU_AMPK\",\"R_EOGY_RTG\",\"R_TCUB_MTVJ\",\"R_CVNBD_RLHA\"]}],\"current\":1,\"size\":10,\"total\":200},\"code\":\"0000\",\"msg\":\"请求成功\"}"
+  },
+  {
+   "method": "GET",
+   "url": "/auth/error?code=8888&msg=testmsg",
+   "reqBody": null,
+   "status": "200",
+   "body": "{\"data\":null,\"code\":\"8888\",\"msg\":\"testmsg\"}"
+  },
+  {
+   "method": "POST",
+   "url": "/auth/refreshToken",
+   "reqBody": "{\"refreshToken\":\"dummy-refresh-token\"}",
+   "status": "200",
+   "body": "{\"data\":null,\"code\":\"8888\",\"msg\":\"用户状态失效，请重新登录\"}"
+  }
+ ],
+ "round2_withAuth": [
+  {
+   "method": "GET",
+   "url": "/route/getUserRoutes",
+   "reqBody": null,
+   "authHeader": true,
+   "status": "200",
+   "body": "{\"data\":{\"routes\":[{\"name\":\"exception\",\"path\":\"/exception\",\"component\":\"layout.base\",\"meta\":{\"title\":\"exception\",\"i18nKey\":\"route.exception\",\"icon\":\"ant-design:exception-outlined\",\"order\":7},\"children\":[{\"name\":\"exception_403\",\"path\":\"/exception/403\",\"component\":\"view.403\",\"meta\":{\"title\":\"exception_403\",\"i18nKey\":\"route.exception_403\",\"icon\":\"ic:baseline-block\"}},{\"name\":\"exception_404\",\"path\":\"/exception/404\",\"component\":\"view.404\",\"meta\":{\"title\":\"exception_404\",\"i18nKey\":\"route.exception_404\",\"icon\":\"ic:baseline-web-asset-off\"}},{\"name\":\"exception_500\",\"path\":\"/exception/500\",\"component\":\"view.500\",\"meta\":{\"title\":\"exception_500\",\"i18nKey\":\"route.exception_500\",\"icon\":\"ic:baseline-wifi-off\"}}]},{\"name\":\"about\",\"path\":\"/about\",\"component\":\"layout.base$view.about\",\"meta\":{\"title\":\"about\",\"i18nKey\":\"route.about\",\"icon\":\"fluent:book-information-24-regular\",\"order\":10}},{\"name\":\"function\",\"path\":\"/function\",\"component\":\"layout.base\",\"meta\":{\"title\":\"function\",\"i18nKey\":\"route.function\",\"icon\":\"icon-park-outline:all-application\",\"order\":6},\"children\":[{\"name\":\"function_hide-child\",\"path\":\"/function/hide-child\",\"meta\":{\"title\":\"function_hide-child\",\"i18nKey\":\"route.function_hide-child\",\"icon\":\"material-symbols:filter-list-off\",\"order\":2},\"redirect\":\"/function/hide-child/one\",\"children\":[{\"name\":\"function_hide-child_one\",\"path\":\"/function/hide-child/one\",\"component\":\"view.function_hide-child_one\",\"meta\":{\"title\":\"function_hide-child_one\",\"i18nKey\":\"route.function_hide-child_one\",\"icon\":\"material-symbols:filter-list-off\",\"hideInMenu\":true,\"activeMenu\":\"function_hide-child\"}},{\"name\":\"function_hide-child_three\",\"path\":\"/function/hide-child/three\",\"component\":\"view.function_hide-child_three\",\"meta\":{\"title\":\"function_hide-child_three\",\"i18nKey\":\"route.function_hide-child_three\",\"hideInMenu\":true,\"activeMenu\":\"function_hide-child\"}},{\"name\":\"function_hide-child_two\",\"path\":\"/function/hide-child/two\",\"component\":\"view.function_hide-child_two\",\"meta\":{\"title\":\"function_hide-child_two\",\"i18nKey\":\"route.function_hide-child_two\",\"hideInMenu\":true,\"activeMenu\":\"function_hide-child\"}}]},{\"name\":\"function_multi-tab\",\"path\":\"/function/multi-tab\",\"component\":\"view.function_multi-tab\",\"meta\":{\"title\":\"function_multi-tab\",\"i18nKey\":\"route.function_multi-tab\",\"icon\":\"ic:round-tab\",\"multiTab\":true,\"hideInMenu\":true,\"activeMenu\":\"function_tab\"}},{\"name\":\"function_request\",\"path\":\"/function/request\",\"component\":\"view.function_request\",\"meta\":{\"title\":\"function_request\",\"i18nKey\":\"route.function_request\",\"icon\":\"carbon:network-overlay\",\"order\":3}},{\"name\":\"function_super-page\",\"path\":\"/function/super-page\",\"component\":\"view.function_super-page\",\"meta\":{\"title\":\"function_super-page\",\"i18nKey\":\"route.function_super-page\",\"icon\":\"ic:round-supervisor-account\",\"order\":5}},{\"name\":\"function_tab\",\"path\":\"/function/tab\",\"component\":\"view.function_tab\",\"meta\":{\"title\":\"function_tab\",\"i18nKey\":\"route.function_tab\",\"icon\":\"ic:round-tab\",\"order\":1}},{\"name\":\"function_toggle-auth\",\"path\":\"/function/toggle-auth\",\"component\":\"view.function_toggle-auth\",\"meta\":{\"title\":\"function_toggle-auth\",\"i18nKey\":\"route.function_toggle-auth\",\"icon\":\"ic:round-construction\",\"order\":4}}]},{\"name\":\"home\",\"path\":\"/home\",\"component\":\"layout.base$view.home\",\"meta\":{\"title\":\"home\",\"i18nKey\":\"route.home\",\"icon\":\"mdi:monitor-dashboard\",\"order\":1}},{\"name\":\"manage\",\"path\":\"/manage\",\"component\":\"layout.base\",\"meta\":{\"title\":\"manage\",\"i18nKey\":\"route.manage\",\"icon\":\"carbon:cloud-service-management\",\"order\":9},\"children\":[{\"name\":\"manage_menu\",\"path\":\"/manage/menu\",\"component\":\"view.manage_menu\",\"meta\":{\"title\":\"manage_menu\",\"i18nKey\":\"route.manage_menu\",\"icon\":\"material-symbols:route\",\"order\":3,\"keepAlive\":true}},{\"name\":\"manage_role\",\"path\":\"/manage/role\",\"component\":\"view.manage_role\",\"meta\":{\"title\":\"manage_role\",\"i18nKey\":\"route.manage_role\",\"icon\":\"carbon:user-role\",\"order\":2}},{\"name\":\"manage_user\",\"path\":\"/manage/user\",\"component\":\"view.manage_user\",\"meta\":{\"title\":\"manage_user\",\"i18nKey\":\"route.manage_user\",\"icon\":\"ic:round-manage-accounts\",\"order\":1}},{\"name\":\"manage_user-detail\",\"path\":\"/manage/user-detail/:id\",\"component\":\"view.manage_user-detail\",\"props\":true,\"meta\":{\"title\":\"manage_user-detail\",\"i18nKey\":\"route.manage_user-detail\",\"hideInMenu\":true,\"activeMenu\":\"manage_user\"}}]},{\"name\":\"multi-menu\",\"path\":\"/multi-menu\",\"component\":\"layout.base\",\"meta\":{\"title\":\"multi-menu\",\"i18nKey\":\"route.multi-menu\",\"order\":8},\"children\":[{\"name\":\"multi-menu_first\",\"path\":\"/multi-menu/first\",\"meta\":{\"title\":\"multi-menu_first\",\"i18nKey\":\"route.multi-menu_first\",\"order\":1},\"children\":[{\"name\":\"multi-menu_first_child\",\"path\":\"/multi-menu/first/child\",\"component\":\"view.multi-menu_first_child\",\"meta\":{\"title\":\"multi-menu_first_child\",\"i18nKey\":\"route.multi-menu_first_child\"}}]},{\"name\":\"multi-menu_second\",\"path\":\"/multi-menu/second\",\"meta\":{\"title\":\"multi-menu_second\",\"i18nKey\":\"route.multi-menu_second\",\"order\":2},\"children\":[{\"name\":\"multi-menu_second_child\",\"path\":\"/multi-menu/second/child\",\"meta\":{\"title\":\"multi-menu_second_child\",\"i18nKey\":\"route.multi-menu_second_child\"},\"children\":[{\"name\":\"multi-menu_second_child_home\",\"path\":\"/multi-menu/second/child/home\",\"component\":\"view.multi-menu_second_child_home\",\"meta\":{\"title\":\"multi-menu_second_child_home\",\"i18nKey\":\"route.multi-menu_second_child_home\"}}]}]}]},{\"name\":\"user-center\",\"path\":\"/user-center\",\"component\":\"layout.base$view.user-center\",\"meta\":{\"title\":\"user-center\",\"i18nKey\":\"route.user-center\",\"hideInMenu\":true}}],\"home\":\"home\"},\"code\":\"0000\",\"msg\":\"请求成功\"}"
+  },
+  {
+   "method": "POST",
+   "url": "/auth/refreshToken",
+   "reqBody": "{\"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJ1c2VyTmFtZSI6IlN1cGVyIn1dLCJpYXQiOjE2OTg0ODQ5MjQsImV4cCI6MTc2MTU4MDc5OSwiYXVkIjoic295YmVhbi1hZG1pbiIsImlzcyI6IlNveWJlYW4iLCJzdWIiOiJTdXBlciJ9.VP4-PRJhufEQEVBo9L0X1XtfjPMxJBVi8J4Y0ZuL3Ss\"}",
+   "authHeader": false,
+   "status": "200",
+   "body": "{\"data\":{\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJ1c2VyTmFtZSI6IlNveWJlYW4ifV0sImlhdCI6MTY5ODQ4NjgzMywiZXhwIjoxNzYxNTgwNzk5LCJhdWQiOiJzb3liZWFuLWFkbWluIiwiaXNzIjoiU295YmVhbiIsInN1YiI6IlJlZnJlc2hUb2tlbiJ9.NLRqpDWYtzkn3HRLvjU2K7Z9UuBrG9ZPMlry_SIxrcI\",\"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjpbeyJ1c2VyTmFtZSI6IlNveWJlYW4ifV0sImlhdCI6MTY5ODQ4Njg4NSwiZXhwIjoxNzYxNTgwNzk5LCJhdWQiOiJzb3liZWFuLWFkbWluIiwiaXNzIjoiU295YmVhbiIsInN1YiI6IlJlZnJlc2hUb2tlbiJ9.EuzBD4rDqIBD0AAFMJ_62IhZQzkmvw4UsCL3OoTabYw\"},\"code\":\"0000\",\"msg\":\"请求成功\"}"
+  }
+ ]
+}
