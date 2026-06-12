@@ -357,7 +357,7 @@ cd ..
 
 <!-- SPECKIT START -->
 Active feature: 001-infra-deploy（波 0 第一刀）
-Spec: specs/001-infra-deploy/spec.md ✅｜Plan: specs/001-infra-deploy/plan.md ✅（Check 9/9 PASS；research R1~R11＋contracts＋quickstart；下一步 /speckit-tasks）
+Spec ✅｜Plan ✅（Check 9/9）｜Tasks: specs/001-infra-deploy/tasks.md ✅（T001~T021、6 phase、US1=MVP；下一步 /speckit-analyze → superpowers:executing-plans）
 Scope: master compose 5 service＋deploy/ 裁剪帶入＋rust-api 最小 scaffold（/health＋空 migrator）＋migrate gate；實機驗收
 Brainstorm: docs/superpowers/001-infra-deploy.md（五項拍板＋⚠️t）
 <!-- SPECKIT END -->
