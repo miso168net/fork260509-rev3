@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 處於波 -1 收尾**：worktree／submodule、docs 核心四檔（DESIGN／DECISIONS／CHECKLIST／MILESTONES）、graphify-out、tests/000、base-web standalone compose 已落地；specs／deploy／master compose／SessionStart hook／§7.1 研究系列等仍為目標態（見各處 ⏳）；落地一項就拔該處 ⏳。
+> ⏳ **rev3 處於波 -1 收尾**：worktree／submodule、docs 核心四檔（DESIGN／DECISIONS／CHECKLIST／MILESTONES）、graphify-out、tests/000、base-web standalone compose 已落地；specs／deploy／master compose／SessionStart hook 等仍為目標態（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -53,10 +53,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── hook-git-submodule-SOP.sh ⏳       ← 每次 session 開頭執行的 SOP 檢查（尚未落地）
 │   └── skills/                            ← 本地 skill 集合
 ├── .specify/                              ← spec-kit 安裝結構（templates / scripts / memory / extensions / integrations / workflows）
-├── docs/                                  ← 整合設計 / 進度 / brainstorm 文件（核心四檔已落地，完整職責分工見 §7）
-│   ├── INTEGRATION-RESEARCH.md ⏳          ← 早期研究（rev2 設計鏈萃取，§7.1；尚未落地）
-│   ├── INTEGRATION-RESEARCH-FOLLOWUP.md ⏳ ← RESEARCH 深入深研（§7.1；尚未落地）
-│   ├── MOCK-COVERAGE-AUDIT.md  ⏳          ← base-web mock api 查驗（wire ground truth §7.1；尚未落地）
+├── docs/                                  ← 整合設計 / 進度 / brainstorm 文件（核心四檔已落地，完整職責分工見 §7；rev2 研究三檔不移植、不重作，見 §7.1）
 │   ├── INTEGRATION-DESIGN.md              ← ★ 設計權威 / 凍結藍圖（只被引用；勘誤+低頻重鑄才動 §7.2）
 │   ├── INTEGRATION-DECISIONS.md           ← 伴生活帳：§1 決策紀錄表 + §2 波次實施帳（§7.2）
 │   ├── INTEGRATION-CHECKLIST.md           ← 動態 todo（SOP 注入、不無限膨脹 §7.3）
@@ -364,13 +361,17 @@ cd ..
 
 ## 7. 整合設計文件職責分工
 
-rev3 整合的核心 docs 階層（DESIGN／DECISIONS／CHECKLIST／MILESTONES 已落地；§7.1 研究系列與 GRAPHIFY-NOTES 仍 ⏳），內容流動：「研究歷史」→「設計權威（凍結藍圖）＋伴生活帳」→「動態 todo」;**`INTEGRATION-DESIGN.md` 是核心事實、`INTEGRATION-DECISIONS.md` 是它的活頁**。
+rev3 整合的核心 docs 階層（DESIGN／DECISIONS／CHECKLIST／MILESTONES 已落地；GRAPHIFY-NOTES 仍 ⏳；rev2 研究三檔不移植不重作 §7.1），內容流動：「研究歷史（rev2 史料、已內化）」→「設計權威（凍結藍圖）＋伴生活帳」→「動態 todo」;**`INTEGRATION-DESIGN.md` 是核心事實、`INTEGRATION-DECISIONS.md` 是它的活頁**。
 
-### 7.1 研究歷史(大致已完結、不再擴張)
+### 7.1 研究歷史(rev2 史料、rev3 不產出)
 
-- **`docs/INTEGRATION-RESEARCH.md`** ⏳ — 最早期設計研究,以 rev2 為來源、重構 rev3 方向
-- **`docs/INTEGRATION-RESEARCH-FOLLOWUP.md`** ⏳ — `INTEGRATION-RESEARCH.md` 深入深研要追的事項
-- **`docs/MOCK-COVERAGE-AUDIT.md`** ⏳ — 本地把 base-web 用 docker-compose 跑起來後,查驗 fork example 分支用到的 mock api(rev3 wire ground truth)
+rev2 的研究三檔(`INTEGRATION-RESEARCH.md` / `INTEGRATION-RESEARCH-FOLLOWUP.md` / `MOCK-COVERAGE-AUDIT.md`)**留存於 rev2 repo、不隨 rev3 移植、也不重作** — 其結論已全數內化進 DESIGN(檔頭「結論自含於本書」聲明 + 附錄 D 逐章移植策略表;DESIGN §8.4 波 -1 明文「研究/設計/拍板段已由本書承接」)。角色繼承:
+
+- 早期研究(RESEARCH)→ **DESIGN 本身**(hindsight-complete 直接成形)
+- 深研待追事項(FOLLOWUP)→ DECISIONS §1 開放項 + CHECKLIST backlog
+- wire ground truth 稽核(MOCK-COVERAGE-AUDIT)→ **`docs/superpowers/000-base-web-docker-bootstrap.md` + `tests/000-base-web-docker-bootstrap/`**(rev3 已實作:13 端點對映表 + mock 實測 raw 資料 git-tracked)
+
+需重驗 rev2 研究結論時回 rev2 repo,索引見 DESIGN 附錄 D。
 
 ### 7.2 設計權威 ★ — `docs/INTEGRATION-DESIGN.md` ＋ 伴生活帳 `docs/INTEGRATION-DECISIONS.md`
 
