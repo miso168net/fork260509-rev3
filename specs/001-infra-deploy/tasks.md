@@ -60,7 +60,7 @@
 **Goal**: prod 組合起停 sanity＋prod image build 紀律
 **Independent Test**: C-V-6/7 獨立執行
 
-- [ ] T016 [US3] 建 `docker-compose.prod.yml`（裁剪帶入＋改名：0.0.0.0:80/443、prod.conf、front_nginx_certs 卷、rust-api runtime target :latest、migrate dispatcher `command:["migration","up"]`、base-web build args `VITE_SERVICE_BASE_URL=/api`、acme 卷）＋帶入 `deploy/Dockerfile.base-web.txt`（port 改名 21079→31079）（research R1/R2）
+- [x] T016 [US3] 建 `docker-compose.prod.yml`（裁剪帶入＋改名：0.0.0.0:80/443、prod.conf、front_nginx_certs 卷、rust-api runtime target :latest、migrate dispatcher `command:["migration","up"]`、base-web build args `VITE_SERVICE_BASE_URL=/api`、acme 卷）＋帶入 `deploy/Dockerfile.base-web.txt`（port 改名 21079→31079）（research R1/R2）
 - [ ] T017 [US3] prod 組態驗（`config -q`）＋cert seed 進 `rev3-admin_front_nginx_certs` → C-V-6 起停 sanity（80 `/health` 例外 ok／`/` 301→https／down 乾淨）
 - [ ] T018 [US3] prod target image build：C-V-7（`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`——**CLAUDE.md §3 紀律：本刀新增 workspace crate 必含**，防 dev bind-mount 遮 COPY 缺口）
 
