@@ -26,6 +26,9 @@
 #   - prod profile 啟動前需先 bash deploy/generate-secrets.sh 生成 deploy/secrets/*.txt
 #     (gitignored, .example 範本 git-tracked)
 #   - 未啟動 prod profile 時, secret file 不存在不會擋 compose parse, 只在 prod up 時才失敗
+#   - ⚠️ 本檔與 master compose 同 project name(rev3-admin)、同 cargo 卷:
+#     master stack 運行中勿並行 up(port 31081 撞);down 勿帶 --remove-orphans(會把 master
+#     全部容器當 orphan 移除)、勿帶 -v(會刪共用 rust_api_cargo_cache/target 卷、master 重編很久)
 #   - 對齊 specs/001-infra-deploy/contracts/verification-commands.md C-V-5 (standalone config -q)
 
 name: rev3-admin
