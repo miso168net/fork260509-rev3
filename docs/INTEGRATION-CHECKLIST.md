@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 -1 收尾** — SessionStart hook（`.claude/settings.json`＋`hook-git-submodule-SOP.sh`）落地 → constitution-rev3 重鑄凍結 v1.0.0（前置拍板:⑤凍結邊界／⚠️g 措辭／⚠️i L4 模式,見 §5 索引）
+**下一步**: **constitution-rev3 重鑄凍結 v1.0.0**（波 -1 最後一項;前置拍板:⑤凍結邊界／⚠️g 措辭／⚠️i L4 模式,見 §5 索引）
 
 ---
 
@@ -25,7 +25,7 @@
 
 > 僅當前波快照;完成波收縮為一行指 [DECISIONS §2](INTEGRATION-DECISIONS.md)。波次定義與出口條件見 DESIGN §8.4。
 
-- **波 -1 repo 建構（進行中）**:✅ worktree/submodule・設計書（歸位+C 方案）・graphify 建圖・000 bootstrap・CHECKLIST/MILESTONES 落地;⏳ SessionStart hook・constitution-rev3 重鑄 v1.0.0
+- **波 -1 repo 建構（進行中）**:✅ worktree/submodule・設計書（歸位+C 方案）・graphify 建圖・000 bootstrap・CHECKLIST/MILESTONES 落地・SessionStart hook;⏳ constitution-rev3 重鑄 v1.0.0
 - 波 0 地基 ～ 波 4 observability:未開始
 
 ---

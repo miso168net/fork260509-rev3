@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 處於波 -1 收尾**：worktree／submodule、docs 核心四檔（DESIGN／DECISIONS／CHECKLIST／MILESTONES）、graphify-out、tests/000、base-web standalone compose 已落地；specs／deploy／master compose／SessionStart hook 等仍為目標態（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 處於波 -1 收尾**：worktree／submodule、docs 核心四檔（DESIGN／DECISIONS／CHECKLIST／MILESTONES）、graphify-out、tests/000、base-web standalone compose、SessionStart hook 已落地；specs／deploy／master compose 等仍為目標態（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -49,8 +49,8 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 ├── .gitmodules                            ← base-web / rust-api 的 submodule 設定（指 fork remote，分支為 rev3-）
 ├── .graphifyignore                        ← graphify 掃描排除（worktrees / lock files / meta 文件 CLAUDE.md README.md / 等）
 ├── .claude/                               ← Claude Code 設定（hook + settings.json，credentials gitignored）
-│   ├── settings.json          ⏳          ← SessionStart hook 註冊（尚未落地）
-│   ├── hook-git-submodule-SOP.sh ⏳       ← 每次 session 開頭執行的 SOP 檢查（尚未落地）
+│   ├── settings.json                      ← SessionStart hook 註冊
+│   ├── hook-git-submodule-SOP.sh          ← 每次 session 開頭執行的 SOP 檢查（§4.3 健檢 + cat CHECKLIST 注入）
 │   └── skills/                            ← 本地 skill 集合
 ├── .specify/                              ← spec-kit 安裝結構（templates / scripts / memory / extensions / integrations / workflows）
 ├── docs/                                  ← 整合設計 / 進度 / brainstorm 文件（核心四檔已落地，完整職責分工見 §7；rev2 研究三檔不移植、不重作，見 §7.1）
@@ -218,7 +218,7 @@ chore(submodule): bump rust-api 到 abc1234 — <fork 提交主旨>
 
 ### 4.3 session 開場健檢
 
-> ⏳ SessionStart hook 尚未落地（rev3 待建 `.claude/settings.json` 註冊 + `hook-git-submodule-SOP.sh` 腳本）；worktree（`base-web` / `rust-api`）已 add（gitlink 已 pin），下列檢查待 hook 落地後即可完整觸發。
+> ✅ SessionStart hook 已落地（2026-06-12，自 rev2 原樣承接——腳本 workspace-agnostic、零改動；`.claude/settings.json` 註冊 + `hook-git-submodule-SOP.sh`）；下次新 session 起自動觸發，修改腳本不需重啟 CLI。
 
 每次 session 開頭由 `.claude/hook-git-submodule-SOP.sh`（SessionStart hook）自動執行並回報：
 
@@ -351,7 +351,7 @@ cd ..
 
 ## 6. 進度追蹤
 
-整合進度的單一真相在 [`docs/INTEGRATION-CHECKLIST.md`](docs/INTEGRATION-CHECKLIST.md) —— Current Focus（現狀）/ Roadmap & Phase 狀態（當前波快照）/ Follow-up Backlog（衍生工作）/ 跨 feature 待驗證項 / 拍板項索引 / 軌道授權快查 / 已完成里程碑（指標區）。由 session SOP hook（`.claude/hook-git-submodule-SOP.sh` ⏳）每次 session 開頭 cat 全檔注入（見 §4.3）。
+整合進度的單一真相在 [`docs/INTEGRATION-CHECKLIST.md`](docs/INTEGRATION-CHECKLIST.md) —— Current Focus（現狀）/ Roadmap & Phase 狀態（當前波快照）/ Follow-up Backlog（衍生工作）/ 跨 feature 待驗證項 / 拍板項索引 / 軌道授權快查 / 已完成里程碑（指標區）。由 session SOP hook（`.claude/hook-git-submodule-SOP.sh`）每次 session 開頭 cat 全檔注入（見 §4.3）。
 
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 

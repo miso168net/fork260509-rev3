@@ -58,7 +58,7 @@
 - ✅ 設計書入 docs/（`7fd1ac6`）＋拍板回填（`88f9011`）＋歸位改名 INTEGRATION-DESIGN.md（`4aa7c89`）
 - ✅ graphify 首次建圖（`8f66fe0`，2060 nodes/311 communities）
 - ✅ base-web standalone 容器化＋mock wire ground truth 捕獲與對映（000：`46591c4`/`309099d`/`aea0e18`/`e898421`）
-- ⏳ SessionStart hook（`.claude/settings.json`＋`hook-git-submodule-SOP.sh`）
+- ✅ SessionStart hook（`.claude/settings.json`＋`hook-git-submodule-SOP.sh`；自 rev2 原樣承接、workspace-agnostic 零改動、實測健檢＋CHECKLIST 注入跑通）
 - ⏳ constitution-rev3 重鑄凍結 v1.0.0
 - 出口條件：DESIGN §8.4 波 -1 列
 
