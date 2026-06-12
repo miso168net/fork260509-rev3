@@ -1,0 +1,44 @@
+# base-web 容器化 (Vue 3 starter,worktree + submodule)
+#
+# 用法:
+#   dev 模式(熱重載,http://127.0.0.1:31079):
+#     docker compose -f docker-compose.base-web.yml up
+#   停止 + 移除容器:
+#     docker compose -f docker-compose.base-web.yml down
+#   清掉 named volume(強制下次重 pnpm install):
+#     docker volume rm rev3-admin_base_web_node_modules rev3-admin_base_web_pnpm_store
+#
+# 設計:
+#   - 完全不需 host 裝 node/pnpm
+#   - dev mode 用 named volume mask /app/node_modules,避免 WSL2 bind mount 拖慢 IO
+
+
+name: rev3-admin
+
+services:
+  base-web-dev:
+    image: node:26-alpine
+    container_name: rev3-admin-base-web-dev
+    working_dir: /app
+    environment:
+      - NODE_ENV=development
+      - BROWSER=none
+      - npm_config_store_dir=/pnpm-store
+      - CI=true
+    volumes:
+      - ./base-web:/app
+      - base_web_node_modules:/app/node_modules
+      - base_web_pnpm_store:/pnpm-store
+    ports:
+      - "127.0.0.1:31079:31079"
+    command:
+      - sh
+      - -c
+      - "npm install -g pnpm@10 && pnpm install && pnpm dev --host 0.0.0.0 --port 31079"
+    init: true
+    tty: true
+    stdin_open: true
+
+volumes:
+  base_web_node_modules:
+  base_web_pnpm_store:
