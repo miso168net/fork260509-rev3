@@ -69,7 +69,7 @@
 ## Phase 6: Polish & Cross-Cutting
 
 - [x] T019 [P] 帶入 `docker-compose.rust-api.yml`（standalone debug 後備：DEPRECATED 同款定位標註＋改名 31081；research R9）＋`config -q` 驗
-- [ ] T020 總驗：全交付物 `grep -ri rev2` 歸零（C-V-5 全量）＋quickstart.md 流程逐步對照（文件與實況零漂移）＋`docker compose config -q` dev/prod 雙組合終驗
+- [x] T020 總驗：全交付物 `grep -ri rev2` 歸零（C-V-5 全量）＋quickstart.md 流程逐步對照（文件與實況零漂移）＋`docker compose config -q` dev/prod 雙組合終驗
 - [ ] T021 兩段式 commit 收口（**commit only——任何 push／merge 凍結至 `superpowers:finishing-a-development-branch`，constitution §I.4**）：①`cd rust-api`──scaffold 首批 commit（conventional、中文；**不 push**——SHA pin 指向本機 commit 完全合法，remote 一致性由 finishing 階段一次補齊）②outer──`git add rust-api`（SHA pin）＋compose×4＋deploy/ 全交付物 commit（feature branch、**不 push 不 merge**）
 
 ## Dependencies

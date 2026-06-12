@@ -23,7 +23,7 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --wait
 
 期望：命令成功返回；`ps` 顯示 5 service healthy、migrate exited(0)。隨後跑 [C-V-2～C-V-5](contracts/verification-commands.md)（健檢 6 點／proxy 鏈／持久化／組態與殘留）。
 
-首次啟動較慢屬預期：rust-api dev image build＋cargo 冷編譯（數分鐘，cargo cache 卷使後續啟動快）；base-web pnpm install（standalone 期已驗證的 90s 級 start_period）。
+首次啟動較慢屬預期：rust-api dev image build（含 cargo-watch 源碼編譯）數分鐘；migrate cargo 冷編譯完成後 gate 才放行 rust-api（cargo cache 卷使後續啟動快）；base-web pnpm install（standalone 期已驗證的 90s 級 start_period）。
 
 ## prod baseline 演練（軟驗）
 
