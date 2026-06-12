@@ -1,0 +1,73 @@
+{
+  "_source": "WebFetch on https://s.apifox.cn/35c8727a-d3ab-47e9-8863-ef8e37df6887/api-<id>",
+  "_harvestedAt": "2026-06-12",
+  "_note": "13 白名單端點(base-web 實際呼叫的)。method 為人工修正後真實值(WebFetch 原始 method 欄不可靠)。型別標註重點:id/parentId/pId=integer(number)、userId=string — 對齊設計書 ⚠️r 逐欄位忠實 typings。response schema 多為通用信封 {data,code,msg};data 具體形以此為準、實測 body 見 base-web-capture.json。",
+  "_scope_excluded": "react路由/debug×2/用户列表(废弃)/用户配置×2/getMenuList(舊版非v2)/281003433+ 範本 25 個 — base-web 不用、不收。alova-only(sendCaptcha/verifyCaptcha/addUser/updateUser/getLastTime) apifox 文件未定義。",
+  "endpoints": {
+    "/auth/login": {
+      "apifoxId": "100526985", "method": "POST",
+      "req": "Header: apifoxToken?(string, 例 XL299...). Body application/json: {userName:string 必需, password:string 必需}. 例 {\"userName\":\"Soybean\",\"password\":\"123456\"}",
+      "resp200": "{data:object 必需, code:string 必需(后端请求状态编码), msg:string 必需(请求消息)}. 例 {\"data\":{},\"code\":\"string\",\"msg\":\"string\"}"
+    },
+    "/auth/getUserInfo": {
+      "apifoxId": "120399825", "method": "GET",
+      "req": "Header: Authorization?(string, 例 Bearer {{token}}), apifoxToken?(string)",
+      "resp200": "{userId:string 必需(用户id), userName:string 必需, roles:string[] 必需(角色类型), buttons:string[] 必需(按钮码)}. 注:apifox 把此直接寫成 data 內容形;base-web 實測外層仍是 {data:{...,code,msg}} 信封"
+    },
+    "/auth/refreshToken": {
+      "apifoxId": "120415125", "method": "POST",
+      "req": "Body application/json: {refreshToken:string 必需(用于获取新token)}",
+      "resp200": "{data:object 必需, code:string 必需, msg:string 必需}. 例 {\"data\":{},\"code\":\"0000\",\"msg\":\"请求成功\"}"
+    },
+    "/auth/error": {
+      "apifoxId": "158477619", "method": "GET",
+      "req": "Query: {code?:string(错误编码), msg?:string(错误信息)}",
+      "resp200": "{data:null, code:string 必需, msg:string 必需}"
+    },
+    "/route/getUserRoutes": {
+      "apifoxId": "120415303", "method": "GET",
+      "req": "None",
+      "resp200": "{data:{routes:MenuRoute[], home:string}, code, msg}. MenuRoute={name:string, path:string, component:string, meta:Meta, children:MenuRoute[]}. Meta={title:string, i18nKey:string, order:number, keepAlive:bool, constant:bool, icon:string, localIcon:string, href:string, hideInMenu:bool, activeMenu:string, multiTab:bool, fixedIndexInTab:number, query:[{key:string,value:string}], buttons:[{desc:string,code:string}]}. Meta 必需欄:title/constant/query/buttons"
+    },
+    "/route/isRouteExist": {
+      "apifoxId": "120415373", "method": "GET",
+      "req": "Query: {routeName:string 必需}",
+      "resp200": "{data:boolean 必需, code, msg}"
+    },
+    "/route/getConstantRoutes": {
+      "apifoxId": "158516240", "method": "GET",
+      "req": "None",
+      "resp200": "{data:MenuRoute[], code, msg}. 同 getUserRoutes 的 route/meta 形,但 data 直接是陣列(非 {routes,home})"
+    },
+    "/systemManage/getRoleList": {
+      "apifoxId": "145344387", "method": "GET",
+      "req": "Query: {current:string 必需(页码,例1), size:string 必需(每页数量,例10), roleName?:string, roleCode?:string, status?:string}",
+      "resp200": "{data:{records:[{id:integer, createBy:string?, createTime:string?, updateBy:string?, updateTime:string?, status:string, roleName:string 必需, roleCode:string 必需, roleDesc:string?}], current:number, size:number, total:number}, code, msg}"
+    },
+    "/systemManage/getUserList": {
+      "apifoxId": "149754769", "method": "GET",
+      "req": "Query: {current:string 必需, size:string 必需, userName?:string, userGender?:string, nickName?:string, userPhone?:string, userEmail?:string, status?:string}",
+      "resp200": "{data:{records:[{id:integer, createBy, createTime, updateBy, updateTime, status:string, userName:string, userGender:string, nickName:string, userPhone:string, userEmail:string, userRoles:string[]}], current:number, size:number, total:number}, code, msg}"
+    },
+    "/systemManage/getAllRoles": {
+      "apifoxId": "145409928", "method": "GET",
+      "req": "None",
+      "resp200": "{data:[{roleName:string 必需, roleCode:string 必需}], code, msg}. 扁平清單、無分頁(下拉選單用)"
+    },
+    "/systemManage/getMenuList/v2": {
+      "apifoxId": "157945109", "method": "GET",
+      "req": "None",
+      "resp200": "{data:{records:[{id:integer, createBy, createTime, updateBy, updateTime, status:string, parentId:integer, menuType:string, menuName:string, routeName:string, routePath:string, component:string, order:number, i18nKey:string, icon:string, iconType:string, hideInMenu:bool, multiTab:bool, fixedIndexInTab:number, keepAlive:bool, constant:bool, href:string, buttons:[{code:string,desc:string}], query:[{key:string,value:string}], children:[]}]}, code, msg}. ★ 注意:無外層 current/size/total 分頁包(與 getUserList/getRoleList 不同;對齊設計書 §7.1 getMenuList/v2 僅分頁無 filter 之說、實為樹狀全量)"
+    },
+    "/systemManage/getAllPages": {
+      "apifoxId": "157988353", "method": "GET",
+      "req": "None",
+      "resp200": "{data:string[], code, msg}. 頁面 component 名清單"
+    },
+    "/systemManage/getMenuTree": {
+      "apifoxId": "158414289", "method": "GET",
+      "req": "None",
+      "resp200": "{data:[{id:integer, label:string 必需, pId:integer, children:[]}], code, msg}"
+    }
+  }
+}
