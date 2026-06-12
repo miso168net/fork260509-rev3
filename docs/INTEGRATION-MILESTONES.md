@@ -2,7 +2,7 @@
 
 > **append-only、不在 SOP hook 注入**（避免 CHECKLIST 膨脹）。三區、§2/§3 與 CHECKLIST 同號區鏡像對應：
 > 「§1 commit 里程碑表」收每筆 docs／feature commit 一行（表尾 append）；
-> 「§2」收 CHECKLIST §2 完成波的快照收縮行（批次搬入後 CHECKLIST 永遠只剩當前波）；
+> 「§2」收 CHECKLIST §2 完成波的收縮節（✅ 標題＋blockquote 摘要;批次搬入後 CHECKLIST 永遠聚焦當前波）；
 > 「§3」收 CHECKLIST §3 已完成 follow-up 節的細節（批次搬入）。
 > 歸檔流程見 [CLAUDE.md §7.5](../CLAUDE.md)。**與 [DECISIONS §2](INTEGRATION-DECISIONS.md) 的分工**：波次 as-built **詳帳**在 DECISIONS §2（權威）；本檔 §2 只收 CHECKLIST 的一行式快照歸檔，查波次細節一律去 DECISIONS。
 

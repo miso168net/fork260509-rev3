@@ -27,7 +27,7 @@
 | **aspect（面）** | 橫切正交維度（soft-delete／op-log 審計／enforce／envelope／search…），**設計一次、每 entity 逐格繼承**（§5.0 矩陣打勾）；是 entity 設計的一部分、不是「之後再加」的 Phase 交付物。 | §5 |
 | **island（行為島）** | 「行為 > 資料」的少數模組：先設計 states + transitions + invariants，表只是該狀態機的持久化。rev3 共 3 台（token rotation §4.1／policy governance §4.2／single-session §4.3）；與之相對，預設範式下的一般 entity 群在 §5／§8 稱 **data island**。 | §4 |
 | **layer（層）** | 依賴序 DAG 的節點（L0 INFRA-STATIC ～ L9 OBSERVABILITY）：**架構層級、非 feature、非排程**；凍結，與交付序／風險序嚴格分離（§0.2 原則③）。 | §1.5 |
-| **slice（縱切）** | 交付單位：一 entity（或一行為島）端到端——migration → facade → handler → router → policy(enforce) → wire → test → frontend，逐面套 §5.0，在最便宜時暴露整合。 | §8 |
+| **slice（縱切；量詞＝刀）** | 交付單位：一 entity（或一行為島）端到端——migration → facade → handler → router → policy(enforce) → wire → test → frontend，逐面套 §5.0，在最便宜時暴露整合。全書以「**刀**」計數縱切（「一刀」「第一刀」「拆兩刀」「12-15 刀」皆指一次縱切；§8.1：一刀 = 一個 entity 從 DB 到瀏覽器閉環）；一刀落地時 ≈ 開一個 spec-kit feature（`specs/<NNN>-*`）。 | §8・§8.1 |
 | **track（受管軌道）** | base-web「不動 inline」鐵紀律下的受控改動授權邊界（constitution §III）：**預設可動** = L1/L2 BASE-WEB-ADAPT（`.env` + typings 新檔）、L3 BASE-WEB-WRAPPER（代號前綴新檔：rev3 = `rev3-*`、rev2 期 = `rev2-*`）、RUSTAPI-SOURCE-ISOLATION（rust-api 全新寫）；**★ 需 constitution 顯式授權** = L4 BASE-WEB-BUILD-CONFIG（`pageExcludePatterns` 隱藏 demo）、L4 MODAL-WIRING（views inline 5 用途）。**軌道等級 L1–L4 與 §1.5 依賴層 L0–L9 編號互不相干**。 | §9.4・constitution §III |
 
 > **標記慣例**：⚠️ = 工程決策的「資深建議預設」、待 user 覆核；「待決①～⑥」= 開放問題（⑥ 細分 ⑥a~⑥d）——兩者**唯一清單與最晚決策點見附錄 G**，user 親決前不入凍結集。**rev3 v1** = rev3 系統的首個交付版本（DoD＝§8.8）——本書一律寫全稱、不裸寫 v1（引文與 §9 快照中的裸 v1 同義、非任何文件版本號；wire 路徑 `getMenuList/v2` 的 `v2` 為 API 路徑版本段、不在此慣例內）。系統專名（base-web / rust-api / mock / constitution）定義於 §1.0。
