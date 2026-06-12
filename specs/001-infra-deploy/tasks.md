@@ -14,9 +14,9 @@
 
 **Purpose**: 機密／憑證／派發器等支援檔就位（全部自 rev2 裁剪帶入＋改名，research R1/R2/R11）
 
-- [ ] T001 帶入並裁剪 `deploy/generate-secrets.sh`（8→6 secrets：裁 cleanup_database_url/grafana_admin_password）＋`deploy/secrets/*.txt.example` ×6＋`deploy/secrets/README.md`；確認 `.gitignore` 蓋住 `deploy/secrets/*.txt`；本機執行生成 6 個 `.txt` 驗證
-- [ ] T002 [P] 帶入 `deploy/generate-dev-cert.sh`＋`deploy/dev-certs/.gitkeep`；本機執行生成自簽 cert 驗證（SAN localhost＋127.0.0.1）
-- [ ] T003 [P] 帶入 `deploy/entrypoint.rust-api.sh`（3-case dispatcher 原樣）＋`deploy/Dockerfile.acme.txt`（4 行殼）
+- [x] T001 帶入並裁剪 `deploy/generate-secrets.sh`（8→6 secrets：裁 cleanup_database_url/grafana_admin_password）＋`deploy/secrets/*.txt.example` ×6＋`deploy/secrets/README.md`；確認 `.gitignore` 蓋住 `deploy/secrets/*.txt`；本機執行生成 6 個 `.txt` 驗證
+- [x] T002 [P] 帶入 `deploy/generate-dev-cert.sh`＋`deploy/dev-certs/.gitkeep`；本機執行生成自簽 cert 驗證（SAN localhost＋127.0.0.1）
+- [x] T003 [P] 帶入 `deploy/entrypoint.rust-api.sh`（3-case dispatcher 原樣）＋`deploy/Dockerfile.acme.txt`（4 行殼）
 
 **Checkpoint**: `deploy/` 骨架就位、secrets/cert 本機已生成
 
@@ -24,11 +24,11 @@
 
 **Purpose**: rust-api worktree 首批 code（從零重寫、受控參照；research R3/R4/R5/R6）。⚠️ 此 phase 動 worktree——commit 走兩段式（T021）
 
-- [ ] T004 建 `rust-api/Cargo.toml`（workspace members=["server","migration"]＋workspace.dependencies：axum 0.7／tokio 1〔macros,rt-multi-thread,signal〕／sea-orm-migration 1.1.20〔sqlx-postgres,runtime-tokio-rustls〕／tracing 組）＋`rust-api/rust-toolchain.toml`（channel "1.86"）
-- [ ] T005 [P] 建 `rust-api/server/Cargo.toml`＋`rust-api/server/src/main.rs`：axum `GET /health` → 200 text/plain `ok`、bind `0.0.0.0:31081`、tracing 最小初始化（契約：contracts/health-endpoint.md）
-- [ ] T006 [P] 建 `rust-api/migration/Cargo.toml`＋`rust-api/migration/src/{lib.rs,main.rs}`：空 migrator（`migrations() → vec![]`）＋`mNNN_<name>` 慣例注記（lib.rs 註釋＋`rust-api/migration/README.md`：⚠️k、002 刀 m001/m002 預告）
-- [ ] T007 `cd rust-api && cargo build --bins` 自產 `Cargo.lock`＋驗 sea-orm-migration 解析版本＝1.1.20（非則 `cargo update -p sea-orm-migration --precise 1.1.20` 拉回）＋執行 time/home pin（`cargo update -p time --precise 0.3.37 && cargo update -p home --precise 0.5.9`——拆兩次呼叫、`--precise` 限單一 package；若 home 不在依賴圖則註記免 pin；research R3 坑）＋重 build 驗證＝C-V-1（host 無 cargo 時以 rust:1.86-slim-bookworm 容器執行等效）；commit lock
-- [ ] T008 建 `deploy/Dockerfile.rust-api.txt`：3-stage 裁剪版（builder COPY 僅 server/migration＋cp 2 binary；dev stage `cargo watch --poll -x "run --bin server"`；runtime stage dispatcher＋HEALTHCHECK `curl 127.0.0.1:31081/health` 10s/3s/5s/3、非 root uid 10001、EXPOSE 31081）（research R4）
+- [x] T004 建 `rust-api/Cargo.toml`（workspace members=["server","migration"]＋workspace.dependencies：axum 0.7／tokio 1〔macros,rt-multi-thread,signal〕／sea-orm-migration 1.1.20〔sqlx-postgres,runtime-tokio-rustls〕／tracing 組）＋`rust-api/rust-toolchain.toml`（channel "1.86"）
+- [x] T005 [P] 建 `rust-api/server/Cargo.toml`＋`rust-api/server/src/main.rs`：axum `GET /health` → 200 text/plain `ok`、bind `0.0.0.0:31081`、tracing 最小初始化（契約：contracts/health-endpoint.md）
+- [x] T006 [P] 建 `rust-api/migration/Cargo.toml`＋`rust-api/migration/src/{lib.rs,main.rs}`：空 migrator（`migrations() → vec![]`）＋`mNNN_<name>` 慣例注記（lib.rs 註釋＋`rust-api/migration/README.md`：⚠️k、002 刀 m001/m002 預告）
+- [x] T007 `cd rust-api && cargo build --bins` 自產 `Cargo.lock`＋驗 sea-orm-migration 解析版本＝1.1.20（非則 `cargo update -p sea-orm-migration --precise 1.1.20` 拉回）＋執行 time/home pin（`cargo update -p time --precise 0.3.37 && cargo update -p home --precise 0.5.9`——拆兩次呼叫、`--precise` 限單一 package；若 home 不在依賴圖則註記免 pin；research R3 坑）＋重 build 驗證＝C-V-1（host 無 cargo 時以 rust:1.86-slim-bookworm 容器執行等效）；commit lock
+- [x] T008 建 `deploy/Dockerfile.rust-api.txt`：3-stage 裁剪版（builder COPY 僅 server/migration＋cp 2 binary；dev stage `cargo watch --poll -x "run --bin server"`；runtime stage dispatcher＋HEALTHCHECK `curl 127.0.0.1:31081/health` 10s/3s/5s/3、非 root uid 10001、EXPOSE 31081）（research R4）
 
 **Checkpoint**: `cargo build` 綠＝scaffold 獨立可驗；Dockerfile 就位
 
@@ -37,8 +37,8 @@
 **Goal**: dev 組合 `up -d --wait` 5 service 全 healthy＋migrate gate 驗通
 **Independent Test**: C-V-0/1/2/4/5（dev 部分）全綠
 
-- [ ] T009 [P] [US1] 帶入 `deploy/nginx/`（nginx.conf＋conf.d/{_locations.inc,dev.conf,prod.conf}）＋port 改名（base-web:21079→31079、rust-api:21081→31081、listen 21080/21443→31080/31443）（research R2）
-- [ ] T010 [US1] 建 `docker-compose.yml`（master base）：裁剪帶入＋改名——5 service＋migrate＋acme 殼；裁 8 service/4 卷/2 secrets（research R1）；redis pin `redis/redis-stack-server:7.4.0-v8`（⚠️d）；`name: rev3-admin`＋`rev3_net`＋7 卷＋6 secrets；base 層禁 host ports／base-web 不放 image-build-command（rev2 R1/H1 規則 carry）
+- [x] T009 [P] [US1] 帶入 `deploy/nginx/`（nginx.conf＋conf.d/{_locations.inc,dev.conf,prod.conf}）＋port 改名（base-web:21079→31079、rust-api:21081→31081、listen 21080/21443→31080/31443）（research R2）
+- [x] T010 [US1] 建 `docker-compose.yml`（master base）：裁剪帶入＋改名——5 service＋migrate＋acme 殼；裁 8 service/4 卷/2 secrets（research R1）；redis pin `redis/redis-stack-server:7.4.0-v8`（⚠️d）；`name: rev3-admin`＋`rev3_net`＋7 卷＋6 secrets；base 層禁 host ports／base-web 不放 image-build-command（rev2 R1/H1 規則 carry）
 - [ ] T011 [US1] 建 `docker-compose.dev.yml`：裁剪帶入＋改名——loopback 31xxx 全組；base-web 段採 standalone 已驗定義（node:26-alpine＋pnpm@10＋store redirect＋CI=true，research R8）；rust-api dev target＋bind mount＋cargo_cache/target 卷＋JWT env fallback；migrate entrypoint override（`cargo run --bin migration`＋`command:["up"]`）；postgres 35432／redis 36379
 - [ ] T012 [US1] 組態驗證：`docker compose -f docker-compose.yml -f docker-compose.dev.yml config -q` 通過＋已交付各檔 `grep -i rev2` 歸零（C-V-5 dev 部分）
 - [ ] T013 [US1] dev 實機驗收：C-V-0（standalone down＋secrets/cert 就緒）→ C-V-2 全套（`up -d --wait` exit 0／ps 5 healthy＋migrate exited(0)／gate 時序雙斷言／健檢 6 點含 Content-Type）→ C-V-8（缺 secrets fail-fast 負向＋重複 up 冪等；Edge case 2 豁免註記確認）

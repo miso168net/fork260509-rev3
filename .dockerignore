@@ -38,3 +38,8 @@ tests/
 **/*.log
 **/.cache/
 **/__pycache__/
+
+# 機密與私鑰 (Dockerfile 不 COPY 這兩目錄;compose secrets file: 由 host 直讀、不走 context)
+# 防 remote builder / CI 情境下真值 secrets 與 dev 私鑰被 tar 進 build daemon (T010 review I-1)
+deploy/secrets/
+deploy/dev-certs/

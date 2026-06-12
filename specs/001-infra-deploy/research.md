@@ -19,7 +19,7 @@
 | port `21079`/`21080`/`21081`/`21443` | `31079`/`31080`/`31081`/`31443` |
 | port `25432`/`26379` | `35432`/`36379` |
 | `redis/redis-stack-server:latest` | **`redis/redis-stack-server:7.4.0-v8`**（⚠️d；2026-06-13 查 Docker Hub 當下 stable） |
-| 註解內 rev2 字樣 | rev3（或刪）；完成後 `grep -ri rev2` 歸零（豁免：無——outer 檔無倉名引用） |
+| 註解內 rev2 字樣 | rev3（或刪）；完成後 `grep -ri rev2` 歸零（豁免：`.dockerignore` 內 `fork260509-rev2-anew-rust-api` 為 GitHub repo 永久名、必要引用——T010 實作期發現並回填；C-V-5 grep 範圍〔docker-compose*.yml deploy/〕不含 .dockerignore，驗收不受影響。其餘 outer 檔無倉名引用） |
 
 nginx conf 內 upstream port（`base-web:21079`→`:31079`、`rust-api:21081`→`:31081`）與 listen（`21080`/`21443`→`31080`/`31443`）、Dockerfile `EXPOSE`/HEALTHCHECK port 同步。
 
