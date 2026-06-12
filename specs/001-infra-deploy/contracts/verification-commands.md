@@ -11,11 +11,12 @@ bash deploy/generate-secrets.sh                              # 6 secrets → dep
 bash deploy/generate-dev-cert.sh                             # 自簽 cert → deploy/dev-certs/
 ```
 
-## C-V-1 · scaffold 獨立驗（worktree 內、不依賴 docker）
+## C-V-1 · scaffold 獨立驗（worktree 內、不依賴 compose stack；host 無 cargo 時以 rust:1.86-slim-bookworm 容器執行等效）
 
 ```bash
-cd rust-api && cargo build --bins && cargo run --bin migration -- --help >/dev/null && cd ..
+cd rust-api && cargo build --bins && DATABASE_URL=postgres://cv1-help-probe cargo run --bin migration -- --help >/dev/null && cd ..
 # 期望：2 binary 編譯通過＋migration CLI 可執行（exit 0 全鏈斷言）
+# --help 也需 DB URL env（main.rs glue 先於 clap 解析；dummy 值即可、不會實連——T006 review M2）
 # （rust 1.86 toolchain；time/home pin 生效＝lock 不被升版）
 ```
 
@@ -86,7 +87,8 @@ docker compose -f docker-compose.rust-api.yml config -q                      # s
 
 # rev2 字樣＋全部舊 port 殘留（施加於部署層交付物；目前無豁免項——deploy/compose 不引用倉庫永久名）
 grep -rinE "rev2|21079|21080|21081|21443|25432|26379" docker-compose*.yml deploy/ && echo "❌ 殘留" || echo "✅ 歸零"
-grep -rinE "rev2|21079|21080|21081|21443" rust-api/server rust-api/migration rust-api/Cargo.toml 2>/dev/null && echo "❌" || echo "✅"
+# scaffold 豁免（T006 落地時新增）：migration/README.md 的 m001_rev2_schema／m002_rev2_seeds 為 002 刀規劃檔名（拍板 ⚠️t）＋其同行說明，非部署 token 殘留
+grep -rinE "rev2|21079|21080|21081|21443" rust-api/server rust-api/migration rust-api/Cargo.toml 2>/dev/null | grep -vE "m00[12]_rev2_(schema|seeds)" && echo "❌" || echo "✅"
 ```
 
 ## C-V-6 · prod baseline sanity（SC-005；US3 軟驗）

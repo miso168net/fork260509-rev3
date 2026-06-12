@@ -27,7 +27,7 @@
 - [ ] T004 建 `rust-api/Cargo.toml`（workspace members=["server","migration"]＋workspace.dependencies：axum 0.7／tokio 1〔macros,rt-multi-thread,signal〕／sea-orm-migration 1.1.20〔sqlx-postgres,runtime-tokio-rustls〕／tracing 組）＋`rust-api/rust-toolchain.toml`（channel "1.86"）
 - [ ] T005 [P] 建 `rust-api/server/Cargo.toml`＋`rust-api/server/src/main.rs`：axum `GET /health` → 200 text/plain `ok`、bind `0.0.0.0:31081`、tracing 最小初始化（契約：contracts/health-endpoint.md）
 - [ ] T006 [P] 建 `rust-api/migration/Cargo.toml`＋`rust-api/migration/src/{lib.rs,main.rs}`：空 migrator（`migrations() → vec![]`）＋`mNNN_<name>` 慣例注記（lib.rs 註釋＋`rust-api/migration/README.md`：⚠️k、002 刀 m001/m002 預告）
-- [ ] T007 `cd rust-api && cargo build --bins` 自產 `Cargo.lock`＋執行 time/home pin（`cargo update -p time --precise 0.3.37 -p home --precise 0.5.9`，research R3 坑）＋重 build 驗證＝C-V-1；commit lock
+- [ ] T007 `cd rust-api && cargo build --bins` 自產 `Cargo.lock`＋驗 sea-orm-migration 解析版本＝1.1.20（非則 `cargo update -p sea-orm-migration --precise 1.1.20` 拉回）＋執行 time/home pin（`cargo update -p time --precise 0.3.37 && cargo update -p home --precise 0.5.9`——拆兩次呼叫、`--precise` 限單一 package；若 home 不在依賴圖則註記免 pin；research R3 坑）＋重 build 驗證＝C-V-1（host 無 cargo 時以 rust:1.86-slim-bookworm 容器執行等效）；commit lock
 - [ ] T008 建 `deploy/Dockerfile.rust-api.txt`：3-stage 裁剪版（builder COPY 僅 server/migration＋cp 2 binary；dev stage `cargo watch --poll -x "run --bin server"`；runtime stage dispatcher＋HEALTHCHECK `curl 127.0.0.1:31081/health` 10s/3s/5s/3、非 root uid 10001、EXPOSE 31081）（research R4）
 
 **Checkpoint**: `cargo build` 綠＝scaffold 獨立可驗；Dockerfile 就位
