@@ -12,8 +12,8 @@
 **階段**:**波 -1 — repo 建構（進行中）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-12 波 -1 文件層全收齊＋hook 落地**:CHECKLIST/MILESTONES 落地＋外檔引用查驗＋§7.1 改定＋SessionStart hook 原樣承接（`4300b54`~`ed2a789`,未 push）
 - **2026-06-12 C 方案落地＋設計書歸位**:INTEGRATION-DESIGN.md 凍結藍圖＋INTEGRATION-DECISIONS.md 伴生活帳（附錄 G 27 條遷入）＋CLAUDE.md §7 紀律改版（`4724549`,已 push）
-- **2026-06-12 000 base-web bootstrap 收口**:13 端點對映表＋CDP scripts＋mock raw 資料入 git（`46591c4`~`e898421`,已 push）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
