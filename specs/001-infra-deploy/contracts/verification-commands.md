@@ -65,6 +65,8 @@ curl -fsS http://127.0.0.1:31080/health                      # 期望 ok（入�
 PGPASSWORD=$(cat deploy/secrets/postgres_password.txt) psql -h 127.0.0.1 -p 35432 -U soybean -d soybean_admin_rust \
   -c "CREATE TABLE IF NOT EXISTS cv_persist_probe(id int); INSERT INTO cv_persist_probe VALUES (1);"
 redis-cli -h 127.0.0.1 -p 36379 -a "$(cat deploy/secrets/redis_password.txt)" --no-auth-warning SET cv_probe 1
+redis-cli -h 127.0.0.1 -p 36379 -a "$(cat deploy/secrets/redis_password.txt)" --no-auth-warning SAVE             # RDB 同步落盤（T014 補：快照閾值內立即 down 會丟最後寫入）
+redis-cli -h 127.0.0.1 -p 36379 -a "$(cat deploy/secrets/redis_password.txt)" --no-auth-warning CONFIG GET dir   # 期 /data（T014 結構斷言：--dir 必須指向 named volume；缺之＝T014 實抓 bug）
 
 docker compose -f docker-compose.yml -f docker-compose.dev.yml down      # 卷保留
 docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --wait
