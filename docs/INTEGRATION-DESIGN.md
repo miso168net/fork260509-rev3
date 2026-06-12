@@ -658,7 +658,7 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 - ★ 軌道每改一處的 spec 義務：紀錄 file:line + 改動內容 + upstream 衝突風險評估；共用元件改動 MUST 用附加 prop + 安全預設（不變既有呼叫端行為）。
 
 ### §9.5 amendment 流程 + 版本規則
-- **流程**（constitution §V.2，rev3 對應）：提案（在本書對應章＋附錄 G 登記：改哪節／為何／影響）→ **user 親決**（Claude 不主動 amend）→ 凍結（更新 constitution-rev3 + bump version + 回填本書）→ **獨立 commit** `docs(constitution): amend <條目>...`。
+- **流程**（constitution §V.2，rev3 對應）：提案（在 `INTEGRATION-DECISIONS.md` §1 登記：改哪節／為何／影響）→ **user 親決**（Claude 不主動 amend）→ 凍結（更新 constitution-rev3 + bump version + 本書於重鑄時摺合）→ **獨立 commit** `docs(constitution): amend <條目>...`。
 - **版本規則**（§V.3）：**MAJOR**（2.0.0）=鐵紀律（§I）改變、§II 拍板撤回、★ 軌道授權撤銷；**MINOR**（1.1.0）=新拍板項固化、軌道授權邊界擴展、新增 ★ 軌道；**PATCH**（1.0.1）=文字校正、釐清、reference 更新、Compliance Check 增補。
 - **rev2 版本史一行**：v1.0.0（2026-05-28 凍結）→ v1.6.0（2026-06-06）共 **9 次 amendment** = 6 MINOR（v1.1.0 新增 §I.6 審計欄標準；v1.2.0/1.3.0/1.4.0/1.5.0/1.6.0 五次皆 MODAL-WIRING 邊界擴展）+ 3 PATCH（v1.2.1~v1.2.3 文字校正）。
 - ⚠️ rev3 啟示：MINOR 的 5/6 集中在 MODAL-WIRING「窄邊界 + 逐次擴邊」——此演進模式可運作且留下完整授權軌跡，建議 rev3 沿用（先授最窄用途、需要時 amendment 擴），而非一次開大 L4 授權面。

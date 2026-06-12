@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 目前處於起始狀態**：除本檔、`.specify/`、`.claude/skills/`、`.gitignore` 家族與三個 fork 源倉外，以下描述的結構（docs／specs／docker／deploy／graphify-out 等）絕大多數尚未落地（worktree／submodule 已落地）；本檔先以**目標態**書寫，落地一項就拔該處 ⏳。
+> ⏳ **rev3 處於波 -1 收尾**：worktree／submodule、docs 核心四檔（DESIGN／DECISIONS／CHECKLIST／MILESTONES）、graphify-out、tests/000、base-web standalone compose 已落地；specs／deploy／master compose／SessionStart hook／§7.1 研究系列等仍為目標態（見各處 ⏳）；落地一項就拔該處 ⏳。
 
 ---
 
@@ -53,20 +53,21 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── hook-git-submodule-SOP.sh ⏳       ← 每次 session 開頭執行的 SOP 檢查（尚未落地）
 │   └── skills/                            ← 本地 skill 集合
 ├── .specify/                              ← spec-kit 安裝結構（templates / scripts / memory / extensions / integrations / workflows）
-├── docs/                       ⏳          ← 整合設計 / 進度 / brainstorm 文件（尚未建立，完整職責分工見 §7）
-│   ├── INTEGRATION-RESEARCH.md            ← 早期研究（rev2 設計鏈萃取，§7.1）
-│   ├── INTEGRATION-RESEARCH-FOLLOWUP.md   ← RESEARCH 深入深研（§7.1）
-│   ├── MOCK-COVERAGE-AUDIT.md             ← base-web mock api 查驗（wire ground truth §7.1）
+├── docs/                                  ← 整合設計 / 進度 / brainstorm 文件（核心四檔已落地，完整職責分工見 §7）
+│   ├── INTEGRATION-RESEARCH.md ⏳          ← 早期研究（rev2 設計鏈萃取，§7.1；尚未落地）
+│   ├── INTEGRATION-RESEARCH-FOLLOWUP.md ⏳ ← RESEARCH 深入深研（§7.1；尚未落地）
+│   ├── MOCK-COVERAGE-AUDIT.md  ⏳          ← base-web mock api 查驗（wire ground truth §7.1；尚未落地）
 │   ├── INTEGRATION-DESIGN.md              ← ★ 設計權威 / 凍結藍圖（只被引用；勘誤+低頻重鑄才動 §7.2）
 │   ├── INTEGRATION-DECISIONS.md           ← 伴生活帳：§1 決策紀錄表 + §2 波次實施帳（§7.2）
 │   ├── INTEGRATION-CHECKLIST.md           ← 動態 todo（SOP 注入、不無限膨脹 §7.3）
 │   ├── INTEGRATION-MILESTONES.md          ← commit 里程碑永久紀錄（append-only，不在 SOP 注入 §7.4）
-│   ├── GRAPHIFY-NOTES.md                   ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3）
-│   ├── REVIEW-<NNN>-<NNN>.md               ← Claude workflow review 彙整報告
-│   └── superpowers/                       ← 持久記憶 + brainstorm 決策（§7.4）
+│   ├── GRAPHIFY-NOTES.md       ⏳          ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3；尚未落地）
+│   ├── REVIEW-<NNN>-<NNN>.md   ⏳          ← Claude workflow review 彙整報告（隨 feature 產出）
+│   └── superpowers/                       ← 持久記憶 + brainstorm 決策（§7.4；000 已落地）
 │       └── <NNN>-<feature-name>.md        ← 每個 feature 的 Phase 0 brainstorm
 ├── specs/                      ⏳          ← spec-kit feature 規格目錄（尚未建立；每 feature 一個 <NNN>-<feature-name>/；工作流見 §3）
-├── graphify-out/               ⏳          ← 知識圖譜輸出（尚未建立；外層 git 追蹤 GRAPH_REPORT.md + graph.json + graph.html + obsidian/ 內 notes；只排除個人化/可重產項目）
+├── tests/                                 ← 跨 feature 測試素材（外層 git 追蹤；tests/000-base-web-docker-bootstrap/ = mock API 捕獲 raw 資料 + CDP scripts，見 §7.4 000 文件）
+├── graphify-out/                          ← 知識圖譜輸出（已建圖 2060 nodes/311 communities；外層 git 追蹤 GRAPH_REPORT.md + graph.json + graph.html + obsidian/ 內 notes；只排除個人化/可重產項目）
 │   ├── GRAPH_REPORT.md                    ← 含 god nodes / surprises / suggested questions
 │   ├── graph.json                         ← 結構化圖譜資料（可被 graphify query 查）
 │   ├── graph.html                         ← 互動視覺化（3MB+ 內嵌 JS，刻意 git-tracked）
@@ -80,7 +81,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 ├── fork260509-rev2-anew-rust-api/         ← Rust axum + Casbin backend，rust-api worktree 源倉（repo 名沿用 rev2、不變；gitignored，本機必留）
 ├── base-web/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
 ├── rust-api/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
-├── docker-compose.yml          ⏳          ← outer root compose（尚未建立；service：front-nginx/base-web/rust-api/postgres/redis-stack + migrate〔自動套〕/acme〔prod profile〕）；override = docker-compose.{dev,prod}.yml；另有 docker-compose.{base-web,rust-api}.yml standalone（見 §8.2）
+├── docker-compose.yml          ⏳          ← outer root compose（尚未建立；service：front-nginx/base-web/rust-api/postgres/redis-stack + migrate〔自動套〕/acme〔prod profile〕）；override = docker-compose.{dev,prod}.yml；另有 standalone：docker-compose.base-web.yml（已落地）/ docker-compose.rust-api.yml ⏳（見 §8.2）
 └── deploy/                     ⏳          ← 部署支援檔（尚未建立；nginx conf / secrets / dev-certs / cleanup 等；見 §8.2）
 ```
 
@@ -89,7 +90,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 - `fork260509-*` 源倉 gitignored，但**本機必須留著**（worktree 源倉）；別台機器若用 submodule clone 重來則不需要這些源倉。rev3 目前有 3 個源倉（`fork260509-soybean-admin-base`、`fork260509-soybean-admin-docs`、`fork260509-rev2-anew-rust-api`），不含 nestjs。
 - Vue 源倉 GitHub repo 名稱 = `fork260509-soybean-admin-base`（從原 `fork260509-soybean-admin` rename 而來，舊 URL 仍 redirect）。
 - 知識圖譜輸出 `GRAPH_REPORT.md` / `graph.json` / `graph.html` 都只存在 `graphify-out/`；要看就直接開 `graphify-out/GRAPH_REPORT.md`，或瀏覽器開 `graphify-out/graph.html` 看互動圖。
-- 外層 git 追蹤：`CLAUDE.md`、`.gitignore`、`.gitmodules`、`.gitattributes`、`.graphifyignore`、`.specify/`（spec-kit 結構）、`.claude/{settings.json, hook-git-submodule-SOP.sh, skills/}`，以及 `base-web` `rust-api` 兩個 gitlink SHA、`docker-compose*.yml`、`docs/`、`specs/`、`deploy/`、`graphify-out/{graph.json, GRAPH_REPORT.md, graph.html, obsidian/}`。
+- 外層 git 追蹤：`CLAUDE.md`、`.gitignore`、`.gitmodules`、`.gitattributes`、`.graphifyignore`、`.specify/`（spec-kit 結構）、`.claude/{settings.json, hook-git-submodule-SOP.sh, skills/}`，以及 `base-web` `rust-api` 兩個 gitlink SHA、`docker-compose*.yml`、`docs/`、`specs/`、`tests/`、`deploy/`、`graphify-out/{graph.json, GRAPH_REPORT.md, graph.html, obsidian/}`。
 
 ## 3. feature 開發工作流（SDD 設計鏈 → TDD 實作）
 
@@ -358,8 +359,7 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-For additional context about technologies to be used, project structure,
-shell commands, and other important information, read the current plan
+（目前無 active spec-kit feature；首個 feature 啟動後由 Claude／spec-kit 同步此區）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
@@ -562,7 +562,7 @@ docker compose exec acme acme.sh --version    # sanity check
 > 📖 **圖譜現況統計** 與 **已知抽取限制** 等細節 — **推論前必讀** [`docs/GRAPHIFY-NOTES.md`](docs/GRAPHIFY-NOTES.md) ⏳。
 
 **graphify 守則**：
-- ⏳ `graphify-out/` 尚未建立（rev3 待 worktree 落地後首次建圖）。圖譜將索引 rev3 worktree（`base-web` / `rust-api` 整合分支、含 Rust 後端），與整合碼同步。
+- `graphify-out/` 已建圖（2026-06-12 首建，2060 nodes/311 communities；commit `8f66fe0`）。圖譜索引 rev3 worktree（`base-web` / `rust-api` 整合分支），與整合碼同步；docs 後續大改（如 INTEGRATION-DESIGN 改名、四檔落地）後記得 `graphify update` 增量同步（已列 CHECKLIST §3.2）。
 - 重跑前先讀 `graphify-out/cost.json` 看是否真有需要 —— 多數時候 `graphify update`（增量）即可。
 - 不要改 `graphify-out/cache/` —— graphify 內部 LLM 擷取快取，手改破壞下次 update 的 diff。
 - 新功能設計問題先用 `graphify query "..."` 試 —— 但 Vue component composition 是 graphify 工具盲點（`.vue` 的 template↔import 抓不全，見 `docs/GRAPHIFY-NOTES.md`），問 Vue SFC 之間 wiring 要直接讀 SFC。
