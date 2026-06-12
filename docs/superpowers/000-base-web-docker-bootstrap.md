@@ -71,10 +71,10 @@ docker compose -f docker-compose.base-web.yml down         # 停止（volume 保
 
 | 腳本 | 用途 | 驗證狀態 |
 |---|---|---|
-| `cdp-capture-api.mjs` | **Network domain 捕 mock API 流量** → JSON（schema 對齊 `base-web-capture.json`）；`--reload` 自動觸發 fresh 流量 | ✅ rev3 實測（2026-06-12，capture 到 `getUserInfo 200`、body 與早上一致） |
-| `cdp-nav.mjs` | navigate + dump form elements + screenshot | rev2 已實測；rev3 僅改 port、未重測 |
-| `cdp-login.mjs` | 點 quick-login（超级管理员）+ 等 URL 變 + screenshot | 同上 |
-| `cdp-clear-and-relogin.mjs` | 清 `localhost:31079` origin storage + 完整 fresh login flow | 同上 |
+| `cdp-capture-api.mjs` | **Network domain 捕 mock API 流量** → JSON（schema 對齊 `base-web-capture.json`）；`--reload` 自動觸發 fresh 流量 | ✅ rev3 實測（2026-06-12；2026-06-13 再用於 getUserList 補抓） |
+| `cdp-nav.mjs` | navigate + dump form elements + screenshot | ✅ rev3 實測（2026-06-13，nav /login 與 /manage/user 全鏈通過） |
+| `cdp-login.mjs` | 點 quick-login（超级管理员）+ 等 URL 變 + screenshot | ✅ rev3 實測（2026-06-13，click/URL poll/error path 全驗；happy path 由 ③ 同款邏輯覆蓋。**gotcha**：mock 限流時 login 回「timeout of 10000ms exceeded」toast、但請求常在 toast 後背景完成跳轉——重試前先讀當前 URL） |
+| `cdp-clear-and-relogin.mjs` | 清 `localhost:31079` origin storage + 完整 fresh login flow | ✅ rev3 實測（2026-06-13，fresh login → /home、1824 elements 與 rev2 §5.3 deterministic 值一致） |
 
 ```bash
 # 取完整 32 字元 page id（⚠️ 不要截短；篩 type=page + 目標 URL）
@@ -104,6 +104,7 @@ node $S/cdp-clear-and-relogin.mjs "$PAGE_ID" 超级管理员 /tmp               
 | `apifox-cdp-harvest.json` | CDP 遍巡 s.apifox.cn 13 端點頁 innerText | 文件頁原始文字 |
 | `apifox-webfetch-spec.json` | WebFetch 結構化整理（method 人工修正） | 13 端點 req/resp 規格 + 型別標註 |
 | `mock-curl-supplement.json` | curl 直打 mock 補抓（**非瀏覽器流量**） | 缺口 6 端點 ×（無認證失敗路徑 + 認證成功路徑） |
+| `getuserlist-cdp-capture.json` | CDP 補抓（2026-06-13，已登入 /manage/user reload） | `getUserList` 瀏覽器流量（原 capture 被 ERR_ABORTED 吃掉的缺口）＋同輪 getUserInfo |
 
 ### 4.2 覆蓋說明
 
@@ -177,8 +178,7 @@ node $S/cdp-clear-and-relogin.mjs "$PAGE_ID" 超级管理员 /tmp               
 
 ## 7. Follow-up backlog
 
-- [ ] `getUserList` 的 CDP 瀏覽器流量補抓（本次 ERR_ABORTED、僅有 curl 直送）—— **curl 直送 ≠ base-web modal 對齊**
-  （CLAUDE.md §3 CDP smoke defer 風險自覺）；等 dynamic 接線 / 下次 CDP smoke 一併。
+- [x] ✅（2026-06-13）`getUserList` 的 CDP 瀏覽器流量補抓 —— `getuserlist-cdp-capture.json`（mock 版；rust-api 版屆時由接線 feature 的 CDP smoke 覆蓋）。
 - [ ] dynamic route mode 切換後重抓 `/route/*` 真實瀏覽器流量（§4.2；屆時對象是 rust-api、非 mock）。
-- [ ] `cdp-nav.mjs`/`cdp-login.mjs`/`cdp-clear-and-relogin.mjs` rev3 改 port 版未重測（§3.2）；下次用到時先跑一輪驗證。
+- [x] ✅（2026-06-13）`cdp-nav.mjs`/`cdp-login.mjs`/`cdp-clear-and-relogin.mjs` 三支重測全通過（§3.2 表、含 mock 限流 gotcha）。
 - [ ] standalone compose 與 §8.2 整套 stack 的整合/退場 —— 沿 rev2 000 文件 §6.3 的「演化」路線（master compose 落地時 service 定義遷移）。

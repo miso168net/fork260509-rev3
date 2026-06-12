@@ -1,12 +1,18 @@
-# Graph Report - .  (2026-06-12)
+# Graph Report - fork260509-rev3  (2026-06-12)
 
 ## Corpus Check
-- Large corpus: 553 files · ~245,681 words. Semantic extraction will be expensive (many Claude tokens). Consider running on a subfolder.
+- 513 files · ~245,681 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2060 nodes · 2449 edges · 311 communities (252 shown, 59 thin omitted)
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 116 edges (avg confidence: 0.86)
-- Token cost: 2,629,179 input · 0 output
+- 4176 nodes · 4421 edges · 567 communities (475 shown, 92 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 116 edges (avg confidence: 0.86)
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `450274c2`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_Service Request Layer|Service Request Layer]]
@@ -188,23 +194,273 @@
 - [[_COMMUNITY_activity.svg — pulseheartbeat zigzag li|activity.svg — pulse/heartbeat zigzag li]]
 - [[_COMMUNITY_Cast Icon (Feather screen-cast glyph)|Cast Icon (Feather screen-cast glyph)]]
 - [[_COMMUNITY_SoybeanAdmin Logo (docs site public asse|SoybeanAdmin Logo (docs site public asse]]
+- [[_COMMUNITY_Community 311|Community 311]]
+- [[_COMMUNITY_Community 312|Community 312]]
+- [[_COMMUNITY_Community 313|Community 313]]
+- [[_COMMUNITY_Community 314|Community 314]]
+- [[_COMMUNITY_Community 315|Community 315]]
+- [[_COMMUNITY_Community 316|Community 316]]
+- [[_COMMUNITY_Community 317|Community 317]]
+- [[_COMMUNITY_Community 318|Community 318]]
+- [[_COMMUNITY_Community 319|Community 319]]
+- [[_COMMUNITY_Community 320|Community 320]]
+- [[_COMMUNITY_Community 321|Community 321]]
+- [[_COMMUNITY_Community 322|Community 322]]
+- [[_COMMUNITY_Community 323|Community 323]]
+- [[_COMMUNITY_Community 324|Community 324]]
+- [[_COMMUNITY_Community 325|Community 325]]
+- [[_COMMUNITY_Community 326|Community 326]]
+- [[_COMMUNITY_Community 327|Community 327]]
+- [[_COMMUNITY_Community 328|Community 328]]
+- [[_COMMUNITY_Community 329|Community 329]]
+- [[_COMMUNITY_Community 330|Community 330]]
+- [[_COMMUNITY_Community 331|Community 331]]
+- [[_COMMUNITY_Community 332|Community 332]]
+- [[_COMMUNITY_Community 333|Community 333]]
+- [[_COMMUNITY_Community 334|Community 334]]
+- [[_COMMUNITY_Community 335|Community 335]]
+- [[_COMMUNITY_Community 336|Community 336]]
+- [[_COMMUNITY_Community 337|Community 337]]
+- [[_COMMUNITY_Community 338|Community 338]]
+- [[_COMMUNITY_Community 339|Community 339]]
+- [[_COMMUNITY_Community 340|Community 340]]
+- [[_COMMUNITY_Community 341|Community 341]]
+- [[_COMMUNITY_Community 342|Community 342]]
+- [[_COMMUNITY_Community 343|Community 343]]
+- [[_COMMUNITY_Community 344|Community 344]]
+- [[_COMMUNITY_Community 345|Community 345]]
+- [[_COMMUNITY_Community 346|Community 346]]
+- [[_COMMUNITY_Community 347|Community 347]]
+- [[_COMMUNITY_Community 348|Community 348]]
+- [[_COMMUNITY_Community 349|Community 349]]
+- [[_COMMUNITY_Community 350|Community 350]]
+- [[_COMMUNITY_Community 351|Community 351]]
+- [[_COMMUNITY_Community 352|Community 352]]
+- [[_COMMUNITY_Community 353|Community 353]]
+- [[_COMMUNITY_Community 354|Community 354]]
+- [[_COMMUNITY_Community 355|Community 355]]
+- [[_COMMUNITY_Community 356|Community 356]]
+- [[_COMMUNITY_Community 357|Community 357]]
+- [[_COMMUNITY_Community 358|Community 358]]
+- [[_COMMUNITY_Community 359|Community 359]]
+- [[_COMMUNITY_Community 360|Community 360]]
+- [[_COMMUNITY_Community 361|Community 361]]
+- [[_COMMUNITY_Community 362|Community 362]]
+- [[_COMMUNITY_Community 363|Community 363]]
+- [[_COMMUNITY_Community 364|Community 364]]
+- [[_COMMUNITY_Community 365|Community 365]]
+- [[_COMMUNITY_Community 366|Community 366]]
+- [[_COMMUNITY_Community 367|Community 367]]
+- [[_COMMUNITY_Community 368|Community 368]]
+- [[_COMMUNITY_Community 369|Community 369]]
+- [[_COMMUNITY_Community 370|Community 370]]
+- [[_COMMUNITY_Community 371|Community 371]]
+- [[_COMMUNITY_Community 372|Community 372]]
+- [[_COMMUNITY_Community 373|Community 373]]
+- [[_COMMUNITY_Community 374|Community 374]]
+- [[_COMMUNITY_Community 375|Community 375]]
+- [[_COMMUNITY_Community 376|Community 376]]
+- [[_COMMUNITY_Community 377|Community 377]]
+- [[_COMMUNITY_Community 378|Community 378]]
+- [[_COMMUNITY_Community 379|Community 379]]
+- [[_COMMUNITY_Community 380|Community 380]]
+- [[_COMMUNITY_Community 381|Community 381]]
+- [[_COMMUNITY_Community 382|Community 382]]
+- [[_COMMUNITY_Community 383|Community 383]]
+- [[_COMMUNITY_Community 384|Community 384]]
+- [[_COMMUNITY_Community 385|Community 385]]
+- [[_COMMUNITY_Community 386|Community 386]]
+- [[_COMMUNITY_Community 387|Community 387]]
+- [[_COMMUNITY_Community 388|Community 388]]
+- [[_COMMUNITY_Community 389|Community 389]]
+- [[_COMMUNITY_Community 390|Community 390]]
+- [[_COMMUNITY_Community 391|Community 391]]
+- [[_COMMUNITY_Community 392|Community 392]]
+- [[_COMMUNITY_Community 393|Community 393]]
+- [[_COMMUNITY_Community 394|Community 394]]
+- [[_COMMUNITY_Community 395|Community 395]]
+- [[_COMMUNITY_Community 396|Community 396]]
+- [[_COMMUNITY_Community 397|Community 397]]
+- [[_COMMUNITY_Community 398|Community 398]]
+- [[_COMMUNITY_Community 399|Community 399]]
+- [[_COMMUNITY_Community 400|Community 400]]
+- [[_COMMUNITY_Community 401|Community 401]]
+- [[_COMMUNITY_Community 402|Community 402]]
+- [[_COMMUNITY_Community 403|Community 403]]
+- [[_COMMUNITY_Community 404|Community 404]]
+- [[_COMMUNITY_Community 405|Community 405]]
+- [[_COMMUNITY_Community 406|Community 406]]
+- [[_COMMUNITY_Community 407|Community 407]]
+- [[_COMMUNITY_Community 408|Community 408]]
+- [[_COMMUNITY_Community 409|Community 409]]
+- [[_COMMUNITY_Community 410|Community 410]]
+- [[_COMMUNITY_Community 411|Community 411]]
+- [[_COMMUNITY_Community 412|Community 412]]
+- [[_COMMUNITY_Community 413|Community 413]]
+- [[_COMMUNITY_Community 414|Community 414]]
+- [[_COMMUNITY_Community 415|Community 415]]
+- [[_COMMUNITY_Community 416|Community 416]]
+- [[_COMMUNITY_Community 417|Community 417]]
+- [[_COMMUNITY_Community 418|Community 418]]
+- [[_COMMUNITY_Community 419|Community 419]]
+- [[_COMMUNITY_Community 420|Community 420]]
+- [[_COMMUNITY_Community 421|Community 421]]
+- [[_COMMUNITY_Community 422|Community 422]]
+- [[_COMMUNITY_Community 423|Community 423]]
+- [[_COMMUNITY_Community 424|Community 424]]
+- [[_COMMUNITY_Community 425|Community 425]]
+- [[_COMMUNITY_Community 426|Community 426]]
+- [[_COMMUNITY_Community 427|Community 427]]
+- [[_COMMUNITY_Community 428|Community 428]]
+- [[_COMMUNITY_Community 429|Community 429]]
+- [[_COMMUNITY_Community 430|Community 430]]
+- [[_COMMUNITY_Community 431|Community 431]]
+- [[_COMMUNITY_Community 432|Community 432]]
+- [[_COMMUNITY_Community 433|Community 433]]
+- [[_COMMUNITY_Community 434|Community 434]]
+- [[_COMMUNITY_Community 435|Community 435]]
+- [[_COMMUNITY_Community 436|Community 436]]
+- [[_COMMUNITY_Community 437|Community 437]]
+- [[_COMMUNITY_Community 438|Community 438]]
+- [[_COMMUNITY_Community 439|Community 439]]
+- [[_COMMUNITY_Community 440|Community 440]]
+- [[_COMMUNITY_Community 441|Community 441]]
+- [[_COMMUNITY_Community 442|Community 442]]
+- [[_COMMUNITY_Community 443|Community 443]]
+- [[_COMMUNITY_Community 444|Community 444]]
+- [[_COMMUNITY_Community 445|Community 445]]
+- [[_COMMUNITY_Community 446|Community 446]]
+- [[_COMMUNITY_Community 447|Community 447]]
+- [[_COMMUNITY_Community 448|Community 448]]
+- [[_COMMUNITY_Community 449|Community 449]]
+- [[_COMMUNITY_Community 450|Community 450]]
+- [[_COMMUNITY_Community 451|Community 451]]
+- [[_COMMUNITY_Community 452|Community 452]]
+- [[_COMMUNITY_Community 453|Community 453]]
+- [[_COMMUNITY_Community 454|Community 454]]
+- [[_COMMUNITY_Community 455|Community 455]]
+- [[_COMMUNITY_Community 456|Community 456]]
+- [[_COMMUNITY_Community 457|Community 457]]
+- [[_COMMUNITY_Community 458|Community 458]]
+- [[_COMMUNITY_Community 459|Community 459]]
+- [[_COMMUNITY_Community 460|Community 460]]
+- [[_COMMUNITY_Community 461|Community 461]]
+- [[_COMMUNITY_Community 462|Community 462]]
+- [[_COMMUNITY_Community 463|Community 463]]
+- [[_COMMUNITY_Community 464|Community 464]]
+- [[_COMMUNITY_Community 465|Community 465]]
+- [[_COMMUNITY_Community 466|Community 466]]
+- [[_COMMUNITY_Community 467|Community 467]]
+- [[_COMMUNITY_Community 468|Community 468]]
+- [[_COMMUNITY_Community 469|Community 469]]
+- [[_COMMUNITY_Community 470|Community 470]]
+- [[_COMMUNITY_Community 471|Community 471]]
+- [[_COMMUNITY_Community 472|Community 472]]
+- [[_COMMUNITY_Community 473|Community 473]]
+- [[_COMMUNITY_Community 474|Community 474]]
+- [[_COMMUNITY_Community 475|Community 475]]
+- [[_COMMUNITY_Community 476|Community 476]]
+- [[_COMMUNITY_Community 477|Community 477]]
+- [[_COMMUNITY_Community 478|Community 478]]
+- [[_COMMUNITY_Community 479|Community 479]]
+- [[_COMMUNITY_Community 480|Community 480]]
+- [[_COMMUNITY_Community 481|Community 481]]
+- [[_COMMUNITY_Community 482|Community 482]]
+- [[_COMMUNITY_Community 483|Community 483]]
+- [[_COMMUNITY_Community 484|Community 484]]
+- [[_COMMUNITY_Community 485|Community 485]]
+- [[_COMMUNITY_Community 486|Community 486]]
+- [[_COMMUNITY_Community 487|Community 487]]
+- [[_COMMUNITY_Community 488|Community 488]]
+- [[_COMMUNITY_Community 489|Community 489]]
+- [[_COMMUNITY_Community 490|Community 490]]
+- [[_COMMUNITY_Community 491|Community 491]]
+- [[_COMMUNITY_Community 492|Community 492]]
+- [[_COMMUNITY_Community 493|Community 493]]
+- [[_COMMUNITY_Community 494|Community 494]]
+- [[_COMMUNITY_Community 495|Community 495]]
+- [[_COMMUNITY_Community 496|Community 496]]
+- [[_COMMUNITY_Community 497|Community 497]]
+- [[_COMMUNITY_Community 498|Community 498]]
+- [[_COMMUNITY_Community 499|Community 499]]
+- [[_COMMUNITY_Community 500|Community 500]]
+- [[_COMMUNITY_Community 501|Community 501]]
+- [[_COMMUNITY_Community 502|Community 502]]
+- [[_COMMUNITY_Community 503|Community 503]]
+- [[_COMMUNITY_Community 504|Community 504]]
+- [[_COMMUNITY_Community 505|Community 505]]
+- [[_COMMUNITY_Community 506|Community 506]]
+- [[_COMMUNITY_Community 507|Community 507]]
+- [[_COMMUNITY_Community 508|Community 508]]
+- [[_COMMUNITY_Community 509|Community 509]]
+- [[_COMMUNITY_Community 510|Community 510]]
+- [[_COMMUNITY_Community 511|Community 511]]
+- [[_COMMUNITY_Community 512|Community 512]]
+- [[_COMMUNITY_Community 513|Community 513]]
+- [[_COMMUNITY_Community 514|Community 514]]
+- [[_COMMUNITY_Community 515|Community 515]]
+- [[_COMMUNITY_Community 516|Community 516]]
+- [[_COMMUNITY_Community 517|Community 517]]
+- [[_COMMUNITY_Community 518|Community 518]]
+- [[_COMMUNITY_Community 519|Community 519]]
+- [[_COMMUNITY_Community 520|Community 520]]
+- [[_COMMUNITY_Community 521|Community 521]]
+- [[_COMMUNITY_Community 522|Community 522]]
+- [[_COMMUNITY_Community 523|Community 523]]
+- [[_COMMUNITY_Community 524|Community 524]]
+- [[_COMMUNITY_Community 525|Community 525]]
+- [[_COMMUNITY_Community 526|Community 526]]
+- [[_COMMUNITY_Community 527|Community 527]]
+- [[_COMMUNITY_Community 528|Community 528]]
+- [[_COMMUNITY_Community 529|Community 529]]
+- [[_COMMUNITY_Community 530|Community 530]]
+- [[_COMMUNITY_Community 531|Community 531]]
+- [[_COMMUNITY_Community 532|Community 532]]
+- [[_COMMUNITY_Community 533|Community 533]]
+- [[_COMMUNITY_Community 534|Community 534]]
+- [[_COMMUNITY_Community 535|Community 535]]
+- [[_COMMUNITY_Community 536|Community 536]]
+- [[_COMMUNITY_Community 537|Community 537]]
+- [[_COMMUNITY_Community 538|Community 538]]
+- [[_COMMUNITY_Community 539|Community 539]]
+- [[_COMMUNITY_Community 540|Community 540]]
+- [[_COMMUNITY_Community 541|Community 541]]
+- [[_COMMUNITY_Community 542|Community 542]]
+- [[_COMMUNITY_Community 543|Community 543]]
+- [[_COMMUNITY_Community 544|Community 544]]
+- [[_COMMUNITY_Community 545|Community 545]]
+- [[_COMMUNITY_Community 546|Community 546]]
+- [[_COMMUNITY_Community 547|Community 547]]
+- [[_COMMUNITY_Community 548|Community 548]]
+- [[_COMMUNITY_Community 549|Community 549]]
+- [[_COMMUNITY_Community 550|Community 550]]
+- [[_COMMUNITY_Community 551|Community 551]]
+- [[_COMMUNITY_Community 552|Community 552]]
+- [[_COMMUNITY_Community 553|Community 553]]
+- [[_COMMUNITY_Community 554|Community 554]]
+- [[_COMMUNITY_Community 555|Community 555]]
+- [[_COMMUNITY_Community 556|Community 556]]
+- [[_COMMUNITY_Community 557|Community 557]]
+- [[_COMMUNITY_Community 558|Community 558]]
+- [[_COMMUNITY_Community 559|Community 559]]
+- [[_COMMUNITY_Community 560|Community 560]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `request` - 18 edges
-2. `compilerOptions` - 18 edges
-3. `SoybeanAdmin Ecosystem Document` - 18 edges
-4. `compilerOptions` - 17 edges
-5. `scripts` - 16 edges
-6. `SoybeanAdmin Ecosystem Projects (Awesome, JP)` - 16 edges
-7. `SoybeanAdmin` - 15 edges
-8. `compilerOptions` - 14 edges
-9. `compilerOptions` - 14 edges
-10. `compilerOptions` - 14 edges
+1. `Changelog` - 77 edges
+2. `更新日志` - 24 edges
+3. `request` - 18 edges
+4. `compilerOptions` - 18 edges
+5. `Ecosystem` - 18 edges
+6. `SoybeanAdmin Ecosystem Document` - 18 edges
+7. `compilerOptions` - 17 edges
+8. `scripts` - 16 edges
+9. `Frequently Asked Questions` - 16 edges
+10. `よくある質問` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `路由初始化 (Route Initialization phase: init constant routes, check login, init auth routes, re-resolve captured route)` --semantically_similar_to--> `initRoute()`  [INFERRED] [semantically similar]
-  fork260509-soybean-admin-docs/src/assets/router-guard-flow.png → base-web/src/router/guard/route.ts
 - `权限路由守卫 (Permission Route Guard — 开始→守卫→结束 lane)` --semantically_similar_to--> `createRouteGuard()`  [INFERRED] [semantically similar]
+  fork260509-soybean-admin-docs/src/assets/router-guard-flow.png → base-web/src/router/guard/route.ts
+- `路由初始化` --semantically_similar_to--> `initRoute()`  [INFERRED] [semantically similar]
   fork260509-soybean-admin-docs/src/assets/router-guard-flow.png → base-web/src/router/guard/route.ts
 - `SoybeanAdmin 路由跳转流程图 (Router Guard Flow Diagram)` --conceptually_related_to--> `createRouterGuard()`  [INFERRED]
   fork260509-soybean-admin-docs/src/assets/router-guard-flow.png → base-web/src/router/guard/index.ts
@@ -248,23 +504,23 @@
 - **Elements composing the SoybeanAdmin app startup loading screen (logo + dot spinner + system title)** — assets_loading01_loading_screen, assets_loading01_soybean_logo, assets_loading01_loading_animation, assets_loading01_system_title [EXTRACTED 1.00]
 - **SoybeanAdmin Router Guard Navigation Flow (trigger → guard → initialization → jump, with login/403 fallbacks)** — assets_router_guard_flow_route_navigation_trigger, assets_router_guard_flow_permission_route_guard, assets_router_guard_flow_route_initialization, assets_router_guard_flow_route_jump, assets_router_guard_flow_login_redirect, assets_router_guard_flow_403_redirect [EXTRACTED 1.00]
 
-## Communities (311 total, 59 thin omitted)
+## Communities (567 total, 92 thin omitted)
 
 ### Community 0 - "Service Request Layer"
-Cohesion: 0.06
-Nodes (45): fetchCustomBackendError(), fetchGetUserInfo(), fetchLogin(), fetchRefreshToken(), fetchGetConstantRoutes(), fetchGetUserRoutes(), fetchIsRouteExist(), fetchGetAllPages() (+37 more)
+Cohesion: 0.11
+Nodes (27): createCommonRequest(), createFlatRequest(), createRequest(), createAxiosConfig(), createDefaultOptions(), createRetryOptions(), isHttpSuccess(), transformArrayBufferToJson() (+19 more)
 
 ### Community 1 - "Debugging & Routing Docs"
-Cohesion: 0.06
-Nodes (55): VSCode Debug Guide 02 — Active tsx Debug Session Screenshot, VS Code Debug Toolbar (调试选项), 环境准备 (git / NodeJS>=18.12 / pnpm>=8.7), 权限路由 (Auth Routes), 固定路由 (Constant Routes), not-found 捕获 (Not-Found Capture), 权限路由守卫 (Permission Route Guard), SoybeanAdmin 路由跳转流程图 (Route Guard Flow Diagram) (+47 more)
+Cohesion: 0.27
+Nodes (12): 环境准备 (git / NodeJS>=18.12 / pnpm>=8.7), Common Git Commands (rebase, amend, cherry-pick), Git Installation & Configuration, Git 教程, SSH Key Generation & Upload, Front-end Dev Environment Tutorial Overview, Chocolatey Package Manager, fnm Node Version Manager (+4 more)
 
 ### Community 2 - "Icons & UnoCSS Styling"
-Cohesion: 0.05
-Nodes (54): System Loading Screenshot, UnoCSS, 同步上游代码 cherry-pick 工作流, System Icons Guide, VITE_ICON_PREFIX / VITE_ICON_LOCAL_PREFIX 图标前缀配置, Iconify, Iconify Icon Rendering (unplugin-icons), Local Icon mechanism (+46 more)
+Cohesion: 0.24
+Nodes (11): VITE_ICON_PREFIX / VITE_ICON_LOCAL_PREFIX 图标前缀配置, Iconify Icon Rendering (unplugin-icons), Local SVG Icon Rendering (vite-plugin-svg-icons, src/assets/svg-icon), svg-icon 全局组件动态渲染 (icon / local-icon props), Offline Iconify Collection Loading (@iconify/vue addCollection), 离线 iconify 图标集合加载 (@iconify/vue addCollection + @iconify/json), 图标静态用法（template 直写 icon-* 组件）, SvgIcon Global Component (icon / local-icon props) (+3 more)
 
 ### Community 3 - "Router Guard Flow"
-Cohesion: 0.06
-Nodes (31): 跳转403路由 (Redirect to 403 — next => 403 when route data source check fails / no permission), 权限路由 (Auth Routes — routes that require login permission), 固定路由 (Constant Routes — routes that do not require login), SoybeanAdmin 路由跳转流程图 (Router Guard Flow Diagram), 跳转登录路由 (Redirect to Login — next => login when not logged in), not-found 捕获 (Not-Found Route Capture — routes not registered in Vue Router are caught by not-found; after auth-route init the captured original route is re-resolved), 权限路由守卫 (Permission Route Guard — 开始→守卫→结束 lane), 路由初始化 (Route Initialization phase: init constant routes, check login, init auth routes, re-resolve captured route) (+23 more)
+Cohesion: 0.13
+Nodes (13): getLocale(), i18n, setupI18n(), setupAppVersionNotification(), setupProNaiveComponents(), setupIconifyOffline(), resetSetupStore(), setupNProgress() (+5 more)
 
 ### Community 4 - "CLI Scripts Package"
 Cohesion: 0.06
@@ -287,8 +543,8 @@ Cohesion: 0.05
 Nodes (43): BaseToken, Breadcrumb, ColorPaletteNumber, DemoResponse, DropdownKey, FormMsg, FormRule, GetI18nKey (+35 more)
 
 ### Community 9 - "FAQ & Deployment Issues"
-Cohesion: 0.07
-Nodes (44): 权限路由模式（前端静态路由 vs 后端动态路由）, CORS and Proxy Solutions, 跨域问题与正向/反向代理方案, SoybeanAdmin 常见问题 FAQ, History Mode 404 on Refresh, Project Naming Conventions (files kebab-case, components PascalCase), history 路由模式部署后刷新 404 问题, Storage Cache Wrapper (set/get/remove/clear) (+36 more)
+Cohesion: 0.08
+Nodes (39): 权限路由模式（前端静态路由 vs 后端动态路由）, CORS and Proxy Solutions, 跨域问题与正向/反向代理方案, SoybeanAdmin 常见问题 FAQ, History Mode 404 on Refresh, Project Naming Conventions (files kebab-case, components PascalCase), history 路由模式部署后刷新 404 问题, Storage Cache Wrapper (set/get/remove/clear) (+31 more)
 
 ### Community 10 - "User & Captcha APIs"
 Cohesion: 0.06
@@ -299,16 +555,16 @@ Cohesion: 0.05
 Nodes (40): author, email, name, url, bugs, url, dependencies, vue (+32 more)
 
 ### Community 12 - "Composable Hooks"
-Cohesion: 0.07
-Nodes (24): useAppStore, useCaptcha(), getColumnChecks(), PaginationParams, useNaivePaginatedTable(), UseNaivePaginatedTableOptions, useNaiveTable(), UseNaiveTableOptions (+16 more)
+Cohesion: 0.12
+Nodes (11): ContextConsumer, ContextName, ContextProvider, ContextValue, useSvgIconRender(), GetApiData, PaginationData, TableColumnCheck (+3 more)
 
 ### Community 13 - "Theme Design Tokens"
 Cohesion: 0.06
 Nodes (36): borderRadiusMedium, fontWeightStrong, paddingMedium, header, sider, tab, borderRadius, paddingMedium (+28 more)
 
 ### Community 14 - "Ecosystem Projects"
-Cohesion: 0.10
-Nodes (35): SoybeanAdmin Ecosystem Document, ba (Ba-Server), DoraCMS (EggJS + Vue3 CMS，后台基于 soybean-admin), SoybeanAdmin Ecosystem Projects (Awesome, JP), electron-mock-admin, FastSoyAdmin, jzero-admin, MalusAdmin (+27 more)
+Cohesion: 0.09
+Nodes (37): SoybeanAdmin Ecosystem Document, ba (Ba-Server), DoraCMS (EggJS + Vue3 CMS，后台基于 soybean-admin), Ecosystem, electron-mock-admin, FastSoyAdmin, jzero-admin, MalusAdmin (+29 more)
 
 ### Community 15 - "Dev Dependencies Manifest"
 Cohesion: 0.06
@@ -331,8 +587,8 @@ Cohesion: 0.10
 Nodes (20): compilerOptions, allowSyntheticDefaultImports, baseUrl, esModuleInterop, forceConsistentCasingInFileNames, isolatedModules, jsx, jsxImportSource (+12 more)
 
 ### Community 20 - "Auth Store & Tokens"
-Cohesion: 0.18
-Nodes (10): useAuthStore, clearAuthStorage(), getToken(), handleRefreshToken(), handleRefreshToken(), useAuth(), handleExpiredRequest(), localforage (+2 more)
+Cohesion: 0.13
+Nodes (15): useAuthStore, clearAuthStorage(), getToken(), handleRefreshToken(), handleRefreshToken(), useAuth(), SetupStoreId, setDayjsLocale() (+7 more)
 
 ### Community 21 - "SVG Icons & Route Utils"
 Cohesion: 0.17
@@ -395,16 +651,16 @@ Cohesion: 0.12
 Nodes (16): compilerOptions, allowSyntheticDefaultImports, esModuleInterop, forceConsistentCasingInFileNames, jsx, lib, module, moduleResolution (+8 more)
 
 ### Community 36 - "package.json"
-Cohesion: 0.12
-Nodes (15): bugs, url, description, homepage, keywords, license, name, repository (+7 more)
+Cohesion: 0.11
+Nodes (18): bugs, url, description, engines, node, pnpm, homepage, keywords (+10 more)
 
 ### Community 37 - "scripts"
 Cohesion: 0.12
 Nodes (16): scripts, build, build:test, cleanup, commit, commit:zh, dev, dev:prod (+8 more)
 
 ### Community 38 - "route.ts"
-Cohesion: 0.19
-Nodes (12): useRouterPush(), ChartHooks, useVChart(), [provideMixMenuContext, useMixMenuContext], useMenu(), useMixMenu(), getRouteName(), getRouteQueryOfLoginRoute() (+4 more)
+Cohesion: 0.31
+Nodes (7): useRouterPush(), [provideMixMenuContext, useMixMenuContext], useMenu(), useMixMenu(), useRouteStore, historyCreatorMap, router
 
 ### Community 39 - "business.ts"
 Cohesion: 0.15
@@ -415,8 +671,8 @@ Cohesion: 0.14
 Nodes (6): Crypto, createLocalforage(), createStorage(), LocalForage, LocalforageDriver, StorageType
 
 ### Community 41 - "antv-g6-flow.ts"
-Cohesion: 0.25
-Nodes (8): AntFlowConfig, getNodeIcon(), nodeStatus, NodeStatusConfig, CustomEdgeData, CustomGraphData, CustomNodeData, NodeStatus
+Cohesion: 0.09
+Nodes (20): ChartHooks, ECOption, useEcharts(), ChartHooks, useVChart(), barOptions, gaugeOptions, lineOptions (+12 more)
 
 ### Community 42 - "colord.ts"
 Cohesion: 0.22
@@ -427,8 +683,8 @@ Cohesion: 0.19
 Nodes (14): Code Standards Introduction, Naming Conventions Standard, fetch-prefixed Request Function Naming, kebab-case File and Folder Naming, 命名规范（Naming Convention）, PascalCase Component Naming, TS Writing Standard (placeholder, empty), TS Writing Standard (JP, placeholder) (+6 more)
 
 ### Community 44 - "Elegant Router"
-Cohesion: 0.21
-Nodes (14): SoybeanAdmin Introduction, pnpm gen-route 路由创建命令, 路由名称命名规则, System Routing Guide, Elegant Router, RouteKey, type RoutePath, Single Root Element Constraint (Transition) (+6 more)
+Cohesion: 0.14
+Nodes (19): code:ts (ElegantVueRouter({), code:ts (type RouteMap = {), code:ts (import type { CustomRoute } from '@elegant-router/types';), pnpm gen-route 路由创建命令, 路由名称命名规则, meta.constant 固定路由标记, System Routing Guide, Elegant Router (2) (+11 more)
 
 ### Community 45 - "package.json"
 Cohesion: 0.14
@@ -459,20 +715,20 @@ Cohesion: 0.15
 Nodes (12): colourWeakness, desc, fixedHeaderAndTab, grayscale, i18nkey, isInfoFollowPrimary, name, recommendColor (+4 more)
 
 ### Community 52 - "Route Guard"
-Cohesion: 0.21
-Nodes (13): Router Guard Flowchart (PNG), Router Guard Flowchart (PDF), Router Guard Guide, 路由守卫流程, Route Guard, Router Guard Flow, Router Push Guide, type LoginModule (+5 more)
+Cohesion: 0.17
+Nodes (14): Router Guard Flowchart (PNG), Router Guard Flowchart (PDF), Router Guard Guide, 路由守卫流程, Route Guard, Router Guard, Router guard flow, Router Push Guide (+6 more)
 
 ### Community 53 - "data.ts"
-Cohesion: 0.18
-Nodes (8): ChartHooks, ECOption, useEcharts(), barOptions, gaugeOptions, lineOptions, pieOptions, radarOptions
+Cohesion: 0.04
+Nodes (48): cmd, code:bash (curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.), code:bash (choco install fnm), code:bash (fnm -h), code:other (%USERPROFILE%\Documents\WindowsPowerShell\profile.ps1), code:bash (fnm env --use-on-cd | Out-String | Invoke-Expression), code:other (%windir%\system32\cmd.exe /k %USERPROFILE%\bashrc.cmd), code:bash (@echo off) (+40 more)
 
 ### Community 54 - "index.ts"
-Cohesion: 0.24
-Nodes (6): SetupStoreId, setLocale(), resetSetupStore(), historyCreatorMap, router, useTabStore
+Cohesion: 0.04
+Nodes (48): cmd, code:bash (curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.), code:bash (choco install fnm), code:bash (fnm -h), code:other (%USERPROFILE%\Documents\WindowsPowerShell\profile.ps1), code:bash (fnm env --use-on-cd | Out-String | Invoke-Expression), code:other (%windir%\system32\cmd.exe /k %USERPROFILE%\bashrc.cmd), code:bash (@echo off) (+40 more)
 
 ### Community 55 - "RouteMeta"
-Cohesion: 0.27
-Nodes (12): hideInMenu Menu Visibility Pitfall, Auth Route Modes: Static vs Dynamic (FAQ), Route Permissions Guide, Dynamic Route Mode, fetchGetConstantRoutes, fetchGetUserRoutes, meta.constant 固定路由标记, meta.roles 路由角色权限 (+4 more)
+Cohesion: 0.31
+Nodes (10): hideInMenu Menu Visibility Pitfall, Auth Route Modes: Static vs Dynamic (FAQ), Route Permissions Guide, Dynamic Route Mode, fetchGetConstantRoutes, fetchGetUserRoutes, meta.roles 路由角色权限, Route Permission (meta.constant / meta.roles) (+2 more)
 
 ### Community 56 - "rules"
 Cohesion: 0.18
@@ -499,8 +755,8 @@ Cohesion: 0.18
 Nodes (10): *, dependencies, @sa/utils, simplebar-vue, devDependencies, typed-css-modules, exports, name (+2 more)
 
 ### Community 62 - "Elegant Router (automated file-based rou"
-Cohesion: 0.24
-Nodes (11): Elegant Router (automated file-based routing), 项目目录结构说明 (build/packages/src/...), Route Caching Guide, 路由缓存 (keep-alive + meta.keepAlive), Route Caching (keep-alive), Route Component String Convention (layout.base / layout.blank / view.[RouteKey] / layout.base$view.[RouteKey]), Route Creation Guide, Route Naming Rules (+3 more)
+Cohesion: 0.14
+Nodes (16): code:js ({), Elegant Router (automated file-based routing), Quick Start Guide, Apifox Cloud Mock, SoybeanJS CLI (sa) npm scripts, Route Caching Guide, Principle, 路由缓存 (keep-alive + meta.keepAlive) (+8 more)
 
 ### Community 63 - "index.vue"
 Cohesion: 0.20
@@ -648,7 +904,7 @@ Nodes (5): otherColor, error, info, success, warning
 
 ### Community 99 - "SoybeanAdmin"
 Cohesion: 0.40
-Nodes (5): Code Sync via cherry-pick, SoybeanAdmin, SoybeanJS Team, SoybeanUI (@soybeanjs/ui), Donation Page
+Nodes (5): Code Sync via cherry-pick, SoybeanAdmin (3), SoybeanJS Team (2), SoybeanUI (@soybeanjs/ui), Donation Page
 
 ### Community 100 - "rev3-admin-rust-api branch"
 Cohesion: 0.50
@@ -691,8 +947,8 @@ Cohesion: 0.50
 Nodes (3): Map, Point, Window
 
 ### Community 113 - "engines"
-Cohesion: 0.67
-Nodes (3): engines, node, pnpm
+Cohesion: 0.04
+Nodes (47): cmd, code:bash (curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.), code:bash (choco install fnm), code:bash (fnm -h), code:other (%USERPROFILE%\Documents\WindowsPowerShell\profile.ps1), code:bash (fnm env --use-on-cd | Out-String | Invoke-Expression), code:other (%windir%\system32\cmd.exe /k %USERPROFILE%\bashrc.cmd), code:bash (@echo off) (+39 more)
 
 ### Community 118 - "layout"
 Cohesion: 0.67
@@ -704,7 +960,7 @@ Nodes (3): page, animate, animateMode
 
 ### Community 126 - "Soybean Mascot Avatar Image (AI-generate"
 Cohesion: 0.67
-Nodes (3): SoybeanAvatar Component (custom avatar component), Soybean Mascot Avatar Image (AI-generated 3D cartoon portrait of a young man with glasses giving a peace sign, Remini watermark; serves as the project mascot / default user avatar in base-web), Home HeaderBanner Module (dashboard greeting banner)
+Nodes (3): SoybeanAvatar Component (custom avatar component), Soybean Mascot Avatar Image, Home HeaderBanner Module (dashboard greeting banner)
 
 ### Community 127 - "defaultLocalIcon missing-icon fallback"
 Cohesion: 1.00
@@ -712,7 +968,7 @@ Nodes (3): defaultLocalIcon missing-icon fallback, SvgIcon component, no-icon.sv
 
 ### Community 132 - "CreativityBanner (home module component,"
 Cohesion: 0.67
-Nodes (3): Home page view (views/home/index.vue), CreativityBanner (home module component, creativity-banner.vue), banner.svg — flat-style hero illustration: a person presenting a large analytics dashboard panel (gauge/speedometer chart, scatter-marker rules, text rows) flanked by bookshelves, a desk and a potted plant, on a 500x500 canvas
+Nodes (3): Home page view (views/home/index.vue), CreativityBanner (home module component, creativity-banner.vue), banner.svg — flat-style hero illustration: a person presenting a large analyt…
 
 ### Community 133 - "layout"
 Cohesion: 0.67
@@ -724,31 +980,899 @@ Nodes (3): page, animate, animateMode
 
 ### Community 135 - "setupUnplugin (registers src/assets/svg-"
 Cohesion: 0.67
-Nodes (3): setupUnplugin (registers src/assets/svg-icon as the local icon collection via FileSystemIconLoader and createSvgIconsPlugin), Avatar SVG Icon (default user avatar: bust of a person with brown hair and dark two-tone jacket inside a light gray circle, 134x134 viewBox), Copy SVG Icon
+Nodes (3): setupUnplugin, Avatar SVG Icon, Copy SVG Icon
 
 ### Community 136 - "empty-data.svg — empty-state illustratio"
 Cohesion: 1.00
-Nodes (3): empty-data.svg — empty-state illustration (crate stack, NO DATA panel, magnifying glass), currentColor theme-adaptive accent technique, Empty-state UI illustration pattern
+Nodes (3): empty-data.svg — empty-state illustration, currentColor theme-adaptive accent technique, Empty-state UI illustration pattern
+
+### Community 311 - "Community 311"
+Cohesion: 0.05
+Nodes (42): code:block1 (views), code:ts ({), code:ts ({), code:block12 (views), code:ts ({), code:block14 (views), code:ts ({), code:ts (import type { RouteKey } from '@elegant-router/types';) (+34 more)
+
+### Community 312 - "Community 312"
+Cohesion: 0.05
+Nodes (42): code:block1 (views), code:ts ({), code:ts ({), code:block12 (views), code:ts ({), code:block14 (views), code:ts ({), code:ts (import type { RouteKey } from '@elegant-router/types';) (+34 more)
+
+### Community 313 - "Community 313"
+Cohesion: 0.05
+Nodes (36): code:typescript (export default function useTable<ResponseData, ApiData, Colu), code:typescript (import { defaultTransform, useNaivePaginatedTable } from '@/), code:typescript, code:ts ({), code:typescript (export interface UseTableOptions<ResponseData, ApiData, Colu), code:ts ({), code:typescript (import { useTable } from '@sa/hooks';), code:typescript (export function useNaiveTable<ResponseData, ApiData>(options) (+28 more)
+
+### Community 314 - "Community 314"
+Cohesion: 0.06
+Nodes (34): code:typescript (export default function useTable<ResponseData, ApiData, Colu), code:typescript (import { defaultTransform, useNaivePaginatedTable } from '@/), code:typescript, code:ts ({), code:typescript (export interface UseTableOptions<ResponseData, ApiData, Colu), code:ts ({), code:typescript (import { useTable } from '@sa/hooks';), code:typescript (export function useNaiveTable<ResponseData, ApiData>(options) (+26 more)
+
+### Community 315 - "Community 315"
+Cohesion: 0.06
+Nodes (34): code:typescript (export default function useTable<ResponseData, ApiData, Colu), code:typescript (import { defaultTransform, useNaivePaginatedTable } from '@/), code:typescript, code:ts ({), code:typescript (export interface UseTableOptions<ResponseData, ApiData, Colu), code:ts ({), code:typescript (import { useTable } from '@sa/hooks';), code:typescript (export function useNaiveTable<ResponseData, ApiData>(options) (+26 more)
+
+### Community 316 - "Community 316"
+Cohesion: 0.06
+Nodes (34): 404 error occurs when using Iframe to embed local HTML in the project, About Modifying File Related Issues, Common Solutions, Component Naming Issues, Concept, Cross-domain issues, Dependency Installation Issues, Environmental Issues (+26 more)
+
+### Community 317 - "Community 317"
+Cohesion: 0.06
+Nodes (34): SoybeanAdmin キャッシュに関する問題, vscodeのi18nAllyプラグインで新しい言語を追加できない, なぜ Day.js を使用するのか, よくある質問, クロスオリジン（CORS）の問題, コンポーネント命名の問題, コードを最新の状態に保つ方法, タブのページを切り替えた後に空白のページが表示される (+26 more)
+
+### Community 318 - "Community 318"
+Cohesion: 0.06
+Nodes (34): SoybeanAdmin 缓存方面的问题, Tab 页签刷新后一片空白, vscode的i18nAlly插件无法新增多语言, 为什么是 dayjs, 代码如何保持最新, 依赖安装问题, 关于修改文件相关的问题, 前端静态路由添加菜单后没显示 (+26 more)
+
+### Community 319 - "Community 319"
+Cohesion: 0.07
+Nodes (29): Changelog, &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🏡 Chore (+21 more)
+
+### Community 320 - "Community 320"
+Cohesion: 0.16
+Nodes (17): fetchCustomBackendError(), fetchGetUserInfo(), fetchLogin(), fetchRefreshToken(), fetchGetConstantRoutes(), fetchGetUserRoutes(), fetchIsRouteExist(), fetchGetAllPages() (+9 more)
+
+### Community 321 - "Community 321"
+Cohesion: 0.17
+Nodes (17): 跳转403路由, 权限路由 (Auth Routes — routes that require login permission), 固定路由 (Constant Routes — routes that do not require login), SoybeanAdmin 路由跳转流程图 (Router Guard Flow Diagram), 跳转登录路由 (Redirect to Login — next => login when not logged in), not-found 捕获, 权限路由守卫 (Permission Route Guard — 开始→守卫→结束 lane), 路由初始化 (+9 more)
+
+### Community 322 - "Community 322"
+Cohesion: 0.10
+Nodes (19): Browser Support, code:bash (# github), code:bash (pnpm i), code:bash (pnpm dev), code:bash (pnpm build), Communication, Contributors, Documentation (+11 more)
+
+### Community 323 - "Community 323"
+Cohesion: 0.10
+Nodes (19): API, code:bash (npm install --save klona), code:javascript (import { klona } from 'klona/json';), code:javascript (import { klona } from 'klona/lite';), code:javascript (import { klona } from 'klona';), code:javascript (import { klona } from 'klona/full';), code:javascript (import { klona } from 'klona';), klona (+11 more)
+
+### Community 324 - "Community 324"
+Cohesion: 0.10
+Nodes (19): API, code:bash (npm install --save klona), code:javascript (import { klona } from 'klona/json';), code:javascript (import { klona } from 'klona/lite';), code:javascript (import { klona } from 'klona';), code:javascript (import { klona } from 'klona/full';), code:javascript (import { klona } from 'klona';), klona (+11 more)
+
+### Community 325 - "Community 325"
+Cohesion: 0.10
+Nodes (19): API, code:bash (npm install --save klona), code:javascript (import { klona } from 'klona/json';), code:javascript (import { klona } from 'klona/lite';), code:javascript (import { klona } from 'klona';), code:javascript (import { klona } from 'klona/full';), code:javascript (import { klona } from 'klona';), klona (+11 more)
+
+### Community 326 - "Community 326"
+Cohesion: 0.11
+Nodes (17): code:bash (# 克隆代码), code:bash (# 克隆代码), code:bash (pnpm i), code:json ({), code:block5 (soybean-admin), Mock, npm scripts, VSCode插件 (+9 more)
+
+### Community 327 - "Community 327"
+Cohesion: 0.12
+Nodes (15): コマンド, changelog, cleanup, code:bash (sa cleanup), code:bash (sa update-pkg), code:bash (sa git-commit), code:bash (sa git-commit-verify), code:bash (sa changelog) (+7 more)
+
+### Community 328 - "Community 328"
+Cohesion: 0.12
+Nodes (15): 命令, changelog, cleanup, code:bash (sa cleanup), code:bash (sa update-pkg), code:bash (sa git-commit), code:bash (sa git-commit-verify), code:bash (sa changelog) (+7 more)
+
+### Community 329 - "Community 329"
+Cohesion: 0.12
+Nodes (15): changelog, cleanup, code:bash (sa cleanup), code:bash (sa update-pkg), code:bash (sa git-commit), code:bash (sa git-commit-verify), code:bash (sa changelog), code:bash (sa release) (+7 more)
+
+### Community 330 - "Community 330"
+Cohesion: 0.12
+Nodes (15): code:html (<div>), code:vue (<script lang="ts" setup>), code:html (<icon-local-custom-icon class="text-24px text-red" />), code:html (<svg-icon icon="mdi-emoticon" />), code:html (<svg-icon v-for="icon in icons" :key="icon" :icon="icon" cla), code:html (<svg-icon local-icon="custom-icon" style="font-size:24px;col), code:typescript (import { useSvgIconRender } from '@sa/hooks';), code:bash (## Include icon component data) (+7 more)
+
+### Community 331 - "Community 331"
+Cohesion: 0.12
+Nodes (15): code:html (<div>), code:vue (<script lang="ts" setup>), code:html (<icon-local-custom-icon class="text-24px text-red" />), code:html (<svg-icon icon="mdi-emoticon" />), code:html (<svg-icon v-for="icon in icons" :key="icon" :icon="icon" cla), code:html (<svg-icon local-icon="custom-icon" style="font-size:24px;col), code:typescript (import { useSvgIcon } from '@/hooks/common/icon';), code:bash (## アイコンコンポーネントデータ) (+7 more)
+
+### Community 332 - "Community 332"
+Cohesion: 0.12
+Nodes (15): code:bash (# クローン), code:bash (pnpm i), code:json ({), code:block4 (soybean-admin), Mock, npm scripts, GitHub からコードを取得, VSCode プラグイン (+7 more)
+
+### Community 333 - "Community 333"
+Cohesion: 0.12
+Nodes (15): code:html (<div>), code:vue (<script lang="ts" setup>), code:html (<icon-local-custom-icon class="text-24px text-red" />), code:html (<svg-icon icon="mdi-emoticon" />), code:html (<svg-icon v-for="icon in icons" :key="icon" :icon="icon" cla), code:html (<svg-icon local-icon="custom-icon" style="font-size:24px;col), code:typescript (import { useSvgIcon } from '@/hooks/common/icon';), code:bash (## 包含图标组件数据) (+7 more)
+
+### Community 334 - "Community 334"
+Cohesion: 0.19
+Nodes (10): useAppStore, getColumnChecks(), PaginationParams, useNaivePaginatedTable(), UseNaivePaginatedTableOptions, useNaiveTable(), UseNaiveTableOptions, useTableOperate() (+2 more)
+
+### Community 335 - "Community 335"
+Cohesion: 0.13
+Nodes (14): code:ts (import { ref } from 'vue';), code:ts (// 相当于在`created`钩子中执行), code:ts (const exposed = {), code:ts (interface Props {), code:ts (defineProps<Props>();), code:ts (interface Emits {), code:ts (defineEmits();), code:ts (const router = useRouter();) (+6 more)
+
+### Community 336 - "Community 336"
+Cohesion: 0.13
+Nodes (14): code:bash (# tsx をインストール), code:bash (npm i -g tsx), code:json ({), code:ts (function transformToKebabCase(input: string): string {), code:json ({), code:ts (// vite.config.ts), JavaScript と TypeScript のデバッグ, tsx - TypeScript 実行ツール (+6 more)
+
+### Community 337 - "Community 337"
+Cohesion: 0.13
+Nodes (14): code:ts (import { ref } from 'vue';), code:ts (// Equivalent to executing in the `created` hook), code:ts (const exposed = {), code:ts (interface Props {), code:ts (defineProps<Props>();), code:ts (interface Emits {), code:ts (defineEmits();), code:ts (const router = useRouter();) (+6 more)
+
+### Community 338 - "Community 338"
+Cohesion: 0.13
+Nodes (14): code:bash, code:bash (npm i -g tsx), code:json ({), code:ts (function transformToKebabCase(input: string): string {), code:json ({), code:ts (// vite.config.ts), Breakpoint Types, Debugging (+6 more)
+
+### Community 339 - "Community 339"
+Cohesion: 0.13
+Nodes (14): code:ts (import { ref } from 'vue';), code:ts (// 相当于在`created`钩子中执行), code:ts (const exposed = {), code:ts (interface Props {), code:ts (defineProps<Props>();), code:ts (interface Emits {), code:ts (defineEmits();), code:ts (const router = useRouter();) (+6 more)
+
+### Community 340 - "Community 340"
+Cohesion: 0.13
+Nodes (14): code:bash (# 安装 tsx), code:bash (npm i -g tsx), code:json ({), code:ts (function transformToKebabCase(input: string): string {), code:json ({), code:ts (// vite.config.ts), JavaScript 和 TypeScript 调试, tsx - TypeScript 执行利器 (+6 more)
+
+### Community 341 - "Community 341"
+Cohesion: 0.14
+Nodes (13): code:json ({), code:ts (import { useRouterPush } from '@/hooks/common/router';), code:ts (/**), code:vue (<!-- xx.vue -->), code:ts (<!-- xx.ts -->), redirectFromLogin, routerPushByKey, toggleLoginModule (+5 more)
+
+### Community 342 - "Community 342"
+Cohesion: 0.14
+Nodes (13): code:json ({), code:ts (import { useRouterPush } from '@/hooks/common/router';), code:ts (/**), code:vue (<!-- ある.vueファイル -->), code:ts (<!-- ある.tsファイル -->), redirectFromLogin, routerPushByKey, toggleLoginModule (+5 more)
+
+### Community 343 - "Community 343"
+Cohesion: 0.14
+Nodes (13): code:json ({), code:ts (import { useRouterPush } from '@/hooks/common/router';), code:ts (/**), code:vue (<!-- 某个.vue文件 -->), code:ts (<!-- 某个.ts文件 -->), redirectFromLogin, routerPushByKey, toggleLoginModule (+5 more)
+
+### Community 344 - "Community 344"
+Cohesion: 0.15
+Nodes (12): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🏡 杂务, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;🐞 错误修复 (+4 more)
+
+### Community 345 - "Community 345"
+Cohesion: 0.15
+Nodes (12): code:ts (const isHttpProxy = import.meta.env.DEV && import.meta.env.V), code:ts (import { createFlatRequest, createRequest } from '@sa/axios'), code:ts (import type { AxiosResponse } from 'axios';), code:ts (/**), code:ts (async function login() {), code:ts (async function login() {), Confirmation of Paradigm Parameters for the Create Request Instance Function, Creating a Request Instance `request` (+4 more)
+
+### Community 346 - "Community 346"
+Cohesion: 0.18
+Nodes (11): code:ts (import { themeVars } from './src/theme/vars';), code:ts (export default defineConfig<Theme>({), Principle, System Theme, Theme Tokens (CSS variables), getAntdTheme, getNaiveTheme, UnoCSS Dark Mode (class-based) (2) (+3 more)
+
+### Community 347 - "Community 347"
+Cohesion: 0.15
+Nodes (12): code:ts (const isHttpProxy = import.meta.env.DEV && import.meta.env.V), code:ts (import { createFlatRequest, createRequest } from '@sa/axios'), code:ts (import type { AxiosResponse } from 'axios';), code:ts (/**), code:ts (async function login() {), code:ts (async function login() {), 使用请求实例, リクエストのベースパスの取得 (+4 more)
+
+### Community 348 - "Community 348"
+Cohesion: 0.15
+Nodes (12): code:block1 (views), code:vue (<template>), code:vue (<template>), code:ts (function Person() {}), code:ts (let num: number = 1;), code:ts (const MAX_COUNT = 10;), code:css (.container {), code:ts (function fetchUser() {}) (+4 more)
+
+### Community 349 - "Community 349"
+Cohesion: 0.15
+Nodes (12): code:ts (const isHttpProxy = import.meta.env.DEV && import.meta.env.V), code:ts (import { createFlatRequest, createRequest } from '@sa/axios'), code:ts (import type { AxiosResponse } from 'axios';), code:ts (/**), code:ts (async function login() {), code:ts (async function login() {), 使用请求实例, 使用 (+4 more)
+
+### Community 350 - "Community 350"
+Cohesion: 0.17
+Nodes (11): Changelog, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance (+3 more)
+
+### Community 351 - "Community 351"
+Cohesion: 0.17
+Nodes (11): code:json ({), code:block5 (soybean-admin), Mock, npm scripts, Directory Structure, Environment Preparation, Install Vue - Official, disable Vetur, Plugin configuration (+3 more)
+
+### Community 352 - "Community 352"
+Cohesion: 0.17
+Nodes (11): code:bash (git config --global user.name "Soybean"), code:bash (ssh-keygen), code:bash (ssh-keygen -t rsa -C "soybeanjs@outlook.com"), code:bash (git pull origin main), code:bash (git add .), code:bash (git commit --amend --date="2022-07-29T23:45"), code:bash (git rebase -i HEAD~n  # n为要合并commit的个数), code:bash (git cherry-pick <commit_id>) (+3 more)
+
+### Community 353 - "Community 353"
+Cohesion: 0.17
+Nodes (11): code:bash (git config --global user.name "Soybean"), code:bash (ssh-keygen), code:bash (ssh-keygen -t rsa -C "soybeanjs@outlook.com"), code:bash (git pull origin main), code:bash (git add .), code:bash (git commit --amend --date="2022-07-29T23:45"), code:bash (git rebase -i HEAD~n  # n is the number of commits to merge), code:bash (git cherry-pick <commit_id>) (+3 more)
+
+### Community 354 - "Community 354"
+Cohesion: 0.17
+Nodes (11): code:bash (git config --global user.name "Soybean"), code:bash (ssh-keygen), code:bash (ssh-keygen -t rsa -C "soybeanjs@outlook.com"), code:bash (git pull origin main), code:bash (git add .), code:bash (git commit --amend --date="2022-07-29T23:45"), code:bash (git rebase -i HEAD~n  # n为要合并commit的个数), code:bash (git cherry-pick <commit_id>) (+3 more)
+
+### Community 355 - "Community 355"
+Cohesion: 0.18
+Nodes (10): code:bash (pnpm i lint-staged -D), code:json ({), code:bash (pnpm i simple-git-hooks -D), code:json ({), code:json ({), lint-staged, simple-git-hooks, ESLint と Prettier を使用したコードフォーマット (+2 more)
+
+### Community 356 - "Community 356"
+Cohesion: 0.18
+Nodes (10): code:bash (pnpm i lint-staged -D), code:json ({), code:bash (pnpm i simple-git-hooks -D), code:json ({), code:json ({), lint-staged, simple-git-hooks, Code Check (+2 more)
+
+### Community 357 - "Community 357"
+Cohesion: 0.18
+Nodes (10): code:bash (pnpm i lint-staged -D), code:json ({), code:bash (pnpm i simple-git-hooks -D), code:json ({), code:json ({), lint-staged, simple-git-hooks, 代码检查 (+2 more)
+
+### Community 358 - "Community 358"
+Cohesion: 0.31
+Nodes (10): System Loading Screenshot, UnoCSS (2), Theme Config Guide, App.Theme.ThemeSetting, overrideThemeSettings (2), App.Theme.ThemeSetting 类型, themeSettings (2), System Theme Guide (+2 more)
+
+### Community 359 - "Community 359"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;💅 Refactors (+2 more)
+
+### Community 360 - "Community 360"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;💅 Refactors (+2 more)
+
+### Community 361 - "Community 361"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors (+2 more)
+
+### Community 362 - "Community 362"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors (+2 more)
+
+### Community 363 - "Community 363"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors (+2 more)
+
+### Community 364 - "Community 364"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance (+2 more)
+
+### Community 365 - "Community 365"
+Cohesion: 0.20
+Nodes (10): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors (+2 more)
+
+### Community 366 - "Community 366"
+Cohesion: 0.20
+Nodes (4): useCaptcha(), useCountDown(), useLoading(), createHookRequest()
+
+### Community 367 - "Community 367"
+Cohesion: 0.20
+Nodes (9): code:block1 (const isHttpProxy = import.meta.env.DEV && import.meta.env.V), code:ts ({), code:ts, code:ts ({), Enable/disable, Note, Outlined, Principle (+1 more)
+
+### Community 368 - "Community 368"
+Cohesion: 0.20
+Nodes (9): 1. type RouteKey, 2. type RoutePath, 3. type RouteMeta, code:typescript (// Route meta information interface), code:typescript ({), Auto-generation, Configuration properties, Note (+1 more)
+
+### Community 369 - "Community 369"
+Cohesion: 0.20
+Nodes (9): code:block1 (const isHttpProxy = import.meta.env.DEV && import.meta.env.V), code:ts ({), code:ts, code:ts, 原理, 注意, プロキシ, 有効化/無効化 (+1 more)
+
+### Community 370 - "Community 370"
+Cohesion: 0.20
+Nodes (9): 1. type RouteKey, 2. type RoutePath, 3. type RouteMeta, code:typescript (// ルート元情報インタフェース), code:typescript ({), 注意, システムルート, 自動生成 (+1 more)
+
+### Community 371 - "Community 371"
+Cohesion: 0.20
+Nodes (9): code:block1 (views), code:vue (<template>), code:vue (<template>), code:ts (function Person() {}), code:ts (let num: number = 1;), code:ts (const MAX_COUNT = 10;), code:css (.container {), code:ts (function fetchUser() {}) (+1 more)
+
+### Community 372 - "Community 372"
+Cohesion: 0.20
+Nodes (9): code:block1 (const isHttpProxy = import.meta.env.DEV && import.meta.env.V), code:ts ({), code:ts, code:ts, 原理, 注意, 代理, 开启/关闭 (+1 more)
+
+### Community 373 - "Community 373"
+Cohesion: 0.20
+Nodes (9): 1. type RouteKey, 2. type RoutePath, 3. type RouteMeta, code:typescript (// 路由元信息接口), code:typescript ({), 注意, 系统路由, 自动生成 (+1 more)
+
+### Community 374 - "Community 374"
+Cohesion: 0.20
+Nodes (9): code:block1 (views), code:vue (<template>), code:vue (<template>), code:ts (function Person() {}), code:ts (let num: number = 1;), code:ts (const MAX_COUNT = 10;), code:css (.container {), code:ts (function fetchUser() {}) (+1 more)
+
+### Community 375 - "Community 375"
+Cohesion: 0.31
+Nodes (10): git-commit-verify Command, @soybeanjs/cli (2), 代码规范总述（中文）, Formatting Check Standard (ESLint/Prettier, lint-staged, simple-git-hooks), lint-staged, 格式化检查（Lint 规范）, simple-git-hooks (4), @soybeanjs/eslint-config (2) (+2 more)
+
+### Community 376 - "Community 376"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 377 - "Community 377"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 378 - "Community 378"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 379 - "Community 379"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 380 - "Community 380"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 381 - "Community 381"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 382 - "Community 382"
+Cohesion: 0.22
+Nodes (9): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, &nbsp;&nbsp;&nbsp;🎨 Styles (+1 more)
+
+### Community 383 - "Community 383"
+Cohesion: 0.22
+Nodes (8): Basic knowledge you need to master, Branch, Browser Support, Documentation, Features, How to Join Us, Introduction, Version
+
+### Community 384 - "Community 384"
+Cohesion: 0.22
+Nodes (8): 介绍, 分支, 如何加入我们, 文档, 浏览器支持, 版本, 特性, 需要掌握的基础知识
+
+### Community 385 - "Community 385"
+Cohesion: 0.42
+Nodes (9): System Icons Guide, Iconify, Local SVG Icon Rendering, unplugin-icons (2), vite-plugin-svg-icons (2), Icon Tutorial, Offline Iconify Icon Loading, SvgIcon Global Component (+1 more)
+
+### Community 386 - "Community 386"
+Cohesion: 0.28
+Nodes (9): Local Icon mechanism, favicon.svg (SoybeanAdmin browser tab icon), SoybeanAdmin 站点 logo (public/logo.svg), SoybeanAdmin Logo, Local SVG Icon Collection (base-web svg-icon assets), 本地 logo 图标 (svg-icon/logo.svg), System Loading Guide, System Logo Guide (+1 more)
+
+### Community 387 - "Community 387"
+Cohesion: 0.28
+Nodes (9): Alova (3), Alova Recommendation Doc, Recommended Technologies Preface, 推荐技术前言（中文）, klona Recommendation Doc, klona (2), PageSpy Recommendation Doc, PageSpy (+1 more)
+
+### Community 388 - "Community 388"
+Cohesion: 0.39
+Nodes (9): 调试教程（VSCode Debugging）, Debugging Tutorial (JP), VSCode launch.json Debug Configuration, VSCode TS Debugger Launch Config, TS Debugger launch.json 配置, tsx TypeScript Runner, VSCode Debugging Guide, VSCode Vue Debugger Launch Config (+1 more)
+
+### Community 389 - "Community 389"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.3.0](https://github.com/soybeanjs/soybean-admin/compare/v1.2.8...v1.3.0) (2024-07-22)
+
+### Community 390 - "Community 390"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.1.0](https://github.com/honghuangdc/soybean-admin/compare/v1.0.9...v1.1.0) (2024-05-07)
+
+### Community 391 - "Community 391"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;🎨 Styles, [v2.0.1](https://github.com/soybeanjs/soybean-admin/compare/v2.0.0...v2.0.1) (2025-12-04)
+
+### Community 392 - "Community 392"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.9.8](https://github.com/honghuangdc/soybean-admin/compare/v0.9.7...v0.9.8) (2023-01-15)
+
+### Community 393 - "Community 393"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.9.6](https://github.com/honghuangdc/soybean-admin/compare/v0.9.5...v0.9.6) (2022-06-16)
+
+### Community 394 - "Community 394"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.9.4](https://github.com/honghuangdc/soybean-admin/compare/main-0428...v0.9.4) (2022-04-29)
+
+### Community 395 - "Community 395"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.9.2](https://github.com/honghuangdc/soybean-admin/compare/v0.9.1...v0.9.2) (2022-02-11)
+
+### Community 396 - "Community 396"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.3.15](https://github.com/soybeanjs/soybean-admin/compare/v1.3.14...v1.3.15) (2025-06-24)
+
+### Community 397 - "Community 397"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.3.14](https://github.com/soybeanjs/soybean-admin/compare/v1.3.13...v1.3.14) (2025-06-09)
+
+### Community 398 - "Community 398"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;🎨 Styles, [v1.3.5](https://github.com/soybeanjs/soybean-admin/compare/v1.3.4...v1.3.5) (2024-09-07)
+
+### Community 399 - "Community 399"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 Bug 修复, &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🚀 新功能, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;🎨 样式, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.3.5](https://github.com/soybeanjs/soybean-admin/compare/v1.3.4...v1.3.5) (2024-09-07)
+
+### Community 400 - "Community 400"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🚀 功能, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;💅 重构, &nbsp;&nbsp;&nbsp;🐞 错误修复, [v1.1.0](https://github.com/honghuangdc/soybean-admin/compare/v1.0.9...v1.1.0) (2024-05-07)
+
+### Community 401 - "Community 401"
+Cohesion: 0.25
+Nodes (8): &nbsp;&nbsp;&nbsp;🐞 修复, &nbsp;&nbsp;&nbsp;🚀 功能, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂务, &nbsp;&nbsp;&nbsp;🚨 破坏性变更, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;💅 重构, [v1.3.0](https://github.com/soybeanjs/soybean-admin/compare/v1.2.8...v1.3.0) (2024-07-22)
+
+### Community 402 - "Community 402"
+Cohesion: 0.25
+Nodes (7): Changelog 描述（非新功能可选）, 后续计划（非新功能可选）, 实现方案和 API（非新功能可选）, 对用户的影响和可能的风险（非新功能可选）, 请求合并前的自查清单, 这个变动的性质是, 需求背景
+
+### Community 403 - "Community 403"
+Cohesion: 0.25
+Nodes (7): Additional Plan? (Optional if not new feature), API Realization (Optional if not new feature), Changelog description (Optional if not new feature), Self Check before Merge, This is a ..., What's the background?, What's the effect? (Optional if not new feature)
+
+### Community 404 - "Community 404"
+Cohesion: 0.25
+Nodes (7): code:dotenv:line-numbers=14 (# auth route mode: static | dynamic), Dynamic Routes, Enable/Disable, Fixed Routes (Routes Accessible Without Permission), Guide, Permission Routes, Route Permissions
+
+### Community 405 - "Community 405"
+Cohesion: 0.25
+Nodes (8): code:ts ({), code:ts ({), code:block8 (views), code:block9 (views), Folder structure, Generated routes, Multi-level route (level 3 route and above), Transformed Vue routes
+
+### Community 406 - "Community 406"
+Cohesion: 0.25
+Nodes (8): code:block4 (views), code:block5 (views), code:ts ({), code:ts ({), Folder structure, Generated routes, Secondary route, Transformed Vue routes
+
+### Community 407 - "Community 407"
+Cohesion: 0.25
+Nodes (7): code:ts (export const themeSettings: App.Theme.ThemeSetting = {), code:ts (export const overrideThemeSettings: Partial<App.Theme.ThemeS), About Environment, Initial Config, Override Update, Theme Config, Typedef
+
+### Community 408 - "Community 408"
+Cohesion: 0.29
+Nodes (7): code:ts (/**), code:vue (<template>), code:ts (/**), code:vue (<template>), AntDesignVue Theme Configuration, NaiveUI Theme Configuration, UI Theme
+
+### Community 409 - "Community 409"
+Cohesion: 0.25
+Nodes (7): ドキュメント, ブラウザサポート, ブランチ, 参加方法, 学ぶべき基本知識, 特徴, 紹介
+
+### Community 410 - "Community 410"
+Cohesion: 0.25
+Nodes (7): code:dotenv:line-numbers=14 (# 認証ルートモード: static ｜ dynamic), ガイド, ルート権限, 動的ルート, 固定ルート（権限不要でアクセス可能なルート）, 有効化/無効化, 権限ルート
+
+### Community 411 - "Community 411"
+Cohesion: 0.25
+Nodes (7): code:ts (/**), code:vue (<template>), code:ts (/**), code:vue (<template>), AntDesignVue のテーマ設定, NaiveUI のテーマ設定, コンポーネントライブラリのテーマ
+
+### Community 412 - "Community 412"
+Cohesion: 0.25
+Nodes (7): code:dotenv:line-numbers=14 (# auth route mode: static ｜ dynamic), 动态路由, 固定路由(无需权限即可进入的路由), 开启/关闭, 指引, 权限路由, 路由权限
+
+### Community 413 - "Community 413"
+Cohesion: 0.25
+Nodes (7): code:ts (export const themeSettings: App.Theme.ThemeSetting = {), code:ts (export const overrideThemeSettings: Partial<App.Theme.ThemeS), 主题配置, 初始化配置, 环境说明, 类型定义, 配置覆盖更新
+
+### Community 414 - "Community 414"
+Cohesion: 0.25
+Nodes (7): code:ts (/**), code:vue (<template>), code:ts (/**), code:vue (<template>), AntDesignVue 主题配置, NaiveUI 主题配置, 组件库主题
+
+### Community 415 - "Community 415"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🎨 Styles, [v1.3.8](https://github.com/soybeanjs/soybean-admin/compare/v1.3.7...v1.3.8) (2024-10-25)
+
+### Community 416 - "Community 416"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;💅 Refactors, [v2.1.1](https://github.com/soybeanjs/soybean-admin/compare/v2.1.0...v2.1.1) (2026-05-13)
+
+### Community 417 - "Community 417"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.2.6](https://github.com/honghuangdc/soybean-admin/compare/v1.2.5...v1.2.6) (2024-06-21)
+
+### Community 418 - "Community 418"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;🔥 Performance, [v1.2.5](https://github.com/soybeanjs/soybean-admin/compare/v1.2.4...v1.2.5) (2024-06-15)
+
+### Community 419 - "Community 419"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.0.6](https://github.com/soybeanjs/soybean-admin/compare/v1.0.5...v1.0.6) (2024-04-25)
+
+### Community 420 - "Community 420"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.0.3](https://github.com/soybeanjs/soybean-admin/compare/v1.0.2...v1.0.3) (2024-04-16)
+
+### Community 421 - "Community 421"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🔥 Performance, [v1.0.0-beta.2](https://github.com/soybeanjs/soybean-admin/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-03-27)
+
+### Community 422 - "Community 422"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.0.5](https://github.com/honghuangdc/soybean-admin/compare/v0.0.4...v0.0.5) (2021-11-28)
+
+### Community 423 - "Community 423"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.0.4](https://github.com/honghuangdc/soybean-admin/compare/v0.0.3...v0.0.4) (2021-11-25)
+
+### Community 424 - "Community 424"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.3.11](https://github.com/soybeanjs/soybean-admin/compare/v1.3.10...v1.3.11) (2025-01-19)
+
+### Community 425 - "Community 425"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.3.10](https://github.com/honghuangdc/soybean-admin/compare/v1.3.9...v1.3.10) (2024-12-16)
+
+### Community 426 - "Community 426"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.3.2](https://github.com/honghuangdc/soybean-admin/compare/v1.3.1...v1.3.2) (2024-07-30)
+
+### Community 427 - "Community 427"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.3.9](https://github.com/soybeanjs/soybean-admin/compare/v1.3.8...v1.3.9) (2024-11-17)
+
+### Community 428 - "Community 428"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🐞 Bug 修复, &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🚀 新功能, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.3.2](https://github.com/honghuangdc/soybean-admin/compare/v1.3.1...v1.3.2) (2024-07-30)
+
+### Community 429 - "Community 429"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🤖 CI, &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🐞 修复, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂务, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.2.6](https://github.com/honghuangdc/soybean-admin/compare/v1.2.5...v1.2.6) (2024-06-21)
+
+### Community 430 - "Community 430"
+Cohesion: 0.29
+Nodes (7): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🔥 性能, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;🐞 错误修复, [v1.2.5](https://github.com/soybeanjs/soybean-admin/compare/v1.2.4...v1.2.5) (2024-06-15)
+
+### Community 431 - "Community 431"
+Cohesion: 0.29
+Nodes (7): code:bash (# Clone the code), code:bash (# Clone the code), code:bash (pnpm i), Get code from Gitee, Get the Code from GitHub, Getting the Code, Install dependencies
+
+### Community 432 - "Community 432"
+Cohesion: 0.29
+Nodes (7): code:block1 (views), code:ts ({), code:ts ({), Folder structure, Generated routes, One-level route (single-level route), Transformed Vue routes
+
+### Community 433 - "Community 433"
+Cohesion: 0.29
+Nodes (7): code:block14 (views), code:ts ({), code:ts (import type { RouteKey } from '@elegant-router/types';), Advanced parameter route, Folder structure, Generated routes, Parameter Route
+
+### Community 434 - "Community 434"
+Cohesion: 0.29
+Nodes (6): code:ts (export const themeSettings: App.Theme.ThemeSetting = {), code:ts (export const overrideThemeSettings: Partial<App.Theme.ThemeS), テーマ設定, 初期設定, 型定義, 設定の上書き更新
+
+### Community 435 - "Community 435"
+Cohesion: 0.29
+Nodes (6): 同步上游代码 cherry-pick 工作流, Donate, Donation List, SbUiPromo SoybeanUI 推广组件, SoybeanAdmin 中文首页（VitePress home）, SoybeanJS 团队成员列表
+
+### Community 436 - "Community 436"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🚨 Breaking Changes, &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.3.7](https://github.com/soybeanjs/soybean-admin/compare/v1.3.6...v1.3.7) (2024-09-21)
+
+### Community 437 - "Community 437"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.1.4](https://github.com/honghuangdc/soybean-admin/compare/v1.1.3...v1.1.4) (2024-06-06)
+
+### Community 438 - "Community 438"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.1.3](https://github.com/soybeanjs/soybean-admin/compare/v1.1.2...v1.1.3) (2024-06-02)
+
+### Community 439 - "Community 439"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, [v1.1.1](https://github.com/soybeanjs/soybean-admin/compare/v1.1.0...v1.1.1) (2024-05-20)
+
+### Community 440 - "Community 440"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.1.0-beta.2](https://github.com/honghuangdc/soybean-admin/compare/v1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)
+
+### Community 441 - "Community 441"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🚀 Features, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.1.0-beta.1](https://github.com/soybeanjs/soybean-admin/compare/v1.0.9...v1.1.0-beta.1) (2024-05-07)
+
+### Community 442 - "Community 442"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, [v1.0.9](https://github.com/soybeanjs/soybean-admin/compare/v1.0.8...v1.0.9) (2024-05-05)
+
+### Community 443 - "Community 443"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.0.4](https://github.com/soybeanjs/soybean-admin/compare/v1.0.3...v1.0.4) (2024-04-24)
+
+### Community 444 - "Community 444"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🔥 Performance, [v0.10.3](https://github.com/honghuangdc/soybean-admin/compare/v0.10.2...v0.10.3) (23-06-15)
+
+### Community 445 - "Community 445"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, [v2.0.0-beta.2](https://github.com/soybeanjs/soybean-admin/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2025-10-27)
+
+### Community 446 - "Community 446"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v1.3.13](https://github.com/soybeanjs/soybean-admin/compare/v1.3.12...v1.3.13) (2025-03-19)
+
+### Community 447 - "Community 447"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.3.6](https://github.com/soybeanjs/soybean-admin/compare/v1.3.5...v1.3.6) (2024-09-20)
+
+### Community 448 - "Community 448"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.2.8](https://github.com/soybeanjs/soybean-admin/compare/v1.2.7...v1.2.8) (2024-07-20)
+
+### Community 449 - "Community 449"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;🐞 错误修复, [v1.1.4](https://github.com/honghuangdc/soybean-admin/compare/v1.1.3...v1.1.4) (2024-06-06)
+
+### Community 450 - "Community 450"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;🐞 错误修复, [v1.1.3](https://github.com/soybeanjs/soybean-admin/compare/v1.1.2...v1.1.3) (2024-06-02)
+
+### Community 451 - "Community 451"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🐞 修复的错误, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🚀 特性, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.1.0-beta.2](https://github.com/honghuangdc/soybean-admin/compare/v1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)
+
+### Community 452 - "Community 452"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 修复, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂务, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;💅 重构, [v1.2.8](https://github.com/soybeanjs/soybean-admin/compare/v1.2.7...v1.2.8) (2024-07-20)
+
+### Community 453 - "Community 453"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🐞 修复错误, &nbsp;&nbsp;&nbsp;🚀 功能, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.1.1](https://github.com/soybeanjs/soybean-admin/compare/v1.1.0...v1.1.1) (2024-05-20)
+
+### Community 454 - "Community 454"
+Cohesion: 0.33
+Nodes (6): &nbsp;&nbsp;&nbsp;🚀 功能, &nbsp;&nbsp;&nbsp;🏡 杂务, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;💅 重构, &nbsp;&nbsp;&nbsp;🐞 错误修复, [v1.1.0-beta.1](https://github.com/soybeanjs/soybean-admin/compare/v1.0.9...v1.1.0-beta.1) (2024-05-07)
+
+### Community 455 - "Community 455"
+Cohesion: 0.33
+Nodes (3): local, local, locales
+
+### Community 456 - "Community 456"
+Cohesion: 0.33
+Nodes (5): code:bash (git log example..rev3-admin-base-web --oneline    # 只在 rev3-), rev3-admin-base-web 分支來源紀錄, 如何比對 rev3-admin-base-web 與來源的差異, 歷史說明, 注意事項
+
+### Community 457 - "Community 457"
+Cohesion: 0.33
+Nodes (5): Icon Rendering Principle, Local svg icon rendering principle, Note, Related configuration, System Icons
+
+### Community 458 - "Community 458"
+Cohesion: 0.33
+Nodes (5): code:ts (type Response<T = unknown> = {), Backend Integration, Configure other codes related to backend requests, Configure the success code of backend request, Confirm the data structure type of the backend return result
+
+### Community 459 - "Community 459"
+Cohesion: 0.33
+Nodes (5): code:ts (interface RequestOption<ResponseData = any> {), Introduction to Request Functions, Introduction to Request Related Configuration, Multiple Request Environments, Request
+
+### Community 460 - "Community 460"
+Cohesion: 0.33
+Nodes (5): code:bash (git remote add otherOrigin https://github.com/soybeanjs/soyb), code:bash (git fetch otherOrigin), code:bash (git cherry-pick [commit id]), code:bash (git cherry-pick --continue), Sync code
+
+### Community 461 - "Community 461"
+Cohesion: 0.33
+Nodes (5): code:ts (export function setupLoading() {), code:typescript (async function setupApp() {), Rendering Principle, Style, System Loading
+
+### Community 462 - "Community 462"
+Cohesion: 0.33
+Nodes (5): iconify アイコンのレンダリング原理, システムアイコン, ローカル svg アイコンのレンダリング原理, 注意事項, 関連設定
+
+### Community 463 - "Community 463"
+Cohesion: 0.33
+Nodes (5): code:ts (type Response<T = unknown> = {), その他のバックエンドリクエストに関連する code の設定, バックエンドとの連携, バックエンドのレスポンスデータ構造の確認, バックエンドリクエスト成功時の code の設定
+
+### Community 464 - "Community 464"
+Cohesion: 0.33
+Nodes (5): code:ts (interface RequestOption<ResponseData = any> {), リクエスト, リクエスト関数の紹介, リクエスト関連の設定紹介, 複数のリクエスト環境
+
+### Community 465 - "Community 465"
+Cohesion: 0.33
+Nodes (5): code:bash (git remote add otherOrigin https://github.com/soybeanjs/soyb), code:bash (git fetch otherOrigin), code:bash (git cherry-pick [commit id]), code:bash (git cherry-pick --continue), コードの同期
+
+### Community 466 - "Community 466"
+Cohesion: 0.33
+Nodes (5): code:ts (export function setupLoading() {), code:typescript (async function setupApp() {), 样式, システムロード, 描画原理
+
+### Community 467 - "Community 467"
+Cohesion: 0.33
+Nodes (5): PageSpy, 背景, 機能, 紹介, 関連リンク
+
+### Community 468 - "Community 468"
+Cohesion: 0.33
+Nodes (5): PageSpy, Background, Capabilities, Introduction, Related Links
+
+### Community 469 - "Community 469"
+Cohesion: 0.33
+Nodes (5): iconify 图标渲染原理, 本地 svg 图标渲染原理, 相关配置, 系统图标, 请注意
+
+### Community 470 - "Community 470"
+Cohesion: 0.33
+Nodes (5): code:ts (type Response<T = unknown> = {), 对接后端, 确认后端的返回结果的数据结构类型, 配置其他后端请求相关的 code, 配置后端请求成功的 code
+
+### Community 471 - "Community 471"
+Cohesion: 0.33
+Nodes (5): code:ts (interface RequestOption<ResponseData = any> {), 多个请求环境, 请求, 请求函数介绍, 请求相关配置介绍
+
+### Community 472 - "Community 472"
+Cohesion: 0.33
+Nodes (5): code:bash (git remote add otherOrigin https://github.com/soybeanjs/soyb), code:bash (git fetch otherOrigin), code:bash (git cherry-pick [commit id]), code:bash (git cherry-pick --continue), 同步代码
+
+### Community 473 - "Community 473"
+Cohesion: 0.33
+Nodes (5): code:ts (export function setupLoading() {), code:typescript (async function setupApp() {), 样式, 渲染原理, 系统加载
+
+### Community 474 - "Community 474"
+Cohesion: 0.33
+Nodes (5): PageSpy, 背景, 介绍, 相关链接, 能力
+
+### Community 475 - "Community 475"
+Cohesion: 0.67
+Nodes (6): 权限路由 (Auth Routes), 固定路由 (Constant Routes), not-found 捕获 (Not-Found Capture), 权限路由守卫 (Permission Route Guard), SoybeanAdmin 路由跳转流程图 (Route Guard Flow Diagram), 路由初始化 (Route Initialization)
+
+### Community 476 - "Community 476"
+Cohesion: 0.33
+Nodes (5): code:bash (git log main..rev3-admin-rust-api --oneline      # 只在 rev3-a), rev3-admin-rust-api 分支來源紀錄, 如何比對 rev3-admin-rust-api 與 main 的差異, 歷史說明, 注意事項
+
+### Community 477 - "Community 477"
+Cohesion: 0.50
+Nodes (5): VSCode Debug Guide 02 — Active tsx Debug Session Screenshot, VS Code Debug Toolbar (调试选项), transformToKebabCase (debug.ts sample function), TS Debugger launch.json Configuration, VSCode Debugging Tutorial (tutorial/debug.md)
+
+### Community 478 - "Community 478"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v1.2.3](https://github.com/soybeanjs/soybean-admin/compare/v1.2.2...v1.2.3) (2024-06-13)
+
+### Community 479 - "Community 479"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, [v1.2.2](https://github.com/honghuangdc/soybean-admin/compare/v1.2.1...v1.2.2) (2024-06-12)
+
+### Community 480 - "Community 480"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v1.2.1](https://github.com/honghuangdc/soybean-admin/compare/v1.2.0...v1.2.1) (2024-06-07)
+
+### Community 481 - "Community 481"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🔥 Performance, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.0.8](https://github.com/soybeanjs/soybean-admin/compare/v1.0.7...v1.0.8) (2024-04-27)
+
+### Community 482 - "Community 482"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;💅 Refactors, [v1.0.2](https://github.com/soybeanjs/soybean-admin/compare/v1.0.1...v1.0.2) (2024-04-08)
+
+### Community 483 - "Community 483"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v1.0.1](https://github.com/soybeanjs/soybean-admin/compare/v1.0.0...v1.0.1) (2024-04-03)
+
+### Community 484 - "Community 484"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v0.10.2](https://github.com/honghuangdc/soybean-admin/compare/v0.10.1...v0.10.2) (2023-06-01)
+
+### Community 485 - "Community 485"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.1.3](https://github.com/honghuangdc/soybean-admin/compare/v0.1.2...v0.1.3) (2022-01-24)
+
+### Community 486 - "Community 486"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🚀 Features, [v1.3.12](https://github.com/soybeanjs/soybean-admin/compare/v1.3.11...v1.3.12) (2025-03-12)
+
+### Community 487 - "Community 487"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🎨 Styles, [v1.3.1](https://github.com/honghuangdc/soybean-admin/compare/v1.3.0...v1.3.1) (2024-07-22)
+
+### Community 488 - "Community 488"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;📦 Build, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;💅 Refactors, [v0.0.3](https://github.com/honghuangdc/soybean-admin/compare/v0.0.2...v0.0.3) (2021-11-23)
+
+### Community 489 - "Community 489"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 Bug 修复, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🎨 样式, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.3.1](https://github.com/honghuangdc/soybean-admin/compare/v1.3.0...v1.3.1) (2024-07-22)
+
+### Community 490 - "Community 490"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🛠 优化, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;🚨 重大变更, [v1.3.4](https://github.com/honghuangdc/soybean-admin/compare/v1.3.3...v1.3.4) (2024-08-01)
+
+### Community 491 - "Community 491"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 修复错误, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 杂项, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.2.3](https://github.com/soybeanjs/soybean-admin/compare/v1.2.2...v1.2.3) (2024-06-13)
+
+### Community 492 - "Community 492"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 修复错误, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🚀 特性, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.2.2](https://github.com/honghuangdc/soybean-admin/compare/v1.2.1...v1.2.2) (2024-06-12)
+
+### Community 493 - "Community 493"
+Cohesion: 0.40
+Nodes (5): &nbsp;&nbsp;&nbsp;🐞 修复错误, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;🏡 日常任务, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.2.1](https://github.com/honghuangdc/soybean-admin/compare/v1.2.0...v1.2.1) (2024-06-07)
+
+### Community 494 - "Community 494"
+Cohesion: 0.40
+Nodes (4): git-hooks を無効化する方法, はじめに, code:shell (git add .), Git Hooks
+
+### Community 495 - "Community 495"
+Cohesion: 0.40
+Nodes (4): Remove git-hooks, Write in the front, code:shell (git add .), Git Hooks
+
+### Community 496 - "Community 496"
+Cohesion: 0.40
+Nodes (4): 写在前面, 移除git-hooks, code:shell (git add .), Git Hooks
+
+### Community 497 - "Community 497"
+Cohesion: 0.40
+Nodes (4): 1、カスタム管理システム開発, 2、企業向けアウトソーシングサービス, 3、お問い合わせ, 協力事項
+
+### Community 498 - "Community 498"
+Cohesion: 0.40
+Nodes (4): 1、定制化管理后台开发, 2、企业外包服务, 3、联系方式, 合作事项
+
+### Community 499 - "Community 499"
+Cohesion: 0.40
+Nodes (4): Layout components, Mixed components of layout and page, Page components, Routing component
+
+### Community 500 - "Community 500"
+Cohesion: 0.40
+Nodes (5): code:block12 (views), code:ts ({), Folder structure, Generated routes, Ignore folder aggregation routes
+
+### Community 501 - "Community 501"
+Cohesion: 0.40
+Nodes (4): code:ts ({), 原理, ルートキャッシュ, 使い方
+
+### Community 502 - "Community 502"
+Cohesion: 0.40
+Nodes (4): ページコンポーネント, ルートコンポーネント, レイアウトとページの混合コンポーネント, レイアウトコンポーネント
+
+### Community 503 - "Community 503"
+Cohesion: 0.40
+Nodes (4): code:ts (import { themeVars } from './src/theme/vars';), code:block2 (export default defineConfig<Theme>({), UnoCSS のダークモード, UnoCSS テーマ
+
+### Community 504 - "Community 504"
+Cohesion: 0.40
+Nodes (4): code:ts ({), 原理, 用法, 路由缓存
+
+### Community 505 - "Community 505"
+Cohesion: 0.40
+Nodes (4): 布局和页面的混合组件, 布局组件, 路由组件, 页面组件
+
+### Community 506 - "Community 506"
+Cohesion: 0.40
+Nodes (4): code:ts (import { themeVars } from './src/theme/vars';), code:ts (export default defineConfig<Theme>({), UnoCSS 主题, UnoCSS 的暗黑模式
+
+### Community 507 - "Community 507"
+Cohesion: 0.50
+Nodes (3): Admin 类型, 周边生态, 开源项目或作品
+
+### Community 508 - "Community 508"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, [v1.1.5](https://github.com/soybeanjs/soybean-admin/compare/v1.1.4...v1.1.5) (2024-06-06)
+
+### Community 509 - "Community 509"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, [v2.0.2](https://github.com/soybeanjs/soybean-admin/compare/v2.0.1...v2.0.2) (2025-12-23)
+
+### Community 510 - "Community 510"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🐞 Bug Fixes, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🛠 Optimizations, [v1.1.2](https://github.com/soybeanjs/soybean-admin/compare/v1.1.1...v1.1.2) (2024-05-24)
+
+### Community 511 - "Community 511"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;🚀 Features, [v1.0.7](https://github.com/soybeanjs/soybean-admin/compare/v1.0.6...v1.0.7) (2024-04-25)
+
+### Community 512 - "Community 512"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v1.0.5](https://github.com/honghuangdc/soybean-admin/compare/v1.0.4...v1.0.5) (2024-04-24)
+
+### Community 513 - "Community 513"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v1.0.0-beta.3](https://github.com/soybeanjs/soybean-admin/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-03-31)
+
+### Community 514 - "Community 514"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🏡 Chore, &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, [v0.10.1](https://github.com/honghuangdc/soybean-admin/compare/v0.10.0...v0.10.1) (2023-05-31)
+
+### Community 515 - "Community 515"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;❤️ Contributors, &nbsp;&nbsp;&nbsp;📖 Documentation, &nbsp;&nbsp;&nbsp;🚀 Features, [v1.2.0](https://github.com/soybeanjs/soybean-admin/compare/v1.1.5...v1.2.0) (2024-06-06)
+
+### Community 516 - "Community 516"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🐞 Bug 修复, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.3.3](https://github.com/honghuangdc/soybean-admin/compare/v1.3.2...v1.3.3) (2024-07-30)
+
+### Community 517 - "Community 517"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🚀 功能, &nbsp;&nbsp;&nbsp;📖 文档, &nbsp;&nbsp;&nbsp;❤️ 贡献者, [v1.2.0](https://github.com/soybeanjs/soybean-admin/compare/v1.1.5...v1.2.0) (2024-06-06)
+
+### Community 518 - "Community 518"
+Cohesion: 0.50
+Nodes (4): &nbsp;&nbsp;&nbsp;🏡 杂务, &nbsp;&nbsp;&nbsp;❤️ 贡献者, &nbsp;&nbsp;&nbsp;🐞 错误修复, [v1.1.5](https://github.com/soybeanjs/soybean-admin/compare/v1.1.4...v1.1.5) (2024-06-06)
+
+### Community 519 - "Community 519"
+Cohesion: 0.50
+Nodes (3): Command Creation, Manual Creation, Route Creation
+
+### Community 520 - "Community 520"
+Cohesion: 0.50
+Nodes (3): コマンドで作成, ルートの作成, 手動で作成
+
+### Community 521 - "Community 521"
+Cohesion: 0.50
+Nodes (3): Alova, 紹介, 関連リンク
+
+### Community 522 - "Community 522"
+Cohesion: 0.50
+Nodes (3): @soybeanjs/cli, 紹介, 関連リンク
+
+### Community 523 - "Community 523"
+Cohesion: 0.50
+Nodes (3): Alova, Introduce, Related links
+
+### Community 524 - "Community 524"
+Cohesion: 0.50
+Nodes (3): @soybeanjs/cli, Introduce, Related links
+
+### Community 525 - "Community 525"
+Cohesion: 0.50
+Nodes (3): 命令创建, 手动创建, 路由创建
+
+### Community 526 - "Community 526"
+Cohesion: 0.50
+Nodes (3): Alova, 介绍, 相关链接
+
+### Community 527 - "Community 527"
+Cohesion: 0.50
+Nodes (3): @soybeanjs/cli, 介绍, 相关链接
 
 ## Knowledge Gaps
-- **991 isolated node(s):** `ignorePatterns`, `printWidth`, `singleQuote`, `trailingComma`, `arrowParens` (+986 more)
+- **2328 isolated node(s):** `ignorePatterns`, `printWidth`, `singleQuote`, `trailingComma`, `arrowParens` (+2323 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **59 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **92 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `localStg` connect `Auth Store & Tokens` to `loading.ts`, `Service Request Layer`, `Router Guard Flow`, `route.ts`, `index.ts`, `Tab Management Utils`, `Theme Token Engine`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `useAuthStore` connect `Auth Store & Tokens` to `Service Request Layer`, `route.ts`, `User & Captcha APIs`, `SVG Icons & Route Utils`, `Theme Token Engine`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `SoybeanAdmin` connect `Ecosystem Projects` to `FAQ & Deployment Issues`, `Icons & UnoCSS Styling`, `Elegant Router`, `Elegant Router (automated file-based rou`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `Changelog` connect `Community 319` to `Community 512`, `Community 513`, `Community 514`, `Community 515`, `Community 382`, `Community 389`, `Community 390`, `Community 391`, `Community 392`, `Community 393`, `Community 394`, `Community 395`, `Community 396`, `Community 397`, `Community 398`, `Community 415`, `Community 416`, `Community 417`, `Community 418`, `Community 419`, `Community 420`, `Community 421`, `Community 422`, `Community 423`, `Community 424`, `Community 425`, `Community 426`, `Community 427`, `Community 436`, `Community 437`, `Community 438`, `Community 439`, `Community 440`, `Community 441`, `Community 442`, `Community 443`, `Community 444`, `Community 445`, `Community 446`, `Community 447`, `Community 448`, `Community 380`, `Community 478`, `Community 479`, `Community 480`, `Community 481`, `Community 482`, `Community 483`, `Community 484`, `Community 485`, `Community 486`, `Community 359`, `Community 360`, `Community 487`, `Community 361`, `Community 362`, `Community 363`, `Community 364`, `Community 365`, `Community 488`, `Community 381`, `Community 376`, `Community 377`, `Community 378`, `Community 379`, `Community 508`, `Community 509`, `Community 510`, `Community 511`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+- **Why does `[v1.0.9](https://github.com/soybeanjs/soybean-admin/compare/v1.0.8...v1.0.9) (2024-05-05)` connect `Community 442` to `Community 319`?**
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
+- **Why does `[v0.10.1](https://github.com/honghuangdc/soybean-admin/compare/v0.10.0...v0.10.1) (2023-05-31)` connect `Community 514` to `Community 319`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `ignorePatterns`, `printWidth`, `singleQuote` to the rest of the system?**
-  _1006 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _2342 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Service Request Layer` be split into smaller, more focused modules?**
-  _Cohesion score 0.06428988895382817 - nodes in this community are weakly interconnected._
-- **Should `Debugging & Routing Docs` be split into smaller, more focused modules?**
-  _Cohesion score 0.05656565656565657 - nodes in this community are weakly interconnected._
-- **Should `Icons & UnoCSS Styling` be split into smaller, more focused modules?**
-  _Cohesion score 0.05380852550663871 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10756302521008404 - nodes in this community are weakly interconnected._
+- **Should `Router Guard Flow` be split into smaller, more focused modules?**
+  _Cohesion score 0.12923076923076923 - nodes in this community are weakly interconnected._
+- **Should `CLI Scripts Package` be split into smaller, more focused modules?**
+  _Cohesion score 0.05505279034690799 - nodes in this community are weakly interconnected._

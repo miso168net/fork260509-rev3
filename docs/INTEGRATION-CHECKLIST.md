@@ -35,19 +35,19 @@
 
 ### 3.1 000-base-web-docker-bootstrap follow-up
 
-- [ ] `getUserList` 的 CDP 瀏覽器流量補抓（curl 直送 ≠ modal 對齊;等 dynamic 接線後 CDP smoke 一併,詳 000 文件 §7）
+- [x] ✅（2026-06-13）`getUserList` CDP 瀏覽器流量補抓 → `tests/000-.../getuserlist-cdp-capture.json`（mock 版;rust-api 版由接線 feature CDP smoke 覆蓋）
 - [ ] dynamic route mode 切換後重抓 `/route/*` 真實瀏覽器流量（對象屆時為 rust-api,詳 000 文件 §7）
-- [ ] `cdp-nav/login/clear-and-relogin.mjs` rev3 改 port 版未重測（下次用到先驗一輪）
+- [x] ✅（2026-06-13）`cdp-nav/login/clear-and-relogin.mjs` 三支重測全通過（000 文件 §3.2,含 mock 限流 gotcha）
 - [ ] standalone compose 與 CLAUDE.md §8.2 整套 stack 的整合/退場（master compose 落地時 service 遷移）
 
 ### 3.2 graphify follow-up
 
-- [ ] `graphify update`（INTEGRATION-DESIGN 改名＋docs 新四檔落地後,圖譜增量同步）
+- [x] ✅（2026-06-13）`graphify update` — code 層 rebuild 完成（4176 nodes/4421 edges/567 communities）;**「docs 同步」前提不成立而關閉**:`.graphifyignore` 刻意排除 `docs/`（圖譜定位=code 圖,CLAUDE.md §8.3）,docs 從未入圖、無舊檔名殘留;`graphify-out/memory/` 的舊名屬歷史 Q&A 存檔不需改。docs 要不要入圖=另案（若要,先拔 `.graphifyignore` 的 `docs/` 行再 update;統計細節該記入 GRAPHIFY-NOTES ⏳）
 
 ### 3.3 fork-delta 工具 follow-up（⚠️s 衍生）
 
 - [ ] `inline_coverage_lint` 候選:`grep -c rev3-inline` 對 spec 紀錄數,rebase 後驗足跡不丟失（rev2 endpoint_coverage_lint 同款思路;等 ⚠️q 移植 feature 一併評）
-- [ ] git 配套設定:`merge.conflictStyle=zdiff3` + `rerere.enabled=true`（base-web 源倉與 worktree;零成本、與 ⚠️s 註解互補）
+- [x] ✅（2026-06-13）git 配套設定:`merge.conflictStyle=zdiff3`＋`rerere.enabled=true` 已設於 base-web/docs 兩源倉（worktree 繼承已驗）
 
 ---
 
