@@ -1,0 +1,100 @@
+# syntax=docker/dockerfile:1.7
+# rust-api 容器映像(multi-stage: builder / dev / runtime)
+#
+# context = ./(workspace root,由 docker compose 指定 dockerfile: deploy/Dockerfile.rust-api.txt)
+# 對齊 specs/001-infra-deploy/contracts/health-endpoint.md
+#
+# 注意:Cargo.lock 已 commit 進 rust-api/,builder「Manifest 段」COPY rust-api/Cargo.lock ./
+# 以鎖定 release build 的依賴版本(reproducible)。
+#
+# ★ 後刀新增 workspace crate 時必須補對應 COPY 行(Manifest 段 + Source 段各一)——
+#   CLAUDE.md §3「新增 crate ⇒ acceptance 必含 prod image build」紀律看點:
+#   dev stage bind-mount 整個 rust-api/ 會遮住此處 COPY 缺口,只靠 dev 驗不到,
+#   必須跑 prod target image build 才會暴露缺行。
+
+# =====================================================================
+# Stage 1: builder — 產出 2 個 release binary 到 /out/
+# =====================================================================
+FROM rust:1.86-slim-bookworm AS builder
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        pkg-config \
+        libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# --- Manifest 段(先 COPY 利於 cargo deps layer cache hit)---
+COPY rust-api/Cargo.toml rust-api/rust-toolchain.toml ./
+COPY rust-api/Cargo.lock ./
+COPY rust-api/server/Cargo.toml ./server/
+COPY rust-api/migration/Cargo.toml ./migration/
+
+# --- Source 段 ---
+COPY rust-api/server/src ./server/src
+COPY rust-api/migration/src ./migration/src
+
+# BuildKit cache mount: registry + git + target 三份持久化、跨 build 增量
+# 注意:target/ 在 cache mount 內、對後續 COPY 不可見,必須 cp 到 /out/
+RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/usr/local/cargo/git \
+    --mount=type=cache,target=/app/target \
+    cargo build --release --bins && \
+    mkdir -p /out && \
+    cp target/release/server \
+       target/release/migration \
+       /out/
+
+# =====================================================================
+# Stage 2: dev — cargo-watch 熱重載(source 由 compose bind mount)
+# =====================================================================
+FROM rust:1.86-slim-bookworm AS dev
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        pkg-config \
+        libssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN cargo install cargo-watch --locked
+
+WORKDIR /app
+EXPOSE 31081
+
+# source 不 COPY、由 compose bind-mount;cargo watch 自動觸發初次 build
+# --poll: WSL2 9P bind-mount 上 inotify 不可靠(實測檔案變動不觸發),改用輪詢偵測
+ENTRYPOINT ["cargo", "watch", "--poll", "-x", "run --bin server"]
+
+# =====================================================================
+# Stage 3: runtime — 精簡 debian-slim + 非 root user rustapi(uid 10001)
+# =====================================================================
+FROM debian:bookworm-slim AS runtime
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libssl3 \
+        ca-certificates \
+        curl \
+        tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# 非 root user(uid/gid 固定 10001 便於 host 端 volume 權限對齊)
+RUN groupadd -r -g 10001 rustapi && \
+    useradd -r -g rustapi -u 10001 -d /app -s /usr/sbin/nologin rustapi
+
+WORKDIR /app
+
+# 從 builder 取 2 個 binary
+COPY --from=builder /out/server /out/migration /usr/local/bin/
+
+# Entrypoint dispatcher(deploy/entrypoint.rust-api.sh)
+COPY deploy/entrypoint.rust-api.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+USER rustapi
+EXPOSE 31081
+
+# 對齊 specs/001-infra-deploy/contracts/health-endpoint.md(數值不可變)
+HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -fsS http://127.0.0.1:31081/health || exit 1
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["server"]
