@@ -5,7 +5,7 @@
 > - **§2 實施階段** — 波次執行 as-built 帳（計畫的設計在 DESIGN §8.4、執行的帳在此；rev2 DESIGN §10 的外移對應物）
 >
 > **優先序**：本檔 §1 > DESIGN 本文 — 衝突時以本檔為準；DESIGN 本文的「待決N／⚠️x」字樣以本檔現況為準。
-> **分工**：CHECKLIST（hook 注入）持「當前波快照＋拍板項一行索引」；MILESTONES 收 commit 里程碑流水；完整職責分工見 CLAUDE.md §7。
+> **分工**：CHECKLIST（hook 注入）持「當前波快照＋拍板項一行索引」；MILESTONES 收 commit 里程碑流水＋CHECKLIST §2/§3 完成內容的鏡像歸檔（其 §2 只存一行式快照、波次詳帳仍在本檔 §2）；完整職責分工見 CLAUDE.md §7。
 > **本檔不被 hook 注入**——會長無妨（表格帳本性質，與 MILESTONES 同類）。
 
 ---

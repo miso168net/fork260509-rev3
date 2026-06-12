@@ -1,9 +1,12 @@
 # rev3 commit 里程碑永久紀錄（INTEGRATION-MILESTONES）
 
-> **append-only、不在 SOP hook 注入**（避免 CHECKLIST 膨脹）。兩區：
+> **append-only、不在 SOP hook 注入**（避免 CHECKLIST 膨脹）。三區、§2/§3 與 CHECKLIST 同號區鏡像對應：
 > 「§1 commit 里程碑表」收每筆 docs／feature commit 一行（表尾 append）；
-> 「§2 ✅ 完成＋歸檔」收 CHECKLIST「Follow-up Backlog」批次搬來的已完成 follow-up 細節。
-> 歸檔流程見 [CLAUDE.md §7.5](../CLAUDE.md)；波次 as-built 帳在 [DECISIONS §2](INTEGRATION-DECISIONS.md)（職責不同：彼為波次狀態、此為 commit 流水）。
+> 「§2」收 CHECKLIST §2 完成波的快照收縮行（批次搬入後 CHECKLIST 永遠只剩當前波）；
+> 「§3」收 CHECKLIST §3 已完成 follow-up 節的細節（批次搬入）。
+> 歸檔流程見 [CLAUDE.md §7.5](../CLAUDE.md)。**與 [DECISIONS §2](INTEGRATION-DECISIONS.md) 的分工**：波次 as-built **詳帳**在 DECISIONS §2（權威）；本檔 §2 只收 CHECKLIST 的一行式快照歸檔，查波次細節一律去 DECISIONS。
+
+---
 
 ## §1 commit 里程碑表
 
@@ -31,6 +34,15 @@
 | `e8e1a99` | 2026-06-12 | §7.1 改定 — rev2 研究三檔不移植不重作 |
 | `ed2a789` | 2026-06-12 | SessionStart hook 落地 — 自 rev2 原樣承接（零改動） |
 
-## §2 ✅ 完成＋歸檔
+---
 
-（CHECKLIST「Follow-up Backlog」完成節累積數節後批次搬入；目前空。）
+## §2 Roadmap & Phase 狀態 — 完成＋歸檔
+
+>（收 [CHECKLIST §2](INTEGRATION-CHECKLIST.md) 完成波的快照收縮行，累積數波後批次搬入；as-built 詳帳在 DECISIONS §2、此處只存一行式快照。目前空。）
+
+---
+
+## §3 Follow-up Backlog — 完成＋歸檔
+
+>（收 [CHECKLIST §3](INTEGRATION-CHECKLIST.md) 已完成 `### 3.X` follow-up 節，累積數節後批次搬入、原處留收合指標。目前空。）
+

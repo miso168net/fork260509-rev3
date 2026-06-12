@@ -401,7 +401,7 @@ rev2 的研究三檔(`INTEGRATION-RESEARCH.md` / `INTEGRATION-RESEARCH-FOLLOWUP.
 ### 7.4 其他相關文件
 
 - **`.specify/memory/constitution.md`** — v1.0.0 將從 DESIGN §9 + DECISIONS §1 拍板結論提取凍結為**不可違反的權威**(更高層、需 amendment 流程才能改)
-- **`docs/INTEGRATION-MILESTONES.md`** — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**「commit 里程碑表」+「✅ 完成+歸檔」兩區(後者收 CHECKLIST「Follow-up Backlog」搬來的已完成 follow-up 細節)**;歸檔流程見 §7.5
+- **`docs/INTEGRATION-MILESTONES.md`** — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**三區:§1 commit 里程碑表 + §2/§3 與 CHECKLIST 同號區鏡像歸檔(§2 收完成波的快照收縮行〔詳帳在 DECISIONS §2〕、§3 收已完成 follow-up 節)**;歸檔流程見 §7.5
 - **`docs/superpowers/000-base-web-docker-bootstrap.md`** — 持久記憶 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + CDP node scripts 用法段;scripts 本體 git-tracked 於 `tests/000-base-web-docker-bootstrap/scripts/`、mock API 對映 raw 資料同目錄)
 - **`docs/superpowers/<NNN>-<feature-name>.md`** — 每個 spec-kit feature 的 Phase 0 brainstorm 決策(見 §3 階段 0、DESIGN 拍板段)
 
@@ -426,8 +426,8 @@ feature 啟動  →  docs/superpowers/<NNN>-<feature-name>.md(brainstorm)
 
 1. **永久紀錄** — `docs/INTEGRATION-MILESTONES.md` 表尾 append 一行(commit hash + 日期 + 主題)
 2. **動態追蹤** — CHECKLIST「Current Focus」區的「最新進展」加一條;若超過 **2 條**、刪最舊那條(滾動)
-3. **波/Phase 歸檔**(若該 commit 完成整波)— as-built(feature 清單+merge SHA+日期)回填 DECISIONS §2 對應波;CHECKLIST「Roadmap & Phase 狀態」該波收縮為一行「✅ (YYYY-MM-DD) → 詳 DECISIONS §2」;**不動 DESIGN**
-4. **follow-up 歸檔** — CHECKLIST「Follow-up Backlog」的 `### 3.X` 節完成後標「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 清 body;累積數節後**批次搬到 MILESTONES「✅ 完成+歸檔」區**、Follow-up Backlog 原處留 1 行收合指標(`> ### 3.X ~ 3.Y 全完成+已歸檔(手動搬至 MILESTONES)`)。仍 open 的 follow-up 續留 CHECKLIST;拍板項索引/軌道快查為常駐區(§5/§6)、不參與此歸檔
+3. **波/Phase 歸檔**(若該 commit 完成整波)— as-built(feature 清單+merge SHA+日期)回填 DECISIONS §2 對應波;CHECKLIST「Roadmap & Phase 狀態」該波收縮為一行「✅ (YYYY-MM-DD) → 詳 DECISIONS §2」,收縮行累積數波後批次搬 MILESTONES §2(CHECKLIST 永遠只剩當前波);**不動 DESIGN**
+4. **follow-up 歸檔** — CHECKLIST「Follow-up Backlog」的 `### 3.X` 節完成後標「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 清 body;累積數節後**批次搬到 MILESTONES §3**、Follow-up Backlog 原處留 1 行收合指標(`> ### 3.X ~ 3.Y 全完成+已歸檔(手動搬至 MILESTONES)`)。仍 open 的 follow-up 續留 CHECKLIST;拍板項索引/軌道快查為常駐區(§5/§6)、不參與此歸檔
 
 **紀律**:**CHECKLIST 永遠不膨脹、DESIGN 永遠不當狀態板** — 歷史 commit 在 MILESTONES.md / `git log`;設計詳細在 DESIGN(凍結藍圖);拍板現況與波次執行帳在 DECISIONS;當前狀態在 CHECKLIST。
 
