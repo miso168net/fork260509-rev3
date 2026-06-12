@@ -16,7 +16,7 @@
 | 前置 | base-web standalone 容器化（`docker-compose.base-web.yml`，dev 熱重載 :31079） | ✅ commit `309099d` |
 | 目標 1 | CDP 9229 操作 `http://127.0.0.1:31079`，DevTools Network 記錄 base-web↔mock 流量全貌 | ✅ `base-web-capture.json`（12 筆/7 端點） |
 | 目標 2 | CDP 遍巡 `https://s.apifox.cn/35c8727a-d3ab-47e9-8863-ef8e37df6887`，收集 13 白名單端點的請求參數/返回響應 | ✅ `apifox-cdp-harvest.json` + `apifox-webfetch-spec.json` |
-| 目標 3 | 目標 1+2 整理成完整對映表、與 `docs/INTEGRATION-DESIGN-rev3.md` 的 rust-api 設計比對 | ✅ 本檔 §5–§6 |
+| 目標 3 | 目標 1+2 整理成完整對映表、與 `docs/INTEGRATION-DESIGN.md` 的 rust-api 設計比對 | ✅ 本檔 §5–§6 |
 
 > 補充：CDP 未覆蓋的 6 端點以 curl 直打 mock 補齊（`mock-curl-supplement.json`），13/13 端點均有實測資料。
 > 過程事故：原 session（Claude Code 2.1.173）工具結果抖動、capture script 與部分中間檔未落地，
@@ -165,7 +165,7 @@ node $S/cdp-clear-and-relogin.mjs "$PAGE_ID" 超级管理员 /tmp               
 6. **`getConstantRoutes` 實測含 `props:true` 欄**（login 路由）：apifox 文件 MenuRoute 形未列；typings `MenuRoute extends ElegantConstRoute` 本就允許 —— 文件不全、無矛盾。
 7. **`refreshToken` 成功回應的 JWT payload `userName=Soybean`**：mock 範本殘留（login 簽的是 Super）。提醒：**勿拿 mock JWT payload 內容當 ground truth**；rev3 rust-api 真簽發無此問題。
 
-## 6. 與 INTEGRATION-DESIGN-rev3 比對結論
+## 6. 與 INTEGRATION-DESIGN 比對結論
 
 - **§7.1 endpoint 全集表的 13 條 base-web 白名單端點與本對映表逐條吻合**（含 `/auth/error` mock-only 標記）；
   rust-api 另有的寫端/治理端點（add/update/delete、getRole{Menu,Button,Endpoints} 等）不在 mock 文件範圍、由 §7.1 自管。

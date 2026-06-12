@@ -1,6 +1,6 @@
-# rev3 管理系統開發設計書（INTEGRATION-DESIGN-rev3）
+# rev3 管理系統開發設計書（INTEGRATION-DESIGN）
 
-> **狀態**：本檔 = rev3 設計書的**唯一迭代本**（檔名不帶版本號），歸宿 = rev3 repo 的 `docs/INTEGRATION-DESIGN-rev3.md`（初稿於 rev2 workspace 作成、2026-06-11 完成機器驗證：45 修正＋15 抽查）。**⚠️ = 工程決策的「資深建議預設」、待 user 覆核**；開放問題與全部 ⚠️ 的**唯一清單＝附錄 G**（含最晚決策點）。
+> **狀態**：本檔 = rev3 設計書的**唯一迭代本**（檔名不帶版本號），歸宿 = rev3 repo 的 `docs/INTEGRATION-DESIGN.md`（已歸位 @ 2026-06-12，原暫名 `INTEGRATION-DESIGN-rev3.md`；初稿於 rev2 workspace 作成、2026-06-11 完成機器驗證：45 修正＋15 抽查）。**⚠️ = 工程決策的「資深建議預設」、待 user 覆核**；開放問題與全部 ⚠️ 的**唯一清單＝附錄 G**（含最晚決策點）。
 > **結構**：Part I 總綱（§0～§2，10 分鐘懂全貌）／ Part II 設計契約（§3～§7，凍結度高）／ Part III 交付計畫（§8，明示可變）／ Part IV 基線與附錄（§9～§11 + 附錄 A～G）。
 > **rev2 編號慣例**：文中凡 `（rev2 NNN）` 指 rev2 的 feature 編號（rev2 repo `specs/<NNN>-*`，001–035）；`rev2 mNNN` 為 rev2 migration `m20260529_000NNN` 縮寫。rev3 自身的 feature／migration 編號日後不帶此前綴，兩者不可混讀。
 > **rev2 史料引用慣例**：本書事實由 rev2 史料 ground（12 表 live DDL 稽核、constitution v1.6.0、rev2 設計文件與 35 specs、實碼實機核對），並已於 2026-06-11 機器驗證、**結論自含於本書**。文中殘留的 rev2 文件名（REVIEW-DATABASE／MILESTONES／MOCK-COVERAGE-AUDIT 等）僅為出處紀錄、**非可解析連結**——該等檔案存於 rev2 repo、不隨本書移植；對照總表與移植策略見附錄 D。
