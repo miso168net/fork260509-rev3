@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 處於波 -1 收尾**：worktree／submodule、docs 核心四檔（DESIGN／DECISIONS／CHECKLIST／MILESTONES）、graphify-out、tests/000、base-web standalone compose、SessionStart hook 已落地；specs／deploy／master compose 等仍為目標態（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 處於波 0 進行中**（001-infra-deploy ✅ 已收刀 2026-06-13）：worktree／submodule、docs 核心四檔、graphify-out、tests/000、specs/、master compose（含 dev/prod override＋standalone×2）、deploy/、rust-api scaffold、SessionStart hook 均已落地；剩餘 ⏳＝GRAPHIFY-NOTES／REVIEW 報告／§8.1 seed（002 刀）／obs（波 4）等（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -62,7 +62,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── REVIEW-<NNN>-<NNN>.md   ⏳          ← Claude workflow review 彙整報告（隨 feature 產出）
 │   └── superpowers/                       ← 持久記憶 + brainstorm 決策（§7.4；000 已落地）
 │       └── <NNN>-<feature-name>.md        ← 每個 feature 的 Phase 0 brainstorm
-├── specs/                      ⏳          ← spec-kit feature 規格目錄（尚未建立；每 feature 一個 <NNN>-<feature-name>/；工作流見 §3）
+├── specs/                                 ← spec-kit feature 規格目錄（001 已落地；每 feature 一個 <NNN>-<feature-name>/；工作流見 §3）
 ├── tests/                                 ← 跨 feature 測試素材（外層 git 追蹤；tests/000-base-web-docker-bootstrap/ = mock API 捕獲 raw 資料 + CDP scripts，見 §7.4 000 文件）
 ├── graphify-out/                          ← 知識圖譜輸出（已建圖 2060 nodes/311 communities；外層 git 追蹤 GRAPH_REPORT.md + graph.json + graph.html + obsidian/ 內 notes；只排除個人化/可重產項目）
 │   ├── GRAPH_REPORT.md                    ← 含 god nodes / surprises / suggested questions
@@ -78,8 +78,8 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 ├── fork260509-rev2-anew-rust-api/         ← Rust axum + Casbin backend，rust-api worktree 源倉（repo 名沿用 rev2、不變；gitignored，本機必留）
 ├── base-web/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
 ├── rust-api/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
-├── docker-compose.yml          ⏳          ← outer root compose（尚未建立；service：front-nginx/base-web/rust-api/postgres/redis-stack + migrate〔自動套〕/acme〔prod profile〕）；override = docker-compose.{dev,prod}.yml；另有 standalone：docker-compose.base-web.yml（已落地）/ docker-compose.rust-api.yml ⏳（見 §8.2）
-└── deploy/                     ⏳          ← 部署支援檔（尚未建立；nginx conf / secrets / dev-certs / cleanup 等；見 §8.2）
+├── docker-compose.yml                     ← outer root compose（001 已落地；service：front-nginx/base-web/rust-api/postgres/redis-stack + migrate〔自動套〕/acme〔prod profile 殼〕）；override = docker-compose.{dev,prod}.yml；另有 standalone：docker-compose.base-web.yml / docker-compose.rust-api.yml〔DEPRECATED debug 後備〕（見 §8.2）
+└── deploy/                                ← 部署支援檔（001 已落地；nginx conf ×4 / Dockerfile ×3 / dispatcher / secrets 與 dev-certs 生成腳本；見 §8.2）
 ```
 
 **關鍵事實**：
@@ -356,10 +356,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 001-infra-deploy（波 0 第一刀）
-Spec ✅｜Plan ✅（Check 9/9）｜Tasks: specs/001-infra-deploy/tasks.md ✅（T001~T021、6 phase、US1=MVP；下一步 /speckit-analyze → superpowers:executing-plans）
-Scope: master compose 5 service＋deploy/ 裁剪帶入＋rust-api 最小 scaffold（/health＋空 migrator）＋migrate gate；實機驗收
-Brainstorm: docs/superpowers/001-infra-deploy.md（五項拍板＋⚠️t）
+Active feature: 無（001-infra-deploy ✅ 2026-06-13 全綠收刀、merge `c9ffad5` 回 rev3-admin-root、feature branch 保留供 audit）
+下一刀: 002-rev2-schema-baseline（⚠️t 拍板產物；待 superpowers:brainstorming 起手，見 CHECKLIST 波 0 清單）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
@@ -454,7 +452,7 @@ feature 啟動  →  docs/superpowers/<NNN>-<feature-name>.md(brainstorm)
 
 ### 8.2 容器 endpoint 與 port 配置
 
-> rev3 port 配置（刻意用 **3XXXX** 前綴避開 fork260509-rev2 既有 port〔2XXXX〕與 rev1〔1XXXX〕，方便多 workspace 並存）。⏳ 核心 5 service（front-nginx / base-web / rust-api / postgres / redis-stack）尚未落地。observability：obs-min（log-only）3 service（loki / alloy / grafana）與 metrics = obs-full（prometheus + postgres_exporter + redis_exporter + pushgateway + grafana datasource/alert）皆為規劃中目標結構（`profiles:[obs]` / `profiles:[metrics]` opt-in、一般 `up` 不啟）。
+> rev3 port 配置（刻意用 **3XXXX** 前綴避開 fork260509-rev2 既有 port〔2XXXX〕與 rev1〔1XXXX〕，方便多 workspace 並存）。核心 5 service（front-nginx / base-web / rust-api / postgres / redis-stack）＋migrate gate＋acme 殼已落地（001、2026-06-13，C-V 實機全綠）。observability：obs-min（log-only）3 service（loki / alloy / grafana）與 metrics = obs-full（prometheus + postgres_exporter + redis_exporter + pushgateway + grafana datasource/alert）皆為規劃中目標結構（`profiles:[obs]` / `profiles:[metrics]` opt-in、一般 `up` 不啟）。
 
 | 角色 | fork260509-rev2（舊有） | fork260509-rev3 | 備註 |
 |---|---|---|---|

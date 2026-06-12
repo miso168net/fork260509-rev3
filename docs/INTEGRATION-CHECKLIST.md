@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 -1 ✅ 全完成（2026-06-12）→ 波 0 地基 待啟動**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001 ✅ 已收刀 2026-06-13、剩 6 刀）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-13 001-infra-deploy 全綠收刀＋merge**:T001~T021、C-V-0~8 實機全綠（SC-001~007）、抓 redis --dir 持久化真 bug 並修、merge `c9ffad5` 回 rev3-admin-root（feature branch 保留;未 push）
 - **2026-06-12 constitution-rev3 v1.0.0 凍結＋波 -1 收口**:13 項拍板融入（含 ⚠️s fork-delta 紀律）、出口四項全綠（`167db96`,未 push）
-- **2026-06-12 波 -1 文件層全收齊＋hook 落地**:CHECKLIST/MILESTONES 落地＋外檔引用查驗＋§7.1 改定＋SessionStart hook 原樣承接（`4300b54`~`ed2a789`,未 push）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **001-infra-deploy 刀 → user 手動 `/speckit-specify`**（input=docs/superpowers/001-infra-deploy.md;brainstorm ✅ 五項拍板＋⚠️t schema 交付模型;波 0 前置拍板 4 項已全決）
+**下一步**: **002-rev2-schema-baseline 刀 → `superpowers:brainstorming` 起手**（⚠️t 拍板產物:m001_rev2_schema＋m002_rev2_seeds;開放點=casbin_rule 建表方式;001 的 mNNN 慣例與 migration 框架已就位）
 
 ---
 
@@ -29,12 +29,12 @@
 
 > 機械建構＋constitution 重鑄兩段全交（pre-spec-kit、全落 default branch、無 feature branch）:outer repo＋worktree/submodule 註冊 `2ec9cda`（⚠️j/⚠️q）/ 設計書入檔＋拍板回填＋歸位改名 `7fd1ac6`→`4aa7c89` / C 方案文件體系 DECISIONS+CHECKLIST+MILESTONES `4724549`・`4300b54` / graphify 首建 `8f66fe0` / 000 base-web bootstrap＋13 端點對映 `46591c4`~`e898421` / SessionStart hook 原樣承接 `ed2a789` / **constitution-rev3 v1.0.0 凍結 `167db96`**（13 項拍板融入）。出口四項全綠（session 健檢/獨立 commit/grep rev2 歸零/speckit 可用）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
-### 波 0 — 地基（待啟動・當前）
+### 波 0 — 地基（進行中・當前）
 
 infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 —（rev2 001-012＋015）對應、首個 spec-kit feature 起跑點。
 
 **刀/feature 清單**（素材=DESIGN §8.2 跨切地基;刀界由各刀 brainstorm/specify 時定稿）:
-- [ ] **001-infra-deploy 刀**（master compose 5 service＋deploy/ 裁剪帶入＋rust-api 最小 scaffold〔/health＋空 migrator〕＋migrate gate;rev2 001-007/010 對應;**brainstorm ✅ 2026-06-13**〔docs/superpowers/001-infra-deploy.md、五項拍板＋⚠️t〕→ 待 user 手動 /speckit-specify）
+- [x] **001-infra-deploy 刀 ✅ 收刀（2026-06-13、merge `c9ffad5`）**——master compose 5 service＋migrate gate＋acme 殼、dev/prod override、deploy/ 全套、rust-api scaffold（/health＋空 migrator＋lock pin）;C-V-0~8 實機全綠（SC-001~007）;follow-up 見 §3.4;spec 全帳在 `specs/001-infra-deploy/`
 - [ ] **002-rev2-schema-baseline 刀**（⚠️t 拍板產物:m001_rev2_schema＋m002_rev2_seeds〔rev2 12 表/17 seed 終態 squash〕＋rev3 delta m003+〔④FK・⚠️p/⚠️c seed〕＋pg_dump 雙庫 diff 驗證閉環;001 之後緊接;開放點=casbin_rule 建表方式〔委派 adapter vs 直接 CREATE〕牽動 sub-crate 刀時序）
 - [ ] **sub-crate 刀**（`sea-orm-adapter`＋`xdb` 自 rev2 拷貝＋casbin pin;rev2 012;§I.5 唯二拷貝例外）
 - [ ] **envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形）
@@ -49,7 +49,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] ⚠️k migration 檔名 ✅ 短編號 `mNNN_<name>`
 
 **出口條件（DESIGN §8.4,4 項全綠才換波）**:
-- [ ] dev stack `up --wait` 全 healthy
+- [x] dev stack `up --wait` 全 healthy ✅（001、C-V-2 實證 2026-06-13）
 - [ ] 三守恆綠（entity_access_lint・endpoint_coverage_lint・migration up→down→up）
 - [ ] envelope 13 碼 contract 形狀測試綠（⚠️e 拍板形）
 - [ ] login→getUserInfo→enforce 最小鏈 curl 通
@@ -135,7 +135,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [x] ✅（2026-06-13）`getUserList` CDP 瀏覽器流量補抓 → `tests/000-.../getuserlist-cdp-capture.json`（mock 版;rust-api 版由接線 feature CDP smoke 覆蓋）
 - [ ] dynamic route mode 切換後重抓 `/route/*` 真實瀏覽器流量（對象屆時為 rust-api,詳 000 文件 §7）
 - [x] ✅（2026-06-13）`cdp-nav/login/clear-and-relogin.mjs` 三支重測全通過（000 文件 §3.2,含 mock 限流 gotcha）
-- [ ] standalone compose 與 CLAUDE.md §8.2 整套 stack 的整合/退場（master compose 落地時 service 遷移）
+- [x] ✅（2026-06-13）standalone compose 與整套 stack 的整合/退場——001 落地:base-web 段以 standalone 已驗定義納入 master dev.yml（R8）、standalone 檔保留並存;rust-api standalone 以 DEPRECATED debug 後備帶入（R9）
 
 ### 3.2 graphify follow-up
 
@@ -145,6 +145,34 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 - [ ] `inline_coverage_lint` 候選:`grep -c rev3-inline` 對 spec 紀錄數,rebase 後驗足跡不丟失（rev2 endpoint_coverage_lint 同款思路;等 ⚠️q 移植 feature 一併評）
 - [x] ✅（2026-06-13）git 配套設定:`merge.conflictStyle=zdiff3`＋`rerere.enabled=true` 已設於 base-web/docs 兩源倉（worktree 繼承已驗）
+
+### 3.4 001-infra-deploy follow-up（收刀 review 鏈＋final review 落檔 2026-06-13;均不阻塞、修時機見各條）
+
+**部署層加固**:
+- [ ] nginx 自答 `/health` 雙 Content-Type（`add_header`→改 `default_type`;rev2 同形）
+- [ ] nginx prod 硬化:`server_tokens off`＋HSTS/X-Frame-Options/X-Content-Type-Options（公網前必做）
+- [ ] XFF append 可偽造→`set_real_ip_from` 信任邊界（公網前評估）
+- [ ] image pin 一致性:alpine/openssl:latest（兩生成腳本）、base-web runtime nginx:alpine、postgres:17-alpine/debian patch 浮動 → 統一 pin 紀律一次處理
+- [ ] prod migrate 繼承 runtime image 無意義 HEALTHCHECK（migration 不開 port;>35s migration＋未來 `--wait` 假陰性伏筆→prod.yml 補 `healthcheck: disable`）
+- [ ] builder `cargo build` 補 `--locked`（守 lock pin 防線、防 manifest 漂移靜默 re-resolve）
+- [ ] `docker-compose.base-web.yml` 檔頭補與 master 並行撞點警示（同 project name/卷;與 rust-api standalone `7e3fed6` 對稱）
+- [ ] compose secrets 預檢（bind 缺檔自動建空目錄→錯誤不指向缺檔;up 前 wrapper 或文件註記）
+- [ ] `front_nginx_certs` 要不要 `external: true`（消 compose warning vs 硬前置;拍板項）
+- [ ] migrate 的 redis depends_on 與 FR-002/C-V-2 措辭對齊（實作只閘 postgres;補 depends 或修 spec 措辭;rev2 同形）
+**腳本**:
+- [ ] generate-secrets.sh 刪 leaf 重跑 dual-write drift 邊角（GENERATED 視同 force 或 README 警語）
+- [ ] generate-dev-cert.sh 自簽 renew 必重生 CA 與教學矛盾＋私鑰 chmod 600（native Linux 644 風險）
+- [ ] outer `.gitignore:133` 註解殘留前代 feature 編號（順手修）
+**rust-api**:
+- [ ] migration main.rs secret 讀檔失敗靜默 fallback→補 eprintln 警示（rev2 同形;002 順手）
+- [ ] `set_var` 於 runtime 啟動後（edition 2024 升級時根治）
+- [ ] workspace Cargo.toml time pin 註解勘誤（time 不在 scaffold 依賴圖;下次動 Cargo.toml 順手、002 引入 sea-orm 後重驗）
+- [ ] rust-api/.gitignore `debug`/`target` 未錨定 pattern（誤吞同名子目錄風險）
+**拍板/上游**:
+- [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）
+- [ ] prod builder node:20.19 vs dev node:26 分歧（沿 rev2 驗證形;Dockerfile 補註記或 DECISIONS 開放項）
+- [ ] cargo cache 卷遮蓋陳舊（dev image 升 toolchain 時需手動 `volume rm`;quickstart 註記）
+- [ ] **rev2 repo 回灌通知**:redis-stack `--dir /data` 持久化 bug 為 rev2 同形潛伏（rev2 `docker-compose.yml` redis command 同款缺 `--dir`）——rev2 維護時修
 
 ---
 
