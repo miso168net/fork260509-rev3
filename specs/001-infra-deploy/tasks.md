@@ -51,7 +51,7 @@
 **Goal**: 入口路由行為正確（strip／擋塊／前端／自答）
 **Independent Test**: C-V-3 對運行中 stack 獨立執行
 
-- [ ] T015 [US2] proxy 鏈驗收 C-V-3：`/api/health`→`ok`（strip 證明）／`/api/metrics`→404（擋塊）／`/`→base-web HTML／`/health`→入口自答；任一 fail 修 `deploy/nginx/conf.d/_locations.inc` 後重驗（SC-007）
+- [x] T015 [US2] proxy 鏈驗收 C-V-3：`/api/health`→`ok`（strip 證明）／`/api/metrics`→404（擋塊）／`/`→base-web HTML／`/health`→入口自答；任一 fail 修 `deploy/nginx/conf.d/_locations.inc` 後重驗（SC-007）
 
 **Checkpoint**: US2 全綠（SC-007）
 
@@ -61,8 +61,8 @@
 **Independent Test**: C-V-6/7 獨立執行
 
 - [x] T016 [US3] 建 `docker-compose.prod.yml`（裁剪帶入＋改名：0.0.0.0:80/443、prod.conf、front_nginx_certs 卷、rust-api runtime target :latest、migrate dispatcher `command:["migration","up"]`、base-web build args `VITE_SERVICE_BASE_URL=/api`、acme 卷）＋帶入 `deploy/Dockerfile.base-web.txt`（port 改名 21079→31079）（research R1/R2）
-- [ ] T017 [US3] prod 組態驗（`config -q`）＋cert seed 進 `rev3-admin_front_nginx_certs` → C-V-6 起停 sanity（80 `/health` 例外 ok／`/` 301→https／down 乾淨）
-- [ ] T018 [US3] prod target image build：C-V-7（`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`——**CLAUDE.md §3 紀律：本刀新增 workspace crate 必含**，防 dev bind-mount 遮 COPY 缺口）
+- [x] T017 [US3] prod 組態驗（`config -q`）＋cert seed 進 `rev3-admin_front_nginx_certs` → C-V-6 起停 sanity（80 `/health` 例外 ok／`/` 301→https／down 乾淨）
+- [x] T018 [US3] prod target image build：C-V-7（`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`——**CLAUDE.md §3 紀律：本刀新增 workspace crate 必含**，防 dev bind-mount 遮 COPY 缺口）
 
 **Checkpoint**: US3 全綠（SC-005）
 
