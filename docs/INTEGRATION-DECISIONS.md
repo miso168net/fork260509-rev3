@@ -59,7 +59,7 @@
 - ✅ graphify 首次建圖（`8f66fe0`，2060 nodes/311 communities）
 - ✅ base-web standalone 容器化＋mock wire ground truth 捕獲與對映（000：`46591c4`/`309099d`/`aea0e18`/`e898421`）
 - ✅ SessionStart hook（`.claude/settings.json`＋`hook-git-submodule-SOP.sh`；自 rev2 原樣承接、workspace-agnostic 零改動、實測健檢＋CHECKLIST 注入跑通）
-- ⏳ constitution-rev3 重鑄凍結 v1.0.0
+- ⏳ constitution-rev3 重鑄凍結 v1.0.0（重鑄注意：§V.2 amendment 提案位置條文須寫「DECISIONS §1」——rev2 快照原文是「DESIGN §11」、照抄會與 C 方案矛盾；rev3 版動線以 DESIGN §9.5 為準）
 - 出口條件：DESIGN §8.4 波 -1 列
 
 ### 波 0 — 地基（未開始）
