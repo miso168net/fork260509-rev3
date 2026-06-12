@@ -112,7 +112,10 @@ services:
     command:
       - sh
       - -c
-      - 'redis-stack-server --requirepass "$(cat /run/secrets/redis_password)"'
+      # command 覆寫繞過映像官方 entrypoint(其本會帶 --dir ${REDIS_DATA_DIR:-/data}),
+      # 裸跑預設 dir=/var/lib/redis-stack(暫存層)→ /data named volume 形同虛設,
+      # 故必須顯式 --dir /data(T014 實機驗收發現:down→up 資料全失)
+      - 'redis-stack-server --dir /data --requirepass "$(cat /run/secrets/redis_password)"'
     secrets:
       - redis_password
     volumes:
