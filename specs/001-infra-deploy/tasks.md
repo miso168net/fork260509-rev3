@@ -39,8 +39,8 @@
 
 - [x] T009 [P] [US1] 帶入 `deploy/nginx/`（nginx.conf＋conf.d/{_locations.inc,dev.conf,prod.conf}）＋port 改名（base-web:21079→31079、rust-api:21081→31081、listen 21080/21443→31080/31443）（research R2）
 - [x] T010 [US1] 建 `docker-compose.yml`（master base）：裁剪帶入＋改名——5 service＋migrate＋acme 殼；裁 8 service/4 卷/2 secrets（research R1）；redis pin `redis/redis-stack-server:7.4.0-v8`（⚠️d）；`name: rev3-admin`＋`rev3_net`＋7 卷＋6 secrets；base 層禁 host ports／base-web 不放 image-build-command（rev2 R1/H1 規則 carry）
-- [ ] T011 [US1] 建 `docker-compose.dev.yml`：裁剪帶入＋改名——loopback 31xxx 全組；base-web 段採 standalone 已驗定義（node:26-alpine＋pnpm@10＋store redirect＋CI=true，research R8）；rust-api dev target＋bind mount＋cargo_cache/target 卷＋JWT env fallback；migrate entrypoint override（`cargo run --bin migration`＋`command:["up"]`）；postgres 35432／redis 36379
-- [ ] T012 [US1] 組態驗證：`docker compose -f docker-compose.yml -f docker-compose.dev.yml config -q` 通過＋已交付各檔 `grep -i rev2` 歸零（C-V-5 dev 部分）
+- [x] T011 [US1] 建 `docker-compose.dev.yml`：裁剪帶入＋改名——loopback 31xxx 全組；base-web 段採 standalone 已驗定義（node:26-alpine＋pnpm@10＋store redirect＋CI=true，research R8）；rust-api dev target＋bind mount＋cargo_cache/target 卷＋JWT env fallback；migrate entrypoint override（`cargo run --bin migration`＋`command:["up"]`）；postgres 35432／redis 36379
+- [x] T012 [US1] 組態驗證：`docker compose -f docker-compose.yml -f docker-compose.dev.yml config -q` 通過＋已交付各檔 `grep -i rev2` 歸零（C-V-5 dev 部分）
 - [ ] T013 [US1] dev 實機驗收：C-V-0（standalone down＋secrets/cert 就緒）→ C-V-2 全套（`up -d --wait` exit 0／ps 5 healthy＋migrate exited(0)／gate 時序雙斷言／健檢 6 點含 Content-Type）→ C-V-8（缺 secrets fail-fast 負向＋重複 up 冪等；Edge case 2 豁免註記確認）
 - [ ] T014 [US1] 持久化驗收 C-V-4（probe 表寫入→down→up→存活→清除）
 
