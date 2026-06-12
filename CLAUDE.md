@@ -356,7 +356,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-（目前無 active spec-kit feature；首個 feature 啟動後由 Claude／spec-kit 同步此區）
+Active feature: 001-infra-deploy（波 0 第一刀）
+Spec ✅｜Plan ✅（Check 9/9）｜Tasks: specs/001-infra-deploy/tasks.md ✅（T001~T021、6 phase、US1=MVP；下一步 /speckit-analyze → superpowers:executing-plans）
+Scope: master compose 5 service＋deploy/ 裁剪帶入＋rust-api 最小 scaffold（/health＋空 migrator）＋migrate gate；實機驗收
+Brainstorm: docs/superpowers/001-infra-deploy.md（五項拍板＋⚠️t）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

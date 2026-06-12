@@ -1,0 +1,4 @@
+# deploy/ .dockerignore — acme service 的 build context = deploy/ (root .dockerignore 對它不生效)
+# Dockerfile.acme.txt 只 COPY acme-entrypoint.sh;擋掉機密與私鑰 (T010 review I-2)
+secrets/
+dev-certs/

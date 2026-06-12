@@ -1,0 +1,169 @@
+# rev3-admin master compose — base layer (5 service 共通定義 + migrate + acme 殼)
+#
+# 用法:
+#   dev:  docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --wait
+#   prod: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --wait
+#   prod + acme: docker compose -f docker-compose.yml -f docker-compose.prod.yml --profile prod up -d --wait
+#
+# 設計(R1/H1 規則 carry):
+#   - base 層禁止放 host ports(ports: 為 list append → dev/prod 疊加衝突)
+#   - base 層禁止放 dev/prod 專屬 volume/bind-mount
+#   - base-web 不放 image/build/command(dev=node image 無 build;prod=nginx build;異質、無法靠 target 覆寫)
+#   - rust-api 放 build(dev/prod 同 Dockerfile 不同 target,override 覆寫 build.target 即可)
+#   - named volume 不設顯式 name:,靠 project name (rev3-admin) auto-prefix → 實際名 rev3-admin_<service>_<purpose>
+
+name: rev3-admin
+
+services:
+  front-nginx:
+    image: nginx:1.31.0-alpine
+    depends_on:
+      base-web:
+        condition: service_healthy
+      rust-api:
+        condition: service_healthy
+    healthcheck:
+      # dev override 改 :31080(dev.conf 無 :80);prod 直接用(prod.conf 在 :80 先回 200 再 redirect)
+      # 用 127.0.0.1 而非 localhost:alpine /etc/hosts 把 localhost 先解到 ::1(IPv6),
+      # nginx listen 80 只綁 IPv4 → localhost 會 connection refused、healthcheck 永遠 fail
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/health | grep -q ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - rev3_net
+
+  base-web:
+    # ★ image/build/command 故意不放 base 層(H1:base-web 與 rust-api 的差異):
+    #   dev override → node image(無 build);prod override → nginx multi-stage build
+    #   異質不能靠 target 覆寫;若在 base 放 build,dev 疊加時 docker 會誤 build 並錯誤 tag
+    depends_on: {}
+    networks:
+      - rev3_net
+
+  rust-api:
+    build:
+      context: ./
+      dockerfile: deploy/Dockerfile.rust-api.txt
+      target: runtime
+    image: rev3-admin-rust-api:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis-stack:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      # jwt 兩支與 redis_url 本刀「接而不讀」(R11:compose 接線就位、消費=後續 Auth 刀)
+      APP_JWT_JWT_SECRET_FILE: /run/secrets/jwt_secret
+      APP_JWT_REFRESH_TOKEN_SECRET_FILE: /run/secrets/refresh_token_secret
+      APP_DATABASE_URL_FILE: /run/secrets/database_url
+      APP_REDIS_URL_FILE: /run/secrets/redis_url
+      RUST_LOG: "info"
+    secrets:
+      - jwt_secret
+      - refresh_token_secret
+      - database_url
+      - redis_url
+    networks:
+      - rev3_net
+
+  migrate:
+    # ★ 一次性 migration service(001 FR-002/FR-008:server 不自動 migrate,schema 由此 gate 套)
+    #   dev/prod override 各自提供 target: + command:;base 層只定義共通結構
+    build:
+      context: ./
+      dockerfile: deploy/Dockerfile.rust-api.txt
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      APP_DATABASE_URL_FILE: /run/secrets/database_url
+    secrets:
+      - database_url
+    restart: "no"
+    networks:
+      - rev3_net
+
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_USER: soybean
+      POSTGRES_DB: soybean_admin_rust
+    secrets:
+      - postgres_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U soybean"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - rev3_net
+
+  redis-stack:
+    # 映像 pin 數字版(⚠️d 拍板:不用 latest;升版走顯式 bump commit)
+    image: redis/redis-stack-server:7.4.0-v8
+    command:
+      - sh
+      - -c
+      # command 覆寫繞過映像官方 entrypoint(其本會帶 --dir ${REDIS_DATA_DIR:-/data}),
+      # 裸跑預設 dir=/var/lib/redis-stack(暫存層)→ /data named volume 形同虛設,
+      # 故必須顯式 --dir /data(T014 實機驗收發現:down→up 資料全失)
+      - 'redis-stack-server --dir /data --requirepass "$(cat /run/secrets/redis_password)"'
+    secrets:
+      - redis_password
+    volumes:
+      - redis_stack_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$(cat /run/secrets/redis_password)\" --no-auth-warning ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - rev3_net
+
+  acme:
+    profiles: [prod]
+    build:
+      context: deploy/
+      dockerfile: Dockerfile.acme.txt
+    # init: tini 接 PID 1——acme-entrypoint 的 exec tail -f /dev/null 當 PID 1 時
+    # 不處理 SIGTERM,docker stop 會等滿 10s 才 SIGKILL;tini 轉發信號根治
+    init: true
+    volumes:
+      - front_nginx_certs:/acme.sh
+    networks:
+      - rev3_net
+
+networks:
+  rev3_net:
+
+volumes:
+  postgres_data:
+  redis_stack_data:
+  front_nginx_certs:
+  base_web_node_modules:
+  base_web_pnpm_store:
+  rust_api_cargo_cache:
+  rust_api_target:
+
+secrets:
+  postgres_password:
+    file: ./deploy/secrets/postgres_password.txt
+  redis_password:
+    file: ./deploy/secrets/redis_password.txt
+  jwt_secret:
+    file: ./deploy/secrets/jwt_secret.txt
+  refresh_token_secret:
+    file: ./deploy/secrets/refresh_token_secret.txt
+  database_url:
+    file: ./deploy/secrets/database_url.txt
+  redis_url:
+    file: ./deploy/secrets/redis_url.txt
