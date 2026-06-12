@@ -9,11 +9,11 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001 ✅ 已收刀 2026-06-13、剩 6 刀）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001 ✅ 已收刀 2026-06-13、餘 6 項〔audit ×2 計 7 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-13 001-infra-deploy 全綠收刀＋merge**:T001~T021、C-V-0~8 實機全綠（SC-001~007）、抓 redis --dir 持久化真 bug 並修、merge `c9ffad5` 回 rev3-admin-root（feature branch 保留;未 push）
-- **2026-06-12 constitution-rev3 v1.0.0 凍結＋波 -1 收口**:13 項拍板融入（含 ⚠️s fork-delta 紀律）、出口四項全綠（`167db96`,未 push）
+- **2026-06-13 001-infra-deploy 全綠收刀＋merge＋push**:T001~T021、C-V-0~8 實機全綠（SC-001~007）、抓 redis --dir 持久化真 bug 並修、merge `c9ffad5` 回 rev3-admin-root;三 ref 已 push（rev3-admin-root〔含波 -1 累積〕/001-infra-deploy 保留分支/rev3-admin-rust-api）
+- **2026-06-12 constitution-rev3 v1.0.0 凍結＋波 -1 收口**:13 項拍板融入（含 ⚠️s fork-delta 紀律）、出口四項全綠（`167db96`,已隨 2026-06-13 push 上行）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
@@ -124,7 +124,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,rust-api scaffold＋compose/deploy 新碼未入圖,001 後待一輪 update）
 
 ---
 
@@ -152,16 +152,22 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] nginx 自答 `/health` 雙 Content-Type（`add_header`→改 `default_type`;rev2 同形）
 - [ ] nginx prod 硬化:`server_tokens off`＋HSTS/X-Frame-Options/X-Content-Type-Options（公網前必做）
 - [ ] XFF append 可偽造→`set_real_ip_from` 信任邊界（公網前評估）
-- [ ] image pin 一致性:alpine/openssl:latest（兩生成腳本）、base-web runtime nginx:alpine、postgres:17-alpine/debian patch 浮動 → 統一 pin 紀律一次處理
+- [ ] image pin 一致性:alpine/openssl:latest（兩生成腳本）、base-web runtime nginx:alpine、base-web dev node:26-alpine（26.x 滑動）、postgres:17-alpine/debian patch 浮動 → 統一 pin 紀律一次處理
 - [ ] prod migrate 繼承 runtime image 無意義 HEALTHCHECK（migration 不開 port;>35s migration＋未來 `--wait` 假陰性伏筆→prod.yml 補 `healthcheck: disable`）
 - [ ] builder `cargo build` 補 `--locked`（守 lock pin 防線、防 manifest 漂移靜默 re-resolve）
 - [ ] `docker-compose.base-web.yml` 檔頭補與 master 並行撞點警示（同 project name/卷;與 rust-api standalone `7e3fed6` 對稱）
 - [ ] compose secrets 預檢（bind 缺檔自動建空目錄→錯誤不指向缺檔;up 前 wrapper 或文件註記）
 - [ ] `front_nginx_certs` 要不要 `external: true`（消 compose warning vs 硬前置;拍板項）
 - [ ] migrate 的 redis depends_on 與 FR-002/C-V-2 措辭對齊（實作只閘 postgres;補 depends 或修 spec 措辭;rev2 同形）
+- [ ] postgres healthcheck `pg_isready -U soybean` 缺 `-d soybean_admin_rust`（dbname 預設=username→每 10s 一條 FATAL log;波 4 obs 落地前修、一 token;rev2 同形）
+- [ ] dev watcher 工具評估:cargo-watch 上游已 archived＋`cargo install` 無版本 pin＋無 cache mount（dev image build 慢）→ 後刀換 bacon/watchexec 屬顯式決策（rev2 形 carry）
+- [ ] 冷卷首啟 `up --wait` 自癒型 flap（base-web 容忍 ≈140s/rust-api ≈240s;`down -v` 後或新機器會撞）→ quickstart 補「exit≠0 先 ps 區分仍在編譯、等穩重跑即過」一句
+- [ ] C-V-2 gate 斷言①複驗方法注記:重複 `up` 會讓 migrate one-shot 重跑、刷新 inspect 時戳（假陰性）;複驗用 `docker logs --timestamps` 首輪——波 0 出口複驗時適用
+- [ ] dispatcher `server)` 分支不 shift 不傳 `"$@"`（與 migration/cleanup-job 不對稱;多餘參數靜默丟棄;blob-identical 凍結下傾向 won't-fix、僅記錄）
 **腳本**:
 - [ ] generate-secrets.sh 刪 leaf 重跑 dual-write drift 邊角（GENERATED 視同 force 或 README 警語）
 - [ ] generate-dev-cert.sh 自簽 renew 必重生 CA 與教學矛盾＋私鑰 chmod 600（native Linux 644 風險）
+- [ ] generate-* 兩腳本 `docker pull -q` 離線即 abort（image 已 cache 也炸）→ `docker image inspect || docker pull` fallback
 - [ ] outer `.gitignore:133` 註解殘留前代 feature 編號（順手修）
 **rust-api**:
 - [ ] migration main.rs secret 讀檔失敗靜默 fallback→補 eprintln 警示（rev2 同形;002 順手）
@@ -172,6 +178,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）
 - [ ] prod builder node:20.19 vs dev node:26 分歧（沿 rev2 驗證形;Dockerfile 補註記或 DECISIONS 開放項）
 - [ ] cargo cache 卷遮蓋陳舊（dev image 升 toolchain 時需手動 `volume rm`;quickstart 註記）
+- [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）
 - [ ] **rev2 repo 回灌通知**:redis-stack `--dir /data` 持久化 bug 為 rev2 同形潛伏（rev2 `docker-compose.yml` redis command 同款缺 `--dir`）——rev2 維護時修
 
 ---
