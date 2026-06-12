@@ -53,5 +53,9 @@ FROM nginx:alpine AS runtime
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY --from=builder /tmp/nginx/default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 31079
+# 健檢打 / grep doctype(與 dev compose 層健檢同形、已實機驗證)——刻意偏離 rev2 的
+# /health.html 形:該檔在 rev2 是 commit 進 base-web 分支的,rev3 本刀不動 base-web
+# worktree(對齊檔頭設計理由＋constitution check「未觸 base-web inline」判定);
+# 靜態 serve 下 / 回 index.html 與 health.html 等價佐證 nginx+檔案就緒
 HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget -qO- http://127.0.0.1:31079/health.html | grep -q "ok" || exit 1
+    CMD wget -qO- http://127.0.0.1:31079/ | grep -qi "doctype" || exit 1
