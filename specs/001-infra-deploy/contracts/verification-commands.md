@@ -88,6 +88,8 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml config -q    # p
 docker compose -f docker-compose.rust-api.yml config -q                      # standalone 合法（FR-010）
 
 # rev2 字樣＋全部舊 port 殘留（施加於部署層交付物；目前無豁免項——deploy/compose 不引用倉庫永久名）
+# （嚴謹形：`git ls-files docker-compose*.yml deploy/ | xargs grep ...`——避開 gitignored 隨機生成物
+#   〔secrets hex／certs base64〕理論上可含數字 port 子串的偶發誤中；T020 兩形式皆驗過歸零）
 grep -rinE "rev2|21079|21080|21081|21443|25432|26379" docker-compose*.yml deploy/ && echo "❌ 殘留" || echo "✅ 歸零"
 # scaffold 豁免（T006 落地時新增）：migration/README.md 的 m001_rev2_schema／m002_rev2_seeds 為 002 刀規劃檔名（拍板 ⚠️t）＋其同行說明，非部署 token 殘留
 grep -rinE "rev2|21079|21080|21081|21443" rust-api/server rust-api/migration rust-api/Cargo.toml 2>/dev/null | grep -vE "m00[12]_rev2_(schema|seeds)" && echo "❌" || echo "✅"
