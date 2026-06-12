@@ -16,10 +16,10 @@
 
 | # | 決策點 | 工程預設 ⚠️ | 所在章 | 最晚決策點 |
 |---|---|---|---|---|
-| 待決① | router 結構：維持 flat-in-main 還是重整 `router/` 樹 | 無強預設（as-built = flat + endpoint_coverage_lint 三源一致 @ 35，運作良好） | §1.5・§8.1 | 波 0 scaffold 前 |
+| 待決① | router 結構：維持 flat-in-main 還是重整 `router/` 樹 | ✅ 已決(2026-06-13)：**flat-in-main 沿用**（rev2 as-built 已驗證模式：全部 route 逐條 `.route()` 寫 `main.rs`、`endpoint_coverage_lint` 鎖「main.rs==ENDPOINT_REGISTRY==seed」三源一致；lint 直接沿用、零 scaffold 改寫）。重整 `router/` 樹被否（lint 第一源從單檔變多檔、丟已驗證模式） | §1.5・§8.1 | ✅ 已決 |
 | 待決② | wire contract 機器化（OpenAPI／contract test／維持 grep） | ✅ 已決(2026-06-12)：**C+ typings-as-oracle** — typings 抽 JSON Schema 當裁判（唯讀、不動官方檔）＋ coverage gate（router 每條 route 必有 contract case、缺＝CI 紅）＋ 碼表 table-driven（§7.3）＋ CDP capture 降為補充回歸 fixture ＋ lie ledger（顯式覆寫帳本、初始空）；B 案留「endpoint 增速再評」 | §7.2 | ✅ 已決 |
 | 待決③ | 縱切第一刀：User 直刀 vs `system_settings` 打樣 | 傾向 A（User 直刀） | §8.3 | 波 1 開工前 |
-| 待決④ | 選擇性 FK | join 表（`sys_user_role`）加 FK、其餘維持零 | §3.1 | 第一條 migration 前（波 0） |
+| 待決④ | 選擇性 FK | ✅ 已決(2026-06-13)：**採工程預設 — 僅 join 表 `sys_user_role` 加 FK、其餘 11 表維持零**（join 表純關聯＋硬刪＋無 soft-delete 互動 → FK 零代價高收益、DB 層擋懸空列；log/token/casbin 維零——soft-delete 與 system-actor null 語意與 FK 相棘；零 FK 處 application-RI 義務照 §3.3 集中清單） | §3.1 | ✅ 已決 |
 | 待決⑤ | §3/§5 凍結邊界：哪些進 constitution、哪些留設計書 | ✅ 已決(2026-06-12)：**採工程預設** — archetype（§3.2 四變體 A/B/C/D 整組）+ 行為島 invariants（§4 三台狀態機）+ wire 碼表（§5.4/§7.3，含 PageRes 形與 envelope 例外）入凍結（constitution §I.6/§I.7/§I.3）；欄級字典與常數值（grace 秒數等）留設計書。配套：constitution §V.3 分級 — §I.7 方向性不變式反轉=MAJOR、其餘 invariant 細項調整=MINOR | §3・§9 章首注 | ✅ 已決 |
 | 待決⑥a | user-facing 儀表板 | rev3 v1 = 固定儀表板、0 新表（§2 表 #1） | §2 | 入波排程時（不 block 波 0-3） |
 | 待決⑥b | 報表匯出 PDF/CSV | rev3 v1 = 同步匯出、0 新表（§2 表 #2） | §2 | 同 ⑥a |
@@ -28,14 +28,14 @@
 | ⚠️a | 效能／可用性數字 | p95 300/500ms/1s；99.5%/月 | §1.3 | 波 1 驗收前 |
 | ⚠️b | 審計查詢讀端 + UI 補做 | 補（Super-only；矩陣已預標 ⚠️） | §1.2・§5.0 | 波 2 排程前 |
 | ⚠️c | `/auth/error` | ✅ 已決(2026-06-12)：**翻案 — 做**（echo 端點）。配套完整包：`alova/request`＋`alova/scenes`＋`function/request` 三 demo 頁進 sys_menu seed（初始僅勾 R_SUPER、下放交 ROLE 勾選層）；端點補 `/auth/error`＋`sendCaptcha`/`verifyCaptcha`（stub 雙模、⚠️m captcha 依賴就此解決）＋`/mock/getLastTime`（回 `{time}`）；§1.4 兩條「不做」同步翻案 | §1.4・§6.1 | ✅ 已決 |
-| ⚠️d | redis-stack image tag | 建 stack 當下即 pin 數字版 | §1.6 | 波 0 compose 定稿前 |
+| ⚠️d | redis-stack image tag | ✅ 已決(2026-06-13)：**建 stack 當下即 pin 數字版**（infra/deploy 刀寫 compose 時查當下 stable 直接 pin;升版走顯式 bump commit;對齊 §1.6 版本鎖點哲學） | §1.6 | ✅ 已決 |
 | ⚠️e | `5000` 的 HTTP status 配對 | ✅ 已決(2026-06-12)：**一律 HTTP 200 信封**（對齊前端 msg 顯示通道僅 200 生效＋「business error 走 200」總則）；`AppError::Internal`→HTTP 500 mapping 標 test-only 或刪除；contract test 鎖 `5000`→200 | §5.4・§7.3 | ✅ 已決 |
 | ⚠️f | 13 碼矩陣整組凍結（含 4 保留碼） | ✅ 已決(2026-06-12)：**整組凍結**（保留碼是前端 `.env` 分組實值、刪碼違 §I.1）；contract test 斷言「後端從不發出 7778/8889/9998/9999」 | §7.3 | ✅ 已決 |
 | ⚠️g | constitution 重鑄措辭（§I.5 `axum-casbin`＋§9.6 Q5 rev1 指涉） | ✅ 已決(2026-06-12)：`axum-casbin` 重鑄為「enforce 層全新寫（in-tree、無獨立 crate）」；Q5/§I.5 對 rev2 source 立場＝**受控參照** — 讀允許（grep/閱讀對照驗證）、拷貝禁止（重新打字消化）、**防回歸條款**（rev3 拍板已推翻的行為不得帶回）；工具 crate `sea-orm-adapter`/`xdb` 例外自 rev2 整檔拷貝 | §9.2・§9.6 | ✅ 已決 |
 | ⚠️h | 排程性拍板重議（§9.3 表之拍板 §11.2/§11.8/§11.13） | 重議走 amendment、不默改 | §9.3 | 重議觸發時 |
 | ⚠️i | L4 授權模式 | ✅ 已決(2026-06-12)：**窄邊界精神的 rev3 起點映射** — i-1：MODAL-WIRING ★ v1.0.0 即授五用途 (a)~(e)（rev2 五次擴邊已驗證過的邊界、⚠️q 整批移植立即需要；**新用途 (f) 起仍走 amendment**）；i-2：BUILD-CONFIG ★ **不收錄**（⚠️p 後議題消解、軌道清單 5→4〔1★〕，日後需 build 改動走 amendment 新授） | §9.5 | ✅ 已決 |
 | ⚠️j | rust-api 源倉 | ✅ 已決(2026-06-12)：**沿用倉、換分支**——`fork260509-rev2-anew-rust-api` 倉名（含 rev2）為永久名保留、分支改 `rev3-admin-rust-api`（已落地） | 附錄 A | ✅ 已決 |
-| ⚠️k | migration 檔名 | 改短編號（`mNNN_<name>`） | 附錄 C | 第一條 migration 前（波 0） |
+| ⚠️k | migration 檔名 | ✅ 已決(2026-06-13)：**短編號 `mNNN_<name>`**（如 `m001_create_sys_user`;NNN 遞增、sea-orm 依檔名序執行;語意在檔名、無長零串——rev2 live 稽核實證 8 條引用多打一個 0 的抄錄必錯,附錄 C） | 附錄 C | ✅ 已決 |
 | ⚠️l | settings 多 key 熱讀 | 需要時把單鍵 swap 推廣為 keyed map（設計變更、非預設） | §5.6 | 不阻塞（需要時） |
 | ⚠️m | §1.2 尾巴（alt-login stub 4 + captcha 2）入波或重議 | 入波（§8.2 待拍板刀位）；重議則走 §9.5 amendment。**註(2026-06-12)**：captcha 2 端點已隨 ⚠️c 完整包拍定（stub 雙模、alova/scenes 需要）— 本項殘餘範圍縮為 alt-login 4 流程 stub 的入波排程 | §1.2・§8.2 | 波 3 排程前 |
 | ⚠️n | 三 log 表 DB retention 政策 | rev3 v1 僅容量監控、retention defer | §1.3・§10.5 | 不阻塞（容量警示觸發時） |

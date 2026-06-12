@@ -41,11 +41,11 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context〕）
 - [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提）
 
-**前置拍板（user 親決,4 項;工程預設與結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
-- [ ] ①router 結構（flat-in-main 維持 vs 重整 `router/` 樹;預設=無強預設,as-built flat＋lint 運作良好）
-- [ ] ④選擇性 FK（預設=join 表 `sys_user_role` 加 FK、其餘維持零;第一條 migration 前）
-- [ ] ⚠️d redis-stack image tag（預設=建 stack 當下即 pin 數字版;compose 定稿前）
-- [ ] ⚠️k migration 檔名（預設=改短編號 `mNNN_<name>`;第一條 migration 前）
+**前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
+- [x] ①router 結構 ✅ flat-in-main 沿用（lint 三源一致直接沿用）
+- [x] ④選擇性 FK ✅ 僅 join 表 `sys_user_role` 加 FK、其餘 11 表維持零（義務照 §3.3）
+- [x] ⚠️d redis-stack image tag ✅ 建 stack 當下即 pin 數字版
+- [x] ⚠️k migration 檔名 ✅ 短編號 `mNNN_<name>`
 
 **出口條件（DESIGN §8.4,4 項全綠才換波）**:
 - [ ] dev stack `up --wait` 全 healthy
@@ -153,11 +153,10 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 12**:待決② C+ typings-as-oracle｜待決⑤ 凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)
+**已決 16**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)
 
-**開放 16**(依最晚決策點分組):
-- 波 0 前:①router 結構｜④選擇性 FK｜⚠️d redis-stack tag｜⚠️k migration 檔名
-- 波 1~3:③第一刀位｜⚠️a 效能數字｜⚠️o RI 下沉(波1)｜⚠️b 審計讀端(波2)｜⚠️m alt-login 入波(波3)
+**開放 12**(依最晚決策點分組):
+- 波 1~3:③第一刀位(波1開工前)｜⚠️a 效能數字(波1驗收前)｜⚠️o RI 下沉(波1 facade 設計時)｜⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
 - 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention
 
 ---
