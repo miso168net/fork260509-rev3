@@ -25,7 +25,7 @@ nginx conf 內 upstream port（`base-web:21079`→`:31079`、`rust-api:21081`→
 
 ## R3 · rust-api 版本鎖點與 time/home 坑
 
-- **Decision**: 沿 rev2 as-built 鎖點（DESIGN §1.6「版本＝rev2 as-built 鎖點、rev3 起點」）：toolchain **rust 1.86**（`rust-toolchain.toml` channel "1.86"）、`axum 0.7`、`tokio 1`、`sea-orm-migration 1.1.20`（migration crate）、edition 2021。基底映像 `rust:1.86-slim-bookworm`／`debian:bookworm-slim`。
+- **Decision**: 沿 rev2 as-built 鎖點（DESIGN §1.6「版本＝rev2 as-built 鎖點、rev3 起點」）：toolchain **rust 1.86**（`rust-toolchain.toml` channel "1.86.0"——實作期落值 patch 版：與映像內建 toolchain 同名、避免 rustup 重複下載，final review 發現）、`axum 0.7`、`tokio 1`、`sea-orm-migration 1.1.20`（migration crate）、edition 2021。基底映像 `rust:1.86-slim-bookworm`／`debian:bookworm-slim`。
 - **已知坑（rev2 Cargo.toml 注記）**: sea-orm 1.1.20 過渡依賴的 `time`/`home` 新 patch 需 Rust 1.88——**新生成的 Cargo.lock 會踩**。對策：scaffold 自產 lock 後執行 `cargo update -p time --precise 0.3.37 -p home --precise 0.5.9` 並 commit lock（鎖定 1.86 可編譯集）。
 - **Cargo.lock**: 自產並 commit（不拷 rev2 lock——rev2 lock 含 35-feature 全依賴、scaffold 僅小集合）。
 - **Alternatives**: 升 rust 1.88+（脫離 rev2 鎖點、引入新變數）——否；版本升級屬日後顯式 bump。
