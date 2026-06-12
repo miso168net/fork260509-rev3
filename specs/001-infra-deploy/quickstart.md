@@ -6,7 +6,7 @@
 
 - Docker 29.x／Compose v5.x；WSL2 mirrored networking（`127.0.0.1` 自 host 可達）
 - port 段 3XXXX 空閒；standalone base-web 若在跑先 `docker compose -f docker-compose.base-web.yml down`
-- `psql`/`redis-cli`（host 端驗收用，選配）
+- `psql`/`redis-cli`（host 端驗收**必備**——C-V-2/C-V-4 依賴）
 
 ## 一次性準備（兩步）
 

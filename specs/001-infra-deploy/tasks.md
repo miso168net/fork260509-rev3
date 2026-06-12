@@ -41,7 +41,7 @@
 - [ ] T010 [US1] 建 `docker-compose.yml`（master base）：裁剪帶入＋改名——5 service＋migrate＋acme 殼；裁 8 service/4 卷/2 secrets（research R1）；redis pin `redis/redis-stack-server:7.4.0-v8`（⚠️d）；`name: rev3-admin`＋`rev3_net`＋7 卷＋6 secrets；base 層禁 host ports／base-web 不放 image-build-command（rev2 R1/H1 規則 carry）
 - [ ] T011 [US1] 建 `docker-compose.dev.yml`：裁剪帶入＋改名——loopback 31xxx 全組；base-web 段採 standalone 已驗定義（node:26-alpine＋pnpm@10＋store redirect＋CI=true，research R8）；rust-api dev target＋bind mount＋cargo_cache/target 卷＋JWT env fallback；migrate entrypoint override（`cargo run --bin migration`＋`command:["up"]`）；postgres 35432／redis 36379
 - [ ] T012 [US1] 組態驗證：`docker compose -f docker-compose.yml -f docker-compose.dev.yml config -q` 通過＋已交付各檔 `grep -i rev2` 歸零（C-V-5 dev 部分）
-- [ ] T013 [US1] dev 實機驗收：C-V-0（standalone down＋secrets/cert 就緒）→ C-V-2 全套（`up -d --wait` exit 0／ps 5 healthy＋migrate exited(0)／gate 時序證據／健檢 6 點）
+- [ ] T013 [US1] dev 實機驗收：C-V-0（standalone down＋secrets/cert 就緒）→ C-V-2 全套（`up -d --wait` exit 0／ps 5 healthy＋migrate exited(0)／gate 時序雙斷言／健檢 6 點含 Content-Type）→ C-V-8（缺 secrets fail-fast 負向＋重複 up 冪等；Edge case 2 豁免註記確認）
 - [ ] T014 [US1] 持久化驗收 C-V-4（probe 表寫入→down→up→存活→清除）
 
 **Checkpoint**: US1 全綠＝MVP 達成（SC-001/002/003/004）
@@ -70,15 +70,16 @@
 
 - [ ] T019 [P] 帶入 `docker-compose.rust-api.yml`（standalone debug 後備：DEPRECATED 同款定位標註＋改名 31081；research R9）＋`config -q` 驗
 - [ ] T020 總驗：全交付物 `grep -ri rev2` 歸零（C-V-5 全量）＋quickstart.md 流程逐步對照（文件與實況零漂移）＋`docker compose config -q` dev/prod 雙組合終驗
-- [ ] T021 兩段式 commit 收口：①`cd rust-api`──scaffold 首批 commit（conventional、中文；**push 至 `rev3-admin-rust-api` 前依 §4.1 徵 user 同意**）②outer──`git add rust-api`（SHA pin）＋compose×4＋deploy/ 全交付物 commit（feature branch；merge/push 凍結至 finishing，§I.4）
+- [ ] T021 兩段式 commit 收口（**commit only——任何 push／merge 凍結至 `superpowers:finishing-a-development-branch`，constitution §I.4**）：①`cd rust-api`──scaffold 首批 commit（conventional、中文；**不 push**——SHA pin 指向本機 commit 完全合法，remote 一致性由 finishing 階段一次補齊）②outer──`git add rust-api`（SHA pin）＋compose×4＋deploy/ 全交付物 commit（feature branch、**不 push 不 merge**）
 
 ## Dependencies
 
 ```
 Phase 1 (T001-T003) ──→ Phase 2 (T004-T008) ──→ Phase 3/US1 (T009-T014) ──→ Phase 4/US2 (T015)
-                                                                          └─→ Phase 5/US3 (T016-T018) ──→ Phase 6 (T019-T021)
+                                                                          └─→ Phase 5/US3 (T016-T018) ──→ Phase 6 (T020-T021)
+T019 [P]：任何時點可做（獨立檔、不在主鏈上）
 內部：T004 → T005∥T006 → T007 → T008；T009 可與 Phase 2 並行（不同樹）；T010 → T011 → T012 → T013 → T014
-US2(T015) 依賴 US1 stack 運行中；US3(T016-018) 依賴 Phase 2 產物＋T010；T019 任何時點可做（標 [P]）
+US2(T015) 依賴 US1 stack 運行中；US3(T016-018) 依賴 Phase 2 產物＋T010
 ```
 
 ## Parallel Execution Examples

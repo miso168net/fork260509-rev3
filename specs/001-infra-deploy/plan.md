@@ -26,7 +26,7 @@
 
 **Constraints**: base 層禁 host ports／禁環境專屬掛載（rev2 R1）；base-web service 不放 image/build/command（rev2 H1）；healthcheck 容器內一律 `127.0.0.1`（alpine IPv6 坑）；port 3XXXX 段；卷靠 `name: rev3-admin` auto-prefix（§8.2.2）
 
-**Scale/Scope**: 5 service＋migrate＋acme 殼；compose ×4＋deploy/ 約 14 檔＋scaffold 2 crate；單機 dev／演練 prod
+**Scale/Scope**: 5 service＋migrate＋acme 殼；compose ×4＋deploy/ 約 18 檔（含 6 example＋README）＋scaffold 2 crate；單機 dev／演練 prod
 
 ## Constitution Check
 
@@ -106,4 +106,4 @@ fork260509-rev3/
 1. **順序**：scaffold（worktree、可獨立 `cargo build` 驗）→ deploy/ 帶入改名 → compose 三件套 → standalone → 實機驗收（dev 硬出口 → prod sanity → prod image build）→ 兩段式 commit（rust-api 第一段→outer pin 第二段）
 2. **裁剪殘留雙保險**：每檔帶入後 `grep -i rev2` 即驗；compose 完成後 `docker compose config` dev/prod 兩組合
 3. **port 撞**：實機驗收前 `docker compose -f docker-compose.base-web.yml down`（standalone 與 master 的 base-web 同 port 31079）
-4. **push 紀律**：scaffold push 到 fork（`rev3-admin-rust-api` 分支）前依 §4.1 徵 user 同意；feature branch 的 merge/push 凍結至 finishing（§I.4）
+4. **push/merge 全凍結（§I.4）**：實作期一律 commit only——rust-api worktree commit 不 push（SHA pin 指向本機 commit 合法）、outer feature branch 不 push 不 merge；全部 remote 同步由 `superpowers:finishing-a-development-branch` 階段一次補齊（屆時 push 仍依 §4.1 徵 user 同意）

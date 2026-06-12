@@ -33,7 +33,7 @@
 
 **Why this priority**: 入口路由是 prod 拓撲的核心形狀（DESIGN §7.4 凍結形），後續所有「經真實 `/api` 路徑驗收」的刀（波 1 出口條件）都依賴它正確；但它依附於 US1 的 stack 存在，故為 P2。
 
-**Independent Test**: stack 運行中，對入口發出三類請求（根路徑、`/api/health`、`/api/metrics`）並驗證各自的路由行為。
+**Independent Test**: stack 運行中，對入口發出四類請求（根路徑、`/api/health`、`/api/metrics`、`/health`）並驗證各自的路由行為。
 
 **Acceptance Scenarios**:
 
@@ -79,7 +79,7 @@
 - **FR-006**: dev 與 prod 組態 MUST 共享同一基底定義（基底層不含對外埠號與環境專屬掛載）；prod 組態 MUST 將 HTTP 強制轉向 HTTPS（健康檢查路徑除外）
 - **FR-007**: 資料庫與快取資料 MUST 經具名卷持久化（停止再啟動後資料保留），卷命名遵循 workspace 慣例（CLAUDE.md §8.2.2）
 - **FR-008**: schema 初始化機制 MUST 就位且本階段空跑成功（零 schema 變更、成功退出）；初始化項目命名慣例（短編號 `mNNN_<name>`，拍板 ⚠️k）於結構中確立
-- **FR-009**: 自既有部署資產（rev2）沿用的內容 MUST 完成 rev3 命名與埠號轉換（服務前綴、埠號段 2X→3X、卷前綴、快取映像鎖定數字版〔拍板 ⚠️d〕），轉換後 rev2 指涉歸零（既有豁免清單除外）
+- **FR-009**: 自既有部署資產（rev2）沿用的內容 MUST 完成 rev3 命名與埠號轉換（服務前綴、埠號段 2X→3X、卷前綴、快取映像鎖定數字版〔拍板 ⚠️d〕），轉換後 rev2 指涉歸零（目前無豁免項——部署層交付物不引用倉庫永久名）
 - **FR-010**: 系統 MUST 提供後端 API 的獨立啟動組態（standalone，供單服務開發場景），與 master 組態並存
 
 ## Success Criteria *(mandatory)*
@@ -91,7 +91,7 @@
 - **SC-003**: 啟動時序證據可查：schema 初始化在 API 服務之前成功完成（閘門行為可驗證）
 - **SC-004**: 停止後再啟動，資料庫內測試資料 100% 保留
 - **SC-005**: prod 組態起停演練成功：憑證植入 → 啟動全 healthy → 乾淨停止，全程無錯誤
-- **SC-006**: 部署資產中 rev2 指涉為零（倉庫永久名與史料引用豁免）
+- **SC-006**: 部署資產中 rev2 指涉為零（目前無豁免項）
 - **SC-007**: 經統一入口的 API 路徑往返成功（`/api/health` 回 `ok`），且內部端點（`/api/metrics`）對外不可達
 
 ## Assumptions

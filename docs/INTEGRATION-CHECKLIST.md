@@ -156,9 +156,9 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 **已決 17**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離)
 
-**開放 12**(依最晚決策點分組):
+**開放 13**(依最晚決策點分組):
 - 波 1~3:③第一刀位(波1開工前)｜⚠️a 效能數字(波1驗收前)｜⚠️o RI 下沉(波1 facade 設計時)｜⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
-- 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention
+- 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention｜⚠️u §IV 增第 10 題(amendment 提案,PATCH)
 
 ---
 
