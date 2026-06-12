@@ -73,10 +73,13 @@ fork260509-rev3/
 ├── docker-compose.prod.yml       # 新（帶入裁剪）：80/443、prod.conf、certs 卷、runtime target、build args /api
 ├── docker-compose.rust-api.yml   # 新（帶入、debug 後備定位＋標註）
 ├── docker-compose.base-web.yml   # 既有不動（standalone、已驗證）
+├── .dockerignore                 # 實作期授權補帶（T010 review I-1：rust-api build context=repo root、擋源倉/graphify/機密）
 ├── deploy/                       # 新目錄
+│   ├── .dockerignore             # 實作期授權補帶（T010 review I-2：acme build context=deploy/、擋 secrets/dev-certs）
 │   ├── Dockerfile.rust-api.txt   # 3-stage：builder（2 binary）/dev（cargo-watch --poll）/runtime（dispatcher＋HEALTHCHECK）
 │   ├── Dockerfile.base-web.txt   # prod base-web multi-stage（prod.yml 引用）
 │   ├── Dockerfile.acme.txt       # 4 行殼
+│   ├── acme-entrypoint.sh        # 實作期授權補帶（T003：Dockerfile.acme COPY 依賴、R1 列舉遺漏）
 │   ├── entrypoint.rust-api.sh    # 3-case dispatcher（原樣）
 │   ├── nginx/{nginx.conf, conf.d/{_locations.inc,dev.conf,prod.conf}}   # port 31xxx
 │   ├── generate-dev-cert.sh ＋ dev-certs/.gitkeep
@@ -84,8 +87,8 @@ fork260509-rev3/
 │   └── secrets/{*.txt.example ×6, README.md}
 └── rust-api/                     # worktree（首批 code、兩段式 commit）
     ├── Cargo.toml                # workspace=["server","migration"]＋workspace.dependencies
-    ├── Cargo.lock                # 自產＋time/home pin（R3）
-    ├── rust-toolchain.toml       # channel 1.86
+    ├── Cargo.lock                # 自產＋home pin（R3；time 不在依賴圖、免 pin）
+    ├── rust-toolchain.toml       # channel 1.86.0（實作期落值 patch 版，見 research R3）
     ├── server/{Cargo.toml, src/main.rs}        # axum /health → "ok"、bind 0.0.0.0:31081
     └── migration/{Cargo.toml, src/{main.rs,lib.rs}}  # 空 migrator＋mNNN_<name> 慣例注記
 ```
