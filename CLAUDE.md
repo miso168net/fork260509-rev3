@@ -57,7 +57,8 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── INTEGRATION-RESEARCH.md            ← 早期研究（rev2 設計鏈萃取，§7.1）
 │   ├── INTEGRATION-RESEARCH-FOLLOWUP.md   ← RESEARCH 深入深研（§7.1）
 │   ├── MOCK-COVERAGE-AUDIT.md             ← base-web mock api 查驗（wire ground truth §7.1）
-│   ├── INTEGRATION-DESIGN.md              ← ★ 設計權威 / 核心事實（rev3 架構與執行順序 §7.2）
+│   ├── INTEGRATION-DESIGN.md              ← ★ 設計權威 / 凍結藍圖（只被引用；勘誤+低頻重鑄才動 §7.2）
+│   ├── INTEGRATION-DECISIONS.md           ← 伴生活帳：§1 決策紀錄表 + §2 波次實施帳（§7.2）
 │   ├── INTEGRATION-CHECKLIST.md           ← 動態 todo（SOP 注入、不無限膨脹 §7.3）
 │   ├── INTEGRATION-MILESTONES.md          ← commit 里程碑永久紀錄（append-only，不在 SOP 注入 §7.4）
 │   ├── GRAPHIFY-NOTES.md                   ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3）
@@ -363,7 +364,7 @@ shell commands, and other important information, read the current plan
 
 ## 7. 整合設計文件職責分工
 
-rev3 整合的核心 docs 階層（⏳ 尚未建立），內容由「研究歷史」→「設計權威」→「動態 todo」流動;**`INTEGRATION-DESIGN.md` 是核心事實**。
+rev3 整合的核心 docs 階層（部分落地：DESIGN＋DECISIONS 已落地，其餘見各檔 ⏳），內容流動：「研究歷史」→「設計權威（凍結藍圖）＋伴生活帳」→「動態 todo」;**`INTEGRATION-DESIGN.md` 是核心事實、`INTEGRATION-DECISIONS.md` 是它的活頁**。
 
 ### 7.1 研究歷史(大致已完結、不再擴張)
 
@@ -371,26 +372,34 @@ rev3 整合的核心 docs 階層（⏳ 尚未建立），內容由「研究歷�
 - **`docs/INTEGRATION-RESEARCH-FOLLOWUP.md`** ⏳ — `INTEGRATION-RESEARCH.md` 深入深研要追的事項
 - **`docs/MOCK-COVERAGE-AUDIT.md`** ⏳ — 本地把 base-web 用 docker-compose 跑起來後,查驗 fork example 分支用到的 mock api(rev3 wire ground truth)
 
-### 7.2 設計權威 ★ — `docs/INTEGRATION-DESIGN.md` ⏳
+### 7.2 設計權威 ★ — `docs/INTEGRATION-DESIGN.md` ＋ 伴生活帳 `docs/INTEGRATION-DECISIONS.md`
 
-**此檔為核心事實**。參考 §7.1 三份檔重新設計 rev3 的架構與執行順序、Phase / feature 編排、拍板項、軌道定義、wire 不變式。
+**DESIGN 為核心事實、凍結藍圖**（hindsight-complete：以 rev2 全程經驗於其尾聲重新設計，2026-06-12 歸位本 repo）。**只被引用、不連續回填**。
+> rev2 教訓（git 史實測）：rev2 DESIGN 被改 65 次、1112→1663 行（+50%），長尾全是 feature 完成後的 as-built 小補丁＋拍板雙寫——把權威當進度狀態板用。rev3 以 DECISIONS 外帳根除。
 
-**回填紀律**:**所有完成的設計決策、拍板結果、軌道定義、wire 不變式、設計理由都要回填到此檔對應段落**;內容增厚、不刪減。
+**DESIGN 變動僅三入口**：
+- **勘誤**：既有內容寫錯 → 即時最小 patch（錯的權威比膨脹的權威更糟）
+- **低頻重鑄**（版本化）：constitution-rev3 重鑄時做第一次，之後波邊界視量；把 DECISIONS §1 已決項批次摺進本文、版本 +0.1、該列補標「已併入 vX.Y」。**DECISIONS §2 實施帳永不摺**（執行帳不屬於藍圖）
+- 拍板本身**不動 DESIGN** → 寫 DECISIONS §1
+
+**DECISIONS 為伴生活帳**（不被 SOP hook 注入；表格帳本性質、會長無妨）：
+- **§1 決策紀錄表** — 全書待決／拍板唯一清單（原 DESIGN 附錄 G 整表遷入 @ 2026-06-12）。拍板後該列改「✅ 已決＋結論全文」、不回填 DESIGN 本文。**優先序：DECISIONS §1 > DESIGN 本文**（衝突以 DECISIONS 為準；DESIGN 內「待決N／⚠️x」字樣以 DECISIONS 現況為準）
+- **§2 實施階段** — 波次 as-built 帳（計畫的設計在 DESIGN §8.4、執行的帳在此；rev2 §10 的外移對應物）。波完成後自 CHECKLIST 回填於此
 
 ### 7.3 動態 todo — `docs/INTEGRATION-CHECKLIST.md` ⏳
 
 由 `INTEGRATION-DESIGN.md` 與其它文件未完成事項、或 feature 實作階段發現新問題列到此檔。`.claude/hook-git-submodule-SOP.sh` SessionStart hook **每次 session 開頭 cat 全檔注入**(見 §4.3、§6),作為 Claude 跨 session 進度延續錨。
 
-**引用紀律**:其他文件(DESIGN / MILESTONES / constitution / spec / superpowers 等)**不得跨檔深連結本檔的揮發章節**(`見 CHECKLIST §2.X`、指向某 follow-up)—— 本檔內容會滾動清理/歸檔、§ 錨會 rot;需 cross-ref 時改指 DESIGN(權威)/ MILESTONES(永久)/ spec。例外(結構性、非 rot):§6 與 SOP hook 把本檔當「當前進度活檔」整檔指向、本檔內部 §X↔§Y 互引。
+**引用紀律**:其他文件(DESIGN / MILESTONES / constitution / spec / superpowers 等)**不得跨檔深連結本檔的揮發章節**(`見 CHECKLIST §2.X`、指向某 follow-up)—— 本檔內容會滾動清理/歸檔、§ 錨會 rot;需 cross-ref 時改指 DESIGN(權威)/ DECISIONS(決策與實施帳)/ MILESTONES(永久)/ spec。例外(結構性、非 rot):§6 與 SOP hook 把本檔當「當前進度活檔」整檔指向、本檔內部 §X↔§Y 互引。
 
 **清理紀律**:
 - **檔案不能無限膨脹**,要簡寫摘要或定期清理
-- 只記:Current Focus / Follow-up Backlog / 已完成里程碑摘要 / Roadmap & Phase 狀態 / 跨 feature 待驗證項
-- **不寫詳細設計理由 / 拍板理由 / 軌道定義**(那是 §7.2 DESIGN 的職責);如需引用、用 markdown link 指向 DESIGN 對應 anchor
+- 只記:Current Focus / Follow-up Backlog / 已完成里程碑摘要 / Roadmap & Phase 狀態(**僅當前波快照**;完成波收縮為一行指 DECISIONS §2) / 跨 feature 待驗證項 / **拍板項一行索引**(常駐,一行一條指 DECISIONS §1,讓每 session 開頭即知哪些已拍板、不重新討論)
+- **不寫詳細設計理由 / 拍板理由 / 軌道定義**(設計理由與軌道定義在 DESIGN、拍板紀錄全文在 DECISIONS §1);如需引用、用 markdown link 指向對應 anchor
 
 ### 7.4 其他相關文件
 
-- **`.specify/memory/constitution.md`** — v1.0.0 將從 DESIGN 拍板段 + 軌道清單提取凍結為**不可違反的權威**(更高層、需 amendment 流程才能改)
+- **`.specify/memory/constitution.md`** — v1.0.0 將從 DESIGN §9 + DECISIONS §1 拍板結論提取凍結為**不可違反的權威**(更高層、需 amendment 流程才能改)
 - **`docs/INTEGRATION-MILESTONES.md`** ⏳ — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**「commit 里程碑表」+「✅ 完成+歸檔」兩區(後者收 CHECKLIST「Follow-up Backlog」搬來的已完成 follow-up 細節)**;歸檔流程見 §7.5
 - **`docs/superpowers/000-base-web-docker-bootstrap.md`** — 持久記憶 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + CDP node scripts 用法段;scripts 本體 git-tracked 於 `tests/000-base-web-docker-bootstrap/scripts/`、mock API 對映 raw 資料同目錄)
 - **`docs/superpowers/<NNN>-<feature-name>.md`** — 每個 spec-kit feature 的 Phase 0 brainstorm 決策(見 §3 階段 0、DESIGN 拍板段)
@@ -398,26 +407,28 @@ rev3 整合的核心 docs 階層（⏳ 尚未建立），內容由「研究歷�
 ### 7.5 內容流向 + commit 歸檔流程
 
 ```
-新發現 todo / 問題                         處理完、設計決策固化
-   ↓ 列入                                       ↓ 回填
-CHECKLIST(動態,SOP 注入)  ────────────→  DESIGN(權威,核心事實 ★)
-                                                ↓ v1.0.0 提取凍結
-                                                ↓
-                                          constitution(凍結權威)
+新發現 todo / 問題 → CHECKLIST(動態,SOP 注入)
+   ├─ 拍板          → DECISIONS §1(該列改 ✅+結論全文);CHECKLIST 拍板索引行更新
+   ├─ 波/Phase 完成  → DECISIONS §2(as-built+SHA) + MILESTONES append;CHECKLIST 該波收縮一行
+   ├─ feature/follow-up 完成 → MILESTONES;CHECKLIST 拔
+   └─ DESIGN 勘誤    → 直接最小 patch DESIGN(唯一即時動藍圖的入口)
+
+低頻重鑄:DECISIONS §1 已決 ─批次摺合→ DESIGN(版本+0.1) ─v1.0.0 提取→ constitution(凍結權威)
+(DECISIONS §2 實施帳永不摺)
 
 feature 啟動  →  docs/superpowers/<NNN>-<feature-name>.md(brainstorm)
               →  specs/<NNN>-<feature-name>/spec.md(spec-kit)
-              →  實作完成 → 回填 DESIGN + CHECKLIST 勾掉
+              →  實作完成 → MILESTONES append + CHECKLIST 勾掉(涉拍板則登 DECISIONS §1)
 ```
 
 **commit 完成歸檔流程**(任何 docs / feature commit 落地後,Claude 自動執行):
 
 1. **永久紀錄** — `docs/INTEGRATION-MILESTONES.md` 表尾 append 一行(commit hash + 日期 + 主題)
 2. **動態追蹤** — CHECKLIST「Current Focus」區的「最新進展」加一條;若超過 **2 條**、刪最舊那條(滾動)
-3. **Phase 歸檔**(若該 commit 完成整個 Phase)— CHECKLIST「Roadmap & Phase 狀態」區對應 Phase 改「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 拔細節 list;deliverable 詳細已在 DESIGN 的 deliverable 段、不重複
+3. **波/Phase 歸檔**(若該 commit 完成整波)— as-built(feature 清單+merge SHA+日期)回填 DECISIONS §2 對應波;CHECKLIST「Roadmap & Phase 狀態」該波收縮為一行「✅ (YYYY-MM-DD) → 詳 DECISIONS §2」;**不動 DESIGN**
 4. **follow-up 歸檔** — CHECKLIST「Follow-up Backlog」的 follow-up 完成後標「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 清 body;累積數節後**批次搬到 MILESTONES「✅ 完成+歸檔」區**、Follow-up Backlog 原處留 1 行收合指標(`> ### §X ~ §Y 全完成+已歸檔(手動搬至 MILESTONES)`)。仍 open 的 follow-up 與仍 active 的索引(如拍板項索引這類常駐索引)續留 CHECKLIST
 
-**紀律**:**CHECKLIST 永遠不膨脹** — 歷史 commit 在 MILESTONES.md / `git log`;設計詳細在 DESIGN;當前狀態在 CHECKLIST。
+**紀律**:**CHECKLIST 永遠不膨脹、DESIGN 永遠不當狀態板** — 歷史 commit 在 MILESTONES.md / `git log`;設計詳細在 DESIGN(凍結藍圖);拍板現況與波次執行帳在 DECISIONS;當前狀態在 CHECKLIST。
 
 ## 8. 操作參考與工具
 
