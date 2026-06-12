@@ -392,7 +392,7 @@ rev3 整合的核心 docs 階層（⏳ 尚未建立），內容由「研究歷�
 
 - **`.specify/memory/constitution.md`** — v1.0.0 將從 DESIGN 拍板段 + 軌道清單提取凍結為**不可違反的權威**(更高層、需 amendment 流程才能改)
 - **`docs/INTEGRATION-MILESTONES.md`** ⏳ — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**「commit 里程碑表」+「✅ 完成+歸檔」兩區(後者收 CHECKLIST「Follow-up Backlog」搬來的已完成 follow-up 細節)**;歸檔流程見 §7.5
-- **`docs/superpowers/000-base-web-docker-bootstrap.md`** ⏳ — 持久記憶 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + 可直接跑的 CDP node scripts 段)
+- **`docs/superpowers/000-base-web-docker-bootstrap.md`** — 持久記憶 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + CDP node scripts 用法段;scripts 本體 git-tracked 於 `tests/000-base-web-docker-bootstrap/scripts/`、mock API 對映 raw 資料同目錄)
 - **`docs/superpowers/<NNN>-<feature-name>.md`** — 每個 spec-kit feature 的 Phase 0 brainstorm 決策(見 §3 階段 0、DESIGN 拍板段)
 
 ### 7.5 內容流向 + commit 歸檔流程
