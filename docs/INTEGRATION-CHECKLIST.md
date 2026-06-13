@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001 ✅ 已收刀 2026-06-13、餘 6 項〔audit ×2 計 7 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001+002 ✅ 已收刀 2026-06-13、餘 4 項〔audit ×2 計 5 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-13 002-rev2-schema-baseline 全綠收刀＋merge＋push**:C-V-0~9 實機全綠（SC-001~008）、前代 35 支 squash 為 4 支基線（m001 schema 11 表／m002 seed 92 列 6 表／m003 FK／m004 demo 66）＋sea-orm-adapter 拷入、修 m002 兩層 seed drift（id 順序 bug＋normalize 第六規則 row-order 正規化〔user 拍板方案 A〕）、merge `9233ae0` 回 rev3-admin-root;三 ref 已 push（rev3-admin-root/002 保留分支/rev3-admin-rust-api）
 - **2026-06-13 001-infra-deploy 全綠收刀＋merge＋push**:T001~T021、C-V-0~8 實機全綠（SC-001~007）、抓 redis --dir 持久化真 bug 並修、merge `c9ffad5` 回 rev3-admin-root;三 ref 已 push（rev3-admin-root〔含波 -1 累積〕/001-infra-deploy 保留分支/rev3-admin-rust-api）
-- **2026-06-12 constitution-rev3 v1.0.0 凍結＋波 -1 收口**:13 項拍板融入（含 ⚠️s fork-delta 紀律）、出口四項全綠（`167db96`,已隨 2026-06-13 push 上行）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **002-rev2-schema-baseline 刀 → user 手動 `/speckit-specify`**（input=docs/superpowers/002-rev2-schema-baseline.md;brainstorm ✅ 2026-06-13 四項拍板〔⚠️v 委派式＋adapter 併入/seed 92 列勘誤/pristine 重放/m003+ 全包〕;casbin_rule 開放點已決）
+**下一步**: **波 0 第三刀 → envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形;待 brainstorm→手動 `/speckit-specify`）
 
 ---
 
@@ -35,7 +35,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 
 **刀/feature 清單**（素材=DESIGN §8.2 跨切地基;刀界由各刀 brainstorm/specify 時定稿）:
 - [x] **001-infra-deploy 刀 ✅ 收刀（2026-06-13、merge `c9ffad5`）**——master compose 5 service＋migrate gate＋acme 殼、dev/prod override、deploy/ 全套、rust-api scaffold（/health＋空 migrator＋lock pin）;C-V-0~8 實機全綠（SC-001~007）;follow-up 見 §3.4;spec 全帳在 `specs/001-infra-deploy/`
-- [ ] **002-rev2-schema-baseline 刀**（⚠️t 拍板產物:m001_rev2_schema＋m002_rev2_seeds〔rev2 12 表終態 squash、seed 92 列/6 表勘誤口徑〕＋rev3 delta m003〔④FK〕/m004〔⚠️p 全 demo 頁＋⚠️c 三頁子集〕＋sea-orm-adapter 併入〔⚠️v 委派式〕＋pg_dump pristine 重放雙 diff 閉環;**brainstorm ✅ 2026-06-13**〔docs/superpowers/002-rev2-schema-baseline.md、四項拍板〕→ 待 user 手動 /speckit-specify）
+- [x] **002-rev2-schema-baseline 刀 ✅ 收刀（2026-06-13、merge `9233ae0`）**——前代 35 支 squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（⚠️v 委派式、§I.5）;C-V-0~9 實機全綠（SC-001~008）、normalize 六規則（row-order 假紅、user 拍板方案 A、契約留痕 migration-chain.md §3）;spec 全帳在 `specs/002-rev2-schema-baseline/`
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
 - [ ] **envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形）
 - [ ] **soft-delete 基建刀**（`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`;rev2 009）
@@ -50,7 +50,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 
 **出口條件（DESIGN §8.4,4 項全綠才換波）**:
 - [x] dev stack `up --wait` 全 healthy ✅（001、C-V-2 實證 2026-06-13）
-- [ ] 三守恆綠（entity_access_lint・endpoint_coverage_lint・migration up→down→up）
+- [ ] 三守恆綠（entity_access_lint・endpoint_coverage_lint〔皆後刀〕・**migration up→down→up ✅ 002 C-V-5 達成 2026-06-13**）
 - [ ] envelope 13 碼 contract 形狀測試綠（⚠️e 拍板形）
 - [ ] login→getUserInfo→enforce 最小鏈 curl 通
 
@@ -170,9 +170,9 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] generate-* 兩腳本 `docker pull -q` 離線即 abort（image 已 cache 也炸）→ `docker image inspect || docker pull` fallback
 - [ ] outer `.gitignore:133` 註解殘留前代 feature 編號（順手修）
 **rust-api**:
-- [ ] migration main.rs secret 讀檔失敗靜默 fallback→補 eprintln 警示（rev2 同形;002 順手）
+- [x] ✅（2026-06-13、002/U2）migration main.rs secret 讀檔失敗靜默 fallback→補 eprintln 警示（`inspect_err`、行為不變）
 - [ ] `set_var` 於 runtime 啟動後（edition 2024 升級時根治）
-- [ ] workspace Cargo.toml time pin 註解勘誤（time 不在 scaffold 依賴圖;下次動 Cargo.toml 順手、002 引入 sea-orm 後重驗）
+- [ ] workspace Cargo.toml time pin 註解勘誤（**002 已實證 time=0 不入圖〔R3 最小 features 集〕**;但註解半過時未改〔U1 surgical 保留〕、下次動 Cargo.toml 順手勘誤）
 - [ ] rust-api/.gitignore `debug`/`target` 未錨定 pattern（誤吞同名子目錄風險）
 **拍板/上游**:
 - [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）

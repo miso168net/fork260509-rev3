@@ -356,10 +356,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 002-rev2-schema-baseline（波 0 第二刀）
-Spec ✅｜Clarify ✅（0Q 全 Clear）｜Plan ✅（specs/002-rev2-schema-baseline/plan.md、Check 9/9）｜下一步 /speckit-tasks
-Scope: m001 rev2 終態 squash＋m002 seed 92 列/6 表＋m003 FK＋m004 demo 66 條（⚠️p）＋adapter 拷入（⚠️v）；pristine 雙 diff 閉環
-Brainstorm: docs/superpowers/002-rev2-schema-baseline.md（四項拍板＋深審修訂）
+Active feature: （無——002 已收刀 2026-06-13、merge `9233ae0` 回 rev3-admin-root）
+上一刀: 002-rev2-schema-baseline ✅ 全完成（Spec/Plan/Tasks/Analyze→實作 12 單元→C-V-0~9 實機全綠 SC-001~008→final review pass→merge --no-ff 保留分支＋三 ref push）
+下一步: 波 0 第三刀 envelope（rev2 008、⚠️e/⚠️f）→ 待 brainstorm→手動 `/speckit-specify`
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
