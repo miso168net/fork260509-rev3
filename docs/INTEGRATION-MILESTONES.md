@@ -39,6 +39,7 @@
 | `167db96` | 2026-06-12 | **constitution-rev3 v1.0.0 凍結** — 13 項拍板融入（含 ⚠️s fork-delta 紀律）；波 -1 出口四項全綠、**波 -1 全完成** |
 | `c9ffad5` | 2026-06-13 | **001-infra-deploy 全綠收刀（波 0 第一刀）** — master compose 5 service＋migrate gate＋dev/prod override＋deploy/ 全套＋rust-api scaffold（worktree `5d69c06`）；C-V-0~8 實機全綠（SC-001~007）、捕獲 redis `--dir` 持久化真 bug 並修；merge --no-ff、feature branch 保留 |
 | `9233ae0` | 2026-06-13 | **002-rev2-schema-baseline 全綠收刀（波 0 第二刀）** — 前代 35 支 migration squash 為 4 支基線（m001 schema 11 表終態〔10 手寫＋casbin 委派 vendored adapter＋ALTER 治理欄〕／m002 seed 92 列 6 表〔argon2id 單一 hash〕／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（§I.5、worktree `91cfc80`）；tests/002 四支驗證 scripts（normalize 六規則）＋2 基準檔；C-V-0~9 實機全綠（SC-001~008）、修 m002 兩層 seed drift（id 順序 bug＋normalize 第六規則 row-order 正規化〔user 拍板方案 A、契約留痕 migration-chain.md §3〕）；merge --no-ff、feature branch 保留 |
+| `7960a73` | 2026-06-13 | **003-envelope 全綠收刀（波 0 第三刀）** — envelope.rs（`Res<T>{data,code,msg}`＋`PageRes<T>`＋`BizCode` 13 碼矩陣〔code/msg 逐字凍結⚠️f＋http_status() 單一真相〕）＋error.rs（`AppError` struct＋8 公開建構子〔4 保留碼無建構子＝⚠️f 結構保證〕＋集中 IntoResponse、Internal→200⚠️e、internal detail 僅進 Display 不入 body）;非新 crate（server 內 2 模組、worktree `6808adb`）;test-first TDD 18/18＋prod release build＋C-V 1-5 全綠;四階段 subagent review（spec×4＋quality×4＋final）全過、rev2 enum/500 陷阱已避;merge --no-ff、feature branch 保留、**未 push** |
 
 ---
 

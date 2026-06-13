@@ -356,10 +356,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 003-envelope（波 0 第三刀）
-Spec ✅｜Clarify ✅（0Q 全 Clear）｜Plan ✅（specs/003-envelope/plan.md、Constitution Check 9/9）｜下一步 /speckit-tasks
-Scope: Res<T>{data,code,msg}＋PageRes<T>＋BizCode 13 碼矩陣（http_status() 單一真相）＋AppError 集中映射（⚠️e 5000→200／⚠️f 13 碼凍結含 4 保留碼結構不發出）；server crate 內 envelope.rs/error.rs、非新 crate；test-first TDD
-Brainstorm: docs/superpowers/003-envelope.md（四項拍板＋⚠️e/⚠️f 承接）
+Active feature: （無——波 0 第三刀 003-envelope 已收刀、merge `7960a73` 2026-06-13、feature branch 保留、未 push）
+下一步: 波 0 第四刀 brainstorm 起手（刀清單剩：soft-delete 基建〔rev2 009〕／audit ×2〔rev2 011+015〕／Auth 島最小段〔rev2 013〕）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
