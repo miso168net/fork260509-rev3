@@ -6,7 +6,7 @@
 
 ## Summary
 
-rev2 35 支 migration squash 為 **2 支基線**：`m001_rev2_schema`（11 表終態忠實濃縮——10 手寫＋casbin_rule 委派 vendored adapter〔⚠️v〕；＋seaql 框架自建＝12 表口徑）＋`m002_rev2_seeds`（92 列／6 表淨效果、argon2id 單一 hash）；**rev3 delta 顯式 2 支**：`m003_user_role_fk`（④、RESTRICT）＋`m004_demo_menu_seeds`（⚠️p 66 條 demo 選單＋policy 全覆蓋 66 列）；sea-orm-adapter 整檔拷入（§I.5 例外）；pg_dump 雙庫 diff 零漂移閉環（pristine 重放＋`up -n 2` 檢查點＋normalize 五規則）＋delta 斷言＋up→down→up 守恆，001 dev stack 實機驗收。
+rev2 35 支 migration squash 為 **2 支基線**：`m001_rev2_schema`（11 表終態忠實濃縮——10 手寫＋casbin_rule 委派 vendored adapter〔⚠️v〕；＋seaql 框架自建＝12 表口徑）＋`m002_rev2_seeds`（92 列／6 表淨效果、argon2id 單一 hash）；**rev3 delta 顯式 2 支**：`m003_user_role_fk`（④、RESTRICT）＋`m004_demo_menu_seeds`（⚠️p 66 條 demo 選單＋policy 全覆蓋 66 列）；sea-orm-adapter 整檔拷入（§I.5 例外）；pg_dump 雙庫 diff 零漂移閉環（pristine 重放＋`up -n 2` 檢查點＋normalize 六規則）＋delta 斷言＋up→down→up 守恆，001 dev stack 實機驗收。
 
 ## Technical Context
 
@@ -24,7 +24,7 @@ rev2 35 支 migration squash 為 **2 支基線**：`m001_rev2_schema`（11 表�
 
 **Performance Goals**: N/A（92＋66 列規模；⚠️a 拍板＝波 1 才議）
 
-**Constraints**: 欄序忠實（dump 欄序＝diff 硬約束）；diff 檢查點＝m002 後 m003 前（`up -n 2`）；normalize 五規則缺一假紅；§I.4 push/merge 凍結至 finishing（⚠️u 紀律：tasks 不得排 push）；m004 down 限定 demo 集（不得波及基線）
+**Constraints**: 欄序忠實（dump 欄序＝diff 硬約束）；diff 檢查點＝m002 後 m003 前（`up -n 2`）；normalize 六規則缺一假紅；§I.4 push/merge 凍結至 finishing（⚠️u 紀律：tasks 不得排 push）；m004 down 限定 demo 集（不得波及基線）
 
 **Scale/Scope**: migration ×4＋adapter crate（manifest＋src×5＋examples×4）＋workspace deps ×3＋Dockerfile COPY ×2 行＋tests/002 scripts ×4＋dump 基準檔；seed 92＋66 列、policy 66 列
 
@@ -91,13 +91,13 @@ fork260509-rev3/
 
 ## Phase 0：研究結論
 
-見 [research.md](research.md)——R1 squash 紀律（欄序忠實）／R2 ⚠️v 委派＋拷貝清單／R3 manifest 宣告形實查（**workspace 須加 casbin＋sea-orm 條目；rev2 defaults-on＝time 根因；rev3 最小集 time-free 刻意偏離**）／R4 demo 枚舉定稿（66 條＋D1~D4 裁定＋移交 backlog）／R5 seed 值來源（protected 跨檔拆解）／R6 diff 工具鏈（normalize 五規則）／R7 sequence 等價已驗／R8 RESTRICT／R9 依賴增量／R10 三 grep 紀律。NEEDS CLARIFICATION＝0。
+見 [research.md](research.md)——R1 squash 紀律（欄序忠實）／R2 ⚠️v 委派＋拷貝清單／R3 manifest 宣告形實查（**workspace 須加 casbin＋sea-orm 條目；rev2 defaults-on＝time 根因；rev3 最小集 time-free 刻意偏離**）／R4 demo 枚舉定稿（66 條＋D1~D4 裁定＋移交 backlog）／R5 seed 值來源（protected 跨檔拆解）／R6 diff 工具鏈（normalize 六規則）／R7 sequence 等價已驗／R8 RESTRICT／R9 依賴增量／R10 三 grep 紀律。NEEDS CLARIFICATION＝0。
 
 ## Phase 1：設計產物
 
 - [data-model.md](data-model.md)：12 表 dump 行號座標（全數親 grep 驗證）＋欄序忠實警告＋seed 92 列值來源＋delta 模型＋排除聲明
 - [contracts/verification-commands.md](contracts/verification-commands.md)：C-V 全集——pristine 重放→`up -n 2` 檢查點雙 diff 零差異→續 up delta 斷言→up→down→up 守恆→dev stack gate 實機→**prod image build**（新增 workspace crate ⇒ 必含，CLAUDE.md §3 紀律）→冪等→time 複驗
-- [contracts/migration-chain.md](contracts/migration-chain.md)：m001~m004 up/down 行為契約＋檢查點語意＋normalize 五規則凍結
+- [contracts/migration-chain.md](contracts/migration-chain.md)：m001~m004 up/down 行為契約＋檢查點語意＋normalize 六規則凍結
 - [contracts/demo-menu-enumeration.md](contracts/demo-menu-enumeration.md)：m004 凍結枚舉（66 條集合＋28 欄映射權威＋不變式）
 - [quickstart.md](quickstart.md)：從零驗證指南
 

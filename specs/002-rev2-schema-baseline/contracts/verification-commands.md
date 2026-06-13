@@ -2,14 +2,14 @@
 
 > 實機驗收命令全集（斷言實作委派 tests/002 scripts——§0 I/O 表；本檔給出每條斷言的可跑形）。
 > 拋棄式資源前綴 `cv002-`、結束即清。兩側 pg_dump 一律容器內 17.10（host 16 打 17 server 實測被拒）。
-> normalize 五規則＝[migration-chain.md](migration-chain.md) §3 凍結；diff 非零先判「假紅（normalize 缺漏）vs 真 drift」——真 drift 修 migration、**不得調 normalize 遮差異**。
+> normalize 六規則＝[migration-chain.md](migration-chain.md) §3 凍結；diff 非零先判「假紅（normalize 缺漏）vs 真 drift」——真 drift 修 migration、**不得調 normalize 遮差異**。
 
 ## §0 · tests/002 scripts I/O 契約（H4）
 
 | script | args | 輸入 | 輸出 | 副作用／重跑語意 |
 |---|---|---|---|---|
 | `pristine-replay.sh` | 無 | rev2 image＋rev2 repo | `/tmp/cv002-rev2-schema.sql`＋`/tmp/cv002-rev2-data.sql`（normalize 後） | 建 `cv002-net`＋`cv002-rev2-pg`（起手 `docker rm -f` 舊容器、冪等重跑）；內建 pg 等待；斷言 seaql=35；exit 非 0＝重放失敗 |
-| `normalize.sh` | `schema\|data [file]`（無 file 讀 stdin） | 原始 dump | normalize 後 dump → stdout | 純過濾、無副作用；schema 模式套規則 #1#2、data 模式套 #1~#5 |
+| `normalize.sh` | `schema\|data [file]`（無 file 讀 stdin） | 原始 dump | normalize 後 dump → stdout | 純過濾、無副作用；schema 模式套規則 #1#2、data 模式套 #1~#6（#6＝COPY 段排序、最後做） |
 | `diff-baseline.sh` | `[--reuse]` | rev2 側兩基準檔＋rust-api 源樹 | `/tmp/cv002-rev3-schema.sql`／`-data.sql`＋雙 diff 結果＋計數不變式＋VERIFY 3/3 | 建 `cv002-rev3-pg`（`--reuse`＝跳過建庫、直接對既有容器跑 dump+diff+斷言——C-V-5 重跑用）；exit 0＝全綠 |
 | `delta-assert.sh` | `[cv002\|stack]`（預設 cv002） | 運行中目標庫 | delta 斷言全集結果 | `cv002` 模式＝docker exec cv002-rev3-pg（含排除式 data-diff 全量驗）；`stack` 模式＝host psql 35432（僅計數斷言——dev stack 無 dump 需求）；無建庫副作用 |
 

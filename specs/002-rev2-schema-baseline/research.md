@@ -40,7 +40,7 @@
 
 - **pristine 重放**: 拋棄式 network＋`postgres:17-alpine` 容器＋rev2 既有 image `rev2-admin-rust-api:latest` 跑 `migration up`（dispatcher 形）→ 35 支重放→參考庫。rev3 側同形拋棄式 pg＋`cargo run --bin migration up -n 2`（sea-orm-migration CLI 原生支援 `-n`）停在 m002 檢查點。
 - **雙 dump**: 兩側皆容器內 `pg_dump 17.10`（host 16 版打 17 server 實測被拒）；schema＝`--schema-only --no-owner`；seed data＝`--data-only --no-owner -t` ×6 表。
-- **normalize 規則（全集、缺一假紅）**: ①`\restrict`/`\unrestrict` 隨機 token 行過濾（pg_dump 17.6+）②排除 seaql_migrations（schema＋data）③argon2 hash 正規化（sys_user.password 欄置換為佔位）④timestamps 正規化（created_at 等 seed 時戳）⑤`setval` 行正規化（值斷言另做：兩側 sys_user_id_seq 皆 last_value=3/is_called=true）。
+- **normalize 規則（全集、缺一假紅）**: ①`\restrict`/`\unrestrict` 隨機 token 行過濾（pg_dump 17.6+）②排除 seaql_migrations（schema＋data）③argon2 hash 正規化（sys_user.password 欄置換為佔位）④timestamps 正規化（created_at 等 seed 時戳）⑤`setval` 行正規化（值斷言另做：兩側 sys_user_id_seq 皆 last_value=3/is_called=true）⑥COPY 段資料行排序（data dump；pg_dump 按 heap ctid 輸出、前代 UPDATE 移位 vs 本基線 INSERT 序物理列序必異＝噪聲；須在 ③④⑤ 雜訊置換後 sort——本刀 C-V-2/C-V-3 暖身發現的假紅源補列、user 拍板方案 A、留痕 migration-chain.md §3）。
 - **scripts 落點**: `tests/002-rev2-schema-baseline/scripts/`（pristine-replay.sh／normalize.sh／diff-baseline.sh／delta-assert.sh）；dump 基準檔頂層。
 
 ## R7 · sys_user sequence 等價（已驗 2026-06-13）

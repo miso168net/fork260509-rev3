@@ -82,6 +82,9 @@ else
 fi
 
 # ── 計數不變式（C-V-3 全集）──
+# 注：sys_user_id_seq 為 sequence 關係，`SELECT last_value||','||is_called` 字串拼接時
+#     is_called 輸出 `true`（非分欄查詢的 `t`）——序列關係特有形；rev2 重放庫與 rev3 兩側
+#     皆 `3,true`、值一致（last_value=3／is_called=true），期望值對齊此實際輸出。
 echo "── 計數不變式 ──"
 assert_eq() { # $1=label $2=actual $3=expect
   [ "$2" = "$3" ] && echo "  $1 = $2 ✅" || fail "$1 = $2 ≠ 期望 $3"
@@ -96,7 +99,7 @@ assert_eq "casbin ptype=p"                "$(P "SELECT count(*) FROM casbin_rule
 assert_eq "casbin protected"              "$(P "SELECT count(*) FROM casbin_rule WHERE protected;")"                        19
 assert_eq "sys_menu protected"            "$(P "SELECT count(*) FROM sys_menu WHERE protected;")"                            8
 assert_eq "sys_user id set"               "$(P "SELECT string_agg(id::text,',' ORDER BY id) FROM sys_user;")"           "1,2,3"
-assert_eq "sys_user_id_seq last/is_called" "$(P "SELECT last_value||','||is_called FROM sys_user_id_seq;")"               "3,t"
+assert_eq "sys_user_id_seq last/is_called" "$(P "SELECT last_value||','||is_called FROM sys_user_id_seq;")"            "3,true"
 assert_eq "distinct password"             "$(P "SELECT count(DISTINCT password) FROM sys_user;")"                            1
 assert_eq "argon2 前綴 ×3"                "$(P "SELECT count(*) FROM sys_user WHERE password LIKE '\$argon2id\$v=19\$%';")"    3
 

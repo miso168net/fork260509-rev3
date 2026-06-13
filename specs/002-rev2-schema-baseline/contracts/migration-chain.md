@@ -15,7 +15,7 @@
 - delta（m003/m004）套用後與 rev2 **必然有差**——不再跑零差異 diff、改跑 delta 斷言（C-V-4）。
 - 部分套用中斷→重跑 `up` 自 seaql_migrations 續行（框架語意）；檢查點重入安全。
 
-## 3. normalize 五規則（凍結；缺一假紅）
+## 3. normalize 六規則（凍結；缺一假紅）
 
 | # | 對象 | 規則 |
 |---|---|---|
@@ -24,8 +24,11 @@
 | 3 | `sys_user.password` | 置換佔位（argon2 random salt、兩側必異）；可驗性另斷言（C-V-3 VERIFY-OK） |
 | 4 | seed 時戳欄（created_at 等 default now() 實值） | data dump 置換佔位；兩側皆 seed 時刻、必異 |
 | 5 | `setval` 行（data dump） | 置換佔位；序列終值另斷言（sys_user_id_seq last_value=3／is_called=t 兩側一致） |
+| 6 | COPY 段列順序（data dump） | 每個 COPY 區塊內資料行排序（pg_dump 按 heap ctid 輸出；前代經 35 支 migration 的 UPDATE 移位、本基線一次性 INSERT，物理列序必異＝dump 雜訊非資料差異；sort 後 id＋全欄仍逐列比對、不遮蓋實質差異——漏列/多列/欄值錯照樣紅）。**執行序：須在 #3/#4/#5 雜訊置換之後排序**（先固定佔位再 sort，否則兩側 hash／時刻字典序不同會 sort 後仍錯位） |
 
-**判讀紀律**：diff 非零→先對照本表判「normalize 缺漏（假紅）」；確認非五規則範圍→真 drift→修 m001/m002 重跑。**禁止**為過 diff 而擴充 normalize 規則遮蓋實質差異（規則變更＝契約修訂、須留痕）。
+**判讀紀律**：diff 非零→先對照本表判「normalize 缺漏（假紅）」；確認非六規則範圍→真 drift→修 m001/m002 重跑。**禁止**為過 diff 而擴充 normalize 規則遮蓋實質差異（規則變更＝契約修訂、須留痕）。
+
+> **第六規則為本刀執行期（C-V-2/C-V-3 暖身）發現的假紅源補列**：原五規則無法消除 pg_dump `--data-only` 的 COPY 物理列序雜訊——前代 pristine 重放庫經 35 支 migration（含 m033/m034 的 protected UPDATE）造成 heap ctid 位移（如 sys_menu ctid 序＝`7,8,1,2,6,3,4,5,9,10`、casbin 跳號），rev3 一次性 INSERT 的 ctid 序＝插入序；即使 m002 已修齊 id 配置（Layer 1），兩側 COPY 物理列序仍不同 → diff 仍假紅。此物理序為 UPDATE 產物、不可用 INSERT 順序重現，故 user 拍板方案 A（normalize 第六規則對 COPY 段排序消除此噪聲），契約修訂留痕於此。
 
 ## 4. 不變式總表（C-V 斷言來源）
 

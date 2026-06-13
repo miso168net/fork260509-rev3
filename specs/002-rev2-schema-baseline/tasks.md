@@ -33,7 +33,7 @@
 
 - [ ] T006 [US1] `rust-api/migration/src/m001_rev2_schema.rs`：10 表手寫終態 DDL（**dump 欄序忠實、data-model.md 座標逐表對照**；INET custom(Alias)；NOT NULL 特例 access_log.operator_id／token.user_id；partial uniq ×3＋token_hash uniq＋一般 index 7；sys_user 直接 BIGSERIAL）＋casbin 委派 `sea_orm_adapter::up()`＋同檔 ALTER 3 治理欄＋對稱 down（DROP 10 表＋adapter::down）；`lib.rs` 掛載
 - [ ] T007 [US1] `rust-api/migration/src/m002_rev2_seeds.rs`：92 列／6 表淨效果（sequence-driven 不寫死 id；user_role 雙向 subquery；casbin 72 列免 subquery；argon2id 單一 hash；`ON CONFLICT DO NOTHING`；UPDATE 淨值直接入 INSERT——nick_name=User01／status=1／home='home'／buttons／protected；值來源座標＝data-model.md §3＋R5 拆解）＋down 限定刪除；`lib.rs` 掛載
-- [ ] T008 [US1] `tests/002-rev2-schema-baseline/scripts/`：四支 script 照 **verification-commands.md §0 I/O 契約**實作——`pristine-replay.sh`／`normalize.sh`（schema|data 雙模式、五規則凍結形）／`diff-baseline.sh`（含 `--reuse` 重跑語意＋pg 等待形＋計數不變式＋VERIFY 3/3）／`delta-assert.sh`（cv002|stack 雙模式）；**起手執行 C-V-0 前置檢查、fail 即停**（含 /tmp dump 重生）
+- [ ] T008 [US1] `tests/002-rev2-schema-baseline/scripts/`：四支 script 照 **verification-commands.md §0 I/O 契約**實作——`pristine-replay.sh`／`normalize.sh`（schema|data 雙模式、六規則凍結形）／`diff-baseline.sh`（含 `--reuse` 重跑語意＋pg 等待形＋計數不變式＋VERIFY 3/3）／`delta-assert.sh`（cv002|stack 雙模式）；**起手執行 C-V-0 前置檢查、fail 即停**（含 /tmp dump 重生）
 - [ ] T009 [US1] C-V-2 實機：pristine 重放（seaql 35 applied 斷言）＋normalize 後**兩份基準檔** git-track→`tests/002-rev2-schema-baseline/{rev2-schema-baseline.sql, rev2-data-baseline.sql}`（schema＋6 表 data；audit 快照兼 C-V-5 重跑比對源）
 - [ ] T010 [US1] C-V-3 實機：基線檢查點雙 diff **雙零差異**＋計數不變式全中（92 列／p=72 g=0／protected 19・8／id{1,2,3}／seq last_value=3／hash 單一＋VERIFY-OK）；fail＝先判假紅 vs 真 drift（migration-chain.md §3 判讀紀律）、真 drift 修 T006/T007 重跑
 
