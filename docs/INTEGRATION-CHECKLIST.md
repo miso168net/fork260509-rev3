@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第三刀 → envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形;待 brainstorm→手動 `/speckit-specify`）
+**下一步**: **波 0 第三刀 envelope → 手動 `/speckit-specify`**（brainstorm ✅ 2026-06-13＝`docs/superpowers/003-envelope.md`、四項拍板〔刀範圍核心+PageRes／AppError 集中映射〔BizCode::http_status() 解 ⚠️e〕／thiserror／PageRes 納入〕＋⚠️e/⚠️f 承接；input＝該檔；specify 須手動跑、pre-hook 建 003-envelope feature branch）
 
 ---
 
