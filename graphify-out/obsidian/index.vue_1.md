@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/page-tab/index.vue"
 type: "code"
-community: "Admin Layout Logic"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_28
 ---
 
 # index.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts_10]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_28

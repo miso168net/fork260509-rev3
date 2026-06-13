@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/locales/index.ts"
 type: "code"
-community: "index.ts"
+community: "Community 20"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Community_20
 ---
 
 # setLocale()
 
 ## Connections
-- [[index.ts (24)]] - `contains` [EXTRACTED]
-- [[index.ts (34)]] - `imports` [EXTRACTED]
+- [[index.ts_23]] - `contains` [EXTRACTED]
+- [[index.ts_33]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Community_20

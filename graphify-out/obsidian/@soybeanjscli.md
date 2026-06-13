@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/package.json"
 type: "code"
-community: "Package Metadata"
+community: "Community 10"
 location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Package_Metadata
+  - community/Community_10
 ---
 
 # @soybeanjs/cli
 
 ## Connections
-- [[devDependencies (6)]] - `contains` [EXTRACTED]
+- [[devDependencies_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Package_Metadata
+#graphify/code #graphify/EXTRACTED #community/Community_10

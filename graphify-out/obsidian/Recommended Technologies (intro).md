@@ -1,13 +1,13 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/recommend/index.md"
 type: "document"
-community: "Recommended Technologies (intro)"
+community: "Community 567"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Recommended_Technologies_intro
+  - community/Community_567
 ---
 
 # Recommended Technologies (intro)
 
-#graphify/document #graphify/EXTRACTED #community/Recommended_Technologies_intro
+#graphify/document #graphify/EXTRACTED #community/Community_567

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/icon/intro.md"
 type: "rationale"
-community: "Icons & UnoCSS Styling"
+community: "Community 140"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_140
 ---
 
 # Local SVG Icon Rendering
@@ -18,4 +18,4 @@ tags:
 - [[unplugin-icons (2)]] - `references` [EXTRACTED]
 - [[vite-plugin-svg-icons (2)]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/rationale #graphify/EXTRACTED #community/Community_140

@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/theme/preset/azir.json"
+source_file: "base-web/src/typings/union-key.d.ts"
 type: "code"
-community: "Theme Design Tokens"
-location: "L6"
+community: "Community 178"
+location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Design_Tokens
+  - community/Community_178
 ---
 
-# themeScheme
+# ThemeScheme
 
 ## Connections
-- [[azir.json]] - `contains` [EXTRACTED]
+- [[union-key.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Design_Tokens
+#graphify/code #graphify/EXTRACTED #community/Community_178

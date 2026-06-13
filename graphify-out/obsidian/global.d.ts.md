@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/global.d.ts"
 type: "code"
-community: "global.d.ts"
+community: "Community 431"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/globaldts
+  - community/Community_431
 ---
 
 # global.d.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[Window]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/globaldts
+#graphify/code #graphify/EXTRACTED #community/Community_431

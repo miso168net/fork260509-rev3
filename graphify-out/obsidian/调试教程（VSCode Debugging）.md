@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/tutorial/debug.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 161"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_161
 ---
 
 # 调试教程（VSCode Debugging）
@@ -16,4 +16,4 @@ tags:
 - [[Vue Debugger launch.json 配置]] - `references` [EXTRACTED]
 - [[tsx TypeScript Runner]] - `cites` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_161

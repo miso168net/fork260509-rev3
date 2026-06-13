@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/cli/command.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # sa release (发布/更新版本/提交)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[sa Command Line Tool (packagesscripts)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

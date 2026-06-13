@@ -1,0 +1,17 @@
+---
+source_file: "fork260509-soybean-admin-docs/src/guide/router/structure.md"
+type: "document"
+community: "Community 187"
+location: "L174"
+tags:
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Community_187
+---
+
+# code:ts ({)
+
+## Connections
+- [[Generated routes_2]] - `contains` [EXTRACTED]
+
+#graphify/document #graphify/EXTRACTED #community/Community_187

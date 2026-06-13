@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/icon/intro.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 140"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_140
 ---
 
 # vite-plugin-svg-icons (2)
@@ -15,4 +15,4 @@ tags:
 - [[Local SVG Icon Rendering (vite-plugin-svg-icons, srcassetssvg-icon)]] - `references` [EXTRACTED]
 - [[System Icons Guide]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_140

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/assets/VSCode调试指南03.png"
 type: "image"
-community: "VSCode 调试指南 Screenshot 01 — launch TS De"
+community: "Community 142"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/VSCode__Screenshot_01__launch_TS_De
+  - community/Community_142
 ---
 
 # VSCode Debugging Guide 03 (breakpoint hit in about page onMounted)
@@ -17,4 +17,4 @@ tags:
 - [[VSCode 调试指南 Screenshot 01 — launch TS Debugger]] - `conceptually_related_to` [INFERRED]
 - [[Vue Debugger launch configuration (launch.json, type chrome, url localhost9527)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/VSCode__Screenshot_01__launch_TS_De
+#graphify/image #graphify/EXTRACTED #community/Community_142

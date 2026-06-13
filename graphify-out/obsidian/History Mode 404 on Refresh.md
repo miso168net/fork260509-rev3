@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/faq/index.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # History Mode 404 on Refresh
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[CORS and Proxy Solutions]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/INFERRED #community/Community_11

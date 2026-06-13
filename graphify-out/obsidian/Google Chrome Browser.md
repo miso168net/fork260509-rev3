@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/chrome.svg"
 type: "concept"
-community: "Chrome Icon (Feather-style line icon: ou"
+community: "Community 425"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Chrome_Icon_Feather-style_line_icon_ou
+  - community/Community_425
 ---
 
 # Google Chrome Browser
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Chrome Icon]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Chrome_Icon_Feather-style_line_icon_ou
+#graphify/concept #graphify/EXTRACTED #community/Community_425

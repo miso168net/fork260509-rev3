@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/common/dark-mode-container.vue"
 type: "code"
-community: "dark-mode-container.vue"
+community: "Community 449"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/dark-mode-containervue
+  - community/Community_449
 ---
 
 # dark-mode-container.vue
 
-#graphify/code #graphify/EXTRACTED #community/dark-mode-containervue
+#graphify/code #graphify/EXTRACTED #community/Community_449

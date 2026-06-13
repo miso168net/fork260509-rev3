@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "footer"
+community: "Community 295"
 location: "L56"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/footer
+  - community/Community_295
 ---
 
 # footer
@@ -18,4 +18,4 @@ tags:
 - [[right_1]] - `contains` [EXTRACTED]
 - [[visible_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/footer
+#graphify/code #graphify/EXTRACTED #community/Community_295

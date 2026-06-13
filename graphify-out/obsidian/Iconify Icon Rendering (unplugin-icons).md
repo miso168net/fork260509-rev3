@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/icon/intro.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 108"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_108
 ---
 
 # Iconify Icon Rendering (unplugin-icons)
@@ -18,4 +18,4 @@ tags:
 - [[unplugin-icons (2)]] - `references` [EXTRACTED]
 - [[离线 iconify 图标集合加载 (@iconifyvue addCollection + @iconifyjson)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_108

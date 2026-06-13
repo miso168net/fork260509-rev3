@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/shared.ts"
 type: "code"
-community: "Theme Token Engine"
+community: "Community 27"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Token_Engine
+  - community/Community_27
 ---
 
 # shared.ts
@@ -42,4 +42,4 @@ tags:
 - [[toggleHtmlClass()]] - `imports` [EXTRACTED]
 - [[vars.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Token_Engine
+#graphify/code #graphify/EXTRACTED #community/Community_27

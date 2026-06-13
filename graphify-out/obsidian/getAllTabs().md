@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/store/modules/tab/shared.ts"
 type: "code"
-community: "Tab Management Utils"
+community: "Community 34"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tab_Management_Utils
+  - community/Community_34
 ---
 
 # getAllTabs()
 
 ## Connections
-- [[index.ts (37)]] - `imports` [EXTRACTED]
-- [[shared.ts (8)]] - `contains` [EXTRACTED]
+- [[index.ts_36]] - `imports` [EXTRACTED]
+- [[shared.ts_7]] - `contains` [EXTRACTED]
 - [[updateTabsLabel()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tab_Management_Utils
+#graphify/code #graphify/EXTRACTED #community/Community_34

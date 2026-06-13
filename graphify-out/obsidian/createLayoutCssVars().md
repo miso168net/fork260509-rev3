@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/shared.ts"
 type: "code"
-community: "Admin Layout Logic"
+community: "Community 26"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_26
 ---
 
 # createLayoutCssVars()
 
 ## Connections
 - [[createLayoutCssVarsByCssVarsProps()]] - `calls` [EXTRACTED]
-- [[shared.ts (2)]] - `contains` [EXTRACTED]
+- [[shared.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_26

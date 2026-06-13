@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/store/modules/tab/shared.ts"
 type: "code"
-community: "Tab Management Utils"
+community: "Community 34"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tab_Management_Utils
+  - community/Community_34
 ---
 
 # isFixedTab()
 
 ## Connections
-- [[shared.ts (8)]] - `contains` [EXTRACTED]
+- [[shared.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tab_Management_Utils
+#graphify/code #graphify/EXTRACTED #community/Community_34

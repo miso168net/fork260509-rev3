@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/layouts/base-layout/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 111"
 location: "L80"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_111
 ---
 
 # siderWidth
 
 ## Connections
-- [[index.vue (4)]] - `contains` [EXTRACTED]
+- [[index.vue_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_111

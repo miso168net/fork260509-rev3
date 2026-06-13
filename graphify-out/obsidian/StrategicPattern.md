@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/common.d.ts"
 type: "code"
-community: "common.d.ts"
+community: "Community 284"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/commondts
+  - community/Community_284
 ---
 
 # StrategicPattern
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[common.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/commondts
+#graphify/code #graphify/EXTRACTED #community/Community_284

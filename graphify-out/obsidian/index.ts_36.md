@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/tab/index.ts"
 type: "code"
-community: "Tab Management Utils"
+community: "Community 34"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tab_Management_Utils
+  - community/Community_34
 ---
 
 # index.ts
@@ -41,4 +41,4 @@ tags:
 - [[useTabStore]] - `contains` [EXTRACTED]
 - [[useThemeStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tab_Management_Utils
+#graphify/code #graphify/EXTRACTED #community/Community_34

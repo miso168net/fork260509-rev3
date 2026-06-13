@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Runtime Dependencies Manifest"
+community: "Community 4"
 location: "L90"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Runtime_Dependencies_Manifest
+  - community/Community_4
 ---
 
 # xlsx
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[dependencies]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Runtime_Dependencies_Manifest
+#graphify/code #graphify/EXTRACTED #community/Community_4

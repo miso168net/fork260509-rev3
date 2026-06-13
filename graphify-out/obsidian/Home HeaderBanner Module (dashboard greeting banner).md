@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/home/modules/header-banner.vue"
 type: "code"
-community: "Soybean Mascot Avatar Image (AI-generate"
+community: "Community 356"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Soybean_Mascot_Avatar_Image_AI-generate
+  - community/Community_356
 ---
 
 # Home HeaderBanner Module (dashboard greeting banner)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Soybean Mascot Avatar Image]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Soybean_Mascot_Avatar_Image_AI-generate
+#graphify/code #graphify/EXTRACTED #community/Community_356

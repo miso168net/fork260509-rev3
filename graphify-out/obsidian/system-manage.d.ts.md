@@ -1,21 +1,21 @@
 ---
 source_file: "base-web/src/typings/api/system-manage.d.ts"
 type: "code"
-community: "System Menu Types"
+community: "Community 55"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/System_Menu_Types
+  - community/Community_55
 ---
 
 # system-manage.d.ts
 
 ## Connections
 - [[AllRole]] - `contains` [EXTRACTED]
-- [[CommonSearchParams (2)]] - `contains` [EXTRACTED]
+- [[CommonSearchParams_1]] - `contains` [EXTRACTED]
 - [[IconType]] - `contains` [EXTRACTED]
-- [[Menu (2)]] - `contains` [EXTRACTED]
+- [[Menu_1]] - `contains` [EXTRACTED]
 - [[MenuButton]] - `contains` [EXTRACTED]
 - [[MenuList]] - `contains` [EXTRACTED]
 - [[MenuPropsOfRoute]] - `contains` [EXTRACTED]
@@ -29,4 +29,4 @@ tags:
 - [[UserList]] - `contains` [EXTRACTED]
 - [[UserSearchParams]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/System_Menu_Types
+#graphify/code #graphify/EXTRACTED #community/Community_55

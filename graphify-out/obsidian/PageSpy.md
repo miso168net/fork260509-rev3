@@ -1,18 +1,19 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md"
-type: "concept"
-community: "Debugging & Routing Docs"
+type: "document"
+community: "Community 247"
+location: "L1"
 tags:
-  - graphify/concept
-  - graphify/INFERRED
-  - community/Debugging__Routing_Docs
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Community_247
 ---
 
 # PageSpy
 
 ## Connections
-- [[PageSpy Recommendation Doc]] - `references` [EXTRACTED]
-- [[VSCode Vue Debugger Launch Config]] - `semantically_similar_to` [INFERRED]
-- [[推荐技术前言（中文）]] - `conceptually_related_to` [INFERRED]
+- [[page-spy]] - `contains` [EXTRACTED]
+- [[紹介_3]] - `contains` [EXTRACTED]
+- [[関連リンク_2]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/INFERRED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_247

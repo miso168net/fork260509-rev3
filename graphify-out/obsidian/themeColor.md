@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/theme/preset/azir.json"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Theme Design Tokens"
-location: "L8"
+community: "Community 6"
+location: "L145"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Design_Tokens
+  - community/Community_6
 ---
 
-# themeColor
+# ThemeColor
 
 ## Connections
-- [[azir.json]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Design_Tokens
+#graphify/code #graphify/EXTRACTED #community/Community_6

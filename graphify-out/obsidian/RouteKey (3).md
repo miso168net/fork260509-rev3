@@ -1,22 +1,22 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/intro.md"
 type: "concept"
-community: "Elegant Router"
+community: "Community 75"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Elegant_Router
+  - community/Community_75
 ---
 
 # RouteKey (3)
 
 ## Connections
-- [[Custom Route (customRoutes)]] - `conceptually_related_to` [INFERRED]
+- [[Custom Route]] - `conceptually_related_to` [INFERRED]
 - [[Elegant Router (2)]] - `references` [EXTRACTED]
 - [[RouteMeta (2)]] - `references` [EXTRACTED]
 - [[System Routing Guide]] - `references` [EXTRACTED]
-- [[routerPushByKey]] - `references` [INFERRED]
+- [[routerPushByKey_3]] - `references` [INFERRED]
 - [[type RoutePath]] - `references` [EXTRACTED]
 - [[view.RouteKey Page Component]] - `references` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Elegant_Router
+#graphify/concept #graphify/EXTRACTED #community/Community_75

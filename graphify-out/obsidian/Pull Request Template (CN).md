@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md"
 type: "document"
-community: "Pull Request Template (CN)"
+community: "Community 416"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Pull_Request_Template_CN
+  - community/Community_416
 ---
 
 # Pull Request Template (CN)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Pull Request Template (EN)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Pull_Request_Template_CN
+#graphify/document #graphify/EXTRACTED #community/Community_416

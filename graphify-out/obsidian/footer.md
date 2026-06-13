@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/theme/preset/compact.json"
 type: "code"
-community: "Theme Settings Presets"
+community: "Community 24"
 location: "L34"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Settings_Presets
+  - community/Community_24
 ---
 
 # footer
 
 ## Connections
 - [[compact.json]] - `contains` [EXTRACTED]
-- [[visible (5)]] - `contains` [EXTRACTED]
+- [[visible_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Settings_Presets
+#graphify/code #graphify/EXTRACTED #community/Community_24

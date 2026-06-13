@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/recommend/page-spy.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 160"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_160
 ---
 
 # PageSpy Recommendation Doc
 
 ## Connections
-- [[PageSpy]] - `references` [EXTRACTED]
+- [[PageSpy_3]] - `references` [EXTRACTED]
 - [[Recommended Technologies Preface]] - `conceptually_related_to` [INFERRED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_160

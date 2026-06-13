@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/structure.md"
 type: "rationale"
-community: "Elegant Router (automated file-based rou"
+community: "Community 83"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Elegant_Router_automated_file-based_rou
+  - community/Community_83
 ---
 
 # File-based Route Structure Conventions
@@ -17,4 +17,4 @@ tags:
 - [[Two-level Route Transformation]] - `conceptually_related_to` [EXTRACTED]
 - [[layout.base$view.RouteKey Mixed Component]] - `conceptually_related_to` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Elegant_Router_automated_file-based_rou
+#graphify/rationale #graphify/EXTRACTED #community/Community_83

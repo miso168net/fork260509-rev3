@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/shared.ts"
 type: "code"
-community: "Theme Token Engine"
+community: "Community 27"
 location: "L85"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Token_Engine
+  - community/Community_27
 ---
 
 # createThemePaletteColors()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 - [[createThemeToken()]] - `calls` [EXTRACTED]
 - [[getColorPalette()]] - `calls` [EXTRACTED]
-- [[shared.ts (9)]] - `contains` [EXTRACTED]
+- [[shared.ts_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Token_Engine
+#graphify/code #graphify/EXTRACTED #community/Community_27

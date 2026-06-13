@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/global-search/components/search-footer.vue"
 type: "code"
-community: "search-footer.vue"
+community: "Community 479"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/search-footervue
+  - community/Community_479
 ---
 
 # search-footer.vue
 
-#graphify/code #graphify/EXTRACTED #community/search-footervue
+#graphify/code #graphify/EXTRACTED #community/Community_479

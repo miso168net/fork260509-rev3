@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "Composable Hooks"
+community: "Community 71"
 location: "L232"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Composable_Hooks
+  - community/Community_71
 ---
 
 # defaultTransform()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[table.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Composable_Hooks
+#graphify/code #graphify/EXTRACTED #community/Community_71

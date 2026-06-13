@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/service/request/shared.ts"
 type: "code"
-community: "Auth Store & Tokens"
+community: "Community 20"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Tokens
+  - community/Community_20
 ---
 
 # getAuthorization()
 
 ## Connections
-- [[shared.ts (4)]] - `contains` [EXTRACTED]
+- [[shared.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Tokens
+#graphify/code #graphify/EXTRACTED #community/Community_20

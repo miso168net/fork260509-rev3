@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/index.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 33"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_33
 ---
 
 # createRouterGuard()
@@ -16,8 +16,8 @@ tags:
 - [[createDocumentTitleGuard()]] - `calls` [EXTRACTED]
 - [[createProgressGuard()]] - `calls` [EXTRACTED]
 - [[createRouteGuard()]] - `calls` [EXTRACTED]
-- [[index.ts (26)]] - `imports` [EXTRACTED]
-- [[index.ts (27)]] - `contains` [EXTRACTED]
+- [[index.ts_25]] - `imports` [EXTRACTED]
+- [[index.ts_26]] - `contains` [EXTRACTED]
 - [[setupRouter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_33

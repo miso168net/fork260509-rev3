@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/faq/index.md"
 type: "concept"
-community: "RouteMeta"
+community: "Community 75"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/RouteMeta
+  - community/Community_75
 ---
 
 # hideInMenu Menu Visibility Pitfall
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Route Permission (meta.constant  meta.roles)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/RouteMeta
+#graphify/concept #graphify/INFERRED #community/Community_75

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/CHANGELOG.zh_CN.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # SoybeanAdmin CHANGELOG (zh_CN)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin CHANGELOG (EN)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Project_Meta__Monorepo
+#graphify/document #graphify/INFERRED #community/Community_5

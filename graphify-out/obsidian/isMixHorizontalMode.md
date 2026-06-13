@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/layout/modules/footer-settings.vue"
 type: "code"
-community: "footer-settings.vue"
+community: "Community 364"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/footer-settingsvue
+  - community/Community_364
 ---
 
 # isMixHorizontalMode
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[footer-settings.vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/footer-settingsvue
+#graphify/code #graphify/EXTRACTED #community/Community_364

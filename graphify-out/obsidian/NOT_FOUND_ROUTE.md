@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/routes/builtin.ts"
 type: "code"
-community: "Generated Route Wiring"
+community: "Community 42"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_42
 ---
 
 # NOT_FOUND_ROUTE
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[builtin.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_42

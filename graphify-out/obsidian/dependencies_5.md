@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/package.json"
 type: "code"
-community: "package.json"
+community: "Community 117"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_117
 ---
 
 # dependencies
@@ -16,4 +16,4 @@ tags:
 - [[package.json_5]] - `contains` [EXTRACTED]
 - [[simplebar-vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_117

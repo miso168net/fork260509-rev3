@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/storage.ts"
 type: "code"
-community: "Auth Store & Tokens"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Tokens
+  - community/Community_20
 ---
 
 # storage.ts
@@ -32,4 +32,4 @@ tags:
 - [[shared.ts_5]] - `imports_from` [EXTRACTED]
 - [[shared.ts_8]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Tokens
+#graphify/code #graphify/EXTRACTED #community/Community_20

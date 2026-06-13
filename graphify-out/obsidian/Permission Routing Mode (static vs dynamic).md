@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/faq/index.md"
 type: "rationale"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # Permission Routing Mode (static vs dynamic)
@@ -14,4 +14,4 @@ tags:
 - [[Elegant Router]] - `conceptually_related_to` [INFERRED]
 - [[SoybeanAdmin FAQ]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Project_Meta__Monorepo
+#graphify/rationale #graphify/INFERRED #community/Community_5

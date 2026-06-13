@@ -1,13 +1,13 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/tutorial/other.md"
 type: "document"
-community: "其他教程（stub）"
+community: "Community 575"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/stub
+  - community/Community_575
 ---
 
 # 其他教程（stub）
 
-#graphify/document #graphify/EXTRACTED #community/stub
+#graphify/document #graphify/EXTRACTED #community/Community_575

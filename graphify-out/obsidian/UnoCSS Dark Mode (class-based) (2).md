@@ -1,18 +1,18 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/theme/unocss.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 90"
 location: "uno.config.ts"
 tags:
   - graphify/concept
-  - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - graphify/INFERRED
+  - community/Community_90
 ---
 
 # UnoCSS Dark Mode (class-based) (2)
 
 ## Connections
-- [[System Theme Architecture (2)]] - `conceptually_related_to` [INFERRED]
-- [[UnoCSS Theme Tokens Injection]] - `conceptually_related_to` [EXTRACTED]
+- [[System Theme]] - `conceptually_related_to` [INFERRED]
+- [[UnoCSS Theme]] - `conceptually_related_to` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/INFERRED #community/Community_90

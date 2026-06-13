@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/request/proxy.md"
 type: "rationale"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # /proxy-* Matching String Pattern
@@ -16,4 +16,4 @@ tags:
 - [[createViteProxy]] - `references` [EXTRACTED]
 - [[getServiceBaseURL]] - `conceptually_related_to` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/rationale #graphify/EXTRACTED #community/Community_11

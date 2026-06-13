@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/alova/scenes/modules/browser-visibility-request.vue"
 type: "code"
-community: "browser-visibility-request.vue"
+community: "Community 502"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/browser-visibility-requestvue
+  - community/Community_502
 ---
 
 # browser-visibility-request.vue
 
-#graphify/code #graphify/EXTRACTED #community/browser-visibility-requestvue
+#graphify/code #graphify/EXTRACTED #community/Community_502

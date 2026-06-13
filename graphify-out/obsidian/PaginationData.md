@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-table.ts"
 type: "code"
-community: "Composable Hooks"
+community: "Community 41"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Composable_Hooks
+  - community/Community_41
 ---
 
 # PaginationData
@@ -15,4 +15,4 @@ tags:
 - [[table.ts]] - `imports` [EXTRACTED]
 - [[use-table.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Composable_Hooks
+#graphify/code #graphify/EXTRACTED #community/Community_41

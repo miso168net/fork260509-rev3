@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/at-sign.svg"
 type: "image"
-community: "localIcons demo list (plugin/icon view)"
+community: "Community 413"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/localIcons_demo_list_plugin/icon_view
+  - community/Community_413
 ---
 
 # At-Sign Icon (Feather @ symbol, local SVG asset)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[localIcons demo list (pluginicon view)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/localIcons_demo_list_plugin/icon_view
+#graphify/image #graphify/EXTRACTED #community/Community_413

@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/common/app-provider.vue"
 type: "code"
-community: "app-provider.vue"
+community: "Community 448"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/app-providervue
+  - community/Community_448
 ---
 
 # app-provider.vue
 
-#graphify/code #graphify/EXTRACTED #community/app-providervue
+#graphify/code #graphify/EXTRACTED #community/Community_448

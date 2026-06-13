@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "antd.ts"
+community: "Community 31"
 location: "L50"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/antdts
+  - community/Community_31
 ---
 
 # darkColorMap
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[antd.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/antdts
+#graphify/code #graphify/EXTRACTED #community/Community_31

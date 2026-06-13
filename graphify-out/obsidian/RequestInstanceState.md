@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/service/request/type.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Community_20
 ---
 
 # RequestInstanceState
 
 ## Connections
-- [[type.ts (3)]] - `contains` [EXTRACTED]
+- [[type.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_20

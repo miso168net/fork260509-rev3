@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf"
 type: "image"
-community: "Debugging & Routing Docs"
+community: "Community 264"
 location: "page 1"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_264
 ---
 
 # SoybeanAdmin 路由跳转流程图 (Route Guard Flow Diagram)
@@ -18,4 +18,4 @@ tags:
 - [[权限路由守卫 (Permission Route Guard)]] - `references` [EXTRACTED]
 - [[路由初始化 (Route Initialization)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/image #graphify/EXTRACTED #community/Community_264

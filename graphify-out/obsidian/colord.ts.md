@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "colord.ts"
+community: "Community 31"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/colordts
+  - community/Community_31
 ---
 
 # colord.ts
@@ -18,12 +18,12 @@ tags:
 - [[getHsl()]] - `contains` [EXTRACTED]
 - [[getHsv()]] - `contains` [EXTRACTED]
 - [[getRgb()]] - `contains` [EXTRACTED]
-- [[index.ts (6)]] - `re_exports` [EXTRACTED]
+- [[index.ts_5]] - `re_exports` [EXTRACTED]
 - [[isValidColor()]] - `contains` [EXTRACTED]
 - [[isWhiteColor()]] - `contains` [EXTRACTED]
 - [[mixColor()]] - `contains` [EXTRACTED]
-- [[name.ts (2)]] - `imports_from` [EXTRACTED]
+- [[name.ts_1]] - `imports_from` [EXTRACTED]
 - [[transformColorWithOpacity()]] - `contains` [EXTRACTED]
 - [[transformHslToHex()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/colordts
+#graphify/code #graphify/EXTRACTED #community/Community_31

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/request/intro.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # Service Env Config
@@ -15,4 +15,4 @@ tags:
 - [[Expired Token Refresh Flow (handleRefreshToken + retry)]] - `references` [EXTRACTED]
 - [[request Instance]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/EXTRACTED #community/Community_11

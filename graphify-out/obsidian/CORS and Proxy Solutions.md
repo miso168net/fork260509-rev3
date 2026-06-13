@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/faq/index.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # CORS and Proxy Solutions
@@ -14,4 +14,4 @@ tags:
 - [[proxy- Matching String Pattern]] - `references` [EXTRACTED]
 - [[History Mode 404 on Refresh]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/EXTRACTED #community/Community_11

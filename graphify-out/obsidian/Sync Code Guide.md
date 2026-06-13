@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/sync.md"
 type: "document"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # Sync Code Guide
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Upstream Sync via cherry-pick]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/document #graphify/EXTRACTED #community/Community_13

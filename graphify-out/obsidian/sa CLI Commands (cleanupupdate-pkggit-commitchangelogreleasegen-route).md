@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/cli/command.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # sa CLI Commands (cleanup/update-pkg/git-commit/changelog/release/gen-route)
@@ -14,4 +14,4 @@ tags:
 - [[sa Command Line Tool (packagesscripts)]] - `references` [EXTRACTED]
 - [[sa gen-route Command]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_5

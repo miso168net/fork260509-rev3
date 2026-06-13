@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/page-tab/shared.ts"
 type: "code"
-community: "Admin Layout Logic"
+community: "Community 26"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_26
 ---
 
 # createTabCssVars()
@@ -14,7 +14,7 @@ tags:
 ## Connections
 - [[addColorAlpha()]] - `calls` [EXTRACTED]
 - [[createCssVars()]] - `calls` [EXTRACTED]
-- [[shared.ts (3)]] - `contains` [EXTRACTED]
+- [[shared.ts_2]] - `contains` [EXTRACTED]
 - [[transformColorWithOpacity()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_26

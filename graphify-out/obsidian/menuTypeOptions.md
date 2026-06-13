@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "business.ts"
+community: "Community 70"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/businessts
+  - community/Community_70
 ---
 
 # menuTypeOptions
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[business.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/businessts
+#graphify/code #graphify/EXTRACTED #community/Community_70

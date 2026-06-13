@@ -1,0 +1,18 @@
+---
+source_file: "fork260509-soybean-admin-docs/src/jp/guide/router/structure.md"
+type: "document"
+community: "Community 7"
+location: "L105"
+tags:
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Community_7
+---
+
+# Vueルートへの変換
+
+## Connections
+- [[codets ({)_19]] - `contains` [EXTRACTED]
+- [[第2レベルルート]] - `contains` [EXTRACTED]
+
+#graphify/document #graphify/EXTRACTED #community/Community_7

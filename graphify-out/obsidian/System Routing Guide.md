@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/intro.md"
 type: "document"
-community: "Elegant Router"
+community: "Community 75"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Elegant_Router
+  - community/Community_75
 ---
 
 # System Routing Guide
@@ -15,4 +15,4 @@ tags:
 - [[RouteKey (3)]] - `references` [EXTRACTED]
 - [[RouteMeta (2)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Elegant_Router
+#graphify/document #graphify/EXTRACTED #community/Community_75

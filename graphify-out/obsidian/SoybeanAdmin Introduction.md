@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/intro.md"
 type: "document"
-community: "Elegant Router"
+community: "Community 118"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Elegant_Router
+  - community/Community_118
 ---
 
 # SoybeanAdmin Introduction
@@ -14,4 +14,4 @@ tags:
 - [[Elegant Router (2)]] - `references` [EXTRACTED]
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Elegant_Router
+#graphify/document #graphify/EXTRACTED #community/Community_118

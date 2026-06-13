@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/recommend/klona.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 160"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_160
 ---
 
 # klona Recommendation Doc
@@ -14,4 +14,4 @@ tags:
 - [[Recommended Technologies Preface]] - `conceptually_related_to` [INFERRED]
 - [[klona (2)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_160

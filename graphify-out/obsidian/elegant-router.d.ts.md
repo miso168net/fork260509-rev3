@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/elegant-router.d.ts"
 type: "code"
-community: "Elegant Router Types"
+community: "Community 23"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Elegant_Router_Types
+  - community/Community_23
 ---
 
 # elegant-router.d.ts
@@ -33,13 +33,13 @@ tags:
 - [[GeneratedRouteKey]] - `contains` [EXTRACTED]
 - [[GetChildRouteKey]] - `contains` [EXTRACTED]
 - [[LastLevelRoute]] - `contains` [EXTRACTED]
-- [[LastLevelRouteKey (2)]] - `contains` [EXTRACTED]
+- [[LastLevelRouteKey_1]] - `contains` [EXTRACTED]
 - [[MultiLevelRoute]] - `contains` [EXTRACTED]
-- [[RouteKey (2)]] - `contains` [EXTRACTED]
+- [[RouteKey_1]] - `contains` [EXTRACTED]
 - [[RouteLayout]] - `contains` [EXTRACTED]
-- [[RouteMap (3)]] - `contains` [EXTRACTED]
-- [[RoutePath (2)]] - `contains` [EXTRACTED]
+- [[RouteMap_1]] - `contains` [EXTRACTED]
+- [[RoutePath_1]] - `contains` [EXTRACTED]
 - [[SingleLevelRoute]] - `contains` [EXTRACTED]
 - [[SingleLevelRouteKey]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Elegant_Router_Types
+#graphify/code #graphify/EXTRACTED #community/Community_23

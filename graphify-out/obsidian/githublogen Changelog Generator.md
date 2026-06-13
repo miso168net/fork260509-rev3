@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/release.yml"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # githublogen Changelog Generator
@@ -14,4 +14,4 @@ tags:
 - [[Release GitHub Actions Workflow]] - `references` [EXTRACTED]
 - [[SoybeanAdmin CHANGELOG (EN)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/service.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Community 9"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Community_9
 ---
 
 # getServiceBaseURL()
@@ -14,8 +14,8 @@ tags:
 ## Connections
 - [[createProxyPattern()]] - `calls` [EXTRACTED]
 - [[createServiceConfig()]] - `calls` [EXTRACTED]
-- [[index.ts (30)]] - `imports` [EXTRACTED]
-- [[index.ts (32)]] - `imports` [EXTRACTED]
+- [[index.ts_29]] - `imports` [EXTRACTED]
+- [[index.ts_31]] - `imports` [EXTRACTED]
 - [[service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Community_9

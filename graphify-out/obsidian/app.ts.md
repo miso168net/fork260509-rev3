@@ -1,21 +1,21 @@
 ---
 source_file: "base-web/src/constants/app.ts"
 type: "code"
-community: "app.ts"
+community: "Community 91"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/appts
+  - community/Community_91
 ---
 
 # app.ts
 
 ## Connections
-- [[common.ts (2)]] - `imports_from` [EXTRACTED]
+- [[common.ts_1]] - `imports_from` [EXTRACTED]
 - [[loading.ts]] - `imports_from` [EXTRACTED]
 - [[loginModuleRecord]] - `contains` [EXTRACTED]
-- [[shared.ts (9)]] - `imports_from` [EXTRACTED]
+- [[shared.ts_8]] - `imports_from` [EXTRACTED]
 - [[themeLayoutModeOptions]] - `contains` [EXTRACTED]
 - [[themeLayoutModeRecord]] - `contains` [EXTRACTED]
 - [[themePageAnimationModeOptions]] - `contains` [EXTRACTED]
@@ -29,4 +29,4 @@ tags:
 - [[transformRecordToOption()]] - `imports` [EXTRACTED]
 - [[watermarkTimeFormatOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/appts
+#graphify/code #graphify/EXTRACTED #community/Community_91

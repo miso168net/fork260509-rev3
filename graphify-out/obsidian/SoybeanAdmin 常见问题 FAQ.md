@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/faq/index.md"
 type: "document"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # SoybeanAdmin 常见问题 FAQ
@@ -19,4 +19,4 @@ tags:
 - [[权限路由模式（前端静态路由 vs 后端动态路由）]] - `references` [EXTRACTED]
 - [[跨域问题与正向反向代理方案]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/document #graphify/EXTRACTED #community/Community_11

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "tab"
+community: "Community 238"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tab
+  - community/Community_238
 ---
 
 # tab
@@ -19,4 +19,4 @@ tags:
 - [[mode_2]] - `contains` [EXTRACTED]
 - [[visible_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tab
+#graphify/code #graphify/EXTRACTED #community/Community_238

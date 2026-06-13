@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/views/plugin/charts/echarts/data.ts"
 type: "code"
-community: "data.ts"
+community: "Community 54"
 location: "L516"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/datats
+  - community/Community_54
 ---
 
 # gaugeOptions
 
 ## Connections
-- [[data.ts (2)]] - `contains` [EXTRACTED]
+- [[data.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/datats
+#graphify/code #graphify/EXTRACTED #community/Community_54

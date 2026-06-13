@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/icon/usage.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 140"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_140
 ---
 
 # useSvgIconRender
 
 ## Connections
-- [[Icon Tutorial]] - `references` [EXTRACTED]
+- [[Icon Tutorial_1]] - `references` [EXTRACTED]
 - [[SvgIcon Global Component]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_140

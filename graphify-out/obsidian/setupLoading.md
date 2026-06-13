@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/loading.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 120"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_120
 ---
 
 # setupLoading
@@ -18,4 +18,4 @@ tags:
 - [[themeSettings (2)]] - `shares_data_with` [INFERRED]
 - [[themeVars (UnoCSS theme injection)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/INFERRED #community/Community_120

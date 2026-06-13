@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/dynamic.md"
 type: "rationale"
-community: "RouteMeta"
+community: "Community 75"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/RouteMeta
+  - community/Community_75
 ---
 
 # Static Route Mode
@@ -15,9 +15,9 @@ tags:
 - [[Elegant Router (2)]] - `references` [EXTRACTED]
 - [[Route Permissions Guide]] - `references` [EXTRACTED]
 - [[RouteMeta (2)]] - `references` [EXTRACTED]
-- [[Router Guard Flow]] - `conceptually_related_to` [INFERRED]
+- [[Router guard flow]] - `conceptually_related_to` [INFERRED]
 - [[VITE_AUTH_ROUTE_MODE 环境变量]] - `references` [EXTRACTED]
 - [[meta.constant 固定路由标记]] - `references` [EXTRACTED]
 - [[meta.roles 路由角色权限]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/RouteMeta
+#graphify/rationale #graphify/EXTRACTED #community/Community_75

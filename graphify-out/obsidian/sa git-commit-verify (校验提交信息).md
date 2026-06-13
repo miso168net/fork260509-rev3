@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/cli/command.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # sa git-commit-verify (校验提交信息)
@@ -15,4 +15,4 @@ tags:
 - [[Git Hooks Pre-commit Checks (simple-git-hooks)]] - `conceptually_related_to` [INFERRED]
 - [[sa Command Line Tool (packagesscripts)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

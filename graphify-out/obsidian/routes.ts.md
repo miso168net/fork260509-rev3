@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/router/elegant/routes.ts"
 type: "code"
-community: "Generated Route Wiring"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_42
 ---
 
 # routes.ts
 
 ## Connections
 - [[generatedRoutes]] - `contains` [EXTRACTED]
-- [[index.ts (28)]] - `imports_from` [EXTRACTED]
+- [[index.ts_27]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_42

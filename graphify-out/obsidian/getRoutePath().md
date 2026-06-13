@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "Tab Management Utils"
+community: "Community 34"
 location: "L251"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tab_Management_Utils
+  - community/Community_34
 ---
 
 # getRoutePath()
@@ -15,8 +15,8 @@ tags:
 - [[builtin.ts]] - `imports` [EXTRACTED]
 - [[findTabByRouteName()]] - `calls` [EXTRACTED]
 - [[getDefaultHomeTab()]] - `calls` [EXTRACTED]
-- [[index.ts (36)]] - `imports` [EXTRACTED]
-- [[shared.ts (8)]] - `imports` [EXTRACTED]
+- [[index.ts_35]] - `imports` [EXTRACTED]
+- [[shared.ts_7]] - `imports` [EXTRACTED]
 - [[transform.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tab_Management_Utils
+#graphify/code #graphify/EXTRACTED #community/Community_34

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "scripts"
+community: "Community 60"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/scripts
+  - community/Community_60
 ---
 
 # scripts
@@ -29,4 +29,4 @@ tags:
 - [[typecheck]] - `contains` [EXTRACTED]
 - [[update-pkg]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/scripts
+#graphify/code #graphify/EXTRACTED #community/Community_60

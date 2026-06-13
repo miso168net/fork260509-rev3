@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/union-key.d.ts"
 type: "code"
-community: "union-key.d.ts"
+community: "Community 178"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/union-keydts
+  - community/Community_178
 ---
 
 # union-key.d.ts
@@ -15,9 +15,9 @@ tags:
 - [[LoginModule]] - `contains` [EXTRACTED]
 - [[ThemeLayoutMode]] - `contains` [EXTRACTED]
 - [[ThemePageAnimateMode]] - `contains` [EXTRACTED]
-- [[ThemeScheme (4)]] - `contains` [EXTRACTED]
+- [[ThemeScheme]] - `contains` [EXTRACTED]
 - [[ThemeScrollMode]] - `contains` [EXTRACTED]
 - [[ThemeTabMode]] - `contains` [EXTRACTED]
 - [[UnoCssAnimateKey]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/union-keydts
+#graphify/code #graphify/EXTRACTED #community/Community_178

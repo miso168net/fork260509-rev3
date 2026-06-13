@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/request/proxy.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # createServiceConfig
@@ -14,4 +14,4 @@ tags:
 - [[Proxy Guide]] - `references` [EXTRACTED]
 - [[createViteProxy]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/EXTRACTED #community/Community_11

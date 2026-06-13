@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/awesome/index.md"
 type: "document"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # SoybeanAdmin Ecosystem Document
@@ -30,4 +30,4 @@ tags:
 - [[soybean-admin-quarkus]] - `references` [EXTRACTED]
 - [[web-firewall]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/document #graphify/EXTRACTED #community/Community_13

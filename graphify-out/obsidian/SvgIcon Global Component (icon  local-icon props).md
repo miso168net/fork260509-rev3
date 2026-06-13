@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 108"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_108
 ---
 
 # SvgIcon Global Component (icon / local-icon props)
@@ -16,4 +16,4 @@ tags:
 - [[custom-icon.svg Local Icon]] - `references` [EXTRACTED]
 - [[useSvgIcon Hook (SvgIconVNode for render functions)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_108

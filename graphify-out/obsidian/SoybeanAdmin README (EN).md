@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # SoybeanAdmin README (EN)
@@ -21,4 +21,4 @@ tags:
 - [[sa CLI (packagesscripts)]] - `references` [INFERRED]
 - [[simple-git-hooks (3)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_5

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/create.md"
 type: "rationale"
-community: "Elegant Router (automated file-based rou"
+community: "Community 83"
 tags:
   - graphify/rationale
   - graphify/INFERRED
-  - community/Elegant_Router_automated_file-based_rou
+  - community/Community_83
 ---
 
 # Route Naming Rules
@@ -17,4 +17,4 @@ tags:
 - [[SoybeanJS CLI (sa) npm scripts]] - `references` [INFERRED]
 - [[sa gen-route Command]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/INFERRED #community/Elegant_Router_automated_file-based_rou
+#graphify/rationale #graphify/INFERRED #community/Community_83

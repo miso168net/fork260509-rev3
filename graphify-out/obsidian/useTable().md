@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-table.ts"
 type: "code"
-community: "Composable Hooks"
+community: "Community 71"
 location: "L66"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Composable_Hooks
+  - community/Community_71
 ---
 
 # useTable()
@@ -20,4 +20,4 @@ tags:
 - [[useNaivePaginatedTable()]] - `calls` [EXTRACTED]
 - [[useNaiveTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Composable_Hooks
+#graphify/code #graphify/EXTRACTED #community/Community_71

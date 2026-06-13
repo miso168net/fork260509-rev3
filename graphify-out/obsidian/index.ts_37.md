@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/index.ts"
 type: "code"
-community: "Theme Token Engine"
+community: "Community 20"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Token_Engine
+  - community/Community_20
 ---
 
 # index.ts
@@ -35,4 +35,4 @@ tags:
 - [[useThemeStore]] - `contains` [EXTRACTED]
 - [[vchart.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Token_Engine
+#graphify/code #graphify/EXTRACTED #community/Community_20

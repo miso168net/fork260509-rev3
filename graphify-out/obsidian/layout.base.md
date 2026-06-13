@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/component.md"
 type: "concept"
-community: "Routing Component Guide"
+community: "Community 159"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Routing_Component_Guide
+  - community/Community_159
 ---
 
 # layout.base
@@ -16,4 +16,4 @@ tags:
 - [[layout.base$view.RouteKey 混合组件（单级路由）]] - `references` [EXTRACTED]
 - [[二级路由结构]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Routing_Component_Guide
+#graphify/concept #graphify/EXTRACTED #community/Community_159

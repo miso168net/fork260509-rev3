@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/standard/naming.md"
 type: "rationale"
-community: "Vue Writing Standards"
+community: "Community 87"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Vue_Writing_Standards
+  - community/Community_87
 ---
 
 # kebab-case File and Folder Naming
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Naming Conventions Standard]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Vue_Writing_Standards
+#graphify/rationale #graphify/EXTRACTED #community/Community_87

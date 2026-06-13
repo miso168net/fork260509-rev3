@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/recommend/index.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 160"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Debugging__Routing_Docs
+  - community/Community_160
 ---
 
 # Recommended Technologies Preface
@@ -16,4 +16,4 @@ tags:
 - [[PageSpy Recommendation Doc]] - `conceptually_related_to` [INFERRED]
 - [[klona Recommendation Doc]] - `conceptually_related_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Debugging__Routing_Docs
+#graphify/document #graphify/INFERRED #community/Community_160

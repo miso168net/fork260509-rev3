@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/packages/scripts/src/types/index.ts"
 type: "code"
-community: "CLI Scripts Package"
+community: "Community 0"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/Community_0
 ---
 
 # CliOption
 
 ## Connections
-- [[index.ts (16)]] - `imports` [EXTRACTED]
-- [[index.ts (19)]] - `contains` [EXTRACTED]
+- [[index.ts_15]] - `imports` [EXTRACTED]
+- [[index.ts_18]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/Community_0

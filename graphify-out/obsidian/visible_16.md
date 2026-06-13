@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "watermark"
+community: "Community 257"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/watermark
+  - community/Community_257
 ---
 
 # visible
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[watermark_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/watermark
+#graphify/code #graphify/EXTRACTED #community/Community_257

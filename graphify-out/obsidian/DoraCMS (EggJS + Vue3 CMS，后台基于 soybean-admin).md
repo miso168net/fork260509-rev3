@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/awesome/index.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # DoraCMS (EggJS + Vue3 CMS，后台基于 soybean-admin)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin (周边生态语境)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Community_13

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/cli/command.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # sa git-commit (生成规范提交信息)
@@ -14,4 +14,4 @@ tags:
 - [[Conventional Commits Standard]] - `references` [EXTRACTED]
 - [[sa Command Line Tool (packagesscripts)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

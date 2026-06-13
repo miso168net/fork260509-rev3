@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/release.ts"
 type: "code"
-community: "CLI Scripts Package"
+community: "Community 0"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/Community_0
 ---
 
 # release.ts
 
 ## Connections
-- [[index.ts (15)]] - `re_exports` [EXTRACTED]
+- [[index.ts_14]] - `re_exports` [EXTRACTED]
 - [[release()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/Community_0

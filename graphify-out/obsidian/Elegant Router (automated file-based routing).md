@@ -1,21 +1,21 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/intro.md"
 type: "concept"
-community: "Elegant Router (automated file-based rou"
+community: "Community 83"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Elegant_Router_automated_file-based_rou
+  - community/Community_83
 ---
 
 # Elegant Router (automated file-based routing)
 
 ## Connections
-- [[Route Caching (keep-alive)]] - `references` [EXTRACTED]
+- [[Directory Structure]] - `references` [EXTRACTED]
+- [[Route Caching]] - `references` [EXTRACTED]
 - [[Route Component String Convention]] - `conceptually_related_to` [INFERRED]
 - [[Route Naming Rules]] - `conceptually_related_to` [INFERRED]
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 - [[路由缓存 (keep-alive + meta.keepAlive)]] - `references` [EXTRACTED]
-- [[项目目录结构说明 (buildpackagessrc...)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Elegant_Router_automated_file-based_rou
+#graphify/concept #graphify/EXTRACTED #community/Community_83

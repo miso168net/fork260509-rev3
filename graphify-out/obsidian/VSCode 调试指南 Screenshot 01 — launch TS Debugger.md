@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/assets/VSCode调试指南01.png"
 type: "image"
-community: "VSCode 调试指南 Screenshot 01 — launch TS De"
+community: "Community 142"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/VSCode__Screenshot_01__launch_TS_De
+  - community/Community_142
 ---
 
 # VSCode 调试指南 Screenshot 01 — launch TS Debugger
@@ -17,4 +17,4 @@ tags:
 - [[VSCode Debugging Guide 03 (breakpoint hit in about page onMounted)]] - `conceptually_related_to` [INFERRED]
 - [[debug.ts sample script (transformToKebabCase + start)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/VSCode__Screenshot_01__launch_TS_De
+#graphify/image #graphify/EXTRACTED #community/Community_142

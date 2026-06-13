@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/cooperate/index.md"
 type: "document"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # SoybeanAdmin Cooperation Services (JP)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/document #graphify/EXTRACTED #community/Community_13

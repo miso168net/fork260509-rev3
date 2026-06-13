@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/awesome/index.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # electron-mock-admin
 
 ## Connections
+- [[Ecosystem_1]] - `references` [EXTRACTED]
 - [[SoybeanAdmin Ecosystem Document]] - `references` [EXTRACTED]
-- [[SoybeanAdmin Ecosystem Projects (Awesome, JP)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Community_13

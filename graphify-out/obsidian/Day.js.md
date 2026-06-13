@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/faq/index.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # Day.js
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin FAQ]] - `references` [EXTRACTED]
 - [[SoybeanAdmin 常见问题 FAQ]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

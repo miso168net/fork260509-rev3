@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/request/intro.md"
 type: "document"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # Request Introduction
@@ -17,4 +17,4 @@ tags:
 - [[createFlatRequest]] - `references` [EXTRACTED]
 - [[createRequest]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/document #graphify/EXTRACTED #community/Community_11

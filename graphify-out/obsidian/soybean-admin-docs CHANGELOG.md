@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/CHANGELOG.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # soybean-admin-docs CHANGELOG
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_5

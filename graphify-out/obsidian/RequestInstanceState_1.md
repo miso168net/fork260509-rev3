@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/request/type.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Community 9"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Community_9
 ---
 
 # RequestInstanceState
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[type.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Community_9

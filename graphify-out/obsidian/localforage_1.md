@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/storage.ts"
 type: "code"
-community: "Auth Store & Tokens"
+community: "Community 20"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Tokens
+  - community/Community_20
 ---
 
 # localforage
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[storage.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Tokens
+#graphify/code #graphify/EXTRACTED #community/Community_20

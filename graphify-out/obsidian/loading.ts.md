@@ -1,28 +1,28 @@
 ---
 source_file: "base-web/src/plugins/loading.ts"
 type: "code"
-community: "loading.ts"
+community: "Community 27"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/loadingts
+  - community/Community_27
 ---
 
 # loading.ts
 
 ## Connections
 - [[app.ts]] - `imports_from` [EXTRACTED]
-- [[common.ts (2)]] - `imports_from` [EXTRACTED]
+- [[common.ts_1]] - `imports_from` [EXTRACTED]
 - [[getColorPalette()]] - `imports` [EXTRACTED]
 - [[getLogoSvg()]] - `contains` [EXTRACTED]
 - [[getRgb()]] - `imports` [EXTRACTED]
-- [[index.ts (24)]] - `imports_from` [EXTRACTED]
-- [[index.ts (25)]] - `re_exports` [EXTRACTED]
-- [[index.ts (3)]] - `imports_from` [EXTRACTED]
+- [[index.ts_2]] - `imports_from` [EXTRACTED]
+- [[index.ts_23]] - `imports_from` [EXTRACTED]
+- [[index.ts_24]] - `re_exports` [EXTRACTED]
 - [[localStg]] - `imports` [EXTRACTED]
 - [[setupLoading()]] - `contains` [EXTRACTED]
-- [[storage.ts (2)]] - `imports_from` [EXTRACTED]
+- [[storage.ts_1]] - `imports_from` [EXTRACTED]
 - [[toggleHtmlClass()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/loadingts
+#graphify/code #graphify/EXTRACTED #community/Community_27

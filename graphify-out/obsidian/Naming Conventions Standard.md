@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/standard/naming.md"
 type: "document"
-community: "Vue Writing Standards"
+community: "Community 87"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Vue_Writing_Standards
+  - community/Community_87
 ---
 
 # Naming Conventions Standard
@@ -16,4 +16,4 @@ tags:
 - [[fetch-prefixed Request Function Naming]] - `references` [EXTRACTED]
 - [[kebab-case File and Folder Naming]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Vue_Writing_Standards
+#graphify/document #graphify/EXTRACTED #community/Community_87

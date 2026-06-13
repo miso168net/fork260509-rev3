@@ -1,18 +1,18 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/cli/intro.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # sa Command Line Tool (packages/scripts)
 
 ## Connections
 - [[Git Hooks Pre-commit Checks (simple-git-hooks)]] - `conceptually_related_to` [INFERRED]
-- [[Quick Start Guide (env, npm scripts, directory structure)]] - `references` [EXTRACTED]
+- [[Quick Start]] - `references` [EXTRACTED]
 - [[npm scripts 一览 (builddevlinttypechecksa 命令)]] - `references` [EXTRACTED]
 - [[sa CLI Commands (cleanupupdate-pkggit-commitchangelogreleasegen-route)]] - `references` [EXTRACTED]
 - [[sa changelog (生成 changelog)]] - `references` [EXTRACTED]
@@ -23,4 +23,4 @@ tags:
 - [[sa release (发布更新版本提交)]] - `references` [EXTRACTED]
 - [[sa update-pkg (更新依赖版本)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

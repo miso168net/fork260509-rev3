@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/components.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 25"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_25
 ---
 
 # setupProNaiveComponents()
@@ -16,4 +16,4 @@ tags:
 - [[main.ts]] - `imports` [EXTRACTED]
 - [[setupApp()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_25

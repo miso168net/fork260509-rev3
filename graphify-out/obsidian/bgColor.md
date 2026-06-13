@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/views/_builtin/login/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 348"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_348
 ---
 
 # bgColor
 
 ## Connections
-- [[index.vue (65)]] - `contains` [EXTRACTED]
+- [[index.vue_64]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_348

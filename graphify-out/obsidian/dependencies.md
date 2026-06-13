@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Runtime Dependencies Manifest"
+community: "Community 4"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Runtime_Dependencies_Manifest
+  - community/Community_4
 ---
 
 # dependencies
@@ -58,4 +58,4 @@ tags:
 - [[xgplayer]] - `contains` [EXTRACTED]
 - [[xlsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Runtime_Dependencies_Manifest
+#graphify/code #graphify/EXTRACTED #community/Community_4

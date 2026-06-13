@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/app.ts"
 type: "code"
-community: "app.ts"
+community: "Community 91"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/appts
+  - community/Community_91
 ---
 
 # themeLayoutModeRecord
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[app.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/appts
+#graphify/code #graphify/EXTRACTED #community/Community_91

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/public/favicon.svg"
 type: "image"
-community: "Icons & UnoCSS Styling"
+community: "Community 141"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_141
 ---
 
 # favicon.svg (SoybeanAdmin browser tab icon)
@@ -16,4 +16,4 @@ tags:
 - [[index.html (Vite SPA entry)]] - `references` [EXTRACTED]
 - [[本地 logo 图标 (svg-iconlogo.svg)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Icons__UnoCSS_Styling
+#graphify/image #graphify/INFERRED #community/Community_141

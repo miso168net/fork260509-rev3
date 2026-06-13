@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/package.json"
 type: "code"
-community: "CLI Scripts Package"
+community: "Community 0"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/Community_0
 ---
 
 # consola
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[devDependencies_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/Community_0

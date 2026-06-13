@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/plugins/index.ts"
 type: "code"
-community: "index.ts"
+community: "Community 25"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Community_25
 ---
 
 # index.ts
@@ -18,4 +18,4 @@ tags:
 - [[index.ts_32]] - `imports_from` [EXTRACTED]
 - [[resetSetupStore()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Community_25

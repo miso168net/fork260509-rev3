@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/awesome/index.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # SoybeanAdmin (周边生态语境)
@@ -23,4 +23,4 @@ tags:
 - [[soybean-admin-go]] - `references` [EXTRACTED]
 - [[web-firewall]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Community_13

@@ -1,17 +1,17 @@
 ---
 source_file: "rust-api/x_fork.branch-origin.md"
 type: "concept"
-community: "rev3-admin-rust-api branch"
+community: "Community 300"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/rev3-admin-rust-api_branch
+  - community/Community_300
 ---
 
 # miso168net/fork260509-rev2-anew-rust-api repo
 
 ## Connections
 - [[rev3-admin-rust-api branch]] - `references` [EXTRACTED]
-- [[rev3-admin-rust-api 分支來源紀錄]] - `references` [EXTRACTED]
+- [[rev3-admin-rust-api 分支來源紀錄_1]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/rev3-admin-rust-api_branch
+#graphify/concept #graphify/EXTRACTED #community/Community_300

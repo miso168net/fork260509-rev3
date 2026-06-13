@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/.vscode/extensions.json"
 type: "code"
-community: "extensions.json"
+community: "Community 411"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/extensionsjson
+  - community/Community_411
 ---
 
 # recommendations
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[extensions.json_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/extensionsjson
+#graphify/code #graphify/EXTRACTED #community/Community_411

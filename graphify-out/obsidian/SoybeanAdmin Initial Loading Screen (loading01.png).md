@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/assets/loading01.png"
 type: "image"
-community: "SoybeanAdmin Initial Loading Screen (loa"
+community: "Community 304"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/SoybeanAdmin_Initial_Loading_Screen_loa
+  - community/Community_304
 ---
 
 # SoybeanAdmin Initial Loading Screen (loading01.png)
@@ -15,4 +15,4 @@ tags:
 - [[Soybean Logo Mark (blue tri-arm swirl shown on loading screen)]] - `references` [EXTRACTED]
 - [[System Title Text 'Soybean 管理系统']] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/SoybeanAdmin_Initial_Loading_Screen_loa
+#graphify/image #graphify/EXTRACTED #community/Community_304

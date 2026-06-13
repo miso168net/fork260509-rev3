@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf"
 type: "concept"
-community: "Debugging & Routing Docs"
+community: "Community 264"
 location: "page 1"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_264
 ---
 
 # 路由初始化 (Route Initialization)
@@ -18,4 +18,4 @@ tags:
 - [[权限路由 (Auth Routes)]] - `references` [EXTRACTED]
 - [[权限路由守卫 (Permission Route Guard)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/concept #graphify/EXTRACTED #community/Community_264

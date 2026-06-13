@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/layouts/modules/global-tab/context-menu.vue"
 type: "code"
-community: "context-menu.vue"
+community: "Community 110"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/context-menuvue
+  - community/Community_110
 ---
 
 # context-menu.vue
 
 ## Connections
-- [[unnamed_1]] - `contains` [EXTRACTED]
+- [[unnamed_8]] - `contains` [EXTRACTED]
 - [[closeAll()]] - `contains` [EXTRACTED]
 - [[closeCurrent()]] - `contains` [EXTRACTED]
 - [[closeLeft()]] - `contains` [EXTRACTED]
@@ -23,4 +23,4 @@ tags:
 - [[result]] - `contains` [EXTRACTED]
 - [[unpin()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/context-menuvue
+#graphify/code #graphify/EXTRACTED #community/Community_110

@@ -1,18 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/push.md"
-type: "concept"
-community: "Route Guard"
+type: "document"
+community: "Community 84"
+location: "L75"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/Route_Guard
+  - community/Community_84
 ---
 
 # redirectFromLogin
 
 ## Connections
-- [[Route Guard]] - `conceptually_related_to` [INFERRED]
-- [[toLogin]] - `conceptually_related_to` [EXTRACTED]
-- [[useRouterPush]] - `references` [EXTRACTED]
+- [[explanation]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Route_Guard
+#graphify/document #graphify/EXTRACTED #community/Community_84

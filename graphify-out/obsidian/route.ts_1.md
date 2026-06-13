@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/api/route.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Community 53"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Community_53
 ---
 
 # route.ts
@@ -19,4 +19,4 @@ tags:
 - [[index.ts_29]] - `imports_from` [EXTRACTED]
 - [[request]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_53

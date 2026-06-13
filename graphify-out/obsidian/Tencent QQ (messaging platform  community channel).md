@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/public/tencent-qq.svg"
 type: "concept"
-community: "config.ts"
+community: "Community 214"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/configts
+  - community/Community_214
 ---
 
 # Tencent QQ (messaging platform / community channel)
@@ -14,4 +14,4 @@ tags:
 - [[Tencent QQ Penguin Logo (docs public asset)]] - `references` [EXTRACTED]
 - [[qqSvg inline icon (VitePress nav social link)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/configts
+#graphify/concept #graphify/EXTRACTED #community/Community_214

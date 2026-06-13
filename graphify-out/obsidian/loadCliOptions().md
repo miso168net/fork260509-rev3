@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/packages/scripts/src/config/index.ts"
 type: "code"
-community: "CLI Scripts Package"
+community: "Community 0"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/Community_0
 ---
 
 # loadCliOptions()
 
 ## Connections
-- [[index.ts (14)]] - `imports` [EXTRACTED]
-- [[index.ts (16)]] - `contains` [EXTRACTED]
+- [[index.ts_13]] - `imports` [EXTRACTED]
+- [[index.ts_15]] - `contains` [EXTRACTED]
 - [[setupCli()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/Community_0

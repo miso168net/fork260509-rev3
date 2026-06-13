@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/auth/index.ts"
 type: "code"
-community: "Auth Store & Tokens"
+community: "Community 20"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Tokens
+  - community/Community_20
 ---
 
 # useAuthStore
@@ -14,15 +14,15 @@ tags:
 ## Connections
 - [[auth.ts]] - `imports` [EXTRACTED]
 - [[handleRefreshToken()]] - `calls` [EXTRACTED]
-- [[handleRefreshToken() (2)]] - `calls` [EXTRACTED]
-- [[index.ts (30)]] - `imports` [EXTRACTED]
-- [[index.ts (32)]] - `imports` [EXTRACTED]
-- [[index.ts (35)]] - `contains` [EXTRACTED]
-- [[index.ts (36)]] - `imports` [EXTRACTED]
-- [[index.ts (38)]] - `imports` [EXTRACTED]
+- [[handleRefreshToken()_1]] - `calls` [EXTRACTED]
+- [[index.ts_29]] - `imports` [EXTRACTED]
+- [[index.ts_31]] - `imports` [EXTRACTED]
+- [[index.ts_34]] - `contains` [EXTRACTED]
+- [[index.ts_35]] - `imports` [EXTRACTED]
+- [[index.ts_37]] - `imports` [EXTRACTED]
 - [[route.ts]] - `imports` [EXTRACTED]
-- [[shared.ts (4)]] - `imports` [EXTRACTED]
-- [[shared.ts (5)]] - `imports` [EXTRACTED]
+- [[shared.ts_3]] - `imports` [EXTRACTED]
+- [[shared.ts_4]] - `imports` [EXTRACTED]
 - [[useAuth()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Tokens
+#graphify/code #graphify/EXTRACTED #community/Community_20

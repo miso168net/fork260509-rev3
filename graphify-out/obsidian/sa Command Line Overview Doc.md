@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/cli/command.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # sa Command Line Overview Doc
@@ -14,4 +14,4 @@ tags:
 - [[sa CLI (packagesscripts)]] - `references` [EXTRACTED]
 - [[sa Commands Usage Doc]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_5

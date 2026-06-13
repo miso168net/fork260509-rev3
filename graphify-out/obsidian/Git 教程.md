@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/tutorial/git.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 107"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_107
 ---
 
 # Git 教程
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Front-end Dev Environment Tutorial Overview]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_107

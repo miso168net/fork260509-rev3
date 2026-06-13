@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/tutorial/index.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 107"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_107
 ---
 
 # Front-end Dev Environment Tutorial Overview
@@ -14,8 +14,8 @@ tags:
 - [[Git Installation & Configuration]] - `references` [EXTRACTED]
 - [[Git 教程]] - `references` [EXTRACTED]
 - [[NodeJS Version Management]] - `references` [EXTRACTED]
-- [[NodeJS 安装教程]] - `references` [EXTRACTED]
+- [[NodeJS 安装教程_1]] - `references` [EXTRACTED]
 - [[VSCode Debugging Guide]] - `references` [EXTRACTED]
 - [[调试教程（VSCode Debugging）]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_107

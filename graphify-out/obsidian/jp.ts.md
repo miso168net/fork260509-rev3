@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/.vitepress/locales/jp.ts"
 type: "code"
-community: "config.ts"
+community: "Community 214"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/configts
+  - community/Community_214
 ---
 
 # jp.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[config.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/configts
+#graphify/code #graphify/EXTRACTED #community/Community_214

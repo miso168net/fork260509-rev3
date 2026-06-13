@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/packages/utils/package.json"
 type: "code"
-community: "package.json"
+community: "Community 88"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_88
 ---
 
 # klona
 
 ## Connections
-- [[dependencies (7)]] - `contains` [EXTRACTED]
+- [[dependencies_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_88

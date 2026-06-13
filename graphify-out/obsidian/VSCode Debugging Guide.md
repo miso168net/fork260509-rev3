@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/tutorial/debug.md"
 type: "rationale"
-community: "Debugging & Routing Docs"
+community: "Community 161"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_161
 ---
 
 # VSCode Debugging Guide
@@ -16,4 +16,4 @@ tags:
 - [[VSCode launch.json Debug Configuration]] - `references` [EXTRACTED]
 - [[tsx TypeScript Runner]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/rationale #graphify/EXTRACTED #community/Community_161

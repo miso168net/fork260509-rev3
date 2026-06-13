@@ -1,21 +1,19 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/recommend/soybean-cli.md"
-type: "concept"
-community: "Debugging & Routing Docs"
+type: "document"
+community: "Community 324"
+location: "L1"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_324
 ---
 
 # @soybeanjs/cli
 
 ## Connections
-- [[@soybeanjscli Recommendation Doc]] - `references` [EXTRACTED]
-- [[Git Tutorial (JP)]] - `conceptually_related_to` [INFERRED]
-- [[git-commit-verify Command]] - `references` [EXTRACTED]
-- [[simple-git-hooks_3]] - `references` [EXTRACTED]
-- [[代码规范总述（中文）]] - `conceptually_related_to` [INFERRED]
-- [[推荐技术前言（中文）]] - `conceptually_related_to` [INFERRED]
+- [[soybean-cli]] - `contains` [EXTRACTED]
+- [[紹介_4]] - `contains` [EXTRACTED]
+- [[関連リンク_3]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_324

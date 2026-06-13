@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/faq/index.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # SoybeanAdmin FAQ
@@ -17,4 +17,4 @@ tags:
 - [[SoybeanAdmin]] - `references` [EXTRACTED]
 - [[vue-router History vs Hash Mode 404 Handling]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_5

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/assets/router-guard-flow.png"
 type: "image"
-community: "Router Guard Flow"
+community: "Community 33"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_33
 ---
 
 # SoybeanAdmin 路由跳转流程图 (Router Guard Flow Diagram)
@@ -18,7 +18,7 @@ tags:
 - [[权限路由 (Auth Routes — routes that require login permission)]] - `references` [EXTRACTED]
 - [[权限路由守卫 (Permission Route Guard — 开始→守卫→结束 lane)]] - `references` [EXTRACTED]
 - [[路由初始化]] - `references` [EXTRACTED]
-- [[路由跳转]] - `references` [EXTRACTED]
+- [[路由跳转_1]] - `references` [EXTRACTED]
 - [[路由跳转触发]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/image #graphify/EXTRACTED #community/Community_33

@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/.vscode/launch.json"
-type: "code"
-community: "launch.json"
-location: "L2"
+source_file: "fork260509-soybean-admin-docs/src/guide/intro.md"
+type: "document"
+community: "Community 154"
+location: "L19"
 tags:
-  - graphify/code
+  - graphify/document
   - graphify/EXTRACTED
-  - community/launchjson
+  - community/Community_154
 ---
 
-# version
+# Version
 
 ## Connections
-- [[launch.json]] - `contains` [EXTRACTED]
+- [[Introduction_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/launchjson
+#graphify/document #graphify/EXTRACTED #community/Community_154

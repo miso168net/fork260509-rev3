@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/views/plugin/map/components/tencent-map.vue"
 type: "code"
-community: "index.ts"
+community: "Community 320"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Community_320
 ---
 
 # tencent-map.vue
 
 ## Connections
-- [[index.ts (40)]] - `imports_from` [EXTRACTED]
+- [[index.ts_39]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Community_320

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "colord.ts"
+community: "Community 31"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/colordts
+  - community/Community_31
 ---
 
 # getHsl()
@@ -16,7 +16,7 @@ tags:
 - [[getColorName()]] - `calls` [EXTRACTED]
 - [[getNearestColorPaletteFamily()]] - `calls` [EXTRACTED]
 - [[getRecommendedColorPaletteFamily()]] - `calls` [EXTRACTED]
-- [[name.ts (2)]] - `imports` [EXTRACTED]
+- [[name.ts_1]] - `imports` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/colordts
+#graphify/code #graphify/EXTRACTED #community/Community_31

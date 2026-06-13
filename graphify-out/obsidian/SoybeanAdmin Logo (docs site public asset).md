@@ -1,13 +1,13 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/public/logo.svg"
 type: "image"
-community: "SoybeanAdmin Logo (docs site public asse"
+community: "Community 578"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/SoybeanAdmin_Logo_docs_site_public_asse
+  - community/Community_578
 ---
 
 # SoybeanAdmin Logo (docs site public asset)
 
-#graphify/image #graphify/EXTRACTED #community/SoybeanAdmin_Logo_docs_site_public_asse
+#graphify/image #graphify/EXTRACTED #community/Community_578

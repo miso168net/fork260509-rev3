@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "header"
+community: "Community 153"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/header
+  - community/Community_153
 ---
 
 # showIcon
 
 ## Connections
-- [[breadcrumb (2)]] - `contains` [EXTRACTED]
+- [[breadcrumb_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/header
+#graphify/code #graphify/EXTRACTED #community/Community_153

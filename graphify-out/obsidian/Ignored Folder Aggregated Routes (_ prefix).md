@@ -1,16 +1,16 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/router/structure.md"
 type: "concept"
-community: "Elegant Router"
+community: "Community 68"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Elegant_Router
+  - community/Community_68
 ---
 
 # Ignored Folder Aggregated Routes (_ prefix)
 
 ## Connections
-- [[Route Structure Conventions]] - `conceptually_related_to` [EXTRACTED]
+- [[Route Structure]] - `conceptually_related_to` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Elegant_Router
+#graphify/concept #graphify/EXTRACTED #community/Community_68

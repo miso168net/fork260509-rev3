@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/excel/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 388"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_388
 ---
 
 # label
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_43]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_388

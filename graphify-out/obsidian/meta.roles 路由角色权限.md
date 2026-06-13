@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/router/dynamic.md"
 type: "concept"
-community: "RouteMeta"
+community: "Community 75"
 location: "### 权限路由"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/RouteMeta
+  - community/Community_75
 ---
 
 # meta.roles 路由角色权限
@@ -17,4 +17,4 @@ tags:
 - [[Static Route Mode]] - `references` [EXTRACTED]
 - [[路由守卫流程]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/RouteMeta
+#graphify/concept #graphify/EXTRACTED #community/Community_75

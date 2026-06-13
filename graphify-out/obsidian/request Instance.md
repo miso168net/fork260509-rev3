@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/request/usage.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # request Instance
@@ -23,4 +23,4 @@ tags:
 - [[getServiceBaseURL (按代理开关解析 baseURLotherBaseURL)]] - `references` [EXTRACTED]
 - [[handleRefreshToken]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/EXTRACTED #community/Community_11

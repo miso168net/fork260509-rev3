@@ -1,13 +1,13 @@
 ---
 source_file: "base-web/src/assets/svg-icon/cast.svg"
 type: "image"
-community: "Cast Icon (Feather screen-cast glyph)"
+community: "Community 577"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Cast_Icon_Feather_screen-cast_glyph
+  - community/Community_577
 ---
 
 # Cast Icon (Feather screen-cast glyph)
 
-#graphify/image #graphify/EXTRACTED #community/Cast_Icon_Feather_screen-cast_glyph
+#graphify/image #graphify/EXTRACTED #community/Community_577

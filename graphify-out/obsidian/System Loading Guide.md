@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/loading.md"
 type: "document"
-community: "Icons & UnoCSS Styling"
+community: "Community 141"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_141
 ---
 
 # System Loading Guide
@@ -14,4 +14,4 @@ tags:
 - [[System Logo Guide]] - `references` [EXTRACTED]
 - [[setupLoading]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/document #graphify/EXTRACTED #community/Community_141

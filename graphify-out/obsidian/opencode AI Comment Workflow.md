@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/opencode.yml"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # opencode AI Comment Workflow
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin CHANGELOG (EN)]] - `references` [EXTRACTED]
 - [[opencode AI Agent (anomalycoopencode)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_5

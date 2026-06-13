@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/index.ts"
 type: "code"
-community: "index.ts"
+community: "Community 33"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Community_33
 ---
 
 # index.ts
@@ -25,4 +25,4 @@ tags:
 - [[router.ts_1]] - `imports_from` [EXTRACTED]
 - [[setupRouter()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Community_33

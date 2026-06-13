@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/langs/en-us.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 237"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_237
 ---
 
 # en-us.ts
@@ -15,4 +15,4 @@ tags:
 - [[local]] - `contains` [EXTRACTED]
 - [[locale.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_237

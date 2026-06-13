@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/index.vue"
 type: "code"
-community: "Admin Layout Logic"
+community: "Community 28"
 location: "L61"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_28
 ---
 
 # showMobileSider
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_28

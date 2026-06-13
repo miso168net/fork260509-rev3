@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/package.json"
 type: "code"
-community: "package.json"
+community: "Community 151"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_151
 ---
 
 # typesVersions
@@ -15,4 +15,4 @@ tags:
 - [[unnamed_2]] - `contains` [EXTRACTED]
 - [[package.json_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_151

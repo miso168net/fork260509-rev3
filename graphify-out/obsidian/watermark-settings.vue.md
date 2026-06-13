@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/general/modules/watermark-settings.vue"
 type: "code"
-community: "watermark-settings.vue"
+community: "Community 491"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/watermark-settingsvue
+  - community/Community_491
 ---
 
 # watermark-settings.vue
 
-#graphify/code #graphify/EXTRACTED #community/watermark-settingsvue
+#graphify/code #graphify/EXTRACTED #community/Community_491

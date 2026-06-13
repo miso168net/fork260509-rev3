@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/shared.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Community_43
 ---
 
 # shared.ts
@@ -14,13 +14,13 @@ tags:
 ## Connections
 - [[ResponseType]] - `imports` [EXTRACTED]
 - [[getContentType()]] - `contains` [EXTRACTED]
-- [[index.ts (2)]] - `imports_from` [EXTRACTED]
+- [[index.ts_1]] - `imports_from` [EXTRACTED]
 - [[isHttpSuccess()]] - `contains` [EXTRACTED]
 - [[isResponseJson()]] - `contains` [EXTRACTED]
 - [[options.ts]] - `imports_from` [EXTRACTED]
 - [[transformArrayBufferToJson()]] - `contains` [EXTRACTED]
 - [[transformBlobToJson()]] - `contains` [EXTRACTED]
 - [[transformResponse()]] - `contains` [EXTRACTED]
-- [[type.ts (2)]] - `imports_from` [EXTRACTED]
+- [[type.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_43

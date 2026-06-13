@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md"
 type: "rationale"
-community: "FAQ & Deployment Issues"
+community: "Community 11"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_11
 ---
 
 # Vite 正向代理方案 (/proxy-* 匹配字符串)
@@ -15,4 +15,4 @@ tags:
 - [[createViteProxy]] - `references` [EXTRACTED]
 - [[跨域问题与正向反向代理方案]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/rationale #graphify/EXTRACTED #community/Community_11

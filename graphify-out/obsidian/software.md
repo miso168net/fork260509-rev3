@@ -1,0 +1,17 @@
+---
+source_file: "fork260509-soybean-admin-docs/src/jp/tutorial/software.md"
+type: "document"
+community: "Community 402"
+location: "L1"
+tags:
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Community_402
+---
+
+# software.md
+
+## Connections
+- [[ソフトウェアインストールガイド]] - `contains` [EXTRACTED]
+
+#graphify/document #graphify/EXTRACTED #community/Community_402

@@ -1,16 +1,16 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/guard.md"
 type: "document"
-community: "Route Guard"
+community: "Community 73"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Route_Guard
+  - community/Community_73
 ---
 
 # Router Guard Guide
 
 ## Connections
-- [[Router Guard Flow]] - `references` [EXTRACTED]
+- [[Router guard flow]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Route_Guard
+#graphify/document #graphify/EXTRACTED #community/Community_73

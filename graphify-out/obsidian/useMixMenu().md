@@ -1,21 +1,21 @@
 ---
 source_file: "base-web/src/layouts/modules/global-menu/context/index.ts"
 type: "code"
-community: "route.ts"
+community: "Community 94"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/routets
+  - community/Community_94
 ---
 
 # useMixMenu()
 
 ## Connections
-- [[index.ts (23)]] - `contains` [EXTRACTED]
+- [[index.ts_22]] - `contains` [EXTRACTED]
 - [[useMenu()]] - `calls` [EXTRACTED]
 - [[useRouteStore]] - `calls` [EXTRACTED]
 - [[useRouterPush()]] - `calls` [EXTRACTED]
 - [[useThemeStore]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/routets
+#graphify/code #graphify/EXTRACTED #community/Community_94

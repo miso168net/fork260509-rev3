@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/config.md"
 type: "document"
-community: "Icons & UnoCSS Styling"
+community: "Community 120"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_120
 ---
 
 # Theme Config Guide
@@ -15,4 +15,4 @@ tags:
 - [[overrideThemeSettings (2)]] - `references` [EXTRACTED]
 - [[themeSettings (2)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/document #graphify/EXTRACTED #community/Community_120

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/ISSUE_TEMPLATE/feature_request_cn.yaml"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # Feature Request Issue Template (CN)
@@ -14,4 +14,4 @@ tags:
 - [[Feature Request Issue Template (EN)]] - `semantically_similar_to` [INFERRED]
 - [[SoybeanAdmin]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/INFERRED #community/Project_Meta__Monorepo
+#graphify/document #graphify/INFERRED #community/Community_5

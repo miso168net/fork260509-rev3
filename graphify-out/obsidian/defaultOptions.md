@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/packages/scripts/src/config/index.ts"
 type: "code"
-community: "CLI Scripts Package"
+community: "Community 0"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/Community_0
 ---
 
 # defaultOptions
 
 ## Connections
-- [[index.ts (16)]] - `contains` [EXTRACTED]
+- [[index.ts_15]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/Community_0

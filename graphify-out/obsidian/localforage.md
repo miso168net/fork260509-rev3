@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/packages/utils/package.json"
+source_file: "base-web/packages/utils/src/storage.ts"
 type: "code"
-community: "package.json"
-location: "L18"
+community: "Community 81"
+location: "L55"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_81
 ---
 
-# localforage
+# LocalForage
 
 ## Connections
-- [[dependencies (7)]] - `contains` [EXTRACTED]
+- [[storage.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_81

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "colors"
+community: "Community 157"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/colors
+  - community/Community_157
 ---
 
 # tokens
@@ -16,4 +16,4 @@ tags:
 - [[default.json]] - `contains` [EXTRACTED]
 - [[light_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/colors
+#graphify/code #graphify/EXTRACTED #community/Community_157

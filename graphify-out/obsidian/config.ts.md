@@ -1,20 +1,20 @@
 ---
 source_file: "fork260509-soybean-admin-docs/.vitepress/config.ts"
 type: "code"
-community: "config.ts"
+community: "Community 214"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/configts
+  - community/Community_214
 ---
 
 # config.ts
 
 ## Connections
-- [[icon.ts (3)]] - `imports_from` [EXTRACTED]
+- [[icon.ts_2]] - `imports_from` [EXTRACTED]
 - [[jp.ts]] - `imports_from` [EXTRACTED]
 - [[qqSvg inline icon (VitePress nav social link)]] - `imports` [EXTRACTED]
 - [[zh.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/configts
+#graphify/code #graphify/EXTRACTED #community/Community_214

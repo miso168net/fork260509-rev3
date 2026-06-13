@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/index.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Community 13"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Community_13
 ---
 
 # @soybeanjs/ui Component Library
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SbUiPromo Component (SoybeanUI Promo)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Community_13

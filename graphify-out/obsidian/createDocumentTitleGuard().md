@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/router/guard/title.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 33"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_33
 ---
 
 # createDocumentTitleGuard()
 
 ## Connections
 - [[createRouterGuard()]] - `calls` [EXTRACTED]
-- [[index.ts (27)]] - `imports` [EXTRACTED]
+- [[index.ts_26]] - `imports` [EXTRACTED]
 - [[title.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_33

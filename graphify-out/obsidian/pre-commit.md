@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "package.json"
+community: "Community 59"
 location: "L127"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_59
 ---
 
 # pre-commit
 
 ## Connections
-- [[simple-git-hooks (2)]] - `contains` [EXTRACTED]
+- [[simple-git-hooks_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_59

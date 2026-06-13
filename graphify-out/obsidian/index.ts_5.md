@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/index.ts"
 type: "code"
-community: "Color Palette System"
+community: "Community 40"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Palette_System
+  - community/Community_40
 ---
 
 # index.ts
@@ -19,4 +19,4 @@ tags:
 - [[name.ts_1]] - `re_exports` [EXTRACTED]
 - [[recommend.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Palette_System
+#graphify/code #graphify/EXTRACTED #community/Community_40

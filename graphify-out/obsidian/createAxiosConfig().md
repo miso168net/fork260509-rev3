@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/packages/axios/src/options.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Community 43"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Community_43
 ---
 
 # createAxiosConfig()
 
 ## Connections
 - [[createCommonRequest()]] - `calls` [EXTRACTED]
-- [[index.ts (2)]] - `imports` [EXTRACTED]
+- [[index.ts_1]] - `imports` [EXTRACTED]
 - [[options.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_43

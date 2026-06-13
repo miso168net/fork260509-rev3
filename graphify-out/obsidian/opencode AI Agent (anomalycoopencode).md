@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/opencode.yml"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_5
 ---
 
 # opencode AI Agent (anomalyco/opencode)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[opencode AI Comment Workflow]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/Community_5

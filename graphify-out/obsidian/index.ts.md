@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/src/index.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Community 9"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Community_9
 ---
 
 # index.ts
@@ -16,7 +16,7 @@ tags:
 - [[RequestOptions]] - `imports` [EXTRACTED]
 - [[constant.ts]] - `re_exports` [EXTRACTED]
 - [[createAlovaRequest()]] - `contains` [EXTRACTED]
-- [[index.ts (32)]] - `imports_from` [EXTRACTED]
+- [[index.ts_31]] - `imports_from` [EXTRACTED]
 - [[type.ts]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Community_9

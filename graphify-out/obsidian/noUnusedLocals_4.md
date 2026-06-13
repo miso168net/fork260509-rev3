@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/tsconfig.json"
 type: "code"
-community: "TSConfig Compiler Options"
+community: "Community 49"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/TSConfig_Compiler_Options
+  - community/Community_49
 ---
 
 # noUnusedLocals
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/TSConfig_Compiler_Options
+#graphify/code #graphify/EXTRACTED #community/Community_49

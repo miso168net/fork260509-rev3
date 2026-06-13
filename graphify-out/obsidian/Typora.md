@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/tutorial/software.md"
 type: "concept"
-community: "软件安装教程"
+community: "Community 192"
 location: "L28-L32"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/
+  - community/Community_192
 ---
 
 # Typora
 
 ## Connections
-- [[软件安装教程]] - `references` [EXTRACTED]
+- [[软件安装教程_1]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/
+#graphify/concept #graphify/EXTRACTED #community/Community_192

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/tutorial/debug.md"
 type: "concept"
-community: "Debugging & Routing Docs"
+community: "Community 161"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_161
 ---
 
 # tsx TypeScript Runner
@@ -19,4 +19,4 @@ tags:
 - [[VSCode launch.json Debug Configuration]] - `references` [EXTRACTED]
 - [[调试教程（VSCode Debugging）]] - `cites` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/concept #graphify/EXTRACTED #community/Community_161

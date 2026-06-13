@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/appearance/modules/theme-color.vue"
 type: "code"
-community: "theme-color.vue"
+community: "Community 486"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/theme-colorvue
+  - community/Community_486
 ---
 
 # theme-color.vue
 
-#graphify/code #graphify/EXTRACTED #community/theme-colorvue
+#graphify/code #graphify/EXTRACTED #community/Community_486

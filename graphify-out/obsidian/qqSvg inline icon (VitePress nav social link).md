@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/.vitepress/icon.js"
 type: "code"
-community: "config.ts"
+community: "Community 214"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/configts
+  - community/Community_214
 ---
 
 # qqSvg inline icon (VitePress nav social link)
@@ -15,4 +15,4 @@ tags:
 - [[Tencent QQ Penguin Logo (docs public asset)]] - `semantically_similar_to` [INFERRED]
 - [[config.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/configts
+#graphify/code #graphify/EXTRACTED #community/Community_214

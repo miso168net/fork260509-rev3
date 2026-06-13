@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/routes/index.ts"
 type: "code"
-community: "Generated Route Wiring"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_42
 ---
 
 # index.ts
@@ -24,4 +24,4 @@ tags:
 - [[transformElegantRoutesToVueRoutes()]] - `imports` [EXTRACTED]
 - [[views]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_42

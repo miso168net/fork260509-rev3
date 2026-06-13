@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/uno-preset/package.json"
 type: "code"
-community: "package.json"
+community: "Community 236"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_236
 ---
 
 # version
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[package.json_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_236

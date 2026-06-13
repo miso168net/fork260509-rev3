@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/packages/materials/src/types/index.ts"
+source_file: "base-web/src/layouts/base-layout/index.vue"
 type: "code"
-community: "Admin Layout Logic"
-location: "L135"
+community: "Community 111"
+location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_111
 ---
 
-# LayoutMode
+# layoutMode
 
 ## Connections
-- [[index.ts (13)]] - `contains` [EXTRACTED]
+- [[index.vue_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_111

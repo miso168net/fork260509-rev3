@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/router/elegant/transform.ts"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Generated Route Wiring"
-location: "L163"
+community: "Community 6"
+location: "L191"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_6
 ---
 
-# routeMap
+# RouteMap
 
 ## Connections
-- [[transform.ts]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_6

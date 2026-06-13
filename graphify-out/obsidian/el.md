@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/layouts/modules/global-content/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 412"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_412
 ---
 
 # el
 
 ## Connections
-- [[index.vue (7)]] - `contains` [EXTRACTED]
+- [[index.vue_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_412

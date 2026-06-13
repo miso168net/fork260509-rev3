@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/packages/axios/src/type.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Community 48"
 location: "L80"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Community_48
 ---
 
 # MappedType
 
 ## Connections
-- [[index.ts (2)]] - `imports` [EXTRACTED]
-- [[type.ts (2)]] - `contains` [EXTRACTED]
+- [[index.ts_1]] - `imports` [EXTRACTED]
+- [[type.ts_1]] - `contains` [EXTRACTED]
 - [[use-request.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Community_48

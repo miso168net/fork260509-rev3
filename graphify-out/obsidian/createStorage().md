@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/packages/utils/src/storage.ts"
 type: "code"
-community: "index.ts"
+community: "Community 81"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Community_81
 ---
 
 # createStorage()
 
 ## Connections
 - [[storage.ts]] - `contains` [EXTRACTED]
-- [[storage.ts (2)]] - `imports` [EXTRACTED]
+- [[storage.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Community_81
