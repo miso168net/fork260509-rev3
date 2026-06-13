@@ -124,7 +124,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs（server crate 新 2 檔）待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
+- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
 
 ---
 
@@ -204,6 +204,15 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] **CDP browser smoke 補測**（research R5 明文 directed）:首個發出 envelope 的 handler 刀必含 CDP 經 front-nginx 驗 base-web 攔截器真讀 `code`/`data`/`msg`——**curl 直送 ≠ base-web modal/success 判讀對齊**;本刀純型別、無 endpoint 可 smoke、整條 runtime 消費鏈未驗
 **dead_code（infra ahead of consumers、實作期觀察）**:
 - [ ] envelope/error 公開 API（`Res`/`PageRes`/4 建構子・`BizCode`・`AppError` 8 建構子）目前全 dead_code（非測試零消費、`cargo build` 數條 warning、**無 `-D warnings` gate 故不阻塞 prod build**）;消費刀 wiring 後漸清（Res/AppError→Auth/data island、7777/8888/3333→behavior island 波3）;**wiring 後仍殘留 dead_code 的建構子＝無真實消費者、回頭檢視是否 over-built**
+
+### 3.7 004-soft-delete-infra follow-up（收刀移交 2026-06-14;均不阻塞、消費刀觸發時處理）
+
+**dead_code（infra ahead of consumers、實作期觀察）**:
+- [ ] facade 讀 fn（`find_active_by_name`/`find_active_by_id`/`find_active_by_ids`/`find_role_ids_by_user_id`）＋`find_active`＋`SoftDeletable` trait/impl 全 dead_code（server bin crate、無真實消費者、`cargo build` 數條 warning、無 `-D warnings` 不阻塞）;Auth 島 getUserInfo 讀 cluster 組裝消費後漸清;**wiring 後仍殘留＝無真實消費者、回頭檢視 over-built**（同 §3.6 紀律）。entity crate `Model` 為 lib API、不受此 warning
+**rust-api 未來 entity 刀**:
+- [ ] sea-orm date-time backend:entity crate sea-orm 加 `with-chrono`（workspace `default-features=false` 無 backend、time 不入圖、chrono 已在 lock 無新下載）;feature unification 使 workspace 共用 sea-orm build 全得 `DateTimeWithTimeZone`——**未來帶 timestamptz 欄 entity 沿用 entity crate 即可**;新增獨立 crate 直接用 sea-orm（resolver=2、不經 entity 圖）才須自加。見 `entity/Cargo.toml` 註＋memory [[sea-orm-entity-datetime-feature-gate]]
+**未來 live-smoke 刀注意**:
+- [ ] (a) live test 須放 `src/` 內 `#[cfg(test)] mod`（server bin-only 無 lib target、`tests/` integration 拿不到 facade API）;(b) compose network 內跑時網路名 = **`rev3-admin_rev3_net`**（`specs/004-.../contracts/verification-commands.md` C-V-4 的 `rev3-admin_default` 為 stale placeholder、實際自訂網路 `rev3_net`＋project prefix）
 
 ---
 
