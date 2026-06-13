@@ -23,7 +23,7 @@
 | 2 | `seaql_migrations` | schema＋data 全排除（rev2 35 列 vs rev3 2 列、必然不同；DESIGN 附錄 F #12） |
 | 3 | `sys_user.password` | 置換佔位（argon2 random salt、兩側必異）；可驗性另斷言（C-V-3 VERIFY-OK） |
 | 4 | seed 時戳欄（created_at 等 default now() 實值） | data dump 置換佔位；兩側皆 seed 時刻、必異 |
-| 5 | `setval` 行（data dump） | 置換佔位；序列終值另斷言（sys_user_id_seq last_value=3／is_called=t 兩側一致） |
+| 5 | `setval` 行（data dump） | 置換佔位；序列終值另斷言（sys_user_id_seq last_value=3／is_called=true〔`last_value||','||is_called` 拼接形〕兩側一致） |
 | 6 | COPY 段列順序（data dump） | 每個 COPY 區塊內資料行排序（pg_dump 按 heap ctid 輸出；前代經 35 支 migration 的 UPDATE 移位、本基線一次性 INSERT，物理列序必異＝dump 雜訊非資料差異；sort 後 id＋全欄仍逐列比對、不遮蓋實質差異——漏列/多列/欄值錯照樣紅）。**執行序：須在 #3/#4/#5 雜訊置換之後排序**（先固定佔位再 sort，否則兩側 hash／時刻字典序不同會 sort 後仍錯位） |
 
 **判讀紀律**：diff 非零→先對照本表判「normalize 缺漏（假紅）」；確認非六規則範圍→真 drift→修 m001/m002 重跑。**禁止**為過 diff 而擴充 normalize 規則遮蓋實質差異（規則變更＝契約修訂、須留痕）。

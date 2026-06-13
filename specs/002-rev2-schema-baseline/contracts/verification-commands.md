@@ -90,7 +90,7 @@ P "SELECT count(*) FROM casbin_rule WHERE ptype='p';"                     # 72�
 P "SELECT count(*) FROM casbin_rule WHERE protected;"                     # 19
 P "SELECT count(*) FROM sys_menu WHERE protected;"                        # 8
 P "SELECT string_agg(id::text,',' ORDER BY id) FROM sys_user;"            # 1,2,3
-P "SELECT last_value||','||is_called FROM sys_user_id_seq;"               # 3,t
+P "SELECT last_value||','||is_called FROM sys_user_id_seq;"               # 3,true（拼接形 bool→true；分欄查才是 t）
 P "SELECT count(DISTINCT password) FROM sys_user;"                        # 1
 P "SELECT count(*) FROM sys_user WHERE password LIKE '\$argon2id\$v=19\$%';"   # 3
 
