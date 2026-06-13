@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第五刀 → audit 刀 ×2 之首 brainstorm 起手**（刀清單剩：audit ×2〔rev2 011 op-log＋`mutate_in_txn`／015 access-log＋login-attempt＋xdb〕／Auth 島最小段〔rev2 013〕；刀界由 brainstorm/specify 定稿；soft-delete 基建已於 004 交付）
+**下一步**: **波 0 第五刀 005-audit-op-log → brainstorm spec-design ✅（`docs/superpowers/005-audit-op-log.md`、commit `2a68e72`）、待手動 `/speckit-specify` 起 SDD 設計鏈**（拍板：`mutate_in_txn` 同 txn 審計機制＋單一 `sys_user::soft_delete` proof／`AuditOperation` 全 4／驗證 ii commit+rollback／無 migration／擴 entity crate +with-json；後續刀剩：第二 audit 刀〔rev2 015 access-log＋login-attempt＋xdb〕／Auth 島最小段〔rev2 013〕）
 
 ---
 
