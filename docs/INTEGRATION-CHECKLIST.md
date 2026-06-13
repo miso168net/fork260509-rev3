@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **002-rev2-schema-baseline 刀 → `superpowers:brainstorming` 起手**（⚠️t 拍板產物:m001_rev2_schema＋m002_rev2_seeds;開放點=casbin_rule 建表方式;001 的 mNNN 慣例與 migration 框架已就位）
+**下一步**: **002-rev2-schema-baseline 刀 → user 手動 `/speckit-specify`**（input=docs/superpowers/002-rev2-schema-baseline.md;brainstorm ✅ 2026-06-13 四項拍板〔⚠️v 委派式＋adapter 併入/seed 92 列勘誤/pristine 重放/m003+ 全包〕;casbin_rule 開放點已決）
 
 ---
 
@@ -35,11 +35,11 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 
 **刀/feature 清單**（素材=DESIGN §8.2 跨切地基;刀界由各刀 brainstorm/specify 時定稿）:
 - [x] **001-infra-deploy 刀 ✅ 收刀（2026-06-13、merge `c9ffad5`）**——master compose 5 service＋migrate gate＋acme 殼、dev/prod override、deploy/ 全套、rust-api scaffold（/health＋空 migrator＋lock pin）;C-V-0~8 實機全綠（SC-001~007）;follow-up 見 §3.4;spec 全帳在 `specs/001-infra-deploy/`
-- [ ] **002-rev2-schema-baseline 刀**（⚠️t 拍板產物:m001_rev2_schema＋m002_rev2_seeds〔rev2 12 表/17 seed 終態 squash〕＋rev3 delta m003+〔④FK・⚠️p/⚠️c seed〕＋pg_dump 雙庫 diff 驗證閉環;001 之後緊接;開放點=casbin_rule 建表方式〔委派 adapter vs 直接 CREATE〕牽動 sub-crate 刀時序）
-- [ ] **sub-crate 刀**（`sea-orm-adapter`＋`xdb` 自 rev2 拷貝＋casbin pin;rev2 012;§I.5 唯二拷貝例外）
+- [ ] **002-rev2-schema-baseline 刀**（⚠️t 拍板產物:m001_rev2_schema＋m002_rev2_seeds〔rev2 12 表終態 squash、seed 92 列/6 表勘誤口徑〕＋rev3 delta m003〔④FK〕/m004〔⚠️p 全 demo 頁＋⚠️c 三頁子集〕＋sea-orm-adapter 併入〔⚠️v 委派式〕＋pg_dump pristine 重放雙 diff 閉環;**brainstorm ✅ 2026-06-13**〔docs/superpowers/002-rev2-schema-baseline.md、四項拍板〕→ 待 user 手動 /speckit-specify）
+- [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
 - [ ] **envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形）
 - [ ] **soft-delete 基建刀**（`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`;rev2 009）
-- [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context〕）
+- [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑〕）
 - [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提）
 
 **前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
@@ -189,7 +189,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 17**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離)
+**已決 18**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)
 
 **開放 13**(依最晚決策點分組):
 - 波 1~3:③第一刀位(波1開工前)｜⚠️a 效能數字(波1驗收前)｜⚠️o RI 下沉(波1 facade 設計時)｜⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
