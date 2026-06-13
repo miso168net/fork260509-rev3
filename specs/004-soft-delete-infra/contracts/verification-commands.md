@@ -72,6 +72,14 @@ docker volume rm cv004-target 2>/dev/null
 docker compose -f docker-compose.yml -f docker-compose.dev.yml down 2>/dev/null
 ```
 
+## C-V-6 · /health 不退化（universal 例外、靜態確認）
+
+```bash
+# main.rs 加 `mod model;` 後 health handler 不變、仍 plain text "ok"（本刀僅加 mod、不碰 /health）：
+grep -nE 'async fn health|"ok"' rust-api/server/src/main.rs    # 期：health 簽名與 "ok" 不變
+# （SC-006 子準則正向驗證、對齊 003 C-V-4；by construction 已保障、此為 belt-and-suspenders）
+```
+
 ## 驗收不變式總表（C-V 斷言來源）
 
 - C-V-1：entity crate 入 members、sea-orm/entity dep 加、build 綠。
@@ -79,3 +87,4 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml down 2>/dev/null
 - C-V-3：**prod image build 綠（entity crate COPY 補齊、multi-stage 不退化）**。
 - C-V-4：实机 soft-delete 過濾排除 stamped 列；getUserInfo 三表讀鏈對 m002 seed 命中。
 - C-V-5：部署層＋entity/facade/lint 內容零 rev2 token。
+- C-V-6：`/health` plain text "ok" 不變（`mod model` 加入不退化、SC-006 子準則）。

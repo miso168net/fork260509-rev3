@@ -55,7 +55,7 @@
 ## Phase 6: Polish & Cross-Cutting
 
 - [ ] T010 C-V-3 prod target image build（**新 entity crate ⇒ mandatory**、CLAUDE.md §3／R5）：`deploy/Dockerfile.rust-api.txt` builder 段補 entity COPY——Manifest 段 `COPY rust-api/entity/Cargo.toml ./entity/`＋Source 段 `COPY rust-api/entity/src ./entity/src`（對齊既有 server/migration/sea-orm-adapter 三行）；`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 綠（multi-stage release 不退化；缺 COPY 行只在此暴露——dev bind-mount 遮）。worktree commit（Dockerfile 屬 deploy/、外層檔；entity COPY 在 worktree Dockerfile？**注意**：Dockerfile.rust-api.txt 在 `deploy/`＝**外層 repo 檔、非 worktree**——此 task 改外層、單段 commit、無 pin bump）。
-- [ ] T011 C-V-5 殘留 grep（部署層零 rev2／rust-api 新寫零 rev2 token）：`grep -rinE "rev2|21079|21080|21081|21443|25432|26379" docker-compose*.yml deploy/` 零命中＋`grep -rinE "rev2" rust-api/entity/src/ rust-api/server/src/model/ rust-api/server/tests/entity_access_lint.rs` 零命中（用「前代」描述）＋quickstart.md 流程逐步對照＋拋棄式卷清理（`docker volume rm cv004-target`、停 smoke stack）。
+- [ ] T011 C-V-6 `/health` 不退化（靜態確認 `mod model` 加入後未動 health）：`grep -nE 'async fn health|"ok"' rust-api/server/src/main.rs` 確認 health 簽名與 `"ok"` 不變（SC-006 子準則、對齊 003 C-V-4）＋C-V-5 殘留 grep（部署層零 rev2／rust-api 新寫零 rev2 token）：`grep -rinE "rev2|21079|21080|21081|21443|25432|26379" docker-compose*.yml deploy/` 零命中＋`grep -rinE "rev2" rust-api/entity/src/ rust-api/server/src/model/ rust-api/server/tests/entity_access_lint.rs` 零命中（用「前代」描述）＋quickstart.md 流程逐步對照＋拋棄式卷清理（`docker volume rm cv004-target`、停 smoke stack）。
 - [ ] T012 收口驗證（**commit only——push／merge 凍結至 finishing，§I.4／⚠️u**）：worktree 全 task commit 齊＋outer pin==worktree HEAD（隨 task bump 紀律回顧）＋specs/004 外層檔全收＋Dockerfile.rust-api.txt 外層 commit 落地；`git submodule status` 行首空格。
 
 ## Dependencies
