@@ -4,7 +4,8 @@
 
 ## 前置需求
 
-- rev2 資產本機可用：`fork260509-rev2/` repo（源碼對照）＋`rev2-admin-rust-api:latest` image（pristine 重放）
+- rev2 資產本機可用：`fork260509-rev2/` repo（源碼對照）＋`rev2-admin-rust-api:latest` image（pristine 重放）——C-V-0 前置檢查、fail 即停
+- **轉錄權威 dump**（volatile、不在即重生；rev2 stack 須在跑）：`docker exec rev2-admin-postgres-1 pg_dump -U soybean -d soybean_admin_rust --schema-only > /tmp/rev2-schema-dump.sql`
 - 001 dev stack 可啟（migrate gate 實機驗收用）；docker 可建拋棄式容器（`cv002-*`、結束即清）
 - pg_dump 一律容器內跑（17.10；host 16 打 17 server 會被拒——只影響 dump、host psql 查詢不受限）
 
@@ -25,6 +26,7 @@ bash tests/002-rev2-schema-baseline/scripts/delta-assert.sh
 ```
 
 期望：`SCHEMA 零差異 ✅`＋`SEED 零差異 ✅`＋全部計數不變式 PASS。**diff 非零先判假紅 vs 真 drift**（migration-chain.md §3 判讀紀律）。
+**步驟 5（守恆）／6（冪等）無獨立 script 承載**——依契約 C-V-5／C-V-6 手動執行（內部復用 `diff-baseline.sh --reuse` 與 `delta-assert.sh`）。基準檔兩份（schema＋data）由 C-V-2 產出並 git-track。
 
 ## dev stack 實機＋建置紀律
 

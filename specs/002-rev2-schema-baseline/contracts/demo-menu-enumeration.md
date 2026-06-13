@@ -57,6 +57,23 @@
 | document_video | 頁 | document | o=2、localIcon logo、href 形原樣 |
 | document_vue／vite／unocss／naive／pro-naive／antd／alova | 頁 ×7 | document | o=3/4/5/6/6/7/7、**props.url 形→href 化（R4-D2）**；alova 帶 localIcon alova |
 
+## 28 欄落值映射（M7 補；**映射權威＝rev2 m018 INSERT 形**〔`m20260529_000018_create_sys_menu.rs`〕＋本表特例）
+
+| sys_menu 欄 | 取值規則 |
+|---|---|
+| `parent_id` | 頂層 NULL；子節點 `(SELECT id FROM sys_menu WHERE route_name='<父>' AND deleted_at IS NULL)`——**先父後子、按深度 4 段分批** |
+| `route_name`／`route_path` | route 定義原樣（含 `:param`） |
+| `menu_type` | 1=目錄（`layout.base` 或無 component 有 children）；2=頁（`view.*`／`layout.base$view.*`） |
+| `menu_name` | meta.title 原樣（plugin＝中文「插件示例」） |
+| `component` | route 定義原樣字串；**中層目錄無 component → NULL**（wire 吐 `""`、前端 falsy 安全＋transform 自動 redirect 首子——R4 已驗） |
+| `icon`＋`icon_type` | meta.icon（iconify）→ icon＋icon_type=1；meta.localIcon → icon＋icon_type=2；無 → 雙 NULL |
+| `i18n_key` | meta.i18nKey 原樣 |
+| `"order"` | meta.order；無則 NULL（SQL 保留字、引號處理照 m018 形） |
+| `status` | 固定 1 |
+| `hide_in_menu`／`keep_alive`／`multi_tab`／`active_menu`／`href` | meta 同名值；無則 NULL（document 8 頁 props.url→**href 欄**——D2） |
+| `constant`／`fixed_index_in_tab`／`query`／`buttons` | demo 集全 NULL |
+| 審計 6 欄 | created_at default now、其餘 NULL（系統種子）；`protected` 固定 false（demo 非治理保護對象） |
+
 ## 不變式
 
 - 入選恰 66；⚠️c 三頁（alova_request／alova_scenes／function_request）在集內。

@@ -6,7 +6,7 @@
 
 ## Summary
 
-rev2 35 支 migration squash 為 4 支：`m001_rev2_schema`（11 表終態忠實濃縮、casbin_rule 委派 vendored adapter〔⚠️v〕）＋`m002_rev2_seeds`（92 列／6 表淨效果、argon2id 單一 hash）＋`m003_user_role_fk`（④ delta、RESTRICT）＋`m004_demo_menu_seeds`（⚠️p 66 條 demo 選單＋policy 全覆蓋 66 列）；sea-orm-adapter 整檔拷入（§I.5 例外）；pg_dump 雙庫 diff 零漂移閉環（pristine 重放＋`up -n 2` 檢查點＋normalize 五規則）＋delta 斷言＋up→down→up 守恆，001 dev stack 實機驗收。
+rev2 35 支 migration squash 為 **2 支基線**：`m001_rev2_schema`（11 表終態忠實濃縮——10 手寫＋casbin_rule 委派 vendored adapter〔⚠️v〕；＋seaql 框架自建＝12 表口徑）＋`m002_rev2_seeds`（92 列／6 表淨效果、argon2id 單一 hash）；**rev3 delta 顯式 2 支**：`m003_user_role_fk`（④、RESTRICT）＋`m004_demo_menu_seeds`（⚠️p 66 條 demo 選單＋policy 全覆蓋 66 列）；sea-orm-adapter 整檔拷入（§I.5 例外）；pg_dump 雙庫 diff 零漂移閉環（pristine 重放＋`up -n 2` 檢查點＋normalize 五規則）＋delta 斷言＋up→down→up 守恆，001 dev stack 實機驗收。
 
 ## Technical Context
 
@@ -58,8 +58,9 @@ specs/002-rev2-schema-baseline/
 ├── data-model.md        # Phase 1 ✅（12 表 dump 行號座標＋seed 92 列值來源＋delta 模型）
 ├── quickstart.md        # Phase 1（從零驗證指南）
 ├── contracts/
-│   ├── verification-commands.md   # C-V 驗收命令全集（diff 閉環＋delta 斷言＋守恆＋prod build）
-│   └── migration-chain.md         # m001~m004 行為契約（up/down 效果、檢查點語意、normalize 規則）
+│   ├── verification-commands.md   # C-V 驗收命令全集（§0 scripts I/O 表＋diff 閉環＋delta 斷言＋守恆＋prod build）
+│   ├── migration-chain.md         # m001~m004 行為契約（up/down 效果、檢查點語意、normalize 規則）
+│   └── demo-menu-enumeration.md   # m004 凍結枚舉（66 條＋映射權威＋不變式）——T012 轉錄權威
 ├── checklists/requirements.md     # 16/16 ✅
 └── tasks.md             # /speckit-tasks 產出（非本命令）
 ```
@@ -83,8 +84,9 @@ fork260509-rev3/
 │           └── m004_demo_menu_seeds.rs# 66 選單（深度分批）＋policy 66；down 限定 demo 集
 ├── deploy/Dockerfile.rust-api.txt     # Manifest／Source 段補 sea-orm-adapter COPY ×2 行
 └── tests/002-rev2-schema-baseline/
-    ├── rev2-schema-baseline.sql       # pristine 參考 dump 基準檔（normalize 後、git-tracked）
-    └── scripts/{pristine-replay.sh, normalize.sh, diff-baseline.sh, delta-assert.sh}
+    ├── rev2-schema-baseline.sql       # pristine 參考 schema dump 基準（normalize 後、git-tracked）
+    ├── rev2-data-baseline.sql         # pristine 參考 6 表 seed data dump 基準（normalize 後、git-tracked）
+    └── scripts/{pristine-replay.sh, normalize.sh, diff-baseline.sh, delta-assert.sh}   # I/O 契約＝verification-commands.md §0
 ```
 
 ## Phase 0：研究結論
@@ -96,6 +98,7 @@ fork260509-rev3/
 - [data-model.md](data-model.md)：12 表 dump 行號座標（全數親 grep 驗證）＋欄序忠實警告＋seed 92 列值來源＋delta 模型＋排除聲明
 - [contracts/verification-commands.md](contracts/verification-commands.md)：C-V 全集——pristine 重放→`up -n 2` 檢查點雙 diff 零差異→續 up delta 斷言→up→down→up 守恆→dev stack gate 實機→**prod image build**（新增 workspace crate ⇒ 必含，CLAUDE.md §3 紀律）→冪等→time 複驗
 - [contracts/migration-chain.md](contracts/migration-chain.md)：m001~m004 up/down 行為契約＋檢查點語意＋normalize 五規則凍結
+- [contracts/demo-menu-enumeration.md](contracts/demo-menu-enumeration.md)：m004 凍結枚舉（66 條集合＋28 欄映射權威＋不變式）
 - [quickstart.md](quickstart.md)：從零驗證指南
 
 ## 實作注意（移交 tasks）

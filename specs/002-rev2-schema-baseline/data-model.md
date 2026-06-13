@@ -1,6 +1,6 @@
 # Data Model — 002-rev2-schema-baseline
 
-> **權威序聲明**：本檔是**座標圖、不是權威**。權威序＝①活庫 dump（`/tmp/rev2-schema-dump.sql`、pg_dump 17.10、717 行；若不存在依 plan.md 重生）＞②rev2 migration 源碼（`/mnt/d/AnewSpaces/x_Project/fork260509-rev2/rust-api/migration/src/m20260529_0000NN_*.rs`，下稱 `mNNN`）＞③本檔。implementer 寫 m001/m002 時**逐表打開 dump 行範圍與 migration 源碼對照**，不得只抄本檔。
+> **權威序聲明**：本檔是**座標圖、不是權威**。權威序＝①活庫 dump（`/tmp/rev2-schema-dump.sql`、pg_dump 17.10、717 行；volatile——若不存在以 `docker exec rev2-admin-postgres-1 pg_dump -U soybean -d soybean_admin_rust --schema-only > /tmp/rev2-schema-dump.sql` 重生〔rev2 stack 須在跑〕；亦見 quickstart 前置與 C-V-0）＞②rev2 migration 源碼（`/mnt/d/AnewSpaces/x_Project/fork260509-rev2/rust-api/migration/src/m20260529_0000NN_*.rs`，下稱 `mNNN`）＞③本檔。implementer 寫 m001/m002 時**逐表打開 dump 行範圍與 migration 源碼對照**，不得只抄本檔。
 > **勘誤紀律**：本檔任何座標／數字與 dump 或源碼不符 → 以 dump／源碼為準、回頭最小 patch 本檔並在 PR 注記；不得反向「改 dump 遷就文件」。
 > 第三對照源：DESIGN 附錄 F（`docs/INTEGRATION-DESIGN.md:849-865`，逐表 PK/業務欄/索引，live 稽核 2026-06-09 零 drift）。
 
@@ -25,7 +25,7 @@ dump 行號＝`/tmp/rev2-schema-dump.sql` 的 CREATE TABLE 區塊；憲法/約�
 
 **特例注記**（implementer 必讀）：
 
-- **INET custom type**：`sys_access_log.client_ip`／`sys_login_attempt.client_ip`（皆 NOT NULL）／`sys_operation_log.operator_ip`（nullable）為 PostgreSQL `inet` — SeaORM 需 custom 處理，照抄 rev2 對應 migration 寫法。
+- **INET custom type**：`sys_access_log.client_ip`／`sys_login_attempt.client_ip`（皆 NOT NULL）／`sys_operation_log.operator_ip`（nullable）為 PostgreSQL `inet` — SeaORM 需 custom 處理：**對照** rev2 m004/m011/m012 的 `custom(Alias::new("inet"))` 寫法**重新實作**（§I.5 受控參照：讀允許、拷貝禁止——migration 不在拷貝例外清單）。
 - **NOT NULL 特例**：`sys_access_log.operator_id` **NOT NULL**（dump:86；同名欄在 `sys_login_attempt` 是 nullable，dump:173）；`sys_token.user_id` **NOT NULL**（dump:354）。
 - **`sys_token` 時間欄**：`issued_at`/`expires_at` NOT NULL、唯 `used_at` nullable（NULL 語意參與 fail-closed 判定，見 DESIGN 附錄 F #6）。
 - **`casbin_rule` = adapter 8 欄＋治理 3 欄**：前 8 欄（`id` + `ptype` varchar(18) + `v0..v5` varchar(125)，含 `unique_key_sea_orm_adapter`）由 adapter DDL 定義 — 對照 `/mnt/d/AnewSpaces/x_Project/fork260509-rev2/rust-api/sea-orm-adapter/src/migration.rs:19-56`（`pub async fn up`）；後 3 欄（`protected` bool NN default false、`created_at` tstz NN default now、`created_by` bigint）由 m031 ALTER 補（adapter-invisible）。
@@ -55,7 +55,7 @@ m002 = rev2 全部 seed 段（散在 15+ 支 migration 的 INSERT＋後續 UPDAT
 | `sys_user` | 3 | m002（INSERT＋argon2id hash，`m..002:14-16`） |
 | `sys_role` | 3 | m006（INSERT，`m..006:55-58`） |
 | `sys_user_role` | 3 | m007（INSERT，`m..007:38`；1→1、2→2、3→3） |
-| `casbin_rule` | 72 | m009/m010/m013/m015/m017/m019/m020/m021/m022/m023/m024/m025/m029/m033/m035 各 seed 段 |
+| `casbin_rule` | 72 | m009/m010/m013/m015/m017/m019/m020/m021/m022/m023/m024/m025/m029/m033/m035 各 seed 段（**轉錄省力法**：以 C-V-2 pristine 重放庫的 data dump `COPY casbin_rule` 段為 72 列逐列轉錄源、15 支源檔降為交叉核對——首輪命中率優先，diff 閉環為兜底） |
 | `sys_menu` | 10 | m018（home/manage＋manage 4 子頁＝6 列，`m..018:113,125-130`）＋m022（function＋function_toggle-auth＝2 列，`m..022:23`）＋m029（manage_system-settings 1 列，`m..029:32`）＋m035（manage_policy-archive 1 列，`m..035:35`） |
 | `system_settings` | 1 | m029（`single_session_default`=`off`、`value_type`=`enum:on,off`） |
 
@@ -69,7 +69,7 @@ m002 = rev2 全部 seed 段（散在 15+ 支 migration 的 INSERT＋後續 UPDAT
 ## 4. delta 模型（rev3 新增）
 
 - **m003 — FK ×2**：`sys_user_role.user_id → sys_user.id`、`sys_user_role.role_id → sys_role.id`；皆 **ON DELETE RESTRICT**（工程預設；活庫 dump **無任何 FOREIGN KEY**＝rev2 終態無 FK、故此為純 delta、不影響 m001 基線 diff）。
-- **m004 — demo menu**：欄值枚舉定稿**指向 `research.md` R4**、本檔不重複（單一來源紀律）。
+- **m004 — demo menu**：集合凍結＋映射權威＝**`contracts/demo-menu-enumeration.md`**（66 條＋28 欄映射表；衍生裁定背景在 research.md R4）、本檔不重複（單一來源紀律）。
 
 ## 5. 排除聲明
 

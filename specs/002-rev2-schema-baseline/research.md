@@ -66,5 +66,5 @@
 
 ## 移交後刀 backlog（tasks 期登 CHECKLIST §3）
 
-- Menu 刀：RouteMeta 擴充（localIcon/multiTab/href 序列化＋`menu_node_to_route` 讀 icon_type）；iframe props 內嵌復原評估（D2）；`filter_routes` 遞迴化評估（D3 配套）。
+- Menu 刀：RouteMeta 擴充（localIcon/multiTab/href 序列化＋`menu_node_to_route` 讀 icon_type）；iframe props 內嵌復原評估（D2）；`filter_routes` 遞迴化評估（D3 配套）。**影響面帳目**：href 欄落值實為 **×10**（原生 2＋D2 href 化 8）——RouteMeta href 序列化接線同吃全 10 列、勿按原生 ×2 低估。
 - rev2 回灌情報：rev2 workspace sea-orm defaults-on＝time 入圖根因（rev3 R3 已實證）——rev2 維護時可同步收斂。
