@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001+002+003 ✅ 已收刀 2026-06-13、餘 3 項〔audit ×2 計 4 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001+002+003+004 ✅ 已收刀、餘 2 主題〔audit ×2＋Auth 島最小段＝計 3 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-14 004-soft-delete-infra 全綠收刀＋merge＋push**:test-first TDD、DB-free 20+1ignored+22／live --ignored 1／prod image build 全綠（orchestrator 親測）;新 `entity` crate（3 Model 逐欄鏡像 m001、with-chrono 僅 entity〔time 不入圖〕）＋`SoftDeletable` trait（active minimal 無寫側）＋facade 三閘（user/role soft-del＋`find_active_by_*`／user_role plain、不 re-export Entity、回 raw Model/DbErr）＋`entity_access_lint` build-failing（兩階段抹白掃描＋meta-test 22 test、⚠️g 全新寫）＋bounded 实机 smoke（#[ignore] 證 soft-delete 真生效）＋Dockerfile entity COPY（prod build mandatory、RED→GREEN）;triple-guard 就位、7 SC／11 FR 全綠（FR-010 零洩漏）;7 單元 subagent-driven＋final READY TO MERGE;merge `e8334d7` 回 rev3-admin-root、feature branch 保留、三 ref 已 push（rev3-admin-root/004 保留分支/rev3-admin-rust-api）
 - **2026-06-13 003-envelope 全綠收刀＋merge（未 push）**:test-first TDD 18/18＋prod release build＋C-V 1-5 全綠;envelope.rs（`Res<T>`/`PageRes<T>`/`BizCode` 13 碼矩陣 code/msg 凍結⚠️f＋http_status() 單一真相）＋error.rs（`AppError` struct＋8 建構子〔4 保留碼無建構子⚠️f〕／Internal→200⚠️e／detail 不洩漏）;非新 crate（server 內 2 模組、worktree `6808adb`）;四階段 subagent review 全過、rev2 enum/500 陷阱已避;merge `7960a73` 回 rev3-admin-root、feature branch 保留;**未 push（待 user 同意）**
-- **2026-06-13 002-rev2-schema-baseline 全綠收刀＋merge＋push**:C-V-0~9 實機全綠（SC-001~008）、前代 35 支 squash 為 4 支基線（m001 schema 11 表／m002 seed 92 列 6 表／m003 FK／m004 demo 66）＋sea-orm-adapter 拷入、修 m002 兩層 seed drift（id 順序 bug＋normalize 第六規則 row-order 正規化〔user 拍板方案 A〕）、merge `9233ae0` 回 rev3-admin-root;三 ref 已 push（rev3-admin-root/002 保留分支/rev3-admin-rust-api）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第四刀 → 下個刀 brainstorm 起手**（刀清單剩：soft-delete 基建〔rev2 009〕／audit ×2〔rev2 011+015〕／Auth 島最小段〔rev2 013〕；刀界由 brainstorm/specify 定稿）
+**下一步**: **波 0 第五刀 → audit 刀 ×2 之首 brainstorm 起手**（刀清單剩：audit ×2〔rev2 011 op-log＋`mutate_in_txn`／015 access-log＋login-attempt＋xdb〕／Auth 島最小段〔rev2 013〕；刀界由 brainstorm/specify 定稿；soft-delete 基建已於 004 交付）
 
 ---
 
@@ -38,7 +38,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] **002-rev2-schema-baseline 刀 ✅ 收刀（2026-06-13、merge `9233ae0`）**——前代 35 支 squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（⚠️v 委派式、§I.5）;C-V-0~9 實機全綠（SC-001~008）、normalize 六規則（row-order 假紅、user 拍板方案 A、契約留痕 migration-chain.md §3）;spec 全帳在 `specs/002-rev2-schema-baseline/`
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
 - [x] **003-envelope 刀 ✅ 收刀（2026-06-13、merge `7960a73`）**——`Res<T>{data,code,msg}`＋`PageRes<T>`＋`BizCode` 13 碼矩陣（code/msg 凍結⚠️f＋http_status() 單一真相）＋`AppError` struct＋8 建構子（4 保留碼無建構子⚠️f／Internal→200⚠️e／detail 不洩漏）;非新 crate（server 內 2 模組）;test-first TDD 18/18＋prod build＋C-V 1-5 全綠;spec 全帳在 `specs/003-envelope/`
-- [ ] **soft-delete 基建刀**（`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`;rev2 009）
+- [x] **004-soft-delete-infra 刀 ✅ 收刀（2026-06-14、merge `e8334d7`）**——新 `entity` crate（3 Model 鏡像 m001）＋`SoftDeletable` trait（active 過濾 minimal）＋`model/facade/` 三 facade（user/role soft-del＋`find_active_by_*`／user_role plain、不 re-export Entity、回 raw Model）＋`entity_access_lint` build-failing 守恆（兩階段抹白掃描＋meta-test＋regression 22 test）＋bounded 实机 smoke（#[ignore]、m002 seed）;triple-guard 就位;test-first TDD、DB-free 20+1+22／live 1／prod image build 全綠;7 SC／11 FR 全滿足（FR-010 零洩漏）;spec 全帳在 `specs/004-soft-delete-infra/`
 - [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑〕）
 - [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提）
 
@@ -50,7 +50,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 
 **出口條件（DESIGN §8.4,4 項全綠才換波）**:
 - [x] dev stack `up --wait` 全 healthy ✅（001、C-V-2 實證 2026-06-13）
-- [ ] 三守恆綠（entity_access_lint・endpoint_coverage_lint〔皆後刀〕・**migration up→down→up ✅ 002 C-V-5 達成 2026-06-13**）
+- [ ] 三守恆綠（**entity_access_lint ✅ 004 達成 2026-06-14**〔build-failing＋meta-test 22 test〕・endpoint_coverage_lint〔後刀〕・**migration up→down→up ✅ 002 C-V-5 達成 2026-06-13**）
 - [x] envelope 13 碼 contract 形狀測試綠 ✅（003、18/18 test-first 2026-06-13）
 - [ ] login→getUserInfo→enforce 最小鏈 curl 通
 

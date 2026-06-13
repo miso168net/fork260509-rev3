@@ -356,10 +356,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 004-soft-delete-infra（波 0 第四刀）
-Spec ✅｜Clarify ✅（0Q）｜Plan ✅（Constitution Check 9/9）｜Tasks ✅（specs/004-soft-delete-infra/tasks.md、12 task：Setup T001-004／US1 lint T005／US2 SoftDeletable+query-shape T006-007／US3 facade+实机 smoke T008-009／Polish prod build+grep+收口 T010-012）｜下一步 superpowers:executing-plans（subagent-driven-development、§3 階段 2、不用 /speckit-implement）
-Scope: 新 entity crate（sys_user/sys_role/sys_user_role 鏡像 m001）＋SoftDeletable trait（active 過濾、minimal）＋model/facade/ 三 facade（user/role soft-del、user_role plain）＋entity_access_lint（build-failing 守恆＋meta-test）；驗證 ii（純測 lint+query-shape ＋ bounded 实机 smoke）；無 migration、無寫路徑/audit.rs（defer audit 刀）；新 entity crate ⇒ Dockerfile COPY＋prod image build mandatory acceptance
-Brainstorm: docs/superpowers/004-soft-delete-infra.md（刀界 A 機制+proof／proof set option 3＝user+role+user_role／驗證 ii／寫路徑+audit.rs defer audit 刀／無 migration；承接 DESIGN §5.1 triple-guard＋⚠️o handler 層組裝＋⚠️g 全新寫）
+Active feature: （無 active feature — 004-soft-delete-infra ✅ 已收刀 merge＋push 2026-06-14；下個刀 brainstorm 起手前此區暫空）
+004 收刀摘要: 新 entity crate（sys_user/sys_role/sys_user_role 逐欄鏡像 m001、with-chrono 僅 entity〔time 不入圖〕）＋SoftDeletable trait（active 過濾 minimal）＋model/facade 三閘（user/role soft-del＋find_active_by_*／user_role plain、不 re-export Entity、回 raw Model）＋entity_access_lint build-failing 守恆（兩階段抹白掃描＋meta-test 22 test、⚠️g 全新寫）＋bounded 实机 smoke（#[ignore] 證 soft-delete 真排除 stamped 列）＋Dockerfile entity COPY（prod build mandatory、RED→GREEN）；triple-guard 就位、7 SC／11 FR 全綠（FR-010 零洩漏）、prod image build 綠；7 單元 subagent-driven（spec+quality review 各過＋final READY TO MERGE）；merge e8334d7 回 rev3-admin-root（feature branch 保留）、三 ref 已 push；spec 全帳 specs/004-soft-delete-infra/、里程碑 MILESTONES §1
+下一步: 波 0 第五刀（audit 刀 ×2 之首、rev2 011 op-log＋mutate_in_txn）brainstorm 起手（§3 階段 0、superpowers:brainstorming）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
