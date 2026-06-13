@@ -39,7 +39,7 @@
 > 隔離：拋棄式 user（id 9xxxxx）、測前後 `hard_clean`（delete op-log rows by entity_id ＋ delete user）；不碰 m002 seed。run：`cargo test -p server -- --ignored --test-threads=1`（DB 起著）；常規 `cargo test -p server` 不含 `#[ignore]`。
 
 1. **commit 原子（SC-001/003/004）**：插 active user（id=900001、password=原雜湊）→ `soft_delete(db, 900001, 1)` → `Ok(true)`；
-   - `sys_operation_log` WHERE entity_id=900001 **恰好 1 列**；`operation=="SOFT_DELETE"`／`entity_table=="sys_user"`／`entity_id==Some(900001)`／`payload_after.is_none()`／`payload_before["password"]=="<redacted>"`（redact 真落 DB）／`payload_before["user_name"]` 保留；
+   - `sys_operation_log` WHERE entity_id=900001 **恰好 1 列**；`operation=="SOFT_DELETE"`／`entity_table=="sys_user"`／`entity_id==Some(900001)`／**`operator_id==Some(1)`（操作者要素、SC-004）**／`trace_id.is_none()`／`payload_after.is_none()`／`payload_before["password"]=="<redacted>"`（redact 真落 DB）／`payload_before["user_name"]` 保留；
    - `sys_user` id=900001 `deleted_at.is_some()`（軟刪生效）。
 2. **no-op 不寫（SC-004）**：(a) 不存在 user → `soft_delete` `Ok(false)`、審計 0 列；(b) 已軟刪 user 再 `soft_delete` → `Ok(false)`、審計筆數不增（仍 1）。
 3. **rollback 原子（SC-002 核心）**：插 active user（id=900003）→ 經 `mutate_in_txn` 閉包內先 UPDATE 軟刪、再構造 `entity_table` 超長（>VARCHAR(64)）的 `AuditEvent` 致 `write_in_txn` INSERT 失敗 → `mutate_in_txn` 回 `Err`；
