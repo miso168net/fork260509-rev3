@@ -124,7 +124,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
+- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs（server crate 新 2 檔）待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
 
 ---
 
@@ -178,7 +178,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）
 - [ ] prod builder node:20.19 vs dev node:26 分歧（沿 rev2 驗證形;Dockerfile 補註記或 DECISIONS 開放項）
 - [ ] cargo cache 卷遮蓋陳舊（dev image 升 toolchain 時需手動 `volume rm`;quickstart 註記）
-- [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）
+- [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）;**003 已實踐 per-unit pin bump（每 Unit review 過即 bump、pin 全程==worktree HEAD）、實證可行**
 - [ ] **rev2 repo 回灌通知**:redis-stack `--dir /data` 持久化 bug 為 rev2 同形潛伏（rev2 `docker-compose.yml` redis command 同款缺 `--dir`）——rev2 維護時修
 
 ### 3.5 002-rev2-schema-baseline follow-up（收刀移交 2026-06-13;均不阻塞、消費刀觸發時處理）
@@ -194,6 +194,16 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] adapter `examples/`（rbac_*.conf/csv）為 `#[cfg(test)]` fixture:prod `--bins` build 免 COPY（已驗正確、Dockerfile 有註解），但若日後在 builder/容器內跑 `cargo test` 會缺 fixture（屆時 COPY examples 或 adapter 測試改 env-gate round-trip smoke）
 **constitution（待 user 親決）**:
 - [ ] ⚠️u constitution §IV 增第 10 題（normalize/驗證流程契約修訂的 amendment 提案;PATCH 級;002 normalize 第六規則為先例——執行期發現假紅源、user 拍板補規則、契約留痕）
+
+### 3.6 003-envelope follow-up（收刀移交 2026-06-13;均不阻塞、消費刀觸發時處理）
+
+**envelope 消費（research.md「移交 tasks 期紀律」＋data-model §7 排除聲明明文移交）**:
+- [ ] 各碼實際發出點（`Res::err`/`AppError` 8 建構子的真實呼叫;含 router `.fallback()`→`not_found()`）＋每 route contract coverage gate（＝§2 出口條件已列後刀的 `endpoint_coverage_lint`）——本刀零非測試呼叫;散在 auth/system_manage/enforce/data-island/behavior-island 消費刀逐步接上＋逐 route 補測
+- [ ] `AppError` 的 `From<…>` 轉換 impl（供 handler `Result<Res<T>,AppError>` 用 `?` 傳播 DbErr/casbin 等 foreign error）——本刀無 error source、YAGNI 未加;首個需傳播外部錯誤的 handler 刀按需加
+- [ ] ⚠️r id 序列化 2^53 fail-loud 守衛＋lie ledger → 首個 DTO 刀（本刀 `data:T` generic、無具體 DTO 可守）
+- [ ] **CDP browser smoke 補測**（research R5 明文 directed）:首個發出 envelope 的 handler 刀必含 CDP 經 front-nginx 驗 base-web 攔截器真讀 `code`/`data`/`msg`——**curl 直送 ≠ base-web modal/success 判讀對齊**;本刀純型別、無 endpoint 可 smoke、整條 runtime 消費鏈未驗
+**dead_code（infra ahead of consumers、實作期觀察）**:
+- [ ] envelope/error 公開 API（`Res`/`PageRes`/4 建構子・`BizCode`・`AppError` 8 建構子）目前全 dead_code（非測試零消費、`cargo build` 數條 warning、**無 `-D warnings` gate 故不阻塞 prod build**）;消費刀 wiring 後漸清（Res/AppError→Auth/data island、7777/8888/3333→behavior island 波3）;**wiring 後仍殘留 dead_code 的建構子＝無真實消費者、回頭檢視是否 over-built**
 
 ---
 
