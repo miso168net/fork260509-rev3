@@ -357,7 +357,7 @@ cd ..
 
 <!-- SPECKIT START -->
 Active feature: 005-audit-op-log（波 0 第五刀 / audit 刀 ×2 之首）
-Spec ✅（specs/005-audit-op-log/spec.md；US1 業務寫＋審計寫原子綁定 P1 MVP／US2 審計快照 redact P2／US3 完整+append-only P3＋12 FR＋7 SC；checklists/requirements.md 16/16 ✅；0 NEEDS CLARIFICATION）｜下一步 /speckit-clarify（預期 0Q）或 /speckit-plan（Constitution Check 對照 constitution.md）→ /speckit-tasks → /speckit-analyze → superpowers:executing-plans
+Spec ✅（specs/005-audit-op-log/spec.md；US1 業務寫＋審計寫原子綁定 P1 MVP／US2 審計快照 redact P2／US3 完整+append-only P3＋12 FR＋7 SC；checklists/requirements.md 16/16 ✅；0 NEEDS CLARIFICATION）｜Clarify ✅（0Q、taxonomy 全 11 類 Clear/N-A、無關鍵歧義；spec 未改）｜下一步 /speckit-plan（Constitution Check 對照 constitution.md）→ /speckit-tasks → /speckit-analyze → superpowers:executing-plans
 Scope: model/audit.rs（mutate_in_txn 泛型 wrapper 業務寫＋op-log 寫同 txn 原子＋AuditEvent/AuditOperation 全4/AuditSerialize redact password、純不碰 entity 守 lint③）＋sys_operation_log entity（擴 entity crate +with-json、鏡像 m001 10 欄）/facade（append-only write_in_txn）＋單一寫路徑 proof sys_user::soft_delete；驗證 ii（純測 redact ＋ bounded 实机 smoke commit+rollback 原子）；無 migration、operator 顯式 param、第二 audit 軌/xdb/讀端/其餘寫路徑/DbErr→AppError defer
 Brainstorm: docs/superpowers/005-audit-op-log.md（刀界 A 機制+proof／proof 單一 soft_delete／operator 顯式 param／AuditOperation 全 4／驗證 ii commit+rollback／無 migration／擴 entity crate +with-json；承接 DESIGN §5.2 同 txn 審計＋§3.2 append-only＋⚠️g 全新寫）
 <!-- SPECKIT END -->
