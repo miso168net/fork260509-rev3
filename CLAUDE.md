@@ -357,7 +357,7 @@ cd ..
 
 <!-- SPECKIT START -->
 Active feature: 004-soft-delete-infra（波 0 第四刀）
-Spec ✅（specs/004-soft-delete-infra/spec.md、checklist 16/16）｜Clarify ✅（0Q 全 Clear、10 taxonomy 類全 Clear/N-A）｜下一步 /speckit-plan
+Spec ✅（specs/004-soft-delete-infra/spec.md、checklist 16/16）｜Clarify ✅（0Q 全 Clear）｜Plan ✅（specs/004-soft-delete-infra/plan.md、Constitution Check 9/9）｜下一步 /speckit-tasks
 Scope: 新 entity crate（sys_user/sys_role/sys_user_role 鏡像 m001）＋SoftDeletable trait（active 過濾、minimal）＋model/facade/ 三 facade（user/role soft-del、user_role plain）＋entity_access_lint（build-failing 守恆＋meta-test）；驗證 ii（純測 lint+query-shape ＋ bounded 实机 smoke）；無 migration、無寫路徑/audit.rs（defer audit 刀）；新 entity crate ⇒ Dockerfile COPY＋prod image build mandatory acceptance
 Brainstorm: docs/superpowers/004-soft-delete-infra.md（刀界 A 機制+proof／proof set option 3＝user+role+user_role／驗證 ii／寫路徑+audit.rs defer audit 刀／無 migration；承接 DESIGN §5.1 triple-guard＋⚠️o handler 層組裝＋⚠️g 全新寫）
 <!-- SPECKIT END -->
