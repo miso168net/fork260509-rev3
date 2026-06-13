@@ -31,10 +31,14 @@ COPY rust-api/Cargo.toml rust-api/rust-toolchain.toml ./
 COPY rust-api/Cargo.lock ./
 COPY rust-api/server/Cargo.toml ./server/
 COPY rust-api/migration/Cargo.toml ./migration/
+COPY rust-api/sea-orm-adapter/Cargo.toml ./sea-orm-adapter/
 
 # --- Source 段 ---
 COPY rust-api/server/src ./server/src
 COPY rust-api/migration/src ./migration/src
+COPY rust-api/sea-orm-adapter/src ./sea-orm-adapter/src
+# 注意:sea-orm-adapter/examples/ 為 .conf/.csv casbin 模型/policy 資料檔、非 .rs,
+# Cargo.toml 無 [[example]] 宣告,cargo 不會 auto-discover 為 target,免 COPY(缺檔不影響編譯)。
 
 # BuildKit cache mount: registry + git + target 三份持久化、跨 build 增量
 # 注意:target/ 在 cache mount 內、對後續 COPY 不可見,必須 cp 到 /out/
