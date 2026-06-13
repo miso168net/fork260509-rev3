@@ -38,5 +38,6 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api #
 ## 收尾
 
 ```bash
-docker rm -f cv002-rev2-pg cv002-rev3-pg && docker network rm cv002-net        # 拋棄式資源清理
+docker rm -f cv002-rev2-pg cv002-rev3-pg; docker network rm cv002-net           # 拋棄式容器＋網路清理
+docker volume rm cv002-cargo cv002-target                                       # 拋棄式建置卷清理（C-V-9 權威形）
 ```

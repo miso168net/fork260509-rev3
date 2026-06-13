@@ -57,7 +57,7 @@ m002 = rev2 全部 seed 段（散在 15+ 支 migration 的 INSERT＋後續 UPDAT
 | `sys_user_role` | 3 | m007（INSERT，`m..007:38`；1→1、2→2、3→3） |
 | `casbin_rule` | 72 | m009/m010/m013/m015/m017/m019/m020/m021/m022/m023/m024/m025/m029/m033/m035 各 seed 段（**轉錄省力法**：以 C-V-2 pristine 重放庫的 data dump `COPY casbin_rule` 段為 72 列逐列轉錄源、15 支源檔降為交叉核對——首輪命中率優先，diff 閉環為兜底） |
 | `sys_menu` | 10 | m018（home/manage＋manage 4 子頁＝6 列，`m..018:113,125-130`）＋m022（function＋function_toggle-auth＝2 列，`m..022:23`）＋m029（manage_system-settings 1 列，`m..029:32`）＋m035（manage_policy-archive 1 列，`m..035:35`） |
-| `system_settings` | 1 | m029（`single_session_default`=`off`、`value_type`=`enum:on,off`） |
+| `system_settings` | 1 | m028（建表＋seed 同支，`single_session_default`=`off`、`value_type`=`enum:on,off`；m029 為 settings 相關但本列源 m028） |
 
 **不變式**（m002 寫完後 psql 驗）：
 
