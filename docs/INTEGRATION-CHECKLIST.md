@@ -124,7 +124,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,rust-api scaffold＋compose/deploy 新碼未入圖,001 後待一輪 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,001〔scaffold＋compose/deploy〕＋002〔migration ×4＋sea-orm-adapter crate＋tests/002 scripts〕新碼均未入圖,待一輪 update）
 
 ---
 
@@ -189,6 +189,9 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] `filter_routes` 遞迴化評估（D3 配套:現 demo policy 全覆蓋 66 列為前向相容、filter 只查兩層;遞迴化後可收斂為嚴格最小集）
 **rust-api 順手（002 引入後重驗）**:
 - [ ] workspace Cargo.toml time pin 註解勘誤（002 已驗 time=0 不入圖;見 §3.4 同條）
+**sea-orm-adapter vendored 已知瑕疵（byte-identical 拷貝保留、§I.5;重鑄/測試啟用時處理、U1+U2 review 發現）**:
+- [ ] adapter `Cargo.toml` 內 `async-trait`/`tokio` 的 `default-features = false` 對 workspace 繼承條目 redundant → 每次 build 兩條 cargo warning（拷貝紀律刻意保留;日後拍板允許動 vendored manifest 時一併清）
+- [ ] adapter `examples/`（rbac_*.conf/csv）為 `#[cfg(test)]` fixture:prod `--bins` build 免 COPY（已驗正確、Dockerfile 有註解），但若日後在 builder/容器內跑 `cargo test` 會缺 fixture（屆時 COPY examples 或 adapter 測試改 env-gate round-trip smoke）
 **constitution（待 user 親決）**:
 - [ ] ⚠️u constitution §IV 增第 10 題（normalize/驗證流程契約修訂的 amendment 提案;PATCH 級;002 normalize 第六規則為先例——執行期發現假紅源、user 拍板補規則、契約留痕）
 
