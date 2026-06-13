@@ -181,6 +181,17 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）
 - [ ] **rev2 repo 回灌通知**:redis-stack `--dir /data` 持久化 bug 為 rev2 同形潛伏（rev2 `docker-compose.yml` redis command 同款缺 `--dir`）——rev2 維護時修
 
+### 3.5 002-rev2-schema-baseline follow-up（收刀移交 2026-06-13;均不阻塞、消費刀觸發時處理）
+
+**Menu 刀消費（research.md R4 D2~D4 移交）**:
+- [ ] `RouteMeta` 擴充:localIcon/multiTab/href 序列化＋`menu_node_to_route` 讀 `icon_type`（rev2 wire 不序列化這些欄、屬接線議題;**影響面 href 落值實為 ×10**〔原生 2＋D2 href 化 8〕、勿按原生 ×2 低估）
+- [ ] iframe props 內嵌復原評估（D2:document 8 頁 props.url 現 href 化外開;iframe 內嵌需 props 欄位/wire 擴充）
+- [ ] `filter_routes` 遞迴化評估（D3 配套:現 demo policy 全覆蓋 66 列為前向相容、filter 只查兩層;遞迴化後可收斂為嚴格最小集）
+**rust-api 順手（002 引入後重驗）**:
+- [ ] workspace Cargo.toml time pin 註解勘誤（002 已驗 time=0 不入圖;見 §3.4 同條）
+**constitution（待 user 親決）**:
+- [ ] ⚠️u constitution §IV 增第 10 題（normalize/驗證流程契約修訂的 amendment 提案;PATCH 級;002 normalize 第六規則為先例——執行期發現假紅源、user 拍板補規則、契約留痕）
+
 ---
 
 ## 4. 跨 feature 待驗證項
