@@ -208,7 +208,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 3.7 004-soft-delete-infra follow-up（收刀移交 2026-06-14;均不阻塞、消費刀觸發時處理）
 
 **dead_code（infra ahead of consumers、實作期觀察）**:
-- [ ] facade 讀 fn（`find_active_by_name`/`find_active_by_id`/`find_active_by_ids`/`find_role_ids_by_user_id`）＋`find_active`＋`SoftDeletable` trait/impl 全 dead_code（server bin crate、無真實消費者、`cargo build` 數條 warning、無 `-D warnings` 不阻塞）;Auth 島 getUserInfo 讀 cluster 組裝消費後漸清;**wiring 後仍殘留＝無真實消費者、回頭檢視 over-built**（同 §3.6 紀律）。entity crate `Model` 為 lib API、不受此 warning
+- [x] ✅（2026-06-14、006 Auth wiring）facade 讀 fn 全消費、dead_code 清、**非 over-built**：`find_active_by_name`←login(`handler/auth.rs`)／`find_active_by_id`←getUserInfo／`find_role_ids_by_user_id`+`find_active_by_ids`←新 `roles_for_user`(`facade/sys_user_role.rs`)／`roles_for_user`←enforce_mw+login+getUserInfo（`find_active`/`SoftDeletable` trait/impl 經 find_active_by_* 串到消費）。entity crate `Model` 為 lib API、本不受此 warning
 **rust-api 未來 entity 刀**:
 - [ ] sea-orm date-time backend:entity crate sea-orm 加 `with-chrono`（workspace `default-features=false` 無 backend、time 不入圖、chrono 已在 lock 無新下載）;feature unification 使 workspace 共用 sea-orm build 全得 `DateTimeWithTimeZone`——**未來帶 timestamptz 欄 entity 沿用 entity crate 即可**;新增獨立 crate 直接用 sea-orm（resolver=2、不經 entity 圖）才須自加。見 `entity/Cargo.toml` 註＋memory [[sea-orm-entity-datetime-feature-gate]]
 **未來 live-smoke 刀注意**:
@@ -227,7 +227,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 **实机 smoke 隔離（Unit D code review 觀察、未來 live-smoke 刀沿用）**:
 - [ ] `live_smoke.rs` 的 3 audit 場景用拋棄式 user（9xxxxx）＋`hard_clean`（前後）隔離、**非 panic-safe**（assert 中途 panic 會留 DB 殘留、靠下次 run 的防禦性 pre-clean 自癒、永不污染 m002 seed——與 004 read-cluster smoke 的 bracketed-restore〔因觸 seed〕策略不同、各自合理）;commit/no-op 兩場景共用 id 900001、依賴 contract §4 強制的 `--test-threads=1`（序列跑）
 **Cargo.lock 完整性＋未來 sea-orm feature 的 MSRV 地雷（Unit A 發現）**:
-- [ ] 005 補齊 003/004 遺留的 16 筆 sea-orm optional-dep lock stanza（`bigdecimal`／`time` 0.3.47／`rust_decimal`／`uuid`／`pgvector`／`mac_address` 等、**全 feature-gated 未編譯**、user 拍板接受、time=0.3.47＝resolver 取最新）;⚠️ 這些 crate **以「最新版」躺在 lock、從未在 1.86 編譯過**——**未來任何刀啟用會拉它們的 sea-orm feature（`with-uuid`／`with-rust_decimal`／`with-bigdecimal`／`with-time` 等）、或為第二 audit 刀真實 INET 寫入加 `ipnetwork` 時，務必先驗該鎖定版 MSRV ≤ 1.86**（workspace 註解原憂「time/home 新 patch 需 1.88」、time 0.3.47 恐即是）;超標就 `cargo update -p <crate> --precise <1.86-safe 版>` 釘回。配套見 §3.4 `--locked` 條＋memory [[sea-orm-entity-datetime-feature-gate]]／[[inert-drift-accept-and-correct-doc]]
+- [ ] 005 補齊 003/004 遺留的 16 筆 sea-orm optional-dep lock stanza（`bigdecimal`／`time` 0.3.47／`rust_decimal`／`uuid`／`pgvector`／`mac_address` 等、**全 feature-gated 未編譯**、user 拍板接受、time=0.3.47＝resolver 取最新）;⚠️ 這些 crate **以「最新版」躺在 lock、從未在 1.86 編譯過**——**未來任何刀啟用會拉它們的 sea-orm feature（`with-uuid`／`with-rust_decimal`／`with-bigdecimal`／`with-time` 等）、或為第二 audit 刀真實 INET 寫入加 `ipnetwork` 時，務必先驗該鎖定版 MSRV ≤ 1.86**（workspace 註解原憂「time/home 新 patch 需 1.88」、time 0.3.47 恐即是）;超標就 `cargo update -p <crate> --precise <1.86-safe 版>` 釘回。配套見 §3.4 `--locked` 條＋memory [[sea-orm-entity-datetime-feature-gate]]／[[inert-drift-accept-and-correct-doc]]。⚠️ **time 例外（006 起本條對 time 的「未編譯」描述已 stale）**：006 經 `jsonwebtoken→simple_asn1` 把 **time 拉進真 compile graph（會編譯）**、已 repin `time=0.3.37`/`simple_asn1=0.6.3` 配 1.86（詳 §3.9 末條 errata＋memory [[jsonwebtoken9-msrv-time-real-graph]]）；本條餘 15 筆（bigdecimal/uuid/rust_decimal/pgvector/mac_address 等）仍 feature-gated 未編譯、MSRV-先驗紀律對它們不變（尤 007 加 `ipnetwork`）。
 
 ### 3.9 006-auth-island-min follow-up（收刀移交 2026-06-14;均不阻塞、消費刀觸發時處理）
 
