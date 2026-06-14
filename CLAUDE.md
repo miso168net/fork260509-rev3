@@ -356,9 +356,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature:（無進行中 feature）— **006-auth-island-min ✅ 全綠收刀＋merge `2c5a2a1`**（2026-06-14、未 push）；波 0 剩 **007 第二 audit 刀**（未起手）
-006 ✅ Spec/Clarify/Plan/Tasks/Analyze/Implement/Merge 全鏈完成：8 unit subagent-driven（spec+quality review 各過＋final holistic READY TO MERGE）；純測 52＋lint 22＋enforce-proof live〔Super→200/User→403·5003/bad→3333〕＋全棧 curl＋**CDP browser smoke（SC-006、base-web 攔截器解析真 envelope）**全綠、C-V-1~7 全過；8 SC／13 FR 全滿足；deps +jsonwebtoken 9（MSRV pin simple_asn1 0.6.3/time 0.3.37）；非新 crate 無 migration；發現 seed 實有 v2='button' policy（getUserInfo 回真按鈕、code 正確、註解校正）
-下一步: **007 第二 audit 刀**起手＝階段 0 brainstorm（docs/superpowers/007-<name>.md）→ 手動 /speckit-specify（§3）；接 005 mutate_in_txn/AuditEvent＋消費 006 bearer〔operator_id〕/login handler〔login-attempt 寫點〕；access-log/login-attempt/xdb（rev2 015）；真實 INET 寫入 forcing function（見 CHECKLIST §3.8）
+Active feature: **007-audit-overlay**（波 0 最後一刀／第二 audit 刀）—— SDD 設計鏈進行中。Plan＝[`specs/007-audit-overlay/plan.md`](specs/007-audit-overlay/plan.md)。
+進度: Specify ✅（4 US／14 FR／7 SC、checklist 16/16）→ Clarify ✅（0 ambiguity、3 項 Deferred ⚠️n/⚠️a/⚠️w）→ **Plan ✅**（research R1–R7 grounded、Constitution Check 九題全 PASS、data-model／contracts〔C-V-1~9〕／quickstart 齊）。
+設計重點: access-log operator-gate conform DESIGN §3.3/§10.4／login-attempt inner-outer 6 點／audit_ctx outermost+無條件建 ctx／**`resolve_client_ip` trusted-proxy（推進 §5.9）**／**xdb file-path 載入〔R4 反轉 brainstorm embed〕**／op-log operator/trace/INET 回填〔解 005 §3.8 42804〕／+ipnetwork 0.20·sea-orm with-ipnetwork（MSRV≤1.86 風險、lock pin）；新 crate xdb→prod build 強制；無 migration、無新 wire。
+下一步: **/speckit-tasks** → /speckit-analyze → **superpowers:executing-plans**（非 /speckit-implement、§I.4）。git 全在本機未 push。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
