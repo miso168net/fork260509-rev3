@@ -32,7 +32,7 @@
 
 | 端點 | 成功 | 失敗 |
 |---|---|---|
-| `POST /auth/login {userName,password}` | `Res{data:{token,refreshToken}, code:"0000"}` | 帳密錯/查無/停用→`login_failed`(code `"1000"`、HTTP 200)、**一致不洩漏哪步**；簽發失敗→`internal`(5000) |
+| `POST /auth/login {userName,password}` | `Res{data:{token,refreshToken}, code:"0000"}` | credential 失敗（帳密錯/查無/停用）→`login_failed`(code `"1000"`、HTTP 200)、**一致不洩漏哪步**；**DB/簽發等系統錯誤→`internal`(5000、FR-002 可區分、不洩帳號存在)** |
 | `POST /auth/refreshToken {refreshToken}` | `Res{data:{token,refreshToken}, code:"0000"}`（重發 pair） | refresh 失效→**`logout`(code `"8888"`)**〔R2 反迴圈鐵律、**不得**回 3333/9999/9998〕 |
 | `GET /auth/getUserInfo`(Bearer) | `Res{data:{userId,userName,roles,buttons}, code:"0000"}`；`userId` **string**、`userName=nick_name‖user_name`、`buttons` 現 `[]` | token 缺/失效/user 查無→`token_expired`(code `"3333"`) |
 | enforce-gated route(Bearer) | next（200） | 無 policy→`permission_denied`(code `"5003"`、HTTP 403)；token 缺/失效→`token_expired`(`"3333"`)；**role-lookup DB error→fail-closed `permission_denied`(5003)＋log**（R6/DESIGN line 686） |

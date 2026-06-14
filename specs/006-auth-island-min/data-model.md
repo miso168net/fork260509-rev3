@@ -82,7 +82,7 @@ pub async fn login(State<AppState>, Json<LoginReq>) -> Response;          // 成
 pub async fn refresh_token(State<AppState>, Json<RefreshReq>) -> Response;// 成功 Res<LoginToken>；refresh 失效 logout(8888)〔反迴圈 R2、非 3333〕
 pub async fn get_user_info(State<AppState>, HeaderMap) -> Response;       // 成功 Res<UserInfo>；失效 token_expired(3333)
 ```
-- **login**：`find_active_by_name`→None/Err→`login_failed`／`verify_password`→false→`login_failed`／`status==Some(2)`→`login_failed`／`roles_for_user`→Err→`login_failed`／`issue_tokens`(access+refresh、各自 secret/ttl)→Err→`internal`。
+- **login**：credential 失敗→`login_failed`(1000、SC-003 一致)：`find_active_by_name`→`Ok(None)`（查無）／`verify_password`→false（錯密）／`status==Some(2)`（停用）；**DB/系統錯誤→`internal`(5000、FR-002 可區分、不洩帳號存在)**：`find_active_by_name`→`Err`／`roles_for_user`→`Err`（可經 `From<DbErr>` `?`）／`issue_tokens`→`Err`（簽發失敗）。
 - **refresh_token**：`verify(refresh_token, refresh_secret, aud)`→Err→**`logout()`(8888)**（R2 反迴圈鐵律）／成功→重發 access+refresh pair（stateless、無 reuse 偵測＝波 3）。
 - **get_user_info**：`verify_bearer`(access)→None→`token_expired`／`find_active_by_id`→None/Err→`token_expired`／`user_name=nick_name.unwrap_or(user_name)`／DB-fresh roles→buttons（casbin button-dim、現 `[]`）／`user_id`：**`i64`→string＋2^53 fail-loud 守衛**（⚠️r、超界→`internal` 不靜默截斷）。
 

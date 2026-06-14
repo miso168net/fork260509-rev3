@@ -30,7 +30,7 @@
 **Goal**: `POST /auth/login` 驗帳密發 access+refresh pair、失敗一致防枚舉
 **Independent Test**: login `Super`/`123456`→`code:"0000"`＋token pair；錯密碼/查無→`code:"1000"` 不可區分
 
-- [ ] T008 [US1] `server/src/handler/auth.rs`（新、login 段）＋wire route：`login(State,Json<LoginReq{user_name,password}>)`（serde rename `userName`）→`find_active_by_name`→None/Err→`login_failed`(1000)／`verify_password`→false→`login_failed`／`status==Some(2)` 停用→`login_failed`／`roles_for_user`→Err→`login_failed`／`sign` access(jwt.access_secret/ttl)+refresh(refresh_secret/ttl)→`Res<LoginToken{token,refresh_token}>`(0000)／簽發失敗→`internal`。`main.rs` +`POST /auth/login`（public）。容器 `cargo build`/`cargo test -p server` 綠；worktree commit＋pin bump。
+- [ ] T008 [US1] `server/src/handler/auth.rs`（新、login 段）＋wire route：`login(State,Json<LoginReq{user_name,password}>)`（serde rename `userName`）→credential 失敗→`login_failed`(1000)：`find_active_by_name`→`Ok(None)`／`verify_password`→false／`status==Some(2)` 停用；**DB/系統錯誤→`internal`(5000、FR-002)**：`find_active_by_name`→`Err`／`roles_for_user`→`Err`／`issue_tokens` 簽發→`Err`；成功→`sign` access(jwt.access_secret/ttl)+refresh(refresh_secret/ttl)→`Res<LoginToken{token,refresh_token}>`(0000)。`main.rs` +`POST /auth/login`（public）。容器 `cargo build`/`cargo test -p server` 綠；worktree commit＋pin bump。
 - [ ] T009 [US1] 实机 smoke（C-V-4 部分）：全棧 `up --wait`（front-nginx+base-web+rust-api+postgres+migrate）；curl `POST /api/auth/login {Super,123456}`→`code:"0000"`＋token/refreshToken 非空；錯密碼／查無→皆 `code:"1000"`（回應不可區分、帳號枚舉防護、SC-003）。worktree commit＋pin bump。
 
 **Checkpoint**: US1 全綠＝登入地基就位（發憑證對＋失敗一致；SC-001/003 達成）。
