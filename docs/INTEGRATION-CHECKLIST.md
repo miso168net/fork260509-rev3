@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001+002+003+004 ✅ 已收刀、餘 2 主題〔audit ×2＋Auth 島最小段＝計 3 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001+002+003+004+005 ✅ 已收刀、餘 第二 audit 刀＋Auth 島最小段＝計 2 刀）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-14 005-audit-op-log 全綠收刀＋merge（未 push、波 0 第五刀／audit 刀之首）**:`model/audit.rs`（`mutate_in_txn` 泛型 wrapper 業務寫＋審計寫同 txn 原子〔Some 寫+commit／None no-op／Err 回滾〕＋`AuditOperation` 全4／`AuditEvent`／`AuditSerialize` trait、零 entity:: 守 lint③）＋`facade/sys_operation_log.rs`（append-only sink、`audit_active_model` operator_ip None→NotSet 避 42804＋`write_in_txn`）＋`sys_user` `impl AuditSerialize`（redact password、15 欄排除 current_session_id）＋單一寫路徑 proof `soft_delete`（Ok(true)/Ok(false)）＋`soft_delete_query`;擴 entity crate（sys_operation_log Model 10 欄＋with-json、無 migration）＋Cargo.lock 補 16 筆 sea-orm optional-dep（feature-gated、time=0.3.47 user 拍板接受、清 time pin 註解 backlog）;test-first TDD（redact＋SQL-build 純測 red→green）＋3 場景实机 smoke（commit〔operator_id==1 SC-004〕/no-op/rollback、orchestrator 親驗綠）;4 unit subagent-driven（spec+quality 各過＋final READY TO MERGE）;7 SC／12 FR 全滿足;merge `65f4bbe` 回 rev3-admin-root、feature branch 保留;**未 push（待 user 同意）**
 - **2026-06-14 004-soft-delete-infra 全綠收刀＋merge＋push**:test-first TDD、DB-free 20+1ignored+22／live --ignored 1／prod image build 全綠（orchestrator 親測）;新 `entity` crate（3 Model 逐欄鏡像 m001、with-chrono 僅 entity〔time 不入圖〕）＋`SoftDeletable` trait（active minimal 無寫側）＋facade 三閘（user/role soft-del＋`find_active_by_*`／user_role plain、不 re-export Entity、回 raw Model/DbErr）＋`entity_access_lint` build-failing（兩階段抹白掃描＋meta-test 22 test、⚠️g 全新寫）＋bounded 实机 smoke（#[ignore] 證 soft-delete 真生效）＋Dockerfile entity COPY（prod build mandatory、RED→GREEN）;triple-guard 就位、7 SC／11 FR 全綠（FR-010 零洩漏）;7 單元 subagent-driven＋final READY TO MERGE;merge `e8334d7` 回 rev3-admin-root、feature branch 保留、三 ref 已 push（rev3-admin-root/004 保留分支/rev3-admin-rust-api）
-- **2026-06-13 003-envelope 全綠收刀＋merge（未 push）**:test-first TDD 18/18＋prod release build＋C-V 1-5 全綠;envelope.rs（`Res<T>`/`PageRes<T>`/`BizCode` 13 碼矩陣 code/msg 凍結⚠️f＋http_status() 單一真相）＋error.rs（`AppError` struct＋8 建構子〔4 保留碼無建構子⚠️f〕／Internal→200⚠️e／detail 不洩漏）;非新 crate（server 內 2 模組、worktree `6808adb`）;四階段 subagent review 全過、rev2 enum/500 陷阱已避;merge `7960a73` 回 rev3-admin-root、feature branch 保留;**未 push（待 user 同意）**
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第五刀 005-audit-op-log → brainstorm spec-design ✅（`docs/superpowers/005-audit-op-log.md`、commit `2a68e72`）、待手動 `/speckit-specify` 起 SDD 設計鏈**（拍板：`mutate_in_txn` 同 txn 審計機制＋單一 `sys_user::soft_delete` proof／`AuditOperation` 全 4／驗證 ii commit+rollback／無 migration／擴 entity crate +with-json；後續刀剩：第二 audit 刀〔rev2 015 access-log＋login-attempt＋xdb〕／Auth 島最小段〔rev2 013〕）
+**下一步**: **波 0 剩 2 刀（擇一起手）**——①第二 audit 刀〔rev2 015：`sys_access_log`＋`sys_login_attempt` entity/facade＋`audit_ctx` 全域中介層〔RequestContext 自動抽取 operator/trace〕＋`xdb` sub-crate〔client_ip→region、⚠️v 隨本刀拷入、注意 Dockerfile [[bench]] COPY 坑〕；接 005 `mutate_in_txn`/`AuditEvent` 機制〕／②Auth 島最小段〔rev2 013：login＋getUserInfo＋`enforce_mw` 最小鏈；§8.3 兩案共同前提、出口條件「login→getUserInfo→enforce curl 通」靠此達成〕。起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3）
 
 ---
 
@@ -39,7 +39,8 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
 - [x] **003-envelope 刀 ✅ 收刀（2026-06-13、merge `7960a73`）**——`Res<T>{data,code,msg}`＋`PageRes<T>`＋`BizCode` 13 碼矩陣（code/msg 凍結⚠️f＋http_status() 單一真相）＋`AppError` struct＋8 建構子（4 保留碼無建構子⚠️f／Internal→200⚠️e／detail 不洩漏）;非新 crate（server 內 2 模組）;test-first TDD 18/18＋prod build＋C-V 1-5 全綠;spec 全帳在 `specs/003-envelope/`
 - [x] **004-soft-delete-infra 刀 ✅ 收刀（2026-06-14、merge `e8334d7`）**——新 `entity` crate（3 Model 鏡像 m001）＋`SoftDeletable` trait（active 過濾 minimal）＋`model/facade/` 三 facade（user/role soft-del＋`find_active_by_*`／user_role plain、不 re-export Entity、回 raw Model）＋`entity_access_lint` build-failing 守恆（兩階段抹白掃描＋meta-test＋regression 22 test）＋bounded 实机 smoke（#[ignore]、m002 seed）;triple-guard 就位;test-first TDD、DB-free 20+1+22／live 1／prod image build 全綠;7 SC／11 FR 全滿足（FR-010 零洩漏）;spec 全帳在 `specs/004-soft-delete-infra/`
-- [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑〕）
+- [x] **005-audit-op-log 刀 ✅ 收刀（2026-06-14、merge `65f4bbe`）**——op-log 同 txn 原子審計：`model/audit.rs`（`mutate_in_txn` 泛型 wrapper＋`AuditOperation` 全4／`AuditEvent`／`AuditSerialize` trait、零 entity:: 守 lint③）＋`facade/sys_operation_log.rs`（append-only sink、`audit_active_model` operator_ip None→NotSet 避 42804＋`write_in_txn`）＋`sys_user` `impl AuditSerialize`（redact password 15 欄）＋單一寫路徑 proof `soft_delete`＋`soft_delete_query`;擴 entity crate（sys_operation_log Model+with-json、無 migration）;test-first TDD（redact＋SQL-build 純測）＋3 場景实机 smoke（commit/no-op/rollback 原子）;7 SC／12 FR 全滿足;spec 全帳在 `specs/005-audit-op-log/`
+- [ ] **第二 audit 刀**（access-log＋login-attempt＋xdb〔rev2 015:`sys_access_log`＋`sys_login_attempt` 兩表＋`audit_ctx` request-context 中介層;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑;接 005 `mutate_in_txn`/`AuditEvent` 機制〕）
 - [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提）
 
 **前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
@@ -172,7 +173,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 **rust-api**:
 - [x] ✅（2026-06-13、002/U2）migration main.rs secret 讀檔失敗靜默 fallback→補 eprintln 警示（`inspect_err`、行為不變）
 - [ ] `set_var` 於 runtime 啟動後（edition 2024 升級時根治）
-- [ ] workspace Cargo.toml time pin 註解勘誤（**002 已實證 time=0 不入圖〔R3 最小 features 集〕**;但註解半過時未改〔U1 surgical 保留〕、下次動 Cargo.toml 順手勘誤）
+- [x] ✅（2026-06-14、005 Unit A）workspace Cargo.toml time pin 註解勘誤——005 加 with-json 首次非 --offline build 補齊 lock 時 time 解析為 0.3.47（feature-gated 未編譯、user 拍板接受）、順手把「pin time=0.3.37」改為「home=0.5.9 pin；time 不入 compile graph、版本對 1.86 build 無影響、不變式＝不啟用拉 time 的 feature」
 - [ ] rust-api/.gitignore `debug`/`target` 未錨定 pattern（誤吞同名子目錄風險）
 **拍板/上游**:
 - [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）
@@ -188,7 +189,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] iframe props 內嵌復原評估（D2:document 8 頁 props.url 現 href 化外開;iframe 內嵌需 props 欄位/wire 擴充）
 - [ ] `filter_routes` 遞迴化評估（D3 配套:現 demo policy 全覆蓋 66 列為前向相容、filter 只查兩層;遞迴化後可收斂為嚴格最小集）
 **rust-api 順手（002 引入後重驗）**:
-- [ ] workspace Cargo.toml time pin 註解勘誤（002 已驗 time=0 不入圖;見 §3.4 同條）
+- [x] ✅（2026-06-14、005 Unit A）workspace Cargo.toml time pin 註解勘誤（見 §3.4 同條、005 收口時一併處理）
 **sea-orm-adapter vendored 已知瑕疵（byte-identical 拷貝保留、§I.5;重鑄/測試啟用時處理、U1+U2 review 發現）**:
 - [ ] adapter `Cargo.toml` 內 `async-trait`/`tokio` 的 `default-features = false` 對 workspace 繼承條目 redundant → 每次 build 兩條 cargo warning（拷貝紀律刻意保留;日後拍板允許動 vendored manifest 時一併清）
 - [ ] adapter `examples/`（rbac_*.conf/csv）為 `#[cfg(test)]` fixture:prod `--bins` build 免 COPY（已驗正確、Dockerfile 有註解），但若日後在 builder/容器內跑 `cargo test` 會缺 fixture（屆時 COPY examples 或 adapter 測試改 env-gate round-trip smoke）
@@ -213,6 +214,19 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] sea-orm date-time backend:entity crate sea-orm 加 `with-chrono`（workspace `default-features=false` 無 backend、time 不入圖、chrono 已在 lock 無新下載）;feature unification 使 workspace 共用 sea-orm build 全得 `DateTimeWithTimeZone`——**未來帶 timestamptz 欄 entity 沿用 entity crate 即可**;新增獨立 crate 直接用 sea-orm（resolver=2、不經 entity 圖）才須自加。見 `entity/Cargo.toml` 註＋memory [[sea-orm-entity-datetime-feature-gate]]
 **未來 live-smoke 刀注意**:
 - [ ] (a) live test 須放 `src/` 內 `#[cfg(test)] mod`（server bin-only 無 lib target、`tests/` integration 拿不到 facade API）;(b) compose network 內跑時網路名 = **`rev3-admin_rev3_net`**（`specs/004-.../contracts/verification-commands.md` C-V-4 的 `rev3-admin_default` 為 stale placeholder、實際自訂網路 `rev3_net`＋project prefix）
+
+### 3.8 005-audit-op-log follow-up（收刀移交 2026-06-14;均不阻塞、消費刀觸發時處理）
+
+**dead_code（infra ahead of consumers、實作期觀察）**:
+- [ ] audit 機制全鏈（`mutate_in_txn`／`AuditEvent`／`AuditOperation` 的 Insert/Update/Restore 三變體／`AuditSerialize` trait／`write_in_txn`／`audit_active_model`）＋`sys_user::soft_delete`／`soft_delete_query` 目前全 dead_code（server bin crate、無真實消費者、`cargo build` 數條 warning、無 `-D warnings` 不阻塞）;第二 audit 刀（接機制）＋User/管理刀（接 soft_delete 刪除端）＋其餘寫路徑（Insert/Update/Restore 用 SoftDelete 以外操作別）wiring 後漸清;**wiring 後仍殘留＝無真實消費者、回頭檢視 over-built**（同 §3.6/§3.7 紀律）
+**redact 紀律傳播（Unit C code review 觀察）**:
+- [ ] `AuditSerialize` 的 redact 僅靠各 entity facade 手寫 impl＋各自 redact 純測 guard、**不會自動傳播**;未來其他 entity 加 `impl AuditSerialize` 時須逐 entity 確保敏感欄 redact＋補對應 redact 測;若多 entity 陸續加入、評估以巨集／lint 統一 redact 紀律（避免新 entity 漏遮蔽敏感欄）
+**operator_ip 真實 INET 寫入（defer 第二 audit 刀）**:
+- [ ] `audit_active_model` 的 `operator_ip` 目前 None→NotSet（本刀 operator.ip 恆 None）;`Some(ip)=>Set(Some(ip))` 分支為前向形狀、**若被觸發會 PG 42804（text→INET 隱式轉型失敗）**——真實 INET 寫入留第二 audit 刀（`audit_ctx` 中介層帶 operator_ip 時）、需 `Expr` cast 或 `ipnetwork` custom type 才可寫實值
+**payload_after 形狀（消費刀填）**:
+- [ ] soft_delete 的 `payload_after` 恆 `None`（軟刪只 before 快照）;Insert/Update 操作別的消費刀（User/Role/Menu 等寫端）填 after 快照時、各自 facade 在 `mutate_in_txn` 閉包內構造
+**实机 smoke 隔離（Unit D code review 觀察、未來 live-smoke 刀沿用）**:
+- [ ] `live_smoke.rs` 的 3 audit 場景用拋棄式 user（9xxxxx）＋`hard_clean`（前後）隔離、**非 panic-safe**（assert 中途 panic 會留 DB 殘留、靠下次 run 的防禦性 pre-clean 自癒、永不污染 m002 seed——與 004 read-cluster smoke 的 bracketed-restore〔因觸 seed〕策略不同、各自合理）;commit/no-op 兩場景共用 id 900001、依賴 contract §4 強制的 `--test-threads=1`（序列跑）
 
 ---
 
