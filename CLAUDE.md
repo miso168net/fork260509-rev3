@@ -356,9 +356,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: （無 active feature — 004-soft-delete-infra ✅ 已收刀 merge＋push 2026-06-14；下個刀 brainstorm 起手前此區暫空）
-004 收刀摘要: 新 entity crate（sys_user/sys_role/sys_user_role 逐欄鏡像 m001、with-chrono 僅 entity〔time 不入圖〕）＋SoftDeletable trait（active 過濾 minimal）＋model/facade 三閘（user/role soft-del＋find_active_by_*／user_role plain、不 re-export Entity、回 raw Model）＋entity_access_lint build-failing 守恆（兩階段抹白掃描＋meta-test 22 test、⚠️g 全新寫）＋bounded 实机 smoke（#[ignore] 證 soft-delete 真排除 stamped 列）＋Dockerfile entity COPY（prod build mandatory、RED→GREEN）；triple-guard 就位、7 SC／11 FR 全綠（FR-010 零洩漏）、prod image build 綠；7 單元 subagent-driven（spec+quality review 各過＋final READY TO MERGE）；merge e8334d7 回 rev3-admin-root（feature branch 保留）、三 ref 已 push；spec 全帳 specs/004-soft-delete-infra/、里程碑 MILESTONES §1
-下一步: 波 0 第五刀（audit 刀 ×2 之首、rev2 011 op-log＋mutate_in_txn）brainstorm 起手（§3 階段 0、superpowers:brainstorming）
+Active feature: 005-audit-op-log（波 0 第五刀 / audit 刀 ×2 之首）
+Spec ✅（specs/005-audit-op-log/spec.md；US1 業務寫＋審計寫原子綁定 P1 MVP／US2 審計快照 redact P2／US3 完整+append-only P3＋12 FR＋7 SC；checklists/requirements.md 16/16 ✅；0 NEEDS CLARIFICATION）｜Clarify ✅（0Q、無關鍵歧義；spec 未改）｜Plan ✅（specs/005-audit-op-log/plan.md；Constitution Check 9/9 PASS；research.md R1-R6〔含 rev2 42804 INET 坑＋soft_delete 簽名校正〕＋data-model＋contracts〔audit-contract＋verification-commands〕＋quickstart）｜Tasks ✅（specs/005-audit-op-log/tasks.md、12 task：Setup T001-004／US3 op-log sink T005-006／US2 redact T007-008／US1 atomicity capstone T009-010〔实机 smoke commit/no-op/rollback〕／Polish T011-012；build 序＝依賴序非優先序、US1 MVP 為 capstone）｜Analyze ✅（0 critical／0 high／coverage 19/19 100%；C1 MEDIUM 已補 operator_id live 斷言＝tasks T010＋contract §4.1；M1/A1/U1 已記錄非阻塞）｜下一步 superpowers:executing-plans（subagent-driven-development、§3 階段 2、不用 /speckit-implement）
+Scope: model/audit.rs（mutate_in_txn 泛型 wrapper 業務寫＋op-log 寫同 txn 原子＋AuditEvent/AuditOperation 全4/AuditSerialize redact password、純不碰 entity 守 lint③）＋sys_operation_log entity（擴 entity crate +with-json、鏡像 m001 10 欄）/facade（append-only write_in_txn）＋單一寫路徑 proof sys_user::soft_delete；驗證 ii（純測 redact ＋ bounded 实机 smoke commit+rollback 原子）；無 migration、operator 顯式 param、第二 audit 軌/xdb/讀端/其餘寫路徑/DbErr→AppError defer
+Brainstorm: docs/superpowers/005-audit-op-log.md（刀界 A 機制+proof／proof 單一 soft_delete／operator 顯式 param／AuditOperation 全 4／驗證 ii commit+rollback／無 migration／擴 entity crate +with-json；承接 DESIGN §5.2 同 txn 審計＋§3.2 append-only＋⚠️g 全新寫）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
