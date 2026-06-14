@@ -124,7 +124,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）＋005（entity `sys_operation_log.rs`／server `model/audit.rs`＋`facade/sys_operation_log.rs`＋`facade/sys_user.rs` 寫側＋`facade/live_smoke.rs` audit 場景）待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
+- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）＋005（entity `sys_operation_log.rs`／server `model/audit.rs`＋`facade/sys_operation_log.rs`＋`facade/sys_user.rs` 寫側＋`facade/live_smoke.rs` audit 場景）＋**006（server `auth/{jwt,bearer,password,enforce}.rs`＋`handler/{auth,mod}.rs`＋`state.rs`＋`error.rs` From impls＋`main.rs` boot 重寫＋`facade/sys_user_role.rs` roles_for_user）**待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
 
 ---
 
@@ -239,6 +239,10 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] research R3.3／spec/contract/plan「buttons 現空（m004 未 seed v2='button'）」**假設錯**——`casbin_rule` 實有 16 筆 v2='button'（R_SUPER 12：B_CODE1/2/3＋menu/role/user:*）;`buttons_for_roles` 正確只回 v2='button'（Unit 3 純測釘死、不誤抓 menu/method）、getUserInfo live 回真按鈕清單;**code 正確**、006 已校正 enforce.rs/handler 的「現空」stale 註解;波 2 Menu 刀的 getUserRoutes 也有料（v2='menu' 83 筆已 seed）。見 memory [[casbin-seed-has-button-policies]]
 **CDP repoint 形（未來信封消費刀沿用）**:
 - [ ] base-web 指真 rust-api 做 CDP smoke 的 repoint＝`base-web/.env.test.local`（gitignored、`*.local` 最高優先；dev=`vite --mode test` 故用 `.env.test.local` 非 `.env.local`）設 `VITE_SERVICE_BASE_URL=http://rust-api:31081`（rev3_net 內網名、proxy=Y 經 vite dev proxy）;CDP＝WSL Edge :9229〔origin 127.0.0.1≠localhost 各自 storage、token 在 `SOY_` 前綴鍵〕;smoke 後刪 override。下個信封刀沿用此形
+**workspace Cargo.toml time/home 註解被 006 推翻（Unit 1 引入、⚠️ 建議即時 errata 校正）**:
+- [ ] `rust-api/Cargo.toml` `[workspace.dependencies]` 的註解（005 收口寫「time 為 sea-orm optional dep、**time 不入 compile graph、不編譯**、其 lock 版本對 1.86 build 無影響、不變式＝『不啟用拉 time 的 feature』非鎖 time 版本」）**被 006 推翻**：006 `jsonwebtoken 9`→`simple_asn1`→`time` 把 time 拉進**真 compile graph**（會編譯）、time 0.3.47 需 rustc 1.88、已於 Cargo.lock pin `simple_asn1 0.6.3`/`time 0.3.37`;故該註解現**誤導**（time 確實編譯、版本確實有影響、確實鎖了 time）。**建議比照 [[inert-drift-accept-and-correct-doc]] 前例即時 errata 校正**（補 jsonwebtoken→time real-graph＋simple_asn1/time pin 說明、註明此 pin 為 MSRV 硬需求非 inert）、或隨 007 dep 工作（ipnetwork INET）一併修;配套 §3.4 `--locked`（防 cargo update 靜默 un-pin 重炸 MSRV）。見 memory [[jsonwebtoken9-msrv-time-real-graph]]
+**data-model 與實作 error-mapping 分歧（Unit 7 deliberate、honesty 留痕）**:
+- [ ] `specs/006-auth-island-min/data-model.md §7` 寫 getUserInfo「`find_active_by_id`→None/**Err**→token_expired」;**實作對 `Err`（DB 系統錯誤）改回 `internal`（5000）**、僅 `Ok(None)`（查無/軟刪）→token_expired（3333）——controller 決定：DB 系統錯誤與 login/enforce 一致（→internal）、避免 base-web refresh churn;contract `auth-contract.md §5` 只釘「查無→3333」、未釘 DB-error 故 internal 合規。**deliberate divergence、code 正確且自註**（`handler/auth.rs` getUserInfo 註）;data-model 為已 commit spec-kit 史料、依 §7.2 不回頭重寫、此處留痕備查（無 action、純記錄）
 
 ---
 
