@@ -356,10 +356,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 006-auth-island-min（波 0 第六刀 / 合刀〔Auth＋第二 audit〕拆 006→007 序列之首；005 ✅ 收刀 merged `65f4bbe`）
-Spec ✅（specs/006-auth-island-min/spec.md；US1 帳密登入發憑證 P1 MVP／US2 即時角色 per-route 授權 P2／US3 取資訊+換發 P3＋13 FR＋8 SC；checklists/requirements.md 16/16 ✅；0 NEEDS CLARIFICATION）｜Clarify ✅（0Q、無關鍵歧義；spec 未改）｜Plan ✅（specs/006-auth-island-min/plan.md；Constitution Check 9/9 PASS；research R1-R7〔rev2 013 簽名+剝離線／wire 3 端 code"0000"+refresh 反迴圈 8888／casbin+adapter／argon2 roundtrip／deps MSRV jsonwebtoken 9 安全／From+FR-005 校正／enforce-proof+CDP〕＋data-model＋contracts〔auth-contract＋verification-commands〕＋quickstart）｜下一步 /speckit-tasks（→ /speckit-analyze → superpowers:executing-plans）
-Scope: stateless 認證地基——auth/jwt(HS256、Claims 剝 sid/jti)＋bearer＋enforce(casbin per-route、subject DB-fresh role、剝 7777 gate)＋password(argon2)＋handler(login／refresh〔失敗 8888 反迴圈〕／getUserInfo〔userId string⚠️r、buttons 現空〕)＋state(AppState 剝 redis/session_mode、jwt _FILE)＋error From＋main router 重寫＋enforce-proof(test/smoke-only)；驗證 純測+全棧 curl+CDP(§3.6 directed)；無 migration 無新 crate；有狀態 token/session=波3、access-log/login-attempt/xdb=007、getUserRoutes/menu=波2
-Brainstorm: docs/superpowers/006-auth-island-min.md（合刀拆 006→007／token stateless 全 wire／enforce test-smoke-only proof／驗證 純測+全棧 curl+CDP／JWT secret _FILE／buttons 現空／無 migration；承接 DESIGN §5.3 enforce＋§8.3 共同前提＋⚠️g＋⚠️r＋wire 權威＋003 §3.6）
+Active feature:（無進行中 feature）— **006-auth-island-min ✅ 全綠收刀＋merge `2c5a2a1`**（2026-06-14、未 push）；波 0 剩 **007 第二 audit 刀**（未起手）
+006 ✅ Spec/Clarify/Plan/Tasks/Analyze/Implement/Merge 全鏈完成：8 unit subagent-driven（spec+quality review 各過＋final holistic READY TO MERGE）；純測 52＋lint 22＋enforce-proof live〔Super→200/User→403·5003/bad→3333〕＋全棧 curl＋**CDP browser smoke（SC-006、base-web 攔截器解析真 envelope）**全綠、C-V-1~7 全過；8 SC／13 FR 全滿足；deps +jsonwebtoken 9（MSRV pin simple_asn1 0.6.3/time 0.3.37）；非新 crate 無 migration；發現 seed 實有 v2='button' policy（getUserInfo 回真按鈕、code 正確、註解校正）
+下一步: **007 第二 audit 刀**起手＝階段 0 brainstorm（docs/superpowers/007-<name>.md）→ 手動 /speckit-specify（§3）；接 005 mutate_in_txn/AuditEvent＋消費 006 bearer〔operator_id〕/login handler〔login-attempt 寫點〕；access-log/login-attempt/xdb（rev2 015）；真實 INET 寫入 forcing function（見 CHECKLIST §3.8）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

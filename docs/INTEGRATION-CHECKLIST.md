@@ -9,15 +9,14 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001+002+003+004+005 ✅ 已收刀、餘 第二 audit 刀＋Auth 島最小段＝計 2 刀）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001+002+003+004+005+006 ✅ 已收刀、餘 第二 audit 刀〔007〕＝計 1 刀）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-14 006-auth-island-min 全綠收刀＋merge（未 push、波 0 第六刀／Auth 島最小段）**:stateless 認證地基 `auth/{jwt,bearer,password,enforce}`＋`handler/auth`（login／getUserInfo／refreshToken）＋`state/error/main` boot 重寫;HS256 stateless JWT（剝 sid/jti）＋casbin per-route enforce（即時角色 DB 重查、fail-closed 5003、剝 7777）＋login 失敗一致 1000／getUserInfo userId-string＋2^53／refresh 反迴圈 8888;deps +`jsonwebtoken 9`（MSRV pin simple_asn1 0.6.3/time 0.3.37、真 compile graph）;純測 52＋lint 22＋enforce-proof live＋全棧 curl＋**CDP browser smoke（SC-006、base-web 攔截器解析真 envelope）**全綠;C-V-1~7 全過;8 unit subagent-driven＋final READY TO MERGE;8 SC／13 FR 全滿足;發現 seed 實有 v2='button' policy（getUserInfo 回真按鈕、code 正確）;merge `2c5a2a1` 回 rev3-admin-root、feature branch 保留、**未 push**
 - **2026-06-14 005-audit-op-log 全綠收刀＋merge（未 push、波 0 第五刀／audit 刀之首）**:`model/audit.rs`（`mutate_in_txn` 泛型 wrapper 業務寫＋審計寫同 txn 原子〔Some 寫+commit／None no-op／Err 回滾〕＋`AuditOperation` 全4／`AuditEvent`／`AuditSerialize` trait、零 entity:: 守 lint③）＋`facade/sys_operation_log.rs`（append-only sink、`audit_active_model` operator_ip None→NotSet 避 42804＋`write_in_txn`）＋`sys_user` `impl AuditSerialize`（redact password、15 欄排除 current_session_id）＋單一寫路徑 proof `soft_delete`（Ok(true)/Ok(false)）＋`soft_delete_query`;擴 entity crate（sys_operation_log Model 10 欄＋with-json、無 migration）＋Cargo.lock 補 16 筆 sea-orm optional-dep（feature-gated、time=0.3.47 user 拍板接受、清 time pin 註解 backlog）;test-first TDD（redact＋SQL-build 純測 red→green）＋3 場景实机 smoke（commit〔operator_id==1 SC-004〕/no-op/rollback、orchestrator 親驗綠）;4 unit subagent-driven（spec+quality 各過＋final READY TO MERGE）;7 SC／12 FR 全滿足;merge `65f4bbe` 回 rev3-admin-root、feature branch 保留;**三 ref 已 push（2026-06-14：rev3-admin-root/005 保留分支/rev3-admin-rust-api fork）**
-- **2026-06-14 004-soft-delete-infra 全綠收刀＋merge＋push**:test-first TDD、DB-free 20+1ignored+22／live --ignored 1／prod image build 全綠（orchestrator 親測）;新 `entity` crate（3 Model 逐欄鏡像 m001、with-chrono 僅 entity〔time 不入圖〕）＋`SoftDeletable` trait（active minimal 無寫側）＋facade 三閘（user/role soft-del＋`find_active_by_*`／user_role plain、不 re-export Entity、回 raw Model/DbErr）＋`entity_access_lint` build-failing（兩階段抹白掃描＋meta-test 22 test、⚠️g 全新寫）＋bounded 实机 smoke（#[ignore] 證 soft-delete 真生效）＋Dockerfile entity COPY（prod build mandatory、RED→GREEN）;triple-guard 就位、7 SC／11 FR 全綠（FR-010 零洩漏）;7 單元 subagent-driven＋final READY TO MERGE;merge `e8334d7` 回 rev3-admin-root、feature branch 保留、三 ref 已 push（rev3-admin-root/004 保留分支/rev3-admin-rust-api）
-
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 剩 2 刀（擇一起手）**——①第二 audit 刀〔rev2 015：`sys_access_log`＋`sys_login_attempt` entity/facade＋`audit_ctx` 全域中介層〔RequestContext 自動抽取 operator/trace〕＋`xdb` sub-crate〔client_ip→region、⚠️v 隨本刀拷入、注意 Dockerfile [[bench]] COPY 坑〕；接 005 `mutate_in_txn`/`AuditEvent` 機制〕／②Auth 島最小段〔rev2 013：login＋getUserInfo＋`enforce_mw` 最小鏈；§8.3 兩案共同前提、出口條件「login→getUserInfo→enforce curl 通」靠此達成〕。起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3）
+**下一步**: **波 0 剩 1 刀——007 第二 audit 刀**〔rev2 015：`sys_access_log`＋`sys_login_attempt` entity/facade＋`audit_ctx` 全域中介層〔RequestContext 自動抽取 operator/trace、回填 005 `AuditEvent` 恆 None 的 operator/trace_id、消費 006 的 bearer〔operator_id〕＋login handler〔login-attempt 寫點〕〕＋`xdb` sub-crate〔client_ip→region、⚠️v 隨本刀拷入、注意 Dockerfile [[bench]] COPY 坑〕；接 005 `mutate_in_txn`/`AuditEvent` 機制〕。起手＝階段 0 brainstorm（`docs/superpowers/007-<name>.md`）→ 手動 `/speckit-specify`（§3）。波 0 出口「login→getUserInfo→enforce curl 通」**已由 006 達成 ✅**
 
 ---
 
@@ -41,7 +40,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] **004-soft-delete-infra 刀 ✅ 收刀（2026-06-14、merge `e8334d7`）**——新 `entity` crate（3 Model 鏡像 m001）＋`SoftDeletable` trait（active 過濾 minimal）＋`model/facade/` 三 facade（user/role soft-del＋`find_active_by_*`／user_role plain、不 re-export Entity、回 raw Model）＋`entity_access_lint` build-failing 守恆（兩階段抹白掃描＋meta-test＋regression 22 test）＋bounded 实机 smoke（#[ignore]、m002 seed）;triple-guard 就位;test-first TDD、DB-free 20+1+22／live 1／prod image build 全綠;7 SC／11 FR 全滿足（FR-010 零洩漏）;spec 全帳在 `specs/004-soft-delete-infra/`
 - [x] **005-audit-op-log 刀 ✅ 收刀（2026-06-14、merge `65f4bbe`）**——op-log 同 txn 原子審計：`model/audit.rs`（`mutate_in_txn` 泛型 wrapper＋`AuditOperation` 全4／`AuditEvent`／`AuditSerialize` trait、零 entity:: 守 lint③）＋`facade/sys_operation_log.rs`（append-only sink、`audit_active_model` operator_ip None→NotSet 避 42804＋`write_in_txn`）＋`sys_user` `impl AuditSerialize`（redact password 15 欄）＋單一寫路徑 proof `soft_delete`＋`soft_delete_query`;擴 entity crate（sys_operation_log Model+with-json、無 migration）;test-first TDD（redact＋SQL-build 純測）＋3 場景实机 smoke（commit/no-op/rollback 原子）;7 SC／12 FR 全滿足;spec 全帳在 `specs/005-audit-op-log/`
 - [ ] **第二 audit 刀**（access-log＋login-attempt＋xdb〔rev2 015:`sys_access_log`＋`sys_login_attempt` 兩表＋`audit_ctx` request-context 中介層〔自動抽取 operator/trace、回填 005 `AuditEvent` 本刀恆 None 的 operator/trace_id 欄〕;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑;接 005 `mutate_in_txn`/op-log sink 機制〕）——⚠️ **承接 005 defer 的真實 INET 寫入、且為硬需求**:`sys_access_log.client_ip`＝INET NOT NULL、005 對 nullable `operator_ip` 用的 `None→NotSet` 規避**不適用**、必經 `Expr` cast／`ipnetwork`（連帶 MSRV 檢查，見 §3.8）
-- [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提）
+- [x] **006-auth-island-min 刀 ✅ 收刀（2026-06-14、merge `2c5a2a1`）**——stateless 認證地基：`auth/{jwt,bearer,password,enforce}`（HS256 JWT 剝 sid/jti＋argon2＋casbin per-route enforce〔即時角色 DB 重查、三欄精確、fail-closed 5003、剝 7777〕）＋`handler/auth`（login 失敗一致 1000／getUserInfo userId-string＋2^53／refreshToken 反迴圈 8888）＋`state/error/main` boot 重寫;deps +jsonwebtoken 9（MSRV pin simple_asn1 0.6.3/time 0.3.37）;非新 crate、無 migration;純測 52＋lint 22＋enforce-proof live＋全棧 curl＋CDP browser smoke（SC-006）全綠、C-V-1~7 全過;8 SC／13 FR 全滿足;spec 全帳在 `specs/006-auth-island-min/`
 
 **前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
 - [x] ①router 結構 ✅ flat-in-main 沿用（lint 三源一致直接沿用）
@@ -53,7 +52,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] dev stack `up --wait` 全 healthy ✅（001、C-V-2 實證 2026-06-13）
 - [ ] 三守恆綠（**entity_access_lint ✅ 004 達成 2026-06-14**〔build-failing＋meta-test 22 test〕・endpoint_coverage_lint〔後刀〕・**migration up→down→up ✅ 002 C-V-5 達成 2026-06-13**）
 - [x] envelope 13 碼 contract 形狀測試綠 ✅（003、18/18 test-first 2026-06-13）
-- [ ] login→getUserInfo→enforce 最小鏈 curl 通
+- [x] login→getUserInfo→enforce 最小鏈 curl 通 ✅（006、2026-06-14：全棧 curl＋enforce-proof live〔Super→200/User→403·5003/bad→3333〕＋CDP browser smoke〔base-web 攔截器解析真 envelope、SC-006〕）
 
 ### 波 1 — 第一刀（未開始）
 
@@ -176,7 +175,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [x] ✅（2026-06-14、005 Unit A）workspace Cargo.toml time pin 註解勘誤——005 加 with-json 首次非 --offline build 補齊 lock 時 time 解析為 0.3.47（feature-gated 未編譯、user 拍板接受）、順手把「pin time=0.3.37」改為「home=0.5.9 pin；time 不入 compile graph、版本對 1.86 build 無影響、不變式＝不啟用拉 time 的 feature」
 - [ ] rust-api/.gitignore `debug`/`target` 未錨定 pattern（誤吞同名子目錄風險）
 **拍板/上游**:
-- [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）
+- [x] ✅（2026-06-14、006）JWT `_FILE` vs 直值 env 優先序——006 `state::file_or_env(file_var,direct_var)`：`_FILE`（讀檔 trim）優先、直接 env fallback、皆缺→boot panic（fail-loud）;同形共用於 jwt secret（access/refresh）＋db url（main 重用）
 - [ ] prod builder node:20.19 vs dev node:26 分歧（沿 rev2 驗證形;Dockerfile 補註記或 DECISIONS 開放項）
 - [ ] cargo cache 卷遮蓋陳舊（dev image 升 toolchain 時需手動 `volume rm`;quickstart 註記）
 - [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）;**003 已實踐 per-unit pin bump（每 Unit review 過即 bump、pin 全程==worktree HEAD）、實證可行**
@@ -200,9 +199,9 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 **envelope 消費（research.md「移交 tasks 期紀律」＋data-model §7 排除聲明明文移交）**:
 - [ ] 各碼實際發出點（`Res::err`/`AppError` 8 建構子的真實呼叫;含 router `.fallback()`→`not_found()`）＋每 route contract coverage gate（＝§2 出口條件已列後刀的 `endpoint_coverage_lint`）——本刀零非測試呼叫;散在 auth/system_manage/enforce/data-island/behavior-island 消費刀逐步接上＋逐 route 補測
-- [ ] `AppError` 的 `From<…>` 轉換 impl（供 handler `Result<Res<T>,AppError>` 用 `?` 傳播 DbErr/casbin 等 foreign error）——本刀無 error source、YAGNI 未加;首個需傳播外部錯誤的 handler 刀按需加
-- [ ] ⚠️r id 序列化 2^53 fail-loud 守衛＋lie ledger → 首個 DTO 刀（本刀 `data:T` generic、無具體 DTO 可守）
-- [ ] **CDP browser smoke 補測**（research R5 明文 directed）:首個發出 envelope 的 handler 刀必含 CDP 經 front-nginx 驗 base-web 攔截器真讀 `code`/`data`/`msg`——**curl 直送 ≠ base-web modal/success 判讀對齊**;本刀純型別、無 endpoint 可 smoke、整條 runtime 消費鏈未驗
+- [x] ✅（2026-06-14、006）`AppError` 的 `From<…>` 轉換 impl——006 加 `From<DbErr>`/`From<casbin::Error>`→`internal`（5000、泛型 fallback 供 handler `?` 傳播；login/getUserInfo DB 系統錯誤經此映 5000；enforce role-lookup **刻意不走 From**、顯式 fail-closed 5003）
+- [x] ✅（2026-06-14、006）⚠️r id 序列化 2^53 fail-loud——006 getUserInfo `user_id_to_wire(i64)->Result<String,AppError>`（>2^53-1 → `internal` 不靜默截斷、純測釘死 SC-004；userId wire 為 string）。lie ledger 未另立（單點守衛足、後續 DTO 刀沿用同形）
+- [x] ✅（2026-06-14、006）**CDP browser smoke 補測**——006＝首個發出 envelope 的 handler 刀、已含 CDP smoke：base-web（`.env.test.local` 指真 rust-api、BASE-WEB-ADAPT L1、gitignored 暫時 override）pwd-login 超级管理员→`POST /auth/login` envelope `code:"0000"` 攔截器判 success→存 `SOY_token`/`SOY_refreshToken`（真 JWT iss=rev3-admin/user_id=1/R_SUPER）→`GET /auth/getUserInfo` 解析→`/login`→`/home`（static 模式止）;證 curl 直送 ≠ base-web 判讀對齊
 **dead_code（infra ahead of consumers、實作期觀察）**:
 - [ ] envelope/error 公開 API（`Res`/`PageRes`/4 建構子・`BizCode`・`AppError` 8 建構子）目前全 dead_code（非測試零消費、`cargo build` 數條 warning、**無 `-D warnings` gate 故不阻塞 prod build**）;消費刀 wiring 後漸清（Res/AppError→Auth/data island、7777/8888/3333→behavior island 波3）;**wiring 後仍殘留 dead_code 的建構子＝無真實消費者、回頭檢視是否 over-built**
 
@@ -229,6 +228,17 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] `live_smoke.rs` 的 3 audit 場景用拋棄式 user（9xxxxx）＋`hard_clean`（前後）隔離、**非 panic-safe**（assert 中途 panic 會留 DB 殘留、靠下次 run 的防禦性 pre-clean 自癒、永不污染 m002 seed——與 004 read-cluster smoke 的 bracketed-restore〔因觸 seed〕策略不同、各自合理）;commit/no-op 兩場景共用 id 900001、依賴 contract §4 強制的 `--test-threads=1`（序列跑）
 **Cargo.lock 完整性＋未來 sea-orm feature 的 MSRV 地雷（Unit A 發現）**:
 - [ ] 005 補齊 003/004 遺留的 16 筆 sea-orm optional-dep lock stanza（`bigdecimal`／`time` 0.3.47／`rust_decimal`／`uuid`／`pgvector`／`mac_address` 等、**全 feature-gated 未編譯**、user 拍板接受、time=0.3.47＝resolver 取最新）;⚠️ 這些 crate **以「最新版」躺在 lock、從未在 1.86 編譯過**——**未來任何刀啟用會拉它們的 sea-orm feature（`with-uuid`／`with-rust_decimal`／`with-bigdecimal`／`with-time` 等）、或為第二 audit 刀真實 INET 寫入加 `ipnetwork` 時，務必先驗該鎖定版 MSRV ≤ 1.86**（workspace 註解原憂「time/home 新 patch 需 1.88」、time 0.3.47 恐即是）;超標就 `cargo update -p <crate> --precise <1.86-safe 版>` 釘回。配套見 §3.4 `--locked` 條＋memory [[sea-orm-entity-datetime-feature-gate]]／[[inert-drift-accept-and-correct-doc]]
+
+### 3.9 006-auth-island-min follow-up（收刀移交 2026-06-14;均不阻塞、消費刀觸發時處理）
+
+**dead_code（infra ahead of consumers、實作期觀察）**:
+- [ ] `enforce_mw` 目前 dead_code（006 無受 enforce_mw gate 的業務端點、僅 enforce-proof #[ignore] 整合測消費;server bin crate、`cargo build` 一條 warning、無 `-D warnings` 不阻塞）;**波 1 第一刀**（首個受保護業務端點）wiring 後即清——屆時 `endpoint_coverage_lint`（§2 出口列）一併立、enforce_mw route_layer 首次真掛載;**wiring 後仍殘留＝over-built**（同 §3.6/3.7/3.8 紀律）
+**live #[ignore] 測 parallel-safety（驗證收尾發現）**:
+- [ ] 006 新增 `auth::enforce::tests::enforce_proof_*`（#[ignore]、live DB、in-process oneshot）入 #[ignore] 集;與 005 audit live_smoke 併行跑時 **005 的 `live_smoke_audit_commit_atomic`/`live_smoke_audit_no_op` 偽失敗**（共用 `sys_operation_log` 非 parallel-safe、§3.8 line 已記）——`cargo test -- --ignored --test-threads=1` 序列跑全綠;**根治＝005 兩 audit 測各自隔離 fixture**（同 §3.8 觀察）、非 006 引入;enforce_proof 本身 parallel-safe（remove-before-add＋末端 cleanup、非 bracketed 但 down -v 自癒）。見 memory [[live-ignore-tests-need-serial]]
+**buttons 實況（research R3.3 假設推翻、驗證收尾發現）**:
+- [ ] research R3.3／spec/contract/plan「buttons 現空（m004 未 seed v2='button'）」**假設錯**——`casbin_rule` 實有 16 筆 v2='button'（R_SUPER 12：B_CODE1/2/3＋menu/role/user:*）;`buttons_for_roles` 正確只回 v2='button'（Unit 3 純測釘死、不誤抓 menu/method）、getUserInfo live 回真按鈕清單;**code 正確**、006 已校正 enforce.rs/handler 的「現空」stale 註解;波 2 Menu 刀的 getUserRoutes 也有料（v2='menu' 83 筆已 seed）。見 memory [[casbin-seed-has-button-policies]]
+**CDP repoint 形（未來信封消費刀沿用）**:
+- [ ] base-web 指真 rust-api 做 CDP smoke 的 repoint＝`base-web/.env.test.local`（gitignored、`*.local` 最高優先；dev=`vite --mode test` 故用 `.env.test.local` 非 `.env.local`）設 `VITE_SERVICE_BASE_URL=http://rust-api:31081`（rev3_net 內網名、proxy=Y 經 vite dev proxy）;CDP＝WSL Edge :9229〔origin 127.0.0.1≠localhost 各自 storage、token 在 `SOY_` 前綴鍵〕;smoke 後刪 override。下個信封刀沿用此形
 
 ---
 
