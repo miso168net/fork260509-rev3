@@ -33,12 +33,19 @@ COPY rust-api/server/Cargo.toml ./server/
 COPY rust-api/migration/Cargo.toml ./migration/
 COPY rust-api/sea-orm-adapter/Cargo.toml ./sea-orm-adapter/
 COPY rust-api/entity/Cargo.toml ./entity/
+# 007 xdb crate: workspace member manifest，不 COPY cargo 在 manifest parse 階段即失敗
+COPY rust-api/xdb/Cargo.toml ./xdb/
 
 # --- Source 段 ---
 COPY rust-api/server/src ./server/src
 COPY rust-api/migration/src ./migration/src
 COPY rust-api/sea-orm-adapter/src ./sea-orm-adapter/src
 COPY rust-api/entity/src ./entity/src
+# 007 xdb crate: src 必 COPY;Cargo.toml 宣告 [[bench]],benches/search.rs 須存在供 manifest 驗證
+# (即使 --bins 不編 bench);resources/ip2region.xdb 為 runtime file-path 載入資料、builder 階段一併帶入
+COPY rust-api/xdb/src ./xdb/src
+COPY rust-api/xdb/benches ./xdb/benches
+COPY rust-api/xdb/resources ./xdb/resources
 # 注意:sea-orm-adapter/examples/ 為 .conf/.csv casbin 模型/policy 資料檔、非 .rs,
 # Cargo.toml 無 [[example]] 宣告,cargo 不會 auto-discover 為 target,免 COPY(缺檔不影響編譯)。
 
@@ -47,7 +54,7 @@ COPY rust-api/entity/src ./entity/src
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/usr/local/cargo/git \
     --mount=type=cache,target=/app/target \
-    cargo build --release --bins && \
+    cargo build --release --bins --locked && \
     mkdir -p /out && \
     cp target/release/server \
        target/release/migration \
@@ -92,6 +99,11 @@ WORKDIR /app
 
 # 從 builder 取 2 個 binary
 COPY --from=builder /out/server /out/migration /usr/local/bin/
+
+# 007 xdb crate: runtime 載入 ip2region.xdb 走 file-path(XDB_FILEPATH=/app/xdb/resources/ip2region.xdb),
+# 缺檔則 xdb load 直接 panic;dev 由 compose bind-mount 提供、prod 須在此 COPY 進 runtime image。
+# root-owned + world-readable,非 root user rustapi 可讀。
+COPY rust-api/xdb/resources/ip2region.xdb /app/xdb/resources/ip2region.xdb
 
 # Entrypoint dispatcher(deploy/entrypoint.rust-api.sh)
 COPY deploy/entrypoint.rust-api.sh /usr/local/bin/entrypoint.sh
