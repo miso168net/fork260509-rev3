@@ -14,6 +14,7 @@
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
 - **2026-06-15 007-audit-overlay 全綠收刀＋merge（未 push、波 0 第七刀／第二 audit 刀、波 0 收官）**:audit overlay 三 sink — vendored xdb（ip→region file-path、§I.5）＋`sys_access_log`/`sys_login_attempt` entity/facade（client_ip INET、IpAddr→IpNetwork seam）＋`audit_ctx` outermost 中介層（每請求無條件建 RequestContext、寬鬆 operator〔獨立 enforce〕、best_effort_audit、connect_info）＋`resolve_client_ip` trusted-proxy（peer-gate→rightmost-untrusted→fail-safe、推進 §5.9）＋access-log operator-gate＋login inner/outer split（**單一 outer 記錄點覆蓋全 7 終端路徑**〔含 status-disabled／?-DB-error〕、wire byte-identical）＋op-log INET 回填（解 005 §3.8 42804）;deps +ipnetwork 0.20/once_cell/uuid（MSRV 1.86 lock pin、--locked）;無 migration、無新 wire;test-first TDD＋live smoke（C-V-5/6/4/7＋真實 IP from XFF 跳代理〔8.8.8.8 解出〕＋best-effort 斷寫業務仍 200）＋prod image build C-V-8＋entity_access_lint C-V-9 全綠;26 單元 subagent-driven（關鍵單元對抗式 fresh-context 審查 APPROVED）;7 SC／14 FR 滿足;修 4 plan 缺口（once_cell/uuid 漏 deps、登入終端路徑低估、T026 facade 路徑）;merge `9046b63` 回 rev3-admin-root、feature branch 保留、**未 push**
 - **2026-06-14 006-auth-island-min 全綠收刀＋merge（未 push、波 0 第六刀／Auth 島最小段）**:stateless 認證地基 `auth/{jwt,bearer,password,enforce}`＋`handler/auth`（login／getUserInfo／refreshToken）＋`state/error/main` boot 重寫;HS256 stateless JWT（剝 sid/jti）＋casbin per-route enforce（即時角色 DB 重查、fail-closed 5003、剝 7777）＋login 失敗一致 1000／getUserInfo userId-string＋2^53／refresh 反迴圈 8888;deps +`jsonwebtoken 9`（MSRV pin simple_asn1 0.6.3/time 0.3.37、真 compile graph）;純測 52＋lint 22＋enforce-proof live＋全棧 curl＋**CDP browser smoke（SC-006、base-web 攔截器解析真 envelope）**全綠;C-V-1~7 全過;8 unit subagent-driven＋final READY TO MERGE;8 SC／13 FR 全滿足;發現 seed 實有 v2='button' policy（getUserInfo 回真按鈕、code 正確）;merge `2c5a2a1` 回 rev3-admin-root、feature branch 保留、**未 push**
+
 > 以下為預計`下一步` (不要合到`最新進展`)
 
 **下一步**: **波 0 已收官 ✅ → 波 1 第一刀**（刀位待決③：A=User 直刀〔rev2 016*+017、§5 全套+M:N join+★MODAL-WIRING〕 / B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV〕；DESIGN §8.3 比較）。開工前先拍 ③＋⚠️a 效能數字＋⚠️o RI 層位（[DECISIONS §1](INTEGRATION-DECISIONS.md)），起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3、`before_specify` pre-hook 建 feature branch）。
@@ -30,7 +31,7 @@
 
 ### 波 0 — 地基 ✅ 全完成+已歸檔 (2026-06-15)
 
-> 七刀全收（001 infra-deploy `c9ffad5`／002 schema-baseline `9233ae0`／003 envelope `7960a73`／004 soft-delete `e8334d7`／005 audit-op-log `65f4bbe`／006 auth-island `2c5a2a1`／007 audit-overlay `9046b63`）；rev2 001-012+015 對應跨切地基。**前置拍板 4 項全拍完（2026-06-13：①flat-in-main／④僅 join 表 FK／⚠️d redis pin 數字版／⚠️k 短編號 migration）**。**出口四項全綠**：dev stack `up --wait` healthy（001）／三守恆〔entity_access_lint ✅〔004〕・migration up→down→up ✅〔002〕・endpoint_coverage_lint **後刀豁免**〔⚠️w user 親決 2026-06-14〕〕／envelope 13 碼 contract 綠（003）／login→getUserInfo→enforce 鏈 curl 通（006）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、per-刀 commit 見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+> 七刀全收（001 infra-deploy `c9ffad5`／002 schema-baseline `9233ae0`／003 envelope `7960a73`／004 soft-delete `e8334d7`／005 audit-op-log `65f4bbe`／006 auth-island `2c5a2a1`／007 audit-overlay `9046b63`）；rev2 001-012+015 對應跨切地基。**前置拍板 4 項全拍完（2026-06-13：①flat-in-main／④僅 join 表 FK／⚠️d redis pin 數字版／⚠️k 短編號 migration）**。**出口四項全綠**：dev stack `up --wait` healthy（001）／三守恆〔entity_access_lint ✅〔004〕・migration up→down→up ✅〔002〕・endpoint_coverage_lint **波 0 換波豁免**〔⚠️x user 親決 2026-06-14、移交波 1 第一刀〕〕／envelope 13 碼 contract 綠（003）／login→getUserInfo→enforce 鏈 curl 通（006）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、per-刀 commit 見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 1 — 第一刀（未開始）
 
@@ -102,7 +103,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）＋005（entity `sys_operation_log.rs`／server `model/audit.rs`＋`facade/sys_operation_log.rs`＋`facade/sys_user.rs` 寫側＋`facade/live_smoke.rs` audit 場景）＋**006（server `auth/{jwt,bearer,password,enforce}.rs`＋`handler/{auth,mod}.rs`＋`state.rs`＋`error.rs` From impls＋`main.rs` boot 重寫＋`facade/sys_user_role.rs` roles_for_user）**待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
+- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）＋005（entity `sys_operation_log.rs`／server `model/audit.rs`＋`facade/sys_operation_log.rs`＋`facade/sys_user.rs` 寫側＋`facade/live_smoke.rs` audit 場景）＋**006（server `auth/{jwt,bearer,password,enforce}.rs`＋`handler/{auth,mod}.rs`＋`state.rs`＋`error.rs` From impls＋`main.rs` boot 重寫＋`facade/sys_user_role.rs` roles_for_user）＋007（rust-api `xdb` crate 全套／server `audit_ctx.rs`〔RequestContext+audit_mw+trace_id+best_effort_audit〕／`state.rs` resolve_client_ip+parse_trusted_cidrs／2 entity `sys_{access_log,login_attempt}.rs`／2 facade `sys_{access_log,login_attempt}.rs`／`sys_operation_log` 型遷移＋`audit.rs`＋`handler/auth.rs` login split＋`facade/live_smoke.rs` C-V-7／`main.rs` 接線；deploy Dockerfile+compose override）**待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
 
 ---
 
@@ -222,6 +223,31 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 **data-model 與實作 error-mapping 分歧（Unit 7 deliberate、honesty 留痕）**:
 - [ ] `specs/006-auth-island-min/data-model.md §7` 寫 getUserInfo「`find_active_by_id`→None/**Err**→token_expired」;**實作對 `Err`（DB 系統錯誤）改回 `internal`（5000）**、僅 `Ok(None)`（查無/軟刪）→token_expired（3333）——controller 決定：DB 系統錯誤與 login/enforce 一致（→internal）、避免 base-web refresh churn;contract `auth-contract.md §5` 只釘「查無→3333」、未釘 DB-error 故 internal 合規。**deliberate divergence、code 正確且自註**（`handler/auth.rs` getUserInfo 註）;data-model 為已 commit spec-kit 史料、依 §7.2 不回頭重寫、此處留痕備查（無 action、純記錄）
 
+### 3.10 007-audit-overlay follow-up（收刀移交 2026-06-15;均不阻塞、消費刀觸發時處理）
+
+**op-log 回填 HTTP 路徑（infra ahead of consumer）**:
+- [ ] 007 把 op-log operator/trace/operator_ip 回填**能力**經 facade（`sys_user::soft_delete` 簽名帶 `AuditOperator`+trace_id）接好、C-V-7 live smoke 驗（operator_id/operator_ip INET/trace_id 全非空）;但 007 **無已掛載 gated mutation handler** 消費（首個受保護業務端點＝波 1 第一刀）。波 1+ wiring 時須把 `RequestContext` 的 operator_id/client_ip/trace_id 餵進 facade mutation;**wiring 後仍只 live smoke 消費＝回頭檢視 over-built**（同 §3.6~3.9 紀律）
+
+**偽造防護 e2e 測 defer（C-V-1 純測已覆蓋）**:
+- [ ] `resolve_client_ip` 偽造防護（untrusted peer→忽略 XFF）僅 F3 純測 `resolve_client_ip_forgery_protection_peer_untrusted` 覆蓋;docker dev 所有 peer 為 trusted bridge、**無法乾淨呈現 untrusted 直連 peer**，U3b live 只證「經 trusted 代理解析真實 IP」半邊（注入 8.8.8.8→跳代理解出、region `美国|Level3`）。真實部署拓撲或能呈現 untrusted peer 的 harness 出現時補 e2e forgery live test
+
+**audit 寫入延遲/留存/告警（cross-ref ⚠️a/⚠️n）**:
+- [ ] access-log 寫入在 `audit_mw` after-phase **同步 await**（best-effort 但仍 await）→ 每已認證請求加一次 DB INSERT 延遲;三 log 表 007 起**實際寫入**、access-log 每請求一列成長最快。效能（同步寫、評估 fire-and-forget/批次，⚠️a 驗收一併）＋retention（⚠️n、波 4 obs）落地前留意容量
+- [ ] audit 寫入失敗目前僅 `tracing::warn`（best-effort、靜默丟棄）;security/compliance 角度靜默審計遺失是風險——波 4 obs 應對 audit-write-failure warn 設告警
+
+**xdb crate（vendored §I.5、未來 region 工作沿用）**:
+- [ ] `xdb` 的 `searcher_init`/`get_full_cache` 對缺檔是 `.expect()` **panic**（非 best-effort）;007 boot 已 guard（`XDB_FILEPATH` 存在才 init、`AppState.xdb_ready` flag、middleware 才查 region）。未來動 region 沿用此 guard、勿不檢查 xdb_ready 直呼 `search_by_ip`。見 memory [[xdb-searcher-panics-on-missing-file]]
+- [ ] xdb **IPv4-only**（ToUIntIP u32-based）:IPv6 client→region None（best-effort）;若需 IPv6 region 須擴 vendored xdb（評估）。xdb `[[bench]]`（criterion）從不 build（`--bins`/`--locked` 跳、Dockerfile 僅 COPY benches/ 供 manifest 驗）
+
+**deps MSRV（✅ 結 §3.8 末條 ipnetwork 預警）**:
+- [x] ✅（2026-06-15、007）§3.8 末條「007 加 `ipnetwork` 務必先驗 MSRV ≤1.86」已執行:`ipnetwork 0.20.0`／`once_cell 1.21.4`／`uuid 1.23.3` 於 1.86 編譯綠**無需 --precise pin**、`cargo tree -i ipnetwork` 單一版本（with-ipnetwork 未拉新 feature-gated crate 入真圖）;Dockerfile builder `--locked`（§3.4 條、S2 落地）守 prod 防 cargo update 靜默 un-pin;dev cargo update 仍守紀律（同 time/simple_asn1 pin）
+
+**TRUSTED_PROXY 部署設定（cross-ref §3.4 line 133 nginx 硬化）**:
+- [ ] prod 部署須填 `TRUSTED_PROXY_CIDRS`（內網段＋CDN/CF 段、見 `deploy/TRUSTED-PROXY.md`）否則 fail-safe 採直連 peer（=nginx IP、真實 IP 解析失效）。007 app-side `resolve_client_ip` 與 §3.4 line 133 nginx-level `set_real_ip_from`（公網前評估）為互補兩層、後者仍開放
+
+**login-attempt 含系統錯誤終端（⚠️w lockout 消費者注意）**:
+- [ ] login inner/outer 單一記錄點記**每條**終端路徑、含 DB/系統錯誤（5000）終止（FR-004 的 superset）;⚠️w login lockout 消費 fail 列時若需區分「憑證失敗 vs 系統錯誤」須加 filter（007 未分欄、`success=false` 涵蓋兩者）
+
 ---
 
 ## 4. 跨 feature 待驗證項
@@ -230,7 +256,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 18**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)
+**已決 19**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜⚠️x endpoint_coverage_lint 波 0 換波豁免(結構上需 gated 端點才能立、移交波 1 第一刀)
 
 **開放 14**(依最晚決策點分組):
 - 波 1~3:③第一刀位(波1開工前)｜⚠️a 效能數字(波1驗收前)｜⚠️o RI 下沉(波1 facade 設計時)｜⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
