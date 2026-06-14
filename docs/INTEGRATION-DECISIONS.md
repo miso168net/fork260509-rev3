@@ -67,7 +67,18 @@
 - ✅ constitution-rev3 v1.0.0 重鑄凍結（`167db96`，獨立 commit；§9 快照 carry＋13 項拍板融入＋§V.2 提案位置=DECISIONS §1＋⚠️s fork-delta 紀律；雙輪驗證〔忠實度 8 項＋操作性 4 項〕後凍結）
 - ✅ 出口條件四項全綠（2026-06-12 驗）：session 健檢綠（hook 實測）／constitution v1.0.0 獨立 commit／設定・部署層 grep rev2 歸零（豁免：`fork260509-rev2-anew-rust-api` 倉永久名〔⚠️j〕與史料引用；`.gitignore`/`.graphifyignore` 2 處註解殘影同輪修正）／`/speckit-*` 指令可用（scripts＋skills 在位）
 
-### 波 0 — 地基（未開始）
+### 波 0 — 地基 ✅ 全完成（2026-06-15）
+
+rev2 001-012+015 對應的跨切地基；首個 spec-kit feature 序列（七刀、未 push）。
+- ✅ **001-infra-deploy**（merge `c9ffad5`、2026-06-13）— master compose 5 service＋migrate gate＋acme 殼＋dev/prod override＋deploy/ 全套＋rust-api scaffold；C-V-0~8 實機全綠（SC-001~007）；捕獲 redis `--dir` 持久化真 bug 並修
+- ✅ **002-rev2-schema-baseline**（merge `9233ae0`、2026-06-13）— 前代 35 支 migration squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表／m003 user_role FK ×2／m004 demo 選單 66＋policy）＋sea-orm-adapter 整檔拷入（§I.5）；C-V-0~9 全綠（SC-001~008）；修兩層 seed drift（id 順序＋row-order 正規化、⚠️t 拍板方案 A）
+- ✅ **003-envelope**（merge `7960a73`、2026-06-13）— `Res<T>`/`PageRes<T>`/`BizCode` 13 碼矩陣（凍結⚠️f）＋`AppError` 8 建構子（Internal→200⚠️e、detail 不洩漏）；test-first 18/18＋prod build＋C-V 1-5 全綠
+- ✅ **004-soft-delete-infra**（merge `e8334d7`、2026-06-14）— 新 entity crate（3 Model 鏡像 m001、with-chrono）＋`SoftDeletable` trait＋三 facade（不 re-export Entity）＋`entity_access_lint` build-failing 守恆（兩階段抹白掃描＋22 test）＋bounded live smoke；triple-guard；7 SC／11 FR
+- ✅ **005-audit-op-log**（merge `65f4bbe`、2026-06-14）— `model/audit.rs`（`mutate_in_txn` 業務寫＋審計寫同 txn 原子）＋`facade/sys_operation_log.rs`（append-only sink、`operator_ip` None→NotSet 避 42804、Some(ip) defer 至 007）＋`sys_user` `impl AuditSerialize`（redact password）；test-first＋3 場景 live smoke；7 SC／12 FR
+- ✅ **006-auth-island-min**（merge `2c5a2a1`、2026-06-14）— stateless 認證地基 `auth/{jwt,bearer,password,enforce}`＋`handler/auth`（login/getUserInfo/refreshToken）＋casbin per-route enforce（即時角色 DB 重查、fail-closed 5003、剝 7777）；deps +jsonwebtoken 9（MSRV pin simple_asn1 0.6.3/time 0.3.37 真 compile graph）；純測 52＋lint 22＋enforce-proof live＋CDP browser smoke（SC-006）；8 SC／13 FR
+- ✅ **007-audit-overlay**（merge `9046b63`、2026-06-15）— audit overlay 三 sink：vendored `xdb`（ip→region file-path、§I.5、boot guarded init 缺檔不 panic）＋`sys_access_log`/`sys_login_attempt` entity/facade（client_ip INET、IpAddr→IpNetwork seam）＋`audit_ctx` **outermost** 中介層（每請求**無條件**建 `RequestContext`、寬鬆 operator〔獨立 enforce〕、`best_effort_audit`、`into_make_service_with_connect_info`）＋`resolve_client_ip` trusted-proxy（peer-gate→rightmost-untrusted→fail-safe、**推進 DESIGN §5.9**）＋`extract_trace_id`（x-request-id/uuid v4）＋access-log **operator-gate**＋login **inner/outer split**（單一 outer 記錄點覆蓋全 7 終端路徑〔含 status-disabled／`?`-DB-error〕、wire byte-identical）＋op-log INET 回填（entity `operator_ip` String→IpNetwork、`AuditOperator.ip`→IpAddr、soft_delete 帶 operator+trace、**解 005 §3.8 42804**）；deps +ipnetwork 0.20/once_cell/uuid（MSRV 1.86 lock pin、`--locked`）；**無 migration、無新 wire**；C-V-1~9 全綠（含 prod image build C-V-8、真實 IP from XFF live 跳代理＋best-effort live）；26 單元 subagent-driven（關鍵單元對抗式 fresh-context review APPROVED）；7 SC／14 FR；修 4 plan 缺口（once_cell/uuid 漏 deps、登入終端路徑低估、T026 facade 路徑）
+
+**出口條件四項全綠**（DESIGN §8.4、2026-06-15 驗）：dev stack `up --wait` healthy（001）／三守恆〔entity_access_lint ✅〔004〕・migration up→down→up ✅〔002〕・endpoint_coverage_lint **後刀豁免**〔⚠️w user 親決 2026-06-14〕〕／envelope 13 碼 contract 綠（003）／login→getUserInfo→enforce 鏈 curl 通（006）。**波 0 收官、未 push**。
 
 ### 波 1 — 第一刀（未開始；刀位待決③）
 

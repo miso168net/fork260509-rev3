@@ -356,10 +356,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **007-audit-overlay**（波 0 最後一刀／第二 audit 刀）—— SDD 設計鏈進行中。Plan＝[`specs/007-audit-overlay/plan.md`](specs/007-audit-overlay/plan.md)。
-進度: Specify ✅（4 US／14 FR／7 SC、checklist 16/16）→ Clarify ✅（0 ambiguity、3 項 Deferred ⚠️n/⚠️a/⚠️w）→ **Plan ✅**（research R1–R7 grounded、Constitution Check 九題全 PASS、data-model／contracts〔C-V-1~9〕／quickstart 齊）。
-設計重點: access-log operator-gate conform DESIGN §3.3/§10.4／login-attempt inner-outer 6 點／audit_ctx outermost+無條件建 ctx／**`resolve_client_ip` trusted-proxy（推進 §5.9）**／**xdb file-path 載入〔R4 反轉 brainstorm embed〕**／op-log operator/trace/INET 回填〔解 005 §3.8 42804〕／+ipnetwork 0.20·sea-orm with-ipnetwork（MSRV≤1.86 風險、lock pin）；新 crate xdb→prod build 強制；無 migration、無新 wire。
-下一步: **/speckit-tasks** → /speckit-analyze → **superpowers:executing-plans**（非 /speckit-implement、§I.4）。git 全在本機未 push。
+Active feature: **（無 active feature）** —— 007-audit-overlay 已收刀＋merge（**波 0 收官**、2026-06-15、merge `9046b63`、未 push）。波 0 地基七刀（001-007）全完成。
+進度: 波 0 ✅ 全完成（001 infra／002 schema／003 envelope／004 soft-delete／005 op-log／006 auth-island／007 audit-overlay）；007 驗收 C-V-1~9 全綠（含 prod image build C-V-8）、7 SC／14 FR 達成；feature branch 007-audit-overlay 保留供 audit。
+設計重點（007 as-built）: audit_ctx outermost 無條件建 RequestContext／access-log operator-gate／login **inner-outer 單一記錄點覆蓋全 7 終端路徑**（非「6 點」、補 status-disabled＋`?`-DB-error）／`resolve_client_ip` trusted-proxy（推進 DESIGN §5.9）／xdb **file-path 載入**（R4 反轉 brainstorm embed、boot guarded 缺檔不 panic）／op-log INET 回填（解 005 §3.8 42804）／+ipnetwork 0.20·once_cell·uuid（MSRV 1.86 lock pin、`--locked`）。
+下一步: **波 1 第一刀**（刀位待決③：A=User 直刀 / B=`system_settings` 打樣，DESIGN §8.3）。開工前拍 ③＋⚠️a 效能數字＋⚠️o RI 層位（DECISIONS §1），起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3、`before_specify` pre-hook 建 feature branch）。git 全在本機**未 push**。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
