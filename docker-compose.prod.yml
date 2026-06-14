@@ -37,6 +37,12 @@ services:
   rust-api:
     image: rev3-admin-rust-api:latest
     restart: unless-stopped
+    environment:
+      # 007 audit-overlay：可信代理 CIDR（逗號分隔）。預設空＝fail-safe（用直連 peer）。
+      # prod 依實際拓撲填內網段＋CDN/CF 位址段（線上維護；填寫指引見 deploy/TRUSTED-PROXY.md）。
+      TRUSTED_PROXY_CIDRS: "${TRUSTED_PROXY_CIDRS:-}"
+      # 007 audit-overlay：xdb ip2region 資料檔載入點（prod 由 runtime stage COPY 提供）。
+      XDB_FILEPATH: "/app/xdb/resources/ip2region.xdb"
 
   migrate:
     # ★ prod migrate:runtime image,command [migration, up] 經 entrypoint.rust-api.sh dispatcher
