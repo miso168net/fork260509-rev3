@@ -85,7 +85,7 @@ description: "Task list — 009 Role Management"
 - [ ] T018 [US3] 加 `sys_role::update(db,id,fields:NewRole,operator,trace)->Model` facade（`mutate_in_txn`：snapshot 舊 `audit_json` → `update_set_query`〔UPDATE name/role_desc/status；**code 欄不入**、updated_at/by 成對 §I.6〕→ `AuditEvent{Update, before/after}`）＋ `create_query`/`update_set_query`/`soft_delete_query` helper（建 stmt、沿 008）— 依 T005/T007
 - [ ] T019 [US3] 填 `update_role(Json<RoleUpsertReq>)` handler body：RI（`find_active_by_id(id)` 查無→2222〔soft-deleted 拒更〕／`status` 值域→2222；**roleCode 不可變＝提交的 code 不傳入 update**）→ `update`（route 已 wired）— 依 T018（**無新單測：orchestration、由 T021 live 覆蓋**）
 - [ ] T020 [US3] `rev3-system-manage.ts` 加 `fetchUpdateRole({...model,id})` wrapper（併 id、R3 edit 模式）＋接 drawer `handleSubmit` update 分支（`operateType` 判定）— 依 T015/T016（**無新單測：前端接線、C-V-6 覆蓋**）
-- [ ] T021 [US3] **[live smoke serial]** `live_smoke_role_update`：updateRole→**Update** 列 before/after（roleName/roleDesc/status 變、**roleCode 不變**〔即使提交改 code〕）；改已軟刪 role→2222
+- [ ] T021 [US3] **[live smoke serial]** `live_smoke_role_update`：updateRole→**Update** 列 before/after（roleName/roleDesc/status 變、**roleCode 不變**〔即使提交改 code〕）；改已軟刪 role→2222；**baseline 可編輯斷言（FR-012、analyze C2）：updateRole 對種子 id∈{1,2,3} 成功（name/desc/status 變更持久；種子僅「刪除」受保護、「編輯」不受限）**
 
 **Checkpoint**：US1-US3 各自可獨立運作。
 
@@ -102,7 +102,7 @@ description: "Task list — 009 Role Management"
 - [ ] T025 [US4] 填 `batch_delete_role(Query<{ids:String}>)` handler body：comma-parse（惡形→2222）→ 前置全量種子校驗（任一 `is_seed_role`→整批 2222、不進 txn、FR-011）→ 逐筆 `soft_delete`（各自獨立 txn、已軟刪 no-op 容忍、⚠️a）— 依 T022/T023/T024
 - [ ] T026 [P] [US4] `rev3-system-manage.ts` 加 `fetchDeleteRole(id)`（DELETE `?id=`）／`fetchBatchDeleteRole(ids:number[])`（DELETE `?ids=1,2,3`）wrapper — 依 T001
 - [ ] T027 [US4] 接 `base-web/src/views/manage/role/index.vue` `handleDelete`/`handleBatchDelete` stub（→ wrapper、await 後刷新）；原 `console.log` 行保留為 `// [rev3-inline MW(a)] 原行: ...`（MODAL-WIRING (a)）— 依 T026（**無新單測：前端接線、C-V-6 覆蓋**）
-- [ ] T028 [US4] **[live smoke serial]** `live_smoke_role_delete`：deleteRole soft-delete＋種子 id∈{1,2,3}→2222；batch all-or-nothing（含種子整批拒、一筆不刪）；已軟刪再刪→**no-op 零 audit**
+- [ ] T028 [US4] **[live smoke serial]** `live_smoke_role_delete`：deleteRole soft-delete＋種子 id∈{1,2,3}→2222；batch all-or-nothing（含種子整批拒、一筆不刪）；已軟刪再刪→**no-op 零 audit**；**inert 斷言（SC-006/FR-013、analyze C1）：軟刪一個已指派給某 user 的 role 後、`sys_user_role::roles_for_user(uid)` 不再含該 roleCode（既有 `find_active_by_ids` active-filter、本刀不改、facade-level 斷言；驗「移除即失效、無需 cascade」）**
 
 **Checkpoint**：US1-US4 各自可獨立運作。
 
