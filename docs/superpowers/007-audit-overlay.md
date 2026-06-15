@@ -1,7 +1,7 @@
 # 007-audit-overlay — Phase 0 Brainstorm（spec-design・v2 重做）
 
 > 波 0 **最後一刀**（第二 audit 刀）。005 op-log → 007 access-log + login-attempt，audit 軌**三 sink 收齊**；合刀拆 006→007 序列之尾（006 已收 `2c5a2a1`）。
-> **本檔為 v2 重做**（v1 `1bb1a96` 已 hard-rollback 退掉），修正兩處設計缺陷：① access-log scope 改 **conform 凍結 DESIGN**（v1 的「全部+sentinel」與 line 197/705 衝突）；② 真實 client IP — rev3 在 front-nginx（其前可能再有 Cloudflare／其它 proxy）反代後方，直連 peer = nginx IP，故改 **app-side 從 XFF 解析真實 client IP**。
+> **本檔為 v2 重做**（v1 `1bb1a96` 已 hard-rollback 退掉），修正兩處設計缺陷：① access-log scope 改 **conform 凍結 DESIGN**（v1 的「全部+sentinel」與 §3.3/§10.4 衝突）；② 真實 client IP — rev3 在 front-nginx（其前可能再有 Cloudflare／其它 proxy）反代後方，直連 peer = nginx IP，故改 **app-side 從 XFF 解析真實 client IP**。
 > 本檔交手動 `/speckit-specify` 形式化（**非 writing-plans**；CLAUDE.md §3）。
 > **凍結權威**：DESIGN §5.2（audit 三 sink、縱切兩刀）／§5.9（region 由 client_ip 解；本刀**推進** client_ip 來源、見 §4）／§1.5（xdb L3 → audit_ctx L7 跨層邊）／§3.1（審計 append-only 不可竄改）／§3.3·§10.4（access-log 已認證才記、單一 operator gate、無 path 排除清單）／§8.2（007 刀定義）。⚠️v（xdb vendored 併本刀）／⚠️g（rust-api 全新寫、rev2 受控參照讀允許拷貝禁止）／⚠️w（login lockout 為下游消費者，本刀只備資料）。本檔不得與之衝突（衝突序：DECISIONS §1 ＞ DESIGN ＞ 本檔）。
 
@@ -57,7 +57,7 @@
 
 | # | 決策 | options | 結論 |
 |---|---|---|---|
-| access-log 範圍 | 已認證才記／全部+匿名 sentinel | conform DESIGN（user 選） | **conform §3.3/§10.4：`operator_id.is_some()`（已認證）才寫一列、未認證刻意不落列、無 sentinel／無 /health skip-set**（單一 operator gate 天然排除未認證/health）。否決 v1「全部+sentinel(0)+skip-set」（與 line 197/705 衝突、sentinel=0 繞過 `operator_id NOT NULL` 意圖、偏離 rev2 015 實際）。「全流量日誌」歸 observability（波 4 obs），非審計表 |
+| access-log 範圍 | 已認證才記／全部+匿名 sentinel | conform DESIGN（user 選） | **conform §3.3/§10.4：`operator_id.is_some()`（已認證）才寫一列、未認證刻意不落列、無 sentinel／無 /health skip-set**（單一 operator gate 天然排除未認證/health）。否決 v1「全部+sentinel(0)+skip-set」（與 §3.3/§10.4 衝突、sentinel=0 繞過 `operator_id NOT NULL` 意圖、偏離 rev2 015 實際）。「全流量日誌」歸 observability（波 4 obs），非審計表 |
 | client_ip 來源 | 直連 peer／app-side XFF 解析(α)／nginx edge 解析(β) | app-side 解析（A/α、user 選） | **app-side 從 XFF 經 trusted-proxy 模型解析真實 client IP**；`x_forwarded_for TEXT` 存原始 XFF 鏈備查（user 明示）。**推進 DESIGN §5.9（直連→XFF 解析）、待 /speckit-plan Constitution Check 對齊**。否決 v1 直連 peer（nginx 後方→peer=nginx IP→audit IP 軌與 per-ip lockout 皆廢、client_ip 名實不符）。β（nginx edge）被否：app 端測不到、綁 nginx config 正確性 |
 | 解析實作 | 手刻純函式／crate(axum-client-ip) | 手刻（user 選） | **手刻 `resolve_client_ip`**（rightmost-untrusted＋peer-gate＋fail-safe、見 §5.3）：重用 ipnetwork〔INET 欄本就入圖〕**零新 dep**、純測（合 ⚠️g TDD）；CF 走 trusted CIDR config（CF 段入 `TRUSTED_PROXY_CIDRS`）零 vendor code。crate 的 edge-case 戰功對「我們控 nginx 轉乾淨 XFF」溢出 |
 | audit_ctx 結構 | — | P1–P4 + 獨立 bearer | **outermost(P3)＋無條件建 ctx(P1)＋`into_make_service_with_connect_info`(P2)＋best-effort 寫(P4)＋獨立寬鬆 bearer 取 operator(成功 Some/失敗 None、永不 reject)；006 enforce_mw 不動**（兩者各自獨立驗、雙驗 HS256 成本可忽略） |

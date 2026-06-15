@@ -20,7 +20,7 @@
 ### R1.3 `enforce.rs`
 - `build_enforcer(db:DatabaseConnection)->Result<Enforcer,casbin::Error>` = `DefaultModel::from_str(MODEL)` + `SeaOrmAdapter::new(db)` + `Enforcer::new(model,adapter)`（自動載 seeded policy）。
 - `enforce_mw(State<AppState>, req, next)->Response`：① `verify_bearer`→None→`AppError::token_expired()`（3333）② **〔剝〕`is_current`(028) 7777 gate**（波 3）③ `path=uri.path()`／`method`④ **DB-fresh roles**（`roles_for_user`、非 JWT claims；見 R3.2）⑤ enforce loop `enforcer.enforce((role,path,method))`、任一 allow→next、全 deny→`permission_denied()`（403/5003）。
-- **DB-error 處置（⚠️ 見 R6 spec 校正）**：rev2／DESIGN line 686：role-lookup DbErr→**fail-closed 5003**（非 3333、非 internal；安全預設：transient DB error 不得誤放行）、且 `tracing::error` log 區分。
+- **DB-error 處置（⚠️ 見 R6 spec 校正）**：rev2／DESIGN §10.1：role-lookup DbErr→**fail-closed 5003**（非 3333、非 internal；安全預設：transient DB error 不得誤放行）、且 `tracing::error` log 區分。
 - **006 剝離**：去 step ②（is_current）。
 
 ### R1.4 `handler/auth.rs`＋`password.rs`
@@ -74,7 +74,7 @@
 - 003 `error.rs`：`AppError{code:BizCode(私), msg:Option<String>}`＋8 建構子（`login_failed`1000／`biz`2222／`token_expired`3333／`modal_logout`7777／`logout`8888／`not_found`4040／`permission_denied`5003／`internal`5000、Internal→HTTP200 ⚠️e／4 保留碼無建構子 ⚠️f）＋`IntoResponse`。
 - **006 用法**：handler **顯式語意映射**（非泛型 `?`）：login 失敗→`login_failed()`；getUserInfo 任何問題→`token_expired()`（advisory）；enforce 全 deny→`permission_denied()`；refresh 失效→`logout()`(8888、反迴圈 R2)；token 缺/失效→`token_expired()`(3333)。
 - **§3.6 From impl**：`From<DbErr>`／`From<casbin::Error>`→`AppError::internal(..)`（5000）作**泛型 fallback**（供未來 `?` 用、本刀 auth handler 多為顯式映射故消費少）；**enforce role-lookup DB error 不走 From**（顯式 fail-closed 5003、見下）。
-- **⚠️ spec FR-005 校正（DESIGN＞spec）**：spec FR-005 寫「系統錯誤 MUST 與權限不足**可區分**」；但 **DESIGN line 686 明示 role-lookup DbErr → fail-closed 5003（PermissionDenied 同碼）**——安全預設（transient DB error 不得誤放行）。⇒ 正解：**wire 層 DB error 與 permission-denied 同回 5003（fail-closed）、僅 log（`tracing::error`）區分**。FR-005「可區分」應讀為 **log/observability 層可區分、非 wire 層**。**留 `/speckit-analyze` 標此 spec↔DESIGN 差、建議 spec FR-005 措辭最小校正**（不阻塞 plan）。
+- **⚠️ spec FR-005 校正（DESIGN＞spec）**：spec FR-005 寫「系統錯誤 MUST 與權限不足**可區分**」；但 **DESIGN §10.1 明示 role-lookup DbErr → fail-closed 5003（PermissionDenied 同碼）**——安全預設（transient DB error 不得誤放行）。⇒ 正解：**wire 層 DB error 與 permission-denied 同回 5003（fail-closed）、僅 log（`tracing::error`）區分**。FR-005「可區分」應讀為 **log/observability 層可區分、非 wire 層**。**留 `/speckit-analyze` 標此 spec↔DESIGN 差、建議 spec FR-005 措辭最小校正**（不阻塞 plan）。
 - **Decision**：顯式語意映射為主；From→internal 為 fallback；DB-during-enforce fail-closed 5003（DESIGN 權威）、log 區分；FR-005 校正交 analyze。
 
 ## R7 · enforce-proof route gating 形 ＋ CDP smoke 形

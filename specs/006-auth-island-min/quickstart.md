@@ -47,7 +47,7 @@ grep -rnE 'rev2-admin' rust-api/server/src/auth/ && echo "❌" || echo "✅"
 
 - **refresh 反迴圈鐵律**：`/auth/refreshToken` 失敗回 **8888**（非 3333/9999/9998）——否則 base-web 攔截器 refresh 死循環（R2、官方 docs 紀律）。
 - **userId string + 2^53 守衛**（⚠️r）：`user.id`(i64)→string、超 2^53 fail-loud（不靜默截斷）。
-- **enforce DB-error fail-closed 5003**（DESIGN line 686）：role-lookup DbErr→deny(5003)＋log（非放行、非 internal）；spec FR-005「可區分」讀為 log 層（見 research R6、留 analyze）。
+- **enforce DB-error fail-closed 5003**（DESIGN §10.1）：role-lookup DbErr→deny(5003)＋log（非放行、非 internal）；spec FR-005「可區分」讀為 log 層（見 research R6、留 analyze）。
 - **stateless 剝離**：無 sys_token/session/redis/single-session；Claims 無 sid/jti；refresh 無 reuse 偵測——全波 3。
 - **CDP static 模式**：`VITE_AUTH_ROUTE_MODE=static`→不呼 getUserRoutes→CDP 驗到 getUserInfo 天然完整；route-mount 延波 2 Menu。
 

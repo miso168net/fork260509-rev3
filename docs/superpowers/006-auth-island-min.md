@@ -44,7 +44,7 @@
 
 ### 2.3 rust-api 現況（005 後）
 - workspace members＝`server`/`migration`/`sea-orm-adapter`/`entity`；002 已 vendored `sea-orm-adapter`（委派式 casbin adapter）＋m002/m004 seed casbin_rule（endpoint＋menu policy、全 R_SUPER ⚠️p）。
-- server crate：`envelope.rs`/`error.rs`(003)＋`model/`(004 facade 三閘＋005 audit)；**無 `state.rs`/`auth/`/`handler/`**；deps **無 `jsonwebtoken`/`argon2`/`casbin`/`redis`**（argon2 0.5.3、casbin 2.20 已在 root workspace deps〔DESIGN line 118〕、jsonwebtoken 9 待加）；`main.rs` 僅 `/health` scaffold。
+- server crate：`envelope.rs`/`error.rs`(003)＋`model/`(004 facade 三閘＋005 audit)；**無 `state.rs`/`auth/`/`handler/`**；deps **無 `jsonwebtoken`/`argon2`/`casbin`/`redis`**（argon2 0.5.3、casbin 2.20 已在 root workspace deps〔DESIGN §1.6〕、jsonwebtoken 9 待加）；`main.rs` 僅 `/health` scaffold。
 - **004 facade 可復用**：`find_active_by_name`（login 查 user）／`find_active_by_id`（getUserInfo 查 user）／`find_role_ids_by_user_id`＋`find_active_by_ids`（取 roles）。
 - **secrets 已備**：`deploy/secrets/jwt_secret.txt`＋`refresh_token_secret.txt`（001 生成）⇒ 006 走 `_FILE` 讀。
 - **button policy 未 seed**：m004 僅 `v2='menu'`、無 `v2='button'` ⇒ getUserInfo `buttons` 真查但現回 `[]`（誠實、波 3 Button 縱切後填）。

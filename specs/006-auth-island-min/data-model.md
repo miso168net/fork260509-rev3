@@ -48,7 +48,7 @@ pub async fn build_enforcer(db: DatabaseConnection) -> Result<Enforcer, casbin::
     // = Enforcer::new(DefaultModel::from_str(MODEL).await?, SeaOrmAdapter::new(db).await?).await
 pub async fn enforce_mw(State(state): State<AppState>, req: Request, next: Next) -> Response;
 ```
-- `enforce_mw` 流程（剝 is_current 028）：`verify_bearer`→None→`token_expired()`(3333) ／ `path=uri.path()`,`method` ／ **DB-fresh** `roles_for_user(db, claims.user_id)`→**Err→fail-closed `permission_denied()`(5003)＋log**（DESIGN line 686、R6） ／ `for role in roles { if enforcer.enforce((role,path,method))? {allow} }`→全 deny→`permission_denied()`(5003)、任一 allow→`next.run(req)`。
+- `enforce_mw` 流程（剝 is_current 028）：`verify_bearer`→None→`token_expired()`(3333) ／ `path=uri.path()`,`method` ／ **DB-fresh** `roles_for_user(db, claims.user_id)`→**Err→fail-closed `permission_denied()`(5003)＋log**（DESIGN §10.1、R6） ／ `for role in roles { if enforcer.enforce((role,path,method))? {allow} }`→全 deny→`permission_denied()`(5003)、任一 allow→`next.run(req)`。
 - enforcer：`Arc<RwLock<Enforcer>>`（AppState）、read lock per request、無 decision cache（DESIGN §5.3）。
 
 ## 5. `auth/password.rs`（新）

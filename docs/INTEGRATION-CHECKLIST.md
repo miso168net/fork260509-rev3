@@ -100,11 +100,6 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 - [ ] provisioning 重建無 crash-loop
 - [ ] rust-api log/metrics 兩軌可查
 
-### 持續性維護
-
-- [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）＋005（entity `sys_operation_log.rs`／server `model/audit.rs`＋`facade/sys_operation_log.rs`＋`facade/sys_user.rs` 寫側＋`facade/live_smoke.rs` audit 場景）＋**006（server `auth/{jwt,bearer,password,enforce}.rs`＋`handler/{auth,mod}.rs`＋`state.rs`＋`error.rs` From impls＋`main.rs` boot 重寫＋`facade/sys_user_role.rs` roles_for_user）＋007（rust-api `xdb` crate 全套／server `audit_ctx.rs`〔RequestContext+audit_mw+trace_id+best_effort_audit〕／`state.rs` resolve_client_ip+parse_trusted_cidrs／2 entity `sys_{access_log,login_attempt}.rs`／2 facade `sys_{access_log,login_attempt}.rs`／`sys_operation_log` 型遷移＋`audit.rs`＋`handler/auth.rs` login split＋`facade/live_smoke.rs` C-V-7／`main.rs` 接線；deploy Dockerfile+compose override）**待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
-
 ---
 
 ## 3. Follow-up Backlog
@@ -128,35 +123,35 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ### 3.4 001-infra-deploy follow-up（收刀 review 鏈＋final review 落檔 2026-06-13;均不阻塞、修時機見各條）
 
 **部署層加固**:
-- [ ] nginx 自答 `/health` 雙 Content-Type（`add_header`→改 `default_type`;rev2 同形）
+- [x] ✅（2026-06-15、波 1 前清債）nginx 自答 `/health` 雙 Content-Type——`_locations.inc` `add_header Content-Type`→`default_type text/plain`
 - [ ] nginx prod 硬化:`server_tokens off`＋HSTS/X-Frame-Options/X-Content-Type-Options（公網前必做）
 - [ ] XFF append 可偽造→`set_real_ip_from` 信任邊界（公網前評估）
-- [ ] image pin 一致性:alpine/openssl:latest（兩生成腳本）、base-web runtime nginx:alpine、base-web dev node:26-alpine（26.x 滑動）、postgres:17-alpine/debian patch 浮動 → 統一 pin 紀律一次處理
-- [ ] prod migrate 繼承 runtime image 無意義 HEALTHCHECK（migration 不開 port;>35s migration＋未來 `--wait` 假陰性伏筆→prod.yml 補 `healthcheck: disable`）
-- [ ] builder `cargo build` 補 `--locked`（守 lock pin 防線、防 manifest 漂移靜默 re-resolve）——**005 Unit A 實證**：Cargo.lock 曾遺漏 sea-orm optional-dep package stanza（`bigdecimal` 等、003/004 遺留），加 `with-json` 首次非 `--offline` build 觸 re-resolve、把 `time` 拉到 0.3.47〔off 文件 pin〕；`--locked` 會 fail-loud 擋下此類靜默 re-resolve（配套見 §3.8 MSRV 條）
-- [ ] `docker-compose.base-web.yml` 檔頭補與 master 並行撞點警示（同 project name/卷;與 rust-api standalone `7e3fed6` 對稱）
-- [ ] compose secrets 預檢（bind 缺檔自動建空目錄→錯誤不指向缺檔;up 前 wrapper 或文件註記）
+- [x] ✅（2026-06-15、波 1 前清債）image pin 一致性：**已 pin** `alpine/openssl:latest`→`3.5.4`（兩腳本）／base-web runtime `nginx:alpine`→`1.31.1-alpine`（含 **CVE-2026-42945**）／front-nginx `nginx:1.31.0`→`1.31.1`（CVE）;**刻意保留 major-alpine**（自動收安全 patch）：`postgres:17-alpine`／`node:26-alpine`——pin 紀律＝消除 `:latest`/裸 tag、OS image 走 auto-patch（exact-pin 會丟安全更新、與 CVE 防護相悖）。**node 已定**（user 2026-06-15：統一 `node:26-alpine` major〔builder+dev〕、prod build 驗綠、非 exact-pin）;**postgres 已定**（user 2026-06-15：保留 `postgres:17-alpine` major、auto 收安全 patch、非 exact-pin——DB 釘死反丟安全更新、與 CVE 防護相悖）。**pin 紀律確立**：消除 :latest/裸 tag、OS image 留 major-alpine 走 auto-patch、reproducibility 由 Cargo.lock/`--locked` 在 build 層保證
+- [x] ✅（2026-06-15、波 1 前清債）prod migrate 無意義 HEALTHCHECK——`docker-compose.prod.yml` migrate 補 `healthcheck: disable: true`（runtime image 帶 curl /health、對一次性 migration 無意義＋防 --wait 假陰性）
+- [x] ✅（2026-06-15、007 S2）builder `cargo build` 補 `--locked`——007 S2 已在 `deploy/Dockerfile.rust-api.txt` builder 加 `cargo build --release --bins --locked`（守 lock pin、防 manifest／ipnetwork 漂移靜默 re-resolve）。原 005 Unit A 實證背景：**005 Unit A 實證**：Cargo.lock 曾遺漏 sea-orm optional-dep package stanza（`bigdecimal` 等、003/004 遺留），加 `with-json` 首次非 `--offline` build 觸 re-resolve、把 `time` 拉到 0.3.47〔off 文件 pin〕；`--locked` 會 fail-loud 擋下此類靜默 re-resolve（配套見 §3.8 MSRV 條）
+- [x] ✅（2026-06-15、波 1 前清債）`docker-compose.base-web.yml` 檔頭補並行撞點警示（同 project `rev3-admin`/卷、勿與 master 同起、用前 down master）
+- [x] ✅（2026-06-15、波 1 前清債）compose secrets 預檢——`deploy/secrets/README.md` 補「up 前必先生成、缺檔會 bind 成空目錄、錯誤不指向缺檔」註記（文件版）
 - [ ] `front_nginx_certs` 要不要 `external: true`（消 compose warning vs 硬前置;拍板項）
-- [ ] migrate 的 redis depends_on 與 FR-002/C-V-2 措辭對齊（實作只閘 postgres;補 depends 或修 spec 措辭;rev2 同形）
-- [ ] postgres healthcheck `pg_isready -U soybean` 缺 `-d soybean_admin_rust`（dbname 預設=username→每 10s 一條 FATAL log;波 4 obs 落地前修、一 token;rev2 同形）
+- [x] ✅（2026-06-15、波 1 前清債）migrate redis depends_on 措辭——`docker-compose.yml` migrate 補註解「僅閘 postgres、不需 redis；spec FR-002/C-V-2 措辭待勘誤」（impl 正確、註明）
+- [x] ✅（2026-06-15、波 1 前清債）postgres healthcheck 補 `-d soybean_admin_rust`——`docker-compose.yml:101` `pg_isready -U soybean`→`pg_isready -U soybean -d soybean_admin_rust`（原缺 -d、dbname 預設=username `soybean`→每 10s 一條 `FATAL: database "soybean" does not exist`，實證後修）。⚠️ 跑著的容器需 recreate 才生效;rev2 同形、回灌時修
 - [ ] dev watcher 工具評估:cargo-watch 上游已 archived＋`cargo install` 無版本 pin＋無 cache mount（dev image build 慢）→ 後刀換 bacon/watchexec 屬顯式決策（rev2 形 carry）
-- [ ] 冷卷首啟 `up --wait` 自癒型 flap（base-web 容忍 ≈140s/rust-api ≈240s;`down -v` 後或新機器會撞）→ quickstart 補「exit≠0 先 ps 區分仍在編譯、等穩重跑即過」一句
+- [x] ✅（2026-06-15、波 1 前清債）冷卷首啟 flap → CLAUDE.md §8.2.1 補註記（exit≠0 先 ps 區分仍在編譯、待穩重跑）
 - [ ] C-V-2 gate 斷言①複驗方法注記:重複 `up` 會讓 migrate one-shot 重跑、刷新 inspect 時戳（假陰性）;複驗用 `docker logs --timestamps` 首輪——波 0 出口複驗時適用
 - [ ] dispatcher `server)` 分支不 shift 不傳 `"$@"`（與 migration/cleanup-job 不對稱;多餘參數靜默丟棄;blob-identical 凍結下傾向 won't-fix、僅記錄）
 **腳本**:
-- [ ] generate-secrets.sh 刪 leaf 重跑 dual-write drift 邊角（GENERATED 視同 force 或 README 警語）
-- [ ] generate-dev-cert.sh 自簽 renew 必重生 CA 與教學矛盾＋私鑰 chmod 600（native Linux 644 風險）
-- [ ] generate-* 兩腳本 `docker pull -q` 離線即 abort（image 已 cache 也炸）→ `docker image inspect || docker pull` fallback
-- [ ] outer `.gitignore:133` 註解殘留前代 feature 編號（順手修）
+- [x] ✅（2026-06-15、波 1 前清債）generate-secrets 刪 leaf 重跑 drift——`deploy/secrets/README.md` 補「刪 leaf 重生但跳過既有 URL→drift」警語（README 版）
+- [x] ✅（2026-06-15、波 1 前清債）generate-dev-cert.sh——私鑰 `chmod 600`（ca.key/privkey.pem）＋ TRUST 訊息註明「自簽 `--force` 一併重生 CA、需重 trust」
+- [x] ✅（2026-06-15、波 1 前清債）generate-* 兩腳本 `docker pull` → `docker image inspect || docker pull` fallback（離線/已 cache 可跑）
+- [x] ✅（2026-06-15、波 1 前清債）outer `.gitignore` 註解前代編號 `003-tls-dev-cert`→`001-infra-deploy`（dev cert 屬 001、rev3 的 003 是 envelope）
 **rust-api**:
 - [x] ✅（2026-06-13、002/U2）migration main.rs secret 讀檔失敗靜默 fallback→補 eprintln 警示（`inspect_err`、行為不變）
 - [ ] `set_var` 於 runtime 啟動後（edition 2024 升級時根治）
 - [x] ✅（2026-06-14、005 Unit A）workspace Cargo.toml time pin 註解勘誤——005 加 with-json 首次非 --offline build 補齊 lock 時 time 解析為 0.3.47（feature-gated 未編譯、user 拍板接受）、順手把「pin time=0.3.37」改為「home=0.5.9 pin；time 不入 compile graph、版本對 1.86 build 無影響、不變式＝不啟用拉 time 的 feature」
-- [ ] rust-api/.gitignore `debug`/`target` 未錨定 pattern（誤吞同名子目錄風險）
+- [x] ✅（2026-06-15、波 1 前清債）rust-api/.gitignore `debug`/`target` 錨定為 `/debug`/`/target`（防誤吞同名子目錄）
 **拍板/上游**:
 - [x] ✅（2026-06-14、006）JWT `_FILE` vs 直值 env 優先序——006 `state::file_or_env(file_var,direct_var)`：`_FILE`（讀檔 trim）優先、直接 env fallback、皆缺→boot panic（fail-loud）;同形共用於 jwt secret（access/refresh）＋db url（main 重用）
-- [ ] prod builder node:20.19 vs dev node:26 分歧（沿 rev2 驗證形;Dockerfile 補註記或 DECISIONS 開放項）
-- [ ] cargo cache 卷遮蓋陳舊（dev image 升 toolchain 時需手動 `volume rm`;quickstart 註記）
+- [x] ✅（2026-06-15、波 1 前清債）prod builder node:20.19 vs dev node:26 分歧——**統一 node:26-alpine**（user 決定 2026-06-15；builder 20.19→26、corepack 既被 npm-pnpm 跳過故 node 版本無關；**prod base-web build 實機驗綠**〔vite build successful、image Built〕）
+- [x] ✅（2026-06-15、波 1 前清債）cargo cache 卷遮蓋——CLAUDE.md §8.2.1 補註記（升 toolchain 需手動 `volume rm rev3-admin_rust_api_cargo_cache`）
 - [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）;**003 已實踐 per-unit pin bump（每 Unit review 過即 bump、pin 全程==worktree HEAD）、實證可行**
 - [ ] **rev2 repo 回灌通知**:redis-stack `--dir /data` 持久化 bug 為 rev2 同形潛伏（rev2 `docker-compose.yml` redis command 同款缺 `--dir`）——rev2 維護時修
 
@@ -200,20 +195,20 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 **redact 紀律傳播（Unit C code review 觀察）**:
 - [ ] `AuditSerialize` 的 redact 僅靠各 entity facade 手寫 impl＋各自 redact 純測 guard、**不會自動傳播**;未來其他 entity 加 `impl AuditSerialize` 時須逐 entity 確保敏感欄 redact＋補對應 redact 測;若多 entity 陸續加入、評估以巨集／lint 統一 redact 紀律（避免新 entity 漏遮蔽敏感欄）
 **operator_ip 真實 INET 寫入（defer 第二 audit 刀）**:
-- [ ] `audit_active_model` 的 `operator_ip` 目前 None→NotSet（本刀 operator.ip 恆 None）;`Some(ip)=>Set(Some(ip))` 分支為前向形狀、**若被觸發會 PG 42804（text→INET 隱式轉型失敗）**——真實 INET 寫入留第二 audit 刀（`audit_ctx` 中介層帶 operator_ip 時）、需 `Expr` cast 或 `ipnetwork` custom type 才可寫實值;**第二 audit 刀無法迴避此問題**——其 `sys_access_log.client_ip` 為 INET NOT NULL（不能套 005 的 `NotSet` 略過）、是真實 INET 寫入的 forcing function（§2 第二 audit 刀 line 已標）
+- [x] ✅（2026-06-15、007 U4a 解 42804）`audit_active_model` 的 `operator_ip` 真 INET 寫入已啟用：entity `operator_ip` String→`Option<IpNetwork>`、`AuditOperator.ip` String→`IpAddr`、facade `Some(ip)`→`Set(Some(IpNetwork::from(ip)))`（`ipnetwork` custom type、非 Expr cast）、C-V-7 live 驗 operator_ip 真 INET 非空。原 defer 背景（005）：`operator_ip` None→NotSet（005 operator.ip 恆 None）;`Some(ip)=>Set(Some(ip))` 分支為前向形狀、**若被觸發會 PG 42804（text→INET 隱式轉型失敗）**——真實 INET 寫入留第二 audit 刀（`audit_ctx` 中介層帶 operator_ip 時）、需 `Expr` cast 或 `ipnetwork` custom type 才可寫實值;**第二 audit 刀無法迴避此問題**——其 `sys_access_log.client_ip` 為 INET NOT NULL（不能套 005 的 `NotSet` 略過）、是真實 INET 寫入的 forcing function（§2 第二 audit 刀已標）
 **payload_after 形狀（消費刀填）**:
 - [ ] soft_delete 的 `payload_after` 恆 `None`（軟刪只 before 快照）;Insert/Update 操作別的消費刀（User/Role/Menu 等寫端）填 after 快照時、各自 facade 在 `mutate_in_txn` 閉包內構造
 **实机 smoke 隔離（Unit D code review 觀察、未來 live-smoke 刀沿用）**:
 - [ ] `live_smoke.rs` 的 3 audit 場景用拋棄式 user（9xxxxx）＋`hard_clean`（前後）隔離、**非 panic-safe**（assert 中途 panic 會留 DB 殘留、靠下次 run 的防禦性 pre-clean 自癒、永不污染 m002 seed——與 004 read-cluster smoke 的 bracketed-restore〔因觸 seed〕策略不同、各自合理）;commit/no-op 兩場景共用 id 900001、依賴 contract §4 強制的 `--test-threads=1`（序列跑）
 **Cargo.lock 完整性＋未來 sea-orm feature 的 MSRV 地雷（Unit A 發現）**:
-- [ ] 005 補齊 003/004 遺留的 16 筆 sea-orm optional-dep lock stanza（`bigdecimal`／`time` 0.3.47／`rust_decimal`／`uuid`／`pgvector`／`mac_address` 等、**全 feature-gated 未編譯**、user 拍板接受、time=0.3.47＝resolver 取最新）;⚠️ 這些 crate **以「最新版」躺在 lock、從未在 1.86 編譯過**——**未來任何刀啟用會拉它們的 sea-orm feature（`with-uuid`／`with-rust_decimal`／`with-bigdecimal`／`with-time` 等）、或為第二 audit 刀真實 INET 寫入加 `ipnetwork` 時，務必先驗該鎖定版 MSRV ≤ 1.86**（workspace 註解原憂「time/home 新 patch 需 1.88」、time 0.3.47 恐即是）;超標就 `cargo update -p <crate> --precise <1.86-safe 版>` 釘回。配套見 §3.4 `--locked` 條＋memory [[sea-orm-entity-datetime-feature-gate]]／[[inert-drift-accept-and-correct-doc]]。⚠️ **time 例外（006 起本條對 time 的「未編譯」描述已 stale）**：006 經 `jsonwebtoken→simple_asn1` 把 **time 拉進真 compile graph（會編譯）**、已 repin `time=0.3.37`/`simple_asn1=0.6.3` 配 1.86（詳 §3.9 末條 errata＋memory [[jsonwebtoken9-msrv-time-real-graph]]）；本條餘 15 筆（bigdecimal/uuid/rust_decimal/pgvector/mac_address 等）仍 feature-gated 未編譯、MSRV-先驗紀律對它們不變（尤 007 加 `ipnetwork`）。
+- [ ] 005 補齊 003/004 遺留的 16 筆 sea-orm optional-dep lock stanza（`bigdecimal`／`time` 0.3.47／`rust_decimal`／`uuid`／`pgvector`／`mac_address` 等、**全 feature-gated 未編譯**、user 拍板接受、time=0.3.47＝resolver 取最新）;⚠️ 這些 crate **以「最新版」躺在 lock、從未在 1.86 編譯過**——**未來任何刀啟用會拉它們的 sea-orm feature（`with-uuid`／`with-rust_decimal`／`with-bigdecimal`／`with-time` 等）、或為第二 audit 刀真實 INET 寫入加 `ipnetwork` 時，務必先驗該鎖定版 MSRV ≤ 1.86**（workspace 註解原憂「time/home 新 patch 需 1.88」、time 0.3.47 恐即是）;超標就 `cargo update -p <crate> --precise <1.86-safe 版>` 釘回。配套見 §3.4 `--locked` 條＋memory [[sea-orm-entity-datetime-feature-gate]]／[[inert-drift-accept-and-correct-doc]]。⚠️ **time 例外（006 起本條對 time 的「未編譯」描述已 stale）**：006 經 `jsonwebtoken→simple_asn1` 把 **time 拉進真 compile graph（會編譯）**、已 repin `time=0.3.37`/`simple_asn1=0.6.3` 配 1.86（詳 §3.9 末條 errata＋memory [[jsonwebtoken9-msrv-time-real-graph]]）；本條餘 15 筆（bigdecimal/uuid/rust_decimal/pgvector/mac_address 等）仍 feature-gated 未編譯、MSRV-先驗紀律對它們不變（尤 007 加 `ipnetwork`、**已執行**）。**✅ ipnetwork MSRV（007、2026-06-15）**：`ipnetwork 0.20.0`／`once_cell 1.21.4`／`uuid 1.23.3` 於 1.86 編譯綠**無需 --precise pin**、`cargo tree -i ipnetwork` 單一版本（詳 §3.10 deps MSRV 條）；餘 bigdecimal/rust_decimal/pgvector/mac_address 仍 feature-gated、未來啟用刀沿用本紀律。
 
 ### 3.9 006-auth-island-min follow-up（收刀移交 2026-06-14;均不阻塞、消費刀觸發時處理）
 
 **dead_code（infra ahead of consumers、實作期觀察）**:
 - [ ] `enforce_mw` 目前 dead_code（006 無受 enforce_mw gate 的業務端點、僅 enforce-proof #[ignore] 整合測消費;server bin crate、`cargo build` 一條 warning、無 `-D warnings` 不阻塞）;**波 1 第一刀**（首個受保護業務端點）wiring 後即清——屆時 `endpoint_coverage_lint`（§2 出口列）一併立、enforce_mw route_layer 首次真掛載;**wiring 後仍殘留＝over-built**（同 §3.6/3.7/3.8 紀律）
 **live #[ignore] 測 parallel-safety（驗證收尾發現）**:
-- [ ] 006 新增 `auth::enforce::tests::enforce_proof_*`（#[ignore]、live DB、in-process oneshot）入 #[ignore] 集;與 005 audit live_smoke 併行跑時 **005 的 `live_smoke_audit_commit_atomic`/`live_smoke_audit_no_op` 偽失敗**（共用 `sys_operation_log` 非 parallel-safe、§3.8 line 已記）——`cargo test -- --ignored --test-threads=1` 序列跑全綠;**根治＝005 兩 audit 測各自隔離 fixture**（同 §3.8 觀察）、非 006 引入;enforce_proof 本身 parallel-safe（remove-before-add＋末端 cleanup、非 bracketed 但 down -v 自癒）。見 memory [[live-ignore-tests-need-serial]]
+- [x] ✅ 根治（2026-06-15、波 1 前清債：005 no-op part(b) throwaway id 900001→900004、各測 id 互不撞〔commit=900001/no-op-a=900002/rollback=900003/no-op-b=900004/C-V-7=900007〕、5 live smoke 重跑全綠;`--test-threads=1` 仍為安全預設——enforce-proof 等其他 #[ignore] 未逐一 audit parallel-safety）006 新增 `auth::enforce::tests::enforce_proof_*`（#[ignore]、live DB、in-process oneshot）入 #[ignore] 集;與 005 audit live_smoke 併行跑時 **005 的 `live_smoke_audit_commit_atomic`/`live_smoke_audit_no_op` 偽失敗**（共用 `sys_operation_log` 非 parallel-safe、§3.8 已記）——`cargo test -- --ignored --test-threads=1` 序列跑全綠;**根治＝005 兩 audit 測各自隔離 fixture**（同 §3.8 觀察）、非 006 引入;enforce_proof 本身 parallel-safe（remove-before-add＋末端 cleanup、非 bracketed 但 down -v 自癒）。見 memory [[live-ignore-tests-need-serial]]
 **buttons 實況（research R3.3 假設推翻、驗證收尾發現）**:
 - [ ] research R3.3／spec/contract/plan「buttons 現空（m004 未 seed v2='button'）」**假設錯**——`casbin_rule` 實有 16 筆 v2='button'（R_SUPER 12：B_CODE1/2/3＋menu/role/user:*）;`buttons_for_roles` 正確只回 v2='button'（Unit 3 純測釘死、不誤抓 menu/method）、getUserInfo live 回真按鈕清單;**code 正確**、006 已校正 enforce.rs/handler 的「現空」stale 註解;波 2 Menu 刀的 getUserRoutes 也有料（v2='menu' 83 筆已 seed）。見 memory [[casbin-seed-has-button-policies]]
 **CDP repoint 形（未來信封消費刀沿用）**:
@@ -242,8 +237,8 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 **deps MSRV（✅ 結 §3.8 末條 ipnetwork 預警）**:
 - [x] ✅（2026-06-15、007）§3.8 末條「007 加 `ipnetwork` 務必先驗 MSRV ≤1.86」已執行:`ipnetwork 0.20.0`／`once_cell 1.21.4`／`uuid 1.23.3` 於 1.86 編譯綠**無需 --precise pin**、`cargo tree -i ipnetwork` 單一版本（with-ipnetwork 未拉新 feature-gated crate 入真圖）;Dockerfile builder `--locked`（§3.4 條、S2 落地）守 prod 防 cargo update 靜默 un-pin;dev cargo update 仍守紀律（同 time/simple_asn1 pin）
 
-**TRUSTED_PROXY 部署設定（cross-ref §3.4 line 133 nginx 硬化）**:
-- [ ] prod 部署須填 `TRUSTED_PROXY_CIDRS`（內網段＋CDN/CF 段、見 `deploy/TRUSTED-PROXY.md`）否則 fail-safe 採直連 peer（=nginx IP、真實 IP 解析失效）。007 app-side `resolve_client_ip` 與 §3.4 line 133 nginx-level `set_real_ip_from`（公網前評估）為互補兩層、後者仍開放
+**TRUSTED_PROXY 部署設定（cross-ref §3.4 nginx 硬化）**:
+- [ ] prod 部署須填 `TRUSTED_PROXY_CIDRS`（內網段＋CDN/CF 段、見 `deploy/TRUSTED-PROXY.md`）否則 fail-safe 採直連 peer（=nginx IP、真實 IP 解析失效）。007 app-side `resolve_client_ip` 與 §3.4 nginx-level `set_real_ip_from`（公網前評估）為互補兩層、後者仍開放
 
 **login-attempt 含系統錯誤終端（⚠️w lockout 消費者注意）**:
 - [ ] login inner/outer 單一記錄點記**每條**終端路徑、含 DB/系統錯誤（5000）終止（FR-004 的 superset）;⚠️w login lockout 消費 fail 列時若需區分「憑證失敗 vs 系統錯誤」須加 filter（007 未分欄、`success=false` 涵蓋兩者）
@@ -251,6 +246,14 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 ---
 
 ## 4. 跨 feature 待驗證項
+
+**跨 feature 驗證（常駐）**:
+- [ ] **dead_code over-built 回頭檢視**:infra-ahead-of-consumer 的 public API／fn（envelope/error §3.6・soft-delete facade §3.7・audit 機制 §3.8・enforce_mw §3.9・audit_ctx/op-log 回填 §3.10）——各消費刀 wiring 後**回頭檢視**：仍殘留 dead_code＝無真實消費者＝over-built，回收或補消費。具體 fn 清單在各 §3.N
+- [ ] **endpoint_coverage_lint（波 1 第一刀立、⚠️x 已豁免波 0）**:鎖 main.rs router==ENDPOINT_REGISTRY==seed、`EXPECTED_ROUTE_COUNT` gated route（DESIGN §7.1／§8.4）;首個受保護業務端點 wiring 時立（§3.6／§3.9）、立後為跨 feature route-coverage 守恆（每條 route 兩端俱在＋contract case）
+
+**長期維護（自 §2 Roadmap 移入、非波狀態）**:
+- [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
+- [ ] graphify 圖譜更新——**2026-06-13 增量：002 Rust 碼（migration ×4＋sea-orm-adapter crate）＋docker-compose.yml 外科式併入（4274 nodes/581 communities、base-web/docs 零損失）**；⚠️ 標準 `graphify update`（build_merge）的全域 fuzzy-label dedup 會誤併 distinct 節點（本輪實測損 143 個 base-web/docs 真節點）、故改外科式增量；deploy/（compose override/nginx/Dockerfile）＋tests `.sh`/`.sql` 非 graphify 可索引型別、未入圖；**003 envelope.rs/error.rs＋004（entity crate 4 檔／server model：soft_delete＋facade ×4＋live_smoke／tests entity_access_lint.rs）＋005（entity `sys_operation_log.rs`／server `model/audit.rs`＋`facade/sys_operation_log.rs`＋`facade/sys_user.rs` 寫側＋`facade/live_smoke.rs` audit 場景）＋**006（server `auth/{jwt,bearer,password,enforce}.rs`＋`handler/{auth,mod}.rs`＋`state.rs`＋`error.rs` From impls＋`main.rs` boot 重寫＋`facade/sys_user_role.rs` roles_for_user）＋007（rust-api `xdb` crate 全套／server `audit_ctx.rs`〔RequestContext+audit_mw+trace_id+best_effort_audit〕／`state.rs` resolve_client_ip+parse_trusted_cidrs／2 entity `sys_{access_log,login_attempt}.rs`／2 facade `sys_{access_log,login_attempt}.rs`／`sys_operation_log` 型遷移＋`audit.rs`＋`handler/auth.rs` login split＋`facade/live_smoke.rs` C-V-7／`main.rs` 接線；deploy Dockerfile+compose override）**待外科式併入**；大改後再 update（見 [[graphify-update-fuzzy-dedup]]）
 
 ---
 

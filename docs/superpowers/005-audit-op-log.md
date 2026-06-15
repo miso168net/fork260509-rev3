@@ -26,9 +26,9 @@
 ### 2.2 凍結權威
 - **DESIGN §5.2**：mutation → `sys_operation_log`：`audit::mutate_in_txn`（`model/audit.rs`）泛型 wrapper **同 txn** 寫 before/after 快照＋operator＋trace；`AuditSerialize` 對敏感欄（password）redact 成 `"<redacted>"`；`audit.rs` 本身不 import entity（守 lint）。**HTTP/region 軌另走 `sys_access_log`（audit_ctx 中介層＋xdb）——audit 軌三 sink（op-log／access-log／login_attempt）縱切兩刀**（後兩 sink 同刀）。
 - **DESIGN §1.5 L4 FACADE 層**：`model/facade/*`（唯一 entity 存取閘）＋同層 `model/soft_delete.rs`（004 落地）＋`model/audit.rs`（`mutate_in_txn`，**本刀做**）。
-- **DESIGN §3.2 / line 703**：三 log append-only（archetype B）——`sys_operation_log`／`sys_access_log`／`sys_login_attempt`，無 update/delete 路徑、facade 只暴露 insert（各表僅此一個 pub fn）、不可竄改。
-- **DESIGN line 704**：操作審計鏈原子性——mutation 必經 `audit::mutate_in_txn`：業務寫＋before/after 快照＋operator＋trace_id **同 txn**；敏感欄經 `AuditSerialize` redact。
-- **DESIGN line 197**：operator/actor 寫入時取自 `RequestContext.operator_id`（`Option<i64>`，自 bearer verify 後 claims.user_id 解；無/壞 token → None）。`sys_operation_log.operator_id` 可 null（容忍 system/seed actor、不驗存在；§3.3 義務零 FK）。
+- **DESIGN §3.2 / §10.4**：三 log append-only（archetype B）——`sys_operation_log`／`sys_access_log`／`sys_login_attempt`，無 update/delete 路徑、facade 只暴露 insert（各表僅此一個 pub fn）、不可竄改。
+- **DESIGN §10.4**：操作審計鏈原子性——mutation 必經 `audit::mutate_in_txn`：業務寫＋before/after 快照＋operator＋trace_id **同 txn**；敏感欄經 `AuditSerialize` redact。
+- **DESIGN §3.3**：operator/actor 寫入時取自 `RequestContext.operator_id`（`Option<i64>`，自 bearer verify 後 claims.user_id 解；無/壞 token → None）。`sys_operation_log.operator_id` 可 null（容忍 system/seed actor、不驗存在；§3.3 義務零 FK）。
 - **⚠️g**：rev2 source 受控參照（讀允許拷貝禁止）；audit/facade 全新寫，rev2 僅作參照（同 envelope/004 形）。
 
 ### 2.3 rust-api 現況（004 後）
@@ -55,7 +55,7 @@
 **Deferred（不在本刀）：**
 - **第二 audit 刀（rev2 015）**：`sys_access_log`＋`sys_login_attempt` entity/facade＋`audit_ctx` 全域中介層（`RequestContext` 自動抽取）＋**xdb**（client_ip→region）。
 - **operator 自動來源**：bearer verify → `RequestContext.operator_id`/`trace_id` → audit_ctx 刀＋Auth 島；本刀 `mutate_in_txn`／`soft_delete` 收**顯式 `AuditOperator` 參數**（proof 傳合成 operator）。
-- **op-log 讀端**（Super-only 查詢端點、DESIGN line 281 標 ⚠️「rev3 補、rev2 無」）→ Auth 島/波2（需 enforce＋handler＋讀索引）。
+- **op-log 讀端**（Super-only 查詢端點、DESIGN §5.0 標 ⚠️「rev3 補、rev2 無」）→ Auth 島/波2（需 enforce＋handler＋讀索引）。
 - **其餘寫路徑**（`update_*`/`restore`/`create`、`sys_role`/`sys_menu`/`system_settings` 寫側）→ User/Role/Menu/settings 刀（各自首個消費者）。
 - **`DbErr → AppError` From impl**（供 handler `?` 傳播）→ Auth 島刀（CHECKLIST §3.6 已登）。
 - **migration**：無（`sys_operation_log` 已在 m001）。

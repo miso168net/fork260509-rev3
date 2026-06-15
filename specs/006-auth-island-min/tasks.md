@@ -40,7 +40,7 @@
 **Goal**: `enforce_mw` per-route 授權（DB-fresh role、三欄精確、fail-closed）
 **Independent Test**: enforce-proof route——Super(有 policy)→200／無 policy role→403/5003／bad token→3333
 
-- [ ] T010 [US2] test-first `auth/enforce.rs`（enforce_mw 段）：`enforce_mw(State,req,next)`——`verify_bearer`→None→`token_expired`(3333)／path+method／`roles_for_user`→**Err→fail-closed `permission_denied`(5003)＋`tracing::error`**（DESIGN line 686、research R6、**非放行非 internal**）／enforce loop `enforcer.enforce((role,path,method))`→任一 allow→`next`、全 deny→`permission_denied`(5003)；**剝 is_current 7777 gate**（028 波 3）。`#[cfg(test)]` enforce decision（§4）先紅後綠：三欄精確 allow/deny。
+- [ ] T010 [US2] test-first `auth/enforce.rs`（enforce_mw 段）：`enforce_mw(State,req,next)`——`verify_bearer`→None→`token_expired`(3333)／path+method／`roles_for_user`→**Err→fail-closed `permission_denied`(5003)＋`tracing::error`**（DESIGN §10.1、research R6、**非放行非 internal**）／enforce loop `enforcer.enforce((role,path,method))`→任一 allow→`next`、全 deny→`permission_denied`(5003)；**剝 is_current 7777 gate**（028 波 3）。`#[cfg(test)]` enforce decision（§4）先紅後綠：三欄精確 allow/deny。
 - [ ] T011 [US2] enforce-proof route（test/smoke-only、不污染 production router／endpoint_coverage_lint）＋实机 smoke（C-V-4 部分）：傾向 `#[cfg(test)]` 組裝 router＋`tower::ServiceExt::oneshot` in-process 打；live 注入拋棄式 policy `('p','R_SUPER','/__enforce_check__','GET')`→Super token→200／無 R_SUPER 合成 role token→403/5003／bad token→3333；測後清 policy（research R7）。worktree commit＋pin bump。
 
 **Checkpoint**: US2 全綠＝per-route 授權機制就位（200/403/3333、fail-closed；SC-002 達成、波 0 出口「enforce curl 通」於 006 收）。

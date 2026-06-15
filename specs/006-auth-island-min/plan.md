@@ -24,7 +24,7 @@
 
 **Performance Goals**: N/A（⚠️a 效能數字屬波 1）
 
-**Constraints**: stateless（無 sys_token/session/redis、Claims 無 sid/jti、enforce/getUserInfo 無 session gate）／enforce subject＝DB-fresh role（非 JWT claims、§5.3）／三欄精確相等無 glob／enforcer 單例 `Arc<RwLock>` 無 cache／JWT HS256 leeway=0／JWT_ISS/AUD＝"rev3-admin"／refresh **stateless re-sign**、失敗→8888（反迴圈鐵律 R2、**不得**回 3333/9999/9998）／userId string＋2^53 fail-loud（⚠️r）／enforce role-lookup DbErr→**fail-closed 5003**（DESIGN line 686、R6）／handler 回 envelope（003、FR-009）／facade-only entity 存取（entity_access_lint 續綠）／rust-api 全新寫（⚠️g、rev2 受控參照）／無 migration／JWT secret `_FILE`。
+**Constraints**: stateless（無 sys_token/session/redis、Claims 無 sid/jti、enforce/getUserInfo 無 session gate）／enforce subject＝DB-fresh role（非 JWT claims、§5.3）／三欄精確相等無 glob／enforcer 單例 `Arc<RwLock>` 無 cache／JWT HS256 leeway=0／JWT_ISS/AUD＝"rev3-admin"／refresh **stateless re-sign**、失敗→8888（反迴圈鐵律 R2、**不得**回 3333/9999/9998）／userId string＋2^53 fail-loud（⚠️r）／enforce role-lookup DbErr→**fail-closed 5003**（DESIGN §10.1、R6）／handler 回 envelope（003、FR-009）／facade-only entity 存取（entity_access_lint 續綠）／rust-api 全新寫（⚠️g、rev2 受控參照）／無 migration／JWT secret `_FILE`。
 
 **Scale/Scope**: `auth/{jwt,bearer,enforce,password}.rs`＋`handler/auth.rs`（3 handler+DTO）＋`state.rs`＋`facade/sys_user_role.rs` +`roles_for_user`＋`error.rs` +2 From impl＋`main.rs` boot/router＋deps＋驗證（純測+全棧 curl+CDP）。
 
@@ -107,7 +107,7 @@ fork260509-rev3/
 1. **順序**：deps（workspace+server +jsonwebtoken／server +argon2/casbin/sea-orm-adapter）→ `auth/jwt.rs`+`bearer.rs`+`password.rs`（純、test-first 先紅後綠）→ `state.rs`（AppState/JwtConfig、_FILE）→ `auth/enforce.rs`（MODEL+build_enforcer+enforce_mw、剝 7777）→ `facade/sys_user_role.rs` +roles_for_user → `handler/auth.rs`（login/refresh/getUserInfo、reuse 004 facade）→ `error.rs` +From → `main.rs` boot/router 重寫 → enforce-proof（test/smoke-only oneshot）→ C-V（build/MSRV→純測→prod build→全棧 curl→CDP→殘留 grep）→ **兩段式 commit（worktree 逐 task、outer pin 隨同 bump——001-005 教訓）**。
 2. **⚠️ refresh 反迴圈鐵律（R2）**：`/auth/refreshToken` 驗 refresh JWT 失敗→`logout()`(8888)、**絕不**回 token_expired(3333)/9999/9998（否則 base-web 攔截器 refresh 死循環；官方 docs guide/request/usage.md 紀律）。
 3. **⚠️ userId string + 2^53（⚠️r）**：getUserInfo `user.id`(i64)→string、超 2^53→fail-loud（`internal`、不靜默截斷；003 §3.6 ⚠️r 首個落點）。
-4. **⚠️ enforce DB-error fail-closed 5003（R6/DESIGN line 686）**：role-lookup DbErr→`permission_denied()`(5003)＋`tracing::error` log（**非**放行、**非** internal、**非** 3333）；spec FR-005「可區分」讀為 log 層、交 `/speckit-analyze` 校正措辭。
+4. **⚠️ enforce DB-error fail-closed 5003（R6/DESIGN §10.1）**：role-lookup DbErr→`permission_denied()`(5003)＋`tracing::error` log（**非**放行、**非** internal、**非** 3333）；spec FR-005「可區分」讀為 log 層、交 `/speckit-analyze` 校正措辭。
 5. **stateless 剝離紀律（⚠️g）**：rev2 的 session/token-state（sid/jti/session_id/session_policy/is_current/session_mode/redis/sys_token）**不照拷**；只取 minimal auth（jwt/bearer/enforce/login/refresh/getUserInfo）；refresh stateless re-sign、無 reuse 偵測（波 3）。
 6. **結構保證**：jwt/bearer 純零 entity::；enforce/handler 經 facade（find_active_by_*/roles_for_user）取 entity、`entity_access_lint` 續綠；handler 回 envelope、不 re-export Entity；JWT_ISS/AUD＝"rev3-admin"（殘留 grep 守）。
 7. **非新 crate / prod build**：server 內加模組⇒無強制 prod build；但 server 首次依賴 sea-orm-adapter（path）→ C-V-3 跑一次 prod target build 確認 COPY 無缺（rev2 COPY-gap 教訓）。
