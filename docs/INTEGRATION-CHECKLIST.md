@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 1 第一刀（User 直刀）已收＝波 1 完成 → 波 2 data islands**（Role 刀／Menu 刀／system_settings 刀；素材 DESIGN §8.2；⚠️b 審計查詢讀端＋UI 待拍〔波 2 排程前〕）。波 1 wave-collapse 已歸檔（本檔 §2 波1 收縮＋[DECISIONS §2](INTEGRATION-DECISIONS.md) as-built）。008 follow-up 見本檔 §3.11（均不阻塞）。
+**下一步**: **波 1 已收＝波 1 完成 → 波 2 data islands**（建議序 Menu→Role→system_settings→**審計讀端〔⚠️b ✅ 拍：做、波 2 殿後刀〕**；素材 DESIGN §8.2；**波 2 內部排序待 user 拍**〔dossier 建議 Menu 先：Role 授權 modal 依賴 Menu registry＋Menu 為最複雜 de-risk〕）。波 1 wave-collapse 已歸檔。008 follow-up 見本檔 §3.11（均不阻塞）。
 
 ---
 
@@ -46,10 +46,10 @@
 - [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕）
 - [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent）
 - [ ] **`system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029 對應;若③=A 掛此波）
-- [ ] **（⚠️b 核可後）審計查詢讀端＋UI 刀**（三 log 讀端＋R_SUPER policy seed＋manage 新頁〔MODAL-WIRING use (e)〕;DESIGN §8.2 待拍板刀位）
+- [ ] **審計查詢讀端＋UI 刀（⚠️b ✅ 核可、波 2 殿後刀）**（三 log 讀端〔operation/access/login〕＋R_SUPER policy seed＋新 sys_menu seed＋§5.8 讀端索引〔operation/access 需補〕＋manage 新頁〔MODAL-WIRING use (e)〕；排 Menu→Role→settings 之後）
 
-**前置拍板（user 親決,1 項）**:
-- [ ] ⚠️b 審計查詢讀端＋UI 補做（預設=補、Super-only;波 2 排程前）
+**前置拍板（user 親決,1 項 ✅ 全拍）**:
+- [x] ✅ ⚠️b＝**做、波 2 殿後刀**（補三 log 讀端＋Super-only UI、2026-06-15;結論見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
 **出口條件（DESIGN §8.4）**:
 - [ ] 各刀工序全過
@@ -264,10 +264,10 @@
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 23**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜⚠️x endpoint_coverage_lint 波 0 換波豁免(結構上需 gated 端點才能立、移交波 1 第一刀)｜③第一刀＝A User 直刀(sys_user 根 entity 最早凍結、波0 已驗管線故 B 排練價值縮水)｜⚠️a 效能批准保守預設(p95 300/500ms/1s・99.5%/月)｜⚠️o RI 維持 handler 層驗(不下沉 facade)｜⚠️u 不採納 §IV Q10(維持 9 題、不再議)
+**已決 24**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜⚠️x endpoint_coverage_lint 波 0 換波豁免(結構上需 gated 端點才能立、移交波 1 第一刀)｜③第一刀＝A User 直刀(sys_user 根 entity 最早凍結、波0 已驗管線故 B 排練價值縮水)｜⚠️a 效能批准保守預設(p95 300/500ms/1s・99.5%/月)｜⚠️o RI 維持 handler 層驗(不下沉 facade)｜⚠️u 不採納 §IV Q10(維持 9 題、不再議)｜⚠️b 審計讀端=做、波 2 殿後刀(補三 log〔operation/access/login〕讀端+Super-only UI、2026-06-15)
 
-**開放 10**(依最晚決策點分組):
-- 波 2~3:⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
+**開放 9**(依最晚決策點分組):
+- 波 3:⚠️m alt-login 入波(波3排程前)
 - 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention｜⚠️w login lockout 刀位/設計(消費 007 sys_login_attempt、per-ip 因 007 真實 IP 現可行、排程時定)
 
 ---

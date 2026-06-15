@@ -26,7 +26,7 @@
 | 待決⑥c | AES-256 靜態加密 | rev3 v1 = 磁碟/tablespace 層（§2 表 #3） | §2 | prod 部署定稿前（加密卷屬部署期決策） |
 | 待決⑥d | 合規姿態升級 | 維持現姿態（§2 表 #4） | §2 | 對外／多租戶觸發時 |
 | ⚠️a | 效能／可用性數字 | ✅ 已決(2026-06-15)：**批准保守預設**——list 讀 p95<300ms／寫(含同 txn 審計)p95<500ms／login p95<1s（argon2id 主成本）／可用性 99.5%/月（容許計畫性維護、恢復＝重啟容器）。對齊 §1.3「≤50 並發 admin 後台、不設吞吐 SLA」；波 1 起為驗收目標、`/speckit-plan` C-V 納入。user 親決 | §1.3 | ✅ 已決 |
-| ⚠️b | 審計查詢讀端 + UI 補做 | 補（Super-only；矩陣已預標 ⚠️） | §1.2・§5.0 | 波 2 排程前 |
+| ⚠️b | 審計查詢讀端 + UI 補做 | ✅ 已決(2026-06-15)：**做、排波 2 殿後刀**——補三 log 表（`sys_operation_log`/`sys_access_log`/`sys_login_attempt`）查詢讀端 + Super-only manage UI（MODAL-WIRING use (e)）；排序在波 2 核心 data-island（建議 Menu→Role→system_settings）**之後**（read-only reporting、可殿後讓核心 CRUD 先清波 2）。落地需：3 讀 route + R_SUPER policy seed + 新 sys_menu seed（審計頁）+ §5.8 讀端 filter 索引（operation/access 需補、login 已就緒）+ wire 從零設計（rev2 零讀端、無 mock 可鏡像）。user 親決 | §1.2・§5.0 | ✅ 已決 |
 | ⚠️c | `/auth/error` | ✅ 已決(2026-06-12)：**翻案 — 做**（echo 端點）。配套完整包：`alova/request`＋`alova/scenes`＋`function/request` 三 demo 頁進 sys_menu seed（初始僅勾 R_SUPER、下放交 ROLE 勾選層）；端點補 `/auth/error`＋`sendCaptcha`/`verifyCaptcha`（stub 雙模、⚠️m captcha 依賴就此解決）＋`/mock/getLastTime`（回 `{time}`）；§1.4 兩條「不做」同步翻案 | §1.4・§6.1 | ✅ 已決 |
 | ⚠️d | redis-stack image tag | ✅ 已決(2026-06-13)：**建 stack 當下即 pin 數字版**（infra/deploy 刀寫 compose 時查當下 stable 直接 pin;升版走顯式 bump commit;對齊 §1.6 版本鎖點哲學） | §1.6 | ✅ 已決 |
 | ⚠️e | `5000` 的 HTTP status 配對 | ✅ 已決(2026-06-12)：**一律 HTTP 200 信封**（對齊前端 msg 顯示通道僅 200 生效＋「business error 走 200」總則）；`AppError::Internal`→HTTP 500 mapping 標 test-only 或刪除；contract test 鎖 `5000`→200 | §5.4・§7.3 | ✅ 已決 |
