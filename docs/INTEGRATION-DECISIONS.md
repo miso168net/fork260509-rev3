@@ -81,7 +81,18 @@ rev2 001-012+015 對應的跨切地基；首個 spec-kit feature 序列（七刀
 
 **出口條件四項全綠**（DESIGN §8.4、2026-06-15 驗）：dev stack `up --wait` healthy（001）／三守恆〔entity_access_lint ✅〔004〕・migration up→down→up ✅〔002〕・endpoint_coverage_lint **波 0 換波豁免**〔⚠️x user 親決 2026-06-14、移交波 1 第一刀〕〕／envelope 13 碼 contract 綠（003）／login→getUserInfo→enforce 鏈 curl 通（006）。**波 0 收官**。
 
-### 波 1 — 第一刀（未開始；User 直刀，③ 已拍 A 2026-06-15）
+### 波 1 — 第一刀＝User 直刀 ✅ 全完成（2026-06-15）
+
+**008-user-management**（③=A User 直刀、merge `b8de602` 回 rev3-admin-root、worktree rust `0de38d6`／base-web `00911793`、feature branch 保留供 audit）：一刀逼出 migration→facade→handler→enforce→wire→frontend 全鏈。
+
+- **後端**（純加模組到既有 `server` crate、**零新 crate／零 migration**——schema/seed/policy 全在波 0、m002 6 端點已 seed）：`handler/system_manage` 6 端點（getUserList 分頁+6 filter／getAllRoles／addUser／updateUser／deleteUser／batchDeleteUser）＋7 新 facade fn（`sys_user::{search_active,create,update}`／`sys_role::{all_active,find_active_by_codes}`／`sys_user_role::{roles_for_users batch〔避 N+1，2 query〕,replace_roles_in_txn}`）＋wire DTO（serde i16↔string-enum「1」/「2」/null、**2^53 id fail-loud guard**）＋handler-層 application-RI（⚠️o：撞名 pre-check→2222〔**Q3：既有 `From<DbErr>→5000` 之上加 `find_active_by_name` pre-check、非靠自動映射**〕／role code→id 解析數不符→2222〔FR-010 整批拒〕／值域→2222／soft-deleted 拒更→2222〔FR-009〕／種子 id∈{1,2,3} 拒刪→2222〔FR-014/015 單+批 all-or-nothing〕；種子**可編輯** FR-016）＋composite role-delta 審計（複用 005 `mutate_in_txn`：Insert `payload_after` 含 roles／Update before+after roles／SOFT_DELETE 無 roles〔**Q1=B**〕／no-op 零 audit〔**Q2=A**〕、password 恆 redact、operator_id+trace_id 每筆）＋6 route `enforce_mw` `route_layer`（**首批 gated 業務端點**、enforce_mw 自 006）。
+- **`endpoint_coverage_lint` stand-up（⚠️x 移交履行）**：`server/tests/endpoint_coverage_lint.rs` build-failing 靜態源碼掃描，斷每 enforce-gated route 有 ≥1 m002 casbin policy（gated⊆policies、容忍 seeded-but-unimplemented）；**`EXPECTED_ROUTE_COUNT=6`＝本刀實際 gated 數**（非 ⚠️x/DESIGN §7.1 target 35；隨後刀 gated route 增長趨近 35、屆時調 EXPECTED）；controller 獨立 sanity-bitten（破壞一條 policy→lint 真失敗並指名 route→還原→再綠）。SC-009 硬 gate 立。
+- **前端**（base-web、BASE-WEB-WRAPPER L3＋MODAL-WIRING L4）：新 `rev3-system-manage.ts` 4 wrapper（fetchAddUser/UpdateUser/DeleteUser/BatchDeleteUser、`// [rev3-inline WRAPPER]` 標記）＋接 3 stub（index.vue handleDelete/handleBatchDelete〔MW(a)〕、drawer handleSubmit add/edit 分支〔MW(c)〕，原行保留 `// [rev3-inline MW(a)/(c)] 原行:` 註解）；`system-manage.ts`／`auth.ts`／`route.ts` **零改**（§III ⚠️s 守住、grep 稽核 fork-delta 恰 3 檔）。
+- **驗收**（出口三項全綠）：§8.1 工序全過／**CDP 經 front-nginx 真 `/api` modal smoke**（add/edit/delete clean pass、cutover gitignored `.env.test.local`→rust-api）／entity §5.0 各面勾消。109 純測＋9 lint＋22 entity_lint＋5 live smoke（`#[ignore]` `--test-threads=1`）＋curl/psql＋CDP＋p95（list 12ms／write 14.6ms、≪300/500ms ⚠️a）全綠；**10 SC 全達／Constitution Check PASS**。41 task（9 phase）subagent-driven TDD＋每單元兩段式 review（spec→quality）。
+- **★ CDP 抓修真 bug**（`0de38d6`）：前端 axios 把未設 filter 序列化成空字串 query（`status=`）→serde `Some("")`→`wire_to_i16` 回 2222／`user_phone=''` 排除 NULL-phone→**列表瀏覽器空列**；修＝空字串視為未設（FR-002 空欄略過）。**curl 乾淨 query 5+ 輪全綠完全掩蓋、CDP browser modal smoke 才抓到＝「curl≠modal、雙軌驗收」價值印證**（C-V-6 不 defer 的回報）。memory [[empty-string-query-params-mask-by-curl]]。
+- **follow-up**（不阻塞、CHECKLIST §3.11）：createBy/updateBy 回 id-string（非人名、需 batched 解析）／nickName·phone·email base-web non-nullable typings vs server 忠實 null／`.env.test.local` cutover 工件留存（在則 dev 打真後端）。
+
+**波 1 收官**（= 此一刀；波 2 data islands 待開）。
 
 ### 波 2 — data islands（未開始）
 

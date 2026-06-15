@@ -357,10 +357,11 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **008-user-management**（波 1 第一刀＝User 直刀③=A；spec→clarify→plan 完成、在 `008-user-management` feature branch）。波 0 七刀（001-007）全完成。
-進度: 008 設計鏈 — brainstorm（`docs/superpowers/008-user-management.md`）→ specify（spec.md＋checklist、16/16 PASS、零 NEEDS CLARIFICATION）→ clarify（5 條 Session 2026-06-15：DELETE 審計不含 roles／no-op 不記／rename-create DB 仲裁／SC-008 server-side／stale-role UX follow-up）→ plan（plan.md／research.md／data-model.md／contracts/verification-commands.md／quickstart.md；Constitution §IV 九題 PASS）。
-設計重點（008 plan as-designed）: 6 endpoint 純加模組到既有 server crate＋7 新 facade fn／**零 migration**（schema·seed·policy 全在波 0、6 端點 casbin m002 已 seed）／handler 層 RI（⚠️o）＋composite role-delta 審計／facade-only＋`enforce_mw` 首批 gated route／base-web `rev3-system-manage.ts` wrapper＋MODAL-WIRING(a)(c) 接 3 stub／CDP cutover（gitignored `.env.test.local`→rust-api）。**★ 實碼 grep 驗**：Q1=B/Q2=A 確認；**Q3 critical gap**（`From<DbErr>→5000`、dup user_name 必加 `find_active_by_name` pre-check→biz `2222`）；`endpoint_coverage_lint` 須 008 stand up（⚠️x 移交）；p95 server-side 為新 C-V 類別；種子保護無既有碼須加。
-下一步: `/speckit-tasks`（tasks.md）→ `/speckit-analyze`（跨檔一致性）→ `superpowers:executing-plans`（非 `/speckit-implement`）。
+Active feature: **008-user-management ✅ 全綠收刀＋merge 回 rev3-admin-root（波 1 第一刀＝User 直刀③=A、2026-06-15、merge `b8de602`；feature branch 保留供 audit）**。波 0 七刀（001-007）全完成、波 1（= 此一刀）完成。
+進度: 41 task（9 phase）全完成 — Setup→Foundational→US1 list/search→US2 create→US3 edit→US4 delete+種子保護→US5 RBAC+endpoint_coverage_lint→US6 audit→Polish；subagent-driven TDD＋兩段式 review（spec→quality）每單元。
+交付: 6 端點＋7 facade fn＋wire DTO（i16↔string／2^53 guard）＋composite role-delta 審計（複用 005 `mutate_in_txn`）＋6 route `enforce_mw` gated＋`endpoint_coverage_lint`（SC-009）；**零 migration／零新 crate**；前端 `rev3-system-manage.ts` wrapper＋MODAL-WIRING(a)(c)（`system-manage.ts`/`auth.ts`/`route.ts` 零改、fork-delta `rev3-inline` 標記）。
+驗收: 109 純測＋9 lint＋22 entity_lint＋5 live smoke＋curl/psql＋**CDP modal smoke（C-V-6 clean pass）**全綠；p95 12/14.6ms；10 SC／Constitution PASS；**CDP 抓到並修空字串 filter bug**（`0de38d6`、FR-002、curl≠modal 印證、見 memory）；Q3 dup→2222（非 5000）／種子保護（單+批 all-or-nothing、FR-016 可編輯）／Q1 無 roles／Q2 零 audit。
+下一步: 波 1 第一刀已收（= 波 1 完成）→ **波 2 data islands**（Role/Menu/system_settings 刀；素材 DESIGN §8.2；⚠️b 審計讀端待拍）。follow-up 見 [CHECKLIST §3.11](docs/INTEGRATION-CHECKLIST.md)（createBy id-string／nullable typings／`.env.test.local` cutover 工件、均不阻塞）。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

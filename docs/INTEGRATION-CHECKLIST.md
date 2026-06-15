@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 ✅ 全完成（001-007 七刀全收、2026-06-15 收官）→ 波 1 待開（第一刀＝User 直刀、③ 已拍 A 2026-06-15）**（波 0／-1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 ✅ 全完成（001-007）→ 波 1 第一刀＝User 直刀 ✅ 全綠收刀＋merge（008-user-management、`b8de602`、2026-06-15、= 波 1 完成）→ 波 2 data islands 待開**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-15 波 1 前維護批**:① 波 1 前清債〔node26 統一／nginx 1.31.1〔CVE-2026-42945〕／postgres healthcheck＋migrate disable／openssl pin／私鑰 chmod／secret＋compose 文件、§3.4 多項 ✅〕② **揮發行號 ref 全清**〔CHECKLIST/DECISIONS/brainstorm/spec 的 `§3.4-NNN`／`DESIGN line NNN`→穩定 §章節/附錄錨、12+ 處、內容驗證＋對抗複驗、見 [[brainstorm-doc-decision-table-not-warn-codes]]〕③ **graphify 003-007 後端碼同步**〔dedup-safe `build_merge(dedup=False)` 無 prune、4274→4532 nodes／581→615 communities／0 LLM token、見 [[graphify-update-fuzzy-dedup]]〕;拆 5 commit（worktree `01e1263`／outer `9fd7005`·`045b9af`·`3649753`·`c7fe908`）
-- **2026-06-15 007-audit-overlay 全綠收刀＋merge（波 0 第七刀／第二 audit 刀、波 0 收官）**:audit overlay 三 sink — vendored xdb（ip→region file-path、§I.5）＋`sys_access_log`/`sys_login_attempt` entity/facade（client_ip INET、IpAddr→IpNetwork seam）＋`audit_ctx` outermost 中介層（每請求無條件建 RequestContext、寬鬆 operator〔獨立 enforce〕、best_effort_audit、connect_info）＋`resolve_client_ip` trusted-proxy（peer-gate→rightmost-untrusted→fail-safe、推進 §5.9）＋access-log operator-gate＋login inner/outer split（**單一 outer 記錄點覆蓋全 7 終端路徑**〔含 status-disabled／?-DB-error〕、wire byte-identical）＋op-log INET 回填（解 005 §3.8 42804）;deps +ipnetwork 0.20/once_cell/uuid（MSRV 1.86 lock pin、--locked）;無 migration、無新 wire;test-first TDD＋live smoke（C-V-5/6/4/7＋真實 IP from XFF 跳代理〔8.8.8.8 解出〕＋best-effort 斷寫業務仍 200）＋prod image build C-V-8＋entity_access_lint C-V-9 全綠;26 單元 subagent-driven（關鍵單元對抗式 fresh-context 審查 APPROVED）;7 SC／14 FR 滿足;修 4 plan 缺口（once_cell/uuid 漏 deps、登入終端路徑低估、T026 facade 路徑）;merge `9046b63` 回 rev3-admin-root、feature branch 保留
+- **2026-06-15 008-user-management 全綠收刀＋merge（波 1 第一刀＝User 直刀③=A、波 1 完成）**:6 端點＋7 facade＋wire DTO＋composite role-delta 審計（複用 005 `mutate_in_txn`）＋6 route `enforce_mw` gated＋**`endpoint_coverage_lint` stand-up（⚠️x 移交、SC-009、controller sanity-bitten 真咬）**；零 migration／零新 crate；前端 `rev3-system-manage.ts` wrapper×4＋MODAL-WIRING(a)(c)（`system-manage.ts`/`auth.ts`/`route.ts` 零改）；41 task subagent-driven TDD＋兩段式 review（spec→quality）；109 純測＋9 lint＋22 entity_lint＋5 live smoke＋curl/psql＋**CDP modal smoke（C-V-6 clean pass）**＋p95 12/14.6ms 全綠；10 SC／Constitution PASS；**CDP smoke 抓到並修空字串 filter bug**（`0de38d6`、FR-002 空欄略過、curl 乾淨 query 掩蓋＝curl≠modal 印證、見 [[empty-string-query-params-mask-by-curl]]）；Q3 dup→**2222 非 5000**／種子保護（單+批 all-or-nothing、FR-016 可編輯）；worktree rust `0de38d6`/base-web `00911793`、merge `b8de602`
+- **2026-06-15 波 1 前維護批**:① 波 1 前清債〔node26／nginx 1.31.1〔CVE-2026-42945〕／postgres healthcheck／openssl pin／secret 文件〕② 揮發行號 ref 全清（→穩定 §章節錨、見 [[brainstorm-doc-decision-table-not-warn-codes]]）③ graphify 003-007 同步進圖;拆 5 commit（worktree `01e1263`／outer `9fd7005` 等）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 已收官 ✅ → 波 1 第一刀＝User 直刀**（③ 已拍 A、2026-06-15；原A=User 直刀〔rev2 016*+017、§5 全套+M:N join+★MODAL-WIRING〕 / B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV〕；DESIGN §8.3 比較）。⚠️a/⚠️o/⚠️u 同日拍定（見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）；起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3、`before_specify` pre-hook 建 feature branch）。
+**下一步**: **波 1 第一刀（User 直刀）已收＝波 1 完成 → 波 2 data islands**（Role 刀／Menu 刀／system_settings 刀；素材 DESIGN §8.2；⚠️b 審計查詢讀端＋UI 待拍〔波 2 排程前〕）。波 1 wave-collapse 已歸檔（本檔 §2 波1 收縮＋[DECISIONS §2](INTEGRATION-DECISIONS.md) as-built）。008 follow-up 見本檔 §3.11（均不阻塞）。
 
 ---
 
@@ -33,22 +33,9 @@
 
 > 七刀全收（001 infra-deploy `c9ffad5`／002 schema-baseline `9233ae0`／003 envelope `7960a73`／004 soft-delete `e8334d7`／005 audit-op-log `65f4bbe`／006 auth-island `2c5a2a1`／007 audit-overlay `9046b63`）；rev2 001-012+015 對應跨切地基。**前置拍板 4 項全拍完（2026-06-13：①flat-in-main／④僅 join 表 FK／⚠️d redis pin 數字版／⚠️k 短編號 migration）**。**出口四項全綠**：dev stack `up --wait` healthy（001）／三守恆〔entity_access_lint ✅〔004〕・migration up→down→up ✅〔002〕・endpoint_coverage_lint **波 0 換波豁免**〔⚠️x user 親決 2026-06-14、移交波 1 第一刀〕〕／envelope 13 碼 contract 綠（003）／login→getUserInfo→enforce 鏈 curl 通（006）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、per-刀 commit 見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
-### 波 1 — 第一刀（未開始）
+### 波 1 — 第一刀＝User 直刀 ✅ 全完成+已歸檔 (2026-06-15)
 
-**User 刀**（③ 已拍 A、2026-06-15）:migration→facade→handler→enforce→wire→frontend 全鏈＋§5 各面一次逼出。
-
-**刀/feature 清單**:
-- [ ] **第一刀＝User 直刀**（③ 已拍 A、2026-06-15；原A=User 直刀〔rev2 016*+017 規模、§5 全套+M:N join+★MODAL-WIRING〕或 B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV 獨有〕;兩案比較見 DESIGN §8.3）
-
-**前置拍板（user 親決,3 項 ✅ 全拍 2026-06-15;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
-- [x] ✅ ③第一刀位＝**A User 直刀**（2026-06-15）
-- [x] ✅ ⚠️a＝**批准保守預設**（p95 300/500ms/1s・99.5%/月、2026-06-15）
-- [x] ✅ ⚠️o＝**維持 handler 層驗**（不下沉 facade、2026-06-15）
-
-**出口條件（DESIGN §8.4）**:
-- [ ] §8.1 工序 9 列全過
-- [ ] CDP 經 front-nginx 真 `/api` 路徑驗收
-- [ ] 該 entity 的 §5.0 列逐面勾消
+> 008-user-management（③=A User 直刀）全鏈一刀逼出 migration→facade→handler→enforce→wire→frontend：6 端點＋7 facade fn＋wire DTO（i16↔string／2^53 guard）＋composite role-delta 審計（複用 005 `mutate_in_txn`）＋6 route `enforce_mw` gated（首批 gated 業務端點）＋`endpoint_coverage_lint` stand-up（⚠️x 移交、SC-009 硬 gate、sanity-bitten）；**零 migration／零新 crate**（schema/seed/policy 全在波 0、m002 6 端點已 seed）；前端 `rev3-system-manage.ts` wrapper×4＋MODAL-WIRING(a)(c)（system-manage.ts/auth.ts/route.ts 零改、`rev3-inline` 標記）。前置拍板 ③A／⚠️a／⚠️o 全拍。出口三項全綠：§8.1 工序全過／CDP 經 front-nginx 真 `/api` modal smoke clean pass／entity §5.0 各面勾消。109 純測＋9 lint＋22 entity_lint＋5 live smoke＋curl/psql＋CDP＋p95 12/14.6ms 全綠；10 SC／Constitution PASS；CDP 抓修空字串 filter bug（`0de38d6`、FR-002）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、per-task commit 見 worktree git／merge `b8de602` 回 rev3-admin-root、feature branch 保留。
 
 ### 波 2 — data islands（未開始）
 
@@ -242,6 +229,18 @@
 
 **login-attempt 含系統錯誤終端（⚠️w lockout 消費者注意）**:
 - [ ] login inner/outer 單一記錄點記**每條**終端路徑、含 DB/系統錯誤（5000）終止（FR-004 的 superset）;⚠️w login lockout 消費 fail 列時若需區分「憑證失敗 vs 系統錯誤」須加 filter（007 未分欄、`success=false` 涵蓋兩者）
+
+### 3.11 008-user-management follow-up（收刀移交 2026-06-15;均不阻塞、消費刀觸發時處理）
+
+**wire 顯示語意（非 type-lie、UX）**:
+- [ ] `createBy`/`updateBy` 回 operator-**id 字串**（非人名）;entity `created_by`/`updated_by`＝`Option<i64>`、base-web typings＝`string`（type 對齊無 lie），但 UI 顯示數字 id。需人名則加 **batched** operator-id→name 解析（單一額外 query over distinct ids、勿 per-row N+1）
+- [ ] base-web typings `nickName`/`userPhone`/`userEmail`＝**non-nullable** `string`，但 server 忠實發 `null`（DB 欄 nullable）;較安全方向（不靜默 coerce ""）、type 不 lie 但前端型偏窄。MODAL-WIRING/wrapper 層調和或前端 typings 放寬時處理
+
+**CDP cutover 工件**:
+- [ ] `base-web/.env.test.local`（`VITE_SERVICE_BASE_URL=http://rust-api:31081`、gitignored）留存自 C-V-6 cutover;**在則 normal dev base-web 打真 rust-api 而非 apifox mock**。要回 mock：刪此檔＋重啟 base-web 容器（整合驗收用真後端更貼近目標態、可留）
+
+**已修（CDP 發現、留痕）**:
+- [x] ✅（2026-06-15、`0de38d6`）空字串 filter bug：前端未設 filter→空字串 query→`Some("")`→2222／`user_phone=''` 排除 NULL→空列;修＝空字串視為未設（FR-002 空欄略過）＋CDP 重跑驗證;curl 乾淨 query 掩蓋＝curl≠modal 印證、見 [[empty-string-query-params-mask-by-curl]]
 
 ---
 
