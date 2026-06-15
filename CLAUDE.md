@@ -361,7 +361,7 @@ Active feature: **008-user-management ✅ 全綠收刀＋merge 回 rev3-admin-ro
 進度: 41 task（9 phase）全完成 — Setup→Foundational→US1 list/search→US2 create→US3 edit→US4 delete+種子保護→US5 RBAC+endpoint_coverage_lint→US6 audit→Polish；subagent-driven TDD＋兩段式 review（spec→quality）每單元。
 交付: 6 端點＋7 facade fn＋wire DTO（i16↔string／2^53 guard）＋composite role-delta 審計（複用 005 `mutate_in_txn`）＋6 route `enforce_mw` gated＋`endpoint_coverage_lint`（SC-009）；**零 migration／零新 crate**；前端 `rev3-system-manage.ts` wrapper＋MODAL-WIRING(a)(c)（`system-manage.ts`/`auth.ts`/`route.ts` 零改、fork-delta `rev3-inline` 標記）。
 驗收: 109 純測＋9 lint＋22 entity_lint＋5 live smoke＋curl/psql＋**CDP modal smoke（C-V-6 clean pass）**全綠；p95 12/14.6ms；10 SC／Constitution PASS；**CDP 抓到並修空字串 filter bug**（`0de38d6`、FR-002、curl≠modal 印證、見 memory）；Q3 dup→2222（非 5000）／種子保護（單+批 all-or-nothing、FR-016 可編輯）／Q1 無 roles／Q2 零 audit。
-下一步: 波 2 data islands、**第一刀＝Role 刀**（user 拍序 **Role 先**、2026-06-15；序 Role→Menu→system_settings→審計讀端〔⚠️b ✅ 殿後〕）。**Role scope 待 brainstorm 定**：純 sys_role CRUD vs ＋授權指派〔後者依賴 Menu `getMenuTree`/`getAllPages`〔現未實作〕＋連動 dossier 待決(c) runtime casbin 編輯 in/out〕。起手＝`superpowers:brainstorming`（產 `docs/superpowers/009-*.md`）→ 手動 `/speckit-specify`。008 follow-up 見 [CHECKLIST §3.11](docs/INTEGRATION-CHECKLIST.md)（均不阻塞）。
+下一步: 波 2 第一刀＝Role 刀、**scope (i) 純 sys_role CRUD**（brainstorm Q1 拍 2026-06-15）。**009 Phase 0 brainstorm ✅**（`docs/superpowers/009-role-management.md`、`613574c`）→ 下一步手動 `/speckit-specify`（input=該檔、`before_specify` pre-hook 建 `009-role-management` branch；非 writing-plans）。授權指派需 net-new sys_menu→Menu 刀後；序 Role→Menu→settings→審計〔⚠️b 殿後〕。008 follow-up 見 [CHECKLIST §3.11](docs/INTEGRATION-CHECKLIST.md)（均不阻塞）。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

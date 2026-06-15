@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 2 data islands、第一刀＝Role 刀**（user 拍序 **Role 先**、2026-06-15；序 Role→Menu→system_settings→審計讀端〔⚠️b 殿後〕）。⚠️ **Role-first scope 待定**（Role brainstorm 定）：Role 授權指派 modal（menu/button-auth）依賴 Menu 的 `getMenuTree`/`getAllPages`（現**未實作**）→ Role 刀二擇一〔**(i)** 純 sys_role CRUD、授權指派延後到 Menu 刀；或 **(ii)** CRUD＋授權指派＋順帶實作該 2 個 Menu 讀端（部分 Menu bleed）〕；連動 dossier 待決(c) runtime casbin 編輯 in/out。起手＝`superpowers:brainstorming`→手動 `/speckit-specify`（pre-hook 建 009 feature branch）。008 follow-up 見本檔 §3.11（均不阻塞）。
+**下一步**: **波 2 第一刀＝Role 刀、scope (i) 純 sys_role CRUD**（brainstorm Q1 拍 2026-06-15）。**009 Phase 0 brainstorm ✅ 完成**（`docs/superpowers/009-role-management.md`、`613574c`；scope (i)／delete soft-only inert-via-active-filter／search roleName·roleCode 模糊 status 精確／roleCode 不可變＋種子 id 拒刪／leaf 審計／dup-code 2222／CDP cutover 沿 008 §6／008 carry-forward 全帶）→ **下一步手動 `/speckit-specify`**（input=該檔；`before_specify` pre-hook 建 `009-role-management` feature branch；非 writing-plans、CLAUDE.md §3）。授權指派/治理 OUT（需 net-new sys_menu→Menu 刀後／波3）。序 Role→Menu→system_settings→審計讀端〔⚠️b 殿後〕。008 follow-up 見本檔 §3.11（均不阻塞）。
 
 ---
 
