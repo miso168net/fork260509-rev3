@@ -8,6 +8,12 @@
 
 **Input**: User description: "@docs/superpowers/009-role-management.md ultrathink"
 
+## Clarifications
+
+### Session 2026-06-15
+
+- Q: When two administrators concurrently create roles with the same code and both pre-checks pass before either writes, how is the conflict resolved? → A: The active-uniqueness constraint is the **final arbiter**; the pre-check is only an optimization. A race that slips past the pre-check surfaces as the **same business rejection** ("role code already taken") — never a system/transport failure or a partial state. **No** version / optimistic-lock field is added (that would require a schema change, which is out of this feature's zero-migration scope).
+
 ## User Scenarios & Testing *(mandatory)*
 
 The actors are **administrators** of the back-office. Two permission levels matter for this feature: a **super-admin** (full role management) and an **admin** (may view the role list). A **regular** account has no role-management access. Three **baseline roles** seeded at setup — the super-admin role, the admin role, and the regular role — must never be deletable.
@@ -108,6 +114,7 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 - If an infrastructure failure interrupts a batch removal **after** the baseline-protection check passes, roles removed before the failure stay removed and the rest are untouched; the administrator can safely retry.
 - A search field left blank (or cleared) does not filter on that field.
 - Creating a role whose code matches a previously-removed role is allowed (removed codes are freed for reuse).
+- If two administrators concurrently create a role with the same code (both pre-checks pass before either writes), the active-uniqueness constraint is the final arbiter and the losing create receives the same "role code already taken" business rejection — not a system failure or a partial state.
 - Submitting an out-of-range status value is refused.
 - A baseline role may be renamed, re-described, or have its status changed; only its removal is blocked.
 - A removed role's existing permission grants and user assignments remain in storage but are **inert** — they no longer count toward any user's effective permissions; cleaning them up is future governance scope.
