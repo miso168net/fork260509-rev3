@@ -357,10 +357,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **（無 active feature）** —— 007-audit-overlay 已收刀＋merge（**波 0 收官**、2026-06-15、merge `9046b63`、未 push）。波 0 地基七刀（001-007）全完成。
-進度: 波 0 ✅ 全完成（001 infra／002 schema／003 envelope／004 soft-delete／005 op-log／006 auth-island／007 audit-overlay）；007 驗收 C-V-1~9 全綠（含 prod image build C-V-8）、7 SC／14 FR 達成；feature branch 007-audit-overlay 保留供 audit。
-設計重點（007 as-built）: audit_ctx outermost 無條件建 RequestContext／access-log operator-gate／login **inner-outer 單一記錄點覆蓋全 7 終端路徑**（非「6 點」、補 status-disabled＋`?`-DB-error）／`resolve_client_ip` trusted-proxy（推進 DESIGN §5.9）／xdb **file-path 載入**（R4 反轉 brainstorm embed、boot guarded 缺檔不 panic）／op-log INET 回填（解 005 §3.8 42804）／+ipnetwork 0.20·once_cell·uuid（MSRV 1.86 lock pin、`--locked`）。
-下一步: **波 1 第一刀**（刀位待決③：A=User 直刀 / B=`system_settings` 打樣，DESIGN §8.3）。開工前拍 ③＋⚠️a 效能數字＋⚠️o RI 層位（DECISIONS §1），起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3、`before_specify` pre-hook 建 feature branch）。git 全在本機**未 push**。
+Active feature: **008-user-management**（波 1 第一刀＝User 直刀③=A；spec→clarify→plan 完成、在 `008-user-management` feature branch）。波 0 七刀（001-007）全完成。
+進度: 008 設計鏈 — brainstorm（`docs/superpowers/008-user-management.md`）→ specify（spec.md＋checklist、16/16 PASS、零 NEEDS CLARIFICATION）→ clarify（5 條 Session 2026-06-15：DELETE 審計不含 roles／no-op 不記／rename-create DB 仲裁／SC-008 server-side／stale-role UX follow-up）→ plan（plan.md／research.md／data-model.md／contracts/verification-commands.md／quickstart.md；Constitution §IV 九題 PASS）。
+設計重點（008 plan as-designed）: 6 endpoint 純加模組到既有 server crate＋7 新 facade fn／**零 migration**（schema·seed·policy 全在波 0、6 端點 casbin m002 已 seed）／handler 層 RI（⚠️o）＋composite role-delta 審計／facade-only＋`enforce_mw` 首批 gated route／base-web `rev3-system-manage.ts` wrapper＋MODAL-WIRING(a)(c) 接 3 stub／CDP cutover（gitignored `.env.test.local`→rust-api）。**★ 實碼 grep 驗**：Q1=B/Q2=A 確認；**Q3 critical gap**（`From<DbErr>→5000`、dup user_name 必加 `find_active_by_name` pre-check→biz `2222`）；`endpoint_coverage_lint` 須 008 stand up（⚠️x 移交）；p95 server-side 為新 C-V 類別；種子保護無既有碼須加。
+下一步: `/speckit-tasks`（tasks.md）→ `/speckit-analyze`（跨檔一致性）→ `superpowers:executing-plans`（非 `/speckit-implement`）。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
