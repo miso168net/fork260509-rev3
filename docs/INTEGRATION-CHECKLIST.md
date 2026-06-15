@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 1 已收＝波 1 完成 → 波 2 data islands**（建議序 Menu→Role→system_settings→**審計讀端〔⚠️b ✅ 拍：做、波 2 殿後刀〕**；素材 DESIGN §8.2；**波 2 內部排序待 user 拍**〔dossier 建議 Menu 先：Role 授權 modal 依賴 Menu registry＋Menu 為最複雜 de-risk〕）。波 1 wave-collapse 已歸檔。008 follow-up 見本檔 §3.11（均不阻塞）。
+**下一步**: **波 2 data islands、第一刀＝Role 刀**（user 拍序 **Role 先**、2026-06-15；序 Role→Menu→system_settings→審計讀端〔⚠️b 殿後〕）。⚠️ **Role-first scope 待定**（Role brainstorm 定）：Role 授權指派 modal（menu/button-auth）依賴 Menu 的 `getMenuTree`/`getAllPages`（現**未實作**）→ Role 刀二擇一〔**(i)** 純 sys_role CRUD、授權指派延後到 Menu 刀；或 **(ii)** CRUD＋授權指派＋順帶實作該 2 個 Menu 讀端（部分 Menu bleed）〕；連動 dossier 待決(c) runtime casbin 編輯 in/out。起手＝`superpowers:brainstorming`→手動 `/speckit-specify`（pre-hook 建 009 feature branch）。008 follow-up 見本檔 §3.11（均不阻塞）。
 
 ---
 
@@ -41,12 +41,12 @@
 
 其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。
 
-**刀/feature 清單**（素材=DESIGN §8.2 data island 縱切;波 1 拍 ③ 後本清單定稿）:
+**刀/feature 清單**（素材=DESIGN §8.2;**排序 ✅ user 拍 2026-06-15：Role→Menu→system_settings→審計讀端**〔§8.6 交付序、非凍結設計〕）:
 - [x] ~~**User 刀**~~ → **③=A、已移波 1 交付**（User 直刀＝波 1 第一刀、本列消解）
-- [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕）
-- [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent）
-- [ ] **`system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029 對應;若③=A 掛此波）
-- [ ] **審計查詢讀端＋UI 刀（⚠️b ✅ 核可、波 2 殿後刀）**（三 log 讀端〔operation/access/login〕＋R_SUPER policy seed＋新 sys_menu seed＋§5.8 讀端索引〔operation/access 需補〕＋manage 新頁〔MODAL-WIRING use (e)〕；排 Menu→Role→settings 之後）
+- [ ] **① Role 刀（波 2 第一刀、user 拍 Role 先 2026-06-15）**（rev2 013*/016*/018;sys_role/sys_user_role schema＋policy 已在波 0；**scope 待定**＝純 CRUD vs ＋授權指派〔需 Menu `getMenuTree`/`getAllPages`〕，見下一步注＋dossier 待決(c)）
+- [ ] **② Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;最複雜 de-risk〔href ×10／iframe props／filter_routes 遞迴〕；m002 9 端點 policy 已 seed）
+- [ ] **③ `system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029;帶出 pub-sub 地基；⚠️l 多 key 需要時拍）
+- [ ] **④ 審計查詢讀端＋UI 刀（⚠️b ✅ 核可、波 2 殿後刀）**（三 log 讀端〔operation/access/login〕＋R_SUPER policy seed＋新 sys_menu seed＋§5.8 讀端索引〔operation/access 需補〕＋manage 新頁〔MODAL-WIRING use (e)〕；排核心 CRUD 之後）
 
 **前置拍板（user 親決,1 項 ✅ 全拍）**:
 - [x] ✅ ⚠️b＝**做、波 2 殿後刀**（補三 log 讀端＋Super-only UI、2026-06-15;結論見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
