@@ -8,6 +8,16 @@
 
 **Input**: User description: "@docs/superpowers/008-user-management.md ultrathink"
 
+## Clarifications
+
+### Session 2026-06-15
+
+- Q: Should the removal (delete) audit record include the deleted account's prior role assignments, like create/edit do? → A: No — the removal audit keeps the existing single-account snapshot **without** roles; this create/edit-vs-removal asymmetry is **deliberate**, and a downstream audit-query consumer reconstructs an account's roles at removal time by association rather than from the audit record (recorded as a known precondition for the later audit-query feature).
+- Q: When an already-removed account is "removed" again (e.g. a retried batch), is an audit record written? → A: No — a no-op produces no audit record; only an actual state change is audited. "100% audited" means every real change is recorded, not every attempt.
+- Q: How is a rename-vs-create race on the same username resolved (the uniqueness check and the write are not atomic)? → A: The active-uniqueness constraint is the final arbiter; the pre-check is a friendly fast path, and a race that slips past it surfaces as the same business rejection (not a transport/system failure). No version / optimistic-lock field is added (that would require a schema change).
+- Q: At which boundary is the performance target (SC-008) measured? → A: Server-side processing time (including the in-transaction audit write), excluding cold-start, measured by direct timed calls to the backend; front-end rendering latency is measured separately.
+- Q: When a submitted role became unavailable between form load and submit, how should the front end present the rejection? → A: The back end guarantees the business rejection; refined front-end messaging / auto-refresh of the role list is a follow-up (out of scope for this feature).
+
 ## User Scenarios & Testing *(mandatory)*
 
 The actors are **administrators** of the back-office. They hold one of three permission levels: a **super-admin** (full user management), an **admin** (may view the user list), and a **regular** account (may only look up the role list). Three **baseline accounts** seeded at setup must never be deletable.
@@ -101,10 +111,11 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 
 ### Edge Cases
 
-- Removing an account that was already removed is treated as a no-op (no error, no double effect) so a retried batch is safe.
+- Removing an account that was already removed is treated as a no-op (no error, no double effect, and **no audit record** is written) so a retried batch is safe.
 - If an infrastructure failure interrupts a batch removal **after** the baseline-protection check passes, accounts removed before the failure stay removed and the rest are untouched; the administrator can safely retry.
 - A search field left blank (or cleared) does not filter on that field.
 - Creating an account whose username matches a previously-removed account is allowed (removed usernames are freed for reuse).
+- If two administrators concurrently claim the same username (one renames an account to it while another creates a new account with it), the active-uniqueness constraint is the final arbiter and the losing operation receives the same "username already taken" business rejection — not a system failure.
 - Assigning a role that was removed/deactivated between loading the form and submitting is refused.
 - Submitting an out-of-range status or gender value is refused.
 - A baseline account may be renamed or have its roles/status changed; only its removal is blocked.
@@ -152,7 +163,7 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 **Audit & integrity**
 
 - **FR-019**: System MUST record every create, edit, and removal in an immutable audit trail capturing the acting administrator, the time, the operation type, and the affected account's state before and after the change.
-- **FR-020**: System MUST include the account's previous and new role assignments in the audit record for create and edit operations.
+- **FR-020**: System MUST include the account's previous and new role assignments in the audit record for **create and edit** operations; the **removal** audit record intentionally does **not** embed role assignments (the account's roles at removal time remain reconstructable by association — a deliberate asymmetry, see *Clarifications*).
 - **FR-021**: System MUST never expose or record account passwords in clear text — in audit records or in any list/detail response.
 - **FR-022**: System MUST apply each change and its audit record together as one unit, so there is never a change that took effect without a matching audit record (or an audit record without the change).
 
@@ -166,20 +177,20 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 - **User account**: a person's login identity — has a username (unique among active accounts), nickname, gender, phone, email, an enabled/disabled status, a password (set to a default at creation, never shown), zero or more assigned roles, and audit metadata (who/when created and last updated). Removable in a recoverable way.
 - **Role**: a named grouping of permissions — has a code and a display name and may be active or inactive. A user holds zero or more roles.
 - **User–role assignment**: the association linking a user to each of its roles; fully replaced whenever a user's roles are edited.
-- **Audit record**: an immutable entry describing one user-management change — the acting administrator, timestamp, operation type, and before/after snapshot (including role assignments; password redacted).
+- **Audit record**: an immutable entry describing one user-management change — the acting administrator, timestamp, operation type, and before/after snapshot (password redacted). Create and edit snapshots embed the role assignments; removal snapshots intentionally do not (deliberate asymmetry — see *Clarifications*).
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
 - **SC-001**: An administrator can locate a specific account via search and open it for editing in under 30 seconds.
-- **SC-002**: 100% of create/edit/remove actions produce a corresponding audit record — no unaudited change is observed in testing.
+- **SC-002**: 100% of create/edit/remove actions that cause an actual state change produce a corresponding audit record — no unaudited change is observed in testing; a no-op (e.g. re-removing an already-removed account) produces no audit record.
 - **SC-003**: 100% of role-changing edits show both the previous and the new role set in the audit record.
 - **SC-004**: The three baseline accounts cannot be removed by any path — 0 successful removals across single and batch attempts in testing.
 - **SC-005**: No two active accounts ever share the same username — 0 duplicate active usernames after create and rename testing.
 - **SC-006**: Account passwords never appear in any audit record or list/detail response — 0 clear-text password exposures observed.
 - **SC-007**: Administrators are limited to the operations their permission level allows — 0 successful unauthorized user-management operations in testing.
-- **SC-008**: For the supported back-office scale (up to ~50 concurrent administrators), the list feels instant and changes feel immediate — list results return within ~0.3 seconds and individual changes within ~0.5 seconds under that load.
+- **SC-008**: For the supported back-office scale (up to ~50 concurrent administrators), the list feels instant and changes feel immediate — measured as **server-side processing time** (including the in-transaction audit write, excluding cold-start): list results within ~0.3 seconds and individual changes within ~0.5 seconds under that load. Front-end rendering latency is measured separately.
 - **SC-009**: Every user-management operation is covered by an access-control check — 0 operations reachable without one (verified by coverage review).
 - **SC-010**: The administrator interface's user actions (create, edit, remove, batch-remove) complete end-to-end against the live system — 100% succeed against the real backend (not placeholder/mock data) in acceptance testing.
 
@@ -203,3 +214,4 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 - Alternate sign-in flows, captcha, and sign-in lockout.
 - System-wide settings.
 - Status-based protection of baseline accounts (only their removal is protected; disabling them is an administrator's own responsibility).
+- Refined front-end handling when a chosen role becomes unavailable between form load and submit — the back end correctly rejects the submission with a business error; smarter front-end messaging or auto-refresh of the role list is a follow-up.
