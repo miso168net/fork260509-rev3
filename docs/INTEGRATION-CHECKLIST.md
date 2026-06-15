@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 ✅ 全完成（001-007 七刀全收、2026-06-15 收官、未 push）→ 波 1 待開（第一刀位待決③）**（波 0／-1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 ✅ 全完成（001-007 七刀全收、2026-06-15 收官）→ 波 1 待開（第一刀＝User 直刀、③ 已拍 A 2026-06-15）**（波 0／-1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-15 007-audit-overlay 全綠收刀＋merge（未 push、波 0 第七刀／第二 audit 刀、波 0 收官）**:audit overlay 三 sink — vendored xdb（ip→region file-path、§I.5）＋`sys_access_log`/`sys_login_attempt` entity/facade（client_ip INET、IpAddr→IpNetwork seam）＋`audit_ctx` outermost 中介層（每請求無條件建 RequestContext、寬鬆 operator〔獨立 enforce〕、best_effort_audit、connect_info）＋`resolve_client_ip` trusted-proxy（peer-gate→rightmost-untrusted→fail-safe、推進 §5.9）＋access-log operator-gate＋login inner/outer split（**單一 outer 記錄點覆蓋全 7 終端路徑**〔含 status-disabled／?-DB-error〕、wire byte-identical）＋op-log INET 回填（解 005 §3.8 42804）;deps +ipnetwork 0.20/once_cell/uuid（MSRV 1.86 lock pin、--locked）;無 migration、無新 wire;test-first TDD＋live smoke（C-V-5/6/4/7＋真實 IP from XFF 跳代理〔8.8.8.8 解出〕＋best-effort 斷寫業務仍 200）＋prod image build C-V-8＋entity_access_lint C-V-9 全綠;26 單元 subagent-driven（關鍵單元對抗式 fresh-context 審查 APPROVED）;7 SC／14 FR 滿足;修 4 plan 缺口（once_cell/uuid 漏 deps、登入終端路徑低估、T026 facade 路徑）;merge `9046b63` 回 rev3-admin-root、feature branch 保留、**未 push**
-- **2026-06-14 006-auth-island-min 全綠收刀＋merge（未 push、波 0 第六刀／Auth 島最小段）**:stateless 認證地基 `auth/{jwt,bearer,password,enforce}`＋`handler/auth`（login／getUserInfo／refreshToken）＋`state/error/main` boot 重寫;HS256 stateless JWT（剝 sid/jti）＋casbin per-route enforce（即時角色 DB 重查、fail-closed 5003、剝 7777）＋login 失敗一致 1000／getUserInfo userId-string＋2^53／refresh 反迴圈 8888;deps +`jsonwebtoken 9`（MSRV pin simple_asn1 0.6.3/time 0.3.37、真 compile graph）;純測 52＋lint 22＋enforce-proof live＋全棧 curl＋**CDP browser smoke（SC-006、base-web 攔截器解析真 envelope）**全綠;C-V-1~7 全過;8 unit subagent-driven＋final READY TO MERGE;8 SC／13 FR 全滿足;發現 seed 實有 v2='button' policy（getUserInfo 回真按鈕、code 正確）;merge `2c5a2a1` 回 rev3-admin-root、feature branch 保留、**未 push**
+- **2026-06-15 波 1 前維護批**:① 波 1 前清債〔node26 統一／nginx 1.31.1〔CVE-2026-42945〕／postgres healthcheck＋migrate disable／openssl pin／私鑰 chmod／secret＋compose 文件、§3.4 多項 ✅〕② **揮發行號 ref 全清**〔CHECKLIST/DECISIONS/brainstorm/spec 的 `§3.4-NNN`／`DESIGN line NNN`→穩定 §章節/附錄錨、12+ 處、內容驗證＋對抗複驗、見 [[brainstorm-doc-decision-table-not-warn-codes]]〕③ **graphify 003-007 後端碼同步**〔dedup-safe `build_merge(dedup=False)` 無 prune、4274→4532 nodes／581→615 communities／0 LLM token、見 [[graphify-update-fuzzy-dedup]]〕;拆 5 commit（worktree `01e1263`／outer `9fd7005`·`045b9af`·`3649753`·`c7fe908`）
+- **2026-06-15 007-audit-overlay 全綠收刀＋merge（波 0 第七刀／第二 audit 刀、波 0 收官）**:audit overlay 三 sink — vendored xdb（ip→region file-path、§I.5）＋`sys_access_log`/`sys_login_attempt` entity/facade（client_ip INET、IpAddr→IpNetwork seam）＋`audit_ctx` outermost 中介層（每請求無條件建 RequestContext、寬鬆 operator〔獨立 enforce〕、best_effort_audit、connect_info）＋`resolve_client_ip` trusted-proxy（peer-gate→rightmost-untrusted→fail-safe、推進 §5.9）＋access-log operator-gate＋login inner/outer split（**單一 outer 記錄點覆蓋全 7 終端路徑**〔含 status-disabled／?-DB-error〕、wire byte-identical）＋op-log INET 回填（解 005 §3.8 42804）;deps +ipnetwork 0.20/once_cell/uuid（MSRV 1.86 lock pin、--locked）;無 migration、無新 wire;test-first TDD＋live smoke（C-V-5/6/4/7＋真實 IP from XFF 跳代理〔8.8.8.8 解出〕＋best-effort 斷寫業務仍 200）＋prod image build C-V-8＋entity_access_lint C-V-9 全綠;26 單元 subagent-driven（關鍵單元對抗式 fresh-context 審查 APPROVED）;7 SC／14 FR 滿足;修 4 plan 缺口（once_cell/uuid 漏 deps、登入終端路徑低估、T026 facade 路徑）;merge `9046b63` 回 rev3-admin-root、feature branch 保留
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 已收官 ✅ → 波 1 第一刀**（刀位待決③：A=User 直刀〔rev2 016*+017、§5 全套+M:N join+★MODAL-WIRING〕 / B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV〕；DESIGN §8.3 比較）。開工前先拍 ③＋⚠️a 效能數字＋⚠️o RI 層位（[DECISIONS §1](INTEGRATION-DECISIONS.md)），起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3、`before_specify` pre-hook 建 feature branch）。
+**下一步**: **波 0 已收官 ✅ → 波 1 第一刀＝User 直刀**（③ 已拍 A、2026-06-15；原A=User 直刀〔rev2 016*+017、§5 全套+M:N join+★MODAL-WIRING〕 / B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV〕；DESIGN §8.3 比較）。⚠️a/⚠️o/⚠️u 同日拍定（見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）；起手＝階段 0 brainstorm（`docs/superpowers/<NNN>-<name>.md`）→ 手動 `/speckit-specify`（§3、`before_specify` pre-hook 建 feature branch）。
 
 ---
 
@@ -35,15 +35,15 @@
 
 ### 波 1 — 第一刀（未開始）
 
-User **或** `system_settings` 打樣（待決③）:migration→facade→handler→enforce→wire→frontend 全鏈＋§5 各面一次逼出。
+**User 刀**（③ 已拍 A、2026-06-15）:migration→facade→handler→enforce→wire→frontend 全鏈＋§5 各面一次逼出。
 
 **刀/feature 清單**:
-- [ ] **第一刀**（待決③ 拍板後定:A=User 直刀〔rev2 016*+017 規模、§5 全套+M:N join+★MODAL-WIRING〕或 B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV 獨有〕;兩案比較見 DESIGN §8.3）
+- [ ] **第一刀＝User 直刀**（③ 已拍 A、2026-06-15；原A=User 直刀〔rev2 016*+017 規模、§5 全套+M:N join+★MODAL-WIRING〕或 B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV 獨有〕;兩案比較見 DESIGN §8.3）
 
-**前置拍板（user 親決,3 項;工程預設與結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
-- [ ] ③第一刀位（User 直刀 vs `system_settings` 打樣;預設=傾向 User 直刀;開工前）
-- [ ] ⚠️a 效能/可用性數字（預設=p95 300/500ms/1s・99.5%/月;波 1 驗收前）
-- [ ] ⚠️o application-RI 驗證層位（預設=維持 handler 層驗、下沉 facade 屬設計變更須明示;facade 設計時）
+**前置拍板（user 親決,3 項 ✅ 全拍 2026-06-15;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
+- [x] ✅ ③第一刀位＝**A User 直刀**（2026-06-15）
+- [x] ✅ ⚠️a＝**批准保守預設**（p95 300/500ms/1s・99.5%/月、2026-06-15）
+- [x] ✅ ⚠️o＝**維持 handler 層驗**（不下沉 facade、2026-06-15）
 
 **出口條件（DESIGN §8.4）**:
 - [ ] §8.1 工序 9 列全過
@@ -55,7 +55,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。
 
 **刀/feature 清單**（素材=DESIGN §8.2 data island 縱切;波 1 拍 ③ 後本清單定稿）:
-- [ ] **User 刀**（讀 3 端＋CRUD＋join `sys_user_role`;rev2 016*+017;若③=A 已於波 1 交付、本列改註）
+- [x] ~~**User 刀**~~ → **③=A、已移波 1 交付**（User 直刀＝波 1 第一刀、本列消解）
 - [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕）
 - [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent）
 - [ ] **`system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029 對應;若③=A 掛此波）
@@ -259,11 +259,11 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 19**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜⚠️x endpoint_coverage_lint 波 0 換波豁免(結構上需 gated 端點才能立、移交波 1 第一刀)
+**已決 23**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜⚠️x endpoint_coverage_lint 波 0 換波豁免(結構上需 gated 端點才能立、移交波 1 第一刀)｜③第一刀＝A User 直刀(sys_user 根 entity 最早凍結、波0 已驗管線故 B 排練價值縮水)｜⚠️a 效能批准保守預設(p95 300/500ms/1s・99.5%/月)｜⚠️o RI 維持 handler 層驗(不下沉 facade)｜⚠️u 不採納 §IV Q10(維持 9 題、不再議)
 
-**開放 14**(依最晚決策點分組):
-- 波 1~3:③第一刀位(波1開工前)｜⚠️a 效能數字(波1驗收前)｜⚠️o RI 下沉(波1 facade 設計時)｜⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
-- 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention｜⚠️u §IV 增第 10 題(amendment 提案,PATCH)｜⚠️w login lockout 刀位/設計(消費 007 sys_login_attempt、per-ip 因 007 真實 IP 現可行、排程時定)
+**開放 10**(依最晚決策點分組):
+- 波 2~3:⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
+- 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention｜⚠️w login lockout 刀位/設計(消費 007 sys_login_attempt、per-ip 因 007 真實 IP 現可行、排程時定)
 
 ---
 
