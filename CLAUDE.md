@@ -79,6 +79,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 ├── base-web/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
 ├── rust-api/                   ← worktree + submodule（外層記 gitlink SHA；已落地）
 ├── docker-compose.yml                     ← outer root compose（001 已落地；service：front-nginx/base-web/rust-api/postgres/redis-stack + migrate〔自動套〕/acme〔prod profile 殼〕）；override = docker-compose.{dev,prod}.yml；另有 standalone：docker-compose.base-web.yml / docker-compose.rust-api.yml〔DEPRECATED debug 後備〕（見 §8.2）
+├── docker-compose.example.yml             ← standalone（example 分支＋mock 視覺參考、port 31076、獨立 project rev3-admin-example；見 §8.2）
 └── deploy/                                ← 部署支援檔（001 已落地；nginx conf ×4 / Dockerfile ×3 / dispatcher / secrets 與 dev-certs 生成腳本；見 §8.2）
 ```
 
@@ -522,7 +523,8 @@ docker compose exec acme acme.sh --version    # sanity check
 **命名規則**：
 - compose key 格式：`<service>_<purpose>`（不含 project prefix、**不加**顯式 `name:`）
 - 實際卷名：`rev3-admin_<service>_<purpose>`（由 compose top-level `name: rev3-admin` 自動補前綴）
-- 設頂層 `name: rev3-admin` 的是 master `docker-compose.yml` 與 2 個 standalone（`docker-compose.base-web.yml` / `docker-compose.rust-api.yml`）；`docker-compose.dev.yml` / `docker-compose.prod.yml` override **不**自設、`-f` 疊加時繼承 master 的 project name，故全 stack 共用同一 prefix。
+- 設頂層 `name: rev3-admin` 的是 master `docker-compose.yml` 與 2 個 standalone（`docker-compose.base-web.yml` / `docker-compose.rust-api.yml`）；`docker-compose.dev.yml` / `docker-compose.prod.yml` override **不**自設、`-f` 疊加時繼承 master 的 project name，故全 stack 共用同一 prefix。`docker-compose.example.yml` 另設 `name: rev3-admin-example`（**獨立 project**、與 master 隔離、見 §8.2 與下方 example 卷註）。
+- **example 參考卷（例外、不屬下方正典清單）**：`docker-compose.example.yml`（project `rev3-admin-example`）用卷 key `node_modules` / `pnpm_store`（→ 實際 `rev3-admin-example_node_modules` / `rev3-admin-example_pnpm_store`）；獨立 project 與 master 正典 `base_web_*` 天然隔離（避免 example 分支與 rev3 worktree 的 node_modules 互撞）。
 - `<service>` 對應 §1 短名（`-` 改 `_`）：`front_nginx` / `base_web` / `rust_api` / `postgres` / `redis_stack`
 - `<purpose>` ∈ `data` / `certs` / `node_modules` / `pnpm_store` / `cargo_cache` / `target`
 - **不設顯式 `name:`**，project prefix `rev3-admin_` 為唯一前綴來源；卷 key 採正典命名（如 `redis_stack_data` / `base_web_node_modules` / `base_web_pnpm_store`）。

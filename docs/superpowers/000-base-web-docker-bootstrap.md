@@ -24,7 +24,9 @@
 
 ## 2. 容器化落地（as-built）
 
-`docker-compose.base-web.yml`（workspace root，44 行）。與 rev2 standalone compose 的差異：
+> **另有 example 視覺參考實例**（2026-06-15 新增）：rev3 另建 `docker-compose.example.yml` 跑 **example 分支＋官方 mock**（port 31076、獨立 project `rev3-admin-example`）做視覺對照——rev3 worktree base-web cutover 到 rust-api 後仍可隨時對比 mock 原貌。本檔描述的 `docker-compose.base-web.yml` **base-web-dev（31079、連 mock）行為不變**；同批另為該檔補上 dev/prod profiles＋`base-web-prod` 服務（與本節 dev 捕獲態無關）。見 [CLAUDE.md §8.2](../../CLAUDE.md)。
+
+`docker-compose.base-web.yml`（workspace root，捕獲時 44 行）。與 rev2 standalone compose 的差異：
 
 | 項目 | rev2 | rev3 |
 |---|---|---|
