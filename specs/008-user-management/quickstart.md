@@ -22,7 +22,7 @@
 |---|---|---|---|
 | 1 | build＋MSRV | C-V-1 `cargo build -p server --locked` | 綠、無新 crate |
 | 2 | 純單測 | C-V-2 `cargo test -p server` | filter SQL 形／enum 映射／2^53 guard／種子謂詞／dup 判定全綠 |
-| 3 | live smoke | C-V-3 `--ignored --test-threads=1 live_smoke_user_crud` | Insert/Update/SOFT_DELETE 列＋role-delta＋no-op 零 audit（Q2）＋dup 2222（Q3）＋種子 2222 |
+| 3 | live smoke | C-V-3 `--ignored --test-threads=1 live_smoke_user`（list/create/update/delete/audit 5 測） | Insert/Update/SOFT_DELETE 列＋role-delta＋no-op 零 audit（Q2）＋dup 2222（Q3）＋種子 2222 |
 | 4 | curl 全鏈（Super） | C-V-4 login→getUserList→addUser→psql 驗 audit roles→dup | list 回真資料；audit `payload_after->'roles'` 在；同名→`2222` |
 | 5 | 權限 gate | C-V-5 login User→addUser | envelope `5003`（enforce_mw、只 R_SUPER 可寫） |
 | 6 | CDP modal（cutover） | C-V-6 .env.test.local→rust-api、tests/000 CDP、限 /manage/user | 登入→/manage/user→開 modal 填表單（含角色下拉）→add/edit/delete 走真 rust-api→modal 關+列表刷新 |

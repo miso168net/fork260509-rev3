@@ -24,7 +24,7 @@ cd rust-api && cargo test -p server   # search_active filter SQL-shape／find_ac
 
 ## C-V-3 — live smoke（`#[ignore]`、真 PG、`--test-threads=1`）
 ```bash
-cd rust-api && cargo test -p server --test '*' -- --ignored --test-threads=1 live_smoke_user_crud
+cd rust-api && cargo test -p server -- --ignored --test-threads=1 live_smoke_user
 ```
 覆蓋：addUser→op-log **Insert** 列（payload_after 含 redact password＋`roles`）／updateUser→**Update** 列（before/after **role-delta**）／deleteUser→**SOFT_DELETE** 列（payload_before 15 欄**無 roles**、Q1）／already-deleted→**no-op 零 audit**（Q2）／dup user_name→**2222**（Q3）／種子保護 id∈{1,2,3}→**2222**。
 （serial：共表 `sys_operation_log`/`sys_user_role` 非 parallel-safe、memory `live-ignore-tests-need-serial`。）

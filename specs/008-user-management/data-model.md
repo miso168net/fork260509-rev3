@@ -8,7 +8,7 @@
 |---|---|---|
 | `sys_user` | A（6 審計欄、soft-delete partial-uniq） | `id i64 PK`／`user_name String`（partial-uniq `WHERE deleted_at IS NULL`、**可變**）／`password String`（argon2id PHC）／`nick_name Opt<String>`／`user_gender Opt<i16>`／`user_phone Opt<String>`／`user_email Opt<String>`／`status Opt<i16>`／`current_session_id Opt<String>`／`session_policy String`／審計 6：`created_at`(NN)·`created_by`·`updated_at`·`updated_by`·`deleted_at`·`deleted_by` |
 | `sys_role` | A | `id i64`／`code String`（uniq active）／`name String`／`role_desc`／`status Opt<i16>`／`home`／審計 6 |
-| `sys_user_role` | C join（零審計、硬刪、m003 雙 FK RESTRICT） | `user_id i64`、`role_id i16`〔composite PK〕 |
+| `sys_user_role` | C join（零審計、硬刪、m003 雙 FK RESTRICT） | `user_id i64`、`role_id i64`〔composite PK；entity 實為 i64，與 `sys_role.id` 對齊〕 |
 
 `audit_json()`（既有、`AuditSerialize`）＝ 15 user 欄、redact `password`→`"<redacted>"`、**排除 `current_session_id`**、**不含 roles**。
 
