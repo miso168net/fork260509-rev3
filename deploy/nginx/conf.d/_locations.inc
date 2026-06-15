@@ -23,6 +23,6 @@ location /api/ {
 }
 
 location = /health {
-    add_header Content-Type text/plain;
+    default_type text/plain;   # add_header Content-Type 會與 return 隱式 type 雙寫;default_type 才正
     return 200 "ok\n";
 }

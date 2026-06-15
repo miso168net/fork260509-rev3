@@ -28,8 +28,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SECRETS_DIR="$SCRIPT_DIR/secrets"
 mkdir -p "$SECRETS_DIR"
 
-OPENSSL_IMG="alpine/openssl:latest"
-docker pull -q "$OPENSSL_IMG" >/dev/null
+OPENSSL_IMG="alpine/openssl:3.5.4"   # :latest→pin（image pin 一致性；one-off cert/secret gen、安全性低）
+# image 已 cache 就不重拉（離線可跑）；未 cache 才 pull
+docker image inspect "$OPENSSL_IMG" >/dev/null 2>&1 || docker pull -q "$OPENSSL_IMG" >/dev/null
 
 # gen_rand <openssl-rand-args...>:回傳隨機值(如 -base64 48 或 -hex 24;command subst 已去尾換行)
 gen_rand() {

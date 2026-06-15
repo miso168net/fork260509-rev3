@@ -17,11 +17,15 @@ bash deploy/generate-secrets.sh
 bash deploy/generate-secrets.sh --force
 ```
 
+> ⚠️ **`up` 前必先生成**：6 個 `.txt` 缺任一，docker compose 的 secret bind 會**自動在該路徑建一個空目錄**（而非報「檔案缺失」）→ 服務拿到空 secret、錯誤訊息不指向缺檔、難排查。起 stack 前務必先跑本腳本、確認 `deploy/secrets/*.txt` 六檔齊。
+
 > ℹ️ 檔案權限：腳本對生成的 `.txt` 設 `chmod 600`。在 WSL2 掛載 Windows 磁碟（drvfs，如 `/mnt/d/...`）下 `chmod` 為 no-op，權限會顯示 `777` 屬正常；在原生 Linux 檔系統則正確生效。
 
 > ⚠️ `--force` 風險：腳本覆寫 leaf secret 後，正在運行的 stack **必須 restart** 才能讀到新值。  
 > 且絕對不可手動修改單一 leaf 檔（如 `postgres_password.txt`）而不重新生成對應的 URL secret——  
 > 否則 `database_url.txt` 內嵌的密碼與 postgres 設定的密碼就會不一致（dual-write drift），導致連線失敗。
+>
+> ⚠️ **刪 leaf 重跑邊角**：若只**刪掉**某 leaf（如 `postgres_password.txt`）而保留其 URL（`database_url.txt`），無 `--force` 重跑會**重生該 leaf（GENERATED）但跳過既有 URL（SKIPPED）→ 同樣 drift**。要嘛連同 URL 一起刪、要嘛直接 `--force` 全重生。
 
 ---
 

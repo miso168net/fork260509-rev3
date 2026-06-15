@@ -11,7 +11,11 @@
 # 設計:
 #   - 完全不需 host 裝 node/pnpm
 #   - dev mode 用 named volume mask /app/node_modules,避免 WSL2 bind mount 拖慢 IO
-
+#
+# ⚠️ 並行撞點警示（與 rust-api standalone 對稱）：本檔 project name 同為 `rev3-admin`、
+#    且共用 base_web_node_modules / base_web_pnpm_store 卷——**勿與 master stack（docker-compose.yml）
+#    同時起**,否則同 project/卷互相干擾（容器/卷衝突）。base-web 已以 standalone 定義納入 master
+#    dev.yml（R8），日常用 master;本 standalone 僅 base-web 單獨 debug 時用、用前先 down master。
 
 name: rev3-admin
 

@@ -53,6 +53,10 @@ services:
       target: runtime
     image: rev3-admin-rust-api:latest
     command: ["migration", "up"]
+    # runtime image 帶 curl /health HEALTHCHECK,對一次性 migration（不開 port）無意義、
+    # 且 >35s migration ＋未來 --wait 會假陰性 → 明確 disable
+    healthcheck:
+      disable: true
 
   postgres:
     ports:

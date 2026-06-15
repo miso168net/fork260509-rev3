@@ -514,6 +514,8 @@ docker compose exec acme acme.sh --version    # sanity check
 
 > WSL2 NAT mode 不可用 `127.0.0.1` — 設 `.wslconfig` `[wsl2] networkingMode=mirrored`（Win11 22H2+ 預設）、或用 `wsl hostname -I` 拿 WSL IP。
 > 實際 acme.sh cert acquisition / renew 流程留待後續（需公網 + 真實 domain + DNS provider creds）。
+> **冷卷首啟 flap**：`down -v` 後或新機器首次 `up --wait`，base-web（≈140s pnpm install）/ rust-api（≈240s cargo build）冷編譯期間 healthcheck 會 flap、`up --wait` 可能 exit≠0；先 `docker compose … ps` 看是否仍在編譯（非真失敗），待穩後重跑 `up --wait` 即過。
+> **cargo cache 卷遮蓋**：dev image 升 toolchain 時，`rust_api_cargo_cache` 卷會遮蓋舊 toolchain → 需手動 `docker volume rm rev3-admin_rust_api_cargo_cache` 後重 build。
 
 #### 8.2.2 named volume 命名規則
 

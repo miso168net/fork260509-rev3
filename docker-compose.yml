@@ -16,7 +16,7 @@ name: rev3-admin
 
 services:
   front-nginx:
-    image: nginx:1.31.0-alpine
+    image: nginx:1.31.1-alpine   # 1.31.0→1.31.1：CVE-2026-42945（2026-06-15 升）
     depends_on:
       base-web:
         condition: service_healthy
@@ -73,6 +73,7 @@ services:
   migrate:
     # ★ 一次性 migration service(001 FR-002/FR-008:server 不自動 migrate,schema 由此 gate 套)
     #   dev/prod override 各自提供 target: + command:;base 層只定義共通結構
+    #   migrate 僅閘 postgres（不需 redis）——spec 001 FR-002/C-V-2 措辭提及 redis 為待勘誤、rev2 同形
     build:
       context: ./
       dockerfile: deploy/Dockerfile.rust-api.txt
@@ -98,7 +99,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U soybean"]
+      test: ["CMD-SHELL", "pg_isready -U soybean -d soybean_admin_rust"]
       interval: 10s
       timeout: 5s
       retries: 5

@@ -44,8 +44,9 @@ if [ -f "$CERT_DIR/fullchain.pem" ] && [ "$FORCE" -eq 0 ]; then
     exit 1
 fi
 
-OPENSSL_IMG="alpine/openssl:latest"
-docker pull -q "$OPENSSL_IMG" >/dev/null
+OPENSSL_IMG="alpine/openssl:3.5.4"   # :latest→pin（image pin 一致性）
+# image 已 cache 就不重拉（離線可跑）；未 cache 才 pull
+docker image inspect "$OPENSSL_IMG" >/dev/null 2>&1 || docker pull -q "$OPENSSL_IMG" >/dev/null
 
 run_openssl() {
     # -i:讓 heredoc stdin 進得了 container(否則 -extfile /dev/stdin 讀到空 input、SAN/BasicConstraints/KeyUsage extension 全沒 embed)
@@ -88,6 +89,10 @@ else
 fi
 rm -f "$CERT_DIR/leaf.csr" "$CERT_DIR/ca.srl" "$CERT_DIR/leaf-only.pem"
 
+# 私鑰權限收緊（native Linux 防 644 外洩;drvfs 上 chmod 為 no-op、不影響）
+chmod 600 "$CERT_DIR/privkey.pem" 2>/dev/null || true
+[ -f "$CERT_DIR/ca.key" ] && chmod 600 "$CERT_DIR/ca.key" 2>/dev/null || true
+
 # 收尾 + 教學
 cat <<EOF
 
@@ -115,7 +120,8 @@ if [ "$EXTERNAL_CA" -eq 0 ]; then
   sudo cp deploy/dev-certs/ca.pem /usr/local/share/ca-certificates/rev3-dev-ca.crt
   sudo update-ca-certificates
 
-cert 有效期:CA 10 年 / leaf 1 年。renew 跑 \`--force\`。
+cert 有效期:CA 10 年 / leaf 1 年。renew 跑 \`--force\`——⚠️ 自簽路線 \`--force\` 會**一併重生 CA**、
+需重新 trust 新 ca.pem（只想 renew leaf 不動 CA → 改走外部 CA 路線）。
 TRUST
 else
     cat <<TRUST_EXT

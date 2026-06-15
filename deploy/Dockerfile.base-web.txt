@@ -8,9 +8,10 @@
 # 設計理由:user 要求「不改 base-web/ 內任何檔」,故 .dockerignore 不能放在 base-web/。
 
 # === Stage 1: builder ===
-FROM node:20.19-alpine AS builder
-# 對齊 dev profile 跳 corepack(node 20.19 內建 corepack 對 pnpm wrap 觸發
-# ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING — 詳見 000-base-web-docker-bootstrap.md §4 第 3 輪 debug)
+FROM node:26-alpine AS builder
+# 跳 corepack（用 npm install -g pnpm@10、不走 node 內建 corepack）——避 corepack wrap pnpm 觸發
+# ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING（前代 node 20.19 內建 corepack 踩過、詳 000-base-web-docker-bootstrap.md §4 第 3 輪 debug）。
+# builder 與 dev **統一 node:26-alpine**（user 決定 2026-06-15、消除 20.19/26 分歧）;corepack 既被跳過、node 版本無關、prod build 已驗。
 RUN npm install -g pnpm@10
 WORKDIR /app
 
@@ -49,7 +50,8 @@ server {
 NGINX_EOF
 
 # === Stage 2: runtime (nginx) ===
-FROM nginx:alpine AS runtime
+# 裸 nginx:alpine → pin 1.31.1-alpine（image pin 一致性 ＋ CVE-2026-42945、與 front-nginx 同版）
+FROM nginx:1.31.1-alpine AS runtime
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY --from=builder /tmp/nginx/default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 31079
