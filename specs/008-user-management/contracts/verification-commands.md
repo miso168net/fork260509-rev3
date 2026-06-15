@@ -4,6 +4,13 @@
 > **prod-build 紀律（CLAUDE.md §3 Phase 1）**：008 **不新增 workspace crate**（members 固定 5：`server`/`migration`/`sea-orm-adapter`/`entity`/`xdb`、僅加模組到既有 `server` crate）→「新 crate 必跑 prod target image build」**不觸發**；dev build 綠 ＋ live smoke 即足。**若實作中改為新增 crate，必補**：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`。
 > **CDP 紀律**：本刀 CDP 不 defer（clarify 拍 C-V-6 這刀做）；curl 直送 ≠ base-web modal 對齊，C-V-4/5（curl）與 C-V-6（CDP）皆須跑。
 
+## C-V-0 — workspace 構型守恆（無新 crate、analyze C3）
+```bash
+cd rust-api && cargo metadata --no-deps --format-version 1 \
+  | python3 -c "import json,sys; p=json.load(sys.stdin)['packages']; print('members:',len(p), sorted(x['name'] for x in p))"
+# 期 5（server / migration / sea-orm-adapter / entity / xdb）。實作前後各跑一次；變 6 = 誤加 crate → 必補 prod image build（見上 prod-build 紀律）。
+```
+
 ## C-V-1 — build ＋ MSRV lock
 ```bash
 cd rust-api && cargo build -p server --locked   # MSRV 1.86；無新依賴、無新 crate
@@ -66,8 +73,25 @@ write p95 < 500ms 同法（addUser/updateUser 計時、含同 txn audit）。**C
 ```bash
 cd rust-api && cargo test -p server endpoint_coverage_lint
 ```
-新 build-failing lint：每掛 `enforce_mw` 的 route 有 ≥1 casbin policy（容忍 seeded-but-unimplemented policy）；以 `entity_access_lint` 為模板；`EXPECTED_ROUTE_COUNT` 用 wiring 時**實際 gated route 數**、別盲 assert 35（DESIGN target 僅參考）。
+新 build-failing lint：每掛 `enforce_mw` 的 route 有 ≥1 casbin policy（容忍 seeded-but-unimplemented policy）；以 `entity_access_lint` 為模板；`EXPECTED_ROUTE_COUNT` ＝ **本刀實際 gated route 數＝6**、別盲 assert 35（DESIGN target 僅參考、analyze C1）。
 
 ---
 
-**驗收總綱**：C-V-1 build／C-V-2 純測／C-V-3 live smoke／C-V-4·5 curl+psql（含 dup 2222、forbidden 5003）／C-V-6 CDP modal（cutover）／C-V-7 p95 server-side／C-V-8 lint stand-up。無新 crate → 無 mandatory prod build。
+## SC ↔ C-V 對照（analyze V1）
+
+| SC | C-V |
+|---|---|
+| SC-001 定位+編輯 <30s | C-V-6 CDP／C-V-4 curl（手測計時） |
+| SC-002 100% 變更審計 | C-V-3 live smoke（Insert/Update/SOFT_DELETE 列） |
+| SC-003 role-delta | C-V-3（update before/after roles） |
+| SC-004 種子不可刪 | C-V-3（種子→2222） |
+| SC-005 無重複 active 名 | C-V-2（dup 判定）＋C-V-4（同名→2222） |
+| SC-006 password 不明文 | C-V-3／C-V-4（payload redact） |
+| SC-007 0 越權 | C-V-5（forbidden→5003） |
+| SC-008 p95 | C-V-7 |
+| SC-009 0 裸端點 | C-V-8 endpoint_coverage_lint |
+| SC-010 真打後端 | C-V-6 CDP（cutover→rust-api:31081、非 mock）＋C-V-4 curl+psql |
+
+> **SC-010 live-vs-mock 稽核（analyze C2）**：跑 C-V-6 前確認 `base-web/.env.test.local` 的 `VITE_SERVICE_BASE_URL=http://rust-api:31081`（非 apifox mock）；CDP capture 應見 request 落 rust-api、回 rust-api 真 envelope（非 mock 範本資料）。
+
+**驗收總綱**：C-V-0 workspace 守恆／C-V-1 build／C-V-2 純測／C-V-3 live smoke／C-V-4·5 curl+psql（含 dup 2222、forbidden 5003）／C-V-6 CDP modal（cutover）／C-V-7 p95 server-side／C-V-8 lint stand-up。無新 crate → 無 mandatory prod build。

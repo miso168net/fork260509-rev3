@@ -24,7 +24,7 @@
 
 **Performance Goals**: list p95 < 300ms／write（含同 txn audit）p95 < 500ms／login p95 < 1s（**server-side 量測、排冷啟**，clarify Q4）；≤50 並發 admin、不設吞吐 SLA
 
-**Constraints**: 零 migration／凍結 wire 契約（envelope・逐欄 id 型・13 碼矩陣 §I.3）／facade-only 存取（entity_access_lint）／RI 在 handler 層（⚠️o）／rust code 零拷貝 rev2（§I.5）／MODAL-WIRING 五用途邊界＋fork-delta `rev3-inline` 標記（§II#3／§III）
+**Constraints**: 零 migration／凍結 wire 契約（envelope・逐欄 id 型・13 碼矩陣 §I.3）／facade-only 存取（entity_access_lint）／RI 在 handler 層（⚠️o）／rust code 零拷貝 rev2（§I.5）／MODAL-WIRING 五用途邊界＋fork-delta `rev3-inline` 標記（§II#3／§III）／`User→User01` alias **僅 getUserInfo**、getUserList 回真 user_name（research discrepancy #9）／stale-role 前端 UX **out-of-scope**（clarify Q5、後端 2222 已足）
 
 **Scale/Scope**: 內部後台 ≤50 並發 admin；6 endpoint；新 1 rust handler 模組 ＋ facade 增補 ＋ 1 base-web wrapper 檔 ＋ 3 stub 接線；**無新 workspace crate**（僅加模組到既有 `server` crate）
 
@@ -39,14 +39,14 @@
 5. **拷貝 rev2 code？屬 §I.5 例外？防回歸？** ✅ 不拷貝 — rust 全新寫（參照讀允許）；不帶回 ⚠️r id-string／⚠️e Internal→500/`Number()` 補丁。
 6. **抵觸 §II 拍板 #1~#13？** ✅ 無 — #1 帳號 Super/Admin/User（用既有 seed）、#10 wire id（conform）、#3 MODAL-WIRING（用途 a、已授）。
 7. **觸及 §III ★ 軌道？授權邊界內？** ✅ — MODAL-WIRING ★ 用途 (a)（見 #2）；BASE-WEB-WRAPPER／ADAPT（L3／L1 預設可動）。CDP cutover 的 `.env.test.local` 是 gitignored 驗收檔、不改 committed `.env`（BASE-WEB-ADAPT 紀律）。
-8. **新建業務表（6 審計欄）？** ✅ **零 migration** — 不建任何表；既有 `sys_user`(archetype A)／`sys_role`(A)／`sys_user_role`(C join) 全在波 0、本刀只讀寫。
+8. **新建業務表（6 審計欄）？** ✅ **零 migration** — 不建任何表；既有 `sys_user`(archetype A)／`sys_role`(A)／`sys_user_role`(C join) 全在波 0、本刀只讀寫。審計事件寫入既有 `sys_operation_log`（archetype B append-only、審計欄波 0 已建）、**只寫事件、零 schema 變更**。
 9. **觸及 §I.7 行為島？invariants 保持？** ✅ 不動 — 不碰 token rotation／policy governance／single-session；本刀只設 `status` 值（停用登入 gate 在 006/007、不重作）。
 
 **Gate：PASS**（零 violation；Complexity Tracking 不需填）。
 
 ### Post-Design Re-check（Phase 1 後）
 
-設計產出（research.md／data-model.md／contracts/）後重跑 §IV：**維持 PASS、零新 violation**。實碼 grep 確認設計可落地（Q1=B／Q2=A 實碼確認）。唯一須 implementer 處置的實碼缺口為 **Q3**（`From<DbErr>→5000`；dup user_name 須 handler `find_active_by_name` pre-check → `AppError::biz`→`2222`）—— 此**強化** §I.3「業務錯＝2222、5xxx 非業務」的對齊、**非違反**（設計已含此 RI、見 data-model §4）。另：本刀於 008 stand up `endpoint_coverage_lint`（⚠️x 守恆移交、非 violation）。Gate 結論不變：**PASS**。
+設計產出（research.md／data-model.md／contracts/）後重跑 §IV：**維持 PASS、零新 violation**。實碼 grep 確認設計可落地（Q1=B／Q2=A 實碼確認）。唯一須 implementer 處置的實碼缺口為 **Q3**（既有 `From<DbErr>→5000`；dup user_name 須 handler `find_active_by_name` pre-check → `AppError::biz`→`2222`，**不可依賴 `From<DbErr>` 自動映射**）—— 設計**含此 RI**（data-model §4）、**T007 確保實作落地**；此**強化** §I.3「業務錯＝2222、5xxx 非業務」、**非違反**。另：`endpoint_coverage_lint` 008 前不存在、本刀 stand up＝**⚠️x 守恆移交（接受的移交、非 violation）**；T032 的 `EXPECTED` 用**實際 gated route 數（6）**、非 DESIGN target 35。Gate 結論不變：**PASS**。
 
 ## Project Structure
 

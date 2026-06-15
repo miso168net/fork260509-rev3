@@ -20,7 +20,7 @@
 - **`AllRoleItem`**（resp）：`id`(number)／`roleName`／`roleCode`。
 - `PageRes<T>`＝`{current,size,total,records}`（camelCase、無 `pages`/`success`、空頁 `records:[]`）。
 
-> **型轉換邊界（rust serde）**：`i64→JSON number`（含 getAllRoles `id`、**不跟 mock string**、⚠️r、2^53 fail-loud guard）；`i16(1/2)↔string("1"/"2")`（`userGender`/`status`、null 保留）；snake→camel（`created_at→createTime`、`created_by→createBy`…）；`userRoles`←join `sys_user_role→sys_role.code`（**非 entity 直欄**）。
+> **型轉換邊界（rust serde）**：`i64→JSON number`（含 getAllRoles `id`、**不跟 mock string**、⚠️r、2^53 fail-loud guard）；DB `Option<i16>`（`user_gender`/`status`：`1`=enabled/male、`2`=disabled/female、`NULL`=unset）↔ wire `"1"`/`"2"`/`null`（**`None`→JSON `null`、非省略 key**）；snake→camel（`created_at→createTime`、`created_by→createBy`…）；`userRoles`←join `sys_user_role→sys_role.code`（**非 entity 直欄**）。
 
 ## 3. 新 facade fn 簽名（7、草案；Column 存取留 facade）
 
@@ -47,7 +47,7 @@ pub async fn roles_for_users(db, user_ids: &[i64]) -> Result<Vec<(i64, Vec<Strin
 | RI | 做法 | 失敗 |
 |---|---|---|
 | 撞名唯一 | add／update 改名時呼既有 `find_active_by_name(new)`，命中且非本人 | `biz(2222)`「用户名已存在」 ★ **不可靠 DbErr（Q3）** |
-| role code→id 解析 | `find_active_by_codes(userRoles)`、解出數 ≠ 提交數 | `biz(2222)` |
+| role code→id 解析 | `find_active_by_codes(userRoles)`、解出數 ≠ 提交數（任一 code 缺/停用） | `biz(2222)`、**整批拒、不靜默 skip**（FR-010） |
 | 值域 | `status∈{1,2}`／`userGender∈{1,2}` 或 null（i16） | `biz(2222)` |
 | soft-deleted 拒更 | update 先 `find_active_by_id(id)` 查無 | `biz(2222)` |
 | **種子保護** | delete／batchDelete 對 `id∈{1,2,3}` ★ **無既有碼、handler 加** | `biz(2222)` |

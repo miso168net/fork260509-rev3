@@ -14,7 +14,7 @@
 
 - Q: Should the removal (delete) audit record include the deleted account's prior role assignments, like create/edit do? → A: No — the removal audit keeps the existing single-account snapshot **without** roles; this create/edit-vs-removal asymmetry is **deliberate**, and a downstream audit-query consumer reconstructs an account's roles at removal time by association rather than from the audit record (recorded as a known precondition for the later audit-query feature).
 - Q: When an already-removed account is "removed" again (e.g. a retried batch), is an audit record written? → A: No — a no-op produces no audit record; only an actual state change is audited. "100% audited" means every real change is recorded, not every attempt.
-- Q: How is a rename-vs-create race on the same username resolved (the uniqueness check and the write are not atomic)? → A: The active-uniqueness constraint is the final arbiter; the pre-check is a friendly fast path, and a race that slips past it surfaces as the same business rejection (not a transport/system failure). No version / optimistic-lock field is added (that would require a schema change).
+- Q: How is a rename-vs-create race on the same username resolved (the uniqueness check and the write are not atomic)? → A: The active-uniqueness constraint is the final arbiter; the pre-check is an optimization for the supported (≤50-admin) scale, and a race that slips past it surfaces as the **same business rejection** — not a transport/system failure or partial state. No version / optimistic-lock field is added (that would require a schema change).
 - Q: At which boundary is the performance target (SC-008) measured? → A: Server-side processing time (including the in-transaction audit write), excluding cold-start, measured by direct timed calls to the backend; front-end rendering latency is measured separately.
 - Q: When a submitted role became unavailable between form load and submit, how should the front end present the rejection? → A: The back end guarantees the business rejection; refined front-end messaging / auto-refresh of the role list is a follow-up (out of scope for this feature).
 
@@ -133,7 +133,7 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 **Create**
 
 - **FR-004**: System MUST let an authorized administrator create a new account by supplying username, nickname, gender, phone, email, status, and one or more roles.
-- **FR-005**: System MUST assign every newly created account a standard default password; administrators do not set or see passwords through this feature.
+- **FR-005**: System MUST assign every newly created account a standard default password (the concrete value is fixed by the design — see data-model); administrators do not set or see passwords through this feature.
 - **FR-006**: System MUST refuse creation when the chosen username already belongs to another active account, and inform the administrator of the conflict.
 
 **Edit**
@@ -144,32 +144,40 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 
 **Role & value validity**
 
-- **FR-010**: System MUST refuse a create or edit that references any role which does not exist or is not active.
+- **FR-010**: System MUST refuse a create or edit that references any role which does not exist or is not active; if **any** submitted role is invalid the **entire** operation is rejected and no roles are partially applied (no silent skipping).
 - **FR-011**: System MUST refuse a create or edit with an out-of-range status or gender value.
 - **FR-012**: System MUST persist a user's full role set as supplied on each create/edit (the submitted set fully replaces any prior assignment).
 
 **Remove**
 
-- **FR-013**: System MUST let an authorized administrator remove a single account or a selected batch of accounts; removal MUST be recoverable-safe (the account is taken out of active lists rather than permanently erased).
-- **FR-014**: System MUST prevent removal of the three baseline accounts (the seeded super-admin, admin, and regular accounts) by any single or batch path.
+- **FR-013**: System MUST let an authorized administrator remove a single account or a selected batch of accounts; removal MUST be recoverable-safe — a **soft removal** that marks the account removed (taken out of active lists, restorable in principle) rather than permanently erasing it (permanent erasure is future scope).
+- **FR-014**: System MUST prevent removal of the three baseline accounts (the seeded super-admin, admin, and regular accounts — identified by their immutable internal ids 1/2/3) by any single or batch path; protection is keyed by id (not username), so it persists even after a baseline account is renamed, and these ids must never be reused or renumbered.
 - **FR-015**: System MUST refuse an entire batch removal that includes any baseline account, leaving every account in that batch unchanged.
 - **FR-016**: System MUST still allow editing (including renaming) the baseline accounts — only their removal is protected.
 
 **Access control**
 
-- **FR-017**: System MUST restrict each user-management operation to administrators whose permission level grants it, and deny the operation to permission levels without that grant.
+- **FR-017**: System MUST restrict each user-management operation to administrators whose permission level grants it, and deny the operation to permission levels without that grant — per the Access-Control Matrix below.
 - **FR-018**: System MUST ensure no user-management operation is reachable without an access-control check.
+
+**Access-Control Matrix** (which permission level may perform each operation):
+
+| Operation | super-admin | admin | regular |
+|---|:--:|:--:|:--:|
+| View / search user list | ✓ | ✓ | ✗ |
+| Look up role list | ✓ | ✓ | ✓ |
+| Create / Edit / Delete / Batch-delete user | ✓ | ✗ | ✗ |
 
 **Audit & integrity**
 
-- **FR-019**: System MUST record every create, edit, and removal in an immutable audit trail capturing the acting administrator, the time, the operation type, and the affected account's state before and after the change.
+- **FR-019**: System MUST record every create, edit, and removal in an immutable audit trail capturing the acting administrator, the time, the operation type, and the affected account's state — **before and after** for create/edit, and **before-only** for removal (no after-state).
 - **FR-020**: System MUST include the account's previous and new role assignments in the audit record for **create and edit** operations; the **removal** audit record intentionally does **not** embed role assignments (the account's roles at removal time remain reconstructable by association — a deliberate asymmetry, see *Clarifications*).
 - **FR-021**: System MUST never expose or record account passwords in clear text — in audit records or in any list/detail response.
 - **FR-022**: System MUST apply each change and its audit record together as one unit, so there is never a change that took effect without a matching audit record (or an audit record without the change).
 
 **Result signalling**
 
-- **FR-023**: System MUST report business refusals (taken username, baseline-account removal, invalid role or value) to the administrator's interface in a way clearly distinguishable from both success and system/transport failures.
+- **FR-023**: System MUST report business refusals (taken username, baseline-account removal, invalid role or value) via a **distinct business error code** (per the frozen data contract), clearly distinguishable from both success and from system/transport failures.
 - **FR-024**: System MUST keep all responses consistent with the project's established response and data contract, introducing no new contract variants.
 
 ### Key Entities
@@ -190,7 +198,7 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 - **SC-005**: No two active accounts ever share the same username — 0 duplicate active usernames after create and rename testing.
 - **SC-006**: Account passwords never appear in any audit record or list/detail response — 0 clear-text password exposures observed.
 - **SC-007**: Administrators are limited to the operations their permission level allows — 0 successful unauthorized user-management operations in testing.
-- **SC-008**: For the supported back-office scale (up to ~50 concurrent administrators), the list feels instant and changes feel immediate — measured as **server-side processing time** (including the in-transaction audit write, excluding cold-start): list results within ~0.3 seconds and individual changes within ~0.5 seconds under that load. Front-end rendering latency is measured separately.
+- **SC-008**: For the supported back-office scale (up to ~50 concurrent administrators), the list feels instant and changes feel immediate — measured as **p95 server-side processing time** across representative requests (including the in-transaction audit write, excluding cold-start): list **< 300ms** and individual create/edit/delete **< 500ms** under that load. Front-end rendering latency is measured separately.
 - **SC-009**: Every user-management operation is covered by an access-control check — 0 operations reachable without one (verified by coverage review).
 - **SC-010**: The administrator interface's user actions (create, edit, remove, batch-remove) complete end-to-end against the live system — 100% succeed against the real backend (not placeholder/mock data) in acceptance testing.
 
@@ -204,6 +212,9 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 - All responses honor the project's frozen response/data contract (envelope shape, identifier representation, and the fixed error-code vocabulary) defined by the project constitution; this feature introduces no new contract variants.
 - Baseline-account protection identifies the three seeded accounts by their stable internal identifiers, so the protection holds even if such an account is renamed.
 - Acceptance verification exercises the **real backend** (the administrator interface is pointed at the live system rather than its default mock data source) for end-to-end checks.
+- Audit events are written to the existing append-only audit log (present from the foundation work); this feature writes events only and changes no schema.
+- The user list returns all active (non-removed) accounts **regardless of enabled/disabled status**; filtering by status is an explicit administrator choice, not automatic.
+- The `User → User01` display alias applies only to the current-user (login) info, **not** to the user-management list; the list shows actual usernames.
 
 ## Out of Scope
 
@@ -213,5 +224,5 @@ Every create, edit, and removal is recorded in an immutable audit trail that cap
 - Querying or browsing the audit trail through a UI (this feature writes audit records; reading them is separate).
 - Alternate sign-in flows, captcha, and sign-in lockout.
 - System-wide settings.
-- Status-based protection of baseline accounts (only their removal is protected; disabling them is an administrator's own responsibility).
+- Status-based protection of baseline accounts — disabling a baseline account (setting it inactive) is **allowed**; only its **removal** is protected. The disabled-account login gate lives in the authentication foundation and is unchanged by this feature.
 - Refined front-end handling when a chosen role becomes unavailable between form load and submit — the back end correctly rejects the submission with a business error; smarter front-end messaging or auto-refresh of the role list is a follow-up.
