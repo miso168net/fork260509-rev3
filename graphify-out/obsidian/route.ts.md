@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/route.ts"
 type: "code"
-community: "Community 94"
+community: "Community 33"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_94
+  - community/Community_33
 ---
 
 # route.ts
@@ -26,4 +26,4 @@ tags:
 - [[useAuthStore]] - `imports` [EXTRACTED]
 - [[useRouteStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_94
+#graphify/code #graphify/EXTRACTED #community/Community_33

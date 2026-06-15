@@ -30,7 +30,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 3 edges to [[_COMMUNITY_Community 57]]
-- 1 edge to [[_COMMUNITY_Community 119]]
+- 1 edge to [[_COMMUNITY_Community 57]]
 
 ## Top bridge nodes
 - [[Migration_2]] - degree 8, connects to 2 communities

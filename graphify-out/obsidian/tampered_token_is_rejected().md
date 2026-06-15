@@ -1,0 +1,18 @@
+---
+source_file: "rust-api/server/src/auth/jwt.rs"
+type: "code"
+community: "JWT Sign/Verify"
+location: "L122"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/JWT_Sign/Verify
+---
+
+# tampered_token_is_rejected()
+
+## Connections
+- [[jwt.rs]] - `contains` [EXTRACTED]
+- [[sign()]] - `calls` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/JWT_Sign/Verify

@@ -27,7 +27,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 68]]
+- 1 edge to [[_COMMUNITY_Community 261]]
 
 ## Top bridge nodes
 - [[Multi-level route (level 3 route and above)]] - degree 4, connects to 1 community

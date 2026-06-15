@@ -26,8 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 68]]
-- 1 edge to [[_COMMUNITY_Community 118]]
+- 2 edges to [[_COMMUNITY_Community 261]]
 
 ## Top bridge nodes
-- [[Parameter Route]] - degree 5, connects to 2 communities
+- [[Parameter Route]] - degree 5, connects to 1 community

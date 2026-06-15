@@ -1,13 +1,13 @@
 ---
 type: community
 cohesion: 0.09
-members: 37
+members: 38
 ---
 
 # Community 13
 
 **Cohesion:** 0.09 - loosely connected
-**Members:** 37 nodes
+**Members:** 38 nodes
 
 ## Members
 - [[@soybeanjsui Component Library]] - concept - fork260509-soybean-admin-docs/src/index.md
@@ -24,6 +24,7 @@ members: 37
 - [[SoybeanAdmin Cooperation Services (JP)]] - document - fork260509-soybean-admin-docs/src/jp/cooperate/index.md
 - [[SoybeanAdmin Docs Homepage]] - document - fork260509-soybean-admin-docs/src/index.md
 - [[SoybeanAdmin Ecosystem Document]] - document - fork260509-soybean-admin-docs/src/awesome/index.md
+- [[SoybeanAdmin Introduction]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
 - [[SoybeanAdmin 周边生态（开源项目列表）]] - concept - fork260509-soybean-admin-docs/src/zh/awesome/index.md
 - [[SoybeanJS Team]] - concept - fork260509-soybean-admin-docs/src/index.md
 - [[SuperApi]] - concept - fork260509-soybean-admin-docs/src/awesome/index.md
@@ -56,13 +57,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 83]]
 - 1 edge to [[_COMMUNITY_Community 5]]
-- 1 edge to [[_COMMUNITY_Community 118]]
+- 1 edge to [[_COMMUNITY_Community 261]]
 - 1 edge to [[_COMMUNITY_Community 11]]
 - 1 edge to [[_COMMUNITY_Community 120]]
-- 1 edge to [[_COMMUNITY_Community 74]]
-- 1 edge to [[_COMMUNITY_Community 83]]
 
 ## Top bridge nodes
-- [[SoybeanAdmin (2)]] - degree 15, connects to 5 communities
+- [[SoybeanAdmin (2)]] - degree 15, connects to 3 communities
 - [[SoybeanAdmin Ecosystem Document]] - degree 18, connects to 1 community
+- [[SoybeanAdmin Introduction]] - degree 2, connects to 1 community

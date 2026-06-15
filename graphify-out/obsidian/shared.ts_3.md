@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/request/shared.ts"
 type: "code"
-community: "Community 20"
+community: "Community 53"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_20
+  - community/Community_53
 ---
 
 # shared.ts
@@ -24,4 +24,4 @@ tags:
 - [[type.ts_2]] - `imports_from` [EXTRACTED]
 - [[useAuthStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_20
+#graphify/code #graphify/EXTRACTED #community/Community_53

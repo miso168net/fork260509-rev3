@@ -1,13 +1,13 @@
 ---
 type: community
-cohesion: 0.17
-members: 20
+cohesion: 0.15
+members: 23
 ---
 
 # Community 35
 
-**Cohesion:** 0.17 - loosely connected
-**Members:** 20 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 23 nodes
 
 ## Members
 - [[filterAuthRouteByRoles()]] - code - base-web/src/store/modules/route/shared.ts
@@ -19,6 +19,7 @@ members: 20
 - [[getGlobalMenusByAuthRoutes()]] - code - base-web/src/store/modules/route/shared.ts
 - [[getSelectedMenuKeyPathByKey()]] - code - base-web/src/store/modules/route/shared.ts
 - [[icon.ts]] - code - base-web/src/hooks/common/icon.ts
+- [[index.ts_7]] - code - base-web/packages/hooks/src/index.ts
 - [[index.ts_35]] - code - base-web/src/store/modules/route/index.ts
 - [[isRouteExistByRouteName()]] - code - base-web/src/store/modules/route/shared.ts
 - [[recursiveGetIsRouteExistByRouteName()]] - code - base-web/src/store/modules/route/shared.ts
@@ -29,7 +30,9 @@ members: 20
 - [[transformMenuToBreadcrumb()]] - code - base-web/src/store/modules/route/shared.ts
 - [[transformMenuToSearchMenus()]] - code - base-web/src/store/modules/route/shared.ts
 - [[updateLocaleOfGlobalMenus()]] - code - base-web/src/store/modules/route/shared.ts
+- [[use-svg-icon-render.ts]] - code - base-web/packages/hooks/src/use-svg-icon-render.ts
 - [[useSvgIcon()]] - code - base-web/src/hooks/common/icon.ts
+- [[useSvgIconRender()]] - code - base-web/packages/hooks/src/use-svg-icon-render.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -39,15 +42,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 8 edges to [[_COMMUNITY_Community 20]]
+- 9 edges to [[_COMMUNITY_Community 20]]
 - 6 edges to [[_COMMUNITY_Community 42]]
 - 5 edges to [[_COMMUNITY_Community 94]]
-- 3 edges to [[_COMMUNITY_Community 41]]
+- 4 edges to [[_COMMUNITY_Community 43]]
+- 2 edges to [[_COMMUNITY_Community 128]]
 - 2 edges to [[_COMMUNITY_Community 34]]
-- 1 edge to [[_COMMUNITY_Community 33]]
+- 2 edges to [[_COMMUNITY_Community 33]]
+- 1 edge to [[_COMMUNITY_Community 41]]
+- 1 edge to [[_COMMUNITY_Community 53]]
 
 ## Top bridge nodes
 - [[index.ts_35]] - degree 32, connects to 6 communities
+- [[index.ts_7]] - degree 13, connects to 5 communities
 - [[shared.ts_6]] - degree 19, connects to 1 community
-- [[icon.ts]] - degree 4, connects to 1 community
-- [[useSvgIcon()]] - degree 4, connects to 1 community

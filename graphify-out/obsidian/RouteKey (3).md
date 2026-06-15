@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/intro.md"
 type: "concept"
-community: "Community 75"
+community: "Community 261"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Community_261
 ---
 
 # RouteKey (3)
@@ -19,4 +19,4 @@ tags:
 - [[type RoutePath]] - `references` [EXTRACTED]
 - [[view.RouteKey Page Component]] - `references` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_75
+#graphify/concept #graphify/EXTRACTED #community/Community_261

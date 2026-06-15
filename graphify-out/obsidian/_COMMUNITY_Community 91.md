@@ -33,7 +33,8 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 2 edges to [[_COMMUNITY_Community 70]]
-- 2 edges to [[_COMMUNITY_Community 27]]
+- 1 edge to [[_COMMUNITY_Community 40]]
+- 1 edge to [[_COMMUNITY_Community 27]]
 
 ## Top bridge nodes
-- [[app.ts]] - degree 16, connects to 2 communities
+- [[app.ts]] - degree 16, connects to 3 communities

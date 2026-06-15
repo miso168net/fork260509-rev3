@@ -1,22 +1,19 @@
 ---
 type: community
-cohesion: 0.24
-members: 13
+cohesion: 0.31
+members: 10
 ---
 
 # Community 94
 
-**Cohesion:** 0.24 - loosely connected
-**Members:** 13 nodes
+**Cohesion:** 0.31 - loosely connected
+**Members:** 10 nodes
 
 ## Members
 - [[provideMixMenuContext, useMixMenuContext]] - code - base-web/src/layouts/modules/global-menu/context/index.ts
-- [[getRouteName()]] - code - base-web/src/router/elegant/transform.ts
-- [[getRouteQueryOfLoginRoute()]] - code - base-web/src/router/guard/route.ts
-- [[handleRouteSwitch()]] - code - base-web/src/router/guard/route.ts
+- [[historyCreatorMap]] - code - base-web/src/router/index.ts
 - [[index.ts_22]] - code - base-web/src/layouts/modules/global-menu/context/index.ts
-- [[initRoute()]] - code - base-web/src/router/guard/route.ts
-- [[route.ts]] - code - base-web/src/router/guard/route.ts
+- [[index.ts_25]] - code - base-web/src/router/index.ts
 - [[router]] - code - base-web/src/router/index.ts
 - [[router.ts_1]] - code - base-web/src/hooks/common/router.ts
 - [[useMenu()]] - code - base-web/src/layouts/modules/global-menu/context/index.ts
@@ -32,17 +29,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 10 edges to [[_COMMUNITY_Community 20]]
-- 5 edges to [[_COMMUNITY_Community 33]]
+- 7 edges to [[_COMMUNITY_Community 20]]
 - 5 edges to [[_COMMUNITY_Community 35]]
-- 4 edges to [[_COMMUNITY_Community 34]]
+- 5 edges to [[_COMMUNITY_Community 34]]
+- 4 edges to [[_COMMUNITY_Community 33]]
+- 2 edges to [[_COMMUNITY_Community 25]]
 - 2 edges to [[_COMMUNITY_Community 54]]
 - 2 edges to [[_COMMUNITY_Community 42]]
-- 1 edge to [[_COMMUNITY_Community 41]]
 
 ## Top bridge nodes
-- [[route.ts]] - degree 13, connects to 4 communities
-- [[index.ts_22]] - degree 10, connects to 4 communities
-- [[router]] - degree 5, connects to 4 communities
-- [[useRouteStore]] - degree 8, connects to 3 communities
-- [[router.ts_1]] - degree 6, connects to 3 communities
+- [[index.ts_25]] - degree 12, connects to 6 communities
+- [[useRouteStore]] - degree 8, connects to 4 communities
+- [[index.ts_22]] - degree 10, connects to 3 communities
+- [[router]] - degree 5, connects to 3 communities
+- [[router.ts_1]] - degree 6, connects to 2 communities

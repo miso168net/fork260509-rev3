@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/router/structure.md"
 type: "concept"
-community: "Community 118"
+community: "Community 261"
 location: "## 参数路由"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_118
+  - community/Community_261
 ---
 
 # 参数路由 [id].vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[Elegant Router (2)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_118
+#graphify/concept #graphify/EXTRACTED #community/Community_261

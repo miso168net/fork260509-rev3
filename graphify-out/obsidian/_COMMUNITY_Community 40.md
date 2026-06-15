@@ -1,34 +1,26 @@
 ---
 type: community
-cohesion: 0.22
-members: 19
+cohesion: 0.29
+members: 11
 ---
 
 # Community 40
 
-**Cohesion:** 0.22 - loosely connected
-**Members:** 19 nodes
+**Cohesion:** 0.29 - loosely connected
+**Members:** 11 nodes
 
 ## Members
-- [[ColorPalette]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteFamily]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteFamilyWithNearestPalette]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteMatch]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteNumber]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteWithDelta]] - code - base-web/packages/color/src/types/index.ts
-- [[colorPalettes]] - code - base-web/packages/color/src/constant/palette.ts
 - [[getAntDColorPalette()]] - code - base-web/packages/color/src/palette/antd.ts
 - [[getColorPalette()]] - code - base-web/packages/color/src/palette/index.ts
+- [[getLogoSvg()]] - code - base-web/src/plugins/loading.ts
 - [[getPaletteColorByNumber()]] - code - base-web/packages/color/src/palette/index.ts
 - [[getRecommendedColorPalette()]] - code - base-web/packages/color/src/palette/recommend.ts
 - [[getRecommendedPaletteColorByNumber()]] - code - base-web/packages/color/src/palette/recommend.ts
-- [[index.ts_3]] - code - base-web/packages/color/src/constant/index.ts
-- [[index.ts_2]] - code - base-web/packages/color/src/index.ts
 - [[index.ts_4]] - code - base-web/packages/color/src/palette/index.ts
-- [[index.ts_5]] - code - base-web/packages/color/src/shared/index.ts
-- [[index.ts_6]] - code - base-web/packages/color/src/types/index.ts
-- [[palette.ts]] - code - base-web/packages/color/src/constant/palette.ts
-- [[recommend.ts]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[loading.ts]] - code - base-web/src/plugins/loading.ts
+- [[setupLoading()]] - code - base-web/src/plugins/loading.ts
+- [[toggleCssDarkMode()]] - code - base-web/src/store/modules/theme/shared.ts
+- [[toggleHtmlClass()]] - code - base-web/src/utils/common.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -38,15 +30,17 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 18 edges to [[_COMMUNITY_Community 31]]
-- 8 edges to [[_COMMUNITY_Community 27]]
-- 2 edges to [[_COMMUNITY_Community 20]]
-- 1 edge to [[_COMMUNITY_Community 26]]
-- 1 edge to [[_COMMUNITY_Community 337]]
+- 8 edges to [[_COMMUNITY_Community 31]]
+- 7 edges to [[_COMMUNITY_Community 40]]
+- 6 edges to [[_COMMUNITY_Community 27]]
+- 5 edges to [[_COMMUNITY_Community 20]]
+- 3 edges to [[_COMMUNITY_Community 25]]
+- 2 edges to [[_COMMUNITY_Community 70]]
+- 1 edge to [[_COMMUNITY_Community 91]]
 
 ## Top bridge nodes
-- [[index.ts_2]] - degree 9, connects to 3 communities
+- [[loading.ts]] - degree 12, connects to 6 communities
+- [[index.ts_4]] - degree 11, connects to 2 communities
 - [[getColorPalette()]] - degree 9, connects to 2 communities
-- [[index.ts_3]] - degree 5, connects to 2 communities
+- [[setupLoading()]] - degree 7, connects to 2 communities
 - [[getPaletteColorByNumber()]] - degree 5, connects to 2 communities
-- [[recommend.ts]] - degree 19, connects to 1 community

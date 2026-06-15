@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-table.ts"
 type: "code"
-community: "Community 41"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Community_43
 ---
 
 # use-table.ts
@@ -24,4 +24,4 @@ tags:
 - [[use-loading.ts]] - `imports_from` [EXTRACTED]
 - [[useTable()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Community_43

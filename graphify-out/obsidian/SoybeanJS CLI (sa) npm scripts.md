@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/quick-start.md"
 type: "concept"
-community: "Community 74"
+community: "Community 83"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_74
+  - community/Community_83
 ---
 
 # SoybeanJS CLI (sa) npm scripts
@@ -14,4 +14,4 @@ tags:
 - [[Quick Start Guide]] - `references` [EXTRACTED]
 - [[Route Naming Rules]] - `references` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_74
+#graphify/concept #graphify/EXTRACTED #community/Community_83

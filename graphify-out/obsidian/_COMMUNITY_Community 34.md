@@ -40,13 +40,12 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 9 edges to [[_COMMUNITY_Community 20]]
-- 4 edges to [[_COMMUNITY_Community 94]]
+- 5 edges to [[_COMMUNITY_Community 94]]
 - 3 edges to [[_COMMUNITY_Community 42]]
 - 2 edges to [[_COMMUNITY_Community 35]]
-- 1 edge to [[_COMMUNITY_Community 33]]
 - 1 edge to [[_COMMUNITY_Community 54]]
 
 ## Top bridge nodes
-- [[index.ts_36]] - degree 28, connects to 5 communities
+- [[index.ts_36]] - degree 28, connects to 4 communities
 - [[shared.ts_7]] - degree 21, connects to 2 communities
 - [[getRoutePath()]] - degree 6, connects to 2 communities

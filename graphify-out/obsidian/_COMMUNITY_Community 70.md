@@ -34,10 +34,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 27]]
 - 2 edges to [[_COMMUNITY_Community 91]]
+- 2 edges to [[_COMMUNITY_Community 40]]
 - 1 edge to [[_COMMUNITY_Community 20]]
+- 1 edge to [[_COMMUNITY_Community 27]]
 
 ## Top bridge nodes
-- [[common.ts_1]] - degree 9, connects to 3 communities
+- [[common.ts_1]] - degree 9, connects to 4 communities
 - [[transformRecordToOption()]] - degree 4, connects to 1 community

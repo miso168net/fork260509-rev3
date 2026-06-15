@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/shared.ts"
 type: "code"
-community: "Community 26"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_26
+  - community/Community_28
 ---
 
 # shared.ts
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_9]] - `re_exports` [EXTRACTED]
 - [[index.ts_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_26
+#graphify/code #graphify/EXTRACTED #community/Community_28

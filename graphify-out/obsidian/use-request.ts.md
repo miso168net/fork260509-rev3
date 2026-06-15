@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-request.ts"
 type: "code"
-community: "Community 48"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Community_43
 ---
 
 # use-request.ts
@@ -26,4 +26,4 @@ tags:
 - [[index.ts_1]] - `imports_from` [EXTRACTED]
 - [[use-loading.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Community_43

@@ -30,7 +30,7 @@ SORT file.name ASC
 ## Connections to other communities
 - 3 edges to [[_COMMUNITY_Community 108]]
 - 2 edges to [[_COMMUNITY_Community 141]]
-- 1 edge to [[_COMMUNITY_Community 75]]
+- 1 edge to [[_COMMUNITY_Community 261]]
 
 ## Top bridge nodes
 - [[Local SVG Icon Rendering]] - degree 6, connects to 2 communities

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/entity.rs"
 type: "code"
-community: "Community 333"
+community: "Community 69"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_333
+  - community/Community_69
 ---
 
 # Model
@@ -17,4 +17,4 @@ tags:
 - [[entity.rs]] - `contains` [EXTRACTED]
 - [[load_policy()]] - `shares_data_with` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_333
+#graphify/code #graphify/EXTRACTED #community/Community_69

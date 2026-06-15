@@ -1,23 +1,19 @@
 ---
 type: community
-cohesion: 0.20
-members: 11
+cohesion: 0.33
+members: 7
 ---
 
 # Community 119
 
-**Cohesion:** 0.20 - loosely connected
-**Members:** 11 nodes
+**Cohesion:** 0.33 - loosely connected
+**Members:** 7 nodes
 
 ## Members
-- [[.migrations()]] - code - rust-api/migration/src/lib.rs
-- [[Migrator]] - code - rust-api/migration/src/lib.rs
 - [[acme service]] - code - docker-compose.yml
 - [[base-web service]] - code - docker-compose.yml
 - [[front-nginx service]] - code - docker-compose.yml
-- [[lib.rs]] - code - rust-api/migration/src/lib.rs
 - [[migrate service]] - code - docker-compose.yml
-- [[migration main()]] - code - rust-api/migration/src/main.rs
 - [[postgres service]] - code - docker-compose.yml
 - [[redis-stack service]] - code - docker-compose.yml
 - [[rust-api service]] - code - docker-compose.yml
@@ -30,8 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 57]]
-- 1 edge to [[_COMMUNITY_Community 136]]
+- 1 edge to [[_COMMUNITY_Community 334]]
 
 ## Top bridge nodes
-- [[Migrator]] - degree 7, connects to 2 communities
+- [[migrate service]] - degree 3, connects to 1 community

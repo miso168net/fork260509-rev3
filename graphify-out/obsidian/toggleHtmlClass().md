@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/common.ts"
 type: "code"
-community: "Community 27"
+community: "Community 40"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_27
+  - community/Community_40
 ---
 
 # toggleHtmlClass()
@@ -18,4 +18,4 @@ tags:
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 - [[toggleCssDarkMode()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_27
+#graphify/code #graphify/EXTRACTED #community/Community_40

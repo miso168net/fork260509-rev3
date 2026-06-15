@@ -34,7 +34,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 4 edges to [[_COMMUNITY_Community 75]]
+- 2 edges to [[_COMMUNITY_Community 75]]
+- 2 edges to [[_COMMUNITY_Community 261]]
 
 ## Top bridge nodes
 - [[Route Guard]] - degree 5, connects to 1 community

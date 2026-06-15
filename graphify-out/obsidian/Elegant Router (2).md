@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/intro.md"
 type: "concept"
-community: "Community 118"
+community: "Community 261"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_118
+  - community/Community_261
 ---
 
 # Elegant Router (2)
@@ -25,4 +25,4 @@ tags:
 - [[pnpm gen-route 路由创建命令]] - `conceptually_related_to` [INFERRED]
 - [[参数路由 id.vue]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_118
+#graphify/concept #graphify/EXTRACTED #community/Community_261

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/type.ts"
 type: "code"
-community: "Community 48"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Community_43
 ---
 
 # type.ts
@@ -29,4 +29,4 @@ tags:
 - [[options.ts]] - `imports_from` [EXTRACTED]
 - [[shared.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Community_43

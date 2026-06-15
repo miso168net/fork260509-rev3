@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/intro.md"
 type: "concept"
-community: "Community 75"
+community: "Community 261"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/Community_261
 ---
 
 # RouteMeta (2)
@@ -21,4 +21,4 @@ tags:
 - [[meta.constant 固定路由标记]] - `shares_data_with` [EXTRACTED]
 - [[meta.roles 路由角色权限]] - `shares_data_with` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_75
+#graphify/concept #graphify/EXTRACTED #community/Community_261

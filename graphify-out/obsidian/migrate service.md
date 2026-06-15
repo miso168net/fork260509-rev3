@@ -11,7 +11,7 @@ tags:
 # migrate service
 
 ## Connections
-- [[migration main()]] - `conceptually_related_to` [INFERRED]
+- [[main()_2]] - `conceptually_related_to` [INFERRED]
 - [[postgres service]] - `references` [EXTRACTED]
 - [[rust-api service]] - `references` [EXTRACTED]
 

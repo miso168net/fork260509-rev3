@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/lib.rs"
 type: "code"
-community: "Community 119"
+community: "Community 57"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_119
+  - community/Community_57
 ---
 
 # Migrator
@@ -18,6 +18,6 @@ tags:
 - [[Migration_2]] - `references` [EXTRACTED]
 - [[Migration_3]] - `references` [EXTRACTED]
 - [[lib.rs]] - `contains` [EXTRACTED]
-- [[migration main()]] - `references` [EXTRACTED]
+- [[main()_2]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_119
+#graphify/code #graphify/EXTRACTED #community/Community_57

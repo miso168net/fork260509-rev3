@@ -1,13 +1,13 @@
 ---
 type: community
-cohesion: 0.14
-members: 17
+cohesion: 0.15
+members: 16
 ---
 
 # Community 54
 
-**Cohesion:** 0.14 - loosely connected
-**Members:** 17 nodes
+**Cohesion:** 0.15 - loosely connected
+**Members:** 16 nodes
 
 ## Members
 - [[ChartHooks]] - code - base-web/src/hooks/common/echarts.ts
@@ -22,7 +22,6 @@ members: 17
 - [[lineOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
 - [[pieOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
 - [[radarOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[useAntFlow()]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
 - [[useEcharts()]] - code - base-web/src/hooks/common/echarts.ts
 - [[useThemeStore]] - code - base-web/src/store/modules/theme/index.ts
 - [[useVChart()]] - code - base-web/src/hooks/common/vchart.ts
@@ -45,4 +44,3 @@ SORT file.name ASC
 - [[useThemeStore]] - degree 11, connects to 4 communities
 - [[echarts.ts]] - degree 6, connects to 1 community
 - [[vchart.ts]] - degree 4, connects to 1 community
-- [[useAntFlow()]] - degree 2, connects to 1 community

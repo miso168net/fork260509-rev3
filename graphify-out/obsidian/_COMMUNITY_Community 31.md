@@ -1,13 +1,13 @@
 ---
 type: community
-cohesion: 0.19
-members: 20
+cohesion: 0.20
+members: 21
 ---
 
 # Community 31
 
-**Cohesion:** 0.19 - loosely connected
-**Members:** 20 nodes
+**Cohesion:** 0.20 - loosely connected
+**Members:** 21 nodes
 
 ## Members
 - [[ColorIndex]] - code - base-web/packages/color/src/types/index.ts
@@ -23,13 +23,14 @@ members: 20
 - [[getHue()]] - code - base-web/packages/color/src/palette/antd.ts
 - [[getNearestColorPaletteFamily()]] - code - base-web/packages/color/src/palette/recommend.ts
 - [[getRecommendedColorPaletteFamily()]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[getRgb()]] - code - base-web/packages/color/src/shared/colord.ts
 - [[getSaturation()]] - code - base-web/packages/color/src/palette/antd.ts
 - [[getValue()]] - code - base-web/packages/color/src/palette/antd.ts
+- [[index.ts_5]] - code - base-web/packages/color/src/shared/index.ts
 - [[isValidColor()]] - code - base-web/packages/color/src/shared/colord.ts
 - [[isWhiteColor()]] - code - base-web/packages/color/src/shared/colord.ts
 - [[mixColor()]] - code - base-web/packages/color/src/shared/colord.ts
 - [[name.ts_1]] - code - base-web/packages/color/src/shared/name.ts
-- [[transformHslToHex()]] - code - base-web/packages/color/src/shared/colord.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -39,14 +40,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 18 edges to [[_COMMUNITY_Community 40]]
-- 3 edges to [[_COMMUNITY_Community 27]]
+- 13 edges to [[_COMMUNITY_Community 40]]
+- 8 edges to [[_COMMUNITY_Community 40]]
 - 2 edges to [[_COMMUNITY_Community 26]]
-- 1 edge to [[_COMMUNITY_Community 337]]
+- 2 edges to [[_COMMUNITY_Community 27]]
 
 ## Top bridge nodes
-- [[colord.ts]] - degree 13, connects to 3 communities
-- [[name.ts_1]] - degree 8, connects to 3 communities
-- [[getColorName()]] - degree 6, connects to 2 communities
-- [[antd.ts]] - degree 14, connects to 1 community
-- [[getHex()]] - degree 7, connects to 1 community
+- [[antd.ts]] - degree 14, connects to 2 communities
+- [[colord.ts]] - degree 13, connects to 2 communities
+- [[getRgb()]] - degree 7, connects to 2 communities
+- [[index.ts_5]] - degree 6, connects to 2 communities
+- [[getRecommendedColorPaletteFamily()]] - degree 6, connects to 2 communities

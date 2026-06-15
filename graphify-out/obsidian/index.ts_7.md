@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/index.ts"
 type: "code"
-community: "Community 41"
+community: "Community 35"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Community_35
 ---
 
 # index.ts
@@ -26,4 +26,4 @@ tags:
 - [[use-svg-icon-render.ts]] - `imports_from` [EXTRACTED]
 - [[use-table.ts]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Community_35

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/loading.ts"
 type: "code"
-community: "Community 27"
+community: "Community 40"
 location: "L60"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_27
+  - community/Community_40
 ---
 
 # getLogoSvg()
@@ -15,4 +15,4 @@ tags:
 - [[loading.ts]] - `contains` [EXTRACTED]
 - [[setupLoading()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_27
+#graphify/code #graphify/EXTRACTED #community/Community_40

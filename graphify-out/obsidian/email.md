@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Community 316"
+community: "Community 59"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_316
+  - community/Community_59
 ---
 
 # email
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[author]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_316
+#graphify/code #graphify/EXTRACTED #community/Community_59

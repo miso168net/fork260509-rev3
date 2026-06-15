@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/constant/name.ts"
 type: "code"
-community: "Community 337"
+community: "Community 40"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_337
+  - community/Community_40
 ---
 
 # colorNames
@@ -15,4 +15,4 @@ tags:
 - [[name.ts]] - `contains` [EXTRACTED]
 - [[name.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_337
+#graphify/code #graphify/EXTRACTED #community/Community_40

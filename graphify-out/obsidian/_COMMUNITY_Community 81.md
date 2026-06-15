@@ -34,11 +34,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 3 edges to [[_COMMUNITY_Community 20]]
-- 1 edge to [[_COMMUNITY_Community 43]]
-- 1 edge to [[_COMMUNITY_Community 71]]
+- 2 edges to [[_COMMUNITY_Community 43]]
 - 1 edge to [[_COMMUNITY_Community 25]]
 
 ## Top bridge nodes
-- [[index.ts_20]] - degree 8, connects to 4 communities
+- [[index.ts_20]] - degree 8, connects to 3 communities
 - [[createLocalforage()]] - degree 2, connects to 1 community
 - [[createStorage()]] - degree 2, connects to 1 community
