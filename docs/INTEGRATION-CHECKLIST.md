@@ -12,8 +12,8 @@
 **階段**:**波 0 地基 進行中（001+002 ✅ 已收刀 2026-06-13、餘 4 項〔audit ×2 計 5 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-16 rebase 重做 003-009**:因 rev2 經驗未隨帶入致實作/文件不順、reset 三 repo 到 `rebase260616` tag（outer `1c6ba31`／base-web `dd771540`／rust-api `91cfc80`）重做;redo-起點 doc 調整已 commit（CLAUDE.md 對齊／DECISIONS §1 待決③→B＋⚠️a/b/o/u 拍板＋⚠️w/x/y 登記／DESIGN §3.3 hybrid・§7.3 i18n）＋三 repo force-push origin;**舊 003-009 線全備份在 `rebase260616-*` 分支＋tag（本機＋origin、勿 `git pull`）**
 - **2026-06-13 002-rev2-schema-baseline 全綠收刀＋merge＋push**:C-V-0~9 實機全綠（SC-001~008）、前代 35 支 squash 為 4 支基線（m001 schema 11 表／m002 seed 92 列 6 表／m003 FK／m004 demo 66）＋sea-orm-adapter 拷入、修 m002 兩層 seed drift（id 順序 bug＋normalize 第六規則 row-order 正規化〔user 拍板方案 A〕）、merge `9233ae0` 回 rev3-admin-root;三 ref 已 push（rev3-admin-root/002 保留分支/rev3-admin-rust-api）
-- **2026-06-13 001-infra-deploy 全綠收刀＋merge＋push**:T001~T021、C-V-0~8 實機全綠（SC-001~007）、抓 redis --dir 持久化真 bug 並修、merge `c9ffad5` 回 rev3-admin-root;三 ref 已 push（rev3-admin-root〔含波 -1 累積〕/001-infra-deploy 保留分支/rev3-admin-rust-api）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
@@ -54,36 +54,36 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [ ] envelope 13 碼 contract 形狀測試綠（⚠️e 拍板形）
 - [ ] login→getUserInfo→enforce 最小鏈 curl 通
 
-### 波 1 — 第一刀（未開始）
+### 波 1 — 第一刀＝`system_settings` 打樣（未開始;③=B 拍板 2026-06-16）
 
-User **或** `system_settings` 打樣（待決③）:migration→facade→handler→enforce→wire→frontend 全鏈＋§5 各面一次逼出。
+**`system_settings` 打樣（③=B）**:migration→facade→handler→enforce→wire→frontend 全鏈＋§5 各面一次逼出;以最輕、低風險的 KV entity 先打通骨架、再上最重的 User〔波2〕。
 
 **刀/feature 清單**:
-- [ ] **第一刀**（待決③ 拍板後定:A=User 直刀〔rev2 016*+017 規模、§5 全套+M:N join+★MODAL-WIRING〕或 B=`system_settings` 打樣〔rev2 029 子集、§5.6 熱 KV 獨有〕;兩案比較見 DESIGN §8.3）
+- [ ] **`system_settings` 打樣刀**（③=B;rev2 029 子集、§5.6 熱 KV/pub-sub＋settings_watcher 獨有;全鏈一次逼出）
 
-**前置拍板（user 親決,3 項;工程預設與結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
-- [ ] ③第一刀位（User 直刀 vs `system_settings` 打樣;預設=傾向 User 直刀;開工前）
-- [ ] ⚠️a 效能/可用性數字（預設=p95 300/500ms/1s・99.5%/月;波 1 驗收前）
-- [ ] ⚠️o application-RI 驗證層位（預設=維持 handler 層驗、下沉 facade 屬設計變更須明示;facade 設計時）
+**前置拍板 ✅ 全拍完（2026-06-16;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
+- [x] ③第一刀位 ✅ **B＝`system_settings` 打樣**（user 親決、推翻前傾向 User）
+- [x] ⚠️a 效能/可用性數字 ✅ 批准保守預設（p95 300/500ms/1s・99.5%/月）
+- [x] ⚠️o application-RI ✅ **hybrid**（intra-entity 下沉 facade 自驗、跨 facade/restore 留 handler;自驗首用 Menu reparent 波2、見 DESIGN §3.3）
 
 **出口條件（DESIGN §8.4）**:
 - [ ] §8.1 工序 9 列全過
 - [ ] CDP 經 front-nginx 真 `/api` 路徑驗收
 - [ ] 該 entity 的 §5.0 列逐面勾消
 
-### 波 2 — data islands（未開始）
+### 波 2 — data islands（未開始;③=B → User 留本波、`system_settings` 已移波1）
 
-其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。
+其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。建議序 User→Menu→Role（Menu net-new `sys_menu`＋migration、Menu 完成解鎖 Role×Menu 授權）。
 
-**刀/feature 清單**（素材=DESIGN §8.2 data island 縱切;波 1 拍 ③ 後本清單定稿）:
-- [ ] **User 刀**（讀 3 端＋CRUD＋join `sys_user_role`;rev2 016*+017;若③=A 已於波 1 交付、本列改註）
+**刀/feature 清單**（素材=DESIGN §8.2 data island 縱切）:
+- [ ] **User 刀**（③=B → User 留本波;讀 3 端＋CRUD＋join `sys_user_role`;rev2 016*+017;§5 全套+M:N join+★MODAL-WIRING 重刀）
 - [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕）
-- [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;**＋⚠️o hybrid〔已決〕：reparent 3+1 guard 下沉 facade 自驗〔slim error enum、handler 映 2222〕、redo 別漏**）
-- [ ] **`system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029 對應;若③=A 掛此波）
-- [ ] **（⚠️b 核可後）審計查詢讀端＋UI 刀**（三 log 讀端＋R_SUPER policy seed＋manage 新頁〔MODAL-WIRING use (e)〕;DESIGN §8.2 待拍板刀位）
+- [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;**＋⚠️o hybrid〔已決〕：reparent 3+1 guard 下沉 facade 自驗〔slim error enum、handler 映 2222〕**）
+- [x] ~~**`system_settings` 刀**~~ **已移波 1 第一刀（③=B、2026-06-16）**
+- [ ] **審計查詢讀端＋UI 刀（⚠️b ✅ 已決：做、波2 殿後刀）**（三 log 讀端＋R_SUPER policy seed＋manage 新頁〔MODAL-WIRING (e)〕;排 Menu→Role 之後;DESIGN §8.2）
 
-**前置拍板（user 親決,1 項）**:
-- [ ] ⚠️b 審計查詢讀端＋UI 補做（預設=補、Super-only;波 2 排程前）
+**前置拍板 ✅ 已拍（2026-06-16）**:
+- [x] ⚠️b 審計查詢讀端＋UI ✅ 做、排波2 殿後刀（Super-only、MODAL-WIRING (e)）
 
 **出口條件（DESIGN §8.4）**:
 - [ ] 各刀工序全過
@@ -203,11 +203,11 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 18**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)
+**已決 25**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜③ B=`system_settings` 第一刀(2026-06-16)｜⚠️a perf 保守預設(p95 300/500/1s・99.5%)｜⚠️b 審計讀端 做+波2 殿後｜⚠️o application-RI hybrid(intra 下沉 facade/跨 facade·restore 留 handler)｜⚠️u §IV 第10題 不採納｜⚠️x endpoint_lint 波0 豁免移波1｜⚠️y biz-msg i18n A(前端譯·msg=key)
 
-**開放 13**(依最晚決策點分組):
-- 波 1~3:③第一刀位(波1開工前)｜⚠️a 效能數字(波1驗收前)｜⚠️o RI 下沉(波1 facade 設計時)｜⚠️b 審計讀端(波2排程前)｜⚠️m alt-login 入波(波3排程前)
-- 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention｜⚠️u §IV 增第 10 題(amendment 提案,PATCH)
+**開放 9**(依最晚決策點分組):
+- 波 1~3:⚠️m alt-login 入波(波3排程前)｜⚠️w login lockout(做、刀位/設計待排程;消費 audit-overlay 的 sys_login_attempt 索引)
+- 不阻塞/觸發時:⑥a-d 新能力包｜⚠️h 排程重議｜⚠️l settings 多 key｜⚠️n log retention
 
 ---
 
