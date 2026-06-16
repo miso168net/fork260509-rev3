@@ -57,7 +57,7 @@
 
 **Why this priority**: 前瞻性契約價值——防止跨眾多後續切片的 key 漂移；其價值隨時間實現，但規則必須隨信封一起 ship，首批消費者才有規可循。
 
-**Independent Test**: 規約已文件化；固定碼識別碼全數合於文法；一個檢查能拒絕不合規約的識別碼。
+**Independent Test**: 規約已文件化；固定碼識別碼全數合於文法；文法-conformance 斷言能拒絕不合規約的識別碼。**註**：此斷言與 US1 共用 rust in-crate 契約測 harness（依賴 US1 `error.rs`/`AppError` key 已存在）——US3 可在 US1 後獨立執行、但非完全檔案獨立於 US1（tasks T013 依 T005）。
 
 **Acceptance Scenarios**:
 

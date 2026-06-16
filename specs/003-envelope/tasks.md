@@ -46,7 +46,7 @@
 - [ ] T009 [P] [US2] `base-web/src/locales/langs/en-us.ts`：加 `backend` 物件（en-US 譯文＝§3 表）；同上強制；⚠️aa (ii)（依賴 T007；與 T008 不同檔、可 [P]）
 - [ ] T010 [US2] `base-web/src/locales/index.ts`：匯出 `translateBackendMsg(msg: string): string`＝`$t(('backend.' + msg) as App.I18n.I18nKey)`（前端補 `backend.` 前綴、前綴歸屬 (c)）；⚠️aa (iii)（依賴 T007）
 - [ ] T011 [US2] `base-web/src/service/request/index.ts`：4 翻譯點接 `translateBackendMsg`——`:71` modal `content`、`:109` `onError` 的 `message = translateBackendMsg(error.response?.data?.msg) ?? message`、`:64`/`:51` dedup push/filter 用翻譯後值（保 stack 鍵＝顯示文字）；**不**碰 `shared.ts:54 showErrorMsg`（R2）；⚠️aa (i)、每處保留原行註解＋`// [rev3-inline I18N(i)] 原行: ...`（依賴 T010）
-- [ ] T012 [US2] C-V-2 實機：容器內 `pnpm typecheck` 過（Schema+雙 langs 齊）＋base-web component/unit（`translateBackendMsg('auth.login.failed')`→譯文；`translateBackendMsg('biz.unknown.x')`→回 `backend.biz.unknown.x` 原始字串）；vite 沒熱載新 export 時 `restart base-web`（依賴 T007~T011）
+- [ ] T012 [US2] C-V-2 實機：容器內 `pnpm typecheck` 過（Schema+雙 langs 齊）＋base-web component/unit——(a) **命中＝雙語各驗**（對齊 SC-005）：`translateBackendMsg('auth.login.failed')` 於 locale=zh-CN 回「用户名或密码错误」、en-US 回「Incorrect username or password」（13 固定 key 抽樣）；(b) **fallback**（SC-006）：`translateBackendMsg('biz.unknown.x')`→回 `backend.biz.unknown.x` 原始字串；vite 沒熱載新 export 時 `restart base-web`（依賴 T007~T011）
 
 **Checkpoint**: US2 全綠（SC-005/006；前端 i18n 顯示機制成立）→ **雙段 commit**（base-web worktree `--no-verify`→outer pin；`git status` 確認無 `components.d.ts` 漏網——本刀不新增元件、預期無）
 

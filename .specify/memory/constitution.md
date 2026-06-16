@@ -39,7 +39,7 @@
 **鎖定不變式**：
 - envelope `{data, code, msg}`（無 `success` bool）；`code` = string `"0000"` not number；business error 走 **HTTP 200** 信封
 - **id 序列化＝逐欄位忠實 typings（⚠️r 拍板、推翻 rev2「id 全字串」凍結）**：`Common.CommonRecord.id`／`Menu.parentId`／`MenuTree.id`/`pId`／`Role.id` 與 write payload `ids` → JSON **number**；`MenuRoute.id`／`UserInfo.userId` → **string**（typings 本就如此宣告）。DB 一律 i64 自增；轉換只發生在 rust-api **序列化邊界**；serializer 加 2^53 fail-loud 守衛；**lie ledger（顯式偏離宣告帳本，每筆偏離＝拍板、登 [DECISIONS §1](../../docs/INTEGRATION-DECISIONS.md)）初始為空**；rev2 的消費端 `Number()` 正規化補丁移植時應還原刪除
-- **13 碼矩陣整組凍結（⚠️f）**：`0000`/`1000`/`2222`/`3333`/`7777`/`7778`/`8888`/`8889`/`9998`/`9999`/`4040`/`5003`/`5000`（碼/msg 字串為 wire 凍結事實，完整矩陣 DESIGN §7.3）；HTTP status 例外僅 `4040`→404、`5003`→403，**`5000` 一律 HTTP 200 信封（⚠️e）**；4 保留碼（7778/8889/9998/9999）**後端從不發出**、僅前端 `.env` 分組認得
+- **13 碼矩陣整組凍結（⚠️f）**：`0000`/`1000`/`2222`/`3333`/`7777`/`7778`/`8888`/`8889`/`9998`/`9999`/`4040`/`5003`/`5000`（碼為 wire 凍結事實；`msg` 自 ⚠️y 起載穩定 i18n key〔非人話字串、後端語言無關、前端 `$t` 譯〕；完整矩陣與 key 規約見 DESIGN §7.3）；HTTP status 例外僅 `4040`→404、`5003`→403，**`5000` 一律 HTTP 200 信封（⚠️e）**；4 保留碼（7778/8889/9998/9999）**後端從不發出**、僅前端 `.env` 分組認得
 - 業務驗證 error code = **`2222`**（`BizError`）；**`5xxx` 段為授權/基建、非業務**；refresh 類 critical code（`9999`/`9998`/`3333`）絕不用在業務驗證
 - `MenuType` enum：1 = directory / 2 = menu；`Status` nullable：`CommonRecord.status: EnableStatus | null` rust-api 須支援
 - 分頁形 `PageRes<T>` = `{current, size, total, records}`（camelCase、**無 `pages`/`success`**、空頁 `records:[]`）↔ `Common.PaginatingQueryRecord<T>`
@@ -242,4 +242,4 @@ DESIGN 仍為「核心事實」（設計契約＋詳細軌道定義＋行為島�
 
 ---
 
-**Version**: 1.1.0 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-16（§III 新增 BASE-WEB-I18N-WIRING ★ 軌道，⚠️aa；MINOR=新增 ★ 軌道）
+**Version**: 1.1.1 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-16（v1.1.0：§III 新增 BASE-WEB-I18N-WIRING ★ 軌道〔⚠️aa、MINOR〕；v1.1.1：§I.3 釐清 `msg` 載 i18n key 對齊 ⚠️y〔⚠️ab、PATCH＝釐清〕）
