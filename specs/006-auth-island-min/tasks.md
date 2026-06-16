@@ -31,8 +31,8 @@
 - [ ] T008 `rust-api/server/src/model/facade/sys_user.rs`（004/005 既有、加）：`find_by_user_name(db, name:&str)->Result<Option<Model>,DbErr>`（活躍、`deleted_at IS NULL`）／`set_pointer(txn:&DatabaseTransaction, uid:i64, sid:&str)->Result<(),DbErr>`（UPDATE current_session_id）／`current_session_id_of(db, uid:i64)->Result<Option<String>,DbErr>`（is_current 讀、entity:: 在 facade 合法）（data-model §4）
 - [ ] T009 `rust-api/server/src/error.rs`（003 既有、加）：`impl From<DbErr> for AppError`（→`Internal`/5000）。既有變體 `LoginFailed`(1000)/`TokenExpired`(3333)/`ModalLogout`(7777)/`PermissionDenied`(5003) **直接用、不新增**（research R-G）
 - [ ] T010 `rust-api/server/src/auth/enforce.rs`（新）：`MODEL_CONF: &str`（embedded 純 3-tuple RBAC、data-model §3.1）＋`init_enforcer(db)->Enforcer`（`SeaOrmAdapter::new(db)`＋`Enforcer::new(DefaultModel::from_str(MODEL_CONF), adapter)`＋`load_policy`）＋`bearer` extract+verify（→Claims、缺/壞→3333）＋`is_current`（claims.sid==`current_session_id_of`？DB-truth、**fail-OPEN**：Err→放行；不等→7777）＋`enforce_mw`（bearer→is_current→〔policy-governed route〕Casbin `enforce((role,path,method))`〔全 deny→5003〕；auth-only route 跳 policy 步）（research R-C、data-model §5/§7）
-- [ ] T011 `rust-api/server/src/main.rs`（改）：`#[tokio::main] async` build `AppConfig`→`Database::connect`→`init_enforcer`→`AppState`；mount `POST /auth/login`（public）＋`GET /auth/getUserInfo`（套 `enforce_mw` auth-only）＋既有 `/health`＋fallback；`.with_state(AppState)`。加 `mod auth; mod handler;`（data-model §1.2、plan 實作注意.1）
-- [ ] T012 `rust-api/server/src/handler/mod.rs`＋`handler/auth.rs`（新、骨架）：`login`／`get_user_info` handler 簽名就位（待 T014/T016 填內容；先回 stub 使 T013 build 綠）
+- [ ] T011 `rust-api/server/src/handler/mod.rs`＋`handler/auth.rs`（新、骨架）：`login`／`get_user_info` handler 簽名就位（取 `State<AppState>`；先回 stub 使後續 build 綠、待 **T015/T017** 填內容）。`main.rs` 加 `mod handler;`（依 T003 state）
+- [ ] T012 `rust-api/server/src/main.rs`（改）：`#[tokio::main] async` build `AppConfig`→`Database::connect`→`init_enforcer`→`AppState`；mount `POST /auth/login`（public、`handler::auth::login`）＋`GET /auth/getUserInfo`（套 `enforce_mw` auth-only、`handler::auth::get_user_info`）＋既有 `/health`＋fallback；`.with_state(AppState)`。加 `mod auth;`（依 **T011** handler 簽名 ＋ T002/T003/T010；data-model §1.2、plan 實作注意.1）
 - [ ] T013 C-V-0 build：容器內 force-touch `server/src` → `cargo build -p server` 綠（config/state/auth/handler/facade 編譯、新 dep 解析、time-pin 不撞 1.86）（依 T001~T012）
 - [ ] T014 C-V-1 純函式測（無 DB、test-first 精神；in-crate `#[cfg(test)]`、fn 名含 `auth`）：JWT sign→verify roundtrip＋過期/壞簽/錯aud reject／argon2id verify（對 `Argon2::default().hash_password("123456")` 產 PHC、錯密碼 false）／Claims serde roundtrip／**Casbin enforce seam**（embedded MODEL＋fixture/seeded policy：`enforce(("R_SUPER","/systemManage/deleteUser","DELETE"))==true`、`("R_USER_COMMON",…)==false`＝**5003 證面**）。容器內 `cargo test -p server auth`（警覺「0 passed/N filtered」假綠）（依 T004/T005/T010）
 
@@ -88,7 +88,7 @@
 ```
 Setup (T001) ─→ Foundational (T002~T014)  [rust-api worktree、serial]
    T001（dep+time-pin）blocks all build；T002/T003（config/state）→ T011（main 用）
-   T004/T005（jwt/password [P]）／T006/T007/T008（facade）／T009（error）／T010（enforce）→ T011（main 接線）→ T012（handler 骨架）→ T013（build）→ T014（純測）
+   T004/T005（jwt/password [P]）／T006/T007/T008（facade）／T009（error）／T010（enforce）→ T011（handler 骨架、依 T003 state）→ T012（main 接線、依 T002/T003/T010＋T011）→ T013（build）→ T014（純測）
 Foundational ──┬─→ US1 (T015→T016)        [login 用 jwt/password/facade/atomic]
                ├─→ US2 (T017→T018)        [getUserInfo 用 bearer/enforce/roles/buttons/facade]
                ├─→ US3 (T019)             [enforce acceptance：3333 curl＋5003 seam〔T014〕]
