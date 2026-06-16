@@ -60,7 +60,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── INTEGRATION-MILESTONES.md          ← commit 里程碑永久紀錄（append-only，不在 SOP 注入 §7.4）
 │   ├── GRAPHIFY-NOTES.md       ⏳          ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3；尚未落地）
 │   ├── REVIEW-<NNN>-<NNN>.md   ⏳          ← Claude workflow review 彙整報告（隨 feature 產出）
-│   └── superpowers/                       ← 持久記憶 + brainstorm 決策（§7.4；000 已落地）
+│   └── superpowers/                       ← 持久記錄 + brainstorm 決策（§7.4；000 已落地）
 │       └── <NNN>-<feature-name>.md        ← 每個 feature 的 Phase 0 brainstorm
 ├── specs/                                 ← spec-kit feature 規格目錄（001 已落地；每 feature 一個 <NNN>-<feature-name>/；工作流見 §3）
 ├── tests/                                 ← 跨 feature 測試素材（外層 git 追蹤；tests/000-base-web-docker-bootstrap/ = mock API 捕獲 raw 資料 + CDP scripts，見 §7.4 000 文件）
@@ -102,6 +102,8 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 `superpowers:brainstorming` 探索需求與設計、產出初步規格「spec-design」，存 `docs/superpowers/<NNN>-<feature-name>.md`。
 階段 1 的 `/speckit-specify`，一定要手動執行，不要排進 `brainstorm` 流程裡觸發（**會導致 `speckit.git.feature` 沒被執行**）。
 
+> **提問/決策紀律（rev3 校準、補強全域 §1；全工作流適用，非僅 brainstorm）**：純工程「怎麼做」選擇（N+1 優化、facade/handler 拆法、DTO 映射、內部 helper 命名、測試策略、router pattern 等）**自己拍、別做成選項題** —— 你是工程師、做「能讓 user 達成目的的最好選擇」即可。**只有真拍板級才問 user**：動 schema／加 migration、feature scope 邊界、retrofit 時機、破紀律的例外授權。真要問時用**大白話＋串到 user 核心目標**（每個選項＝動作＋與核心目標的關係＋工作量/風險），別用內部術語抽象列；選項裡的 trade-off 主張先 grep/read 實證再寫；user 按「clarify」時先開放問「想釐清什麼」再重框。
+
 **階段 1 · SDD 設計鏈（github spec-kit）**
 
 | 步驟 /指令 | 緊接 | 產出 |
@@ -118,6 +120,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 - **wire 鏈條 3 端對齊 grep**：對每條 wire endpoint，**同時** grep（a）rust handler 真實 return type / DTO field 型，（b）base-web `service/api/*.ts` 內 inline type 與 `typings/api/*.d.ts` 宣告型，（c）frontend component 對該 wire 的內部 state 型。3 端不對齊 = runtime bug 或 type lie。
 - **struct/function 命名對照 grep**：`data-model.md` 內每個 `file:line` 引用務必 grep 真實命名；spec 階段的 brainstorm 推測命名常與 actual code 不一致，implementer 須 act on actual code 而非盲信 spec naming。
 - **CDP smoke defer 風險自覺**：若 `contracts/verification-commands.md` 內 CDP browser smoke 計劃 defer、要在 spec 內明示「curl 直送 ≠ base-web modal 對齊」風險、並在 follow-up backlog 登記補測。
+- **list filter 端點空字串守門（curl≠modal 經典案例）**：base-web axios 把**未設**的 search filter 序列化成**空字串** query（`?status=&name=`）、serde 反序列化為 `Some("")` 非 None；handler 一律把空字串當「未設/skip」（`Option<String>.filter(|v|!v.is_empty())`、enum/i16 轉換 `Some("")→Ok(None)`），否則違反 spec「空欄略過 filter」（曾致整頁 0 列／2222）。**curl 乾淨 query 會掩蓋、必跑 CDP/browser 軌（C-V-6）才抓得到**；curl 測時刻意帶空 param 模擬前端。
 
 **Phase 1 verification-commands.md 紀律**（`/speckit-plan` 產 `contracts/verification-commands.md` 時必守）：
 
@@ -125,14 +128,31 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 
 **═══ 交棒物件：`specs/<NNN>-<feature-name>/tasks.md` ═══**
 
-**階段 2 · TDD 實作（superpowers）**
+**階段 2 · TDD 實作（superpowers + Workflow 編排）**
 
-實作一律用 **`superpowers:executing-plans`**（**不是 `/speckit-implement`**）：
+以 **`superpowers:executing-plans`** 起手（**不是 `/speckit-implement`**）讀 `specs/<NNN>-<feature-name>/tasks.md` ＋ 批判審查、依其**實際相依與獨立可審邊界**把 task 編成執行單元（不綁定 tasks.md 的編號/標題格式）；**編排改用 `Workflow` 工具驅動**（取代 subagent-driven-development 的逐 task 手動派工、消掉逐步等待 idle）：
 
-- `executing-plans` 讀 `specs/<NNN>-<feature-name>/tasks.md`；偵測 subagent 可用 → 轉 `superpowers:subagent-driven-development`，把 task 編成執行單元。
-- **每單元派 fresh implementer subagent** 實作；完成後**兩階段 review**：① **spec compliance**（對照 `specs/<NNN>-<feature-name>/spec.md` 逐項驗、抓缺漏／overbuild）→ ② **code quality**。有 issue → 同一 subagent 修 → 再 review，通過才換下一單元；全單元完成後跑整體 final review。
-- 每個 implementer subagent 走 **TDD**：有可獨立測的純函式邏輯 → test-first（red → green）；wiring／形狀對映類 feature 無新純函式測試時 → 由 acceptance 覆蓋（`specs/<NNN>-<feature-name>/contracts/` 的 C-V contract：CDP browser smoke + curl + psql），且須在 `tasks.md`／`plan.md` **明示「無單元測試」及理由**。
-- 收尾：`superpowers:finishing-a-development-branch` → 多段式 commit（§4.1）→ `git merge --no-ff` 回 `rev3-admin-root`，**但不清理 `<NNN>-<feature-name>` branch** 保留 spec-kit feature branch 供日後 audit / 追溯。
+- **每執行單元一支 Workflow**，script 內部【serial】跑：implementer（TDD）→ **spec-compliance review**（讀【實際碼】、逐項對照 `specs/<NNN>-<feature-name>/spec.md`、抓缺漏／overbuild、不信報告）→ 有 issue 則 fix→重審 loop → **code-quality review** →（同樣 fix→重審 loop）→ 回結構化結果（commits／測試輸出／裁定）。兩個 review agent 皆**只讀審查**（findings 只回回傳訊息、不在 repo 寫檔，免 `T0NN-REVIEW.md` 之類產物污染 `git status`）。每個 agent prompt 須烤進不可違反項：**rust 全程 serial**（共用 target、即使 tasks 標 [P] 也不平行 cargo）／rust build·test 在 rust-api 容器內 `docker exec`（live smoke 帶 `DATABASE_URL`＋`--test-threads=1`）／base-web commit `--no-verify`／長 cargo 不可 background＋timeout 拉長＋結論前不結束／**★ 絕不 `git push`／`git merge`**（worktree commit 只 local）。
+- 每個 implementer 走 **TDD**：可獨立測的純函式邏輯 → test-first（red → green）；wiring／形狀對映類無新純函式測試時 → 由 acceptance 覆蓋（`specs/<NNN>-<feature-name>/contracts/` 的 C-V contract：CDP browser smoke + curl + psql），且須在 `tasks.md`／`plan.md` **明示「無單元測試」及理由**。
+- **主線（Claude）只在每個單元邊界醒來 checkpoint**：復核 workflow 結果 ＋ 對 load-bearing 單元**在 rust-api 容器內**（`docker exec`、host 無 toolchain）自跑 `cargo build`／`test` 自驗 ground-truth → bump 該單元 submodule SHA pin（§4.1）→ 啟下一支 workflow；全單元完成後跑整體 final holistic review。
+- 收尾：`superpowers:finishing-a-development-branch` → 多段式 commit（§4.1）→ `git merge --no-ff` 回 `rev3-admin-root`，**不清理 `<NNN>-<feature-name>` branch**（保留 spec-kit feature branch 供日後 audit / 追溯）。**收尾兩坑**：merge 用 `-m` 非 `-F -`（`-F -` 不讀 stdin、報 `could not read file '-'`）；進度檔回填（MILESTONES／CHECKLIST／§6 marker，皆 workspace-level、本就在 `rev3-admin-root`，見 §1／§4.1）在 **merge 之後**做 —— 要寫進去的 merge commit SHA／最終 worktree pin 此刻才確定。
+
+> **為何 Workflow 驅動（精簡說明）**：把每單元的 impl→review→fix 序列塞進背景 script，main loop 從「每單元醒 3 次（implementer＋2 review）」降到「醒 1 次」、消掉空等折疊通知的 idle、且 deterministic（不依賴個別 subagent 通知）。代價＝per-unit review 在單元邊界摘要回報（非每步出現於對話）；安全網＝load-bearing 單元由主線 `git`/`test` 自驗補強、必要時退回手動。Workflow 需 user 明確 opt-in 多 agent 編排——下方驅動提示詞含『用 Workflow 工具』指示＝即 opt-in，逐 feature 貼此啟動 階段 2。
+
+**驅動提示詞（逐 feature 貼此啟動 階段 2）**：
+
+```
+以下提到 <NNN>-<feature-name> 即當前 git branch 名稱。
+
+讀 specs/<NNN>-<feature-name>/tasks.md → act-on-code 接地、依其實際相依/獨立可審邊界把 tasks 分執行單元；spec 驗收對照 specs/<NNN>-<feature-name>/spec.md。
+
+★ 編排用 Workflow 工具（取代手動逐 task 派 subagent）：每執行單元一支 Workflow，內部【serial】跑
+  implementer(TDD) → spec-compliance review(讀實碼、對照 spec.md) → fix↔重審 loop → code-quality review → fix↔重審 loop。
+  每個 agent prompt 烤進不可違反項：rust serial、容器內 docker exec build/test（live smoke 帶 DATABASE_URL+--test-threads=1）、base-web --no-verify、review agent 只讀不寫 repo 檔、★絕不 push/merge。
+
+主線只在單元邊界醒：復核 + load-bearing 自驗 + bump submodule pin → 啟下一支。
+全單元完成 → 整體 final holistic review → superpowers:finishing-a-development-branch（push/merge 需我同意）。不使用 SDD 的 /speckit-implement。
+```
 
 **branch 紀律**：`/speckit-specify` 起 pre-hook 自動建 `<NNN>-<feature-name>` feature branch、outer 即切於此；spec docs + submodule SHA pin 落此 branch，feature 完成 `merge --no-ff` 回 `rev3-admin-root`（workspace 層級檔如 CLAUDE.md 才直接落 default）。
 
@@ -170,6 +190,8 @@ bump rust-api to def5678: <fork 提交主旨一行>
 ```
 
 > **外層專屬檔的單段 commit**：`CLAUDE.md` / `docs/` / `.specify/` 等非 worktree 追蹤檔的改動，直接在 `rev3-admin-root` 改、commit、push —— 單段、無第二段 SHA pin。
+
+> **base-web 加新 naive-ui 元件的 commit 漏網**：base-web 用 `unplugin-vue-components` 自動把元件型宣告寫進 **tracked** 檔 `src/typings/components.d.ts`。view 裡**首次**用某 naive-ui 元件（如 `<NTreeSelect>`）時，running dev container 會自動重生該檔。第一段 commit 前 `cd base-web && git status` 檢查有無 `M src/typings/components.d.ts`，**有就連同引入該元件的 commit 一起 `git add`** —— 否則 fresh checkout（無 dev server）缺該元件全域型、`pnpm typecheck` 失敗。只有**全新**元件才觸發（既用過的已在檔內）。
 
 ### 4.2 Commit message 規範
 
@@ -364,7 +386,11 @@ Active feature: **無進行中**。**009-role-management ✅ 全綠收刀＋merg
 
 ## 7. 整合設計文件職責分工
 
+> 以下 `DESIGN`／`DECISIONS`／`CHECKLIST`／`MILESTONES`（帶不帶 `.md` 皆同）即 `docs/INTEGRATION-*.md` 對應同名四檔簡稱。
+
 rev3 整合的核心 docs 階層（DESIGN／DECISIONS／CHECKLIST／MILESTONES 已落地；GRAPHIFY-NOTES 仍 ⏳；rev2 研究三檔不移植不重作 §7.1），內容流動：「研究歷史（rev2 史料、已內化）」→「設計權威（凍結藍圖）＋伴生活帳」→「動態 todo」;**`INTEGRATION-DESIGN.md` 是核心事實、`INTEGRATION-DECISIONS.md` 是它的活頁**。
+
+**★ 不引用本機 memory（全專案文件、強制）**:任何 repo 內 git-tracked 文件(CLAUDE.md／DESIGN／DECISIONS／CHECKLIST／MILESTONES／spec／brainstorm 等)**一律不引用 `~/.claude/projects/.../memory/` 的 Claude 記憶**(含 `[[memory-slug]]` wikilink)。理由:memory 是 **per-machine／per-user 本機記憶、不在 repo**——換機、換維護者、別人 clone 皆不存在,committed 文件依賴它＝dangling、對他人無意義(同 §7.3 引用紀律「cross-ref 改指權威 repo 文件」之精神)。某 memory 內容若重要到值得被文件引用 → **先提取進 repo 文件**(CLAUDE.md 對應段／DESIGN／DECISIONS 等)、再引用那個 **repo §錨**;memory 只供 Claude 跨 session recall、**非 repo 引用目標**。
 
 ### 7.1 研究歷史(rev2 史料、rev3 不產出)
 
@@ -392,20 +418,20 @@ rev2 的研究三檔(`INTEGRATION-RESEARCH.md` / `INTEGRATION-RESEARCH-FOLLOWUP.
 
 ### 7.3 動態 todo — `docs/INTEGRATION-CHECKLIST.md`
 
-由 `INTEGRATION-DESIGN.md` 與其它文件未完成事項、或 feature 實作階段發現新問題列到此檔。`.claude/hook-git-submodule-SOP.sh` SessionStart hook **每次 session 開頭 cat 全檔注入**(見 §4.3、§6),作為 Claude 跨 session 進度延續錨。
+由 `DESIGN` 與其它文件未完成事項、或 feature 實作階段發現新問題列到 `CHECKLIST.md`。`.claude/hook-git-submodule-SOP.sh` SessionStart hook **每次 session 開頭 cat `CHECKLIST.md` 全檔注入**(見 §4.3、§6),作為 Claude 跨 session 進度延續錨。
 
-**引用紀律**:其他文件(DESIGN / MILESTONES / constitution / spec / superpowers 等)**不得跨檔深連結本檔的揮發章節**(`見 CHECKLIST §3.X`、指向某 follow-up)—— 本檔內容會滾動清理/歸檔、§ 錨會 rot;需 cross-ref 時改指 DESIGN(權威)/ DECISIONS(決策與實施帳)/ MILESTONES(永久)/ spec。例外(結構性、非 rot):§6 與 SOP hook 把本檔當「當前進度活檔」整檔指向、本檔內部 §X↔§Y 互引。
+**引用紀律**:其他文件(DESIGN／MILESTONES／constitution／spec／superpowers／CLAUDE.md 等)**不得跨檔深連結 `CHECKLIST.md` 的揮發章節**——其 **§2.X 波狀態**(完成波收縮後累積搬 MILESTONES)與 **§3.X follow-up**(完成搬 MILESTONES)都會滾動歸檔、`見 CHECKLIST §2.X／§3.X` 這種 § 錨必 rot;需 cross-ref 時改指 DESIGN(權威)／DECISIONS(決策與實施帳)／MILESTONES(永久)／spec。例外(結構性、非 rot):§6 與 SOP hook 把 `CHECKLIST.md` 當「當前進度活檔」整檔指向、CHECKLIST 內部 §X↔§Y 互引。
 
 **清理紀律**:
 - **檔案不能無限膨脹**,要簡寫摘要或定期清理
-- 只記(依本檔 §1~§7 區序):Current Focus / Roadmap & Phase 狀態(每波一 `###` 節:刀/feature 清單＋前置拍板＋出口條件 checkbox;完成波收縮為「✅ 標題＋blockquote 摘要」指 DECISIONS §2) / Follow-up Backlog(`### 3.X` 子節編號,每 feature/主題一節) / 跨 feature 待驗證項 / **拍板項索引**(常駐,極簡一句一條指 DECISIONS §1,讓每 session 開頭即知哪些已拍板不重新討論、哪些開放不擅自假設) / **軌道授權快查**(常駐,一行一軌道,完整定義見 DESIGN §9.4) / 已完成里程碑(純指標區,內容在 MILESTONES)
+- 只記(依 `CHECKLIST.md` §1~§7 區序):Current Focus / Roadmap & Phase 狀態(每波一 `###` 節:刀/feature 清單＋前置拍板＋出口條件 checkbox;完成波收縮為「✅ 標題＋blockquote 摘要」指 DECISIONS §2) / Follow-up Backlog(`### 3.X` 子節編號,每 feature/主題一節) / 跨 feature 待驗證項 / **拍板項索引**(常駐,極簡一句一條指 DECISIONS §1,讓每 session 開頭即知哪些已拍板不重新討論、哪些開放不擅自假設) / **軌道授權快查**(常駐,一行一軌道,完整定義見 DESIGN §9.4) / 已完成里程碑(純指標區,內容在 MILESTONES)
 - **不寫詳細設計理由 / 拍板理由 / 軌道定義**(設計理由與軌道定義在 DESIGN、拍板紀錄全文在 DECISIONS §1);如需引用、用 markdown link 指向對應 anchor
 
 ### 7.4 其他相關文件
 
 - **`.specify/memory/constitution.md`** — v1.0.0 將從 DESIGN §9 + DECISIONS §1 拍板結論提取凍結為**不可違反的權威**(更高層、需 amendment 流程才能改)
 - **`docs/INTEGRATION-MILESTONES.md`** — 永久紀錄(append-only、不在 SOP 注入、避免 CHECKLIST 膨脹);**三區:§1 commit 里程碑表 + §2/§3 與 CHECKLIST 同號區鏡像歸檔(§2 收完成波的收縮節〔✅ 標題＋摘要;詳帳在 DECISIONS §2〕、§3 收已完成 follow-up 節)**;歸檔流程見 §7.5
-- **`docs/superpowers/000-base-web-docker-bootstrap.md`** — 持久記憶 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + CDP node scripts 用法段;scripts 本體 git-tracked 於 `tests/000-base-web-docker-bootstrap/scripts/`、mock API 對映 raw 資料同目錄)
+- **`docs/superpowers/000-base-web-docker-bootstrap.md`** — 持久記錄 base-web docker bootstrap; **操作 CDP 的參考文件**(內含 CDP 9229 登入驗證 gotchas 段 + CDP node scripts 用法段;scripts 本體 git-tracked 於 `tests/000-base-web-docker-bootstrap/scripts/`、mock API 對映 raw 資料同目錄)
 - **`docs/superpowers/<NNN>-<feature-name>.md`** — 每個 spec-kit feature 的 Phase 0 brainstorm 決策(見 §3 階段 0、DESIGN 拍板段)
 
 ### 7.5 內容流向 + commit 歸檔流程
@@ -428,11 +454,11 @@ feature 啟動  →  docs/superpowers/<NNN>-<feature-name>.md(brainstorm)
 **commit 完成歸檔流程**(任何 docs / feature commit 落地後,Claude 自動執行):
 
 1. **永久紀錄** — `docs/INTEGRATION-MILESTONES.md` 表尾 append 一行(commit hash + 日期 + 主題)
-2. **動態追蹤** — CHECKLIST「Current Focus」區的「最新進展」加一條;若超過 **2 條**、刪最舊那條(滾動)
+2. **動態追蹤** — CHECKLIST「Current Focus」區的「最新進展」加一條;若超過 **2 條**、刪最舊那條(滾動)(「最新進展」與「下一步」之間的 marker `> 以下為預計下一步…` 前**須留空行**、否則 marker blockquote 被前一 list item lazy-continuation 吸收進子項;marker 勿刪、下一步勿併入最新進展;改完回讀渲染驗)
 3. **波/Phase 歸檔**(若該 commit 完成整波)— as-built(刀清單+merge SHA+日期)回填 DECISIONS §2 對應波;CHECKLIST「Roadmap & Phase 狀態」該波收縮為「`### 波 N ✅ 全完成+已歸檔 (YYYY-MM-DD)`」標題＋blockquote 摘要(指 DECISIONS §2),完成波節累積數波後批次搬 MILESTONES §2(CHECKLIST 永遠聚焦當前波);**不動 DESIGN**
 4. **follow-up 歸檔** — CHECKLIST「Follow-up Backlog」的 `### 3.X` 節完成後標「✅ 全完成+已歸檔 (YYYY-MM-DD)」+ 清 body;累積數節後**批次搬到 MILESTONES §3**、Follow-up Backlog 原處留 1 行收合指標(`> ### 3.X ~ 3.Y 全完成+已歸檔(手動搬至 MILESTONES)`)。仍 open 的 follow-up 續留 CHECKLIST;拍板項索引/軌道快查為常駐區(§5/§6)、不參與此歸檔
 
-**紀律**:**CHECKLIST 永遠不膨脹、DESIGN 永遠不當狀態板** — 歷史 commit 在 MILESTONES.md / `git log`;設計詳細在 DESIGN(凍結藍圖);拍板現況與波次執行帳在 DECISIONS;當前狀態在 CHECKLIST。
+**紀律**:**CHECKLIST 永遠不膨脹、DESIGN 永遠不當狀態板** — 歷史 commit 在 MILESTONES.md / `git log`;設計詳細在 DESIGN(凍結藍圖);拍板現況與波次執行帳在 DECISIONS;當前狀態在 CHECKLIST。**進度/帳本 docs（CHECKLIST 最新進展／DECISIONS §2／MILESTONES）不記「未push／已push」這類 push 狀態**(屬揮發 git state、push 後即 stale;**commit/merge SHA 照記**〔可追溯、非揮發〕、推沒推看 `git`)。
 
 ## 8. 操作參考與工具
 
@@ -516,6 +542,16 @@ docker compose exec acme acme.sh --version    # sanity check
 > 實際 acme.sh cert acquisition / renew 流程留待後續（需公網 + 真實 domain + DNS provider creds）。
 > **冷卷首啟 flap**：`down -v` 後或新機器首次 `up --wait`，base-web（≈140s pnpm install）/ rust-api（≈240s cargo build）冷編譯期間 healthcheck 會 flap、`up --wait` 可能 exit≠0；先 `docker compose … ps` 看是否仍在編譯（非真失敗），待穩後重跑 `up --wait` 即過。
 > **cargo cache 卷遮蓋**：dev image 升 toolchain 時，`rust_api_cargo_cache` 卷會遮蓋舊 toolchain → 需手動 `docker volume rm rev3-admin_rust_api_cargo_cache` 後重 build。
+> **glibc 容器 `ld.so` 崩（host 跑久）**：host uptime 過長後，glibc 映像（rust-api dev）內每次 cargo 崩 `Inconsistency detected by ld.so: … R_X86_64_RELATIVE`、容器 exit 127（連 `docker run --rm rev3-admin-rust-api:dev cargo --version` 都崩＝host 層 WSL2 loader fault、非 volume/容器狀態；alpine 映像〔base-web/nginx/postgres〕不受影響、redis-stack 雖亦 glibc 基底但實測未見崩）。修＝host 層**重啟 Docker Desktop**（完整 Quit 再開、重置 docker-desktop WSL distro）或 Windows `wsl --shutdown`，再 `up -d --wait`（target/build 卷有快取則秒回 healthy）；worktree 改動安全（在 /mnt/d）。
+> **容器內 build/test — 三個「假綠」坑**（host 無 cargo、一律 dev 容器內跑：`docker compose -f docker-compose.yml -f docker-compose.dev.yml exec -T rust-api <cmd>`，或 `docker run --rm … rev3-admin-rust-api:dev <cmd>`）：
+> - **WSL2 /mnt/d stale-mtime**：改了 `.rs` 後 cargo 可能跑**舊 binary** 回**假綠**（沒重編、handler 簽名不符仍「通過」）。編譯/測試前先 force-touch：`cd /app && find server/src -name '*.rs' -exec touch {} + && cargo build -p server`（改其他 crate 同理 touch 對應 `*/src`）。
+> - **`cargo test -p server <name>`（bare filter）假綠**：bare `<name>` 被當成 **test-function 名 filter**、0 命中卻顯示「test result: ok. 0 passed; N filtered out」＝根本沒跑。跑整支 test binary（如既有 `entity_access_lint`／`endpoint_coverage_lint`）必須 `cargo test -p server --test <name>`；看到「0 passed / N filtered out」立即警覺 filter 沒命中、不是綠。
+> - **`server` 是 bin-only crate（無 lib.rs）**：`server/tests/` 整合測試**無法** `use server::…`（既有兩支 lint 只讀檔、不用 crate API）。需呼叫 crate 內部 API 的測試（如 facade live smoke）放 **in-crate `#[cfg(test)] + #[ignore]` + env-gate**（預設 `cargo test` 跳過、無 DB 仍綠；live 跑加 `-- --ignored --test-threads=1`，見 §3）。
+>
+> **dev 改動「上了沒」— 跑活體 acceptance（curl/psql/CDP）前先確認新碼已載入**：
+> - **rust-api**：dev ENTRYPOINT＝`cargo watch --poll -x "run --bin server"`（poll 模式、刻意因 WSL2/9p inotify 不可靠）→ 通常自動重編+重跑，但有**偵測+重編延遲**、且上條 `/mnt/d` stale-mtime 可能讓它重編到舊碼/漏改。活體前確認 rust-api log 有重編完成 + 新 endpoint 回 200（非 404）；沒上就 force-touch +`docker compose … restart rust-api`。
+> - **base-web**：vite（`pnpm dev`）若沒熱載新加的 service fn（rev3 wrapper 在 `service/api/rev3-system-manage.ts`、view 走直接路徑 import、不經 barrel）→ vite 服務到該檔的 stale 版本（不含新 export）→ 瀏覽器丟 `SyntaxError: … does not provide an export named 'fetchXxx'`、該頁掛不起來、list API 完全不發。症狀出現即 `docker compose … restart base-web`（pnpm install 走卷快取、秒級就緒）。
+> - **front-nginx**：dev/prod 都是 bind-mount **單一檔**（`nginx.conf`／`conf.d/_locations.inc`／`dev.conf`|`prod.conf`）。改 conf 後跑 `restart front-nginx` 會炸 `OCI runtime … mount … no such file or directory`（Docker Desktop WSL2 bind-mount 快照路徑失效）→ 必須 `docker compose … up -d --force-recreate front-nginx`，不能 `restart`。
 
 #### 8.2.2 named volume 命名規則
 
