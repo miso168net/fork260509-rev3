@@ -70,7 +70,7 @@
 ### Edge Cases
 
 - **本刀無業務端點**：唯一可達錯誤＝找不到（fallback）。「翻譯後業務錯誤顯示於 modal/toast」的端到端**只能待真端點出現**——i18n 顯示機制首檢點＝Auth/login 刀（login-failed 顯示碼、為本刀已鍵的固定碼）、per-entity 業務錯誤端到端＝首個 system_settings 刀；本刀 MUST 不靜默宣稱端到端覆蓋（登 follow-up backlog）
-- **傳輸錯誤雙路徑**：找不到（404）/無權限（403）走前端 native 傳輸錯誤路徑、非成功路徑顯示處理——其識別碼也須在該路徑翻譯，莫只顧成功路徑
+- **傳輸錯誤路徑限制（Phase 0 act-on-code 修正）**：`4040`/`5003`（HTTP 404/403）走前端 axios native error 路徑、`error.code≠BACKEND_ERROR` → 今日 envelope `msg` **未被讀取顯示**（DESIGN §7.3 既認限制、非 bug）。本刀**不修復**此限制（與 ⚠️e「可顯示錯誤走 200」一致；`5003` 連發出都待 enforce 刀）；其 msg 識別碼僅供 wire/log 完整性。日後若要顯示該二碼 msg，由對應切片（如 enforce 刀）決定是否拓寬 `onError` extraction（登 follow-up）
 - **未翻譯識別碼**：尚未鍵化的 per-entity key 須 graceful degrade ＝ **顯示其原始 key 字串**（vue-i18n 原生未命中行為、零額外碼）、不空白不崩；缺翻譯「大聲」暴露便於抓修（rollout 期過渡態）——不改顯通用訊息（Clarifications 2026-06-16）
 - **可讀性取捨**：後端 log/curl/audit 的訊息變識別碼（非人話），可讀性降——以此換單一 i18n 家＋後端語言無關（既接受之取捨）
 - **保留碼**：前端仍按行為分組辨識保留碼（雖後端永不發出）——契約 MUST 保留它們於凍結集合（刪除＝破壞凍結契約 ⚠️f）
@@ -86,7 +86,7 @@
 - **FR-005**: 訊息欄 MUST 載穩定、語言無關之識別碼（key）、非人話文字；後端 MUST 不做在地化（⚠️y）
 - **FR-006**: 訊息識別碼 MUST 遵循既定命名規約——固定命名空間根集合（通用／auth／業務／系統）＋結構文法（根→實體→條件），供後續切片一致擴充；以共用業務碼承載「人話散文」式 code-keyed 方案被否決（無法區分共用碼下的 per-entity 訊息）
 - **FR-007**: 前端 MUST 將交付的識別碼譯為使用者當前語言並顯示；尚無翻譯之識別碼 MUST graceful degrade ＝ **顯示其原始 key 字串**（vue-i18n 原生未命中行為、零額外 fallback 碼、不改顯通用訊息）、不空白不崩（⚠️y graceful fallback；Clarifications 2026-06-16）
-- **FR-008**: 翻譯/顯示處理 MUST 同時涵蓋成功路徑顯示（200 業務錯誤的 toast/modal）與傳輸錯誤路徑（找不到/無權限），使無任何顯示錯誤逃過翻譯
+- **FR-008**: 翻譯/顯示處理 MUST 涵蓋**所有實際顯示 backend msg 的路徑**——即 (1) modal-logout 顯示（`7777`）與 (2) generic toast（HTTP 200＋非成功碼經前端攔截器合成 backend-error→`onError`→toast、覆蓋 `1000`/`2222`/`5000`）；翻譯點烤在「讀取 backend msg 的邊界」（非通用顯示函式、以免誤譯傳輸層字串並破壞既有 dedup）。**已知限制（DESIGN §7.3 acknowledged、Phase 0 act-on-code 證實）**：傳輸錯誤 `4040`/`5003`（HTTP 404/403）今日前端走 axios native error 路徑、`error.code≠BACKEND_ERROR` 致 envelope `msg` 未被讀取顯示 → 其 msg 顯示**不在本刀範圍**（與 ⚠️e「可顯示錯誤走 200」設計一致；`5003` 須待 enforce 刀才發出），該二碼識別碼仍存在供 wire／server log 完整性
 - **FR-009**: 固定碼集合之識別碼 MUST 作為規約 seed 定義，並為專案支援語言（zh-CN、en-US）提供翻譯
 - **FR-010**: wire 訊息 MUST 為去前綴之語意識別碼（`<root>.<entity>.<condition>`），與前端 locale 組織前綴無關；前端負責解析（補其 locale 樹位置）——後端 key 不耦合前端 locale 樹（拍板 4＝(c)）
 - **FR-011**: 契約 MUST 由自動檢查守護：所發碼屬凍結集合、訊息為識別碼（非人話/無 CJK 漢字）、保留碼永不發出、識別碼合於規約文法
