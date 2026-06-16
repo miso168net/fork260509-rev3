@@ -1,0 +1,50 @@
+# example 視覺參考實例 (soybean example 分支,連官方 mock)
+#
+# 用途: 常駐一個跑 example 分支＋官方 apifox mock 的實例,做視覺/行為對照——
+#       rev3 worktree base-web(31079) cutover 到 rust-api 後,仍能隨時對比 mock 原貌。
+#
+# 與 master stack 完全隔離: 獨立 project `rev3-admin-example`(自有卷/網路/容器),
+# 可與 master(docker-compose.yml)安全並存、互不干擾(對 master 跑 down --remove-orphans 也不會誤砍)。
+#
+# 用法:
+#   dev 模式(熱重載,http://127.0.0.1:31076):
+#     docker compose -f docker-compose.example.yml up
+#   停止 + 移除容器:
+#     docker compose -f docker-compose.example.yml down
+#   清掉 named volume(強制下次重 pnpm install):
+#     docker volume rm rev3-admin-example_node_modules rev3-admin-example_pnpm_store
+#
+# 設計:
+#   - 掛 source repo fork260509-soybean-admin-base(=example 分支),api 走官方 mock(.env.test mode)
+#   - 完全不需 host 裝 node/pnpm;named volume mask /app/node_modules 避 WSL2 bind mount 拖慢 IO
+#   - --frozen-lockfile: 容器內 install 不動 source repo 的 pnpm-lock.yaml
+
+name: rev3-admin-example
+
+services:
+  example-dev:
+    image: node:26-alpine
+    container_name: rev3-admin-example-dev
+    working_dir: /app
+    environment:
+      - NODE_ENV=development
+      - BROWSER=none
+      - npm_config_store_dir=/pnpm-store
+      - CI=true
+    volumes:
+      - ./fork260509-soybean-admin-base:/app
+      - node_modules:/app/node_modules
+      - pnpm_store:/pnpm-store
+    ports:
+      - "127.0.0.1:31076:31076"
+    command:
+      - sh
+      - -c
+      - "npm install -g pnpm@10 && pnpm install --frozen-lockfile && pnpm dev --host 0.0.0.0 --port 31076"
+    init: true
+    tty: true
+    stdin_open: true
+
+volumes:
+  node_modules:
+  pnpm_store:
