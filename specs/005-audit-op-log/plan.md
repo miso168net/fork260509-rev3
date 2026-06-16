@@ -95,6 +95,6 @@ rust-api/server/src/model/
 3. **R-B IpNetwork**：`use sea_orm::entity::prelude::IpNetwork`（colon-preceded、lint-safe）；build error 若指引別路徑採可編譯者、注記。
 4. **R-C redact**：sys_user Model 無 Serialize → facade `audit_json` **手構** `serde_json::json!`（逐欄、password→`<redacted>`）；**不**加 entity Serialize derive（守無 entity 變動）。
 5. **R-D update 形**：`before.clone().into_active_model()`→`am.deleted_at=Set(Some(now))`＋`am.deleted_by=Set(Some(operator.id))`（§I.6 成對）→`am.update(&txn)`。
-6. **live smoke 隔離（核心）**：test 開外層 `db.begin()`→傳 `&outer` 給 soft_delete（mutate_in_txn 內 nested begin＝savepoint）→ 同 outer 查 op-log → `outer.rollback()` 不污染 seed；**必含 rollback 路徑**（注入失敗驗業務+審計雙不留、防 vacuous）；`--test-threads=1`。
+6. **live smoke 隔離（核心）**：test 開外層 `db.begin()`→各子呼叫內部 nested begin＝savepoint→`outer.rollback()` 不污染 seed；`--test-threads=1`。驗**三路徑**（相異 id）：(a) commit〔soft_delete 成功→op-log 一列〕／(b) **no-op**〔不存在 id→`Ok(None)`、無審計、**非 error**、FR-006〕／(c) **rollback**〔經 `mutate_in_txn` 直接傳「寫業務後回 `Err`」閉包→業務寫被 savepoint 回滾＋op-log 不留、SC-002 真原子〕。★ no-op（commit）≠ rollback——「不存在 id」證不了原子回滾、防 vacuous。
 7. **lint 守恆**：`audit.rs` 零 path-root `entity::`；op-log 構造全在 facade；既有 `entity_access_lint` 續綠（C-V-3）。
 8. **無 migration／無新 crate／push 凍結**：本刀無 migration、無 prod build；實作期 commit only、tasks.md 不得出現 push／merge（§I.4）。

@@ -29,10 +29,11 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml exec -T rust-api 
     DATABASE_URL="$(cat /run/secrets/database_url)" cargo test -p server -- --ignored --test-threads=1 op_log_atomic'
 ```
 （DATABASE_URL 由 secret 帶——容器 env 未設；live stack 須 `up -d --wait` 全 healthy、postgres 有 002 seed。）
-- in-crate `#[ignore]`：開**外層 txn**（`db.begin()`）→ `sys_user::soft_delete(&outer, Super id=1, operator, None)`（內部 nested begin＝savepoint）→ 同 outer 內查 `sys_operation_log`：
-  - **commit 路徑**：恰一列新 op-log（`operation=SOFT_DELETE`／`entity_table=sys_user`／`entity_id=1`／`payload_before.password=<redacted>`／`payload_after.deleted_at` 非空／`operator_id`=operator.id），且 sys_user.deleted_at 已 set。
-  - **rollback 路徑**：對「注入失敗」情境（如 soft_delete 不存在 id 或閉包回 `Err`）→ op-log **不留**、業務不改（原子釘死、非 vacuous）。
-- `outer.rollback()` 全還原 → **不污染 002 seed**。對應 SC-001（同 txn 寫入）／SC-002（失敗雙不留）。
+- in-crate `#[ignore]`：開**外層 txn**（`db.begin()`）→ 各子呼叫內部 nested begin＝savepoint → 同 outer 內查 `sys_operation_log`。驗**三路徑、相異 id**：
+  - **(a) commit**：`sys_user::soft_delete(&outer, Super id=1, operator, None)`→恰一列新 op-log（`operation=SOFT_DELETE`／`entity_table=sys_user`／`entity_id=1`／`payload_before.password=<redacted>`／`payload_after.deleted_at` 非空／`operator_id`=operator.id），且 sys_user id=1 deleted_at 已 set。
+  - **(b) no-op（FR-006）**：`soft_delete(&outer, 不存在 id 999999, …)`→`Ok(None)`、**無** op-log 列、**非 error**（no-op＝commit、**非** rollback）。
+  - **(c) rollback（SC-002 真原子）**：直接 `mutate_in_txn(&outer, |txn| async move { txn.execute_unprepared("UPDATE sys_user SET deleted_at=now() WHERE id=2").await?; Err(DbErr::Custom("inject".into())) })`→回 `Err`；斷言 sys_user id=2 deleted_at **仍 NULL**（業務寫被 savepoint 回滾）＋**無** op-log（業務＋審計一起不留）。★「不存在 id」是 no-op、**證不了** rollback——故 rollback 必經「寫後回 Err」閉包。
+- `outer.rollback()` 全還原 → **不污染 002 seed**。對應 SC-001（同 txn 寫入）／SC-002（失敗雙不留、非 vacuous）。
 > ⚠️ 必看「N passed」（非「0 passed; N filtered out」）；filter `op_log_atomic` 命中 live 測。`--test-threads=1` 防 live serial 偽失敗。
 
 ## C-V-3 · entity_access_lint 守恆綠（audit.rs lint-clean）
