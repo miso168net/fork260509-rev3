@@ -124,7 +124,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,001〔scaffold＋compose/deploy〕＋002〔migration ×4＋sea-orm-adapter crate＋tests/002 scripts〕新碼均未入圖,待一輪 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,001〔scaffold＋compose/deploy〕＋002〔migration ×4＋sea-orm-adapter crate＋tests/002 scripts〕＋003〔rust envelope/error/main.rs＋base-web i18n 接線 5 檔〕新碼均未入圖,待一輪 update）
 
 ---
 
@@ -204,6 +204,10 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；enforce 刀再議是否拓寬 `onError` extraction（`5003` 連發出都待 enforce 刀）
 **rust 範圍延後（R7）**:
 - [ ] `From<DbErr> for AppError`＋加 sea-orm 到 server crate：延後至首個產 `DbErr` 切片（facade/handler 刀）帶入＋`sql_err()` 23505→`2222`（`biz.error`）映射
+**rust 信封消費（首個業務刀觸發、review 衍生、非阻塞）**:
+- [ ] `Res::ok` 採 `Res<serde_json::Value>`（`to_value` 中轉、本刀 `#[allow(dead_code)]` 無消費者）→ 首個消費 `Res::ok` 的業務刀重估兩點：(a) 序列化失敗 fallback `data:null` 仍掛 `code:"0000"`＝成功碼掩蓋錯誤 → 視需要導向 `AppError::Internal(5000)`；(b) 熱路徑大 payload 的 double-serialization（to_value→Json）→ 可改保留泛型 `Res<T>` 直接 Json、省中轉
+**測試守護 fidelity（review 衍生、非阻塞）**:
+- [ ] base-web i18n 單元測 `src/locales/__tests__/translate-backend-msg.spec.ts` 以既有 `tsx` **重建** `translateBackendMsg` 公式（非 import 真匯出——`@/locales` 載入鏈耦合 `import.meta.env`/`localStorage`、純 node 不可解）→ 引入真測試環境（vitest+jsdom 或 vite-node＋shim）時改 import 實際 export 閉合 fidelity gap；`pnpm test` 現＝單一 i18n 腳本、屆時併入正式 suite
 
 ---
 
