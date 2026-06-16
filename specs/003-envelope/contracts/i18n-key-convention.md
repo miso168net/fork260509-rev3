@@ -61,7 +61,7 @@ export function translateBackendMsg(msg: string): string {
 | A | `service/request/index.ts:71` | `content: translateBackendMsg(response.data.msg)` | 7777 modal |
 | B | `service/request/index.ts:64` | dedup push 翻譯後值 | （保 stack 鍵=顯示文字） |
 | B′ | `service/request/index.ts:51` | dedup filter 比對翻譯後值 | 同上 |
-| C | `service/request/index.ts:109` | `message = translateBackendMsg(error.response?.data?.msg) ?? message` | generic toast（1000/2222/5000） |
+| C | `service/request/index.ts:109` | `message = error.response?.data?.msg ? translateBackendMsg(error.response.data.msg) : message`（truthy-guard 保 axios fallback；**勿** `?? message`——helper 必回 string〔未命中回 key path〕、`??` 永不 fallback、會把 `undefined` 譯成 `backend.undefined`） | generic toast（1000/2222/5000） |
 
 - **不**改 `shared.ts:54 showErrorMsg`（翻譯在讀取邊界、避免誤譯 axios 傳輸字串＋破 `:49` dedup）。
 - **限制（R3、不修）**：`4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR`→ `:108` gate 跳過、envelope msg 未讀；本刀不拓寬（DESIGN §7.3 既認限制；enforce 刀再議）。

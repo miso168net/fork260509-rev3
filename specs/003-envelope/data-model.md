@@ -75,7 +75,7 @@ export function translateBackendMsg(msg: string): string {
 | A modal content | `:71` | `content: translateBackendMsg(response.data.msg)` |
 | B dedup push | `:64` | push 翻譯後值（保 stack 鍵=顯示文字） |
 | B′ dedup filter | `:51` | filter 比對翻譯後值 |
-| C onError extraction | `:109` | `message = translateBackendMsg(error.response?.data?.msg) ?? message`（僅譯 backend msg、非 axios fallback） |
+| C onError extraction | `:109` | `message = error.response?.data?.msg ? translateBackendMsg(error.response.data.msg) : message`（truthy-guard：有 backend msg 才譯、否則保 axios fallback；**勿** `?? message`——helper 必回 string、`??` 不 fallback） |
 - `shared.ts:54 showErrorMsg` **不改**（翻譯在讀取邊界、避免誤譯傳輸字串＋破 dedup、R2）。
 - 全處走 fork-delta `rev3-inline`（修改型保留原行註解+token）。
 
