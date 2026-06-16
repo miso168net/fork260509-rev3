@@ -132,7 +132,7 @@
 | #6 | sub-crate | enforce 層全新寫（in-tree、無獨立 axum-casbin crate）；`sea-orm-adapter`/`xdb` 自 rev2 拷貝（§I.5 例外） |
 | #7 | auth route mode | dynamic（後端控 menu；`.env` `VITE_AUTH_ROUTE_MODE=dynamic`、BASE-WEB-ADAPT 軌道） |
 | #8 | obs stack | 漸進 — obs-min(log) → obs-full(metrics)（rev3 = 波 4 包覆刀，DESIGN §8.4） |
-| #9 | 軌道清單 | **5 軌道（2 ★）**：ADAPT／WRAPPER／MODAL-WIRING ★／RUSTAPI-SOURCE-ISOLATION／BASE-WEB-I18N-WIRING ★〔⚠️z、v1.1.0 amend〕（⚠️i-2：BUILD-CONFIG 不收錄，見 §III 注） |
+| #9 | 軌道清單 | **5 軌道（2 ★）**：ADAPT／WRAPPER／MODAL-WIRING ★／RUSTAPI-SOURCE-ISOLATION／BASE-WEB-I18N-WIRING ★〔⚠️aa、v1.1.0 amend〕（⚠️i-2：BUILD-CONFIG 不收錄，見 §III 注） |
 | #10 | wire id 細節 | **⚠️r 定案（推翻 rev2 string 拍板）**：逐欄位忠實 typings（詳 §I.3）；User alias 模仿；business error `2222` |
 | #11 | prod 路徑前綴 | `/api/*` 主流（front-nginx strip 轉發、`/api/metrics` 擋塊，DESIGN §7.4） |
 | #12 | brainstorm 位置 | `docs/superpowers/<NNN>-<feature-name>.md` |
@@ -145,7 +145,7 @@
 
 ## III. 軌道授權邊界
 
-4 軌道完整定義見 [DESIGN §9.4](../../docs/INTEGRATION-DESIGN.md)；第 5 軌道 BASE-WEB-I18N-WIRING ★（⚠️z、v1.1.0 amend）定義見下方 §III.2（DESIGN §9.4 次回重鑄補入）。本節**只列授權邊界與紀律**。
+4 軌道完整定義見 [DESIGN §9.4](../../docs/INTEGRATION-DESIGN.md)；第 5 軌道 BASE-WEB-I18N-WIRING ★（⚠️aa、v1.1.0 amend）定義見下方 §III.2（DESIGN §9.4 次回重鑄補入）。本節**只列授權邊界與紀律**。
 
 > **rev2 差異注**：rev2 曾授第 5 軌道 BASE-WEB-BUILD-CONFIG ★（`pageExcludePatterns` 隱藏 demo menu），as-built 從未動用；⚠️p 拍板後隱藏議題消解，**rev3 v1.0.0 不收錄此軌道**（⚠️i-2）——日後若真需 build 配置改動，走 §V.2 Amendment 新授。
 
@@ -180,7 +180,7 @@
 - 每改一處在 spec 內紀錄（file:line ＋ 改動內容 ＋ upstream 衝突風險評估）
 - 共用元件改動 MUST 用附加 prop ＋ 安全預設（不變既有呼叫端行為）
 
-#### BASE-WEB-I18N-WIRING ★ — **本檔授權三範圍 (i)~(iii)**（⚠️z 拍板 2026-06-16、v1.1.0 amendment；⚠️y biz-msg i18n〔前端譯·msg=key〕的接線載體）
+#### BASE-WEB-I18N-WIRING ★ — **本檔授權三範圍 (i)~(iii)**（⚠️aa 拍板 2026-06-16、v1.1.0 amendment；⚠️y biz-msg i18n〔前端譯·msg=key〕的接線載體）
 
 **背景**：⚠️y（[DECISIONS §1](../../docs/INTEGRATION-DECISIONS.md)）定 wire `msg` 載穩定 i18n key、base-web 以 `$t(msg)` 翻譯（後端語言無關）。其接線**必然改 base-web inline**（攔截器顯示點＋核心 typings＋locale 字典），非既有 ADAPT（`.env`/`typings/api/` 新檔）/WRAPPER（`service/api/rev3-*` 新檔）/MODAL-WIRING（`views/manage/**`）所能涵蓋 → 本軌道補齊 §I.1「不動 inline、例外見 §III」的授權鏈。
 
@@ -242,4 +242,4 @@ DESIGN 仍為「核心事實」（設計契約＋詳細軌道定義＋行為島�
 
 ---
 
-**Version**: 1.1.0 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-16（§III 新增 BASE-WEB-I18N-WIRING ★ 軌道，⚠️z；MINOR=新增 ★ 軌道）
+**Version**: 1.1.0 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-16（§III 新增 BASE-WEB-I18N-WIRING ★ 軌道，⚠️aa；MINOR=新增 ★ 軌道）

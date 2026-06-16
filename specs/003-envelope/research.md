@@ -53,7 +53,7 @@
 ## R8 — msg-i18n key 規約（003 落定、scope A）
 
 **Decision**：文法 `<root>.<entity>.<condition>`（camelCase）＋4 根 `{common,auth,biz,system}`；wire `msg`＝**去前綴**語意 key（如 `biz.role.notFound`）、base-web locale **外包一層 `backend.`**（前綴歸屬 (c)：後端發去前綴、前端 `$t('backend.'+msg)` 補）；13 固定碼 seed key＋zh-CN/en-US 譯文見 [contracts/i18n-key-convention.md](contracts/i18n-key-convention.md)。
-**Rationale**：⚠️y（msg=key）＋003 brainstorm 4 sub-拍板（DECISIONS §1 ⚠️y 注記）；code-keyed（`error.2222`）否決（共用碼塌縮 per-entity 訊息）。授權載體＝⚠️z `BASE-WEB-I18N-WIRING ★` 軌道（constitution §III、v1.1.0）。
+**Rationale**：⚠️y（msg=key）＋003 brainstorm 4 sub-拍板（DECISIONS §1 ⚠️y 注記）；code-keyed（`error.2222`）否決（共用碼塌縮 per-entity 訊息）。授權載體＝⚠️aa `BASE-WEB-I18N-WIRING ★` 軌道（constitution §III、v1.1.0）。
 **Alternatives**：見 brainstorm；本刀承接已決。
 
 ## 三-grep 紀律（CLAUDE.md §3）落地

@@ -42,7 +42,7 @@
 - 逐碼 condition 命名（`reLogin`/`kicked`/`expired` 等）可微調、見 envelope-contract.md；root 集合+文法已定。
 - **`From<DbErr>` 不在本刀**（R7：server 今日無碼產 `DbErr`、不加 sea-orm dep；首個產 `DbErr` 切片帶入）。
 
-## 3. base-web i18n Schema delta（⚠️z 軌道、三處編輯）
+## 3. base-web i18n Schema delta（⚠️aa 軌道、三處編輯）
 
 ### (iii) `src/typings/app.d.ts` — `App.I18n.Schema`（`:313-849`）加 `backend` 型
 ```

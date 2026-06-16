@@ -2,11 +2,11 @@
 
 **Input**: Design documents from `/specs/003-envelope/`
 
-**Prerequisites**: plan.md ✅、spec.md ✅（含 Clarifications）、research.md（R1~R8）✅、data-model.md ✅、contracts/（envelope-contract＋i18n-key-convention＋verification-commands）✅、quickstart.md ✅；constitution **v1.1.0**（⚠️z `BASE-WEB-I18N-WIRING ★` 軌道）
+**Prerequisites**: plan.md ✅、spec.md ✅（含 Clarifications）、research.md（R1~R8）✅、data-model.md ✅、contracts/（envelope-contract＋i18n-key-convention＋verification-commands）✅、quickstart.md ✅；constitution **v1.1.0**（⚠️aa `BASE-WEB-I18N-WIRING ★` 軌道）
 
 **Tests**: 本 feature **有契約/元件測試**（spec FR-011＋C-V）。型別/序列化契約（`Res`/`PageRes`/`AppError`）＝rust **in-crate `#[cfg(test)]`**（非 classic 純函式 red-green、無 DB → 一般 `cargo test`、無 `#[ignore]`）；`translateBackendMsg`＝小純函式（base-web component/unit 可測）；4 翻譯點 wiring **無獨立單元測試**、由 component/acceptance 覆蓋（CLAUDE.md §3 紀律明示）。驗收＝C-V-0~3 實機（C-V-4 端到端為階梯、非本刀）。
 
-**Organization**: 依 user story 分 phase；**US1＝MVP**。**雙 worktree 各兩段式 commit**（worktree commit→outer pin bump、不延後收口、001 教訓）；**rust 全程 serial**（共用 target、即使 [P] 不平行 cargo）、build/test **容器內** `docker compose … exec -T rust-api`（改 `.rs` 先 force-touch 防 stale-mtime 假綠）；**base-web commit `--no-verify`**（dev 容器 pre-commit hook 必失敗）；**base-web 改走 ⚠️z `BASE-WEB-I18N-WIRING ★` 軌道、fork-delta `rev3-inline`**（修改型保留原行註解＋token、新增型標記圈界）；**§I.4／⚠️u：全程不 push 不 merge**（tasks 不得排 push/merge）。
+**Organization**: 依 user story 分 phase；**US1＝MVP**。**雙 worktree 各兩段式 commit**（worktree commit→outer pin bump、不延後收口、001 教訓）；**rust 全程 serial**（共用 target、即使 [P] 不平行 cargo）、build/test **容器內** `docker compose … exec -T rust-api`（改 `.rs` 先 force-touch 防 stale-mtime 假綠）；**base-web commit `--no-verify`**（dev 容器 pre-commit hook 必失敗）；**base-web 改走 ⚠️aa `BASE-WEB-I18N-WIRING ★` 軌道、fork-delta `rev3-inline`**（修改型保留原行註解＋token、新增型標記圈界）；**§I.4／⚠️u：全程不 push 不 merge**（tasks 不得排 push/merge）。
 
 ## Format: `[ID] [P?] [Story?] Description`
 
@@ -39,13 +39,13 @@
 
 **Goal**: 前端以 `$t` 將 wire `msg`（key）譯為當前語言顯示；未知 key graceful（顯原始 key 字串、Clarifications B）。
 **Independent Test**: C-V-2（`pnpm typecheck` 過＋component：13 固定 key 命中譯文、未知 key 回原始字串）；component 不需後端。
-**依賴**: 概念上承 US1 的 msg=key（wire），但本 story 自身 acceptance（component+typecheck）**獨立於 US1**；端到端需兩者（階梯、非本刀）。**全程 ⚠️z 軌道、fork-delta `rev3-inline`、commit `--no-verify`**。
+**依賴**: 概念上承 US1 的 msg=key（wire），但本 story 自身 acceptance（component+typecheck）**獨立於 US1**；端到端需兩者（階梯、非本刀）。**全程 ⚠️aa 軌道、fork-delta `rev3-inline`、commit `--no-verify`**。
 
-- [ ] T007 [US2] `base-web/src/typings/app.d.ts`：`App.I18n.Schema`（`:313-849` 內）加 `backend` 型（4 根 common/auth/biz/system＋13 固定碼 key 結構、見 data-model.md §3／i18n-key-convention.md §4）——使 `GetI18nKey` 納 `backend.*`；⚠️z (iii)（新增型、檔頭/區塊 `rev3-inline` 標記）
-- [ ] T008 [P] [US2] `base-web/src/locales/langs/zh-cn.ts`：加 `backend` 物件（zh-CN 譯文＝i18n-key-convention.md §3 表）；`: App.I18n.Schema` annotation 編譯強制補齊；⚠️z (ii)（依賴 T007 Schema）
-- [ ] T009 [P] [US2] `base-web/src/locales/langs/en-us.ts`：加 `backend` 物件（en-US 譯文＝§3 表）；同上強制；⚠️z (ii)（依賴 T007；與 T008 不同檔、可 [P]）
-- [ ] T010 [US2] `base-web/src/locales/index.ts`：匯出 `translateBackendMsg(msg: string): string`＝`$t(('backend.' + msg) as App.I18n.I18nKey)`（前端補 `backend.` 前綴、前綴歸屬 (c)）；⚠️z (iii)（依賴 T007）
-- [ ] T011 [US2] `base-web/src/service/request/index.ts`：4 翻譯點接 `translateBackendMsg`——`:71` modal `content`、`:109` `onError` 的 `message = translateBackendMsg(error.response?.data?.msg) ?? message`、`:64`/`:51` dedup push/filter 用翻譯後值（保 stack 鍵＝顯示文字）；**不**碰 `shared.ts:54 showErrorMsg`（R2）；⚠️z (i)、每處保留原行註解＋`// [rev3-inline I18N(i)] 原行: ...`（依賴 T010）
+- [ ] T007 [US2] `base-web/src/typings/app.d.ts`：`App.I18n.Schema`（`:313-849` 內）加 `backend` 型（4 根 common/auth/biz/system＋13 固定碼 key 結構、見 data-model.md §3／i18n-key-convention.md §4）——使 `GetI18nKey` 納 `backend.*`；⚠️aa (iii)（新增型、檔頭/區塊 `rev3-inline` 標記）
+- [ ] T008 [P] [US2] `base-web/src/locales/langs/zh-cn.ts`：加 `backend` 物件（zh-CN 譯文＝i18n-key-convention.md §3 表）；`: App.I18n.Schema` annotation 編譯強制補齊；⚠️aa (ii)（依賴 T007 Schema）
+- [ ] T009 [P] [US2] `base-web/src/locales/langs/en-us.ts`：加 `backend` 物件（en-US 譯文＝§3 表）；同上強制；⚠️aa (ii)（依賴 T007；與 T008 不同檔、可 [P]）
+- [ ] T010 [US2] `base-web/src/locales/index.ts`：匯出 `translateBackendMsg(msg: string): string`＝`$t(('backend.' + msg) as App.I18n.I18nKey)`（前端補 `backend.` 前綴、前綴歸屬 (c)）；⚠️aa (iii)（依賴 T007）
+- [ ] T011 [US2] `base-web/src/service/request/index.ts`：4 翻譯點接 `translateBackendMsg`——`:71` modal `content`、`:109` `onError` 的 `message = translateBackendMsg(error.response?.data?.msg) ?? message`、`:64`/`:51` dedup push/filter 用翻譯後值（保 stack 鍵＝顯示文字）；**不**碰 `shared.ts:54 showErrorMsg`（R2）；⚠️aa (i)、每處保留原行註解＋`// [rev3-inline I18N(i)] 原行: ...`（依賴 T010）
 - [ ] T012 [US2] C-V-2 實機：容器內 `pnpm typecheck` 過（Schema+雙 langs 齊）＋base-web component/unit（`translateBackendMsg('auth.login.failed')`→譯文；`translateBackendMsg('biz.unknown.x')`→回 `backend.biz.unknown.x` 原始字串）；vite 沒熱載新 export 時 `restart base-web`（依賴 T007~T011）
 
 **Checkpoint**: US2 全綠（SC-005/006；前端 i18n 顯示機制成立）→ **雙段 commit**（base-web worktree `--no-verify`→outer pin；`git status` 確認無 `components.d.ts` 漏網——本刀不新增元件、預期無）
@@ -63,7 +63,7 @@
 ## Phase 6: Polish & Cross-Cutting
 
 - [ ] T014 C-V-3 prod target image build sanity：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 成功（首批實質 server 碼＋serde 直接 dep、防 prod COPY/dep 缺口；SC-007）
-- [ ] T015 fork-delta audit：`grep -rn 'rev3-inline' base-web/src/{typings/app.d.ts,locales,service/request}` 確認 ⚠️z 三範圍每處改動皆帶 `rev3-inline` token、且**未逾三範圍**（無攔截器控制流/非 i18n inline 改動）；upstream 衝突風險逐處於 i18n-key-convention.md §6 已錄
+- [ ] T015 fork-delta audit：`grep -rn 'rev3-inline' base-web/src/{typings/app.d.ts,locales,service/request}` 確認 ⚠️aa 三範圍每處改動皆帶 `rev3-inline` token、且**未逾三範圍**（無攔截器控制流/非 i18n inline 改動）；upstream 衝突風險逐處於 i18n-key-convention.md §6 已錄
 - [ ] T016 follow-up backlog 登記（`docs/INTEGRATION-CHECKLIST.md` §3.X、outer 單段 commit）：① i18n 顯示端到端**階梯**（波 0 Auth/login `1000` toast 首檢；波 1 system_settings per-entity `2222`）② `4040`/`5003` 前端顯示限制（enforce 刀再議是否拓寬 `onError`）③ `From<DbErr>` 延後（首個產 `DbErr` 切片帶入＋加 sea-orm 到 server）
 - [ ] T017 收口驗證（**commit only——push/merge 凍結至 finishing、§I.4／⚠️u**）：兩 worktree 全 task commit 齊＋outer pin == 各 worktree HEAD（pin 隨 task bump 紀律回顧）＋specs/003-envelope 外層檔收；`git submodule status` 兩列行首空格；quickstart.md 5 步逐步對照綠
 
@@ -72,7 +72,7 @@
 ```
 Phase 1 (T001) ──┬─→ US1 (T002→T003→T004→T005→T006)  [rust-api worktree、serial]
                  │       └─→ US3 (T013；接 T005 後、rust serial)
-                 └─→ US2 (T007→{T008∥T009}→T010→T011→T012)  [base-web worktree、⚠️z、--no-verify]
+                 └─→ US2 (T007→{T008∥T009}→T010→T011→T012)  [base-web worktree、⚠️aa、--no-verify]
                                                               （US2 自身 acceptance 獨立於 US1）
 US1 ∥ US2（不同 worktree、可並行；單實作者則序：US1 MVP 先）
 US1+US2+US3 ──→ Polish (T014→T015→T016→T017)

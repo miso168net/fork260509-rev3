@@ -1,6 +1,6 @@
 # Contract: i18n-key-convention（msg-i18n key 規約；003-envelope 落定、跨 feature 權威）
 
-> 授權載體＝⚠️z `BASE-WEB-I18N-WIRING ★` 軌道（constitution §III.2、v1.1.0）。承接 ⚠️y（msg=key、前端譯、後端語言無關）＋003 brainstorm 4 sub-拍板。**後續每個切片新增其 biz error key 一律循本規約**（locale + Schema 擴充、走本軌道）。
+> 授權載體＝⚠️aa `BASE-WEB-I18N-WIRING ★` 軌道（constitution §III.2、v1.1.0）。承接 ⚠️y（msg=key、前端譯、後端語言無關）＋003 brainstorm 4 sub-拍板。**後續每個切片新增其 biz error key 一律循本規約**（locale + Schema 擴充、走本軌道）。
 
 ## 1. Key 文法（凍結）
 
@@ -39,7 +39,7 @@
 - reserved `7778/8889/9998/9999`：後端永不發 → **無 key、不入 locale**。
 - 逐碼 condition 命名可實作期微調（root + 文法不變）。
 
-## 4. typed-key Schema（三處編輯、⚠️z 軌道 (ii)(iii)）
+## 4. typed-key Schema（三處編輯、⚠️aa 軌道 (ii)(iii)）
 
 `App.I18n.Schema`（`app.d.ts:313-849`）加 `backend` 型 → `I18nKey = GetI18nKey<Schema>`（`:857`）納 `backend.*`。**Schema 為手寫**（非 `typeof zhCN`）、langs 物件被 `: App.I18n.Schema`（`langs/zh-cn.ts:1`/`en-us.ts:1`）編譯強制 → 兩 langs 必補齊 `backend` 物件。helper（`locales/index.ts` 匯出）：
 ```ts
@@ -48,13 +48,13 @@ export function translateBackendMsg(msg: string): string {
 }
 ```
 - runtime 任意 key 需 `as App.I18n.I18nKey` cast（`$t` 9 overload 首參皆 `I18nKey` 有限聯集、`app.d.ts:861-871`）。
-- **後續切片擴 per-entity key**：(a) `Schema.backend.biz` 加該 entity 型、(b)(c) 兩 langs 補譯文——循本規約、走 ⚠️z 軌道。
+- **後續切片擴 per-entity key**：(a) `Schema.backend.biz` 加該 entity 型、(b)(c) 兩 langs 補譯文——循本規約、走 ⚠️aa 軌道。
 
 ## 5. graceful fallback（Clarifications 2026-06-16＝B）
 
 未翻譯 key → **顯示原始 key 路徑字串**＝vue-i18n **11.4.2 原生未命中行為、零額外碼**（`core-base.mjs:1533` miss 回 `key`；`createI18n` 未設 `missing` handler）。波 1 前 per-entity key 未入 Schema/locale 即走此（過渡態、缺翻譯「大聲」暴露易抓修；不改顯通用訊息）。
 
-## 6. 翻譯接線點（file:line；⚠️z 軌道 (i)、fork-delta `rev3-inline`）
+## 6. 翻譯接線點（file:line；⚠️aa 軌道 (i)、fork-delta `rev3-inline`）
 
 | 點 | file:line | 改動 | 涵蓋 |
 |---|---|---|---|

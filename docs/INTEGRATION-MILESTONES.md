@@ -39,7 +39,7 @@
 | `167db96` | 2026-06-12 | **constitution-rev3 v1.0.0 凍結** — 13 項拍板融入（含 ⚠️s fork-delta 紀律）；波 -1 出口四項全綠、**波 -1 全完成** |
 | `c9ffad5` | 2026-06-13 | **001-infra-deploy 全綠收刀（波 0 第一刀）** — master compose 5 service＋migrate gate＋dev/prod override＋deploy/ 全套＋rust-api scaffold（worktree `5d69c06`）；C-V-0~8 實機全綠（SC-001~007）、捕獲 redis `--dir` 持久化真 bug 並修；merge --no-ff、feature branch 保留 |
 | `9233ae0` | 2026-06-13 | **002-rev2-schema-baseline 全綠收刀（波 0 第二刀）** — 前代 35 支 migration squash 為 4 支基線（m001 schema 11 表終態〔10 手寫＋casbin 委派 vendored adapter＋ALTER 治理欄〕／m002 seed 92 列 6 表〔argon2id 單一 hash〕／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（§I.5、worktree `91cfc80`）；tests/002 四支驗證 scripts（normalize 六規則）＋2 基準檔；C-V-0~9 實機全綠（SC-001~008）、修 m002 兩層 seed drift（id 順序 bug＋normalize 第六規則 row-order 正規化〔user 拍板方案 A、契約留痕 migration-chain.md §3〕）；merge --no-ff、feature branch 保留 |
-| `7269e67` | 2026-06-16 | **constitution v1.0.0→v1.1.0 amend**（⚠️z、§V.3 MINOR） — §III 新增 `BASE-WEB-I18N-WIRING ★` 軌道；觸發＝003-envelope `/speckit-plan` Constitution Check Q2/Q7（base-web i18n 接線必改 inline：`service/request` 攔截器／`locales` backend 命名空間／`app.d.ts` Schema；⚠️y 已授權改動本身、但 §I.1 需 §III 軌道才合規）；授權三範圍 (i) 攔截器 msg 翻譯接線〔不改控制流〕(ii) locales backend 命名空間 (iii) app.d.ts Schema backend 型＋helper；走 fork-delta `rev3-inline`；user 親決 A |
+| `7269e67` | 2026-06-16 | **constitution v1.0.0→v1.1.0 amend**（⚠️aa、§V.3 MINOR） — §III 新增 `BASE-WEB-I18N-WIRING ★` 軌道；觸發＝003-envelope `/speckit-plan` Constitution Check Q2/Q7（base-web i18n 接線必改 inline：`service/request` 攔截器／`locales` backend 命名空間／`app.d.ts` Schema；⚠️y 已授權改動本身、但 §I.1 需 §III 軌道才合規）；授權三範圍 (i) 攔截器 msg 翻譯接線〔不改控制流〕(ii) locales backend 命名空間 (iii) app.d.ts Schema backend 型＋helper；走 fork-delta `rev3-inline`；user 親決 A |
 
 ---
 

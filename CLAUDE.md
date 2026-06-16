@@ -380,7 +380,7 @@ cd ..
 
 <!-- SPECKIT START -->
 Active feature: 003-envelope（波 0 第三刀；spec ✅／clarify ✅／plan ✅、待 `/speckit-tasks`）
-spec/plan: `specs/003-envelope/{spec,plan}.md`（scope A 完整縱切；觸發 constitution v1.1.0 ⚠️z `BASE-WEB-I18N-WIRING ★` 軌道；Constitution Check 9/9 PASS）
+spec/plan: `specs/003-envelope/{spec,plan}.md`（scope A 完整縱切；觸發 constitution v1.1.0 ⚠️aa `BASE-WEB-I18N-WIRING ★` 軌道；Constitution Check 9/9 PASS）
 上一刀: 002-rev2-schema-baseline ✅ 全完成（merge `9233ae0`）
 下一步: `/speckit-tasks` → `/speckit-analyze` → `superpowers:executing-plans`（Workflow 驅動實作；push/merge 凍結至 finishing）
 <!-- SPECKIT END -->
