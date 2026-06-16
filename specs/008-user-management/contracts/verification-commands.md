@@ -71,7 +71,7 @@ write p95 < 500ms 同法（addUser/updateUser 計時、含同 txn audit）。**C
 
 ## C-V-8 — endpoint_coverage_lint stand-up（⚠️x 移交、首個 gated 刀）
 ```bash
-cd rust-api && cargo test -p server endpoint_coverage_lint
+cd rust-api && cargo test -p server --test endpoint_coverage_lint   # --test 必要：bare filter→0 passed 假綠
 ```
 新 build-failing lint：每掛 `enforce_mw` 的 route 有 ≥1 casbin policy（容忍 seeded-but-unimplemented policy）；以 `entity_access_lint` 為模板；`EXPECTED_ROUTE_COUNT` ＝ **本刀實際 gated route 數＝6**、別盲 assert 35（DESIGN target 僅參考、analyze C1）。
 

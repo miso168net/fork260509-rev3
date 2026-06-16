@@ -81,7 +81,7 @@ write p95 < 500ms 同法（addRole/updateRole 計時、含同 txn audit）。rol
 
 ## C-V-8 — endpoint_coverage_lint bump（6 → 11、⚠️x SC-009 硬 gate）
 ```bash
-cd rust-api && cargo test -p server endpoint_coverage_lint
+cd rust-api && cargo test -p server --test endpoint_coverage_lint   # --test 必要：bare filter 把名字當 fn-filter→0 passed 假綠
 ```
 改 `server/tests/endpoint_coverage_lint.rs`：`EXPECTED_ROUTE_COUNT` **6→11**（5 條 role route 加進 main.rs 後 lint 動態 derive 為 11、policy 皆已 seed〔R5〕→ 綠）；更新檔頭 doc 註解（role 端點不再是「seeded-but-unimplemented」範例、改舉 menu）。結構零改（count guard 外全自動）。controller sanity-bite：故意破一條 role policy/route → lint 須大聲失敗指名。
 

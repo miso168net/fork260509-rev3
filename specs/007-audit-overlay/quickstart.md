@@ -14,7 +14,7 @@
 
 ```bash
 cd rust-api && cargo test -p server resolve_client_ip active_model trace_id
-cargo test -p server entity_access_lint
+cargo test -p server --test entity_access_lint   # binary 名須 --test（上行 resolve_client_ip… 才是 fn-名 filter）
 ```
 **預期**：resolver 7 類案綠（含直連偽造防護 + fail-safe）、active_model IpAddr→IpNetwork 綠、trace honor/mint 綠、lint 續綠。對映 C-V-1/2/3/9。
 

@@ -108,7 +108,7 @@ description: "Task list for 007-audit-overlay implementation"
 
 ## Phase 7: Polish & Cross-Cutting
 
-- [ ] T028 [P] `entity_access_lint` 續綠（C-V-9）：新增 audit_ctx/facade/resolver 走 facade、不碰 raw `entity::`（004 lint 不退）。`cargo test -p server entity_access_lint`。
+- [ ] T028 [P] `entity_access_lint` 續綠（C-V-9）：新增 audit_ctx/facade/resolver 走 facade、不碰 raw `entity::`（004 lint 不退）。`cargo test -p server --test entity_access_lint`。
 - [ ] T029 [P] best-effort 不阻請求驗證（SC-005、FR-012）：停 PG（或斷 audit 寫）後打已認證請求 → 仍正常回應、audit 列丟棄＋`tracing::warn`。
 - [ ] T030 **prod image build（mandatory、xdb 新 crate、CLAUDE.md §3）** C-V-8：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 綠（xdb COPY 全在〔缺則 RED→GREEN 證 gate〕、`--locked` 防 ipnetwork un-pin、`--bin server` 跳 bench）。（依 T003、T002）
 - [ ] T031 [P] 跑 `quickstart.md` 端到端驗證（A 純測 → G prod build 全綠）。

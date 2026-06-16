@@ -83,7 +83,7 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api
 ## C-V-9 — 守恆：`entity_access_lint` 續綠 → §I.5
 
 ```bash
-cd rust-api && cargo test -p server entity_access_lint
+cd rust-api && cargo test -p server --test entity_access_lint   # --test 必要：bare filter→0 passed 假綠
 ```
 **斷言**：新增 audit_ctx/facade/resolver 走 facade、不碰 raw `entity::`（004 lint 不退）。
 
