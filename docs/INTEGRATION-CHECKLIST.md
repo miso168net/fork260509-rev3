@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第五刀 → audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕／access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入〕;首個 INET log entity 讀寫消費者，須驗 `IpNetwork` decode／§3.7;**待 `superpowers:brainstorming` 階段 0 → 手動 `/speckit-specify`**）
+**下一步**: **波 0 第五刀 → 005-audit-op-log**（audit ×2 之首＝op-log 刀;overlay 刀〔access-log+login-attempt+xdb〕延到 Auth 島後——overlay 需 auth 提供 operator_id/login 流）；**brainstorm spec-design ✅ 定稿** `docs/superpowers/005-audit-op-log.md`（`mutate_in_txn` 同 txn 原子審計＋op-log sink＋單一 `sys_user::soft_delete` proof;rev3 純 `model/` 新增、無 entity/migration/Cargo.toml 變動〔004 已建齊〕）；**待手動 `/speckit-specify`**（input＝該 brainstorm、pre-hook 建 005 feature branch）
 
 ---
 
