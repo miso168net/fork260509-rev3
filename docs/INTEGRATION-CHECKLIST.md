@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001+002 ✅ 已收刀 2026-06-13、餘 4 項〔audit ×2 計 5 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001+002+003 ✅ 已收刀、餘 3 項〔soft-delete／audit ×2／Auth；計 4 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-16 003-envelope Phase 0 brainstorm 拍定**（commit `831439d`）:scope A 完整縱切〔envelope＋msg-i18n key 規約一刀 ship 兩端〕＋4 sub-拍板（4 根 common/auth/biz/system＋文法＋code-keyed 否決＋locale 外包 backend.＋wire 去前綴 (c)）;⚠️y「key 規約留刀1」提前至 003 落定;DECISIONS ⚠️y＋CHECKLIST 拍板索引/scope 已回填;待 review→手動 `/speckit-specify`
+- **2026-06-16 003-envelope 全綠收刀（波 0 第三刀）**（merge `13a01b1`）:統一回應信封＋msg-i18n key 規約 scope A 縱切兩端——rust-api(`2d55a38`) envelope/error 9 變體凍結碼矩陣＋in-crate 契約測 8 綠；base-web(`c2ad92f`、⚠️aa rev3-inline) Schema backend＋雙語 langs＋translateBackendMsg＋4 翻譯點。C-V-0~3 全綠（rust test 8／curl 4040／typecheck＋tsx 10／prod build）、wire 3 端對齊零型謊；feature branch 保留、未 push（follow-up 見 §3.6）
 - **2026-06-16 rebase 重做 003-009**:因 rev2 經驗未隨帶入致實作/文件不順、reset 三 repo 到 `rebase260616` tag（outer `1c6ba31`／base-web `dd771540`／rust-api `91cfc80`）重做;redo-起點 doc 調整已 commit（CLAUDE.md 對齊／DECISIONS §1 待決③→B＋⚠️a/b/o/u 拍板＋⚠️w/x/y 登記／DESIGN §3.3 hybrid・§7.3 i18n）＋三 repo force-push origin;**舊 003-009 線全備份在 `rebase260616-*` 分支＋tag（本機＋origin、勿 `git pull`）**
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第三刀 → envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f/⚠️y 拍板形;**brainstorm ✅ scope A〔`docs/superpowers/003-envelope.md`〕→ 待手動 `/speckit-specify`**）
+**下一步**: **波 0 第四刀 → soft-delete 基建刀**（`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`;rev2 009;**待 `superpowers:brainstorming` 階段 0 → 手動 `/speckit-specify`**）
 
 ---
 
@@ -37,7 +37,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] **001-infra-deploy 刀 ✅ 收刀（2026-06-13、merge `c9ffad5`）**——master compose 5 service＋migrate gate＋acme 殼、dev/prod override、deploy/ 全套、rust-api scaffold（/health＋空 migrator＋lock pin）;C-V-0~8 實機全綠（SC-001~007）;follow-up 見 §3.4;spec 全帳在 `specs/001-infra-deploy/`
 - [x] **002-rev2-schema-baseline 刀 ✅ 收刀（2026-06-13、merge `9233ae0`）**——前代 35 支 squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（⚠️v 委派式、§I.5）;C-V-0~9 實機全綠（SC-001~008）、normalize 六規則（row-order 假紅、user 拍板方案 A、契約留痕 migration-chain.md §3）;spec 全帳在 `specs/002-rev2-schema-baseline/`
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
-- [ ] **envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f/⚠️y 拍板形;**brainstorm ✅ scope A〔規約+rust-api 產無前綴 key+base-web `$t` 接線+`backend` 命名空間,`docs/superpowers/003-envelope.md`〕**）
+- [x] **003-envelope 刀 ✅ 收刀（2026-06-16、merge `13a01b1`）**——統一信封 `Res<T>`/`PageRes<T>`＋`AppError` 9 變體凍結 13 碼矩陣（reserved 4 碼型別層無變體）＋main.rs .fallback；base-web Schema backend＋雙語 langs＋`translateBackendMsg`＋service/request 4 翻譯點（⚠️aa rev3-inline）；key 規約 ⚠️y 落定；C-V-0~3 全綠（SC-001~008）；spec 全帳在 `specs/003-envelope/`、follow-up §3.6
 - [ ] **soft-delete 基建刀**（`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`;rev2 009）
 - [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑〕）
 - [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提;**＋⚠️y：base-web `$t` 接線＋`backend` 命名空間已隨 003-envelope ship〔scope A〕;本刀 login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key**）
@@ -51,7 +51,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 **出口條件（DESIGN §8.4,4 項全綠才換波）**:
 - [x] dev stack `up --wait` 全 healthy ✅（001、C-V-2 實證 2026-06-13）
 - [ ] 三守恆綠（entity_access_lint・endpoint_coverage_lint〔皆後刀〕・**migration up→down→up ✅ 002 C-V-5 達成 2026-06-13**）
-- [ ] envelope 13 碼 contract 形狀測試綠（⚠️e 拍板形）
+- [x] envelope 13 碼 contract 形狀測試綠（⚠️e 拍板形）✅ 003 達成（in-crate 8 測綠：碼/serde 欄序/http/非人話/文法 conformance、merge `13a01b1`）
 - [ ] login→getUserInfo→enforce 最小鏈 curl 通
 
 ### 波 1 — 第一刀＝`system_settings` 打樣（未開始;③=B 拍板 2026-06-16）
@@ -194,6 +194,16 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [ ] adapter `examples/`（rbac_*.conf/csv）為 `#[cfg(test)]` fixture:prod `--bins` build 免 COPY（已驗正確、Dockerfile 有註解），但若日後在 builder/容器內跑 `cargo test` 會缺 fixture（屆時 COPY examples 或 adapter 測試改 env-gate round-trip smoke）
 **constitution（待 user 親決）**:
 - [ ] ⚠️u constitution §IV 增第 10 題（normalize/驗證流程契約修訂的 amendment 提案;PATCH 級;002 normalize 第六規則為先例——執行期發現假紅源、user 拍板補規則、契約留痕）
+
+### 3.6 003-envelope follow-up（收刀移交 2026-06-16;均不阻塞、消費刀觸發時處理）
+
+**i18n 顯示端到端階梯（FR-012；機制本刀已以型別/單元/component 測覆蓋、端到端待真端點）**:
+- [ ] 波 0 Auth/login 刀：login 失敗發 `1000`=`auth.login.failed`→generic toast 經 `$t` 翻譯顯示＝i18n 顯示路徑首個自然端到端 CDP 檢核點（fallback 路徑已由 003 tsx 單元覆蓋）
+- [ ] 波 1 system_settings 刀：首個真 biz endpoint 發 per-entity `2222` key（`biz.systemSettings.*`）→per-entity 端到端；首個 list 端點順帶驗 `PageRes` runtime 形＋空字串 filter 守門（curl≠modal 經典案例、CLAUDE.md §3）
+**顯示限制（R3、本刀不修）**:
+- [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；enforce 刀再議是否拓寬 `onError` extraction（`5003` 連發出都待 enforce 刀）
+**rust 範圍延後（R7）**:
+- [ ] `From<DbErr> for AppError`＋加 sea-orm 到 server crate：延後至首個產 `DbErr` 切片（facade/handler 刀）帶入＋`sql_err()` 23505→`2222`（`biz.error`）映射
 
 ---
 
