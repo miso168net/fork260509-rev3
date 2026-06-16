@@ -379,10 +379,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 005-audit-op-log（波 0 第五刀；audit ×2 之首；**SDD 設計鏈 ✅ 全完成**——spec／clarify〔0 待澄清〕／plan〔9/9 PASS〕／tasks〔11〕／analyze〔0 CRITICAL；C1 已修：atomic live smoke 拆 commit/no-op/rollback 三路徑〕；**待階段 2 實作**）
-spec/plan/tasks: `specs/005-audit-op-log/`（`mutate_in_txn` 同 txn 原子審計＋op-log sink＋單一 `sys_user::soft_delete` proof；R-A~R-D 全 ground-truth grep sea-orm 1.1.20：mutate_in_txn 泛型 `C: TransactionTrait`〔live smoke 外層 txn-savepoint 隔離〕／`IpNetwork` 自 `sea_orm::entity::prelude`〔lint-safe〕／redact 手構 json〔Model 無 Serialize〕／`into_active_model`；**零端點/migration/新 crate/Cargo.toml 變動**——比 004 更輕、無 prod build）
-上一刀: 004-soft-delete-infra ✅ 全完成（merge `a1105f0`）
-下一步: 階段 2 `superpowers:executing-plans`（Workflow 驅動實作 tasks.md〔11 task〕；rust serial／容器內／live smoke 外層 txn-savepoint 隔離／兩段式 commit〔worktree→pin〕；無 prod build；push/merge 凍結至 finishing）；overlay 刀（access-log/login-attempt/xdb）延到 Auth 島後
+Active feature: 006-auth-island-min（波 0 第六刀；尚未起手——待階段 0 brainstorm）
+上一刀: 005-audit-op-log ✅ 全完成（merge `98f1f7e`、worktree pin `3d9578f`）——L4 audit 機制地基：`model/audit.rs`（`mutate_in_txn` 泛型 `C:TransactionTrait` 同 txn 原子審計〔業務寫＋op-log 寫綁同一 DatabaseTransaction、同時 commit 或同時 rollback〕＋`AuditOperation`/`Operator`/`Event`/`Serialize`、純資料層零 `entity::`）＋op-log append-only sink（`facade/sys_operation_log::write_in_txn`、archetype B 無 update/delete）＋`sys_user` redact（`AuditSerialize` 手構 json、password→`<redacted>`、Model 無 Serialize）＋單一 `sys_user::soft_delete` proof（`into_active_model`＋§I.6 deleted_at/deleted_by 成對、no-op 回 `Ok(None)`）；C-V-0~3 全綠、holistic review 3-lens mergeReady 零 blocker、零端點/migration/Cargo.toml 變動（SC-005）、SC-007 /health 零回歸
+下一步: 波 0 第六刀 006-auth-island-min（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§I.7 行為島 invariants〔token rotation／single-session〕;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）——待階段 0 `superpowers:brainstorming` 起手（產出 `docs/superpowers/006-auth-island-min.md`）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

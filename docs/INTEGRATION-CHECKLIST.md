@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001+002+003+004 ✅ 已收刀、餘 2 項〔audit ×2／Auth；計 3 刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 進行中（001+002+003+004+005 ✅ 已收刀、餘 Auth 島最小段〔006〕＋audit-overlay〔007、延 Auth 後〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-17 005-audit-op-log 全綠收刀（波 0 第五刀;audit ×2 之首）**（merge `98f1f7e`）:L4 audit 機制地基——`model/audit.rs`（`mutate_in_txn` 泛型 `C:TransactionTrait` 同 txn 原子審計〔業務寫＋op-log 寫綁同一 DatabaseTransaction、同時 commit/rollback〕＋`AuditOperation`/`Operator`/`Event`/`Serialize`、純資料層零 `entity::`）＋op-log append-only sink（`facade/sys_operation_log::write_in_txn`、archetype B 無 update/delete）＋`sys_user` redact（`AuditSerialize` 手構 json、password→`<redacted>`、Model 無 Serialize）＋單一 `sys_user::soft_delete` proof（`into_active_model`＋§I.6 deleted_at/deleted_by 成對、no-op 回 `Ok(None)`）。C-V-0~3 全綠（build／redact 純測／atomic live smoke 三路徑〔commit/no-op/非vacuous rollback〕／entity_access_lint 守恆）、holistic review 3-lens mergeReady 零 blocker、零端點/migration/Cargo.toml 變動（SC-005）、SC-007 零回歸;rust-api `e9a6d5c`→`3d9578f`、follow-up §3.8
 - **2026-06-17 004-soft-delete-infra 全綠收刀（波 0 第四刀）**（merge `a1105f0`）:L2 entity 層（新 `entity` crate 11 模組機械反射 m001／130 欄;tstz→DateTimeWithTimeZone／jsonb→Json／INET→IpNetwork）＋L4 soft-delete 地基（`SoftDeletable` trait〔lint-clean 純 sea_orm〕＋3 facade impl〔sys_user/role/menu〕＋`find_active`）＋facade 唯一管道守恆 `entity_access_lint`（兩階段 whiten+path-root scan、scan fn 自測雙證非 vacuous）＋prod Dockerfile entity COPY。零業務 endpoint/facade 方法/migration（SC-005）。C-V-0~3 全綠（build／lint 2 passed／live smoke 1 passed txn-rollback／prod image 158MB）、SC-007 零回歸、holistic review PASS 零 findings;rust-api `033060b`→`e9a6d5c`、follow-up §3.7
-- **2026-06-16 003-envelope 全綠收刀（波 0 第三刀）**（merge `13a01b1`）:統一回應信封＋msg-i18n key 規約 scope A 縱切兩端——rust-api(`2d55a38`) envelope/error 9 變體凍結碼矩陣＋in-crate 契約測 8 綠；base-web(`c2ad92f`、⚠️aa rev3-inline) Schema backend＋雙語 langs＋translateBackendMsg＋4 翻譯點。C-V-0~3 全綠（rust test 8／curl 4040／typecheck＋tsx 10／prod build）、wire 3 端對齊零型謊；feature branch 保留（follow-up 見 §3.6）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第五刀 → 005-audit-op-log**（audit ×2 之首＝op-log 刀;overlay 刀〔access-log+login-attempt+xdb〕延到 Auth 島後——overlay 需 auth 提供 operator_id/login 流）；**brainstorm spec-design ✅ 定稿** `docs/superpowers/005-audit-op-log.md`（`mutate_in_txn` 同 txn 原子審計＋op-log sink＋單一 `sys_user::soft_delete` proof;rev3 純 `model/` 新增、無 entity/migration/Cargo.toml 變動〔004 已建齊〕）；**待手動 `/speckit-specify`**（input＝該 brainstorm、pre-hook 建 005 feature branch）
+**下一步**: **波 0 第六刀 → 006-auth-island-min**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§I.7 行為島 invariants〔token rotation／single-session〕;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/006-auth-island-min.md`）
 
 ---
 
@@ -39,7 +39,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
 - [x] **003-envelope 刀 ✅ 收刀（2026-06-16、merge `13a01b1`）**——統一信封 `Res<T>`/`PageRes<T>`＋`AppError` 9 變體凍結 13 碼矩陣（reserved 4 碼型別層無變體）＋main.rs .fallback；base-web Schema backend＋雙語 langs＋`translateBackendMsg`＋service/request 4 翻譯點（⚠️aa rev3-inline）；key 規約 ⚠️y 落定；C-V-0~3 全綠（SC-001~008）；spec 全帳在 `specs/003-envelope/`、follow-up §3.6
 - [x] **soft-delete 基建刀 ✅ 收刀（2026-06-17、merge `a1105f0`）**——`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`＋11 entity L2 層（rev2 009）;C-V-0~3 全綠（build／lint 2 passed／live smoke 1 passed／prod image）;spec 全帳 `specs/004-soft-delete-infra/`、follow-up §3.7
-- [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑〕）
+- [~] **audit 刀 ×2**:op-log ✅ **收刀（005-audit-op-log、2026-06-17、merge `98f1f7e`）**——`mutate_in_txn` 同 txn 原子審計＋op-log append-only sink＋`sys_user::soft_delete` proof〔rev2 011〕;C-V-0~3 全綠、零端點/migration/Cargo.toml（SC-005）;spec 全帳 `specs/005-audit-op-log/`、follow-up §3.8 / overlay〔access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 拷入——⚠️v、Dockerfile [[bench]] COPY 坑〕〕＝**007 刀、延到 Auth 島後**（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）
 - [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提;**＋⚠️y：base-web `$t` 接線＋`backend` 命名空間已隨 003-envelope ship〔scope A〕;本刀 login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key**）
 
 **前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
@@ -220,6 +220,15 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [ ] `casbin_rule` entity 自定 11 欄（8 adapter 基底＋protected/created_at/created_by 治理 3）——policy 刀 cross-check:adapter 自身 8 欄 Model 對治理欄隱形（§I.6 D），確認 governance 讀寫經 entity crate Model 非 adapter Model
 **soft-delete 活體覆蓋邊界（Role/Menu 刀觸發）**:
 - [ ] `sys_role`／`sys_menu` 的 `find_active` 活體驗證待各自業務刀 list 端點順帶覆蓋（本刀僅 `sys_user` 活體證〔C-V-2〕、其餘 2 由共用 trait＋compile 繼承、spec SC-001 接受此驗證級別）
+
+### 3.8 005-audit-op-log follow-up（收刀移交 2026-06-17;均不阻塞、消費刀觸發時處理）
+
+**operator_ip INET 真實資料 round-trip（audit overlay／audit_ctx 刀＝007 觸發）**:
+- [ ] 本刀 op-log 寫入 `operator_ip` 恆傳 `None`（operator 來源屬後續刀）→ `IpNetwork` 寫讀 round-trip **未經真實 IP 驗證**;overlay/audit_ctx 刀為首個帶真 IP 者、須對真實 INET 值驗 `write_in_txn`→DB→讀回 serde 正確性（併 §3.7「INET log entity 消費」一條）
+**redact 遮蔽清單擴充（user/session 寫端消費刀觸發）**:
+- [ ] `sys_user::audit_json` 現僅遮蔽 `password`（spec 明定本刀範圍、spec-compliant）;`current_session_id` 以原值序列化進審計快照——後續 user/session 寫端刀 impl/擴充 `AuditSerialize` 時評估 `current_session_id` 是否一併遮蔽/截斷（holistic review Lens 2 nit、非缺陷）
+**soft_delete 中途失敗審計同步（消費刀觸發）**:
+- [ ] 本刀 rollback 證明經「裸 `mutate_in_txn`＋raw SQL write-then-Err」演練（FR-010 單一 proof 範圍、contract C-V-2 明示設計、非 vacuous）;`soft_delete` 自身中途失敗（DB 約束衝突等）的審計同步回滾由 `mutate_in_txn` 機制保證、可留消費刀以注入約束衝突收緊覆蓋
 
 ---
 
