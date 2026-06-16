@@ -357,11 +357,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **009-role-management（波 2 第一刀＝Role 直刀、scope (i) 純 sys_role CRUD）— SDD 設計鏈 `specify→clarify→plan` 完成**（feature branch `009-role-management`）。波 0（001-007）＋波 1（008 User 刀、merge `b8de602`）全完成。
-設計鏈產出: `spec.md`（6 US／20 FR／10 SC）＋clarify 1 問（併發撞碼→同業務拒 2222、零 schema）＋`plan.md`/`research.md`/`data-model.md`/`contracts/verification-commands.md`/`quickstart.md`（plan＝[specs/009-role-management/plan.md](specs/009-role-management/plan.md)）。research 由 8-agent 平行 act-on-code grep 接地（3 load-bearing claim 複驗）。
-設計重點: 5 端點（getRoleList 分頁/模糊／add/update/delete/batchDelete）＋6 net-new sys_role facade fn＋**leaf 審計**（無 composite、無 redact）＋roleCode 不可變（=casbin v0）＋種子 id∈{1,2,3} 僅拒刪＋dup→2222（pre-check＋23505 race catch、**永不 5000**）＋5 route `enforce_mw`（getRoleList=R_SUPER+R_ADMIN、寫端 R_SUPER）＋`endpoint_coverage_lint` 6→11；**零 migration／零新 crate**；前端 `rev3-system-manage.ts` +4 wrapper＋MODAL-WIRING **(a)**（drawer/index 接線＋roleCode `:disabled`、**(c) auth-modal OUT**）。Constitution Check PASS（Phase 0 前＋Phase 1 後）。
-act-on-code 裁定: handler 續寫既有 `system_manage.rs`（非新檔、helper private 複用）；停用 role 不撤權僅刪除撤權（R6 既有 active-filter）；getRoleList R_ADMIN 可讀（m002 實證）。
-下一步: 手動 `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze` → `superpowers:executing-plans` 實作。授權指派（menu/button/endpoint 三維）OUT＝需 net-new sys_menu→Menu 刀後；序 Role→Menu→settings→審計〔⚠️b 殿後〕。008 follow-up 見 [CHECKLIST §3.11](docs/INTEGRATION-CHECKLIST.md)（均不阻塞）。
+Active feature: **無進行中**。**009-role-management ✅ 全綠收刀＋merge `113b681`（2026-06-16、波 2 第一刀＝Role 直刀、純 sys_role CRUD）**。波 0（001-007）＋波 1（008 User 刀）＋波 2 第一刀（009 Role 刀）全完成。
+009 交付: 5 端點（getRoleList 分頁/模糊／add/update/delete/batchDelete）＋6 net-new facade fn＋**leaf 審計**（無 composite/redact、無 roles/password key）＋roleCode 不可變（update 不寫 code＋前端 `:disabled`）＋種子 id∈{1,2,3} 拒刪（單+批 all-or-nothing）＋dup→**2222**（pre-check＋`sql_err()` 23505 race catch、**永不 5000**、clarify A）＋5 route `enforce_mw`（讀=R_SUPER+R_ADMIN、寫=R_SUPER）＋`endpoint_coverage_lint` 6→11；**零 migration／零新 crate**；前端 +4 wrapper＋MODAL-WIRING **(a)**（(c) auth-modal OUT）。8 單元 subagent-driven TDD＋兩段式 review＋final holistic READY；C-V-0~8 全綠／10 SC／6 US／Constitution PASS。worktree rust `101e69d`/base-web `fdf1cc7e`、三 ref push origin、009 feature branch 保留。
+下一步: **波 2 續刀＝Menu 刀**（序 Role→**Menu**→system_settings→審計讀端〔⚠️b 殿後〕）。Menu 需 net-new `sys_menu`＋migration（`getMenuTree`/`getAllPages`）；完成後解鎖 Role×Menu 授權指派（`getRoleMenu`/`updateRoleMenu`… 目前 m002 seeded-but-unimplemented）。→ Phase 0 brainstorm → 手動 `/speckit-specify`（`before_specify` pre-hook 建 feature branch）。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

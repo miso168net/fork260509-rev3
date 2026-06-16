@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 ✅ 全完成（001-007）→ 波 1 第一刀＝User 直刀 ✅ 全綠收刀＋merge（008-user-management、`b8de602`、2026-06-15、= 波 1 完成）→ 波 2 data islands 待開**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 ✅（001-007）→ 波 1 ✅（008 User 刀）→ 波 2 第一刀＝Role 直刀 ✅ 全綠收刀＋merge（009-role-management、`113b681`、2026-06-16）→ 波 2 續刀（Menu…）待開**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-16 009-role-management 全綠收刀＋merge（波 2 第一刀＝Role 直刀、純 sys_role CRUD）**:5 端點（getRoleList 分頁/模糊/status・add/update/delete/batchDelete）＋6 net-new facade fn＋**leaf 審計（無 composite/redact、無 roles/password key）**＋roleCode 不可變（`update_set_query` 不寫 code＋前端 `:disabled`）＋種子保護 id∈{1,2,3}（單+批 all-or-nothing）＋dup→**2222**（pre-check＋`sql_err()` 23505 race catch、**永不 5000**、clarify A）＋5 route `enforce_mw`（讀=R_SUPER+R_ADMIN・寫=R_SUPER）＋`endpoint_coverage_lint` 6→11；零 migration／零新 crate；前端 `rev3-system-manage.ts` +4 wrapper＋MODAL-WIRING(a)（`system-manage.ts`/`auth.ts`/`route.ts` 零改）；8 執行單元 subagent-driven TDD＋兩段式 review（spec→quality）每單元＋final holistic READY；133 純測＋lint 11＋5 live smoke＋curl/psql＋**CDP modal（roleCode disabled・空字串守門印證、真 rust-api 非 mock）**＋p95 讀5.8/寫4.7ms 全綠；10 SC／6 US／Constitution PASS；worktree rust `101e69d`/base-web `fdf1cc7e`、merge `113b681`
 - **2026-06-15 008-user-management 全綠收刀＋merge（波 1 第一刀＝User 直刀③=A、波 1 完成）**:6 端點＋7 facade＋wire DTO＋composite role-delta 審計（複用 005 `mutate_in_txn`）＋6 route `enforce_mw` gated＋**`endpoint_coverage_lint` stand-up（⚠️x 移交、SC-009、controller sanity-bitten 真咬）**；零 migration／零新 crate；前端 `rev3-system-manage.ts` wrapper×4＋MODAL-WIRING(a)(c)（`system-manage.ts`/`auth.ts`/`route.ts` 零改）；41 task subagent-driven TDD＋兩段式 review（spec→quality）；109 純測＋9 lint＋22 entity_lint＋5 live smoke＋curl/psql＋**CDP modal smoke（C-V-6 clean pass）**＋p95 12/14.6ms 全綠；10 SC／Constitution PASS；**CDP smoke 抓到並修空字串 filter bug**（`0de38d6`、FR-002 空欄略過、curl 乾淨 query 掩蓋＝curl≠modal 印證、見 [[empty-string-query-params-mask-by-curl]]）；Q3 dup→**2222 非 5000**／種子保護（單+批 all-or-nothing、FR-016 可編輯）；worktree rust `0de38d6`/base-web `00911793`、merge `b8de602`
-- **2026-06-15 波 1 前維護批**:① 波 1 前清債〔node26／nginx 1.31.1〔CVE-2026-42945〕／postgres healthcheck／openssl pin／secret 文件〕② 揮發行號 ref 全清（→穩定 §章節錨、見 [[brainstorm-doc-decision-table-not-warn-codes]]）③ graphify 003-007 同步進圖;拆 5 commit（worktree `01e1263`／outer `9fd7005` 等）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 2 第一刀＝Role 刀、scope (i) 純 sys_role CRUD**（brainstorm Q1 拍 2026-06-15）。**009 Phase 0 brainstorm ✅ 完成**（`docs/superpowers/009-role-management.md`、`613574c`；scope (i)／delete soft-only inert-via-active-filter／search roleName·roleCode 模糊 status 精確／roleCode 不可變＋種子 id 拒刪／leaf 審計／dup-code 2222／CDP cutover 沿 008 §6／008 carry-forward 全帶）→ **下一步手動 `/speckit-specify`**（input=該檔；`before_specify` pre-hook 建 `009-role-management` feature branch；非 writing-plans、CLAUDE.md §3）。授權指派/治理 OUT（需 net-new sys_menu→Menu 刀後／波3）。序 Role→Menu→system_settings→審計讀端〔⚠️b 殿後〕。008 follow-up 見本檔 §3.11（均不阻塞）。
+**下一步**: **波 2 續刀＝Menu 刀**（序 Role→**Menu**→system_settings→審計讀端〔⚠️b 殿後〕、user 拍 2026-06-15）。009 Role 直刀已交付（純 sys_role CRUD、merge `113b681`）。**Menu 刀需 net-new `sys_menu`**（含 `getMenuTree`/`getAllPages`）＋對應 migration；完成後可解鎖 Role×Menu 授權指派維度（`getRoleMenu`/`updateRoleMenu`/`getRoleButton`/`getRoleEndpoints`… 目前 m002 seeded-but-unimplemented、被 endpoint_coverage_lint 容忍）。→ **下一步 Phase 0 brainstorm（`docs/superpowers/<NNN>-menu-*.md`）→ 手動 `/speckit-specify`**（`before_specify` pre-hook 建 feature branch；CLAUDE.md §3）。授權指派/治理 OUT-until-Menu。009 follow-up（若有）見本檔 §3。
 
 ---
 
@@ -43,7 +43,7 @@
 
 **刀/feature 清單**（素材=DESIGN §8.2;**排序 ✅ user 拍 2026-06-15：Role→Menu→system_settings→審計讀端**〔§8.6 交付序、非凍結設計〕）:
 - [x] ~~**User 刀**~~ → **③=A、已移波 1 交付**（User 直刀＝波 1 第一刀、本列消解）
-- [ ] **① Role 刀（波 2 第一刀、user 拍 Role 先 2026-06-15）**（rev2 013*/016*/018;sys_role/sys_user_role schema＋policy 已在波 0；**scope 待定**＝純 CRUD vs ＋授權指派〔需 Menu `getMenuTree`/`getAllPages`〕，見下一步注＋dossier 待決(c)）
+- [x] ~~**① Role 刀**~~ → **✅ 009-role-management 全綠收刀＋merge `113b681`（2026-06-16）**;**scope 拍 (i) 純 sys_role CRUD**（授權指派維度 OUT-until-Menu）;5 端點＋leaf 審計＋roleCode 不可變＋種子保護＋dup 2222（pre-check＋23505 race）＋lint 6→11;零 migration／零新 crate;詳見最新進展＋[MILESTONES §1](INTEGRATION-MILESTONES.md)
 - [ ] **② Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;最複雜 de-risk〔href ×10／iframe props／filter_routes 遞迴〕；m002 9 端點 policy 已 seed）
 - [ ] **③ `system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029;帶出 pub-sub 地基；⚠️l 多 key 需要時拍）
 - [ ] **④ 審計查詢讀端＋UI 刀（⚠️b ✅ 核可、波 2 殿後刀）**（三 log 讀端〔operation/access/login〕＋R_SUPER policy seed＋新 sys_menu seed＋§5.8 讀端索引〔operation/access 需補〕＋manage 新頁〔MODAL-WIRING use (e)〕；排核心 CRUD 之後）
