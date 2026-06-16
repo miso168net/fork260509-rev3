@@ -37,7 +37,7 @@
 
 > 008-user-management（③=A User 直刀）全鏈一刀逼出 migration→facade→handler→enforce→wire→frontend：6 端點＋7 facade fn＋wire DTO（i16↔string／2^53 guard）＋composite role-delta 審計（複用 005 `mutate_in_txn`）＋6 route `enforce_mw` gated（首批 gated 業務端點）＋`endpoint_coverage_lint` stand-up（⚠️x 移交、SC-009 硬 gate、sanity-bitten）；**零 migration／零新 crate**（schema/seed/policy 全在波 0、m002 6 端點已 seed）；前端 `rev3-system-manage.ts` wrapper×4＋MODAL-WIRING(a)(c)（system-manage.ts/auth.ts/route.ts 零改、`rev3-inline` 標記）。前置拍板 ③A／⚠️a／⚠️o 全拍。出口三項全綠：§8.1 工序全過／CDP 經 front-nginx 真 `/api` modal smoke clean pass／entity §5.0 各面勾消。109 純測＋9 lint＋22 entity_lint＋5 live smoke＋curl/psql＋CDP＋p95 12/14.6ms 全綠；10 SC／Constitution PASS；CDP 抓修空字串 filter bug（`0de38d6`、FR-002）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、per-task commit 見 worktree git／merge `b8de602` 回 rev3-admin-root、feature branch 保留。
 
-### 波 2 — data islands（未開始）
+### 波 2 — data islands（進行中：① Role 刀 ✅ 收刀 2026-06-16〔009、merge `113b681`〕、續刀 Menu→system_settings→審計讀端 待開）
 
 其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。
 
@@ -248,13 +248,27 @@
 **已修（CDP 發現、留痕）**:
 - [x] ✅（2026-06-15、`0de38d6`）空字串 filter bug：前端未設 filter→空字串 query→`Some("")`→2222／`user_phone=''` 排除 NULL→空列;修＝空字串視為未設（FR-002 空欄略過）＋CDP 重跑驗證;curl 乾淨 query 掩蓋＝curl≠modal 印證、見 [[empty-string-query-params-mask-by-curl]]
 
+### 3.12 009-role-management follow-up（收刀移交 2026-06-16;均不阻塞、授權刀/治理波觸發時處理）
+
+**★ 殘留 inert grants 累積＋roleCode 重用×policy 互動（FR-013 治理 scope、授權刀 forcing function）**:
+- [ ] 軟刪 role 不 cascade（FR-013）→ 其 `sys_user_role` 指派列＋（未來）`casbin_rule` policy 全留存、靠 active-filter inert（`roles_for_user`→`find_active_by_ids` 不計入軟刪 role）、累積待治理清理（spec Out-of-Scope「治理 lifecycle」明文 defer）。**009 純 CRUD 不分配 policy、當前殘留僅 sys_user_role 列**；但**授權指派刀（Menu／Role×Menu）接 role-policy 分配後**：軟刪 role 的 casbin policies 留存＋roleCode 釋放可重用（partial-uniq）→ **新建同碼 role 繼承舊 policies（casbin 以 roleCode 字串匹配、非 role-id）＝潛在越權**。授權刀／波 3 governance 須擇一：刪除時清該 code policies／防 code 重用／policy 按 role-id namespace。
+
+**live smoke 種子 metadata churn（minor、test hygiene、同 §3.8 隔離紀律）**:
+- [ ] `live_smoke_role_update` 的 FR-012 種子可編輯測(b) 對真 seed role（id=1）update＋restore-before-assert **只還原 role_desc DATA、不還原 `updated_at`/`updated_by`** → 每 run 在 seed 留 updated_* churn（dev DB cosmetic、RBAC 用 code 不受影響、非 prod）;在意則改測拋棄式 role 或 restore 一併還原 updated_*。
+
+**CDP modal smoke 工具（★ 跨 feature、Menu 刀沿用、cross-ref §3.9 CDP repoint 形）**:
+- [ ] 008/009 CDP modal smoke 皆每刀寫 ad-hoc script（009＝/tmp 單 session orchestration）;009 /tmp script 把 deleteRole 判定寫死 `POST`（實為 `DELETE` verb）→ 誤報該步 FAIL（產品正確、assertion drift）。Menu 刀（modal 重）前考慮把 manage 各頁 CDP smoke 收斂成 committed 可複用 helper（tests/000、reviewed selectors/verbs）、減每刀重寫＋drift。
+
+**data-model create_query 留痕（minor、honesty trail、無 action、同 §3.9 模式）**:
+- [ ] `specs/009-role-management/data-model.md §3` 列 `create_query` helper、**實作用 inline ActiveModel**（鏡像 008 `sys_user::create`、008 亦無此 helper）＝act-on-code 正確裁定;data-model 為已 commit spec-kit 史料、依 §7.2 不回頭重寫、此處留痕備查。
+
 ---
 
 ## 4. 跨 feature 待驗證項
 
 **跨 feature 驗證（常駐）**:
 - [ ] **dead_code over-built 回頭檢視**:infra-ahead-of-consumer 的 public API／fn（envelope/error §3.6・soft-delete facade §3.7・audit 機制 §3.8・enforce_mw §3.9・audit_ctx/op-log 回填 §3.10）——各消費刀 wiring 後**回頭檢視**：仍殘留 dead_code＝無真實消費者＝over-built，回收或補消費。具體 fn 清單在各 §3.N。**008 消費結果（2026-06-15、首個 gated 業務刀）**：已消費 envelope/error（Res/AppError/PageRes）・soft_delete facade・audit（mutate_in_txn/AuditEvent/audit_json）・enforce_mw・audit_ctx/op-log 回填 → **此五類確認非 over-built**（真 handler 消費＋curl/live/CDP 驗）;殘 dead_code（`ok_msg`／`modal_logout`／`not_found`／`AuditOperation::Restore`／`write_in_txn`）為未來 feature 保留 API（logout 流程／回收桶 restore／審計讀端）、非 008 範圍
-- [x] ✅（2026-06-15、008 立、⚠️x 移交履行）**endpoint_coverage_lint**:`server/tests/endpoint_coverage_lint.rs` build-failing 靜態掃描，每 enforce-gated route 有 ≥1 m002 casbin policy（gated⊆policies、容忍 seeded-but-unimplemented）;**`EXPECTED_ROUTE_COUNT=6`＝008 實際 gated 數**（非 DESIGN §7.1 target 35；**後刀每加 gated route 須同步 +casbin policy +EXPECTED**，lint 會 build-fail 強制之）;controller sanity-bitten 真咬。立後為跨 feature route-coverage 守恆（每 gated route 有 policy）
+- [x] ✅（2026-06-15、008 立、⚠️x 移交履行）**endpoint_coverage_lint**:`server/tests/endpoint_coverage_lint.rs` build-failing 靜態掃描，每 enforce-gated route 有 ≥1 m002 casbin policy（gated⊆policies、容忍 seeded-but-unimplemented）;**`EXPECTED_ROUTE_COUNT`＝實際 gated 數（008=6→009=11、+5 role route）**（非 DESIGN §7.1 target 35；**後刀每加 gated route 須同步 +casbin policy +EXPECTED**，lint 會 build-fail 強制之）;controller sanity-bitten 真咬。立後為跨 feature route-coverage 守恆（每 gated route 有 policy）
 
 **長期維護（自 §2 Roadmap 移入、非波狀態）**:
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
