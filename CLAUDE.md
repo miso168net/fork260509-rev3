@@ -381,7 +381,7 @@ cd ..
 <!-- SPECKIT START -->
 Active feature: 006-auth-island-min（波 0 第六刀；尚未起手——待階段 0 brainstorm）
 上一刀: 005-audit-op-log ✅ 全完成（merge `98f1f7e`、worktree pin `3d9578f`）——L4 audit 機制地基：`model/audit.rs`（`mutate_in_txn` 泛型 `C:TransactionTrait` 同 txn 原子審計〔業務寫＋op-log 寫綁同一 DatabaseTransaction、同時 commit 或同時 rollback〕＋`AuditOperation`/`Operator`/`Event`/`Serialize`、純資料層零 `entity::`）＋op-log append-only sink（`facade/sys_operation_log::write_in_txn`、archetype B 無 update/delete）＋`sys_user` redact（`AuditSerialize` 手構 json、password→`<redacted>`、Model 無 Serialize）＋單一 `sys_user::soft_delete` proof（`into_active_model`＋§I.6 deleted_at/deleted_by 成對、no-op 回 `Ok(None)`）；C-V-0~3 全綠、holistic review 3-lens mergeReady 零 blocker、零端點/migration/Cargo.toml 變動（SC-005）、SC-007 /health 零回歸
-下一步: 波 0 第六刀 006-auth-island-min（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§I.7 行為島 invariants〔token rotation／single-session〕;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）——待階段 0 `superpowers:brainstorming` 起手（產出 `docs/superpowers/006-auth-island-min.md`）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）
+下一步: 波 0 第六刀 006-auth-island-min（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提（完整行為島狀態機 rotation／reuse／single-session＝波3 合刀〔§4.1/§4.3/§I.7〕、非本刀;最小 vs 遞延刀界由 brainstorm 定）;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）——待階段 0 `superpowers:brainstorming` 起手（產出 `docs/superpowers/006-auth-island-min.md`）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

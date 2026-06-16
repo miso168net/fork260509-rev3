@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第六刀 → 006-auth-island-min**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§I.7 行為島 invariants〔token rotation／single-session〕;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/006-auth-island-min.md`）
+**下一步**: **波 0 第六刀 → 006-auth-island-min**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提（完整行為島狀態機 rotation／reuse／single-session＝波3 合刀〔§4.1/§4.3/§I.7〕、非本刀;最小 vs 遞延刀界由 brainstorm 定）;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/006-auth-island-min.md`）
 
 ---
 
