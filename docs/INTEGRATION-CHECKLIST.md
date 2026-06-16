@@ -37,10 +37,10 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] **001-infra-deploy 刀 ✅ 收刀（2026-06-13、merge `c9ffad5`）**——master compose 5 service＋migrate gate＋acme 殼、dev/prod override、deploy/ 全套、rust-api scaffold（/health＋空 migrator＋lock pin）;C-V-0~8 實機全綠（SC-001~007）;follow-up 見 §3.4;spec 全帳在 `specs/001-infra-deploy/`
 - [x] **002-rev2-schema-baseline 刀 ✅ 收刀（2026-06-13、merge `9233ae0`）**——前代 35 支 squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（⚠️v 委派式、§I.5）;C-V-0~9 實機全綠（SC-001~008）、normalize 六規則（row-order 假紅、user 拍板方案 A、契約留痕 migration-chain.md §3）;spec 全帳在 `specs/002-rev2-schema-baseline/`
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
-- [ ] **envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形）
+- [ ] **envelope 刀**（`Res<T>{data,code,msg}`＋`BizCode` 13 碼矩陣＋`AppError`;rev2 008;⚠️e/⚠️f 拍板形;**＋⚠️y i18n：`msg` 改載 stable key 規約〔rust-api 側、redo 別漏〕**）
 - [ ] **soft-delete 基建刀**（`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`;rev2 009）
 - [ ] **audit 刀 ×2**（op-log〔rev2 011:`sys_operation_log`＋`mutate_in_txn`〕/ access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 隨本刀拷入——⚠️v 拍板、注意 Dockerfile [[bench]] COPY 坑〕）
-- [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提）
+- [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提;**＋⚠️y i18n：base-web `$t(msg)` 譯 wiring＋error 命名空間〔首個 biz-error 顯示＝login、redo 別漏〕**）
 
 **前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
 - [x] ①router 結構 ✅ flat-in-main 沿用（lint 三源一致直接沿用）
@@ -78,7 +78,7 @@ User **或** `system_settings` 打樣（待決③）:migration→facade→handle
 **刀/feature 清單**（素材=DESIGN §8.2 data island 縱切;波 1 拍 ③ 後本清單定稿）:
 - [ ] **User 刀**（讀 3 端＋CRUD＋join `sys_user_role`;rev2 016*+017;若③=A 已於波 1 交付、本列改註）
 - [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕）
-- [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent）
+- [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;**＋⚠️o hybrid〔已決〕：reparent 3+1 guard 下沉 facade 自驗〔slim error enum、handler 映 2222〕、redo 別漏**）
 - [ ] **`system_settings` 刀**（§5.6 熱 KV/pub-sub＋settings_watcher;rev2 029 對應;若③=A 掛此波）
 - [ ] **（⚠️b 核可後）審計查詢讀端＋UI 刀**（三 log 讀端＋R_SUPER policy seed＋manage 新頁〔MODAL-WIRING use (e)〕;DESIGN §8.2 待拍板刀位）
 

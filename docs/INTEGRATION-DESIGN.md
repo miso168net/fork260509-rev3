@@ -199,6 +199,14 @@ L9 OBSERVABILITY       (tracing JSON · public /metrics route · obs/metrics com
 - **`sys_menu.parent_id`**：reparent 驗 **3+1 道 guard**——目標存在且 active、目標為「目录」型（`menu_type==1`，非此型→2222；`parent_id=None` 搬頂層合法）、非自身後代（防環）、`protected` 種子選單父固定不可搬移（→2222）。
 - **`sys_user.current_session_id`**：指 JWT sid、非 DB 列，**不驗**（session pointer 語意見 §4.3）。
 
+**application-RI 驗證分層（hybrid；2026-06-16 追加，明示上方 `casbin_rule.v0` 條所留「下沉 facade 須明示」之決議）** —— 零 FK 處的 RI 驗證依「該檢查能否只靠單一 facade 自有的表/aggregate 判定」二分放置：
+
+- **intra-entity 純 ref 檢查 → 下沉 facade 自驗**（集中、繞不過）：典型＝`sys_menu` reparent 的 3+1 guard（target 存在/active、`menu_type==1`、非後代/環、`protected` 父固定——全查 sys_menu 自身）。**機制**：自驗 method 回**自身模組定義的 slim error enum**（如 `sys_menu::ReparentError { Db(DbErr), TargetMissing, NotDirectory, WouldCycle, ProtectedFixed }`）、**不 import `AppError`**——facade 只用自己詞彙報錯＝正常分層（上層依賴下層）、**非層級倒置**；handler 將該 enum 映 biz `2222`（碼／wire 對映恆在 handler）。**僅自驗 method 換 error 型**、其餘 facade 維持 `Result<Model, DbErr>`（blast radius 受控）。
+- **跨 facade／需 `RequestContext`／restore-skip 例外 → 留 handler orchestrate**：典型＝grant 的 role-code 解析（casbin 寫 × `sys_role` 查＝跨 facade；handler 先 `find_active_by_id`→查無 `2222`、才呼 `set_role_dimension`；casbin facade 維持 dumb——收 `role_code:&str`、回 `DbErr`、不驗）；archive restore 的「不驗」路徑（handler 直呼、因 grant 驗證不在 facade 而**自然跳過**、無需 facade unchecked 變體）。
+- **DB 能擋者**（unique 等）續走 DB 約束 → `DbErr` → handler `sql_err()` 映碼（dup 既有 pattern 不變）。
+
+**判準一句**：檢查只靠 facade 自有表即可判定 ⟹ facade 自驗；跨表／需 context／restore 例外 ⟹ handler。此分層取代「全 handler 層驗」舊取向（reparent 類下沉 facade、grant 類跨 facade 仍 handler）；**接受代價**＝少數自驗 method 多一個 model-層 error enum＋handler 一段映射（受控），換得 intra-entity RI 的集中/繞不過，並避開 full facade-down 的層級倒置、restore-skip 衝突、跨 facade 耦合。
+
 ### §3.4 schema 演進紀律（rev3 開局即避 rev2 的 retrofit 債）
 **rev2 retrofit 教訓（實證、逐 migration 核對）**：
 - `sys_user`：`deleted_at` 在（rev2 m003）進表，其餘審計欄（created/updated/*_by）拖到（rev2 m014）才補（11 個 migration 的洞），還**被迫**把 `id` 事後改成 BIGSERIAL（因 seed 寫死 id=1/2/3、原 PK 無 default）；`sys_role` 重演（rev2：deleted_at m006 / 其餘 m016）。
@@ -443,7 +451,7 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 ### §7.3 envelope / pagination / error-code 完整矩陣
 > envelope 規範本體在 §5.4，此處只補 as-built 錨 + 完整碼表、不重複。as-built：`server/src/envelope.rs` —— `Res<T>` 宣告序 = 序列化序（`data`→`code`→`msg`；錯誤 `data:null` 不 skip、business error 走 HTTP 200）；`PageRes<T>` = `{current, size, total, records}`（camelCase、u64 JSON 數字、**無 `pages`/`success`**、空頁 `records:[]`）↔ base-web `Common.PaginatingQueryRecord<T>`。
 
-**13 碼矩陣**（`envelope.rs` `BizCode`，code/msg 字串為 wire 凍結事實、msg 為簡中資料值）：
+**13 碼矩陣**（`envelope.rs` `BizCode`，code/msg 字串為 wire 凍結事實；**`msg` 改載 i18n key**〔見本節末「biz-error `msg` 多語系」段，2026-06-16〕、下表 `default_msg` 中文為其 zh-CN 預設值）：
 
 | code | variant | default_msg | HTTP | rust-api 發出點 | base-web 行為（`.env` 分組） |
 |---|---|---|---|---|---|
@@ -464,6 +472,7 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 - **非 200 路徑的前端可觀察性（2026-06-12 對賬實證）**：base-web 的 envelope msg 顯示通道（`onError` 取 `response.data.msg`）**僅在 HTTP 200 業務失敗時生效** — `4040`/`5003` 走 axios 原生錯誤，「接口不存在」「权限不足」不會上屏。屬既有事實、非 bug；若日後 UX 要求顯示中文訊息，二擇一另拍板：改該碼為 200 信封、或動前端攔截（§I.1 例外紀錄）。contract test 同時鎖 HTTP status 與此可觀察行為。
 - HTTP status 例外僅 2 條真實路徑：`4040`→404、`5003`→403；其餘全 HTTP 200 信封。**✅ ⚠️e 已決（2026-06-12）**：`5000` 一律 HTTP 200 信封（前端 msg 顯示通道僅 200 生效）；`AppError::Internal`→HTTP 500 mapping 標 test-only 或刪除；contract test 鎖 `5000`→200（§7.2 C+ 首批 case）。
 - 4 個保留碼（7778/8889/9998/9999）rust-api 從不發出、僅前端 `.env` 分組認得。**✅ ⚠️f 已決（2026-06-12）**：13 碼矩陣**整組凍結**（含保留碼）——前端分組行為是 base-web 既有事實（§I.1）、刪碼反要動 `.env`；contract test 斷言「後端從不發出保留碼」。
+- **biz-error `msg` 多語系（i18n；2026-06-16 追加，取代本節上方「msg 為簡中資料值」框）**：wire `msg` 由人話改載**穩定 i18n key**（如 `biz.role.notFound`）；base-web（soybean v2.2.0＋vue-i18n 11、現代 typed i18n、為 wire＋i18n 權威 §I.1）將 `onBackendFail`/`showErrorMsg` 以 `$t(msg)` 翻譯、locale 補 error 命名空間；後端**語言無關**（產 key、不在地化）。上表 `default_msg` 中文＝各 key 的 zh-CN 預設/fallback；**graceful fallback**：vue-i18n `$t` 未命中 key 回傳原字串、過渡期未鍵化 msg 仍可顯示。base-web 改動屬其契約演進、依 fork-delta 紀律（`rev3-inline` 標記）追蹤。**取捨**：後端 log/curl/audit 的 `msg` 變 key（人話可讀性降）→ 換單一 i18n 家（base-web）＋後端語言無關（不另養後端訊息 catalog）。key 命名規約／error 命名空間於刀 1（首批 biz error）定。
 
 ### §7.4 部署層 wire 細節
 **nginx 單入口**（`deploy/nginx/conf.d/_locations.inc`，dev/prod 兩 conf 共 include 同一份）：
