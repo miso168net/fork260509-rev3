@@ -19,7 +19,7 @@
 | 7 | `sys_operation_log` | sys_operation_log | :130 / :485 | 10 | `id` i64 auto | ❌（append-only）| **jsonb: payload_before/after**；**INET: operator_ip**；tstz: created_at |
 | 8 | `sys_access_log` | sys_access_log | :145 / :549 | 10 | `id` i64 auto | ❌（append-only）| **INET: client_ip (NN)**；text: method/path |
 | 9 | `sys_login_attempt` | sys_login_attempt | :160 / :593 | 9 | `id` i64 auto | ❌（append-only）| **INET: client_ip (NN)** |
-| 10 | `casbin_rule` | casbin_rule | :193（治理 3 欄 ALTER :643）| 11 | adapter 定 | ❌（治理）| 8 欄基底＝**sea-orm-adapter DDL**（實作 cross-check adapter source）＋3 治理 ALTER（protected/created_at/created_by）|
+| 10 | `casbin_rule` | casbin_rule | m001:193（治理 3 欄 ALTER :643）；adapter `entity.rs`/`migration.rs`（親驗）| 11 | `id` i64 auto | ❌（治理）| **8 adapter-base**（親驗）：`id` i64／`ptype` String(18) NN／`v0..v5` String(125) NN ＋**3 治理 ALTER**：`protected` bool NN(def false)／`created_at` tstz NN／`created_by` Option<i64>。**entity crate 自定 11 欄**（含治理欄）、**勿複用 adapter 自身 8 欄 Model**（其對治理欄隱形、§I.6 D）|
 | 11 | `sys_casbin_policy_archive` | sys_casbin_policy_archive | :174 / :667 | 13 | `id` i64 auto | ❌（治理緩衝）| v0..v5 String(125)；tstz: created_at/archived_at |
 
 （`seaql_migrations`＝框架表、無 entity 模組。）
@@ -72,4 +72,4 @@ pub trait SoftDeletable: EntityTrait {
 - 無 `AppState.db`/`infra/db.rs` runtime 接線 → 首個查 DB 端點刀（live smoke 自連、main.rs 不動）。
 - 無 `mutate_in_txn`（audit）→ audit 刀；無 endpoint/wire；無 migration。
 - INET 欄（3 log entity）型已對 `IpNetwork`、但 log facade（讀寫）屬 audit 刀；本刀僅須 entity 編譯綠。
-- casbin_rule 8 欄基底型以 sea-orm-adapter DDL 為準（實作 cross-check）；其 facade 屬 policy 刀。
+- casbin_rule 8 adapter-base 欄型**已親驗**（`sea-orm-adapter/src/entity.rs` Model＋`migration.rs` DDL：`id` i64／`ptype` String(18)／`v0..v5` String(125)）；entity crate 自定 11 欄（+治理 3）、與 adapter 自身 8 欄 Model distinct（治理欄 adapter-invisible、§I.6 D）；其 facade 屬 policy 刀。

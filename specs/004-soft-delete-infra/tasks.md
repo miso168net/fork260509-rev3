@@ -53,7 +53,7 @@
 
 - [ ] T010 [P] [US3] `rust-api/entity/src/{system_settings,sys_user_role,sys_token}.rs`（新建）：system_settings（10 欄、m001:366；PK `setting_key` String(64)；**不** impl SoftDeletable——例外）＋sys_user_role（2 欄、複合 PK `(user_id,role_id)`、m001:414、零審計）＋sys_token（9 欄、m001:433；tstz ×4；`token_hash` unique）＋`lib.rs` 補 3 `pub mod`（依 T001）
 - [ ] T011 [P] [US3] `rust-api/entity/src/{sys_operation_log,sys_access_log,sys_login_attempt}.rs`（新建）：3 append-only log（m001:485/549/593）；**jsonb payload_before/after→`Json`**（operation_log）；**INET operator_ip/client_ip→`IpNetwork`**（三表、with-ipnetwork；若 T001 退 String 則此處同步 String+`::text` 慣例註記）＋`lib.rs` 補 3 `pub mod`（依 T001）
-- [ ] T012 [P] [US3] `rust-api/entity/src/{casbin_rule,sys_casbin_policy_archive}.rs`（新建）：casbin_rule（11 欄＝8 adapter-base〔id/ptype/v0..v5、型 **cross-check `sea-orm-adapter` DDL**〕＋3 治理 ALTER protected/created_at/created_by、m001:643）＋sys_casbin_policy_archive（13 欄、m001:667；v0..v5 String(125)）＋`lib.rs` 補 2 `pub mod`；容器內 force-touch → `cargo build -p entity`（全 11）綠（依 T001）
+- [ ] T012 [P] [US3] `rust-api/entity/src/{casbin_rule,sys_casbin_policy_archive}.rs`（新建）：casbin_rule（**11 欄、entity crate 自定**＝8 adapter-base〔**親驗 `sea-orm-adapter/src/entity.rs`+`migration.rs`**：`id` i64 PK／`ptype` String(18) NN／`v0..v5` String(125) NN〕＋3 治理 ALTER〔`protected` bool def false／`created_at` tstz NN／`created_by` Option<i64>、m001:643〕；**勿複用 adapter 自身 8 欄 Model**〔治理欄 adapter-invisible §I.6 D〕）＋sys_casbin_policy_archive（13 欄、m001:667；v0..v5 String(125)）＋`lib.rs` 補 2 `pub mod`；容器內 force-touch → `cargo build -p entity`（全 11）綠（依 T001）
 
 **Checkpoint**: US3 全綠（SC-004；L2 entity 層完成 11 模組）→ **雙段 commit**
 
@@ -62,7 +62,7 @@
 - [ ] T013 `deploy/Dockerfile.rust-api.txt`（**outer 檔、非 rust-api worktree → outer 單段 commit**）：Manifest 段加 `COPY rust-api/entity/Cargo.toml ./entity/`、Source 段加 `COPY rust-api/entity/src ./entity/src`；runtime 段不變（entity 是 lib、編進 server binary）
 - [ ] T014 C-V-3 prod target image build sanity：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 成功（新 workspace crate＋全 11 entity 打包、防 prod COPY 缺口；SC-006）（依 T013＋US3）
 - [ ] T015 follow-up backlog 登記（`docs/INTEGRATION-CHECKLIST.md` §3.X、outer 單段 commit）：① with-ipnetwork 1.86 MSRV／lock churn 風險（T001 若退 String+cast 則記實況、否則記「已驗綠」）② INET log entity 讀寫 facade＋decode 正確性 → audit 刀（首個 log 消費者）③ casbin_rule 8 欄 adapter-base 型 → policy 刀消費時 cross-check 複核 ④（順手、§7.5）拔 MILESTONES §1 row＋CHECKLIST 最新進展 兩處 stale「未 push」
-- [ ] T016 收口驗證（**commit only——push/merge 凍結至 finishing、§I.4**）：rust-api worktree 全 task commit 齊＋outer pin == worktree HEAD（pin 隨 task bump 紀律回顧）＋deploy/Dockerfile outer commit＋specs/004 外層檔收；`git submodule status` rust-api 行首空格；quickstart 4 步逐步對照綠
+- [ ] T016 收口驗證（**commit only——push/merge 凍結至 finishing、§I.4**）：rust-api worktree 全 task commit 齊＋outer pin == worktree HEAD（pin 隨 task bump 紀律回顧）＋deploy/Dockerfile outer commit＋specs/004 外層檔收；`git submodule status` rust-api 行首空格；quickstart 4 步逐步對照綠；**SC-007 零回歸實證**：dev stack `up -d --wait` 全 healthy ＋ `curl -fsS http://127.0.0.1:31081/health` 回 `ok`（既有探針未受新碼影響）
 
 ## Dependencies
 
