@@ -39,8 +39,9 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
 - [x] **003-envelope 刀 ✅ 收刀（2026-06-16、merge `13a01b1`）**——統一信封 `Res<T>`/`PageRes<T>`＋`AppError` 9 變體凍結 13 碼矩陣（reserved 4 碼型別層無變體）＋main.rs .fallback；base-web Schema backend＋雙語 langs＋`translateBackendMsg`＋service/request 4 翻譯點（⚠️aa rev3-inline）；key 規約 ⚠️y 落定；C-V-0~3 全綠（SC-001~008）；spec 全帳在 `specs/003-envelope/`、follow-up §3.6
 - [x] **soft-delete 基建刀 ✅ 收刀（2026-06-17、merge `a1105f0`）**——`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`＋11 entity L2 層（rev2 009）;C-V-0~3 全綠（build／lint 2 passed／live smoke 1 passed／prod image）;spec 全帳 `specs/004-soft-delete-infra/`、follow-up §3.7
-- [~] **audit 刀 ×2**:op-log ✅ **收刀（005-audit-op-log、2026-06-17、merge `98f1f7e`）**——`mutate_in_txn` 同 txn 原子審計＋op-log append-only sink＋`sys_user::soft_delete` proof〔rev2 011〕;C-V-0~3 全綠、零端點/migration/Cargo.toml（SC-005）;spec 全帳 `specs/005-audit-op-log/`、follow-up §3.8 / overlay〔access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 拷入——⚠️v、Dockerfile [[bench]] COPY 坑〕〕＝**007 刀、延到 Auth 島後**（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）
-- [ ] **Auth 島最小段**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提;**＋⚠️y：base-web `$t` 接線＋`backend` 命名空間已隨 003-envelope ship〔scope A〕;本刀 login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key**）
+- [x] **audit op-log 刀 ✅ 收刀（005-audit-op-log、2026-06-17、merge `98f1f7e`）**——`mutate_in_txn` 同 txn 原子審計＋op-log append-only sink（`facade/sys_operation_log`）＋`sys_user::soft_delete` proof〔rev2 011〕;C-V-0~3 全綠、零端點/migration/Cargo.toml（SC-005）;spec 全帳 `specs/005-audit-op-log/`、follow-up §3.8
+- [ ] **Auth 島最小段（=006、下一刀）**（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提;**＋⚠️y：base-web `$t` 接線＋`backend` 命名空間已隨 003-envelope ship〔scope A〕;本刀 login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key**）
+- [ ] **audit overlay 刀（=007、延到 Auth 島後）**——access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 拷入——⚠️v、Dockerfile [[bench]] COPY 坑〕;需 Auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填（→ §3.8）
 
 **前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
 - [x] ①router 結構 ✅ flat-in-main 沿用（lint 三源一致直接沿用）
@@ -229,6 +230,10 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [ ] `sys_user::audit_json` 現僅遮蔽 `password`（spec 明定本刀範圍、spec-compliant）;`current_session_id` 以原值序列化進審計快照——後續 user/session 寫端刀 impl/擴充 `AuditSerialize` 時評估 `current_session_id` 是否一併遮蔽/截斷（holistic review Lens 2 nit、非缺陷）
 **soft_delete 中途失敗審計同步（消費刀觸發）**:
 - [ ] 本刀 rollback 證明經「裸 `mutate_in_txn`＋raw SQL write-then-Err」演練（FR-010 單一 proof 範圍、contract C-V-2 明示設計、非 vacuous）;`soft_delete` 自身中途失敗（DB 約束衝突等）的審計同步回滾由 `mutate_in_txn` 機制保證、可留消費刀以注入約束衝突收緊覆蓋
+**op-log `operation` 字串契約對齊（op-log 讀端＝波2 ⚠️b 觸發）**:
+- [ ] `AuditOperation::as_str()` 定 `operation` 欄封閉詞彙＝`INSERT`/`UPDATE`/`SOFT_DELETE`/`RESTORE`（本刀僅 `SOFT_DELETE` 經 live smoke 實證、其餘 3 隨各寫端刀漸用）;op-log 讀端（rust 查詢 filter／base-web UI by-operation dropdown）字串須對齊此契約——rust 端 ref `AuditOperation` enum、base-web 端硬編字串須一致（勿造 `DELETE` 之類不符值致 filter 失準）
+**DbErr→AppError 映射（首個消費 soft_delete 的 handler 刀觸發）**:
+- [ ] 本刀 `soft_delete`/`mutate_in_txn`/`write_in_txn` 為首批【產 `DbErr` 的 facade 方法】（004 的 `find_active` 僅回 `Select`、未執行）;惟本刀無 handler 消費→`From<DbErr> for AppError` 映射仍未觸發（見 §3.6 同條：延後至首個產 DbErr 切片）。首個把 soft_delete 接進 handler 的刀須帶入該映射＋`sql_err()` 23505→`2222`
 
 ---
 
