@@ -2,6 +2,18 @@
 
 > 本刀＝L4 facade（system_settings read/update）＋L5 handler（2 端點＋value_type 驗）＋L4 `require_policy` layer（policy 強制）＋L1 main 接線＋L8 endpoint_coverage_lint＋base-web wire/頁。**無持久實體變更、無 migration**（system_settings 表 m001 凍結 schema；端點/menu policy＋sys_menu 列已 m002 seed、見 research R1）。型/簽名一律走當前 lineage 親 grep（research R3-R9）。
 
+## 0. 命名對照（同概念四形、刻意、analyze I1）
+| 場景 | 形 | 例 |
+|---|---|---|
+| DB（entity/table/欄） | snake_case | `system_settings`／`setting_key`／`setting_value`／`value_type` |
+| 後端 route_name／sys_menu | hyphen 字尾 | `manage_system-settings`（m002:251、elegant-router 編譯期自動生） |
+| 端點 path | camelCase 尾 | `/systemManage/getSystemSettings`／`/systemManage/updateSystemSetting`（m002:162-163） |
+| wire DTO／typings／component state | camelCase | `settingKey`／`settingValue`／`valueType`／`SystemSetting` |
+| 前端頁目錄／路由路徑 | hyphen | `views/manage/system-settings/`／`/manage/system-settings` |
+| i18n key | 各家族慣例 | `route.manage_system-settings`／`page.manage.systemSettings.*`／`backend.biz.systemSettings.*` |
+
+> 四形並存為**刻意**（各層慣例：DB snake／route_name hyphen／wire camel／path hyphen）；非 drift。impl 須對齊各層慣例、勿混。
+
 ## 1. facade `server/src/model/facade/system_settings.rs`（新、archetype A、entity:: 合法）
 ```rust
 // 讀全列（無刪除路徑、含所有 row；§5.0 system_settings 不套用分頁）

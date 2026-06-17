@@ -30,5 +30,5 @@
 
 ## 6. 本刀邊界（OUT／MOOT、各歸其刀）
 - **MOOT（m002/前波已 done）**：端點 policy×2＋menu policy＋sys_menu 列（m002:162-165/251、**無 m005**）／schema＋entity＋seed（m001/002）／audit_ctx+to_audit_operator（007）／enforce_role_path_method（006）／mutate_in_txn（005）／envelope 13 碼（003）。
-- **OUT（遞延）**：dynamic-menu（getUserRoutes＋`.env` dynamic 切換、拍板#7）＝**波2 Menu 刀**（本刀 static 頁、menu-Casbin-visibility 延波2）；§5.6 redis pub-sub watcher＋`session_mode` 熱快取＋`single_session_default` consumption＝**波3**（行為島 §I.7 §4.3）；多 key keyed-map（⚠️l）；§5.8 分頁/filter/空字串守門首 exercise＝波2 User；DbErr 23505→2222（本刀 PK lookup 不觸、波2 CRUD）。
+- **OUT（遞延）**：dynamic-menu（getUserRoutes＋`.env` dynamic 切換、拍板#7）＝**波2 Menu 刀**（本刀 static 頁、menu-Casbin-visibility 延波2；**analyze D1**：波1 非 super 亦見 system-settings 選單〔前端 menu 非 Casbin 過濾、API 擋 403 非破口〕→ 波2 以 getUserRoutes＋m002:165 menu policy 收選單可見性、非 super 不顯；finishing 登 CHECKLIST 波2 follow-up）；§5.6 redis pub-sub watcher＋`session_mode` 熱快取＋`single_session_default` consumption＝**波3**（行為島 §I.7 §4.3）；多 key keyed-map（⚠️l）；§5.8 分頁/filter/空字串守門首 exercise＝波2 User；DbErr 23505→2222（本刀 PK lookup 不觸、波2 CRUD）。
 - 無 migration／無 schema/entity 變更／無新 crate／enforce_mw·audit_mw 不動／base-web 既有檔不改。

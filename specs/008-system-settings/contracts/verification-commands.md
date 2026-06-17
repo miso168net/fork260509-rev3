@@ -79,5 +79,8 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api
 ```
 - 確認新 handler/facade/`require_policy`/`endpoint_coverage_lint` 編入 prod target（無新 crate→無 Dockerfile COPY 變更；`--locked`）。
 
+## C-V-11 · perf 隱性達標（SC-007、by inspection）
+本刀操作極輕——讀＝flat 全列 SELECT（KV 列數極少）／改＝單列 UPDATE＋同 txn op-log＋1 次 `roles_of_user` join（getUserInfo 已證 affordable）——**無 load-test infra in scope**。SC-007（讀 p95<300ms／寫 p95<500ms、⚠️a）**由 inspection 證**（操作複雜度＋既有預算）；可選 spot-check：`curl -s -o /dev/null -w '%{time_total}\n' "$BASE/systemManage/getSystemSettings" -H "Authorization: Bearer $TS"` 量單次往返 < budget。**不設專屬 load test**（KV 打樋、⚠️a list 讀為主成本面）。
+
 ## 出口
-C-V-0~10 全綠＝本刀 acceptance 通過；對應 spec SC-001~007。**無 migration（m005 MOOT）／無新 crate**。
+C-V-0~11 全綠＝本刀 acceptance 通過；對應 spec SC-001~007（SC-007 by inspection、C-V-11）。**無 migration（m005 MOOT）／無新 crate**。
