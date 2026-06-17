@@ -30,7 +30,7 @@
 - [ ] T007 `rust-api/server/src/audit_ctx.rs` `RequestContext`＋`audit_mw(State,ConnectInfo<SocketAddr>,Request,Next)->Response`（無 Result）：前段無條件建 ctx〔client_ip via T003、raw xff、region via `xdb::search_by_ip` **僅 `state.xdb_ready` 時**否則 None、trace via T004、operator_id via 寬鬆 bearer `enforce::bearer(headers,&state.jwt).ok().map(|c|c.uid)`〕塞 extensions；後段取 http_status、**gate=`operator_id.is_some()`** 才 `best_effort_audit(sys_access_log::write(...))`〔吞 DbErr via tracing::warn〕。**enforce_mw 一行不動**、不得 path-root `entity::`（data-model §4、R5、FR-001/002/008/009/011/012）
 - [ ] T008 `rust-api/server/src/main.rs`（改）：`mod audit_ctx;`＋xdb dep；boot **`Path::exists(xdb_path)` 守門→`xdb_ready`→`xdb::searcher_init(Some(path))`**（缺檔不呼、warn 降級、R1 PANIC gotcha）；`axum::serve(listener, app.layer(from_fn_with_state(state, audit_mw)).into_make_service_with_connect_info::<SocketAddr>())`（audit_mw **最外層**）（data-model §8、R5）
 - [ ] T009 `docker-compose.dev.yml`／`docker-compose.prod.yml`（改）：rust-api env 加 `TRUSTED_PROXY_CIDRS`（dev 空＝peer／prod 內網+CF 段）＋`XDB_FILEPATH`（指 xdb resources）（R6）
-- [ ] T010 op-log threading helper `rust-api/server/src/...`：`RequestContext→AuditOperator{id,ip:Some(IpNetwork::from(ctx.client_ip))}`＋`trace_id:Some(ctx.trace_id)`（餵既有 `mutate_in_txn`；**無 live mutating handler、僅立 helper**、波1+ 用）（data-model §7、R7、FR-013）
+- [ ] T010 op-log threading helper **於 `rust-api/server/src/audit_ctx.rs`**（`RequestContext` 上的 method，如 `to_audit_operator(&self, uid:i64) -> (AuditOperator, Option<String>)`：回 `AuditOperator{id:uid, ip:Some(IpNetwork::from(self.client_ip))}`＋`trace_id:Some(self.trace_id.clone())`；`use crate::model::audit::AuditOperator`〔非 path-root entity::、lint-safe〕）→ 餵既有 `mutate_in_txn`；**無 live mutating handler、僅立 helper**、波1+ 用（data-model §7、R7、FR-013）
 - [ ] T011 C-V-0 build＋C-V-1/2/3 純測＋C-V-9 lint：容器內 force-touch→`cargo build -p server --locked` 綠／`cargo test -p server resolve_client_ip active_model trace_id`（警覺「0 passed/N filtered」假綠）／`cargo test -p server --test entity_access_lint`（audit_ctx/handler/config/state 零 path-root `entity::`）（依 T003~T010）
 
 **Checkpoint**: 機制核心＋build 綠＋純測綠（resolver/active_model/trace_id）＋lint 綠 → **雙段 commit**（worktree→pin）
@@ -78,7 +78,7 @@
 **Goal**: op-log operator/operator_ip/trace threading seam（test-only smoke、live 回填波1+）。
 **Independent Test**: C-V-7 test-only live smoke。
 
-- [ ] T018 [US5] C-V-7 test-only live smoke（in-crate `#[cfg(test)] #[ignore]`、`--test-threads=1`、`DATABASE_URL=$(cat /run/secrets/database_url)`）：顯式構造 `AuditOperator{id,ip:Some(IpNetwork::from(client_ip))}`＋trace 餵 `soft_delete`/`mutate_in_txn`→psql op-log 末列 `operator_id`/`operator_ip`/`trace_id` 由恆 None→真值（INET round-trip）。對應 SC-006（依 T010）
+- [ ] T018 [US5] C-V-7 test-only live smoke（in-crate `#[cfg(test)] #[ignore]` **置 `rust-api/server/src/model/facade/sys_user.rs`**〔既有 `soft_delete` live smoke 旁〕、fn 名含 `oplog_threading`〔對齊 C-V-7 filter〕、`--test-threads=1`、`DATABASE_URL=$(cat /run/secrets/database_url)`）：顯式構造 `AuditOperator{id,ip:Some(IpNetwork::from(client_ip))}`＋trace 餵 `soft_delete`/`mutate_in_txn`→psql op-log 末列 `operator_id`/`operator_ip`/`trace_id` 由恆 None→真值（INET round-trip）。對應 SC-006（依 T010）
 
 **Checkpoint**: US5 全綠（SC-006）→ **雙段 commit**
 
