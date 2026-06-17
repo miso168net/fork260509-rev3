@@ -379,9 +379,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 006-auth-island-min（波 0 第六刀；尚未起手——待階段 0 brainstorm）
-上一刀: 005-audit-op-log ✅ 全完成（merge `98f1f7e`、worktree pin `3d9578f`）——L4 audit 機制地基：`model/audit.rs`（`mutate_in_txn` 泛型 `C:TransactionTrait` 同 txn 原子審計〔業務寫＋op-log 寫綁同一 DatabaseTransaction、同時 commit 或同時 rollback〕＋`AuditOperation`/`Operator`/`Event`/`Serialize`、純資料層零 `entity::`）＋op-log append-only sink（`facade/sys_operation_log::write_in_txn`、archetype B 無 update/delete）＋`sys_user` redact（`AuditSerialize` 手構 json、password→`<redacted>`、Model 無 Serialize）＋單一 `sys_user::soft_delete` proof（`into_active_model`＋§I.6 deleted_at/deleted_by 成對、no-op 回 `Ok(None)`）；C-V-0~3 全綠、holistic review 3-lens mergeReady 零 blocker、零端點/migration/Cargo.toml 變動（SC-005）、SC-007 /health 零回歸
-下一步: 波 0 第六刀 006-auth-island-min（login＋getUserInfo＋`enforce_mw` 最小鏈;rev2 013 對應;§8.3 兩案共同前提（完整行為島狀態機 rotation／reuse／single-session＝波3 合刀〔§4.1/§4.3/§I.7〕、非本刀;最小 vs 遞延刀界由 brainstorm 定）;login 失敗走 003 已鍵固定碼 1000=`auth.login.failed`、不另定 key）——待階段 0 `superpowers:brainstorming` 起手（產出 `docs/superpowers/006-auth-island-min.md`）；audit overlay〔access-log+login-attempt+xdb〕＝007 刀、延到 Auth 島後（需 auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填）
+Active feature: 006-auth-island-min（波 0 第六刀；Auth 島最小段＝login＋getUserInfo＋enforce_mw＋runtime 骨幹第一刀；**SDD 設計鏈進行中**——spec✅〔4 US/17 FR/9 SC/16-16〕／clarify✅〔0 問題〕／plan✅〔Constitution 9/9 PASS、Q9 §I.7 single-session forward-compat〕；**待 /speckit-tasks**）
+spec/plan: `specs/006-auth-island-min/`（三刀界拍板：single-session=建 pointer＋is_current gate〔DB-truth/fail-OPEN/7777〕／refresh=延波3／JWT 密鑰=_FILE 優先；research 推翻 2 假設：casbin=純 3-tuple RBAC〔v0=role/v1=obj/v2=act＝HTTP method｜'menu'｜'button'〕、getUserInfo auth-only〔5003 由 enforce seam 測對 seeded /systemManage/* 證〕；地基已 provisioned：secret〔001 已 mount jwt/refresh/db〕／AppError 變體〔003 已建 1000/3333/7777/5003〕／i18n〔003 已 ship auth.login.failed〕；新 dep jsonwebtoken〔⚠️time-pin、加後即 cargo tree -i time〕/uuid/sha2；加 dep→prod build；零 migration/base-web/i18n/compose 變動）
+上一刀: 005-audit-op-log ✅ 全完成（merge `98f1f7e`）——audit 機制地基（mutate_in_txn 同 txn 原子審計＋op-log sink＋redact＋soft_delete proof）
+下一步: 階段 1 續 `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze`（跨檔 consistency）→ 階段 2 Workflow 驅動實作；⚠️ 實作第一步＝加 `jsonwebtoken` 後立刻 `cargo tree -i time` 判 time-pin（撞 1.86→pin time 0.3.37+simple_asn1 0.6.3）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
