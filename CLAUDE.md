@@ -379,10 +379,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 006-auth-island-min（波 0 第六刀；Auth 島最小段＝login＋getUserInfo＋enforce_mw＋runtime 骨幹第一刀；**SDD 設計鏈進行中**——spec✅〔4 US/17 FR/9 SC/16-16〕／clarify✅〔0 問題〕／plan✅〔Constitution 9/9 PASS、Q9 §I.7 single-session forward-compat〕；**待 /speckit-tasks**）
-spec/plan: `specs/006-auth-island-min/`（三刀界拍板：single-session=建 pointer＋is_current gate〔DB-truth/fail-OPEN/7777〕／refresh=延波3／JWT 密鑰=_FILE 優先；research 推翻 2 假設：casbin=純 3-tuple RBAC〔v0=role/v1=obj/v2=act＝HTTP method｜'menu'｜'button'〕、getUserInfo auth-only〔5003 由 enforce seam 測對 seeded /systemManage/* 證〕；地基已 provisioned：secret〔001 已 mount jwt/refresh/db〕／AppError 變體〔003 已建 1000/3333/7777/5003〕／i18n〔003 已 ship auth.login.failed〕；新 dep jsonwebtoken〔⚠️time-pin、加後即 cargo tree -i time〕/uuid/sha2；加 dep→prod build；零 migration/base-web/i18n/compose 變動）
-上一刀: 005-audit-op-log ✅ 全完成（merge `98f1f7e`）——audit 機制地基（mutate_in_txn 同 txn 原子審計＋op-log sink＋redact＋soft_delete proof）
-下一步: 階段 1 續 `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze`（跨檔 consistency）→ 階段 2 Workflow 驅動實作；⚠️ 實作第一步＝加 `jsonwebtoken` 後立刻 `cargo tree -i time` 判 time-pin（撞 1.86→pin time 0.3.37+simple_asn1 0.6.3）
+Active feature: （無進行中 feature；006-auth-island-min ✅ 全完成、merge `e279f23`）
+上一刀: 006-auth-island-min ✅ 全完成（merge `e279f23`）——Auth 島最小段＝login＋getUserInfo＋enforce_mw＋single-session first-mount＋runtime 骨幹第一刀（config `_FILE` 優先/AppState/Casbin enforcer boot `from_str` embedded 3-tuple RBAC）；5 執行單元 Workflow 驅動（deps+time-pin `04fc6f8`→foundation `87e10ab`→login `42ce024`→getUserInfo+enforce/session `b9de316`→final-verify）；C-V-0~6 全綠、holistic 17 FR+9 SC PASS 零 blocker、零 migration/entity/base-web/i18n/compose（SC-009）、SC-007 零回歸
+下一步: 波 0 第七刀（末）→ 007-audit-overlay（access-log＋login-attempt＋xdb、rev2 015；需 006 提供的 operator_id/login 流＋op-log `operator_ip` INET 回填〔→ CHECKLIST §3.8〕）→ 階段 0 `superpowers:brainstorming` 起手；完成後波 0 出口四項全綠→換波 1（system_settings 打樣 ③=B）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
