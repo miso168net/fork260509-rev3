@@ -37,6 +37,13 @@ services:
   rust-api:
     image: rev3-admin-rust-api:latest
     restart: unless-stopped
+    environment:
+      # 007 audit overlay：prod 經 front-nginx reverse-proxy → 必信任 nginx/docker 內網段
+      #   才能自 XFF 解析真實 client IP（fail-safe 預設空＝退化成採 nginx peer IP，務必依拓樸填）。
+      #   CF 前置時加 Cloudflare 段（零 CF code、純 trusted CIDR 配置）。
+      TRUSTED_PROXY_CIDRS: "${TRUSTED_PROXY_CIDRS:-}"
+      # xdb region 檔（runtime WORKDIR=/app；由 Dockerfile runtime 段 COPY xdb/resources → /app/resources）。
+      XDB_FILEPATH: "resources/ip2region.xdb"
 
   migrate:
     # ★ prod migrate:runtime image,command [migration, up] 經 entrypoint.rust-api.sh dispatcher

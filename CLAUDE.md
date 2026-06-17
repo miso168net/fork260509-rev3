@@ -379,9 +379,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: （無進行中 feature；006-auth-island-min ✅ 全完成、merge `e279f23`）
-上一刀: 006-auth-island-min ✅ 全完成（merge `e279f23`）——Auth 島最小段＝login＋getUserInfo＋enforce_mw＋single-session first-mount＋runtime 骨幹第一刀（config `_FILE` 優先/AppState/Casbin enforcer boot `from_str` embedded 3-tuple RBAC）；5 執行單元 Workflow 驅動（deps+time-pin `04fc6f8`→foundation `87e10ab`→login `42ce024`→getUserInfo+enforce/session `b9de316`→final-verify）；C-V-0~6 全綠、holistic 17 FR+9 SC PASS 零 blocker、零 migration/entity/base-web/i18n/compose（SC-009）、SC-007 零回歸
-下一步: 波 0 第七刀（末）→ 007-audit-overlay（access-log＋login-attempt＋xdb、rev2 015；需 006 提供的 operator_id/login 流＋op-log `operator_ip` INET 回填〔→ CHECKLIST §3.8〕）→ 階段 0 `superpowers:brainstorming` 起手；完成後波 0 出口四項全綠→換波 1（system_settings 打樣 ③=B）
+Active feature: 007-audit-overlay（波 0 第七刀〔末〕；audit overlay＝access-log＋login-attempt 兩 append-only sink＋全域 audit_ctx＋xdb〔IP→region〕＋XFF trusted-proxy 真實 client IP；**SDD 設計鏈進行中**——spec✅〔5 US/16 FR/9 SC/16-16〕／clarify✅〔0 問題〕／plan✅〔Constitution 9/9 PASS、§5.9 推進＝DESIGN-detail 對齊〔非 violation/非 Amendment〕、新 crate xdb→prod build C-V-8〕；**待 /speckit-tasks**）
+spec/plan: `specs/007-audit-overlay/`（借前代 v2 設計、對齊 b9de316 lineage：INET 地基已落〔004/005：entity Model／with-ipnetwork／operator_ip 已 Option<IpNetwork>〕→**零 migration/entity/型遷移**；client_ip 改 XFF trusted-proxy 解析〔resolve_client_ip 手刻純函式：peer-gate＋rightmost-untrusted＋fail-safe〕推進 §5.9；4 refinement＝login inner-outer exactly-one／operator_id pre-vs-post-identity／op-log seam+test-smoke〔soft_delete test-only、live 回填波1+〕／10.5MB .xdb git-tracked；xdb 拷貝例外 §I.5⚠️v、缺檔 PANIC→boot Path::exists 守門+xdb_ready 降級；ipnetwork 走 sea-orm re-export 零新 dep）
+上一刀: 006-auth-island-min ✅ 全完成（merge `e279f23`）——Auth 島最小段＝login＋getUserInfo＋enforce_mw＋single-session first-mount＋runtime 骨幹
+下一步: 階段 1 續 `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze`（跨檔 consistency）→ 階段 2 Workflow 驅動實作；⚠️ 實作第一步＝xdb crate 拷入＋boot 缺檔守門（searcher_init 缺檔 panic）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

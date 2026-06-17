@@ -68,6 +68,11 @@ services:
       APP_JWT_JWT_SECRET: "${APP_JWT_JWT_SECRET:-dev_jwt_secret_for_local_only_x32xxxxxx}"
       APP_JWT_REFRESH_TOKEN_SECRET: "${APP_JWT_REFRESH_TOKEN_SECRET:-dev_refresh_secret_for_local_only_x32xx}"
       RUST_LOG: "info,tower_http=debug"
+      # 007 audit overlay：dev 直連即真 client（無 reverse-proxy 信任鏈）→ trusted 空 fail-safe；
+      #   經 front-nginx(:31080) 時若需驗 XFF 解析，臨時填 docker 段（見 spec C-V-16）。
+      TRUSTED_PROXY_CIDRS: "${TRUSTED_PROXY_CIDRS:-}"
+      # xdb region 檔（dev WORKDIR=/app、bind-mount、檔在 /app/xdb/resources/ip2region.xdb）。
+      XDB_FILEPATH: "xdb/resources/ip2region.xdb"
     healthcheck:
       # dev image 無 curl/wget,用 bash /dev/tcp TCP probe(T008 review 警示 carry)
       test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/31081"]
