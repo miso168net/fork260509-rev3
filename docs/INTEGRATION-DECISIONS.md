@@ -72,7 +72,20 @@
 - ✅ constitution-rev3 v1.0.0 重鑄凍結（`167db96`，獨立 commit；§9 快照 carry＋13 項拍板融入＋§V.2 提案位置=DECISIONS §1＋⚠️s fork-delta 紀律；雙輪驗證〔忠實度 8 項＋操作性 4 項〕後凍結）
 - ✅ 出口條件四項全綠（2026-06-12 驗）：session 健檢綠（hook 實測）／constitution v1.0.0 獨立 commit／設定・部署層 grep rev2 歸零（豁免：`fork260509-rev2-anew-rust-api` 倉永久名〔⚠️j〕與史料引用；`.gitignore`/`.graphifyignore` 2 處註解殘影同輪修正）／`/speckit-*` 指令可用（scripts＋skills 在位）
 
-### 波 0 — 地基（未開始）
+### 波 0 — 地基 ✅ 全完成（2026-06-18）
+
+> 七刀全收（001~007）；每刀 commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md) 對應行、設計/驗收全帳見 `specs/<刀>/`。CHECKLIST §2 該波已收縮為一行指本節。
+
+- ✅ **001-infra-deploy**（`c9ffad5`，2026-06-13）— master compose 5 service＋migrate gate＋acme 殼＋dev/prod override＋deploy/ 全套＋rust-api scaffold（/health＋空 migrator＋lock pin）；C-V-0~8 實機全綠（SC-001~007）、捕獲並修 redis `--dir` 持久化真 bug
+- ✅ **002-rev2-schema-baseline**（`9233ae0`，2026-06-13）— 前代 35 支 migration squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表 argon2id／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋`sea-orm-adapter` 整檔拷入（§I.5⚠️v）；C-V-0~9 全綠（SC-001~008）、修兩層 seed drift（id 序＋normalize 第六規則 row-order，user 拍板方案 A、契約留痕 migration-chain.md §3）
+- ✅ **（sub-crate 刀消解）**（⚠️v，2026-06-13）— `sea-orm-adapter` 併入 002（委派式建表直接消費者）、`xdb` 併入 007（首個消費者）；§I.5 唯二拷貝例外不變
+- ✅ **003-envelope**（`13a01b1`，2026-06-16）— 統一 `Res<T>`/`PageRes<T>`＋`AppError` 9 變體凍結 13 碼矩陣（reserved 4 碼型別層無變體＝編譯期 guard）＋`.fallback(handler_404)`；base-web Schema backend＋雙語 langs＋`translateBackendMsg`＋service/request 4 翻譯點（⚠️aa rev3-inline）；觸發 constitution v1.1.0 amend（§III `BASE-WEB-I18N-WIRING ★`）＋v1.1.1（⚠️ab §I.3 措辭 PATCH）；key 規約 ⚠️y 落定；C-V-0~3 全綠（SC-001~008）
+- ✅ **004-soft-delete-infra**（`a1105f0`，2026-06-17）— L2 `entity` workspace crate（11 模組 DeriveEntityModel／130 欄；tstz→DateTimeWithTimeZone／jsonb→Json／INET→IpNetwork）＋L4 `SoftDeletable` trait＋3 facade impl＋`find_active`＋facade 唯一管道守恆 `entity_access_lint`（兩階段 whiten＋path-root scan、自測雙證非 vacuous）；C-V-0~3 全綠、holistic PASS 零 findings（SC-005 零業務 endpoint/migration）
+- ✅ **005-audit-op-log**（`98f1f7e`，2026-06-17；audit ×2 之首＝op-log 刀）— L4 `model/audit.rs`（`mutate_in_txn` 泛型 `C:TransactionTrait` 同 txn 原子審計＋`AuditOperation`/`Operator`/`Event`/`Serialize`）＋op-log append-only sink（`facade/sys_operation_log::write_in_txn`、archetype B）＋`sys_user` redact（password→`<redacted>`）＋單一 `soft_delete` proof（§I.6 deleted_at/deleted_by 成對、no-op 回 Ok(None)）；C-V-0~3 全綠（atomic live smoke 三路徑非 vacuous）、3-lens holistic mergeReady 零 blocker
+- ✅ **006-auth-island-min**（`e279f23`，2026-06-17；Auth 島最小段＋runtime 骨幹第一刀）— config `_FILE` 優先 secret＋長度/change-me 守門／AppState{db,jwt,enforcer}／Casbin enforcer boot（embedded 3-tuple RBAC `from_str`）＋JWT HS256 雙鑰 sign/verify／argon2id／`enforce_mw` bearer〔3333 fail-CLOSED〕→is_current〔7777 fail-OPEN〕＋login（簽 access/refresh＋token_hash=sha256(refresh)＋set_pointer+insert_token 同 txn 原子＋1000 collapse 不洩存在）／getUserInfo（DB-fresh roles＋casbin v2=button buttons＋User→User01 alias＋userId 字串）；time-pin landmine 排除（jwt9→simple_asn1→time 真圖，pin time 0.3.37+simple_asn1 0.6.3 配 1.86）；C-V-0~6 全綠、17 FR+9 SC PASS
+- ✅ **007-audit-overlay**（`96280d8`，2026-06-18；波 0 末刀＝audit ×2 之二＝audit overlay）— L3 `xdb` crate 整檔零改拷入（§I.5⚠️v）＋L7 `audit_ctx`（`resolve_client_ip` XFF trusted-proxy〔peer-gate→rightmost-untrusted→fail-safe、anti-spoof、8 純測〕／`extract_trace_id`／`audit_mw` 全域最外層 operator-gate／`to_audit_operator` seam）＋2 append-only facade sink（`sys_access_log`/`sys_login_attempt`、`IpAddr→IpNetwork::from`）＋state/config（trusted_proxy_cidrs fail-safe／xdb_ready／XDB_FILEPATH）＋login inner/outer split exactly-one（not-found/wrong-pwd 同 1000、operator pre/post-identity）＋op-log threading live smoke（T018）；boot `Path::exists` 守門→`searcher_init`（缺檔降級不 panic、R1）＋`connect_info`；T009 compose env＋T019 Dockerfile xdb COPY（Manifest＋Source〔benches〕＋runtime .xdb＋builder `--locked`）；C-V-0~9 全綠、holistic PASS（16 FR+9 SC 全 MET）；推進 DESIGN §5.9（直連→XFF trusted-proxy、DESIGN-detail 非 Amendment、下次重鑄摺合）；零 migration/entity/型遷移/base-web/i18n/nginx、enforce_mw 未動、SC-007 零回歸
+- ✅ **波 0 出口條件四項達標**（DESIGN §8.4）：dev stack `up --wait` healthy✅（001）／三守恆〔entity_access_lint✅ 004・migration up→down→up✅ 002・endpoint_coverage_lint ⚠️x 豁免移波1〕／envelope 13 碼 contract✅（003）／login→getUserInfo→enforce 鏈 curl✅（006）→ 換波 1
+- 波 0 期間 constitution amend：**v1.1.0**（⚠️aa §III `BASE-WEB-I18N-WIRING ★` 軌道）＋**v1.1.1**（⚠️ab §I.3 措辭 PATCH，msg 載 i18n key 對齊 ⚠️y）
 
 ### 波 1 — 第一刀（未開始；刀位待決③）
 

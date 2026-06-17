@@ -9,15 +9,14 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 進行中（001+002+003+004+005+006 ✅ 已收刀、餘 audit-overlay〔007、延 Auth 後、波 0 末刀〕）**（波 -1 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 0 地基 ✅ 全完成（001~007 七刀全收、2026-06-18）;波 1 待起跑**（波 -1／波 0 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-18 007-audit-overlay 全綠收刀（波 0 第七刀〔末〕＝audit overlay;本刀收齊波 0）**（merge `96280d8`）:L3 `xdb` crate 整檔零改拷入（§I.5⚠️v）＋L7 `audit_ctx` 全域中介層（`RequestContext` 每請求建塞 extensions／`resolve_client_ip` XFF trusted-proxy〔peer-gate→rightmost-untrusted→fail-safe、anti-spoof〕／`extract_trace_id`／`audit_mw` 全域最外層 operator-gate 寫 access-log best-effort／`to_audit_operator` op-log threading seam）＋2 append-only facade sink（`sys_access_log`/`sys_login_attempt`、`IpAddr→IpNetwork::from`）＋login inner/outer split exactly-one（not-found/wrong-pwd 同 1000、operator pre/post-identity）＋op-log threading live smoke（T018）;boot `Path::exists` 守門→`searcher_init`（缺檔降級不 panic、R1）＋`connect_info`;T009 compose env＋T019 Dockerfile xdb COPY（Manifest＋Source〔benches〕＋runtime .xdb＋builder `--locked`）。C-V-0~9 全綠（build／3 純測 8+5+4／lint 2／live login-attempt 成敗各列・access-gate・真 INET 無 42804・region 内网・behind-proxy 真 client・op-log INET round-trip／prod image 含 .xdb 11070083B）、holistic PASS（16 FR+9 SC 全 MET）、推進 DESIGN §5.9（直連→XFF trusted-proxy、非 Amendment）、零 migration/entity/型遷移/base-web/i18n/nginx、enforce_mw 未動、SC-007 零回歸;rust-api `b9de316`→`fc4b50e`（worktree `2fc0696`/`15e6491`/`fc4b50e`）
 - **2026-06-17 006-auth-island-min 全綠收刀（波 0 第六刀＝Auth 島最小段＋runtime 骨幹第一刀）**（merge `e279f23`）:runtime 骨幹（config `_FILE` 優先 secret＋長度/change-me 守門／AppState{db,jwt,enforcer}／Casbin enforcer boot〔SeaOrmAdapter＋`DefaultModel::from_str` embedded 3-tuple RBAC〕）＋auth 機制（JWT HS256 雙鑰 sign/verify〔exp/iss/aud〕＋argon2id verify＋`enforce_mw` bearer〔3333 fail-CLOSED〕→is_current〔7777 fail-OPEN、pointer-truth-in-DB〕gate＋casbin seam/`buttons_for_roles`）＋facade（sys_token::insert_token／sys_user_role::roles_of_user／sys_user::find_by_user_name·set_pointer·current_session_id_of·find_by_id）＋`From<DbErr>`→Internal；login（argon2＋簽 access/refresh＋token_hash=sha256(refresh)＋set_pointer+insert_token 同 plain txn 原子〔SC-008〕＋1000 collapse 不洩存在）/getUserInfo（DB-fresh roles＋casbin v2=button buttons＋User→User01 alias＋userId 字串）。5 執行單元 Workflow 驅動（deps+time-pin `04fc6f8`〔jsonwebtoken9→simple_asn1→time 真圖、pin time 0.3.37+simple_asn1 0.6.3 配 1.86〕→foundation `87e10ab`→login `42ce024`→getUserInfo+enforce/session `b9de316`→final-verify）;C-V-0~6 全綠（build／11 純測〔JWT5·argon2·3·enforce-seam/buttons/union 3〕／entity_access_lint 2／live login·getUserInfo·1000·3333·7777＋psql 原子／CDP i18n toast「用户名或密码错误」／prod image build `--locked`）、holistic spec+quality 17 FR+9 SC 全 PASS 零 blocker（FR-008 stale-token DB-mutation 活證 claims hint-only）、零 migration/entity/base-web（SC-009）、SC-007 零回歸;rust-api `3d9578f`→`b9de316`
-- **2026-06-17 005-audit-op-log 全綠收刀（波 0 第五刀;audit ×2 之首）**（merge `98f1f7e`）:L4 audit 機制地基——`model/audit.rs`（`mutate_in_txn` 泛型 `C:TransactionTrait` 同 txn 原子審計〔業務寫＋op-log 寫綁同一 DatabaseTransaction、同時 commit/rollback〕＋`AuditOperation`/`Operator`/`Event`/`Serialize`、純資料層零 `entity::`）＋op-log append-only sink（`facade/sys_operation_log::write_in_txn`、archetype B 無 update/delete）＋`sys_user` redact（`AuditSerialize` 手構 json、password→`<redacted>`、Model 無 Serialize）＋單一 `sys_user::soft_delete` proof（`into_active_model`＋§I.6 deleted_at/deleted_by 成對、no-op 回 `Ok(None)`）。C-V-0~3 全綠（build／redact 純測／atomic live smoke 三路徑〔commit/no-op/非vacuous rollback〕／entity_access_lint 守恆）、holistic review 3-lens mergeReady 零 blocker、零端點/migration/Cargo.toml 變動（SC-005）、SC-007 零回歸;rust-api `e9a6d5c`→`3d9578f`、follow-up §3.8
-
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 0 第七刀（末）→ 007-audit-overlay**（access-log＋login-attempt＋xdb;rev2 015 對應;需 006 已提供的 operator_id/login 流＋op-log `operator_ip` INET 回填〔→ §3.8〕;`xdb` sub-crate 拷入〔⚠️v、Dockerfile `[[bench]]` COPY 坑〕）;完成後波 0 出口四項全綠→換波 1（system_settings 打樣 ③=B）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/007-audit-overlay.md`）
+**下一步**: **波 1 第一刀 → `system_settings` 打樣（③=B）**（rev2 029 子集、§5.6 熱 KV/pub-sub＋settings_watcher 獨有;migration→facade→handler→enforce→wire→frontend 全鏈一次逼出、最輕 KV entity 先打通骨架再上最重 User〔波2〕;首掛 enforce_mw route_layer→順帶立 endpoint_coverage_lint〔波 0 出口豁免項 ⚠️x〕）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-system-settings.md`）
 
 ---
 
@@ -29,31 +28,9 @@
 
 > 機械建構＋constitution 重鑄兩段全交（pre-spec-kit、全落 default branch、無 feature branch）:outer repo＋worktree/submodule 註冊 `2ec9cda`（⚠️j/⚠️q）/ 設計書入檔＋拍板回填＋歸位改名 `7fd1ac6`→`4aa7c89` / C 方案文件體系 DECISIONS+CHECKLIST+MILESTONES `4724549`・`4300b54` / graphify 首建 `8f66fe0` / 000 base-web bootstrap＋13 端點對映 `46591c4`~`e898421` / SessionStart hook 原樣承接 `ed2a789` / **constitution-rev3 v1.0.0 凍結 `167db96`**（13 項拍板融入）。出口四項全綠（session 健檢/獨立 commit/grep rev2 歸零/speckit 可用）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
-### 波 0 — 地基（進行中・當前）
+### 波 0 — 地基 ✅ 全完成+已歸檔 (2026-06-18)
 
-infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 —（rev2 001-012＋015）對應、首個 spec-kit feature 起跑點。
-
-**刀/feature 清單**（素材=DESIGN §8.2 跨切地基;刀界由各刀 brainstorm/specify 時定稿）:
-- [x] **001-infra-deploy 刀 ✅ 收刀（2026-06-13、merge `c9ffad5`）**——master compose 5 service＋migrate gate＋acme 殼、dev/prod override、deploy/ 全套、rust-api scaffold（/health＋空 migrator＋lock pin）;C-V-0~8 實機全綠（SC-001~007）;follow-up 見 §3.4;spec 全帳在 `specs/001-infra-deploy/`
-- [x] **002-rev2-schema-baseline 刀 ✅ 收刀（2026-06-13、merge `9233ae0`）**——前代 35 支 squash 為 4 支基線（m001 schema 11 表終態／m002 seed 92 列 6 表／m003 user_role FK ×2 RESTRICT／m004 demo 選單 66＋policy 全 R_SUPER）＋sea-orm-adapter 整檔拷入（⚠️v 委派式、§I.5）;C-V-0~9 實機全綠（SC-001~008）、normalize 六規則（row-order 假紅、user 拍板方案 A、契約留痕 migration-chain.md §3）;spec 全帳在 `specs/002-rev2-schema-baseline/`
-- [x] ~~**sub-crate 刀**~~ **已消解（2026-06-13、⚠️v 拍板）**——`sea-orm-adapter` 併入 002（委派式建表的直接消費者）、`xdb` 併入 audit 刀（首個消費者）;§I.5 唯二拷貝例外不變、casbin 2.20 pin 隨 002
-- [x] **003-envelope 刀 ✅ 收刀（2026-06-16、merge `13a01b1`）**——統一信封 `Res<T>`/`PageRes<T>`＋`AppError` 9 變體凍結 13 碼矩陣（reserved 4 碼型別層無變體）＋main.rs .fallback；base-web Schema backend＋雙語 langs＋`translateBackendMsg`＋service/request 4 翻譯點（⚠️aa rev3-inline）；key 規約 ⚠️y 落定；C-V-0~3 全綠（SC-001~008）；spec 全帳在 `specs/003-envelope/`、follow-up §3.6
-- [x] **soft-delete 基建刀 ✅ 收刀（2026-06-17、merge `a1105f0`）**——`SoftDeletable` trait＋facade 唯一管道＋`entity_access_lint`＋11 entity L2 層（rev2 009）;C-V-0~3 全綠（build／lint 2 passed／live smoke 1 passed／prod image）;spec 全帳 `specs/004-soft-delete-infra/`、follow-up §3.7
-- [x] **audit op-log 刀 ✅ 收刀（005-audit-op-log、2026-06-17、merge `98f1f7e`）**——`mutate_in_txn` 同 txn 原子審計＋op-log append-only sink（`facade/sys_operation_log`）＋`sys_user::soft_delete` proof〔rev2 011〕;C-V-0~3 全綠、零端點/migration/Cargo.toml（SC-005）;spec 全帳 `specs/005-audit-op-log/`、follow-up §3.8
-- [x] **Auth 島最小段（=006）✅ 收刀（2026-06-17、merge `e279f23`）**——runtime 骨幹第一刀（config `_FILE` 優先/AppState/Casbin enforcer boot `from_str` embedded）＋auth 機制（JWT HS256 雙鑰/argon2/`enforce_mw` bearer〔3333〕→is_current〔7777 fail-OPEN〕gate＋casbin 3-tuple seam）＋login（argon2＋簽 access/refresh＋set_pointer+insert_token 同 txn 原子＋1000 collapse）/getUserInfo（DB-fresh roles＋casbin v2=button buttons＋User→User01 alias＋userId 字串）;C-V-0~6 全綠（build／11 純測／lint／live login·getUserInfo·3333·7777／CDP i18n toast／prod build）、17 FR+9 SC 全 PASS;spec 全帳 `specs/006-auth-island-min/`
-- [ ] **audit overlay 刀（=007、延到 Auth 島後）**——access-log＋login-attempt＋xdb〔rev2 015:兩表＋request-context;`xdb` sub-crate 拷入——⚠️v、Dockerfile [[bench]] COPY 坑〕;需 Auth 提供 operator_id/login 流＋op-log `operator_ip` INET 回填（→ §3.8）
-
-**前置拍板（user 親決,4 項;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**: ✅ 全拍完（2026-06-13）
-- [x] ①router 結構 ✅ flat-in-main 沿用（lint 三源一致直接沿用）
-- [x] ④選擇性 FK ✅ 僅 join 表 `sys_user_role` 加 FK、其餘 11 表維持零（義務照 §3.3）
-- [x] ⚠️d redis-stack image tag ✅ 建 stack 當下即 pin 數字版
-- [x] ⚠️k migration 檔名 ✅ 短編號 `mNNN_<name>`
-
-**出口條件（DESIGN §8.4,4 項全綠才換波）**:
-- [x] dev stack `up --wait` 全 healthy ✅（001、C-V-2 實證 2026-06-13）
-- [ ] 三守恆綠（**entity_access_lint ✅ 004 達成 2026-06-17**・endpoint_coverage_lint〔後刀〕・**migration up→down→up ✅ 002 C-V-5 達成 2026-06-13**）
-- [x] envelope 13 碼 contract 形狀測試綠（⚠️e 拍板形）✅ 003 達成（in-crate 8 測綠：碼/serde 欄序/http/非人話/文法 conformance、merge `13a01b1`）
-- [x] login→getUserInfo→enforce 最小鏈 curl 通 ✅ 006 達成（2026-06-17、merge `e279f23`；live curl: login 0000＋token／getUserInfo roles+buttons／無壞 token 3333／二次登入舊 token 7777）
+> 七刀全收（001 infra-deploy `c9ffad5`／002 schema-baseline `9233ae0`／003 envelope `13a01b1`／004 soft-delete-infra `a1105f0`／005 audit-op-log `98f1f7e`／006 auth-island-min `e279f23`／007 audit-overlay `96280d8`;sub-crate 刀 ⚠️v 消解併入 002/007）。前置拍板 4 項（①flat-in-main／④僅 join FK／⚠️d redis pin／⚠️k mNNN）全拍（2026-06-13）。出口四項達標：dev stack healthy✅・三守恆〔entity_access_lint✅ 004・migration up→down→up✅ 002・endpoint_coverage_lint ⚠️x 豁免移波1〕・envelope 13 碼✅ 003・login→getUserInfo→enforce✅ 006 → 換波 1。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 1 — 第一刀＝`system_settings` 打樣（未開始;③=B 拍板 2026-06-16）
 
