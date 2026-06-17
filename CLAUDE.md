@@ -380,10 +380,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 007-audit-overlay ✅ 全完成（merge `96280d8`，2026-06-18；波 0 末刀＝audit overlay）——xdb crate＋audit_ctx 全域中介層（RequestContext／resolve_client_ip XFF trusted-proxy〔peer-gate→rightmost-untrusted→fail-safe〕／audit_mw operator-gate／to_audit_operator seam）＋2 append-only sink（access-log／login-attempt）＋login inner/outer exactly-one＋op-log threading live smoke（T018）；C-V-0~9 全綠、holistic PASS（16 FR+9 SC 全 MET）；推進 DESIGN §5.9（直連→XFF trusted-proxy、DESIGN-detail 非 Amendment）；零 migration/entity/型遷移/base-web/i18n/nginx、enforce_mw 未動
-spec/plan: `specs/007-audit-overlay/`（全帳）；**波 0 ✅ 全完成（001~007 七刀全收、2026-06-18）**——出口四項達標〔三守恆 entity_access_lint✅/migration✅、endpoint_coverage_lint ⚠️x 豁免移波1；envelope✅；login→getUserInfo→enforce✅〕；波 0 as-built 詳帳見 DECISIONS §2、CHECKLIST §2 該波已收縮
-上一刀: 006-auth-island-min ✅ 全完成（merge `e279f23`）——Auth 島最小段＋runtime 骨幹第一刀
-下一步: **波 1 第一刀＝`system_settings` 打樣（③=B）**——migration→facade→handler→enforce→wire→frontend 全鏈一次逼出（最輕 KV entity 先打通骨架、再上最重 User〔波2〕）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-system-settings.md`）
+Active feature: 008-system-settings（波 1 第一刀＝system_settings KV 打樋；③=B）——**SDD 設計鏈進行中**：spec✅〔4 US/11 FR/7 SC/16-16〕／clarify✅〔0 問題〕／plan✅〔Constitution 9/9 PASS、Complexity N/A〕；三個全專案首次＝首個 policy-governed 端點（新 `require_policy` per-route layer、DB-fresh roles、5003→403 live 首証、enforce_mw 不改）／首個 007 op-log threading live consumer（update→operator_ip 真 INET）／立 `endpoint_coverage_lint`（⚠️x 波0 豁免項）。**待 /speckit-tasks**
+spec/plan: `specs/008-system-settings/`（plan✅[plan.md]）——research 2 大校正：**①m005 MOOT**〔端點 policy×2＋menu policy＋sys_menu 列已 m002:162-165/251 seed、本刀零 migration〕＋**②前端 static Option A**〔base-web 現 static 模式＋getUserRoutes 後端未實作、dynamic-menu＋.env dynamic〔拍板#7〕延波2 Menu 刀〕；§5.6 watcher/session_mode consumption→波3；無新 crate
+上一刀: 007-audit-overlay ✅ 全完成（merge `96280d8`，2026-06-18；波 0 末刀＝audit overlay）；**波 0 全完成（001~007）**
+下一步: 階段 1 續 `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze`（跨檔 consistency）→ 階段 2 Workflow 驅動實作；⚠️ 實作首步＝facade `find_all`/`update_by_key`＋`validate_value_type` test-first（policy 已 m002 seed、零 migration）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
