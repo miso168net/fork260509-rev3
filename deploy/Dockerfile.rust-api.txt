@@ -33,21 +33,29 @@ COPY rust-api/server/Cargo.toml ./server/
 COPY rust-api/migration/Cargo.toml ./migration/
 COPY rust-api/entity/Cargo.toml ./entity/
 COPY rust-api/sea-orm-adapter/Cargo.toml ./sea-orm-adapter/
+# 007: xdb crate(IP→region)
+COPY rust-api/xdb/Cargo.toml ./xdb/
 
 # --- Source 段 ---
 COPY rust-api/server/src ./server/src
 COPY rust-api/migration/src ./migration/src
 COPY rust-api/entity/src ./entity/src
 COPY rust-api/sea-orm-adapter/src ./sea-orm-adapter/src
+COPY rust-api/xdb/src ./xdb/src
+# 007: xdb Cargo.toml 宣告 [[bench]] name=search,即使 --bins 不編 bench,
+# manifest parse 仍要求 bench 檔存在,故 benches/ 必須一併 COPY(缺檔→manifest parse error)。
+COPY rust-api/xdb/benches ./xdb/benches
 # 注意:sea-orm-adapter/examples/ 為 .conf/.csv casbin 模型/policy 資料檔、非 .rs,
 # Cargo.toml 無 [[example]] 宣告,cargo 不會 auto-discover 為 target,免 COPY(缺檔不影響編譯)。
+# xdb/resources/ip2region.xdb 為 runtime 資料、非 builder 編譯所需(--bins 不編 bench),
+# 故 builder 不 COPY;runtime stage 直接從 build context 取(見 Stage 3)。
 
 # BuildKit cache mount: registry + git + target 三份持久化、跨 build 增量
 # 注意:target/ 在 cache mount 內、對後續 COPY 不可見,必須 cp 到 /out/
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/usr/local/cargo/git \
     --mount=type=cache,target=/app/target \
-    cargo build --release --bins && \
+    cargo build --release --bins --locked && \
     mkdir -p /out && \
     cp target/release/server \
        target/release/migration \
@@ -96,6 +104,11 @@ COPY --from=builder /out/server /out/migration /usr/local/bin/
 # Entrypoint dispatcher(deploy/entrypoint.rust-api.sh)
 COPY deploy/entrypoint.rust-api.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# 007: xdb 資料檔(IP→region)。prod compose 設 XDB_FILEPATH=resources/ip2region.xdb,
+# 相對 runtime WORKDIR /app → 須落 /app/resources/ip2region.xdb。
+# root-owned COPY 為 world-readable、/app/resources 目錄 755,USER rustapi 可讀。
+COPY rust-api/xdb/resources/ip2region.xdb /app/resources/ip2region.xdb
 
 USER rustapi
 EXPOSE 31081
