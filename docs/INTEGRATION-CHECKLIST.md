@@ -125,7 +125,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,001〔scaffold＋compose/deploy〕＋002〔migration ×4＋sea-orm-adapter crate＋tests/002 scripts〕＋003〔rust envelope/error/main.rs＋base-web i18n 接線 5 檔〕新碼均未入圖,待一輪 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,波 0 已收 6 刀（001 scaffold＋compose/deploy／002 migration ×4＋sea-orm-adapter crate／003 envelope/error＋base-web i18n 5 檔／004 entity crate＋soft-delete lint／005 audit／006 config/state/auth/handler/facade）新碼均未入圖,待一輪 update）
 
 ---
 
@@ -176,7 +176,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 - [x] ✅（2026-06-17、004/U1）workspace Cargo.toml time pin 註解勘誤——004 引入 with-chrono 後 time 0.3.47 入 lock 但 feature-gated 不入 compile graph（inert、`cargo tree -i time`＝nothing to print）、註解已校正為實況＋保留「未來 time 進真 graph〔如 jwt9 經 simple_asn1〕須 pin≤0.3.37」前瞻（commit `3f87a25`）
 - [ ] rust-api/.gitignore `debug`/`target` 未錨定 pattern（誤吞同名子目錄風險）
 **拍板/上游**:
-- [ ] JWT `_FILE` vs 直值 env 優先序（dev 兩者並存;Auth 刀消費時拍板）
+- [x] ✅（2026-06-17、006）JWT `_FILE` vs 直值 env 優先序——`config.rs` 採 `_FILE` 優先、env fallback（FR-014）＋長度≥32＋拒 `change-me*` boot panic;Auth 刀（006）消費時即定案
 - [ ] prod builder node:20.19 vs dev node:26 分歧（沿 rev2 驗證形;Dockerfile 補註記或 DECISIONS 開放項）
 - [ ] cargo cache 卷遮蓋陳舊（dev image 升 toolchain 時需手動 `volume rm`;quickstart 註記）
 - [ ] 兩段式 commit pin 時點紀律提案:worktree commit 落地的**當個 task** 即 bump outer pin（001 全延到 T021、中繼 15 個 outer commit 的 pin 過期、checkout 不可重現 tasks 勾選聲明）→ 提案補進 CLAUDE.md §4.1（user 核可後改）
@@ -199,12 +199,12 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 ### 3.6 003-envelope follow-up（收刀移交 2026-06-16;均不阻塞、消費刀觸發時處理）
 
 **i18n 顯示端到端階梯（FR-012；機制本刀已以型別/單元/component 測覆蓋、端到端待真端點）**:
-- [ ] 波 0 Auth/login 刀：login 失敗發 `1000`=`auth.login.failed`→generic toast 經 `$t` 翻譯顯示＝i18n 顯示路徑首個自然端到端 CDP 檢核點（fallback 路徑已由 003 tsx 單元覆蓋）
+- [x] ✅（2026-06-17、006）波 0 Auth/login 刀：login 失敗發 `1000`=`auth.login.failed`→toast 經 `$t` 在地化——006 C-V-3 CDP 實機證 toast 顯「用户名或密码错误」（非 raw key）＝i18n 顯示路徑首個端到端檢核點達成（fallback 已由 003 tsx 單元覆蓋;**踩點**：首跑 vite 服 stale locale 模組顯 raw key、`restart base-web` 後綠、CLAUDE.md §8.2.1）
 - [ ] 波 1 system_settings 刀：首個真 biz endpoint 發 per-entity `2222` key（`biz.systemSettings.*`）→per-entity 端到端；首個 list 端點順帶驗 `PageRes` runtime 形＋空字串 filter 守門（curl≠modal 經典案例、CLAUDE.md §3）
 **顯示限制（R3、本刀不修）**:
 - [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；enforce 刀再議是否拓寬 `onError` extraction（`5003` 連發出都待 enforce 刀）
 **rust 範圍延後（R7）**:
-- [ ] `From<DbErr> for AppError`＋加 sea-orm 到 server crate：延後至首個產 `DbErr` 切片（facade/handler 刀）帶入＋`sql_err()` 23505→`2222`（`biz.error`）映射
+- [x] ✅ 半（2026-06-17、006）`From<DbErr> for AppError`→`Internal`/5000 已由 006 帶入（sea-orm 早於 004 入 server）;**惟 `DbErr::sql_err()`→`SqlErr::UniqueConstraintViolation`（pg 23505）→`2222` 映射仍待**——login/getUserInfo 不撞 unique violation，留首個 CRUD 寫端刀（波2 User/Role）帶入（§3.8 末條同源）
 **rust 信封消費（首個業務刀觸發、review 衍生、非阻塞）**:
 - [ ] `Res::ok` 採 `Res<serde_json::Value>`（`to_value` 中轉、本刀 `#[allow(dead_code)]` 無消費者）→ 首個消費 `Res::ok` 的業務刀重估兩點：(a) 序列化失敗 fallback `data:null` 仍掛 `code:"0000"`＝成功碼掩蓋錯誤 → 視需要導向 `AppError::Internal(5000)`；(b) 熱路徑大 payload 的 double-serialization（to_value→Json）→ 可改保留泛型 `Res<T>` 直接 Json、省中轉
 **測試守護 fidelity（review 衍生、非阻塞）**:
@@ -214,7 +214,7 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 
 **ipnetwork／time-lock（U1 實作期發現）**:
 - [x] ✅（2026-06-17）with-ipnetwork 1.86 build 早驗綠（ipnetwork 0.20.0 入 compile graph、無退 String+cast）;inert time 0.3.47 入 lock 但 feature-gated 不編譯（註解已勘誤、見 §3.4／§3.5）
-- [ ] **Auth/Token 刀 time-pin landmine**:004 引 with-chrono 後 lock 留 `time 0.3.47`（現 inert、不入 compile graph）;Auth 刀若加 JWT 經 `simple_asn1` 把 time 拉進【真 compile graph】，須 `cargo update -p time --precise 0.3.37` ＋ pin `simple_asn1 0.6.3`，否則撞 1.86 MSRV（time≥0.3.41 宣告需 1.88）——加 JWT dep 後先 `cargo tree -i time` 判 real/inert
+- [x] ✅（2026-06-17、006 Unit 1）**Auth/Token time-pin landmine 已排**:006 加 jsonwebtoken 9 經 `simple_asn1` 把 time 拉進真 compile graph（`cargo tree -i time` 實證 time←simple_asn1←jsonwebtoken←server）→ pin `simple_asn1 0.6.3`（其 time req 放寬回 ^0.3）再 `time 0.3.37`，1.86 dev build＋prod `--locked` 皆綠（commit `04fc6f8`）。**順序硬約束**：simple_asn1 須先降、否則 `cargo update -p time --precise 0.3.37` 失敗（0.6.4 floor `time^0.3.47`）
 **INET log entity 消費（audit 刀觸發）**:
 - [ ] 3 INET 欄（`sys_operation_log.operator_ip`／`sys_access_log.client_ip`／`sys_login_attempt.client_ip`）`IpNetwork` 讀寫 facade＋decode 正確性——audit 刀為首個 log 消費者，須對真實資料驗 `IpNetwork` serde round-trip（本刀 entity 僅編譯綠、未跑時資料 decode）
 **casbin_rule 治理欄消費（policy 刀觸發）**:
@@ -233,7 +233,16 @@ infra/deploy＋envelope＋soft-delete 基建＋audit 兩刀＋Auth 島最小段 
 **op-log `operation` 字串契約對齊（op-log 讀端＝波2 ⚠️b 觸發）**:
 - [ ] `AuditOperation::as_str()` 定 `operation` 欄封閉詞彙＝`INSERT`/`UPDATE`/`SOFT_DELETE`/`RESTORE`（本刀僅 `SOFT_DELETE` 經 live smoke 實證、其餘 3 隨各寫端刀漸用）;op-log 讀端（rust 查詢 filter／base-web UI by-operation dropdown）字串須對齊此契約——rust 端 ref `AuditOperation` enum、base-web 端硬編字串須一致（勿造 `DELETE` 之類不符值致 filter 失準）
 **DbErr→AppError 映射（首個消費 soft_delete 的 handler 刀觸發）**:
-- [ ] 本刀 `soft_delete`/`mutate_in_txn`/`write_in_txn` 為首批【產 `DbErr` 的 facade 方法】（004 的 `find_active` 僅回 `Select`、未執行）;惟本刀無 handler 消費→`From<DbErr> for AppError` 映射仍未觸發（見 §3.6 同條：延後至首個產 DbErr 切片）。首個把 soft_delete 接進 handler 的刀須帶入該映射＋`sql_err()` 23505→`2222`
+- [ ] 本刀 `soft_delete`/`mutate_in_txn`/`write_in_txn` 為首批【產 `DbErr` 的 facade 方法】（004 的 `find_active` 僅回 `Select`、未執行）;`From<DbErr> for AppError`→Internal/5000 **已由 006 帶入**（見 §3.6 同條）、惟本刀 facade 仍無 handler 消費。首個把 `soft_delete` 接進 handler 的刀須驗該映射實際觸發＋補 `sql_err()` 23505→`2222`（波2 CRUD）
+
+### 3.9 006-auth-island-min follow-up（收刀移交 2026-06-17;均不阻塞、消費刀觸發時處理）
+
+**`enforce_mw` policy-step 上線＋5003 live（波2 首個 policy-governed 業務端點觸發）**:
+- [ ] 006 `enforce_mw` 為 **auth-only**（bearer〔3333〕→is_current〔7777〕→注入 Claims）;Casbin policy 決策 `enforce_role_path_method`＋`buttons_for_roles` 已建+seam 測（C-V-1）但**未進任何 live 請求路徑**（getUserInfo auth-only、006 無 policy-governed 端點、research R-C 校正）→ 波2 首個業務端點須決定接法（擴 `enforce_mw` 收 policy spec／加 policy-enforcing mw 層、契約 §3.4「不改 enforce_mw 本體」為目標）並**首證 5003→HTTP403 live**（curl＋空字串 filter 守門〔CLAUDE.md §3〕＋CDP modal）;同時 `endpoint_coverage_lint`〔波 0 出口三守恆未竟項〕須能分類 006 引入的 public（`/auth/login`）/auth-only（`/auth/getUserInfo`）/policy-governed 三類 route
+**token 不隨 user 停用/軟刪即時失效（波2 User CRUD／波3 session revocation 觸發）**:
+- [ ] getUserInfo `find_by_id` 不濾 `deleted_at IS NULL`、`enforce_mw` 不查 user active → 已軟刪/停用 user 持既發 access token 仍可通關至過期（≤access_ttl ~1h）;login 端 `find_by_user_name` 已濾軟刪（無法新登入）。即時撤銷（user disable/delete 即踢）屬 §I.7 完整 session 機器=波3（rotation/reuse/revocation）;波2 User CRUD 若需即時失效須提前接 revocation hook
+**JWT 參數硬編（波3 refresh/session 或 settings 觸發）**:
+- [ ] JwtConfig 的 `access_ttl`(3600s)/`refresh_ttl`(7d)/`iss`(`rev3-admin`)/`aud`(`rev3-admin-web`) 為 main.rs boot 常數;波3 refresh/session policy 或 settings 若需可設定化（per-role TTL／runtime 調）再外移、本刀硬編足夠
 
 ---
 
