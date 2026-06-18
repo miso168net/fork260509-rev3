@@ -382,9 +382,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **009-user-management（波 2 資料島首刀＝User）✅ 全綠收刀**（merge `07b67d2`、2026-06-18、--no-ff、feature branch 保留）。最終 pins：rust-api `8ccea9d`／base-web `c1806680`。
-as-built: 6 端點 CRUD（getUserList/getAllRoles/addUser/updateUser/deleteUser/batchDeleteUser）全綠＋角色 M:N（`replace_roles_in_txn` 與 user 寫同一 `mutate_in_txn`）＋同交易審計（INSERT/UPDATE/SOFT_DELETE op-log、operator_ip 真 INET）＋越權（6 端點 require_policy DB-fresh）＋停用登入 gate（status==2→1000 防枚舉）。多個全專案首次：§5.8 分頁/filter（空字串守門＋模糊 ILIKE）／`PageRes` 首消費者／M:N join 寫／23505→2222 `sql_err()` 寫端 map（⚠️o、blanket From 不改）／INSERT op-log 首 consumer。2 clarify 拍板（spec.md ## Clarifications）：self-lock 防自鎖＋批次刪缺漏 idempotent skip。★ as-built 偏離：`PgExpr::ilike().escape()` runtime 失效→改 `LOWER(col) LIKE ESCAPE`（校正 contract §3.2 跨 feature 權威等 4 處）。4 單元 Workflow（U1 `7daa622`→U2 `79f4983`→U3 `977203f`／U4 base-web `c1806680`＋polish `8ccea9d`）。C-V 全綠（62 bin＋7 live／endpoint_coverage_lint 6 端點＋entity_access_lint／CDP 真發 request／C-V-13 零回歸／C-V-14 prod build）、holistic PASS（12 FR+11 SC）。**零 migration/entity/schema、無新 crate**。
-下一步: **波 2 Menu 刀**（getUserRoutes＋menu policy 收 user/system-settings 選單可見性＋前端 hasAuth button gating＝**D1**〔008／009 同延此、CHECKLIST §3.10、授權靠後端 403 已擋非破口〕＋reparent 3+1 guard ⚠️o hybrid；待階段 0 `superpowers:brainstorming` 起手）
+Active feature: **010-menu-management（波 2 第二刀＝Menu）** — 階段 1 SDD 設計鏈進行中：spec ✅／clarify ✅〔2 拍板：批次刪父子整批拒＋retroactive gating 含 user/settings〕／plan ✅（[plan.md](specs/010-menu-management/plan.md)）；待 `/speckit-tasks`
+spec/plan: 一刀整包 Menu＝動態角色選單（`getUserRoutes` Casbin `v2='menu'` 過濾、§I.2 首兌現、前端零過濾）＋選單 CRUD＋統一回收桶（已刪除欄、restore 孤兒→頂層）＋越權＋D1（選單可見性自動達成＋前端 hasAuth gating menu+user）＋`.env` static→dynamic（#7）。**11 端點**（/route getConstantRoutes〔public〕·getUserRoutes·isRouteExist〔auth-only〕／8 /systemManage *Menu* R_SUPER）。3 全專案首立：`menu_routes_for_roles`（鏡像 buttons_for_roles）／reparent 3+1 guard facade slim enum（⚠️o）／menu flat→tree 序列化（RouteMeta D2-D4）；`AuditOperation::Restore` 首 consumer。**零 migration/schema/entity、無新 crate**；Constitution 9/9 PASS。Role×Menu→Role 刀（D2）。wire id 兩域（MenuRoute.id string／Menu.id number、⚠️r）。pins rust-api `8ccea9d`／base-web `c1806680`（未動）
+下一步: `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze` → 階段 2 `superpowers:executing-plans`（~4-5 Workflow 單元：U1 動態路由讀／U2 選單寫 CRUD（reparent guard）／U3 刪除+回收桶（restore）／U4 base-web+★最後翻 .env dynamic）
+surface（plan-phase）: Q2 system-settings button gating moot-skip（無 button code＋super-only 選單已隱）；R_ADMIN `user:edit` button/`manage_role` menu vs super-only endpoint seed 不對齊（忠實 seed、登 follow-up、本刀不修）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
