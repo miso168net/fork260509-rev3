@@ -382,10 +382,9 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **009-user-management（波 2 資料島首刀）** — 階段 1 SDD 設計鏈進行中：spec ✅／clarify ✅〔2 拍板：防自鎖守門＋批次缺漏 idempotent〕／plan ✅（[plan.md](specs/009-user-management/plan.md)）；待 `/speckit-tasks`
-spec/plan: 6 端點 CRUD（getUserList/getAllRoles/addUser/updateUser/deleteUser/batchDeleteUser）＋角色 M:N（`replace_roles_in_txn` 與 user 寫同 txn）；全專案首次＝§5.8 分頁/filter（空字串守門＋模糊 ILIKE〔userName/nickName/userEmail〕、userPhone/enum 精確）＋`PageRes` 首消費者／23505→2222（`sql_err()` 寫端、⚠️o、不動 blanket From）／首個 INSERT op-log／停用登入 gate（status==2→1000）。零 migration/schema/entity、無新 crate；Constitution Check 9/9 PASS。**plan-phase 校正**：sys_role 欄＝`code`/`name`（非 role_code）／23505 寫端 map／前端 hasAuth gating 延波2 Menu 刀（FR-011 校正）。pins rust-api `028289a`／base-web `223bc83e`（未動）
-下一步: `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze` → 階段 2 `superpowers:executing-plans`（~4 Workflow 單元：U1 reads／U2 create·update／U3 delete·gate／U4 base-web MODAL-WIRING (a)）
-follow-up（D1、波2 Menu 刀）: getUserRoutes＋menu policy 收 user/system-settings 選單可見性＋前端 hasAuth button gating（009 延此、授權靠後端 403 已擋非破口）；登 CHECKLIST §3.10
+Active feature: **009-user-management（波 2 資料島首刀＝User）✅ 全綠收刀**（merge `07b67d2`、2026-06-18、--no-ff、feature branch 保留）。最終 pins：rust-api `8ccea9d`／base-web `c1806680`。
+as-built: 6 端點 CRUD（getUserList/getAllRoles/addUser/updateUser/deleteUser/batchDeleteUser）全綠＋角色 M:N（`replace_roles_in_txn` 與 user 寫同一 `mutate_in_txn`）＋同交易審計（INSERT/UPDATE/SOFT_DELETE op-log、operator_ip 真 INET）＋越權（6 端點 require_policy DB-fresh）＋停用登入 gate（status==2→1000 防枚舉）。多個全專案首次：§5.8 分頁/filter（空字串守門＋模糊 ILIKE）／`PageRes` 首消費者／M:N join 寫／23505→2222 `sql_err()` 寫端 map（⚠️o、blanket From 不改）／INSERT op-log 首 consumer。2 clarify 拍板（spec.md ## Clarifications）：self-lock 防自鎖＋批次刪缺漏 idempotent skip。★ as-built 偏離：`PgExpr::ilike().escape()` runtime 失效→改 `LOWER(col) LIKE ESCAPE`（校正 contract §3.2 跨 feature 權威等 4 處）。4 單元 Workflow（U1 `7daa622`→U2 `79f4983`→U3 `977203f`／U4 base-web `c1806680`＋polish `8ccea9d`）。C-V 全綠（62 bin＋7 live／endpoint_coverage_lint 6 端點＋entity_access_lint／CDP 真發 request／C-V-13 零回歸／C-V-14 prod build）、holistic PASS（12 FR+11 SC）。**零 migration/entity/schema、無新 crate**。
+下一步: **波 2 Menu 刀**（getUserRoutes＋menu policy 收 user/system-settings 選單可見性＋前端 hasAuth button gating＝**D1**〔008／009 同延此、CHECKLIST §3.10、授權靠後端 403 已擋非破口〕＋reparent 3+1 guard ⚠️o hybrid；待階段 0 `superpowers:brainstorming` 起手）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

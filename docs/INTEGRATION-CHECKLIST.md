@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 1 ✅ 全完成（008 system_settings 打樋、2026-06-18;波 0 七刀＋波 1 一刀全收）;波 2 data islands 待起跑**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 2 data islands 進行中（009 user-management 首刀完成 merge `07b67d2`、2026-06-18;尚餘 Menu 刀／Role 刀／⚠️b 審計讀端刀）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-18 009-user-management 全綠收刀（波 2 資料島首刀＝User;波 2 進行中）**（merge `07b67d2`）:使用者管理頁 mock→真後端 6 端點 CRUD（getUserList/getAllRoles/addUser/updateUser/deleteUser/batchDeleteUser）＋角色 M:N（`replace_roles_in_txn` 與 user 寫同 `mutate_in_txn`）＋同交易審計（INSERT/UPDATE/SOFT_DELETE op-log、operator_ip 真 INET）＋越權（6 端點 require_policy DB-fresh、read R_SUPER+R_ADMIN〔getAllRoles +R_USER_COMMON〕/write R_SUPER）＋停用登入 gate（status==2→1000 防枚舉）。多個全專案首次:§5.8 分頁/filter 首 exercise（空字串守門＋模糊 ILIKE userName/nickName/userEmail）／`PageRes` 首消費者／M:N join 寫／prod argon2 hash_password／23505→2222 `sql_err()` 寫端 map 首落（⚠️o、blanket From 不改）／INSERT op-log 首 consumer。2 clarify 拍板:self-lock 防自鎖對稱守門（→2222 整筆拒）＋批次刪缺漏 idempotent skip。★ as-built 偏離:research-R6 `PgExpr::ilike().escape()` 編譯過但 runtime 失效（sea-query 0.32.7 escape hack 不含 pg ILIKE→非法 SQL→5000）、改 `LOWER(col) LIKE ESCAPE`、校正 4 處文件（含 contract §3.2 跨 feature 權威）。4 單元 Workflow 驅動（U1 `7daa622`→U2 `79f4983`→U3 `977203f`/U4 base-web `c1806680`＋polish `8ccea9d`＋doc `5c0e3f7`）;C-V 全綠（62 bin＋7 live `--test-threads=1`／endpoint_coverage_lint `[&str;11]` 6 端點全治理＋entity_access_lint／C-V-9~11 CDP 真發 request／C-V-13 零回歸／C-V-14 prod build）、holistic PASS（12 FR+11 SC 全 covered、無 overbuild）;**零 migration/entity/schema、無新 crate**;rust-api `3874182`→`8ccea9d`、base-web `223bc83e`→`c1806680`;D1 follow-up（hasAuth gating＋getUserRoutes＋選單可見性）延波2 Menu 刀（§3.10）
 - **2026-06-18 008-system-settings 全綠收刀（波 1 第一刀＝system_settings KV 打樋;波 1 全完成）**（merge `b52dafe`）:3 全專案首次——首個 policy-governed 端點（`require_policy` DB-fresh per-route layer、enforce_mw 不動、5003→403 live 首証）／首個 007 op-log threading live consumer（`to_audit_operator`→operator_ip 真 INET round-trip）／立 `endpoint_coverage_lint`（⚠️x:registered==as-built＋policy-governed⊆m002 seed＋self-test）。2 端點 GET/POST＋super-only＋value_type 2222＋同 txn 審計原子＋net-new base-web static 頁/rev3-* wrapper 首檔/i18n;零 migration/entity/schema（m005 MOOT）、無新 crate;4 單元 Workflow 驅動（U1 `8e5a024`→U2 `4f4952d`→U3 `3874182`/U4 `5fdd6f0`＋§2 trim `223bc83e`）;C-V-0~11 全綠（live policy-gate 5003／op-log INET／CDP toast off↔on／prod build／零回歸 perf 讀5.8改7.9ms）、holistic 雙 lens ready-to-merge 0 blocking;enforce_mw/base-web 既有檔未動、SC-006/007 零回歸;rust-api `fc4b50e`→`3874182`、base-web `c2ad92f`→`223bc83e`
-- **2026-06-18 007-audit-overlay 全綠收刀（波 0 第七刀〔末〕＝audit overlay;本刀收齊波 0）**（merge `96280d8`）:L3 `xdb` crate 整檔零改拷入（§I.5⚠️v）＋L7 `audit_ctx` 全域中介層（`RequestContext` 每請求建塞 extensions／`resolve_client_ip` XFF trusted-proxy〔peer-gate→rightmost-untrusted→fail-safe、anti-spoof〕／`extract_trace_id`／`audit_mw` 全域最外層 operator-gate 寫 access-log best-effort／`to_audit_operator` op-log threading seam）＋2 append-only facade sink（`sys_access_log`/`sys_login_attempt`、`IpAddr→IpNetwork::from`）＋login inner/outer split exactly-one（not-found/wrong-pwd 同 1000、operator pre/post-identity）＋op-log threading live smoke（T018）;boot `Path::exists` 守門→`searcher_init`（缺檔降級不 panic、R1）＋`connect_info`;T009 compose env＋T019 Dockerfile xdb COPY（Manifest＋Source〔benches〕＋runtime .xdb＋builder `--locked`）。C-V-0~9 全綠（build／3 純測 8+5+4／lint 2／live login-attempt 成敗各列・access-gate・真 INET 無 42804・region 内网・behind-proxy 真 client・op-log INET round-trip／prod image 含 .xdb 11070083B）、holistic PASS（16 FR+9 SC 全 MET）、推進 DESIGN §5.9（直連→XFF trusted-proxy、非 Amendment）、零 migration/entity/型遷移/base-web/i18n/nginx、enforce_mw 未動、SC-007 零回歸;rust-api `b9de316`→`fc4b50e`（worktree `2fc0696`/`15e6491`/`fc4b50e`）
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 2 data islands 首刀 → User**（讀 3 端＋CRUD＋join `sys_user_role`、§5 全套＋M:N join＋★MODAL-WIRING 重刀;§5.8 分頁/filter/空字串守門首 exercise〔curl≠modal 經典案例、CLAUDE.md §3〕;DbErr 23505→2222 首落〔波2 CRUD unique 約束〕;DESIGN §8.2）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-user-*.md`）
+**下一步**: **波 2 Menu 刀**（DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;＋⚠️o hybrid reparent 3+1 guard 下沉 facade 自驗;＋**D1**＝getUserRoutes＋menu policy 收 user/system-settings 選單可見性＋前端 hasAuth button gating〔009/008 延此、§3.10〕＋`.env` `VITE_AUTH_ROUTE_MODE` static→dynamic;DESIGN §8.2）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-menu-*.md`）
 
 ---
 
@@ -37,12 +37,12 @@
 
 > as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);D1 波2 選單可見性 follow-up 見 §3.10。
 
-### 波 2 — data islands（未開始;③=B → User 留本波、`system_settings` 已移波1）
+### 波 2 — data islands（進行中;第一刀＝User 009 ✅;③=B → User 留本波、`system_settings` 已移波1）
 
 其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。建議序 User→Menu→Role（Menu net-new `sys_menu`＋migration、Menu 完成解鎖 Role×Menu 授權）。
 
 **刀/feature 清單**（素材=DESIGN §8.2 data island 縱切）:
-- [ ] **User 刀**（③=B → User 留本波;讀 3 端＋CRUD＋join `sys_user_role`;rev2 016*+017;§5 全套+M:N join+★MODAL-WIRING 重刀）
+- [x] **User 刀** ✅（009-user-management、merge `07b67d2`、2026-06-18;讀 3 端＋CRUD＋join `sys_user_role`、§5 全套+M:N join+MODAL-WIRING (a)+§5.8 分頁/filter 首 exercise+PageRes+23505→2222+INSERT op-log+停用登入 gate;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 - [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕）
 - [ ] **Menu 刀**（rev2 014〔runtime 讀〕/019/020/021/025;DB-driven＋CRUD＋MenuAuth＋回收桶 restore/re-parent;**＋⚠️o hybrid〔已決〕：reparent 3+1 guard 下沉 facade 自驗〔slim error enum、handler 映 2222〕**）
 - [x] ~~**`system_settings` 刀**~~ **已移波 1 第一刀（③=B、2026-06-16）**
@@ -211,8 +211,8 @@
 
 ### 3.10 008-system-settings follow-up（收刀移交 2026-06-18;均不阻塞、消費刀觸發時處理）
 
-**D1 — 選單可見性（波2 Menu 刀觸發;analyze D1／plan §7／contract §6）**:
-- [ ] 波1 static 模式下 system-settings 選單對非 super 亦可見（前端 menu 非 Casbin 過濾、惟 API `require_policy` 擋 403、**非授權破口**）→ **波2 Menu 刀**以 getUserRoutes＋m002:165 menu policy（R_SUPER）收選單可見性（非 super 不顯）、收 §I.2 menu-Casbin-enforce 機制延後;同時 `.env` `VITE_AUTH_ROUTE_MODE` static→dynamic（拍板#7、getUserRoutes 落地時）、移除波1 static route 註冊（小 throwaway）
+**D1 — 選單可見性＋前端 hasAuth gating（波2 Menu 刀觸發;008＋009 同家族共此項;analyze D1／plan §7／contract §6）**:
+- [ ] 波1/波2 static 模式下 system-settings／user 選單對非 super 亦可見（前端 menu 非 Casbin 過濾、惟 API `require_policy` 擋 403、**非授權破口**）→ **波2 Menu 刀**以 getUserRoutes＋menu policy（R_SUPER、m002:165）收選單可見性（非 super 不顯）、收 §I.2 menu-Casbin-enforce 機制延後;**＋009 延此的前端 hasAuth button gating**（009 FR-011 校正、授權靠後端 403 已擋、非破口）;同時 `.env` `VITE_AUTH_ROUTE_MODE` static→dynamic（拍板#7、getUserRoutes 落地時）、移除波1/波2 static route 註冊（小 throwaway）
 **value_type 驗型擴充（新值型 seed 觸發）**:
 - [ ] `validate_value_type` 現僅 enum 分支、非 enum 型（number/string/json）保守放行（spec.md Assumption／data-model §6「型擴充隨需要」背書、目前僅 `enum:on,off` 單鍵 seeded 無缺口）→ 後續若 seed 引入新值型 key 而未補對應驗證分支會「髒值靜默寫入」;補分支時併補純測（或在守恆檢查加「每 seeded value_type 前綴必有對應驗證分支」斷言）
 **endpoint_coverage_lint 抽取器邊界（非字面 route 參數觸發）**:
@@ -232,6 +232,8 @@
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
 **已決 27**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜③ B=`system_settings` 第一刀(2026-06-16)｜⚠️a perf 保守預設(p95 300/500/1s・99.5%)｜⚠️b 審計讀端 做+波2 殿後｜⚠️o application-RI hybrid(intra 下沉 facade/跨 facade·restore 留 handler)｜⚠️u §IV 第10題 不採納｜⚠️x endpoint_lint 波0 豁免移波1｜⚠️y biz-msg i18n A(前端譯·msg=key;規約於 003-envelope 落定〔4 根+文法+13 碼 key+兩端接線+locale 外包 backend.〕·刀1+ 僅套用)｜⚠️aa BASE-WEB-I18N-WIRING ★ 軌道(constitution §III amend v1.1.0;授權 i18n inline 接線：service/request 攔截器/locales backend 命名空間/app.d.ts Schema)｜⚠️ab constitution §I.3 措辭 PATCH(釐清 msg 載 i18n key 對齊 ⚠️y、v1.1.1)
+
+**009-user clarify／as-built（spec.md ## Clarifications／contract §3.2;非 ⚠️ 碼級）**:self-lock 防自鎖對稱守門(禁超管自我移除超管角色/自我停用→2222 整筆拒)｜批次刪缺漏 idempotent skip(已不存在/已刪 id 靜默略過、cannot-delete-self 仍獨立整批拒)｜ILIKE 處方校正(`PgExpr::ilike().escape()` runtime 失效〔sea-query 0.32.7 escape hack 不含 pg ILIKE〕→改 `LOWER(col) LIKE ESCAPE`、權威見 user-management-contract §3.2 供 Role/Menu 刀繼承)
 
 **開放 9**(依最晚決策點分組):
 - 波 1~3:⚠️m alt-login 入波(波3排程前)｜⚠️w login lockout(做、刀位/設計待排程;消費 audit-overlay 的 sys_login_attempt 索引)
