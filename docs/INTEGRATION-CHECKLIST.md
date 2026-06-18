@@ -120,15 +120,15 @@
 - [ ] XFF append 可偽造→`set_real_ip_from` 信任邊界（公網前評估）
 - [ ] image pin 一致性:alpine/openssl:latest（兩生成腳本）、base-web runtime nginx:alpine、base-web dev node:26-alpine（26.x 滑動）、postgres:17-alpine/debian patch 浮動 → 統一 pin 紀律一次處理
 - [ ] prod migrate 繼承 runtime image 無意義 HEALTHCHECK（migration 不開 port;>35s migration＋未來 `--wait` 假陰性伏筆→prod.yml 補 `healthcheck: disable`）
-- [ ] builder `cargo build` 補 `--locked`（守 lock pin 防線、防 manifest 漂移靜默 re-resolve）
-- [ ] `docker-compose.base-web.yml` 檔頭補與 master 並行撞點警示（同 project name/卷;與 rust-api standalone `7e3fed6` 對稱）
+- [x] ✅（已 007 T019、commit `e255545`）builder `cargo build --locked`（Dockerfile.rust-api.txt:58）＋dev `cargo install --locked`（:74）兩 stage 皆帶、無遺漏
+- [x] ✅（已存在）`docker-compose.base-web.yml`:27-30 檔頭已有並行撞點警示（同 project name rev3-admin／共用 base_web_node_modules·pnpm_store 卷、勿與 master 同起;與 rust-api standalone `7e3fed6` 對稱）
 - [ ] compose secrets 預檢（bind 缺檔自動建空目錄→錯誤不指向缺檔;up 前 wrapper 或文件註記）
 - [ ] `front_nginx_certs` 要不要 `external: true`（消 compose warning vs 硬前置;拍板項）
 - [ ] migrate 的 redis depends_on 與 FR-002/C-V-2 措辭對齊（實作只閘 postgres;補 depends 或修 spec 措辭;rev2 同形）
 - [ ] postgres healthcheck `pg_isready -U soybean` 缺 `-d soybean_admin_rust`（dbname 預設=username→每 10s 一條 FATAL log;波 4 obs 落地前修、一 token;rev2 同形）
 - [ ] dev watcher 工具評估:cargo-watch 上游已 archived＋`cargo install` 無版本 pin＋無 cache mount（dev image build 慢）→ 後刀換 bacon/watchexec 屬顯式決策（rev2 形 carry）
 - [ ] 冷卷首啟 `up --wait` 自癒型 flap（base-web 容忍 ≈140s/rust-api ≈240s;`down -v` 後或新機器會撞）→ quickstart 補「exit≠0 先 ps 區分仍在編譯、等穩重跑即過」一句
-- [ ] C-V-2 gate 斷言①複驗方法注記:重複 `up` 會讓 migrate one-shot 重跑、刷新 inspect 時戳（假陰性）;複驗用 `docker logs --timestamps` 首輪——波 0 出口複驗時適用
+- [x] ✅（moot、波 0 已收 2026-06-18）C-V-2 gate 斷言①複驗方法注記——「波 0 出口複驗」觸發窗口已過;手法（`docker logs --timestamps` 驗 one-shot migrate 首輪）若跨波有用可摘進 quickstart C-V-2 段、否則純歸檔
 - [ ] dispatcher `server)` 分支不 shift 不傳 `"$@"`（與 migration/cleanup-job 不對稱;多餘參數靜默丟棄;blob-identical 凍結下傾向 won't-fix、僅記錄）
 **腳本**:
 - [ ] generate-secrets.sh 刪 leaf 重跑 dual-write drift 邊角（GENERATED 視同 force 或 README 警語）
@@ -159,7 +159,7 @@
 - [ ] adapter `Cargo.toml` 內 `async-trait`/`tokio` 的 `default-features = false` 對 workspace 繼承條目 redundant → 每次 build 兩條 cargo warning（拷貝紀律刻意保留;日後拍板允許動 vendored manifest 時一併清）
 - [ ] adapter `examples/`（rbac_*.conf/csv）為 `#[cfg(test)]` fixture:prod `--bins` build 免 COPY（已驗正確、Dockerfile 有註解），但若日後在 builder/容器內跑 `cargo test` 會缺 fixture（屆時 COPY examples 或 adapter 測試改 env-gate round-trip smoke）
 **constitution（待 user 親決）**:
-- [ ] ⚠️u constitution §IV 增第 10 題（normalize/驗證流程契約修訂的 amendment 提案;PATCH 級;002 normalize 第六規則為先例——執行期發現假紅源、user 拍板補規則、契約留痕）
+- [x] ✅（已決 不採納、2026-06-16、DECISIONS §1 ⚠️u）constitution §IV 增第 10 題提案——user 拍板【不採納】;CHECKLIST §5 拍板索引已列「已決 27」含 ⚠️u、此 [ ] 為 stale 殘留、關閉對齊
 
 ### 3.6 003-envelope follow-up（收刀移交 2026-06-16;均不阻塞、消費刀觸發時處理）
 
@@ -181,7 +181,7 @@
 - [x] ✅（2026-06-17）with-ipnetwork 1.86 build 早驗綠（ipnetwork 0.20.0 入 compile graph、無退 String+cast）;inert time 0.3.47 入 lock 但 feature-gated 不編譯（註解已勘誤、見 §3.4／§3.5）
 - [x] ✅（2026-06-17、006 Unit 1）**Auth/Token time-pin landmine 已排**:006 加 jsonwebtoken 9 經 `simple_asn1` 把 time 拉進真 compile graph（`cargo tree -i time` 實證 time←simple_asn1←jsonwebtoken←server）→ pin `simple_asn1 0.6.3`（其 time req 放寬回 ^0.3）再 `time 0.3.37`，1.86 dev build＋prod `--locked` 皆綠（commit `04fc6f8`）。**順序硬約束**：simple_asn1 須先降、否則 `cargo update -p time --precise 0.3.37` 失敗（0.6.4 floor `time^0.3.47`）
 **INET log entity 消費（audit 刀觸發）**:
-- [ ] 3 INET 欄（`sys_operation_log.operator_ip`／`sys_access_log.client_ip`／`sys_login_attempt.client_ip`）`IpNetwork` 讀寫 facade＋decode 正確性——audit 刀為首個 log 消費者，須對真實資料驗 `IpNetwork` serde round-trip（本刀 entity 僅編譯綠、未跑時資料 decode）
+- [ ] 3 INET 欄 `IpNetwork` serde round-trip:**write-binding 無 42804 ✅**（3 欄、007+008 已證）;**`sys_operation_log.operator_ip` decode round-trip ✅**（008 C-V-5 經 entity Model find+IpNetwork assert）;**惟 `sys_access_log.client_ip`／`sys_login_attempt.client_ip` 仍僅 write-binding 證**——兩 sink facade 在 server/src 零 find/all 讀路徑、Model decode round-trip 待 **⚠️b 審計讀端刀**（波2 殿後）首次以 entity Model 讀回該兩表
 **casbin_rule 治理欄消費（policy 刀觸發）**:
 - [ ] `casbin_rule` entity 自定 11 欄（8 adapter 基底＋protected/created_at/created_by 治理 3）——policy 刀 cross-check:adapter 自身 8 欄 Model 對治理欄隱形（§I.6 D），確認 governance 讀寫經 entity crate Model 非 adapter Model
 **soft-delete 活體覆蓋邊界（Role/Menu 刀觸發）**:

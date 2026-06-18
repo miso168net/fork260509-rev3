@@ -45,7 +45,8 @@ if [ -f "$CERT_DIR/fullchain.pem" ] && [ "$FORCE" -eq 0 ]; then
 fi
 
 OPENSSL_IMG="alpine/openssl:latest"
-docker pull -q "$OPENSSL_IMG" >/dev/null
+# 離線/限流時 image 已 cache 則免 pull(docker pull 在 set -e 下會 abort、即使本機已有);inspect 命中即跳過。
+docker image inspect "$OPENSSL_IMG" >/dev/null 2>&1 || docker pull -q "$OPENSSL_IMG" >/dev/null
 
 run_openssl() {
     # -i:讓 heredoc stdin 進得了 container(否則 -extfile /dev/stdin 讀到空 input、SAN/BasicConstraints/KeyUsage extension 全沒 embed)
@@ -87,6 +88,10 @@ else
     CHAIN_MSG="leaf only(自簽 root = ca.pem,browser trust ca.pem 即可)"
 fi
 rm -f "$CERT_DIR/leaf.csr" "$CERT_DIR/ca.srl" "$CERT_DIR/leaf-only.pem"
+
+# 私鑰權限 600(對齊 generate-secrets.sh;Windows drvfs chmod 為 no-op 但仍執行;外部 CA 路線 ca.key 由你維護、一併收緊無害)
+chmod 600 "$CERT_DIR/privkey.pem" 2>/dev/null || true
+[ -f "$CERT_DIR/ca.key" ] && chmod 600 "$CERT_DIR/ca.key" 2>/dev/null || true
 
 # 收尾 + 教學
 cat <<EOF

@@ -25,6 +25,8 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --wait
 
 首次啟動較慢屬預期：rust-api dev image build（含 cargo-watch 源碼編譯）數分鐘；migrate cargo 冷編譯完成後 gate 才放行 rust-api（cargo cache 卷使後續啟動快）；base-web pnpm install（standalone 期已驗證的 90s 級 start_period）。
 
+> **運維 gotcha**（詳 [CLAUDE.md §8.2.1](../../CLAUDE.md)）：① 升 rust-api dev toolchain 時 `rust_api_cargo_cache` 卷會遮蓋舊 toolchain、需手動 `docker volume rm rev3-admin_rust_api_cargo_cache` 後重 build；② `down -v` 後或新機器首啟，base-web（≈140s）/rust-api（≈240s）冷編譯期 healthcheck 會 flap、`up --wait` 可能 exit≠0——先 `… ps` 看是否仍在編譯（非真失敗）、待穩重跑 `up --wait` 即過。
+
 ## prod baseline 演練（軟驗）
 
 ```bash

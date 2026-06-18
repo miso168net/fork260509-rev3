@@ -54,6 +54,10 @@ services:
       target: runtime
     image: rev3-admin-rust-api:latest
     command: ["migration", "up"]
+    # migration 走 dispatcher migration 分支、不開 31081 port → 繼承 runtime image 的
+    # HEALTHCHECK(curl :31081/health)永遠 fail（one-shot service、>35s migration＋未來 --wait 假陰性伏筆）→ 停用。
+    healthcheck:
+      disable: true
 
   postgres:
     ports:

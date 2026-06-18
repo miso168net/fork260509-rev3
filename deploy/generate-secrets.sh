@@ -18,6 +18,9 @@
 # 冪等語義:
 #   - 零參數:已存在的 .txt 直接跳過,缺失的才補生
 #   - --force:強制重生全部(leaf + URL),URL 從新 leaf cat
+#   ⚠️ dual-write drift:只刪【單一 leaf】(如 postgres_password.txt)後【裸重跑】(無 --force)→
+#      leaf 重生(GENERATED)但對應 URL(database_url.txt)仍存在走 SKIPPED、保留舊密碼 → URL 與 leaf 不同步。
+#      刪 leaf 後須 --force 全重生(或一併刪對應 URL 檔)。
 
 set -euo pipefail
 
@@ -29,7 +32,8 @@ SECRETS_DIR="$SCRIPT_DIR/secrets"
 mkdir -p "$SECRETS_DIR"
 
 OPENSSL_IMG="alpine/openssl:latest"
-docker pull -q "$OPENSSL_IMG" >/dev/null
+# 離線/限流時 image 已 cache 則免 pull(docker pull 在 set -e 下會 abort、即使本機已有);inspect 命中即跳過。
+docker image inspect "$OPENSSL_IMG" >/dev/null 2>&1 || docker pull -q "$OPENSSL_IMG" >/dev/null
 
 # gen_rand <openssl-rand-args...>:回傳隨機值(如 -base64 48 或 -hex 24;command subst 已去尾換行)
 gen_rand() {

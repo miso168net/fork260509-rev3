@@ -23,6 +23,6 @@ location /api/ {
 }
 
 location = /health {
-    add_header Content-Type text/plain;
+    default_type text/plain;
     return 200 "ok\n";
 }
