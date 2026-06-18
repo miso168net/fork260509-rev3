@@ -37,7 +37,9 @@ docker inspect "$API" --format 'rust-api StartedAt: {{.State.StartedAt}}'
 docker inspect "$NGX" --format 'front-nginx StartedAt: {{.State.StartedAt}}'
 # 斷言①：migrate FinishedAt < rust-api StartedAt（閘門核心環）
 # 斷言②：front-nginx StartedAt > rust-api StartedAt（入口最後就緒）
-# 其餘環節（postgres/redis healthy → migrate）以 compose depends_on 宣告＋ up --wait exit 0 為接受證據
+# 其餘環節：postgres healthy → migrate（migration 只需 DB、migrate depends_on 僅 postgres）；
+#   redis healthy 是 rust-api 的 depends_on precondition（非 migrate；migration 不碰 redis）→
+#   整鏈以 compose depends_on 宣告＋ up --wait exit 0 為接受證據
 # fallback（inspect 不可用時）：docker compose ... logs -t migrate | tail -3（-t 帶時戳）
 
 # 健檢 6 點（SC-002；照 CLAUDE.md §8.2.1）

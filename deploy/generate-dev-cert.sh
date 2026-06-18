@@ -121,6 +121,8 @@ if [ "$EXTERNAL_CA" -eq 0 ]; then
   sudo update-ca-certificates
 
 cert 有效期:CA 10 年 / leaf 1 年。renew 跑 \`--force\`。
+  ⚠️ 自簽路線下 --force 會【一併重生 10 年 root CA】(非只換 leaf)→ 先前 trust 進 OS/browser 的舊 ca.pem 失效、須重新 trust 新 ca.pem。
+  若只想換 leaf 不動 CA:改用外部 CA 路線(放 deploy/dev-certs/ca.pem + ca.key + rm self-signed-marker、--force 只覆寫 leaf)。
 TRUST
 else
     cat <<TRUST_EXT

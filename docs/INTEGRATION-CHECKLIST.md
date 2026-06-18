@@ -218,6 +218,11 @@
 **endpoint_coverage_lint 抽取器邊界（非字面 route 參數觸發）**:
 - [ ] `first_string_after` 抽取假設 route/policy 參數為**字面字串**（非 const）、區塊註解 route 抽取無 self-test（現況 dormant:main.rs 全字面、零區塊註解）→ 後續刀若引入 `.route(CONST,...)`/`require_policy(ROUTE_CONST,...)` 須加守門（夾 ident 字元→panic 提示更新 lint）或補區塊註解 self-test
 
+### 3.11 007-audit-overlay follow-up（XFF 解析完整化）
+
+**rust-api XFF 真實 client IP 解析尚不完整（未來 feature;user 拍板 2026-06-18、#3 衍生）**:
+- [ ] 拓樸分工已定（user 拍）:**nginx 維持忠實 append**（`proxy_add_x_forwarded_for` 把自己 IP 串進 XFF、不設 `set_real_ip_from`）、**真實 client IP 解析全由 rust-api `resolve_client_ip`（007 audit_ctx）負責**。惟現行 `resolve_client_ip`（rightmost-untrusted＋`TRUSTED_PROXY_CIDRS` gate）**尚不完整** → 後續開 feature 完整化（多跳 proxy 鏈精確處理／trusted-proxy CIDR 設定／fail-safe 邊界）;**公網部署前須收齊**（與 #2 nginx 硬化／#3 同部署窗口評估）
+
 ---
 
 ## 4. 跨 feature 待驗證項

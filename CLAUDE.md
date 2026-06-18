@@ -190,6 +190,8 @@ bump base-web to abc1234: <fork 提交主旨一行>
 bump rust-api to def5678: <fork 提交主旨一行>
 ```
 
+> **★ pin 時點紀律（008 實證、S9）**：第二段 bump pin **在該 worktree commit 落地的【當個 task／單元】即同步做**、不延到 feature 末刀。理由（001 教訓）：001 把 15 個 task 的 pin bump 全延到末刀 T021，中繼 outer commit 的 submodule pin 全部過期、`git checkout` 任一中繼 commit 不可重現當時 tasks 勾選聲明。008 已逐單元落實（U1 worktree commit→outer bump pin→U2→U3／U4，commit `3fbe81a`/`365dcaf`/`77f2634`/`7b97816`），每個 outer pin commit 都對應一個可重現的單元邊界。
+
 > **外層專屬檔的單段 commit**：`CLAUDE.md` / `docs/` / `.specify/` 等非 worktree 追蹤檔的改動，直接在 `rev3-admin-root` 改、commit、push —— 單段、無第二段 SHA pin。
 
 > **base-web 加新 naive-ui 元件的 commit 漏網**：base-web 用 `unplugin-vue-components` 自動把元件型宣告寫進 **tracked** 檔 `src/typings/components.d.ts`。view 裡**首次**用某 naive-ui 元件（如 `<NTreeSelect>`）時，running dev container 會自動重生該檔。第一段 commit 前 `cd base-web && git status` 檢查有無 `M src/typings/components.d.ts`，**有就連同引入該元件的 commit 一起 `git add`** —— 否則 fresh checkout（無 dev server）缺該元件全域型、`pnpm typecheck` 失敗。只有**全新**元件才觸發（既用過的已在檔內）。
