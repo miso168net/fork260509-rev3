@@ -382,10 +382,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **010-menu-management（波 2 第二刀＝Menu）** — 階段 1 SDD 設計鏈進行中：spec ✅／clarify ✅〔2 拍板：批次刪父子整批拒＋retroactive gating 含 user/settings〕／plan ✅（[plan.md](specs/010-menu-management/plan.md)）；待 `/speckit-tasks`
-spec/plan: 一刀整包 Menu＝動態角色選單（`getUserRoutes` Casbin `v2='menu'` 過濾、§I.2 首兌現、前端零過濾）＋選單 CRUD＋統一回收桶（已刪除欄、restore 孤兒→頂層）＋越權＋D1（選單可見性自動達成＋前端 hasAuth gating menu+user）＋`.env` static→dynamic（#7）。**11 端點**（/route getConstantRoutes〔public〕·getUserRoutes·isRouteExist〔auth-only〕／8 /systemManage *Menu* R_SUPER）。3 全專案首立：`menu_routes_for_roles`（鏡像 buttons_for_roles）／reparent 3+1 guard facade slim enum（⚠️o）／menu flat→tree 序列化（RouteMeta D2-D4）；`AuditOperation::Restore` 首 consumer。**零 migration/schema/entity、無新 crate**；Constitution 9/9 PASS。Role×Menu→Role 刀（D2）。wire id 兩域（MenuRoute.id string／Menu.id number、⚠️r）。pins rust-api `8ccea9d`／base-web `c1806680`（未動）
-下一步: `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze` → 階段 2 `superpowers:executing-plans`（~4-5 Workflow 單元：U1 動態路由讀／U2 選單寫 CRUD（reparent guard）／U3 刪除+回收桶（restore）／U4 base-web+★最後翻 .env dynamic）
-surface（plan-phase）: Q2 system-settings button gating moot-skip（無 button code＋super-only 選單已隱）；R_ADMIN `user:edit` button/`manage_role` menu vs super-only endpoint seed 不對齊（忠實 seed、登 follow-up、本刀不修）
+Active feature: **（波 2 進行中）010-menu-management ✅ 全綠收刀 merge `3810103`（2026-06-19）；下一刀＝Role 刀（待階段 0 brainstorm）**
+010 摘要: 動態角色選單（`getUserRoutes` Casbin `v2='menu'` 過濾、§I.2 首兌現、前端零過濾、tree 祖先包含）＋選單 CRUD（reparent 3+1 guard `ReparentError`）＋統一回收桶（已刪除欄、restore 孤兒→頂層、`AuditOperation::Restore` 首 consumer）＋越權（8 menu 端點 require_policy R_SUPER）＋D1（選單可見性＋前端 hasAuth gating menu+user **已兌現**）＋`.env` static→dynamic（#7 兌現）。11 端點、零 migration/entity/schema、無新 crate。4 單元 Workflow 驅動、C-V-0~12 全綠、holistic READY-TO-FINISH（11/11 SC）。★ as-built 例外：route store 1 處授權 rev3-inline（dynamic 保留前端 builtin 常數路由 login/403/404/500、修 FR-002／R-cr 預示缺口、user 拍板）。pins rust-api `c377444`／base-web `a59c2738`。詳帳見 [DECISIONS §2](docs/INTEGRATION-DECISIONS.md)／[MILESTONES §1](docs/INTEGRATION-MILESTONES.md)
+下一步: **波 2 Role 刀**（rev2 013*/016*/018；schema 起點 rev2 013〔sys_role+sys_user_role+policy seed〕；解鎖 Role×Menu 授權、消費 010 getMenuTree/getAllPages）；或 ⚠️b 審計讀端刀（殿後）。待階段 0 `superpowers:brainstorming` 起手
+010 follow-up（不阻塞、續延）: login fallback 路徑 transient「No match for login」（upstream soybean `auth.resetStore` 排序、cosmetic、可恢復）／`manage_policy-archive` view-not-found（波3 future feature seed 但無前端 view、Super console、已 dropped from sidebar）／R_ADMIN `user:edit` button vs super-only endpoint seed 不對齊（忠實 seed）
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
