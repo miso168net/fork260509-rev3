@@ -8,10 +8,10 @@
 # 設計理由:user 要求「不改 base-web/ 內任何檔」,故 .dockerignore 不能放在 base-web/。
 
 # === Stage 1: builder ===
-# ★ prod builder 刻意用 node:20.19-alpine（保守 LTS、pin patch）；dev profile 用 node:26-alpine（滑動）。
-#   兩者刻意分歧:prod 求可重現/穩定、dev 跟最新;非 bug。升 prod builder LTS 時一併重驗 corepack/pnpm。
-FROM node:20.19-alpine AS builder
-# 對齊 dev profile 跳 corepack(node 20.19 內建 corepack 對 pnpm wrap 觸發
+# ★ dev & prod 統一 node:26-alpine（大版本 pin、user #4 拍板 2026-06-18）:只 pin 大版本號、
+#   上部署時可手動 pull 大版本 latest;dev(docker-compose.dev.yml)與 prod builder 同大版本 26。
+FROM node:26-alpine AS builder
+# 用 npm install pnpm(不走 corepack;corepack 在部分 node 版本對 pnpm wrap 觸發
 # ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING — 詳見 000-base-web-docker-bootstrap.md §4 第 3 輪 debug)
 RUN npm install -g pnpm@10
 WORKDIR /app
