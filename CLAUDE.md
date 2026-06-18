@@ -382,10 +382,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 無進行中（**波 1 全完成 2026-06-18、波 2 data islands 待起跑**）
-上一刀: 008-system-settings ✅ 全完成（merge `b52dafe`，2026-06-18；波 1 第一刀＝system_settings KV 打樋；**波 1 全完成**）——3 全專案首次：首個 policy-governed 端點（`require_policy` DB-fresh per-route layer、enforce_mw 不改、5003→403 live 首証）／首個 007 op-log threading live consumer（`to_audit_operator`→operator_ip 真 INET round-trip）／立 `endpoint_coverage_lint`（⚠️x）。4 單元 Workflow 驅動（U1 `8e5a024`→U2 `4f4952d`→U3 `3874182`/U4 `5fdd6f0`＋§2 trim `223bc83e`）；C-V-0~11 全綠、holistic 雙 lens ready-to-merge 0 blocking；零 migration/entity/schema、無新 crate、enforce_mw/base-web 既有檔未動；pins rust-api `3874182`／base-web `223bc83e`；as-built 見 DECISIONS §2 波1
-下一步: **波 2 data islands 首刀＝User**（讀 3 端＋CRUD＋join `sys_user_role`、§5 全套＋M:N join＋★MODAL-WIRING 重刀、§5.8 分頁/filter/空字串守門首 exercise；DESIGN §8.2）；待階段 0 `superpowers:brainstorming` 起手（產 `docs/superpowers/<NNN>-user-*.md`）
-follow-up（D1、波2 Menu 刀）: getUserRoutes＋m002:165 menu policy 收 system-settings 選單可見性（波1 static 非 super 亦見選單、API 403 已擋非破口）；登 CHECKLIST §3.10
+Active feature: **009-user-management（波 2 資料島首刀）** — 階段 1 SDD 設計鏈進行中：spec ✅／clarify ✅〔2 拍板：防自鎖守門＋批次缺漏 idempotent〕／plan ✅（[plan.md](specs/009-user-management/plan.md)）；待 `/speckit-tasks`
+spec/plan: 6 端點 CRUD（getUserList/getAllRoles/addUser/updateUser/deleteUser/batchDeleteUser）＋角色 M:N（`replace_roles_in_txn` 與 user 寫同 txn）；全專案首次＝§5.8 分頁/filter（空字串守門＋模糊 ILIKE〔userName/nickName/userEmail〕、userPhone/enum 精確）＋`PageRes` 首消費者／23505→2222（`sql_err()` 寫端、⚠️o、不動 blanket From）／首個 INSERT op-log／停用登入 gate（status==2→1000）。零 migration/schema/entity、無新 crate；Constitution Check 9/9 PASS。**plan-phase 校正**：sys_role 欄＝`code`/`name`（非 role_code）／23505 寫端 map／前端 hasAuth gating 延波2 Menu 刀（FR-011 校正）。pins rust-api `028289a`／base-web `223bc83e`（未動）
+下一步: `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze` → 階段 2 `superpowers:executing-plans`（~4 Workflow 單元：U1 reads／U2 create·update／U3 delete·gate／U4 base-web MODAL-WIRING (a)）
+follow-up（D1、波2 Menu 刀）: getUserRoutes＋menu policy 收 user/system-settings 選單可見性＋前端 hasAuth button gating（009 延此、授權靠後端 403 已擋非破口）；登 CHECKLIST §3.10
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
