@@ -380,10 +380,10 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: 008-system-settings（波 1 第一刀＝system_settings KV 打樋；③=B）——**SDD 設計鏈進行中**：spec✅〔4 US/11 FR/7 SC/16-16〕／clarify✅〔0 問題〕／plan✅〔Constitution 9/9 PASS、Complexity N/A〕；三個全專案首次＝首個 policy-governed 端點（新 `require_policy` per-route layer、DB-fresh roles、5003→403 live 首証、enforce_mw 不改）／首個 007 op-log threading live consumer（update→operator_ip 真 INET）／立 `endpoint_coverage_lint`（⚠️x 波0 豁免項）。**待 /speckit-tasks**
-spec/plan: `specs/008-system-settings/`（plan✅[plan.md]）——research 2 大校正：**①m005 MOOT**〔端點 policy×2＋menu policy＋sys_menu 列已 m002:162-165/251 seed、本刀零 migration〕＋**②前端 static Option A**〔base-web 現 static 模式＋getUserRoutes 後端未實作、dynamic-menu＋.env dynamic〔拍板#7〕延波2 Menu 刀〕；§5.6 watcher/session_mode consumption→波3；無新 crate
-上一刀: 007-audit-overlay ✅ 全完成（merge `96280d8`，2026-06-18；波 0 末刀＝audit overlay）；**波 0 全完成（001~007）**
-下一步: 階段 1 續 `/speckit-tasks`（產 tasks.md）→ `/speckit-analyze`（跨檔 consistency）→ 階段 2 Workflow 驅動實作；⚠️ 實作首步＝facade `find_all`/`update_by_key`＋`validate_value_type` test-first（policy 已 m002 seed、零 migration）
+Active feature: 無進行中（**波 1 全完成 2026-06-18、波 2 data islands 待起跑**）
+上一刀: 008-system-settings ✅ 全完成（merge `b52dafe`，2026-06-18；波 1 第一刀＝system_settings KV 打樋；**波 1 全完成**）——3 全專案首次：首個 policy-governed 端點（`require_policy` DB-fresh per-route layer、enforce_mw 不改、5003→403 live 首証）／首個 007 op-log threading live consumer（`to_audit_operator`→operator_ip 真 INET round-trip）／立 `endpoint_coverage_lint`（⚠️x）。4 單元 Workflow 驅動（U1 `8e5a024`→U2 `4f4952d`→U3 `3874182`/U4 `5fdd6f0`＋§2 trim `223bc83e`）；C-V-0~11 全綠、holistic 雙 lens ready-to-merge 0 blocking；零 migration/entity/schema、無新 crate、enforce_mw/base-web 既有檔未動；pins rust-api `3874182`／base-web `223bc83e`；as-built 見 DECISIONS §2 波1
+下一步: **波 2 data islands 首刀＝User**（讀 3 端＋CRUD＋join `sys_user_role`、§5 全套＋M:N join＋★MODAL-WIRING 重刀、§5.8 分頁/filter/空字串守門首 exercise；DESIGN §8.2）；待階段 0 `superpowers:brainstorming` 起手（產 `docs/superpowers/<NNN>-user-*.md`）
+follow-up（D1、波2 Menu 刀）: getUserRoutes＋m002:165 menu policy 收 system-settings 選單可見性（波1 static 非 super 亦見選單、API 403 已擋非破口）；登 CHECKLIST §3.10
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

@@ -9,14 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 0 地基 ✅ 全完成（001~007 七刀全收、2026-06-18）;波 1 待起跑**（波 -1／波 0 as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 1 ✅ 全完成（008 system_settings 打樋、2026-06-18;波 0 七刀＋波 1 一刀全收）;波 2 data islands 待起跑**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-18 008-system-settings 全綠收刀（波 1 第一刀＝system_settings KV 打樋;波 1 全完成）**（merge `b52dafe`）:3 全專案首次——首個 policy-governed 端點（`require_policy` DB-fresh per-route layer、enforce_mw 不動、5003→403 live 首証）／首個 007 op-log threading live consumer（`to_audit_operator`→operator_ip 真 INET round-trip）／立 `endpoint_coverage_lint`（⚠️x:registered==as-built＋policy-governed⊆m002 seed＋self-test）。2 端點 GET/POST＋super-only＋value_type 2222＋同 txn 審計原子＋net-new base-web static 頁/rev3-* wrapper 首檔/i18n;零 migration/entity/schema（m005 MOOT）、無新 crate;4 單元 Workflow 驅動（U1 `8e5a024`→U2 `4f4952d`→U3 `3874182`/U4 `5fdd6f0`＋§2 trim `223bc83e`）;C-V-0~11 全綠（live policy-gate 5003／op-log INET／CDP toast off↔on／prod build／零回歸 perf 讀5.8改7.9ms）、holistic 雙 lens ready-to-merge 0 blocking;enforce_mw/base-web 既有檔未動、SC-006/007 零回歸;rust-api `fc4b50e`→`3874182`、base-web `c2ad92f`→`223bc83e`
 - **2026-06-18 007-audit-overlay 全綠收刀（波 0 第七刀〔末〕＝audit overlay;本刀收齊波 0）**（merge `96280d8`）:L3 `xdb` crate 整檔零改拷入（§I.5⚠️v）＋L7 `audit_ctx` 全域中介層（`RequestContext` 每請求建塞 extensions／`resolve_client_ip` XFF trusted-proxy〔peer-gate→rightmost-untrusted→fail-safe、anti-spoof〕／`extract_trace_id`／`audit_mw` 全域最外層 operator-gate 寫 access-log best-effort／`to_audit_operator` op-log threading seam）＋2 append-only facade sink（`sys_access_log`/`sys_login_attempt`、`IpAddr→IpNetwork::from`）＋login inner/outer split exactly-one（not-found/wrong-pwd 同 1000、operator pre/post-identity）＋op-log threading live smoke（T018）;boot `Path::exists` 守門→`searcher_init`（缺檔降級不 panic、R1）＋`connect_info`;T009 compose env＋T019 Dockerfile xdb COPY（Manifest＋Source〔benches〕＋runtime .xdb＋builder `--locked`）。C-V-0~9 全綠（build／3 純測 8+5+4／lint 2／live login-attempt 成敗各列・access-gate・真 INET 無 42804・region 内网・behind-proxy 真 client・op-log INET round-trip／prod image 含 .xdb 11070083B）、holistic PASS（16 FR+9 SC 全 MET）、推進 DESIGN §5.9（直連→XFF trusted-proxy、非 Amendment）、零 migration/entity/型遷移/base-web/i18n/nginx、enforce_mw 未動、SC-007 零回歸;rust-api `b9de316`→`fc4b50e`（worktree `2fc0696`/`15e6491`/`fc4b50e`）
-- **2026-06-17 006-auth-island-min 全綠收刀（波 0 第六刀＝Auth 島最小段＋runtime 骨幹第一刀）**（merge `e279f23`）:runtime 骨幹（config `_FILE` 優先 secret＋長度/change-me 守門／AppState{db,jwt,enforcer}／Casbin enforcer boot〔SeaOrmAdapter＋`DefaultModel::from_str` embedded 3-tuple RBAC〕）＋auth 機制（JWT HS256 雙鑰 sign/verify〔exp/iss/aud〕＋argon2id verify＋`enforce_mw` bearer〔3333 fail-CLOSED〕→is_current〔7777 fail-OPEN、pointer-truth-in-DB〕gate＋casbin seam/`buttons_for_roles`）＋facade（sys_token::insert_token／sys_user_role::roles_of_user／sys_user::find_by_user_name·set_pointer·current_session_id_of·find_by_id）＋`From<DbErr>`→Internal；login（argon2＋簽 access/refresh＋token_hash=sha256(refresh)＋set_pointer+insert_token 同 plain txn 原子〔SC-008〕＋1000 collapse 不洩存在）/getUserInfo（DB-fresh roles＋casbin v2=button buttons＋User→User01 alias＋userId 字串）。5 執行單元 Workflow 驅動（deps+time-pin `04fc6f8`〔jsonwebtoken9→simple_asn1→time 真圖、pin time 0.3.37+simple_asn1 0.6.3 配 1.86〕→foundation `87e10ab`→login `42ce024`→getUserInfo+enforce/session `b9de316`→final-verify）;C-V-0~6 全綠（build／11 純測〔JWT5·argon2·3·enforce-seam/buttons/union 3〕／entity_access_lint 2／live login·getUserInfo·1000·3333·7777＋psql 原子／CDP i18n toast「用户名或密码错误」／prod image build `--locked`）、holistic spec+quality 17 FR+9 SC 全 PASS 零 blocker（FR-008 stale-token DB-mutation 活證 claims hint-only）、零 migration/entity/base-web（SC-009）、SC-007 零回歸;rust-api `3d9578f`→`b9de316`
+
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 1 第一刀 → `system_settings` 打樣（③=B）**（rev2 029 子集、§5.6 熱 KV/pub-sub＋settings_watcher 獨有;migration→facade→handler→enforce→wire→frontend 全鏈一次逼出、最輕 KV entity 先打通骨架再上最重 User〔波2〕;首掛 enforce_mw route_layer→順帶立 endpoint_coverage_lint〔波 0 出口豁免項 ⚠️x〕）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-system-settings.md`）
+**下一步**: **波 2 data islands 首刀 → User**（讀 3 端＋CRUD＋join `sys_user_role`、§5 全套＋M:N join＋★MODAL-WIRING 重刀;§5.8 分頁/filter/空字串守門首 exercise〔curl≠modal 經典案例、CLAUDE.md §3〕;DbErr 23505→2222 首落〔波2 CRUD unique 約束〕;DESIGN §8.2）；**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-user-*.md`）
 
 ---
 
@@ -32,22 +33,9 @@
 
 > 七刀全收（001 infra-deploy `c9ffad5`／002 schema-baseline `9233ae0`／003 envelope `13a01b1`／004 soft-delete-infra `a1105f0`／005 audit-op-log `98f1f7e`／006 auth-island-min `e279f23`／007 audit-overlay `96280d8`;sub-crate 刀 ⚠️v 消解併入 002/007）。前置拍板 4 項（①flat-in-main／④僅 join FK／⚠️d redis pin／⚠️k mNNN）全拍（2026-06-13）。出口四項達標：dev stack healthy✅・三守恆〔entity_access_lint✅ 004・migration up→down→up✅ 002・endpoint_coverage_lint ⚠️x 豁免移波1〕・envelope 13 碼✅ 003・login→getUserInfo→enforce✅ 006 → 換波 1。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
-### 波 1 — 第一刀＝`system_settings` 打樣（未開始;③=B 拍板 2026-06-16）
+### 波 1 — 第一刀＝`system_settings` 打樋 ✅ 全完成+已歸檔 (2026-06-18)
 
-**`system_settings` 打樣（③=B）**:migration→facade→handler→enforce→wire→frontend 全鏈＋§5 各面一次逼出;以最輕、低風險的 KV entity 先打通骨架、再上最重的 User〔波2〕。
-
-**刀/feature 清單**:
-- [ ] **`system_settings` 打樣刀**（③=B;rev2 029 子集、§5.6 熱 KV/pub-sub＋settings_watcher 獨有;全鏈一次逼出）
-
-**前置拍板 ✅ 全拍完（2026-06-16;結論全文見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）**:
-- [x] ③第一刀位 ✅ **B＝`system_settings` 打樣**（user 親決、推翻前傾向 User）
-- [x] ⚠️a 效能/可用性數字 ✅ 批准保守預設（p95 300/500ms/1s・99.5%/月）
-- [x] ⚠️o application-RI ✅ **hybrid**（intra-entity 下沉 facade 自驗、跨 facade/restore 留 handler;自驗首用 Menu reparent 波2、見 DESIGN §3.3）
-
-**出口條件（DESIGN §8.4）**:
-- [ ] §8.1 工序 9 列全過
-- [ ] CDP 經 front-nginx 真 `/api` 路徑驗收
-- [ ] 該 entity 的 §5.0 列逐面勾消
+> 1 刀打樋（merge `b52dafe`）＝最輕 KV entity 跑完 §8.1 全管線、達 3 全專案首次（首個 policy-governed 端點＋require_policy 5003 live／首個 op-log threading live consumer INET round-trip／立 endpoint_coverage_lint ⚠️x）;零 migration、無新 crate;C-V-0~11 全綠、holistic ready-to-merge 0 blocking。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);D1 波2 選單可見性 follow-up 見 §3.10。
 
 ### 波 2 — data islands（未開始;③=B → User 留本波、`system_settings` 已移波1）
 
@@ -177,7 +165,7 @@
 
 **i18n 顯示端到端階梯（FR-012；機制本刀已以型別/單元/component 測覆蓋、端到端待真端點）**:
 - [x] ✅（2026-06-17、006）波 0 Auth/login 刀：login 失敗發 `1000`=`auth.login.failed`→toast 經 `$t` 在地化——006 C-V-3 CDP 實機證 toast 顯「用户名或密码错误」（非 raw key）＝i18n 顯示路徑首個端到端檢核點達成（fallback 已由 003 tsx 單元覆蓋;**踩點**：首跑 vite 服 stale locale 模組顯 raw key、`restart base-web` 後綠、CLAUDE.md §8.2.1）
-- [ ] 波 1 system_settings 刀：首個真 biz endpoint 發 per-entity `2222` key（`biz.systemSettings.*`）→per-entity 端到端；首個 list 端點順帶驗 `PageRes` runtime 形＋空字串 filter 守門（curl≠modal 經典案例、CLAUDE.md §3）
+- [x] ✅ 半（2026-06-18、008）波 1 system_settings 刀：首個真 biz endpoint 發 per-entity `2222` key（`biz.systemSettings.{invalidValue,notFound}`）→per-entity 端到端達成（C-V-6 maybe→2222 invalidValue／查無 key→2222 notFound、C-V-7 CDP 在地化 toast「設定值不符」類）;**惟** `PageRes` runtime 形＋空字串 filter 守門 system_settings flat 不觸→留**波2 User**首個 list 端點（curl≠modal 經典案例、CLAUDE.md §3）
 **顯示限制（R3、本刀不修）**:
 - [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；enforce 刀再議是否拓寬 `onError` extraction（`5003` 連發出都待 enforce 刀）
 **rust 範圍延後（R7）**:
@@ -201,8 +189,8 @@
 
 ### 3.8 005-audit-op-log follow-up（收刀移交 2026-06-17;均不阻塞、消費刀觸發時處理）
 
-**operator_ip INET 真實資料 round-trip（audit overlay／audit_ctx 刀＝007 觸發）**:
-- [ ] 本刀 op-log 寫入 `operator_ip` 恆傳 `None`（operator 來源屬後續刀）→ `IpNetwork` 寫讀 round-trip **未經真實 IP 驗證**;overlay/audit_ctx 刀為首個帶真 IP 者、須對真實 INET 值驗 `write_in_txn`→DB→讀回 serde 正確性（併 §3.7「INET log entity 消費」一條）
+**operator_ip INET 真實資料 round-trip（007 機制／✅ 008 首個業務消費者兌現）**:
+- [x] ✅（2026-06-18、008）波 1 system_settings update＝**首個 007 op-log threading live consumer**：update handler 經 `ctx.to_audit_operator(claims.uid)` 取真 operator/IP/trace 餵 `mutate_in_txn`→`write_in_txn`，op-log `operator_ip` 由恆 None→**真 INET round-trip 活證**（C-V-5 顯式 IpNetwork 203.0.113.7 by-trace 查證 serde 正確＋savepoint rollback、C-V-6 live 真 to_audit_operator）;007 T018 已先驗 threading 機制、008 為首個真業務寫端
 **redact 遮蔽清單擴充（user/session 寫端消費刀觸發）**:
 - [ ] `sys_user::audit_json` 現僅遮蔽 `password`（spec 明定本刀範圍、spec-compliant）;`current_session_id` 以原值序列化進審計快照——後續 user/session 寫端刀 impl/擴充 `AuditSerialize` 時評估 `current_session_id` 是否一併遮蔽/截斷（holistic review Lens 2 nit、非缺陷）
 **soft_delete 中途失敗審計同步（消費刀觸發）**:
@@ -214,12 +202,21 @@
 
 ### 3.9 006-auth-island-min follow-up（收刀移交 2026-06-17;均不阻塞、消費刀觸發時處理）
 
-**`enforce_mw` policy-step 上線＋5003 live（波2 首個 policy-governed 業務端點觸發）**:
-- [ ] 006 `enforce_mw` 為 **auth-only**（bearer〔3333〕→is_current〔7777〕→注入 Claims）;Casbin policy 決策 `enforce_role_path_method`＋`buttons_for_roles` 已建+seam 測（C-V-1）但**未進任何 live 請求路徑**（getUserInfo auth-only、006 無 policy-governed 端點、research R-C 校正）→ 波2 首個業務端點須決定接法（擴 `enforce_mw` 收 policy spec／加 policy-enforcing mw 層、契約 §3.4「不改 enforce_mw 本體」為目標）並**首證 5003→HTTP403 live**（curl＋空字串 filter 守門〔CLAUDE.md §3〕＋CDP modal）;同時 `endpoint_coverage_lint`〔波 0 出口三守恆未竟項〕須能分類 006 引入的 public（`/auth/login`）/auth-only（`/auth/getUserInfo`）/policy-governed 三類 route
+**`enforce_mw` policy-step 上線＋5003 live（✅ 波1 008 兌現，非波2）**:
+- [x] ✅（2026-06-18、008）波 1 第一刀 system_settings＝**首個 policy-governed 端點**：新增 `require_policy(path,method)` per-route layer（**不改 enforce_mw 本體**、守契約 §3.4;DB-fresh `roles_of_user` 不信 claims.roles→`enforce_role_path_method`→`PermissionDenied`）、兩端點各掛 route_layer＋外層 enforce_mw;**首證 5003→HTTP403 live**（C-V-6 Admin/User GET/POST→403 code 5003 不洩值＋CDP）;`endpoint_coverage_lint`（⚠️x）立、分類 public（/health、/auth/login）/auth-only（/auth/getUserInfo）/policy-governed（system_settings×2）三類＋斷言 registered==as-built＋policy-governed⊆m002 seed。空字串 filter 守門＝§5.8、system_settings flat 無 filter→留波2 User
 **token 不隨 user 停用/軟刪即時失效（波2 User CRUD／波3 session revocation 觸發）**:
 - [ ] getUserInfo `find_by_id` 不濾 `deleted_at IS NULL`、`enforce_mw` 不查 user active → 已軟刪/停用 user 持既發 access token 仍可通關至過期（≤access_ttl ~1h）;login 端 `find_by_user_name` 已濾軟刪（無法新登入）。即時撤銷（user disable/delete 即踢）屬 §I.7 完整 session 機器=波3（rotation/reuse/revocation）;波2 User CRUD 若需即時失效須提前接 revocation hook
 **JWT 參數硬編（波3 refresh/session 或 settings 觸發）**:
 - [ ] JwtConfig 的 `access_ttl`(3600s)/`refresh_ttl`(7d)/`iss`(`rev3-admin`)/`aud`(`rev3-admin-web`) 為 main.rs boot 常數;波3 refresh/session policy 或 settings 若需可設定化（per-role TTL／runtime 調）再外移、本刀硬編足夠
+
+### 3.10 008-system-settings follow-up（收刀移交 2026-06-18;均不阻塞、消費刀觸發時處理）
+
+**D1 — 選單可見性（波2 Menu 刀觸發;analyze D1／plan §7／contract §6）**:
+- [ ] 波1 static 模式下 system-settings 選單對非 super 亦可見（前端 menu 非 Casbin 過濾、惟 API `require_policy` 擋 403、**非授權破口**）→ **波2 Menu 刀**以 getUserRoutes＋m002:165 menu policy（R_SUPER）收選單可見性（非 super 不顯）、收 §I.2 menu-Casbin-enforce 機制延後;同時 `.env` `VITE_AUTH_ROUTE_MODE` static→dynamic（拍板#7、getUserRoutes 落地時）、移除波1 static route 註冊（小 throwaway）
+**value_type 驗型擴充（新值型 seed 觸發）**:
+- [ ] `validate_value_type` 現僅 enum 分支、非 enum 型（number/string/json）保守放行（spec.md Assumption／data-model §6「型擴充隨需要」背書、目前僅 `enum:on,off` 單鍵 seeded 無缺口）→ 後續若 seed 引入新值型 key 而未補對應驗證分支會「髒值靜默寫入」;補分支時併補純測（或在守恆檢查加「每 seeded value_type 前綴必有對應驗證分支」斷言）
+**endpoint_coverage_lint 抽取器邊界（非字面 route 參數觸發）**:
+- [ ] `first_string_after` 抽取假設 route/policy 參數為**字面字串**（非 const）、區塊註解 route 抽取無 self-test（現況 dormant:main.rs 全字面、零區塊註解）→ 後續刀若引入 `.route(CONST,...)`/`require_policy(ROUTE_CONST,...)` 須加守門（夾 ident 字元→panic 提示更新 lint）或補區塊註解 self-test
 
 ---
 
