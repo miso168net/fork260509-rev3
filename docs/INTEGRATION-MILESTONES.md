@@ -51,7 +51,19 @@
 
 ## §2 Roadmap & Phase 狀態 — 完成＋歸檔
 
->（收 [CHECKLIST §2](INTEGRATION-CHECKLIST.md) 完成波的快照收縮行，累積數波後批次搬入；as-built 詳帳在 DECISIONS §2、此處只存一行式快照。目前空。）
+>（收 [CHECKLIST §2](INTEGRATION-CHECKLIST.md) 完成波的收縮節〔✅ 標題＋blockquote 摘要〕；波完成批次搬入後 CHECKLIST 該波只留標題＋指標行、永遠聚焦當前波。as-built 詳帳在 DECISIONS §2〔權威〕，本節為收縮節鏡像歸檔。）
+
+### 波 -1 — repo 建構 ✅ 全完成+已歸檔 (2026-06-12)
+
+> 機械建構＋constitution 重鑄兩段全交（pre-spec-kit、全落 default branch、無 feature branch）:outer repo＋worktree/submodule 註冊 `2ec9cda`（⚠️j/⚠️q）/ 設計書入檔＋拍板回填＋歸位改名 `7fd1ac6`→`4aa7c89` / C 方案文件體系 DECISIONS+CHECKLIST+MILESTONES `4724549`・`4300b54` / graphify 首建 `8f66fe0` / 000 base-web bootstrap＋13 端點對映 `46591c4`~`e898421` / SessionStart hook 原樣承接 `ed2a789` / **constitution-rev3 v1.0.0 凍結 `167db96`**（13 項拍板融入）。出口四項全綠（session 健檢/獨立 commit/grep rev2 歸零/speckit 可用）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### 波 0 — 地基 ✅ 全完成+已歸檔 (2026-06-18)
+
+> 七刀全收（001 infra-deploy `c9ffad5`／002 schema-baseline `9233ae0`／003 envelope `13a01b1`／004 soft-delete-infra `a1105f0`／005 audit-op-log `98f1f7e`／006 auth-island-min `e279f23`／007 audit-overlay `96280d8`;sub-crate 刀 ⚠️v 消解併入 002/007）。前置拍板 4 項（①flat-in-main／④僅 join FK／⚠️d redis pin／⚠️k mNNN）全拍（2026-06-13）。出口四項達標：dev stack healthy✅・三守恆〔entity_access_lint✅ 004・migration up→down→up✅ 002・endpoint_coverage_lint ⚠️x 豁免移波1〕・envelope 13 碼✅ 003・login→getUserInfo→enforce✅ 006 → 換波 1。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### 波 1 — 第一刀＝`system_settings` 打樋 ✅ 全完成+已歸檔 (2026-06-18)
+
+> 1 刀打樋（merge `b52dafe`）＝最輕 KV entity 跑完 §8.1 全管線、達 3 全專案首次（首個 policy-governed 端點＋require_policy 5003 live／首個 op-log threading live consumer INET round-trip／立 endpoint_coverage_lint ⚠️x）;零 migration、無新 crate;C-V-0~11 全綠、holistic ready-to-merge 0 blocking。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);D1 波2 選單可見性 follow-up 見 §3.10。
 
 ---
 
