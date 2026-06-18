@@ -14,6 +14,8 @@
 3. 後續有 unique 約束的寫端（Role roleCode、Menu routeName）沿此 pattern。
 
 ## 3. §5.8 list pattern（全專案首立：空字串守門＋模糊＋分頁）
+
+> ⚠️ **校正（009 U1 活體 2026-06-18、跨 feature 權威）**：下方第 2 點「模糊」原處方 `PgExpr::ilike(...).escape(反斜線)`【編譯過但 runtime 失效】——sea-query 0.32.7 的 `drop_right_escape_hack` 只認 `BinOper::Like`（不含 pg 專屬 `PgBinOper::ILike`），ILIKE+ESCAPE 被渲染成非法 `ILIKE (pattern ESCAPE char)`（postgres syntax error→5000）。**繼承本契約的 Role/Menu 等 list 刀一律改用** `LOWER(col) LIKE '<pattern>' ESCAPE 反斜線`（column 與 pattern 兩端 lowercase 達大小寫不敏感、escape_like wildcard 規則不變）。權威實作＝rust-api `server/src/model/facade/sys_user.rs` 的 `ilike()` helper header。
 1. **空字串守門**：base-web axios 把未設 filter 序列化成 `?x=`→serde `Some("")`；handler **normalize `Some("")→None`** 後才套 filter（字串 `.filter(|v|!v.is_empty())`；enum/i16 `Some("")→Ok(None)`）。**全空 filter 回全部、不得 0 列**（curl≠modal、必 CDP 帶空 param 驗）。
 2. **模糊 vs 精確**（per-field、user 拍）：字串文本欄（如 userName/nickName/userEmail）`PgExpr::ilike('%escape_like(t)%').escape('\\')`（大小寫不敏感子字串、wildcard escape）；電話/enum 欄精確 `.eq`。
 3. **分頁**：`find_active().apply_if(filter).order_by_desc(Id).paginate(size)`→`num_items()`＝真 total、`fetch_page(current-1)`（0-based）；current 默 1、size 默 10 clamp[1,100]；**超範圍頁回空 records＋真 total**（`PageRes{current,size,total,records}`）。

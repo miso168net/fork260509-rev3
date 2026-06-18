@@ -12,6 +12,8 @@
 | 前端頁/路由 | hyphen | `views/manage/user/`／`/manage/user`（既有） |
 
 ## 1. facade `server/src/model/facade/sys_user.rs`（改：+4 fn、archetype A、entity:: 合法）
+
+> ⚠️ **校正（009 U1 活體 2026-06-18）**：下方 `list_active` 註解的 `Expr::col(col).ilike(LikeExpr::new(...).escape(反斜線))` 處方【runtime 失效】（sea-query 0.32.7 把 pg ILIKE+ESCAPE 渲染成非法 SQL）。實作改用 `LOWER(col) LIKE '<pattern>' ESCAPE 反斜線`（`Expr::expr(Func::lower(Expr::col(col))).like(...)` ＋ column/pattern 兩端 lowercase）；詳見 research.md R6 校正與 rust-api sys_user.rs `ilike()` header。
 既有不動：`soft_delete`(L47)／`find_by_user_name`(L82)／`find_by_id`(L95)／`set_pointer`／`current_session_id_of`／`impl SoftDeletable`(L10)／`impl AuditSerialize for Model`(L18-39、**已 redact password**、復用作 op-log payload)。新增：
 ```rust
 // 分頁+filter 列表（讀端、排除 soft-deleted；§5.8 首 exercise）

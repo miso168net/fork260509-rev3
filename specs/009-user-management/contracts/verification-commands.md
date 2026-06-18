@@ -9,7 +9,7 @@
 ```bash
 EXEC sh -c 'cd /app && find server/src server/tests -name "*.rs" -exec touch {} + && cargo build -p server --locked'
 ```
-- facade（sys_user 4 fn／sys_user_role 3 fn／sys_role find_active）／auth hash_password／handler system_manage（6）／login gate／main users router／error sql_err map／endpoint_coverage_lint 編譯綠；`PgExpr::ilike`/`apply_if`/`PaginatorTrait`/`SqlErr` 解析（sea-orm 1.1.20）；無新 dep。
+- facade（sys_user 4 fn／sys_user_role 3 fn／sys_role find_active）／auth hash_password／handler system_manage（6）／login gate／main users router／error sql_err map／endpoint_coverage_lint 編譯綠；`LOWER(col) LIKE ... ESCAPE`（原 `PgExpr::ilike` runtime 失效、改 `BinOper::Like`＋LOWER、見 research R6 校正）/`apply_if`/`PaginatorTrait`/`SqlErr` 解析（sea-orm 1.1.20）；無新 dep。
 
 ## C-V-1 · filter/page normalize＋escape_like 純測 → FR-001/SC-001
 ```bash
