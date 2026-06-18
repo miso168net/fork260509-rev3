@@ -90,7 +90,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2 首刀（009 user-management）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
 
 ---
 
@@ -165,13 +165,13 @@
 
 **i18n 顯示端到端階梯（FR-012；機制本刀已以型別/單元/component 測覆蓋、端到端待真端點）**:
 - [x] ✅（2026-06-17、006）波 0 Auth/login 刀：login 失敗發 `1000`=`auth.login.failed`→toast 經 `$t` 在地化——006 C-V-3 CDP 實機證 toast 顯「用户名或密码错误」（非 raw key）＝i18n 顯示路徑首個端到端檢核點達成（fallback 已由 003 tsx 單元覆蓋;**踩點**：首跑 vite 服 stale locale 模組顯 raw key、`restart base-web` 後綠、CLAUDE.md §8.2.1）
-- [x] ✅ 半（2026-06-18、008）波 1 system_settings 刀：首個真 biz endpoint 發 per-entity `2222` key（`biz.systemSettings.{invalidValue,notFound}`）→per-entity 端到端達成（C-V-6 maybe→2222 invalidValue／查無 key→2222 notFound、C-V-7 CDP 在地化 toast「設定值不符」類）;**惟** `PageRes` runtime 形＋空字串 filter 守門 system_settings flat 不觸→留**波2 User**首個 list 端點（curl≠modal 經典案例、CLAUDE.md §3）
+- [x] ✅（008 per-entity 2222／009 list 端點補齊）波 1 system_settings＝首個真 biz endpoint 發 per-entity `2222` key（C-V-6/7）;`PageRes` runtime 形＋空字串 filter 守門由 **009 getUserList** 補齊（首個 list 端點、CDP 帶空 param 回全部非 0 列＝curl≠modal 實證、C-V-9/C-V-11）
 **顯示限制（R3、本刀不修）**:
-- [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；拓寬 `onError` extraction＝**波2 User 刀**（user 拍板 2026-06-18）。**（R3 CDP 已驗 2026-06-18:Admin→403 前端實顯原生「Request failed with status code 403」、**未在地化**〔backend `system.forbidden`/5003 未被抽譯;根因 packages/axios HTTP non-2xx 走原生 reject→`error.code=ERR_BAD_REQUEST≠BACKEND_ERROR_CODE`→`request/index.ts:116` 判 false→`message=error.message`〕、頁面正常 render NEmpty 不崩。code 改動〔403/404 也抽 `error.response.data.msg` 經 translateBackendMsg〕排波2 User、與其 403 場景一起改〔base-web §III 軌道〕）**
+- [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；拓寬 `onError` extraction（**009 未做、再延**:009 守 contract §6.3【不改 request 攔截器】、只 MODAL-WIRING (a)＋2222 biz toast 在地化〔addUser dup 等〕;403/404 native msg 在地化需動 `service/request` interceptor → 改 target 為需碰 interceptor 的刀〔Menu 刀／專門〕）。**（R3 CDP 已驗 2026-06-18:Admin→403 前端實顯原生「Request failed with status code 403」、**未在地化**〔backend `system.forbidden`/5003 未被抽譯;根因 packages/axios HTTP non-2xx 走原生 reject→`error.code=ERR_BAD_REQUEST≠BACKEND_ERROR_CODE`→`request/index.ts:116` 判 false→`message=error.message`〕、頁面正常 render NEmpty 不崩。code 改動〔403/404 也抽 `error.response.data.msg` 經 translateBackendMsg〕排波2 User、與其 403 場景一起改〔base-web §III 軌道〕）**
 **rust 範圍延後（R7）**:
-- [x] ✅ 半（2026-06-17、006）`From<DbErr> for AppError`→`Internal`/5000 已由 006 帶入（sea-orm 早於 004 入 server）;**惟 `DbErr::sql_err()`→`SqlErr::UniqueConstraintViolation`（pg 23505）→`2222` 映射仍待**——login/getUserInfo 不撞 unique violation，留首個 CRUD 寫端刀（波2 User/Role）帶入（§3.8 末條同源）
+- [x] ✅（2026-06-18、009）`From<DbErr> for AppError`→`Internal`/5000（006 帶入）＋`DbErr::sql_err()`→`SqlErr::UniqueConstraintViolation`（pg 23505）→`2222`（009 addUser/updateUser 寫端 `.map_err(map_write_err)` 帶入、⚠️o blanket From 不改、C-V-6 live dup→2222 實證;§3.8 末條同源）
 **rust 信封消費（首個業務刀觸發、review 衍生、非阻塞）**:
-- [ ] `Res::ok` 採 `Res<serde_json::Value>`（`to_value` 中轉、003 時 `#[allow(dead_code)]` 無消費者）→ 首個消費業務刀重估兩點：(a) 序列化失敗 fallback `data:null` 仍掛 `code:"0000"`＝成功碼掩蓋錯誤 → 視需要導向 `AppError::Internal(5000)`；(b) 熱路徑大 payload 的 double-serialization（to_value→Json）→ 可改保留泛型 `Res<T>` 直接 Json、省中轉。**（008 觸發：波1 system_settings＝首個 `Res::ok` 業務消費者〔get flat 小陣列／update `Value::Null`〕；payload 極小 →(a) 序列化失敗不現實、(b) double-ser 成本可忽略，兩點皆不觸 → 留首個【重 payload】消費者〔波2 User `PageRes` 大列表〕實評）**
+- [x] ✅（2026-06-18、009/PageRes 實評:double-ser 成本可忽略·序列化失敗 fallback 不現實·維持現狀）`Res::ok` 採 `Res<serde_json::Value>`（`to_value` 中轉、003 時 `#[allow(dead_code)]` 無消費者）→ 首個消費業務刀重估兩點：(a) 序列化失敗 fallback `data:null` 仍掛 `code:"0000"`＝成功碼掩蓋錯誤 → 視需要導向 `AppError::Internal(5000)`；(b) 熱路徑大 payload 的 double-serialization（to_value→Json）→ 可改保留泛型 `Res<T>` 直接 Json、省中轉。**（008 觸發：波1 system_settings＝首個 `Res::ok` 業務消費者〔get flat 小陣列／update `Value::Null`〕；payload 極小 →(a) 序列化失敗不現實、(b) double-ser 成本可忽略，兩點皆不觸 → 留首個【重 payload】消費者〔波2 User `PageRes` 大列表〕實評）**
 **測試守護 fidelity（review 衍生、非阻塞）**:
 - [ ] base-web i18n 單元測 `src/locales/__tests__/translate-backend-msg.spec.ts` 以既有 `tsx` **重建** `translateBackendMsg` 公式（非 import 真匯出——`@/locales` 載入鏈耦合 `import.meta.env`/`localStorage`、純 node 不可解）→ 引入真測試環境（vitest+jsdom 或 vite-node＋shim）時改 import 實際 export 閉合 fidelity gap；`pnpm test` 現＝單一 i18n 腳本、屆時併入正式 suite
 
@@ -185,7 +185,7 @@
 **casbin_rule 治理欄消費（policy 刀觸發）**:
 - [ ] `casbin_rule` entity 自定 11 欄（8 adapter 基底＋protected/created_at/created_by 治理 3）——policy 刀 cross-check:adapter 自身 8 欄 Model 對治理欄隱形（§I.6 D），確認 governance 讀寫經 entity crate Model 非 adapter Model
 **soft-delete 活體覆蓋邊界（Role/Menu 刀觸發）**:
-- [ ] `sys_role`／`sys_menu` 的 `find_active` 活體驗證待各自業務刀 list 端點順帶覆蓋（本刀僅 `sys_user` 活體證〔C-V-2〕、其餘 2 由共用 trait＋compile 繼承、spec SC-001 接受此驗證級別）
+- [ ] `sys_menu` 的 `find_active` 活體驗證待 Menu 刀 list 端點覆蓋（`sys_user` 004 C-V-2 活體證、**`sys_role` 009 getAllRoles live 覆蓋 ✅**;`sys_menu` 由共用 trait＋compile 繼承、spec SC-001 接受此級別待 Menu 刀補活體）
 
 ### 3.8 005-audit-op-log follow-up（收刀移交 2026-06-17;均不阻塞、消費刀觸發時處理）
 
@@ -198,7 +198,7 @@
 **op-log `operation` 字串契約對齊（op-log 讀端＝波2 ⚠️b 觸發）**:
 - [ ] `AuditOperation::as_str()` 定 `operation` 欄封閉詞彙＝`INSERT`/`UPDATE`/`SOFT_DELETE`/`RESTORE`（005 `SOFT_DELETE`＋**008 `UPDATE`** 經 live smoke 實證〔008 C-V-5 op-log `operation='UPDATE'`〕、`INSERT`/`RESTORE` 隨各寫端刀漸用）;op-log 讀端（rust 查詢 filter／base-web UI by-operation dropdown）字串須對齊此契約——rust 端 ref `AuditOperation` enum、base-web 端硬編字串須一致（勿造 `DELETE` 之類不符值致 filter 失準）
 **DbErr→AppError 映射（首個消費 soft_delete 的 handler 刀觸發）**:
-- [ ] 本刀 `soft_delete`/`mutate_in_txn`/`write_in_txn` 為首批【產 `DbErr` 的 facade 方法】（004 的 `find_active` 僅回 `Select`、未執行）;`From<DbErr> for AppError`→Internal/5000 **已由 006 帶入**（見 §3.6 同條）、惟本刀 facade 仍無 handler 消費。首個把 `soft_delete` 接進 handler 的刀須驗該映射實際觸發＋補 `sql_err()` 23505→`2222`（波2 CRUD）
+- [x] ✅（2026-06-18、009）首個把 `soft_delete` 接進 handler＝009 deleteUser/batchDeleteUser（`DbErr→AppError`→Internal 映射實際觸發）;`sql_err()` 23505→`2222` 補齊＝addUser/updateUser 寫端 `.map_err(map_write_err)`（⚠️o、blanket `From<DbErr>` 不改、禁裸 `?`）、C-V-6 live dup user_name→2222 非 5000 實證
 
 ### 3.9 006-auth-island-min follow-up（收刀移交 2026-06-17;均不阻塞、消費刀觸發時處理）
 
@@ -222,6 +222,15 @@
 
 **rust-api XFF 真實 client IP 解析尚不完整（未來 feature;user 拍板 2026-06-18、#3 衍生）**:
 - [ ] 拓樸分工已定（user 拍）:**nginx 維持忠實 append**（`proxy_add_x_forwarded_for` 把自己 IP 串進 XFF、不設 `set_real_ip_from`）、**真實 client IP 解析全由 rust-api `resolve_client_ip`（007 audit_ctx）負責**。惟現行 `resolve_client_ip`（rightmost-untrusted＋`TRUSTED_PROXY_CIDRS` gate）**尚不完整** → 後續開 feature 完整化（多跳 proxy 鏈精確處理／trusted-proxy CIDR 設定／fail-safe 邊界）;**公網部署前須收齊**（與 #2 nginx 硬化／#3 同部署窗口評估）
+
+### 3.12 009-user-management follow-up（收刀移交 2026-06-18;均不阻塞、消費刀觸發時處理）
+
+**User wire type-lie（typings 收斂刀觸發;⚠️r 契約漂移、user 對 type-lie 敏感）**:
+- [ ] `getUserList` 的 `nickName`/`userPhone`/`userEmail` 當 DB NULL 時序列化為 `null`（rust `Option<String>`），但 base-web `Api.SystemManage.User` 宣告 non-null `string`＝wire↔typings type-lie（runtime 前端容忍 null、typecheck 不抓〔只驗前端碼非 rust 輸出〕）。009 守 contract §6.3【不改既有 system-manage.d.ts】未消解 → typings 收斂時（Menu 刀／專門）把該 3 欄改 `string | null` 對齊 rust（同 ⚠️r 精神）
+**審計 payload 未含角色集 delta（⚠️b 審計讀端刀觸發）**:
+- [ ] addUser/updateUser 的 op-log `payload_before`/`payload_after` 僅快照 `sys_user` Model（`audit_json`、password 已 redact）、**未含 `sys_user_role` 角色集 before/after**;原子性（user+roles+op-log 同 txn）已足、spec FR-006 未要求逐項列角色 → ⚠️b 審計讀端刀若要呈現「誰把 user 角色由 A 改 B」現查不到、屆時評估 payload 併入 role code 集 delta（holistic nit、非缺陷）
+**getAllRoles/replace_roles「啟用角色」語意（Role 刀 confirm）**:
+- [ ] getAllRoles 與 replace_roles 用 `sys_role::find_active`（僅濾 `deleted_at`、**不濾 `status`**）＝「啟用」解作未軟刪（SoftDeletable 語意、data-model §3／contract §6.1 背書）;FR-008「目前啟用角色」若 Role 刀日後要排除 status=停用角色不可指派、再於 find_active 後加 status 守門（本刀 by-design、非缺口）
 
 ---
 
