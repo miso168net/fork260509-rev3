@@ -25,11 +25,11 @@
 
 **Target Platform**: 001 dev/prod 容器堆疊（rust-api dev `cargo watch`；驗證容器內 `docker exec`）。
 
-**Project Type**: web（rust-api backend＋base-web frontend）——rust：L4 facade（sys_user list/create/update/find_active_by_id＋sys_user_role role_ids/replace/batch＋sys_role find_active）＋L4 auth/password hash_password＋L5 handler（6 端點）＋L4 main 接線（復用 008 require_policy）＋login gate＋error.rs sql_err map＋L8 endpoint_coverage_lint bump；base-web L3 wrapper（rev3-system-manage.ts）＋L1/L2 typings（rev3-system-manage.d.ts）＋L4 view（MODAL-WIRING (a)）＋locale（I18N-WIRING (ii)）。
+**Project Type**: web（rust-api backend＋base-web frontend）——rust：L4 facade（sys_user list/create/update/find_active_by_id＋sys_user_role replace/batch＋sys_role find_active）＋L4 auth/password hash_password＋L5 handler（6 端點）＋L4 main 接線（復用 008 require_policy）＋login gate＋handler sql_err map〔error.rs 不改〕＋L8 endpoint_coverage_lint bump；base-web L3 wrapper（rev3-system-manage.ts）＋L1/L2 typings（rev3-system-manage.d.ts）＋L4 view（MODAL-WIRING (a)）＋typings app.d.ts Schema＋locale（I18N-WIRING (ii)(iii)）。
 
 **Performance Goals**: list 讀 p95<300ms／寫（含同 txn 審計）p95<500ms（⚠️a 保守預設）；list roles 批次 `roles_for_users(&[i64])`（無 N+1、固定 3 query/頁）；`require_policy` per-request `roles_of_user` join（getUserInfo 已同 join、proven-affordable）。
 
-**Constraints**: `enforce_mw`/`require_policy`/`From<DbErr>` 本體不改（§3.4／⚠️o）；授權 subject＝DB-fresh roles 非 claims.roles（§I.3 FR-008）；**零 migration/schema/entity 變更**；無新 crate；base-web 既有檔不改（rev3-* wrapper/新 typings/MODAL-WIRING (a) inline／locale 加 key、fork-delta rev3-inline 紀律）；前端 hasAuth gating＋dynamic menu＝波2（static 維持）；push/merge 凍結至 finishing（§I.4）。
+**Constraints**: `enforce_mw`/`require_policy`/`From<DbErr>` 本體不改（§3.4／⚠️o）；授權 subject＝DB-fresh roles 非 claims.roles（§I.3／spec FR-007）；**零 migration/schema/entity 變更**；無新 crate；base-web 既有檔不改（rev3-* wrapper/新 typings/MODAL-WIRING (a) inline／locale 加 key、fork-delta rev3-inline 紀律）；前端 hasAuth gating＋dynamic menu＝波2（static 維持）；push/merge 凍結至 finishing（§I.4）。
 
 **Scale/Scope**: admin 使用者表小（≤50 並發 admin、§1.3）；6 rust 端點＋既有 base-web 頁接線。
 
@@ -40,12 +40,12 @@
 | # | 題 | 判定 |
 |---|---|---|
 | 1 | 違反 §I.1 base-web 權威？rust-api 缺對應 endpoint？ | **PASS**——base-web 有 user CRUD wire（`system-manage.d.ts` User/UserSearchParams/AllRole＋既有 view、CRUD 現 stub）；本刀 rust-api 補齊 6 對應 endpoint；m002 policy 已就位、兩端俱在 |
-| 2 | 動 base-web inline？屬 MODAL-WIRING ★ 哪用途？依 fork-delta 紀律？ | **PASS**——MODAL-WIRING **(a)** 接線（drawer `handleSubmit` create/update＋`index.vue` `handleDelete`/`handleBatchDelete`，§III.2 既授 v1.0.0）＋BASE-WEB-I18N-WIRING **(ii)**（`backend.biz.user.*` locale）＋WRAPPER（`rev3-system-manage.ts` 新檔）＋ADAPT（`rev3-system-manage.d.ts` 新檔）皆**既授**；**MW (b) hasAuth gating 不做、延波2 Menu 刀**（research R3 校正）；不改既有 system-manage.ts/system-manage.d.ts/auth.ts；inline 處 `rev3-inline MW(a)` 修改型原行註解保留 |
+| 2 | 動 base-web inline？屬 MODAL-WIRING ★ 哪用途？依 fork-delta 紀律？ | **PASS**——MODAL-WIRING **(a)** 接線（drawer `handleSubmit` create/update＋`index.vue` `handleDelete`/`handleBatchDelete`，§III.2 既授 v1.0.0）＋BASE-WEB-I18N-WIRING **(ii)(iii)**（`backend.biz.user.*` locale＋`app.d.ts` `App.I18n.Schema` 型、先 Schema 後 locale）＋WRAPPER（`rev3-system-manage.ts` 新檔）＋ADAPT（`rev3-system-manage.d.ts` 新檔）皆**既授**；**MW (b) hasAuth gating 不做、延波2 Menu 刀**（research R3 校正）；不改既有 system-manage.ts/system-manage.d.ts/auth.ts；inline 處 `rev3-inline MW(a)` 修改型原行註解保留 |
 | 3 | menu 顯示走 Casbin enforce？demo ⚠️p？ | **PASS（機制延波2）**——user 為**既有** manage 頁（非新頁、非 demo、⚠️p N/A）；選單可見性 Casbin（getUserRoutes）＝**波2 Menu 刀**（static 維持）；本刀 API 層 require_policy 已強制（R_ADMIN 可讀 list、寫限 R_SUPER）。**同 008 D1**：static 下非 super 仍見 user 選單、API 擋 403、非破口→波2 Menu 刀收 |
 | 4 | wire 對齊 §I.3 typings 權威？ | **PASS**——envelope `Res{data,code,msg}`／`PageRes{current,size,total,records}`（camelCase、無 success/pages）；**`id`=number**（`CommonRecord.id`、⚠️r、非 auth `userId` 的 string）；business error 2222/HTTP200、5003→403；type-lie 於序列化邊界消解（createBy/updateBy `Option<i64>→string`、createTime/updateTime rfc3339、userGender/status i16→'1'/'2'、userRoles code[]）；2^53 fail-loud guard；mock 僅 fixture |
 | 5 | 從 rev2 source 拷貝 code？ | **PASS**——借 rev2 016/017 設計、code 全新寫（§I.5／⚠️g 受控參照）；**不帶回**已推翻行為（rev2 017 op-log `ip:None`／id-string／`Number()` 補丁皆不帶） |
 | 6 | 抵觸 §II 拍板 #1~#13？ | **PASS**——#1 `Super/Admin/User`＋User→User01 alias（006 已建、本刀不動）；#10 wire id ⚠️r（id=number）；**#7 dynamic route mode**：本刀維持 static、dynamic＝波2 Menu 刀（getUserRoutes 落地時）＝排程性**非 violation**（同 008）。無拍板需改 |
-| 7 | 觸 §III ★ 軌道？授權邊界內？ | **PASS**——MODAL-WIRING **(a)**＋BASE-WEB-I18N-WIRING **(ii)** 皆**本檔已授**、在邊界內；WRAPPER／ADAPT／RUSTAPI-SOURCE-ISOLATION（§III.1 預設可動）。MW (b) 不觸（延波2） |
+| 7 | 觸 §III ★ 軌道？授權邊界內？ | **PASS**——MODAL-WIRING **(a)**＋BASE-WEB-I18N-WIRING **(ii)(iii)** 皆**本檔已授**、在邊界內；WRAPPER／ADAPT／RUSTAPI-SOURCE-ISOLATION（§III.1 預設可動）。MW (b) 不觸（延波2） |
 | 8 | 新建業務表（migration）？§I.6 六審計欄？ | **PASS（未觸）**——**零 migration**；`sys_user`/`sys_role`（archetype A 全 6 審計欄、m001）＋`sys_user_role`（archetype C 零審計硬刪、m001）＋partial-unique＋6 端點 policy（m002）皆已建。寫端 create/update/delete 成對寫審計欄（`*_at`+`*_by`、§I.6）；**無 retrofit** |
 | 9 | 觸 §I.7 行為島（token/policy/single-session）？ | **PASS（未觸/守）**——停用登入 gate **只擋新登入**（不動 token rotation／policy governance／single-session 三台狀態機）；deleteUser soft_delete 不碰 `current_session_id` pointer／`is_current`；即時 token 撤銷（停用即踢）＝**波3、不前拉**；§I.7 invariants 不受影響 |
 
@@ -60,11 +60,11 @@
 specs/009-user-management/
 ├── spec.md              # /speckit-specify ✅（6 US／12 FR／11 SC＋2 Clarifications；FR-011 plan 校正去 hasAuth）
 ├── plan.md              # 本檔
-├── research.md          # Phase 0 ✅（R1 零 migration・R2 sys_role 欄名・R3 hasAuth 延波2・R4-R10 grep ground-truth）
+├── research.md          # Phase 0 ✅（R1 零 migration・R2 sys_role 欄名・R3 hasAuth 延波2・R4-R11 grep ground-truth）
 ├── data-model.md        # Phase 1 ✅（facade 6 fn＋handler 6 端點＋DTO/wire 3 端＋filter/分頁/23505/op-log/login gate/lint）
 ├── quickstart.md        # Phase 1 ✅
 ├── contracts/
-│   ├── verification-commands.md     # C-V-0~13（build／純測／lint×2／live op-log·23505·self-guard·filter／policy-gate／CDP／typecheck／prod build／零回歸）
+│   ├── verification-commands.md     # C-V-0~14（build／純測／lint×2／live op-log·23505·self-guard·filter／policy-gate／CDP／typecheck／prod build／零回歸）
 │   └── user-management-contract.md  # 跨 feature 不變式（CRUD+M:N 寫同 txn／23505 sql_err pattern／空字串+模糊 filter／分頁／停用 gate／wire 3 端）
 └── checklists/requirements.md       # 16/16 ✅
 ```
@@ -73,20 +73,21 @@ specs/009-user-management/
 ```text
 rust-api/server/src/
 ├── model/facade/sys_user.rs        # 改：+ list_active(分頁+filter)／create／update／find_active_by_id／build_*_active_model 純測（SoftDeletable/AuditSerialize 既存、redact password 既存）
-├── model/facade/sys_user_role.rs   # 改：+ role_ids_of_user(Vec<i64>)／replace_roles_in_txn(同 txn)／roles_for_users(&[i64]→HashMap 批次)（roles_of_user 既存不動）
+├── model/facade/sys_user_role.rs   # 改：+ replace_roles_in_txn(同 txn)／roles_for_users(&[i64]→HashMap 批次)（roles_of_user 既存不動）
 ├── model/facade/sys_role.rs        # 改：+ find_active list fn（getAllRoles 用；現零 query fn）
 ├── auth/password.rs                # 改：+ prod hash_password（Argon2::default()+SaltString::generate(OsRng)；既有 hash() #[cfg(test)] 不動）
 ├── handler/system_manage.rs        # ★ 新：6 handler（get_user_list/get_all_roles/add_user/update_user/delete_user/batch_delete_user）＋DTO（UserListItem/AllRoleItem/UserUpsertReq/IdReq/IdsReq）＋filter normalize＋escape_like
 ├── handler/mod.rs                  # 改：+ pub mod system_manage;
 ├── handler/auth.rs                 # 改：login_inner 密碼驗證後加 status==Some(2)→LoginFailed(1000) 停用 gate
-├── error.rs                        # 改：addUser/updateUser 寫端 e.sql_err()→UniqueConstraintViolation→Biz(2222)（不動 blanket From<DbErr>）— 落點見 data-model §7
+├── (error.rs 不改)                 # blanket From<DbErr>→Internal 保留；23505→2222 map 在 handler/system_manage.rs 寫端 .map_err（⚠️o、data-model §7）
 └── main.rs                         # 改：users 子 router（6 路由各 route_layer(require_policy)＋外層 enforce_mw）.merge(users)；+ mod
 rust-api/server/tests/endpoint_coverage_lint.rs  # 改：AS_BUILT_ROUTES [&str;5]→[&str;11]（+6 distinct path）
 base-web/src/
 ├── service/api/rev3-system-manage.ts        # ★ 新（WRAPPER §III.1）：fetchGetUserList／fetchGetAllRoles?／fetchAddUser／fetchUpdateUser／fetchDeleteUser／fetchBatchDeleteUser
 ├── typings/api/rev3-system-manage.d.ts      # ★ 新（ADAPT §III.1、declaration-merge）：UserUpsertModel（write DTO；不改既有 system-manage.d.ts）
 ├── views/manage/user/index.vue              # 改（MODAL-WIRING (a)）：handleDelete/handleBatchDelete 接真 fn（去 console.log stub）
-├── views/manage/user/modules/user-operate-drawer.vue  # 改（MODAL-WIRING (a)）：handleSubmit 接 add/update（分支 operateType）＋移除 getRoleOptions mock workaround(:81-87)
+├── views/manage/user/modules/user-operate-drawer.vue  # 改（MODAL-WIRING (a)）：handleSubmit 接 add/update（分支 operateType）＋移除 getRoleOptions mock workaround（grep marker `// if the real request, remove the following code`）
+├── typings/app.d.ts                        # 改（I18N-WIRING (iii)）：App.I18n.Schema.backend.biz 加 user:{duplicateUserName,notFound,cannotDeleteSelf,selfLockForbidden} 型（★ 先 Schema 後 locale、否則 dict typecheck red）
 └── locales/langs/{zh-cn,en-us}.ts           # 改（I18N-WIRING (ii)）：backend.biz.user.{duplicateUserName,notFound,cannotDeleteSelf,selfLockForbidden}
 # ALREADY（不動）：entity/src/{sys_user,sys_role,sys_user_role}.rs／migration（m001/m002/m003 已 seed schema+policy+FK）／audit_ctx.rs+to_audit_operator（007）／enforce_mw+require_policy+roles_of_user（006/008）／mutate_in_txn+SoftDeletable+PageRes（004/005）／blanket From<DbErr>+envelope 13 碼（003/006）／base-web auth.ts/system-manage.ts/system-manage.d.ts/request 攔截器（既有）
 ```

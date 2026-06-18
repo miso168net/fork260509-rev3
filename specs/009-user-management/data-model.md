@@ -63,12 +63,8 @@ pub async fn find_active_by_id<C: ConnectionTrait>(conn:&C, id:i64) -> Result<Op
 - `build_create_active_model`/`build_update_active_model` 純測 seam（欄映射、created_at/updated_at·updated_by 成對 Set）。**lint**：entity:: 僅 facade。
 - `UserWrite{ user_name:String, nick_name:Option<String>, user_gender:Option<i16>, user_phone:Option<String>, user_email:Option<String>, status:Option<i16> }`（facade 入參、handler 從 DTO 轉）；`UserFilter{ user_name/nick_name/user_email/user_phone:Option<String>, user_gender/status:Option<i16> }`（**已 normalize 空字串→None**、§5/handler）。
 
-## 2. facade `server/src/model/facade/sys_user_role.rs`（改：+3 fn；roles_of_user(L11) 不動）
+## 2. facade `server/src/model/facade/sys_user_role.rs`（改：+2 fn；roles_of_user(L11) 不動）
 ```rust
-// 單 user role-id 讀（與 code 版並存）
-pub async fn role_ids_of_user<C: ConnectionTrait>(conn:&C, uid:i64) -> Result<Vec<i64>, DbErr>
-//   Entity::find().filter(Column::UserId.eq(uid)).select_only().column(Column::RoleId).into_tuple()
-
 // list 批次組裝（無 N+1、固定查詢；user_ids→{uid: Vec<code>}）
 pub async fn roles_for_users<C: ConnectionTrait>(conn:&C, uids:&[i64]) -> Result<HashMap<i64,Vec<String>>, DbErr>
 //   (1) sys_user_role filter UserId.is_in(uids) → Vec<(user_id, role_id)>
@@ -173,20 +169,21 @@ let users = Router::new()
 | `nickName`/`userPhone`/`userEmail` | string | `Option<String>` | 直（null→?；typings 宣告 string，必要時 unwrap_or_default） |
 | `status` | `'1'\|'2'\|null` | `status:Option<i16>` | `.map(\|n\|n.to_string())` |
 | `userRoles` | string[] | （join） | `roles_for_users` code[]（批次） |
-| `createBy`/`updateBy` | string（non-null） | `created_by/updated_by:Option<i64>` | `.map(\|v\|v.to_string()).unwrap_or_default()`（NULL→`""`、雙重 lie 消解） |
+| `createBy`/`updateBy` | string（non-null） | `created_by/updated_by:Option<i64>` | `.map(\|v\|v.to_string()).unwrap_or_default()`（NULL→`""`＝忠實具現〔系統列無 operator〕、§I.3 lie-ledger 不需加列；i64→string 為 ⚠️r 邊界轉換、非謊） |
 | `createTime` | string | `created_at:DateTimeWithTimeZone` | `.to_rfc3339()` |
 | `updateTime` | string（non-null） | `updated_at:Option<...>` | `.map(\|v\|v.to_rfc3339()).unwrap_or_default()`（NULL→`""`） |
 | `AllRole.id/roleName/roleCode` | number/string/string | sys_role `id/name/code` | id number；name→roleName；code→roleCode |
 - **讀端零 password**（UserListItem 無 password 欄）。write `UserUpsertReq` 無 password（addUser 預設 123456 後端 hash）。drawer `Model`＝`Pick<User,...>`＝component state 天然對齊。2^53 fail-loud guard（id）。
 
-## 10. i18n keys（BASE-WEB-I18N-WIRING (ii)、⚠️y canonical；wire msg＝key 去 backend. 前綴）
-- `backend.biz.user.duplicateUserName`（23505 dup）／`backend.biz.user.notFound`（查無/id parse 失敗）／`backend.biz.user.cannotDeleteSelf`／`backend.biz.user.selfLockForbidden`（自我降權/停用）——zh-cn/en-us 兩家、加於既有 `backend.biz`（zh:710-714 後）。攔截器/translateBackendMsg **無需改**（自動 `$t('backend.'+msg)`、R-D）。停用登入用 `auth.login.failed`（既有、復用）。
+## 10. i18n keys（BASE-WEB-I18N-WIRING (ii)(iii)、⚠️y canonical；wire msg＝key 去 backend. 前綴）
+- **(ii) locale**：`backend.biz.user.duplicateUserName`（23505 dup）／`backend.biz.user.notFound`（查無/id parse 失敗）／`backend.biz.user.cannotDeleteSelf`／`backend.biz.user.selfLockForbidden`（自我降權/停用）——zh-cn/en-us 兩家、加於既有 `backend.biz`（zh:710-714 後）。攔截器/translateBackendMsg **無需改**（自動 `$t('backend.'+msg)`、R-D）。停用登入用 `auth.login.failed`（既有、復用）。
+- **★ (iii) Schema**：`src/typings/app.d.ts` `App.I18n.Schema.backend.biz` 加 `user:{duplicateUserName,notFound,cannotDeleteSelf,selfLockForbidden}` 型（**先 Schema 後 locale**；locale dict 宣告 `const local: App.I18n.Schema`、缺 Schema 鍵→excess-property typecheck red、C-V-12 紅；同 008 「先 Schema 後 locale」）。Schema 與 locale 同 commit 對齊。
 
 ## 11. base-web wire＋frontend（WRAPPER/ADAPT/MODAL-WIRING (a)）
 - `service/api/rev3-system-manage.ts`（新、`import {request} from '../request'`、view 直接路徑 import 非 barrel）：`fetchAddUser(model)`／`fetchUpdateUser(model)`（帶 id）／`fetchDeleteUser(id)`／`fetchBatchDeleteUser(ids)`／（getUserList/getAllRoles 既有 system-manage.ts 可續用或 wrap）。
 - `typings/api/rev3-system-manage.d.ts`（新、declaration-merge `Api.SystemManage`）：`UserUpsertModel`（write DTO、`Pick<User,7 欄>` + 可選 id；不改既有 system-manage.d.ts）。
 - `views/manage/user/index.vue`（MW (a)）：`handleDelete(id)`→`fetchDeleteUser`／`handleBatchDelete`→`fetchBatchDeleteUser`（去 console.log stub:147-159）；`rev3-inline MW(a)` 修改型原行註解保留。
-- `views/manage/user/modules/user-operate-drawer.vue`（MW (a)）：`handleSubmit`(:105) 於 `await validate()` 後插 HTTP（`props.operateType` add→fetchAddUser／edit→fetchUpdateUser 帶 `props.rowData.id`）；**移除 getRoleOptions mock workaround**(:81-87、註解明示 "if real request, remove")→`roleOptions.value = options`。
+- `views/manage/user/modules/user-operate-drawer.vue`（MW (a)）：`handleSubmit`(:105) 於 `await validate()` 後插 HTTP（`props.operateType` add→fetchAddUser／edit→fetchUpdateUser 帶 `props.rowData.id`）；**移除 getRoleOptions mock workaround**（grep 穩定 marker `// if the real request, remove the following code`、約 :82-89、行號易 rot）→`roleOptions.value = options`。
 - **MW (b) hasAuth gating 不做**（R3、延波2 Menu 刀）。
 
 ## 12. `server/tests/endpoint_coverage_lint.rs`（改：bump、research R11）

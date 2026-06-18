@@ -29,7 +29,7 @@
 2. **只擋新登入**：已發 token 不即時撤銷（≤token 到期自然失效）；即時撤銷（停用即踢）＝波3、不動 token/single-session 狀態機。
 
 ## 6. wire／i18n 不變式（§I.3 typings 權威＋§III 軌道）
-1. **wire 3 端對齊**（rust DTO camelCase ↔ typings ↔ component）；`CommonRecord.id`＝**JSON number**（⚠️r、非 auth `userId` string）；type-lie 於序列化邊界消解（`Option<i64>→string`、i16→`'1'/'2'`、datetime rfc3339、NULL→`""`）；2^53 fail-loud guard。
+1. **wire 3 端對齊**（rust DTO camelCase ↔ typings ↔ component）；`CommonRecord.id`＝**JSON number**（⚠️r、非 auth `userId` string）；type-lie 於序列化邊界消解（`Option<i64>→string`、i16→`'1'/'2'`、datetime rfc3339、NULL→`""`＝忠實具現非 lie-ledger 列）；2^53 fail-loud guard。**`userRoles` wire＝`sys_role.code[]`**（讀寫皆 code、facade 邊界解 code↔role_id；繼承的 Role 刀 §8.6 勿誤推 id[]/name[]）。
 2. **軌道（皆既授）**：rev3-* wrapper（WRAPPER §III.1）／新 typings 檔（ADAPT §III.1）／MODAL-WIRING **(a)** 既有頁 handleSubmit+index.vue delete handler（§III.2）／`backend.biz.user.*`（I18N-WIRING (ii)、⚠️y）。**MW (b) hasAuth gating 延波2 Menu 刀**（授權靠後端 403、前端可見性收於 getUserRoutes）。
 3. **不改既有 base-web 檔**（system-manage.ts/.d.ts/auth.ts/request 攔截器不動；只新增＋locale 加 key、fork-delta rev3-inline 紀律）。
 

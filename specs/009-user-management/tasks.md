@@ -18,7 +18,7 @@
 
 ## Phase 2: Foundational（blocking US1~US4：共享 facade seam＋純函式）
 
-- [ ] T002 [P] sys_user_role facade 3 fn 於 `rust-api/server/src/model/facade/sys_user_role.rs`（`roles_of_user` L11 不動）：`role_ids_of_user(conn,uid)->Vec<i64>`／`roles_for_users(conn,&[i64])->HashMap<i64,Vec<String>>`（批次、無 N+1、固定查詢、code）／`replace_roles_in_txn(txn,uid,&[code])`（delete-all+insert-all、code→role_id 經 sys_role find_active 解析、未知/已刪靜默丟）（data-model §2）
+- [ ] T002 [P] sys_user_role facade 2 fn 於 `rust-api/server/src/model/facade/sys_user_role.rs`（`roles_of_user` L11 不動）：`roles_for_users(conn,&[i64])->HashMap<i64,Vec<String>>`（批次、無 N+1、固定查詢、code）／`replace_roles_in_txn(txn,uid,&[code])`（delete-all+insert-all、code→role_id 經 sys_role find_active 解析、未知/已刪靜默丟）（data-model §2）
 - [ ] T003 [P] sys_role facade `find_active(conn)->Vec<Model>` 於 `rust-api/server/src/model/facade/sys_role.rs`（現零 query fn；getAllRoles＋replace_roles 解析用；R2 欄 `code`/`name`）（data-model §3）
 - [ ] T004 [P] 純函式 helper（**test-first red→green**）於 `rust-api/server/src/handler/system_manage.rs`（新檔；`handler/mod.rs` 加 `pub mod system_manage;`）：filter normalize（空字串→None：字串 `.filter(|v|!v.is_empty())`／gender·status `Some("")→Ok(None)` 再 parse i16）／`escape_like(raw)`（`\`→`\\`、`%`→`\%`、`_`→`\_`、backslash 先）／page normalize（current 默 1·max(1)／size 默 10·clamp[1,100]）／wire mapper（id 2^53 fail-loud／i16→`'1'/'2'`／`Option<i64>→string|""`）。純測：C-V-1/C-V-3（data-model §5、research R6）
 - [ ] T005 [P] base-web wrapper skeleton（WRAPPER §III.1、首批 user rev3-* 檔）：`base-web/src/service/api/rev3-system-manage.ts`（`import {request} from '../request'`、view 直接路徑 import 非 barrel）`fetchAddUser`/`fetchUpdateUser`/`fetchDeleteUser`/`fetchBatchDeleteUser`（4 寫端）＋`base-web/src/typings/api/rev3-system-manage.d.ts`（ADAPT、declaration-merge `Api.SystemManage`）`UserUpsertModel`（write DTO、不改既有 system-manage.d.ts）（data-model §11、research R-D §6）
@@ -43,11 +43,11 @@
 **Independent Test**: C-V-6（addUser→psql user+role+op-log INSERT 真 INET；dup userName→2222）。
 
 - [ ] T010 [P] [US2] auth `hash_password(plain)->Result<String,_>`（`Argon2::default()`+`SaltString::generate(&mut OsRng)`、對齊 m002 seed+既有 verify）+純測 於 `rust-api/server/src/auth/password.rs`（既有 verify／`#[cfg(test)] hash` 不動）（data-model §4）
-- [ ] T011 [US2] sys_user facade `create(conn,UserWrite,password_hash,operator,trace)->Model`（`mutate_in_txn`：ActiveModel set 基本欄+created_at/created_by+session_policy "inherit"→`am.insert(&txn)`→**INSERT op-log `entity_id:Some(after.id)`/before:None/after:audit_json**〔首個 Insert constructor〕）+`build_create_active_model` 純測 於 sys_user.rs（research R8、data-model §1）
+- [ ] T011 [US2] sys_user facade `create(conn,UserWrite,password_hash,operator,trace)->Model`（`mutate_in_txn`：ActiveModel set 基本欄+created_at/created_by+session_policy "inherit"→`am.insert(&txn)`→**INSERT op-log `entity_id:Some(after.id)`/before:None/after:audit_json**〔首個 Insert constructor〕）+`build_create_active_model` 純測〔C-V-2：`cargo test -p server active_model`〕於 sys_user.rs（research R8、data-model §1）
 - [ ] T012 [US2] handler `get_all_roles(State,Extension<Claims>)->Res<Vec<AllRoleItem>>`（sys_role `find_active`〔T003〕→map `code→roleCode`/`name→roleName`/id number）於 handler/system_manage.rs（R2、data-model §5）
 - [ ] T013 [US2] handler `add_user(State,Extension<RequestContext>,Extension<Claims>,Json<UserUpsertReq>)->Res<()>`（`hash_password("123456")`〔T010〕→`ctx.to_audit_operator`→`create`+`replace_roles_in_txn` 同 txn；**寫端 `.map_err(sql_err→Some(UniqueConstraintViolation)→Biz("biz.user.duplicateUserName") else Internal)`**、禁裸 `?`）於 handler/system_manage.rs（research R5、data-model §5/§7）
 - [ ] T014 [US2] `main.rs` 註冊 `POST /systemManage/addUser`＋`GET /systemManage/getAllRoles`（各 `route_layer(require_policy)`、入 `users` 子 router）＋`endpoint_coverage_lint` `[&str;6]→[&str;8]`（+addUser/getAllRoles、同 commit）
-- [ ] T015 [P] [US2] base-web（MODAL-WIRING (a)）：`base-web/src/views/manage/user/modules/user-operate-drawer.vue` `handleSubmit`(:105) 於 `await validate()` 後分支 `props.operateType` add→`fetchAddUser`〔T005〕＋**移除 getRoleOptions mock workaround(:81-87)**→`roleOptions.value = options`（真 getAllRoles）；`rev3-inline MW(a)` 原行註解保留。i18n：`base-web/src/locales/langs/{zh-cn,en-us}.ts` 加 `backend.biz.user.duplicateUserName`（I18N-WIRING (ii)、⚠️y）
+- [ ] T015 [P] [US2] base-web（MODAL-WIRING (a)）：`base-web/src/views/manage/user/modules/user-operate-drawer.vue` `handleSubmit`(:105) 於 `await validate()` 後分支 `props.operateType` add→`fetchAddUser`〔T005〕＋**移除 getRoleOptions mock workaround**（grep 穩定 marker `// if the real request, remove the following code`、約 :82-89）→`roleOptions.value = options`（真 getAllRoles）；`rev3-inline MW(a)` 原行註解保留。**i18n（★ 先 Schema 後 locale、I18N-WIRING (ii)(iii)、⚠️y；同 commit 對齊否則 C-V-12 red）**：`base-web/src/typings/app.d.ts` `App.I18n.Schema.backend.biz` 加 `user:{duplicateUserName,notFound,cannotDeleteSelf,selfLockForbidden}` 型〔(iii)〕＋`base-web/src/locales/langs/{zh-cn,en-us}.ts` `backend.biz.user.*` **全 4 鍵**譯文〔(ii)〕
 - [ ] T016 [US2] C-V-6 live（`#[ignore]` `--test-threads=1` `DATABASE_URL`）：addUser→psql `sys_user` 新列（argon2 `verify("123456")` 通過）+`sys_user_role`(roles)+`sys_operation_log` 末列 INSERT/entity_id/operator_ip 真 INET/trace；**重複 user_name→Biz 2222 非 5000**。對應 SC-003
 
 **Checkpoint**: US2 全綠（新增+角色+審計+唯一）→ **雙段 commit**（rust-api／base-web worktree→pin）
@@ -57,10 +57,10 @@
 **Goal**: super updateUser（userName/password 不動、角色整批替換、UPDATE op-log、self-lock 防護）。
 **Independent Test**: C-V-7（update 不動帳密+roles 替換+op-log；self-demote/disable→2222）。
 
-- [ ] T017 [US3] sys_user facade `update(conn,id,UserWrite,operator,trace)->Option<Model>`＋`find_active_by_id(conn,id)`（`mutate_in_txn`：find_active_by_id None→Ok(None)；命中→into_active_model set 基本欄+updated_at/updated_by 成對、**不 set user_name/password**→`am.update`→UPDATE op-log `entity_id:Some(id)`/before+after audit_json）+`build_update_active_model` 純測 於 sys_user.rs（data-model §1）
+- [ ] T017 [US3] sys_user facade `update(conn,id,UserWrite,operator,trace)->Option<Model>`＋`find_active_by_id(conn,id)`（`mutate_in_txn`：find_active_by_id None→Ok(None)；命中→into_active_model set 基本欄+updated_at/updated_by 成對、**不 set user_name/password**→`am.update`→UPDATE op-log `entity_id:Some(id)`/before+after audit_json）+`build_update_active_model` 純測〔C-V-2〕於 sys_user.rs（data-model §1）
 - [ ] T018 [US3] handler `update_user(...Json<UserUpsertReq>)->Res<()>`（id `String→i64` fail→`Biz("biz.user.notFound")`；**self-guard**：`id==claims.uid && (R_SUPER ∉ user_roles || status==Some("2"))`→`Biz("biz.user.selfLockForbidden")` 2222 整筆不執行；`update` None→`Biz("biz.user.notFound")`+`replace_roles_in_txn` 同 txn；寫端 sql_err map）於 handler/system_manage.rs（data-model §5、spec FR-004/clarify Q1）
 - [ ] T019 [US3] `main.rs` 註冊 `POST /systemManage/updateUser`（route_layer require_policy、入 users）＋`endpoint_coverage_lint` `[&str;8]→[&str;9]`（同 commit）
-- [ ] T020 [P] [US3] base-web（MODAL-WIRING (a)）：`user-operate-drawer.vue` `handleSubmit` edit 分支→`fetchUpdateUser({...model, id: props.rowData.id})`〔T005〕。i18n 加 `backend.biz.user.{notFound,selfLockForbidden}`
+- [ ] T020 [P] [US3] base-web（MODAL-WIRING (a)）：`user-operate-drawer.vue` `handleSubmit` edit 分支→`fetchUpdateUser({...model, id: props.rowData.id})`〔T005〕。i18n 已於 T015 一次補齊（Schema+locale 全 4 鍵、含 notFound/selfLockForbidden）
 - [ ] T021 [US3] C-V-7 live：updateUser→`user_name`/`password` hash 不變（psql 比對）+`sys_user_role` 替換+op-log UPDATE；查無 id→notFound；**self 移除超管/設停用→selfLockForbidden 2222、DB 無變**。對應 SC-004
 
 **Checkpoint**: US3 全綠（修改+self-guard）→ **雙段 commit**
@@ -72,7 +72,7 @@
 
 - [ ] T022 [US4] handler `delete_user(...Json<IdReq>)`／`batch_delete_user(...Json<IdsReq>)->Res<()>`（id parse String→i64；**self in ids→`Biz("biz.user.cannotDeleteSelf")` 整批拒、無 partial**；複用既有 `facade::sys_user::soft_delete`〔L47〕loop、已不存在/已刪 id no-op 靜默略過）於 handler/system_manage.rs（data-model §5、spec FR-005/clarify Q2）
 - [ ] T023 [US4] `main.rs` 註冊 `DELETE /systemManage/deleteUser`＋`DELETE /systemManage/batchDeleteUser`（route_layer require_policy、入 users）＋`endpoint_coverage_lint` `[&str;9]→[&str;11]`（+2、同 commit；6 user 路由全註冊完成）
-- [ ] T024 [P] [US4] base-web（MODAL-WIRING (a)）：`base-web/src/views/manage/user/index.vue` `handleDelete`(:154)→`fetchDeleteUser(id)`／`handleBatchDelete`(:147)→`fetchBatchDeleteUser(checkedRowKeys)`〔T005〕（去 console.log stub、`rev3-inline MW(a)` 原行註解保留）。i18n 加 `backend.biz.user.cannotDeleteSelf`
+- [ ] T024 [P] [US4] base-web（MODAL-WIRING (a)）：`base-web/src/views/manage/user/index.vue` `handleDelete`(:154)→`fetchDeleteUser(id)`／`handleBatchDelete`(:147)→`fetchBatchDeleteUser(checkedRowKeys)`〔T005〕（去 console.log stub、`rev3-inline MW(a)` 原行註解保留）。i18n 已於 T015 補齊（含 cannotDeleteSelf）
 - [ ] T025 [US4] C-V-8 live：delete/batch→`deleted_at`/`deleted_by` 成對、`find_active` 不再現、op-log SOFT_DELETE；**含 operator 自身（單/批）→2222 整批拒、DB 無變**；批次含已刪 id→略過、有效照刪。對應 SC-005
 
 **Checkpoint**: US4 全綠（刪除+self-guard+idempotent）→ **雙段 commit**
@@ -93,13 +93,13 @@
 **Independent Test**: C-V-10（停用 user 登入→1000）。
 
 - [ ] T028 [US6] `rust-api/server/src/handler/auth.rs` `login_inner` 密碼 `password::verify` 通過後（auth.rs:76 後、`let uid=model.id` 前）加 `if model.status == Some(2) { return Err((Some(model.id), AppError::LoginFailed)); }`（code 1000 統一失敗、復用既有碼/i18n、防枚舉；status 已在 find_by_user_name 回的 Model）（research R10、data-model §6）
-- [ ] T029 [US6] C-V-10 live：Super 設某 user status=2（updateUser）→該 user `auth/login`→`code:"1000"`（與帳密錯同訊息、不洩停用）；啟用 user 登入正常。對應 SC-007
+- [ ] T029 [US6] C-V-10 live：Super 設某 user status=2（updateUser）→該 user `auth/login`→`code:"1000"`（與帳密錯同訊息、不洩停用）；啟用 user 登入正常（US6 scenario 2 防 gate 過廣；既有 Super/Admin/User C-V-9/10 登入已 transitively 覆蓋正向路徑）。對應 SC-007
 
 **Checkpoint**: US6 全綠（停用 gate）→ **雙段 commit**
 
 ## Phase 9: Polish & Cross-Cutting
 
-- [ ] T030 [P] C-V-0 build `--locked`（容器內 force-touch、無新 dep）＋C-V-12 base-web `pnpm typecheck`（rev3-system-manage.ts+UserUpsertModel 對齊既有 User/UserSearchParams/AllRole、wire 3 端零型謊；`--no-verify` commit）
+- [ ] T030 [P] C-V-0 build `--locked`（容器內 force-touch、無新 dep）＋C-V-12 base-web `pnpm typecheck`（rev3-system-manage.ts+UserUpsertModel 對齊既有 User/UserSearchParams/AllRole、wire 3 端零型謊；`--no-verify` commit）。SC-011 perf by-inspection（⚠️a、無 load-test infra、見 C-V-14 出口；可選 `curl -w %{time_total}` spot-check）
 - [ ] T031 C-V-11 CDP 經 front-nginx 真 `/api` 全鏈：Super 登入→/manage/user 頁→搜尋（**刻意空 param 回全部+模糊 userName**）→新增（填表+角色 chip 真 code→**真發 addUser**→toast+列現新列）→編輯（改暱稱/角色→真發 updateUser）→刪除（NPopconfirm→真發 deleteUser→列消失）→批次刪→真發 batchDeleteUser；2222 toast 經 `$t` 在地化；非 super→403。對應 SC-008（★斷言真發 request、非 toast）
 - [ ] T032 C-V-14 prod target image build（`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`、無新 crate→輕、確認新 facade/handler/login gate/error map/lint 編入）
 - [ ] T033 C-V-13 零回歸收口：`/health` ok；`enforce_mw`/`require_policy`/`From<DbErr>`(blanket)/`audit_mw`/login 既有流程/getUserInfo/008 settings 不變；diff **零 migration/entity/schema**；base-web 既有 system-manage.ts/.d.ts/auth.ts/request 攔截器**不改**（只新增 rev3-* wrapper/typings/MODAL-WIRING (a) inline/locale 加 key、fork-delta rev3-inline）；quickstart 15 步逐步綠。對應 SC-010
