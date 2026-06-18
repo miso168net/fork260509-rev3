@@ -90,7 +90,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,波 0 已收 6 刀（001 scaffold＋compose/deploy／002 migration ×4＋sea-orm-adapter crate／003 envelope/error＋base-web i18n 5 檔／004 entity crate＋soft-delete lint／005 audit／006 config/state/auth/handler/facade）新碼均未入圖,待一輪 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
 
 ---
 
@@ -167,11 +167,11 @@
 - [x] ✅（2026-06-17、006）波 0 Auth/login 刀：login 失敗發 `1000`=`auth.login.failed`→toast 經 `$t` 在地化——006 C-V-3 CDP 實機證 toast 顯「用户名或密码错误」（非 raw key）＝i18n 顯示路徑首個端到端檢核點達成（fallback 已由 003 tsx 單元覆蓋;**踩點**：首跑 vite 服 stale locale 模組顯 raw key、`restart base-web` 後綠、CLAUDE.md §8.2.1）
 - [x] ✅ 半（2026-06-18、008）波 1 system_settings 刀：首個真 biz endpoint 發 per-entity `2222` key（`biz.systemSettings.{invalidValue,notFound}`）→per-entity 端到端達成（C-V-6 maybe→2222 invalidValue／查無 key→2222 notFound、C-V-7 CDP 在地化 toast「設定值不符」類）;**惟** `PageRes` runtime 形＋空字串 filter 守門 system_settings flat 不觸→留**波2 User**首個 list 端點（curl≠modal 經典案例、CLAUDE.md §3）
 **顯示限制（R3、本刀不修）**:
-- [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；enforce 刀再議是否拓寬 `onError` extraction（`5003` 連發出都待 enforce 刀）
+- [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 致 envelope msg 今日不顯示（DESIGN §7.3 既認限制）；enforce 刀再議是否拓寬 `onError` extraction。**（008 觸發：波1 system_settings＝首個發 `5003`/403 的端點〔C-V-6 Admin/User curl 實證 403 code 5003〕；惟 base-web 前端 403 顯示路徑〔是否在地化顯 `system.forbidden`〕CDP 收口時 deferred、未瀏覽器驗 → 本決策現已 actionable，波2 User/Menu 刀順帶決定 `onError` 是否抽 403/404 envelope msg＋瀏覽器實證）**
 **rust 範圍延後（R7）**:
 - [x] ✅ 半（2026-06-17、006）`From<DbErr> for AppError`→`Internal`/5000 已由 006 帶入（sea-orm 早於 004 入 server）;**惟 `DbErr::sql_err()`→`SqlErr::UniqueConstraintViolation`（pg 23505）→`2222` 映射仍待**——login/getUserInfo 不撞 unique violation，留首個 CRUD 寫端刀（波2 User/Role）帶入（§3.8 末條同源）
 **rust 信封消費（首個業務刀觸發、review 衍生、非阻塞）**:
-- [ ] `Res::ok` 採 `Res<serde_json::Value>`（`to_value` 中轉、本刀 `#[allow(dead_code)]` 無消費者）→ 首個消費 `Res::ok` 的業務刀重估兩點：(a) 序列化失敗 fallback `data:null` 仍掛 `code:"0000"`＝成功碼掩蓋錯誤 → 視需要導向 `AppError::Internal(5000)`；(b) 熱路徑大 payload 的 double-serialization（to_value→Json）→ 可改保留泛型 `Res<T>` 直接 Json、省中轉
+- [ ] `Res::ok` 採 `Res<serde_json::Value>`（`to_value` 中轉、003 時 `#[allow(dead_code)]` 無消費者）→ 首個消費業務刀重估兩點：(a) 序列化失敗 fallback `data:null` 仍掛 `code:"0000"`＝成功碼掩蓋錯誤 → 視需要導向 `AppError::Internal(5000)`；(b) 熱路徑大 payload 的 double-serialization（to_value→Json）→ 可改保留泛型 `Res<T>` 直接 Json、省中轉。**（008 觸發：波1 system_settings＝首個 `Res::ok` 業務消費者〔get flat 小陣列／update `Value::Null`〕；payload 極小 →(a) 序列化失敗不現實、(b) double-ser 成本可忽略，兩點皆不觸 → 留首個【重 payload】消費者〔波2 User `PageRes` 大列表〕實評）**
 **測試守護 fidelity（review 衍生、非阻塞）**:
 - [ ] base-web i18n 單元測 `src/locales/__tests__/translate-backend-msg.spec.ts` 以既有 `tsx` **重建** `translateBackendMsg` 公式（非 import 真匯出——`@/locales` 載入鏈耦合 `import.meta.env`/`localStorage`、純 node 不可解）→ 引入真測試環境（vitest+jsdom 或 vite-node＋shim）時改 import 實際 export 閉合 fidelity gap；`pnpm test` 現＝單一 i18n 腳本、屆時併入正式 suite
 
@@ -196,7 +196,7 @@
 **soft_delete 中途失敗審計同步（消費刀觸發）**:
 - [ ] 本刀 rollback 證明經「裸 `mutate_in_txn`＋raw SQL write-then-Err」演練（FR-010 單一 proof 範圍、contract C-V-2 明示設計、非 vacuous）;`soft_delete` 自身中途失敗（DB 約束衝突等）的審計同步回滾由 `mutate_in_txn` 機制保證、可留消費刀以注入約束衝突收緊覆蓋
 **op-log `operation` 字串契約對齊（op-log 讀端＝波2 ⚠️b 觸發）**:
-- [ ] `AuditOperation::as_str()` 定 `operation` 欄封閉詞彙＝`INSERT`/`UPDATE`/`SOFT_DELETE`/`RESTORE`（本刀僅 `SOFT_DELETE` 經 live smoke 實證、其餘 3 隨各寫端刀漸用）;op-log 讀端（rust 查詢 filter／base-web UI by-operation dropdown）字串須對齊此契約——rust 端 ref `AuditOperation` enum、base-web 端硬編字串須一致（勿造 `DELETE` 之類不符值致 filter 失準）
+- [ ] `AuditOperation::as_str()` 定 `operation` 欄封閉詞彙＝`INSERT`/`UPDATE`/`SOFT_DELETE`/`RESTORE`（005 `SOFT_DELETE`＋**008 `UPDATE`** 經 live smoke 實證〔008 C-V-5 op-log `operation='UPDATE'`〕、`INSERT`/`RESTORE` 隨各寫端刀漸用）;op-log 讀端（rust 查詢 filter／base-web UI by-operation dropdown）字串須對齊此契約——rust 端 ref `AuditOperation` enum、base-web 端硬編字串須一致（勿造 `DELETE` 之類不符值致 filter 失準）
 **DbErr→AppError 映射（首個消費 soft_delete 的 handler 刀觸發）**:
 - [ ] 本刀 `soft_delete`/`mutate_in_txn`/`write_in_txn` 為首批【產 `DbErr` 的 facade 方法】（004 的 `find_active` 僅回 `Select`、未執行）;`From<DbErr> for AppError`→Internal/5000 **已由 006 帶入**（見 §3.6 同條）、惟本刀 facade 仍無 handler 消費。首個把 `soft_delete` 接進 handler 的刀須驗該映射實際觸發＋補 `sql_err()` 23505→`2222`（波2 CRUD）
 
