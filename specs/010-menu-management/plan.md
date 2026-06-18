@@ -85,7 +85,7 @@ rust-api/server/src/
 └── (error.rs 不改 blanket)    # menu biz 2222 於 handler match（reparent/delete enum→2222、route_name 23505 sql_err、沿 009）
 rust-api/server/tests/endpoint_coverage_lint.rs  # 改：AS_BUILT_ROUTES [&str;11]→[&str;22]（+11；/route/* public·auth-only 入 AS_BUILT 但非 policy-routes）
 base-web/src/
-├── .env                                   # 改（BASE-WEB-ADAPT、#7）：VITE_AUTH_ROUTE_MODE static→dynamic（★ base-web 單元最後一步）
+../.env（★ 即 base-web/.env、root、非 src/——易誤）  # 改（BASE-WEB-ADAPT、#7）：VITE_AUTH_ROUTE_MODE static→dynamic（★ base-web 單元最後一步）
 ├── service/api/rev3-system-manage.ts      # 改（WRAPPER）：+fetchAddMenu/fetchUpdateMenu/fetchDeleteMenu/fetchBatchDeleteMenu/fetchRestoreMenu（getMenuList/v2·getMenuTree·getAllPages·route.ts 既有續用）
 ├── typings/api/rev3-system-manage.d.ts    # 改（ADAPT）：menu write DTO＋deleted flag（declaration-merge、不改既有 Menu/Api.Route）
 ├── views/manage/menu/index.vue            # 改（MODAL-WIRING (a)(b)）：handleDelete/handleBatchDelete→真 fn＋「已刪除」欄＋restore action＋hasAuth(menu:*) gating

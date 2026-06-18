@@ -9,7 +9,7 @@
 | 端點 path | camelCase 尾／kebab | `/route/getUserRoutes`／`/systemManage/getMenuList/v2`／`/systemManage/addMenu` |
 | wire DTO/typings | camelCase | `routeName`／`menuType`／`parentId`／`hideInMenu`／`iconType` |
 | **id 兩域（⚠️r）** | string vs number | `Api.Route.MenuRoute.id`＝**string**／`Api.SystemManage.Menu.id`＝**number** |
-| i18n biz key | `biz.menu.<condition>` camel | `biz.menu.duplicateRouteName`／`reparentTargetMissing`／`wouldCycle`／`protectedFixed`／`hasActiveChildren`／`notFound` |
+| i18n biz key（全 8 鍵、§5/§8 權威） | `biz.menu.<condition>` camel | `duplicateRouteName`／`notFound`／`reparentTargetMissing`／`notDirectory`／`wouldCycle`／`protectedFixed`／`protectedNoDelete`／`hasActiveChildren` |
 | component 字串 | layout$view | `layout.base$view.manage_menu`／`layout.base`／`view.manage_menu` |
 
 ## 1. enforce `server/src/auth/enforce.rs`（改：+menu_routes_for_roles；既有不動）
@@ -152,7 +152,7 @@ let menus = Router::new()
 - **★ (iii) Schema**：`app.d.ts` `App.I18n.Schema.backend.biz` 加 `menu:{...8 鍵}`（**先 Schema 後 locale**、沿 009/008）。
 
 ## 9. base-web wire＋frontend（.env／WRAPPER／ADAPT／MODAL-WIRING (a)(b)、research R7/R8/R11/R-cr）
-- **`.env`**：`VITE_AUTH_ROUTE_MODE=static`→`dynamic`（BASE-WEB-ADAPT #7、**base-web 單元最後一步** R8）。route store/transform/builtin **不改**（R-cr）。
+- **`base-web/.env`**（★ root、**非** `src/.env`、F1 校正）：`VITE_AUTH_ROUTE_MODE=static`→`dynamic`（BASE-WEB-ADAPT #7、**base-web 單元最後一步** R8）。route store/transform/builtin **不改**（R-cr）。
 - **L3 WRAPPER** `service/api/rev3-system-manage.ts`（沿 009 檔加、direct-path）：`fetchAddMenu(model)`／`fetchUpdateMenu(model)`（帶 id）／`fetchDeleteMenu(id)`／`fetchBatchDeleteMenu(ids)`／`fetchRestoreMenu(id)`；getMenuList/v2·getMenuTree·getAllPages（system-manage.ts 既有）·getConstantRoutes/getUserRoutes（route.ts 既有）續用。
 - **L1/L2 ADAPT** `typings/api/rev3-system-manage.d.ts`：`MenuUpsertModel`（write DTO、Pick<Menu,...>+可選 id）＋為 mgmt 列加 `deleted?:boolean`（declaration-merge `Api.SystemManage`、不改既有 `Menu`/`Api.Route`）。
 - **L4 MODAL-WIRING (a)** `views/manage/menu/index.vue`：handleDelete→fetchDeleteMenu／handleBatchDelete→fetchBatchDeleteMenu（去 console.log stub）＋**新增「已刪除」欄**（讀 row.deleted）＋**restore action**（deleted 列→fetchRestoreMenu）；`menu-operate-modal.vue` handleSubmit→add→fetchAddMenu／edit/addChild→fetchUpdateMenu（getSubmitParams 既有、parentId 0=頂層）；父選擇 getMenuTree、page 下拉 getAllPages、route_name isRouteExist 前驗。標 `rev3-inline MW(a)`、原 stub 行註解保留。
