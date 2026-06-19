@@ -2,7 +2,9 @@
 
 > **波 2 第三刀＝Role**（資料島群 User→Menu→**Role**）。本檔＝階段 0 brainstorm 產出，作為階段 1 `/speckit-specify` 的 input。
 > act-on-code 接地源＝當前 lineage（rust-api `c377444`／base-web `a59c2738`、皆 010 收刀後）親 grep＋psql ground-truth；rev2 設計借鏡不照拷（§I.5／RUSTAPI-SOURCE-ISOLATION：design 繼承、code 全新寫、不 grep rev1/rev2 source）。
-> 3 拍板已於 brainstorm 對話定（user 親決）：**D1 scope＝menu-auth only**／**D2 治理姿態＝最小、治理留波3**／**D3 delete guards＝seeded+in-use+self**。
+> 3 拍板已於 brainstorm 對話定（user 親決）：**D1 scope＝menu-auth only**／**D2 治理姿態（★ B1 校正後）＝DB-first 合規寫入**〔直寫 casbin_rule＋與審計同交易原子＋寫後 load_policy reload；②受保護移除→整批拒〕、僅 archive/restore/PolicyMutated-優化/publish-watcher 治理機留波3／**D3 delete guards＝seeded+in-use+self**。
+>
+> **★ B1 校正（2026-06-19 /speckit-analyze 抓出、user 拍板 option 1）**：本檔 §3 D2/D4・§4.2・§7 Q9 原描述「經 enforcer MgmtApi `remove_filtered_policy`+`add_policies` auto-persist、與 op-log 非原子、protected 不強制」**違反 constitution §I.7 §4.2 ①DB-first／④原子審計／⑤reload 凍結不變式**（rev2-034 被推翻的舊路徑、§V.3 MAJOR-protected）。已改 **DB-first `set_role_dimension`**：diff(current vs desired)→revoke(DELETE)+grant(INSERT) **直寫 `casbin_rule`**（經 11-col governance entity）於 `mutate_in_txn` **同交易**寫 op-log（原子）、②讀 `protected` 拒移除、寫後 `enforcer.write().await.load_policy()` 全量重載。權威 DB-first 設計見 spec/plan/research/data-model/contracts（已 regen）；本檔下方 §3 D2/D4・§4.2・§7 Q9 之 MgmtApi 字樣**以此校正為準**（史料、不逐段重寫）。
 
 ---
 
