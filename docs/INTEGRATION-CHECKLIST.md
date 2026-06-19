@@ -18,7 +18,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **⚠️b 審計查詢讀端＋UI 刀**（波 2 殿後刀;三 log 讀端〔sys_operation_log/sys_access_log/sys_login_attempt〕＋R_SUPER policy seed＋manage 新頁 MODAL-WIRING (e)＋§5.8 讀端 filter〔operation/access 補索引、login 已就緒〕;wire 從零設計〔rev2 零讀端〕;DESIGN §8.2、[DECISIONS §1 ⚠️b](INTEGRATION-DECISIONS.md)）。**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-audit-*.md`）
+**下一步**: **012-audit-log-query（⚠️b 審計查詢讀端＋UI、波 2 殿後刀）階段 0 brainstorm ✅**（`docs/superpowers/012-audit-log-query.md`、commit `c7423d2`；5 拍板：D1 單頁三分頁〔/manage/audit〕／D4 §3.12 延後／D5 **m005 delta migration**〔首個波 2 migration、menu+3 policy+filter 索引〕／**D11 client_ip/xff_ip/real_ip 三欄統一 IP forensic 模型延後**〔讀端先行、012 讀現 schema；IP 模型+寫端 ALTER 留後續刀、同 §3.11〕／D12 逐欄 fuzzy/exact filter〔文字/IP 模糊、operator by 名〕）。**待手動 `/speckit-specify` 進階段 1 SDD**（input=brainstorm、pre-hook 建 `012-audit-log-query` feature branch）
 
 ---
 
