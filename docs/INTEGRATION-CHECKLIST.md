@@ -9,16 +9,16 @@
 
 ## 1. Current Focus
 
-**階段**:**波 2 data islands 進行中（009 User 首刀 merge `07b67d2`／010 Menu 第二刀 merge `3810103`〔2026-06-19〕完成;尚餘 Role 刀／⚠️b 審計讀端刀）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 2 data islands 進行中（009 User `07b67d2`／010 Menu `3810103`／011 Role 第三刀 merge `b80c9e3`〔2026-06-19〕完成;尚餘 ⚠️b 審計讀端刀）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-19 011-role-management 全綠收刀（波 2 第三刀＝Role;波 2 進行中）**（merge `b80c9e3`）:角色 CRUD（getRoleList 分頁/filter〔R_SUPER+R_ADMIN〕/add/update/delete/batch〔R_SUPER〕、delete guards 種子+使用中+自身、批次整批拒）＋**角色×選單授權**（getRoleMenu/updateRoleMenu、★全專案首個 runtime casbin policy WRITE＝**DB-first**〔net-new `sys_casbin_rule::set_role_dimension` 於 `mutate_in_txn` 直寫 `entity::casbin_rule` 11-col＋原子 op-log＋②protected-reject＋寫後 load_policy reload、**絕無 MgmtApi**——constitution §I.7 §4.2 ①②④⑤、B1 校正兌現〕、與 010 getUserRoutes 讀寫閉環）＋角色首頁（getRoleHome/updateRoleHome entity 寫原子）＋hasAuth `role:*` gating＋i18n 6 鍵〔含 menuProtected〕。**9 端點**（getRoleMenu/updateRoleMenu protected）。net-new facade sys_casbin_rule＋`sys_user_role::count_users_by_role_id`；id↔route_name 映射（sys_menu、orphan skip）。3 執行單元 Workflow 驅動（U1 `2332002`→U2 `e3d828e`→U3 base-web `caa1e4bc`）;C-V-0~11 全綠（純測 role_delete_guard/active_model／`endpoint_coverage_lint` `[&str;31]`＋entity_access_lint〔casbin_rule 僅 facade〕／live role_crud·guard·**role_menu_loop**〔讀寫閉環+②protected+F1 原子審計、snapshot+restore+psql 驗無殘留〕·home／C-V-7 policy-gate 5003／CDP 真發+換角色側欄+F2 redirect+hasAuth+cleanup／prod build）、holistic **SHIP**（10/10 SC、B1 零 MgmtApi、讀寫閉環閉合、零 overbuild;2 nit 修 G1 role_home trace_id／N1 C-V-7 method）。**零 migration/entity/schema、無新 crate**;rust-api `c377444`→`30de791`、base-web `a59c2738`→`caa1e4bc`。button-auth-modal 留 mock（波3）。011 follow-up 見 §3.14
 - **2026-06-19 010-menu-management 全綠收刀（波 2 第二刀＝Menu;波 2 進行中）**（merge `3810103`）:動態角色選單（getUserRoutes Casbin v2='menu' 過濾、§I.2 首兌現、前端零過濾、tree 祖先包含〔dir 不在 visible 但子可見仍納入〕）＋選單 CRUD（reparent 3+1 guard ReparentError）＋統一回收桶（已刪除欄、restore 孤兒→頂層、AuditOperation::Restore 首 consumer）＋越權（8 端點 require_policy R_SUPER、Admin/User→5003）＋D1（選單可見性＋前端 hasAuth gating menu+retroactive user 兌現）＋.env static→dynamic（#7）。11 端點、3 全專案首立（menu_routes_for_roles／reparent facade slim enum／flat→tree 序列化）、DeleteError 批次整批拒 no-partial、getAllPages 裸 page 名修。4 單元 Workflow 驅動（U1 `1369ca1`→U2 `00436d1`→U3 `c377444`／U4 base-web `a59c2738`）;C-V-0~12 全綠（88 bin＋5 live `--test-threads=1`／lint `[&str;22]`／C-V-8 policy-gate／CDP 三角色側欄差異+CRUD 真發+restore+hasAuth gating〔R_ADMIN user:edit-only nuance〕+2222 在地化+login dynamic 可達+fail-fallback 導回登入／C-V-11 零回歸／C-V-12 prod build）、holistic READY-TO-FINISH（11/11 SC、零 blocking、wire 三端對齊無型謊）。**零 migration/entity/schema、無新 crate**;rust-api `8ccea9d`→`c377444`、base-web `c1806680`→`a59c2738`。2 clarify 拍板（批次刪父子整批拒＋retroactive gating 含 user/settings）。★ route store 1 處授權 rev3-inline 例外（dynamic 保留前端 builtin 常數路由 login/403/404/500、修 FR-002／R-cr 預示缺口、user 拍板）;D1（008+009 §3.10）已兌現;010 follow-up 見 §3.13
 - **2026-06-18 009-user-management 全綠收刀（波 2 資料島首刀＝User;波 2 進行中）**（merge `07b67d2`）:使用者管理頁 mock→真後端 6 端點 CRUD（getUserList/getAllRoles/addUser/updateUser/deleteUser/batchDeleteUser）＋角色 M:N（`replace_roles_in_txn` 與 user 寫同 `mutate_in_txn`）＋同交易審計（INSERT/UPDATE/SOFT_DELETE op-log、operator_ip 真 INET）＋越權（6 端點 require_policy DB-fresh、read R_SUPER+R_ADMIN〔getAllRoles +R_USER_COMMON〕/write R_SUPER）＋停用登入 gate（status==2→1000 防枚舉）。多個全專案首次:§5.8 分頁/filter 首 exercise（空字串守門＋模糊 ILIKE userName/nickName/userEmail）／`PageRes` 首消費者／M:N join 寫／prod argon2 hash_password／23505→2222 `sql_err()` 寫端 map 首落（⚠️o、blanket From 不改）／INSERT op-log 首 consumer。2 clarify 拍板:self-lock 防自鎖對稱守門（→2222 整筆拒）＋批次刪缺漏 idempotent skip。★ as-built 偏離:research-R6 `PgExpr::ilike().escape()` 編譯過但 runtime 失效（sea-query 0.32.7 escape hack 不含 pg ILIKE→非法 SQL→5000）、改 `LOWER(col) LIKE ESCAPE`、校正 4 處文件（含 contract §3.2 跨 feature 權威）。4 單元 Workflow 驅動（U1 `7daa622`→U2 `79f4983`→U3 `977203f`/U4 base-web `c1806680`＋polish `8ccea9d`＋doc `5c0e3f7`）;C-V 全綠（62 bin＋7 live `--test-threads=1`／endpoint_coverage_lint `[&str;11]` 6 端點全治理＋entity_access_lint／C-V-9~11 CDP 真發 request／C-V-13 零回歸／C-V-14 prod build）、holistic PASS（12 FR+11 SC 全 covered、無 overbuild）;**零 migration/entity/schema、無新 crate**;rust-api `3874182`→`8ccea9d`、base-web `223bc83e`→`c1806680`;D1 follow-up（hasAuth gating＋getUserRoutes＋選單可見性）延波2 Menu 刀（§3.10）
-- **2026-06-18 008-system-settings 全綠收刀（波 1 第一刀＝system_settings KV 打樋;波 1 全完成）**（merge `b52dafe`）:3 全專案首次——首個 policy-governed 端點（`require_policy` DB-fresh per-route layer、enforce_mw 不動、5003→403 live 首証）／首個 007 op-log threading live consumer（`to_audit_operator`→operator_ip 真 INET round-trip）／立 `endpoint_coverage_lint`（⚠️x:registered==as-built＋policy-governed⊆m002 seed＋self-test）。2 端點 GET/POST＋super-only＋value_type 2222＋同 txn 審計原子＋net-new base-web static 頁/rev3-* wrapper 首檔/i18n;零 migration/entity/schema（m005 MOOT）、無新 crate;4 單元 Workflow 驅動（U1 `8e5a024`→U2 `4f4952d`→U3 `3874182`/U4 `5fdd6f0`＋§2 trim `223bc83e`）;C-V-0~11 全綠（live policy-gate 5003／op-log INET／CDP toast off↔on／prod build／零回歸 perf 讀5.8改7.9ms）、holistic 雙 lens ready-to-merge 0 blocking;enforce_mw/base-web 既有檔未動、SC-006/007 零回歸;rust-api `fc4b50e`→`3874182`、base-web `c2ad92f`→`223bc83e`
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 2 Role 刀**（rev2 013*/016*/018;schema 起點 rev2 013〔sys_role+sys_user_role+policy seed〕;解鎖 Role×Menu 授權〔getRoleMenu/updateRoleMenu/getRoleHome/updateRoleHome+menu-auth-modal、消費 010 getMenuTree/getAllPages〕;DESIGN §8.2）;或 **⚠️b 審計讀端刀**（殿後）。**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-role-*.md`）
+**下一步**: **⚠️b 審計查詢讀端＋UI 刀**（波 2 殿後刀;三 log 讀端〔sys_operation_log/sys_access_log/sys_login_attempt〕＋R_SUPER policy seed＋manage 新頁 MODAL-WIRING (e)＋§5.8 讀端 filter〔operation/access 補索引、login 已就緒〕;wire 從零設計〔rev2 零讀端〕;DESIGN §8.2、[DECISIONS §1 ⚠️b](INTEGRATION-DECISIONS.md)）。**待階段 0 `superpowers:brainstorming` 起手**（產出 `docs/superpowers/<NNN>-audit-*.md`）
 
 ---
 
@@ -38,13 +38,13 @@
 
 > as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);D1 波2 選單可見性 follow-up 見 §3.10。
 
-### 波 2 — data islands（進行中;第一刀＝User 009 ✅／第二刀＝Menu 010 ✅;③=B → User 留本波、`system_settings` 已移波1）
+### 波 2 — data islands（進行中;第一刀＝User 009 ✅／第二刀＝Menu 010 ✅／第三刀＝Role 011 ✅;③=B → User 留本波、`system_settings` 已移波1）
 
 其餘業務 entity 各一刀（rev2 016 一 feature 兩 entity → rev3 拆兩刀紀律）。建議序 User→Menu→Role（sys_menu 表＋10 baseline＋66 demo＋policy 已 002 baseline 備妥、**010 Menu 零 migration**;Menu 完成解鎖 Role×Menu 授權）。
 
 **刀/feature 清單**（素材=DESIGN §8.2 data island 縱切）:
 - [x] **User 刀** ✅（009-user-management、merge `07b67d2`、2026-06-18;讀 3 端＋CRUD＋join `sys_user_role`、§5 全套+M:N join+MODAL-WIRING (a)+§5.8 分頁/filter 首 exercise+PageRes+23505→2222+INSERT op-log+停用登入 gate;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
-- [ ] **Role 刀**（rev2 013*/016*/018;schema 起點在 rev2 013〔sys_role+sys_user_role+policy seed〕;**消費 010 getMenuTree/getAllPages**〔menu-auth-modal 角色×選單授權〕＋getRoleHome/updateRoleHome）
+- [x] **Role 刀** ✅（011-role-management、merge `b80c9e3`、2026-06-19;角色 CRUD＋角色×選單授權〔getRoleMenu/updateRoleMenu＝★全專案首個 runtime casbin policy WRITE＝**DB-first**〔`sys_casbin_rule::set_role_dimension` 直寫 `entity::casbin_rule` 於 `mutate_in_txn` 原子 op-log＋②protected-reject＋寫後 load_policy reload、絕無 MgmtApi、constitution §I.7 §4.2〕、與 010 getUserRoutes 讀寫閉環〕＋角色首頁＋hasAuth `role:*`;9 端點、delete guards 種子+使用中+自身、零 migration、無新 crate;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 - [x] **Menu 刀** ✅（010-menu-management、merge `3810103`、2026-06-19;動態角色選單 getUserRoutes〔Casbin v2='menu' 過濾、§I.2 首兌現、前端零過濾、tree 祖先包含〕＋選單 CRUD〔reparent 3+1 guard ⚠️o facade slim `ReparentError`、handler 映 2222〕＋統一回收桶〔已刪除欄、restore 孤兒→頂層、`AuditOperation::Restore` 首 consumer、批次整批拒 no-partial〕＋越權〔8 端點 require_policy R_SUPER〕＋D1〔選單可見性＋hasAuth gating menu+user〕＋.env dynamic〔#7〕;11 端點、零 migration、無新 crate;**Role×Menu 授權〔menu-auth-modal〕留 Role 刀**;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 - [x] ~~**`system_settings` 刀**~~ **已移波 1 第一刀（③=B、2026-06-16）**
 - [ ] **審計查詢讀端＋UI 刀（⚠️b ✅ 已決：做、波2 殿後刀）**（三 log 讀端＋R_SUPER policy seed＋manage 新頁〔MODAL-WIRING (e)〕;排 Menu→Role 之後;DESIGN §8.2）
@@ -91,7 +91,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
 
 ---
 
@@ -184,7 +184,7 @@
 **INET log entity 消費（audit 刀觸發）**:
 - [ ] 3 INET 欄 `IpNetwork` serde round-trip:**write-binding 無 42804 ✅**（3 欄、007+008 已證）;**`sys_operation_log.operator_ip` decode round-trip ✅**（008 C-V-5 經 entity Model find+IpNetwork assert）;**惟 `sys_access_log.client_ip`／`sys_login_attempt.client_ip` 仍僅 write-binding 證**——兩 sink facade 在 server/src 零 find/all 讀路徑、Model decode round-trip 待 **⚠️b 審計讀端刀**（波2 殿後）首次以 entity Model 讀回該兩表
 **casbin_rule 治理欄消費（policy 刀觸發）**:
-- [ ] `casbin_rule` entity 自定 11 欄（8 adapter 基底＋protected/created_at/created_by 治理 3）——policy 刀 cross-check:adapter 自身 8 欄 Model 對治理欄隱形（§I.6 D），確認 governance 讀寫經 entity crate Model 非 adapter Model
+- [x] ✅（2026-06-19、011 Role 刀＝首個 runtime casbin policy WRITE）011 `sys_casbin_rule::set_role_dimension` 經 **entity crate `entity::casbin_rule` Model/ActiveModel**（非 adapter 8 欄 Model）讀 `protected`〔②protected-reject〕＋寫 `created_at`/`created_by`〔grant 設治理欄、`protected=false`〕＋op-log——實證治理欄唯經 entity crate 可讀寫（adapter 8 欄 Model 對治理欄隱形、§I.6 D 兌現）;archive/restore 消費 `protected`/`created_*` 讀路徑＝波3 policy-governance 治理刀
 **soft-delete 活體覆蓋邊界（Role/Menu 刀觸發）**:
 - [x] ✅（2026-06-19、010）`sys_menu` 的 `find_active` 活體驗證——010 menu_recycle live test 證 `list_active`（find_active）排除 soft-deleted、getMenuList/v2（list_all）含已刪;三 SoftDeletable facade（sys_user 004／sys_role 009／sys_menu 010）皆活體覆蓋
 
@@ -231,7 +231,7 @@
 **審計 payload 未含角色集 delta（⚠️b 審計讀端刀觸發）**:
 - [ ] addUser/updateUser 的 op-log `payload_before`/`payload_after` 僅快照 `sys_user` Model（`audit_json`、password 已 redact）、**未含 `sys_user_role` 角色集 before/after**;原子性（user+roles+op-log 同 txn）已足、spec FR-006 未要求逐項列角色 → ⚠️b 審計讀端刀若要呈現「誰把 user 角色由 A 改 B」現查不到、屆時評估 payload 併入 role code 集 delta（holistic nit、非缺陷）
 **getAllRoles/replace_roles「啟用角色」語意（Role 刀 confirm）**:
-- [ ] getAllRoles 與 replace_roles 用 `sys_role::find_active`（僅濾 `deleted_at`、**不濾 `status`**）＝「啟用」解作未軟刪（SoftDeletable 語意、data-model §3／contract §6.1 背書）;FR-008「目前啟用角色」若 Role 刀日後要排除 status=停用角色不可指派、再於 find_active 後加 status 守門（本刀 by-design、非缺口）
+- [x] ✅（2026-06-19、011 Role 刀 confirm）011 research R7 確認 **role status＝metadata、非存取閘**：`find_active` 維持僅濾 `deleted_at`、不濾 `status`（getAllRoles/replace_roles/getRoleList 沿用、role 軟刪單向無 restore）;FR-008「目前啟用角色」＝未軟刪解（by-design 保留）;未來若要排除 status=停用角色不可指派再於 find_active 後加 status 守門（仍 by-design、非缺口）
 
 ### 3.13 010-menu-management follow-up（收刀移交 2026-06-19;均不阻塞、消費刀觸發時處理）
 
@@ -244,9 +244,22 @@
 **MenuList wire type-lie（typings 收斂刀觸發;⚠️r、沿 §3.12 User 同款）**:
 - [ ] 既有 `service/api/system-manage.ts` `fetchGetMenuList` 宣告回 `MenuList=PaginatingQueryRecord<Menu>`（分頁包），但後端 getMenuList/v2 回**裸陣列樹**＝wire↔typings type-lie;010 守 frozen 既有檔【不改 system-manage.ts/.d.ts】、改以 rev3 `fetchGetMenuListV2`（honest 裸陣列型）＋menu/index.vue custom transform 繞過 → 舊 `fetchGetMenuList` 成 latent type-lie/dead（現無消費者）→ typings 收斂刀（同 §3.12）reconcile：棄用舊 fn 或把 `MenuList` 改裸陣列型對齊;順帶檢視 `Menu`/`MenuRoute` nullable 欄（component/routePath 等 Option<String>→null vs typing non-null）是否同 §3.12 type-lie
 **home_of_roles 多角色 tie-break（Role 刀 home 維護 confirm）**:
-- [ ] getUserRoutes 的 `home`＝`home_of_roles`〔取啟用角色 by id ASC 首個非空 `sys_role.home`〕;現三角色皆 'home' 無歧義，未來 Role 刀讓不同角色有不同 home 時，多角色 user 的 home 解析（現 min-id 角色 home）語意須於 Role 刀 getRoleHome/updateRoleHome 確認/收斂（本刀 by-design、非缺口）
+- [x] ✅（2026-06-19、011 Role 刀 confirm）011 補 getRoleHome/updateRoleHome 寫端（`set_home` entity 寫、原子 op-log、C-V-6 live 反映 `home_of_roles`、CDP F2 換角色登入落地新首頁）;多角色 user 的 home tie-break 維持 **min-id 角色 home**（`home_of_roles` 取啟用角色 by id ASC 首個非空 `sys_role.home`、010 既有、011 未改）＝by-design 保留;未來若要 per-user 首頁覆寫或角色優先序 tie-break 再開 feature（非缺口）
 **batch_soft_delete sentinel DbErr 攜出（robustness、未來 refactor 候選）**:
 - [ ] `batch_soft_delete` 因 `mutate_in_txn` 閉包簽名固定回 `DbErr`、以 sentinel `DbErr::Custom("BATCH_DELETE_PROTECTED"/"…HAS_ACTIVE_CHILDREN")` 攜出 `DeleteError` 分類、外層 `map_err` 還原;理論上 DB 若真回同字面 Custom 會誤判、但 sea-orm 不產此類字面＝實務零風險（U3 quality review 過）→ 若未來覺脆，改 batch 不走 mutate_in_txn、自行 begin/commit txn 直接攜 `DeleteError`（非急、現法全綠且隔離乾淨）
+
+### 3.14 011-role-management follow-up（收刀移交 2026-06-19;均不阻塞、消費刀觸發時處理）
+
+**updateRoleMenu menuProtected 訊息泛化（波3 protected 管理刀觸發）**:
+- [ ] `set_role_dimension` 的 `SetDimensionError::Rejected(Vec<String>)` 已攜被擋下的 protected route_names，但 handler 泛化映射 `biz.role.menuProtected`（不顯示「哪些」受保護選單）；波3 protected 策略管理刀（un-protect/re-protect）若要 surface 具體 route_names，handler 改帶 payload（i18n 參數化或回 detail）
+**casbin policy 治理機（波3 policy-governance 治理刀;復用 set_role_dimension）**:
+- [ ] 本刀 revoke＝**hard DELETE**（archive-move 留波3）;archive（revoke→`sys_casbin_policy_archive`）／restore（←archive）／protected 策略管理（un-protect/re-protect）／③PolicyMutated-gate 優化／跨實例 `casbin:policy:invalidate` publish-watcher／回收桶 UI＝波3 治理刀（DESIGN §4.2/§8.2、**復用本刀 `set_role_dimension` pattern**;Button/Endpoint policy 縱切亦復用）
+**C-V-9 CDP 審計列殘留（cosmetic、非功能殘留）**:
+- [ ] C-V-9 CDP throwaway 角色（id=40）經真 server updateRoleMenu 留 1 筆 `casbin_rule` op-log 審計列（append-only audit、entity_id=40 指已刪角色）;功能表 casbin_rule/sys_role 已 pristine（C-V-10 驗）、op-log 為歷史審計非殘留、不影響行為/U2 role_menu_loop 冪等（filter entity_id=2）→ 不清（清 append-only audit 反例）;如需全淨可手動 `DELETE FROM sys_operation_log WHERE entity_table='casbin_rule' AND entity_id=40`
+**Role wire type-lie（typings 收斂刀觸發;⚠️r、沿 §3.12 User／§3.13 Menu 同款）**:
+- [ ] `getRoleList` 的 `roleDesc` 當 DB NULL 序列化為 `null`（rust `RoleListItem.role_desc: Option<String>`、handler `role_desc: m.role_desc` 直傳），但 base-web `Api.SystemManage.Role.roleDesc` 宣告 non-null `string`＝wire↔typings type-lie（runtime 前端容忍 null、typecheck 不抓〔只驗前端碼非 rust 輸出〕）。011 守 frozen 既有 `system-manage.d.ts`〔不改既有 Role typing〕未消解 → typings 收斂刀（同 §3.12/§3.13、可併一刀）把 `roleDesc` 改 `string | null` 對齊 rust
+**R_ADMIN getRoleList 可達性 moot（忠實 seed、沿 §3.13 R_ADMIN nuance）**:
+- [ ] m002 R_ADMIN 有 `getRoleList` policy（seed R_SUPER+R_ADMIN）但**無 `manage_role` menu policy**（§3.13 ground-truth）→ R_ADMIN 動態選單不含角色管理頁、實務到不了 `/manage/role`、其 getRoleList 授權 access moot;011 忠實 seed 不收窄（policy 校正刀評估對齊：收 R_ADMIN getRoleList seed 或補 R_ADMIN manage_role menu;同 §3.13 button↔endpoint 不對齊家族）
 
 ---
 
@@ -261,6 +274,8 @@
 **009-user clarify／as-built（spec.md ## Clarifications／contract §3.2;非 ⚠️ 碼級）**:self-lock 防自鎖對稱守門(禁超管自我移除超管角色/自我停用→2222 整筆拒)｜批次刪缺漏 idempotent skip(已不存在/已刪 id 靜默略過、cannot-delete-self 仍獨立整批拒)｜ILIKE 處方校正(`PgExpr::ilike().escape()` runtime 失效〔sea-query 0.32.7 escape hack 不含 pg ILIKE〕→改 `LOWER(col) LIKE ESCAPE`、權威見 user-management-contract §3.2 供 Role/Menu 刀繼承)
 
 **010-menu clarify／as-built（spec.md ## Clarifications／menu-management-contract;非 ⚠️ 碼級）**:批次刪父子整批拒(逐項獨立驗證、批內任一 protected/有 active 子〔即使子同批被選〕即整批拒、no-partial、不做批內 cascade/排序)｜retroactive hasAuth gating 含 user/settings(user 頁 user:* gate〔code 已 seed〕、system-settings skip〔無 code+super-only moot〕)｜route store rev3-inline 例外(dynamic 分支合併前端 builtin 常數路由 login/403/404/500、修 FR-002／R-cr 預示缺口、user 拍板 option 1;C-V-11 零回歸註記為授權例外)
+
+**011-role clarify／as-built（spec.md ## Clarifications／role-management-contract;非 ⚠️ 碼級）**:menu-auth only(D1、button-auth/endpoint-auth＋policy 治理機留波3)｜Role×Menu 治理姿態＝DB-first 合規(D2、★ B1 校正後——直寫 casbin_rule＋同交易原子審計＋②protected-reject 整批拒＋寫後 load_policy reload、絕無 MgmtApi;archive/restore/un-protect/PolicyMutated-優化/publish-watcher 治理機留波3)｜delete guards 種子+使用中+自身(D3、批次整批拒)｜as-built:net-new facade `sys_casbin_rule`(set_role_dimension DB-first)＋`sys_user_role::count_users_by_role_id`;id↔route_name 經 sys_menu facade(orphan skip);roleId/menuIds 維 number 域(⚠️r);2 review-minor 修(set_role_dimension dedup desired 防重複 menu_id 撞 UNIQUE／SetDimensionError #[allow(dead_code)] payload);2 holistic nit 修(G1 role_home live op-log 斷言加 trace_id 守門非冪等／N1 C-V-7 method 對齊 DELETE)
 
 **開放 9**(依最晚決策點分組):
 - 波 1~3:⚠️m alt-login 入波(波3排程前)｜⚠️w login lockout(做、刀位/設計待排程;消費 audit-overlay 的 sys_login_attempt 索引)
