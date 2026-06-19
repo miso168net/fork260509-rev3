@@ -3,9 +3,9 @@
 > 本刀建立的不變式，後續刀（3-IP forensic 模型刀／⚠️w login lockout／波3 policy-governance 之 op-log 稽核軌消費）繼承。權威＝constitution §I.1/§I.2/§I.3/§I.6/§I.7/§III＋DESIGN §8.2＋DECISIONS ⚠️b/⚠️r/⚠️y/⚠️n＋brainstorm D1-D12（讀端先行、IP 模型延後）。
 
 ## 1. 唯讀讀端（3 sink facade +list、§5.8、沿 009/011）
-1. **3 list fn**：`sys_operation_log::list`／`sys_access_log::list`／`sys_login_attempt::list`〔`(conn,page〔0-based〕,size,filter)->(Vec<Model>,u64)`、`.apply_if` 逐欄、`order_by_desc(created_at,id)`、`.paginate.fetch_page.num_items`〕；鏡像 `sys_role::list`。
+1. **3 list fn**：`sys_operation_log::list`／`sys_access_log::list`／`sys_login_attempt::list`〔`(conn,page〔0-based〕,size,filter)->(Vec<Model>,u64)`、`.apply_if` 逐欄、`order_by_desc(created_at,id)`、`.paginate.fetch_page.num_items`〕；鏡像 `sys_role::list` 之 apply_if/paginate **結構**（注 F4：sys_role::list 本身 `order_by_asc(id)`、本 list order 改 desc 對齊 FR-002 時序新到舊）。
 2. **§5.8**：handler normalize（current/size、空字串守門 `Some("")→None`）＋`PageRes{current〔1-based〕,size,total,records}`；沿 009 `get_user_list`。
-3. **唯讀**：純 SELECT、**無 mutate_in_txn、無寫 op-log**（查詢不自審、append-only 日誌表零寫）；live/CDP 測**無 cleanup**（不污染）。
+3. **唯讀**：純 SELECT、**無 mutate_in_txn、不主動寫操作異動日誌（op-log 零新增）**（查詢不自審）；〔★ F1：既有 per-request access-log 基建中介層照常對本 GET 寫一列 sys_access_log＝基建軌跡、非本功能自審〕；live/CDP 測**無 cleanup**（op-log 零新增；access-log +1/查屬基建預期、非污染）。
 
 ## 2. operator enrich（net-new `sys_user::names_for_ids`、unfiltered）
 1. `names_for_ids(conn,&[i64])->HashMap<i64,String>`——`Id.is_in(ids)`、**不濾 deleted_at**（含已刪、審計保留歷史操作者名、沿 006 find_by_id）。

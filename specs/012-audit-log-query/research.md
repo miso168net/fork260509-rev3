@@ -9,7 +9,7 @@
 pub async fn list<C: ConnectionTrait>(conn: &C, page: u64, size: u64, f: XxxLogFilter)
     -> Result<(Vec<entity::sys_xxx::Model>, u64), DbErr>
 ```
-鏡像 `sys_role::list`（096-118）：`.apply_if(f.field, |q,v| q.filter(...))` 逐欄、`.order_by_desc(CreatedAt).order_by_desc(Id)`〔穩定、時序新到舊〕、`.paginate(conn, size).fetch_page(page).num_items()` 取 `(rows, total)`。**page 0-based**（handler 傳 `current-1`、沿 009/011）。append-only 純 SELECT、無 mutate_in_txn、`entity::` 在 facade 層合法（entity_access_lint 豁免 `model/facade/`）。
+鏡像 `sys_role::list`（096-118）之 apply_if/paginate **結構**〔注（F4）：sys_role::list 本身 `order_by_asc(id)`；本 list **改** order 為 `.order_by_desc(CreatedAt).order_by_desc(Id)`〔穩定、時序新到舊、對齊 FR-002〕〕：`.apply_if(f.field, |q,v| q.filter(...))` 逐欄、`.paginate(conn, size).fetch_page(page).num_items()` 取 `(rows, total)`。**page 0-based**（handler 傳 `current-1`、沿 009/011）。append-only 純 SELECT、無 mutate_in_txn、`entity::` 在 facade 層合法（entity_access_lint 豁免 `model/facade/`）。
 **Rationale（親驗 sys_role.rs:96-118 list＋RoleFilter:77-82）**：3 sink facade 現 write-only（`write_in_txn`／`write`＋`AccessLogEvent`/`LoginAttemptEvent` pub struct＋pure seam）、零讀方法；list 鏡像 009 `sys_user::list_active`／011 `sys_role::list` 既證 pattern。
 **Alternatives**：1 通用 list（否決 D2、3 schema 異質）。
 
@@ -36,7 +36,7 @@ pub async fn list<C: ConnectionTrait>(conn: &C, page: u64, size: u64, f: XxxLogF
 
 ## R6 — m005 delta migration（Migrator reg／up·down execute_unprepared／seed·index 鏡像 m002/m001）
 **Decision**：新 `migration/src/m005_audit_log_query.rs`、`lib.rs` 加 `mod m005_audit_log_query;`＋`Box::new(m005_audit_log_query::Migration)`（m004 後）。`up`（raw SQL via `manager.get_connection().execute_unprepared`、沿 m002 seed 風）：① INSERT sys_menu `manage_audit`〔parent_id 子查詢 `(SELECT id FROM sys_menu WHERE route_name='manage' AND deleted_at IS NULL)`、menu_type=2、menu_name/route_name='manage_audit'、route_path='/manage/audit'、component='view.manage_audit'、icon_type=1、i18n_key='route.manage_audit'、"order"、status=1、protected=false〕；② INSERT casbin_rule 4 列〔8-col `(ptype,v0,v1,v2,v3,v4,v5,protected)`：`('p','R_SUPER','/systemManage/getOperationLog','GET','','','',false)` ×3〔getOperationLog/getAccessLog/getLoginAttempt〕＋`('p','R_SUPER','manage_audit','menu','','','',false)`〕；③ CREATE INDEX ×4〔sys_operation_log(created_at)／(operator_id,created_at)、sys_access_log(created_at)／(operator_id,created_at)、命名 `idx_<table>_<cols>`、沿 m001 idx_login_attempt_*〕。`down` 對稱（DELETE casbin by (v0,v1,v2) tuple＋DELETE sys_menu by route_name＋DROP INDEX IF EXISTS ×4）。**up→down→up 可逆**（波 0 出口紀律、C-V-5）。
-**Rationale（親驗 lib.rs:1-31 Migrator＋m002 seed＋m001:799-819 index）**：m005 純 delta（seed 列+索引、**無新業務表、無 ALTER**）；不動 frozen m002（rev2 終態 baseline、⚠️t）。idempotent：seed 加 `ON CONFLICT DO NOTHING`（若對應 unique 索引存在；plan→impl 驗 sys_menu route_name／casbin 7-tuple unique 是否在、否則 plain INSERT）。
+**Rationale（親驗 lib.rs:1-31 Migrator＋m002 seed＋m001:799-819 index）**：m005 純 delta（seed 列+索引、**無新業務表、無 ALTER**）；不動 frozen m002（rev2 終態 baseline、⚠️t）。idempotent（F3 定）：sys_menu seed **`ON CONFLICT (route_name) WHERE deleted_at IS NULL DO NOTHING`**（route_name unique 為 **partial**〔`WHERE deleted_at IS NULL`〕、bare conflict-target 會 runtime error、鏡像 m002 形）；casbin `ON CONFLICT (ptype,v0,v1,v2,v3,v4,v5) DO NOTHING`（7-tuple unique `unique_key_sea_orm_adapter` 存在、非 partial）。
 **Alternatives**：編 m002（否決＝動 frozen baseline）；sea-orm SchemaManager index API（可選、本刀 raw SQL 與 seed 一致）。
 
 ## R7 — main router＋lint（audit Router group／AS_BUILT [31→34]／entity_access）

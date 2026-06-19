@@ -75,7 +75,7 @@ rust-api/server/src/
 ├── model/facade/sys_user.rs           # 改：+names_for_ids（net-new、unfiltered 含已刪、enrich）
 ├── handler/system_manage.rs           # 改：+get_operation_log/get_access_log/get_login_attempt+3 Query DTO+operator enrich+日期 parse+IP/text fuzzy 組裝
 ├── main.rs                            # 改：audit Router group 3 GET route_layer(require_policy)+.merge(audit)（enforce.rs 不改）
-└── (error.rs 不改 blanket)            # 唯一可能 biz：日期 invalidDateRange 2222（或寬鬆）
+└── (error.rs 不改 blanket)            # 唯一 biz：畸形日期 invalidDateRange 2222（僅起/僅訖寬鬆容忍、F2 定）
 rust-api/migration/src/
 ├── m005_audit_log_query.rs            # ★ 新：up（sys_menu manage_audit+casbin 4+索引 4、execute_unprepared）/down（對稱、可逆）
 └── lib.rs                             # 改：+mod m005_audit_log_query+Box::new（m004 後）
@@ -101,11 +101,11 @@ base-web/src/
 1. **★ 順序（rust serial、容器內、改 .rs 先 force-touch）**：U1 rust 讀端＋m005（3 sink list＋filter／`sys_user::names_for_ids`／handler 3＋operator enrich／main 3 路由／lint[34]／**m005 migration**〔seed+index、up→down→up 驗〕／純測〔filter/enrich/IP-expr 若抽純〕／live〔3 端點分頁/filter/**IP 模糊**/operator by 名/enrich、**唯讀無污染**〕）→ U2 base-web 審計中心頁（3 wrapper＋3 honest typing＋audit/index.vue 3 tab+3 子表＋i18n＋typecheck＋CDP）。
 2. **★ IP 模糊 `host(col)::text LIKE`＝net-new、無 codebase 先例**（R4）：U1 facade live smoke **首要驗**（C-V-3 帶 dev DB 已知 client_ip 片段、確認 sea-query 渲染正確命中）；確切 expr（`Expr::cust_with_values` vs `cast_as`）impl 容器內定。
 3. **operator enrich net-new `names_for_ids`（unfiltered 含已刪）**（R5）；operatorName 模糊篩＝handler user_name LIKE→ids→`operator_id IN`。
-4. **m005 delta（R6）**：Migrator m004 後；execute_unprepared raw SQL（鏡像 m002 seed／m001 index）；sys_menu manage_audit＋casbin 4＋索引 4；idempotent ON CONFLICT/IF EXISTS；**無新業務表、無 ALTER**；**up→down→up 可逆**（C-V-5）。
+4. **m005 delta（R6）**：Migrator m004 後；execute_unprepared raw SQL（鏡像 m002 seed／m001 index）；sys_menu manage_audit＋casbin 4＋索引 4；**idempotent（F3）：sys_menu `ON CONFLICT (route_name) WHERE deleted_at IS NULL DO NOTHING`〔partial unique〕／casbin `(ptype,v0..v5)`／索引 `IF NOT EXISTS`**；**無新業務表、無 ALTER**；**up→down→up 可逆**（C-V-5）。
 5. **★ 唯讀無污染**：3 讀端純 SELECT、不寫日誌/不寫 op-log；live/CDP **無 cleanup**（異於 011）；對 dev DB 現有資料取已知值驗 filter。
 6. **fuzzy `LOWER LIKE ESCAPE`（非 PgExpr::ilike、沿 009 校正）**（R3）；escape_like 復用。
 7. **lint（R7）**：`AS_BUILT [31→34]`；3 audit policy m005 seed；entity_access：handler/main 零 path-root entity::、3 sink list 走 model/facade/ 豁免。
 8. **base-web**：rev3 wrapper 3／3 honest item（nullable→`｜null`）／MODAL-WIRING (e) 審計中心 3 tab／`page.manage.audit.*` i18n 先 Schema 後 locale／frozen 既有檔不改／無 .env flip。
-9. **m005 menu seed → view 須同刀**（U1 seed→U2 view）避 dangling component error（沿 010 §3.13 manage_policy-archive）；U2 view 落地前 dev Super 暫見 console warn（無害、U2 收）。
+9. **m005 menu seed → view 須同刀**（U1 seed→U2 view）避 dangling component error（沿 010 §3.13 manage_policy-archive）；U2 view 落地前 dev Super 點 /manage/audit 會 **throw**（`getViewName` 對缺 view 之 dynamic route throw `View component … not found`、`base-web/src/router/elegant/transform.ts:58-66`）、**非 console warn**——故 view 與 m005 menu seed 同 feature 收口（F5）。
 10. **容器內 build/test**（host 無 cargo）／force-touch／**live `--test-threads=1`＋DATABASE_URL**／逐單元兩段式 commit（worktree→pin、S9）／base-web `--no-verify`／**不 push/merge（§I.4）**／CDP 不 defer（唯讀無 cleanup）。
 11. **零回歸（FR-012/SC-008）**：enforce_mw/require_policy/From<DbErr>/既有 3 日誌表 entity/3 sink 寫/login/getUserInfo/getUserRoutes/health/008-011 不變；m005 僅 seed+index（無業務表）、up→down→up 可逆；base-web frozen 不改。

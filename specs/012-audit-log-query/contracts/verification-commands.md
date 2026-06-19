@@ -2,7 +2,7 @@
 
 > 實機驗收命令全集。rust 一律**容器內**：`docker compose -f docker-compose.yml -f docker-compose.dev.yml exec -T rust-api <cmd>`（下簡 `EXEC`）。改 `.rs` 先 **force-touch** 防 WSL2 stale-mtime 假綠。**rust 全程 serial**；**live `#[ignore]` 一律 `--test-threads=1`**。**無新 crate／無新 dep**。
 > 帳號（m002）：`Super`(R_SUPER)/`Admin`(R_ADMIN)/`User`(R_USER_COMMON)、`123456`。psql：`docker compose … exec -T postgres psql -U soybean -d soybean_admin_rust -tAc "<sql>"`。
-> **★ 唯讀無污染**：3 讀端 live 測純 SELECT、**不寫日誌/不寫 op-log/無 cleanup**（異於 011 casbin 寫）；對 dev DB 現有資料（op-log 41／access 723／login 213 列級）斷言（取**已知存在值**驗 filter 命中＋非命中排除）。
+> **★ 唯讀無污染**：3 讀端 live 測純 SELECT、**不主動寫稽核（op-log 零新增）、無 cleanup**（異於 011 casbin 寫）；〔★ F1：既有 per-request access-log 基建會對每個 GET 寫一列 sys_access_log＝基建軌跡、非本功能自審、不視為污染〕；對 dev DB 現有資料（op-log 41／access 723／login 213 列級）斷言（取**已知存在值**驗 filter 命中＋非命中排除）。
 > **★ m005 delta**：menu seed（manage_audit）＋3 讀端 R_SUPER policy＋manage_audit menu policy＋operation/access filter 索引；**無新業務表、無 ALTER 既有日誌表**。
 > **★ bare-filter 假綠**：整支 test binary 用 `--test <name>`／bin 內單元 `--bin server <filter>`；「0 passed; N filtered out」＝沒命中、非綠。
 
@@ -28,7 +28,7 @@ EXEC sh -c 'cd /app && find server/src server/tests -name "*.rs" -exec touch {} 
 ```bash
 EXEC sh -c 'cd /app && DATABASE_URL=$(cat /run/secrets/database_url) cargo test -p server -- --ignored --test-threads=1 audit_query'
 ```
-- **唯讀無污染**（純 SELECT、不寫）：① getOperationLog/getAccessLog/getLoginAttempt 分頁（current/size、total）；② 空字串守門（未設 filter 回全部）；③ 精確（operation='UPDATE'／success=false／method='POST'）命中正確；④ **★ 文字模糊**（path/attempted_user_name/region/entity_table `LOWER LIKE ESCAPE` 部分比對、取已知值驗命中＋非含排除）；⑤ **★★ IP 模糊**（operator_ip/client_ip `host()::text LIKE` 部分比對——**本刀唯一無 codebase 先例之 SQL 形、首要驗證點**、取 dev DB 已知 client_ip 片段驗命中）；⑥ **operator by 名**（user_name LIKE→ids→`operator_id IN`、含已刪操作者）；⑦ created_at 範圍（from/to）；⑧ operator enrich（operatorName＝名、operator_id NULL→null、已刪操作者仍顯示名）。對應 SC-001/002/003。
+- **唯讀無污染**（純 SELECT、不寫）：① getOperationLog/getAccessLog/getLoginAttempt 分頁（current/size、total）；② 空字串守門（未設 filter 回全部）；③ 精確（operation='UPDATE'／success=false／method='POST'）命中正確；④ **★ 文字模糊**（path/attempted_user_name/region/entity_table `LOWER LIKE ESCAPE` 部分比對、取已知值驗命中＋非含排除）；⑤ **★★ IP 模糊**（operator_ip/client_ip `host()::text LIKE` 部分比對——**本刀唯一無 codebase 先例之 SQL 形、首要驗證點**、取 dev DB 已知 client_ip 片段驗命中）；⑥ **operator by 名**（user_name LIKE→ids→`operator_id IN`、含已刪操作者）；⑦ created_at 範圍（from/to）；⑦b **畸形日期→2222 `backend.biz.audit.invalidDateRange`（negative、F2）；僅起/僅訖→寬鬆容忍**；⑧ operator enrich（operatorName＝名、operator_id NULL→null、已刪操作者仍顯示名）。對應 SC-001/002/003。
 
 ## C-V-4 · live policy-gate（3 端點 R_SUPER-only）→ FR-009/SC-005
 ```bash

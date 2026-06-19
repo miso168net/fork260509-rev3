@@ -10,7 +10,7 @@
 | wire DTO/typings | camelCase | `operatorId`／`operatorName`／`entityTable`／`httpStatus`／`clientIp`／`xForwardedFor`／`attemptedUserName`／`createTime` |
 | **id 域（⚠️r）** | number | 各 log `id`／`operatorId`／`entityId`（不轉 String、唯讀無 body id） |
 | operation enum | 封閉詞彙 | `INSERT`／`UPDATE`／`SOFT_DELETE`／`RESTORE`（005 AuditOperation） |
-| i18n（⚠️y） | `page.manage.audit.*` | tab/col/filter label（非 biz；唯一可能 biz＝`backend.biz.audit.invalidDateRange`） |
+| i18n（⚠️y） | `page.manage.audit.*` | tab/col/filter label（非 biz）；biz＝`backend.biz.audit.invalidDateRange`（畸形日期 2222、F2 定） |
 
 ## 1. facade `sys_operation_log.rs`（改：+list 讀 fn＋filter；append-only 純 SELECT、write sink 不動）
 ```rust
@@ -80,14 +80,14 @@ get_operation_log/get_access_log/get_login_attempt(State, Extension<Claims>, Que
 //   → facade.list（逐欄 filter）→ operator 批次 enrich（records operator_id 集→names_for_ids〔unfiltered〕→operatorName）
 //   → map Model→XxxLogItem（wire camelCase、IpNetwork→host 字串、nullable→null）→ PageRes{current〔1-based〕,size,total,records}
 ```
-回型 `Result<Json<Res<Value>>, AppError>`、零 path-root entity::；日期 parse 失敗→`AppError::Biz("biz.audit.invalidDateRange")` 2222〔或寬鬆：僅起/僅訖容忍、畸形拒〕。
+回型 `Result<Json<Res<Value>>, AppError>`、零 path-root entity::；**日期 parse（對齊 spec edge case L137、F2 定）：僅起/僅訖→寬鬆容忍（gte-only／lte-only）；畸形日期→`AppError::Biz("backend.biz.audit.invalidDateRange")` 2222、不靜默**。
 
 ## 7. main.rs router（改：+3 GET 路由 require_policy；鏡像 roles group、enforce.rs 不改）
 `let audit = Router::new().route("/systemManage/getOperationLog", get(...get_operation_log).route_layer(require_policy(path,"GET")))...×3 .layer(enforce_mw);` + `.merge(audit)`。3 path/method 與 m005 seed 逐字對齊。
 
 ## 8. ★ m005 delta migration（`migration/src/m005_audit_log_query.rs`、research R6）
 - Migrator：`lib.rs` +`mod m005_audit_log_query;`＋`Box::new(...)`（m004 後）。
-- **up**（`get_connection().execute_unprepared` raw SQL）：① sys_menu `manage_audit`〔parent=subquery manage、menu_type=2、route_path='/manage/audit'、component='view.manage_audit'、i18n_key='route.manage_audit'、order、status=1、protected=false〕；② casbin_rule 4 列〔3 GET 端點 R_SUPER＋manage_audit menu policy v2='menu'、8-col〕；③ CREATE INDEX ×4〔sys_operation_log(created_at)／(operator_id,created_at)、sys_access_log(created_at)／(operator_id,created_at)、命名 idx_<table>_<cols>〕。idempotent ON CONFLICT/IF EXISTS。
+- **up**（`get_connection().execute_unprepared` raw SQL）：① sys_menu `manage_audit`〔parent=subquery manage、menu_type=2、route_path='/manage/audit'、component='view.manage_audit'、i18n_key='route.manage_audit'、order、status=1、protected=false〕；② casbin_rule 4 列〔3 GET 端點 R_SUPER＋manage_audit menu policy v2='menu'、8-col〕；③ CREATE INDEX ×4〔sys_operation_log(created_at)／(operator_id,created_at)、sys_access_log(created_at)／(operator_id,created_at)、命名 idx_<table>_<cols>〕。**idempotent（F3 定）：sys_menu `ON CONFLICT (route_name) WHERE deleted_at IS NULL DO NOTHING`〔route_name 唯一索引為 partial〔WHERE deleted_at IS NULL〕、bare `ON CONFLICT (route_name)` 會 runtime error、鏡像 m002〕；casbin `ON CONFLICT (ptype,v0,v1,v2,v3,v4,v5) DO NOTHING`〔非 partial unique〕；索引 `CREATE INDEX IF NOT EXISTS`**。
 - **down**：DELETE casbin by (v0,v1,v2) tuple＋DELETE sys_menu by route_name＋DROP INDEX IF EXISTS ×4。
 - **★ up→down→up 可逆**（C-V-5）；**無新業務表、無 ALTER 既有日誌表**（§I.6 未觸）。sys_login_attempt 索引 007 已備。
 
@@ -98,7 +98,7 @@ get_operation_log/get_access_log/get_login_attempt(State, Extension<Claims>, Que
 
 ## 10. i18n keys（BASE-WEB-I18N-WIRING、⚠️y；先 Schema 後 locale）
 - `page.manage.audit.{title, tab.operation, tab.access, tab.login, col.*〔time/operator/operation/entityTable/entityId/ip/method/path/status/region/account/result/payload〕, filter.*}`（zh-cn 简体/en-us）。
-- 若日期嚴格：`backend.biz.audit.invalidDateRange`（Schema `App.I18n.Schema.backend.biz.audit`、locale `backend.biz.audit.*`）。
+- `backend.biz.audit.invalidDateRange`（畸形日期 2222 biz、**非條件、F2 定**；Schema `App.I18n.Schema.backend.biz.audit`、locale `backend.biz.audit.*`）。
 
 ## 11. base-web wire＋frontend（WRAPPER／ADAPT／MODAL-WIRING (e)、100% 淨新）
 - **L3 WRAPPER** `service/api/rev3-system-manage.ts`：+`fetchGetOperationLog(params)`／`fetchGetAccessLog(params)`／`fetchGetLoginAttempt(params)`（GET、params=filter+current/size）。
