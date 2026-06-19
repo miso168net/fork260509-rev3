@@ -54,8 +54,10 @@ EXEC sh -c 'cd /app && DATABASE_URL=$(cat /run/secrets/database_url) cargo test 
 BASE=http://127.0.0.1:31081
 TA=$(curl -s -X POST "$BASE/auth/login" -d '{"userName":"Admin","password":"123456"}' -H 'Content-Type: application/json' | python3 -c "import json,sys;print(json.load(sys.stdin)['data']['token'])")
 curl -s -o /dev/null -w "getRoleList=%{http_code}\n" "$BASE/systemManage/getRoleList" -H "Authorization: Bearer $TA"          # 200（R_ADMIN seed）
-for ep in addRole updateRole deleteRole batchDeleteRole updateRoleMenu updateRoleHome; do \
-  curl -s -o /dev/null -w "$ep=%{http_code}\n" -X POST "$BASE/systemManage/$ep" -H "Authorization: Bearer $TA" -H 'Content-Type: application/json' -d '{}'; done  # 皆 403/5003（非 super）
+# ★ method 須對齊註冊（deleteRole/batchDeleteRole=DELETE）；否則 POST→405「method not allowed」在 policy 層【之前】、非真授權測（holistic N1）
+for spec in POST:addRole POST:updateRole DELETE:deleteRole DELETE:batchDeleteRole POST:updateRoleMenu POST:updateRoleHome; do \
+  m=${spec%%:*}; ep=${spec#*:}; \
+  curl -s -o /dev/null -w "$ep=%{http_code}\n" -X "$m" "$BASE/systemManage/$ep" -H "Authorization: Bearer $TA" -H 'Content-Type: application/json' -d '{}'; done  # 皆 403/5003（非 super）
 curl -s -o /dev/null -w "getRoleMenu=%{http_code}\n" "$BASE/systemManage/getRoleMenu?roleId=2" -H "Authorization: Bearer $TA"  # 403/5003（protected R_SUPER）
 ```
 - Admin getRoleList→200（seed R_SUPER+R_ADMIN）；Admin/User 對 addRole/updateRole/**deleteRole/batchDeleteRole**/getRoleMenu/updateRoleMenu/getRoleHome/updateRoleHome→403/5003 不洩資料（C1 校正：batchDeleteRole 入負授權清單）；授權依 DB-fresh roles。對應 SC-006。
