@@ -76,7 +76,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management＋012 audit-log-query）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n・012 audit〔m005 migration＋sys_operation/access/login_log list+filter＋sys_user names_for_ids unfiltered〕/handler 3 唯讀端點/main audit group/lint glob＋base-web 審計中心頁〔NTabs 3 tab＋3 子表 payload 展開＋honest typings＋i18n〕〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
 
 ---
 
@@ -214,7 +214,7 @@
 **User wire type-lie（typings 收斂刀觸發;⚠️r 契約漂移、user 對 type-lie 敏感）**:
 - [ ] `getUserList` 的 `nickName`/`userPhone`/`userEmail` 當 DB NULL 時序列化為 `null`（rust `Option<String>`），但 base-web `Api.SystemManage.User` 宣告 non-null `string`＝wire↔typings type-lie（runtime 前端容忍 null、typecheck 不抓〔只驗前端碼非 rust 輸出〕）。009 守 contract §6.3【不改既有 system-manage.d.ts】未消解 → typings 收斂時（Menu 刀／專門）把該 3 欄改 `string | null` 對齊 rust（同 ⚠️r 精神）
 **審計 payload 未含角色集 delta（⚠️b 審計讀端刀觸發）**:
-- [ ] addUser/updateUser 的 op-log `payload_before`/`payload_after` 僅快照 `sys_user` Model（`audit_json`、password 已 redact）、**未含 `sys_user_role` 角色集 before/after**;原子性（user+roles+op-log 同 txn）已足、spec FR-006 未要求逐項列角色 → ⚠️b 審計讀端刀若要呈現「誰把 user 角色由 A 改 B」現查不到、屆時評估 payload 併入 role code 集 delta（holistic nit、非缺陷）
+- [ ] addUser/updateUser 的 op-log `payload_before`/`payload_after` 僅快照 `sys_user` Model（`audit_json`、password 已 redact）、**未含 `sys_user_role` 角色集 before/after**;原子性（user+roles+op-log 同 txn）已足、spec FR-006 未要求逐項列角色。**★ 012 審計讀端刀已觸發、確認 D4 延後**：012 讀端如實呈現現有 payload（op-log 行展開 payloadBefore/After 任意 JSON）、payload 不含 role-set delta 故「誰把 user 角色由 A 改 B」現查不到;補強＝未來【寫端】增強刀（payload 併入 role code 集 delta、動 `audit_json` 寫端）、非讀端範圍（holistic nit、非缺陷;同 §3.15 D-family 遞延）
 **getAllRoles/replace_roles「啟用角色」語意（Role 刀 confirm）**:
 - [x] ✅（2026-06-19、011 Role 刀 confirm）011 research R7 確認 **role status＝metadata、非存取閘**：`find_active` 維持僅濾 `deleted_at`、不濾 `status`（getAllRoles/replace_roles/getRoleList 沿用、role 軟刪單向無 restore）;FR-008「目前啟用角色」＝未軟刪解（by-design 保留）;未來若要排除 status=停用角色不可指派再於 find_active 後加 status 守門（仍 by-design、非缺口）
 
@@ -245,6 +245,24 @@
 - [ ] `getRoleList` 的 `roleDesc` 當 DB NULL 序列化為 `null`（rust `RoleListItem.role_desc: Option<String>`、handler `role_desc: m.role_desc` 直傳），但 base-web `Api.SystemManage.Role.roleDesc` 宣告 non-null `string`＝wire↔typings type-lie（runtime 前端容忍 null、typecheck 不抓〔只驗前端碼非 rust 輸出〕）。011 守 frozen 既有 `system-manage.d.ts`〔不改既有 Role typing〕未消解 → typings 收斂刀（同 §3.12/§3.13、可併一刀）把 `roleDesc` 改 `string | null` 對齊 rust
 **R_ADMIN getRoleList 可達性 moot（忠實 seed、沿 §3.13 R_ADMIN nuance）**:
 - [ ] m002 R_ADMIN 有 `getRoleList` policy（seed R_SUPER+R_ADMIN）但**無 `manage_role` menu policy**（§3.13 ground-truth）→ R_ADMIN 動態選單不含角色管理頁、實務到不了 `/manage/role`、其 getRoleList 授權 access moot;011 忠實 seed 不收窄（policy 校正刀評估對齊：收 R_ADMIN getRoleList seed 或補 R_ADMIN manage_role menu;同 §3.13 button↔endpoint 不對齊家族）
+
+### 3.15 012-audit-log-query follow-up（收刀移交 2026-06-19;均不阻塞、消費刀觸發時處理）
+
+**三欄 IP forensic 模型＋寫端 capture（D11、後續審計增強刀;★ 宜與 §3.11 XFF 完整化【同一刀】收）**:
+- [ ] D11 `client_ip(peer)`/`xff_ip`/`real_ip` 三欄統一 forensic 模型＝後續刀（ALTER 3 日誌表加欄＋`audit_ctx` 寫端 peer/Cloudflare `CF-Connecting-IP` capture）。012 讀端先行、讀現 schema（op-log `operator_ip`／access·login `client_ip`〔已解析〕＋`x_forwarded_for`）。**與 §3.11（007 `resolve_client_ip` XFF 完整化）同動既有日誌表結構＋寫入基建→宜一刀收**;本刀 `manage_audit` menu／3 端點 policy 可被該刀沿用、讀端 wire 屆時加 3 IP 欄＋honest typing 對齊。
+
+**XFF 鑑識可見性＋硬化（2026-06-20 XFF 端到端盤點新發現;非阻塞、同 §3.4 nginx 硬化／上方 D11+§3.11 完整化窗口）**:
+- [ ] access/login 表格**不顯示 `xForwardedFor` 欄**（現可模糊搜尋〔facade `ilike(XForwardedFor)`、搜尋欄已接〕、但表格僅顯示 clientIp/region）→ raw XFF 鏈是 `resolve_client_ip` 退化（trusted 空→peer-only）/多跳時的鑑識 ground-truth、可見性弱;**spec FR-003 欄位清單未列 XFF＝spec-compliant**，宜補顯示欄或行展開（與三欄 IP 模型刀一起、或獨立小 UX 補）
+- [ ] `audit_ctx` 讀 `x-forwarded-for` header＋`resolve_client_ip` split/parse **無長度/token 數上限**（超長 XFF 鏈→解析成本）→ 公網前評估上限（現 hyper/axum 預設 header size cap＋malformed-token-skip 已部分緩解、低風險;與 §3.4 nginx 硬化〔`set_real_ip_from`/`large_client_header_buffers`〕同窗口收）
+
+**審計 UX／scale 增強（低優先、規模/需求觸發;spec data-model §13 OUT）**:
+- [ ] access-log `http_status` 2xx/4xx/5xx **類別** quick-filter（現逐欄精確等值;類別下拉＝UX 增強）
+- [ ] 模糊 LIKE（IP/path/帳號）現 **seq-scan**（super-only 中量〔現 op-log 41／access 744／login 214 列〕、⚠️a 預算內）→ 規模增長後引 `pg_trgm` GIN 索引（須 `CREATE EXTENSION`、本刀刻意不引）
+- [ ] 審計匯出 CSV（spec 未列、未來增強）
+
+**as-built 紀要（cleanliness／勘誤、非缺陷）**:
+- [ ] rev3 wrapper `pruneNullParams`（前端剔空 filter）＋後端 `parse_*` 守門〔含 `parse_entity_id`、`fca64a0`〕為**雙防線、刻意保留**（其他 client 直送空字串仍須後端不 400、見 memory「數字 query param 空字串→serde 400」）;未來若要單一權威可評估前端是否續留（非急、現雙層皆綠）
+- [ ] specs/012 `data-model.md §6` 寫 rust 端 biz key 帶 `backend.` 前綴為**文件筆誤**（as-built＝**無前綴** `biz.audit.invalidDateRange`、攔截器 `translateBackendMsg` 補 `backend.`→locale `backend.biz.audit.invalidDateRange`）;as-built 權威見 [DECISIONS §2](INTEGRATION-DECISIONS.md) 012 bullet（spec 為設計快照、勘誤可選;消費此 key 一律 ref 既有 `biz.*` 慣例〔rust 端全無 backend 前綴〕）
 
 ---
 
