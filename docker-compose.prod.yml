@@ -37,10 +37,14 @@ services:
   rust-api:
     image: rev3-admin-rust-api:latest
     restart: unless-stopped
+    volumes:
+      # 013：信任拓樸 config（operator 依實際拓樸編輯；含 CF 段時零 CF code、純 trusted CIDR 配置）
+      - ./deploy/trust-model.toml:/etc/rev3/trust-model.toml:ro
     environment:
-      # 007 audit overlay：prod 經 front-nginx reverse-proxy → 必信任 nginx/docker 內網段
-      #   才能自 XFF 解析真實 client IP（fail-safe 預設空＝退化成採 nginx peer IP，務必依拓樸填）。
-      #   CF 前置時加 Cloudflare 段（零 CF code、純 trusted CIDR 配置）。
+      # 013：信任拓樸 config 檔（兩層解析 + CF overlay 的 trusted 來源）。缺檔 fallback 下方 flat env。
+      TRUST_MODEL_FILE: "/etc/rev3/trust-model.toml"
+      # 007/013 fallback：prod 經 front-nginx reverse-proxy → 必信任 nginx/docker 內網段才能自 XFF 解析真實
+      #   client IP（fail-safe 預設空＝退化成採 nginx peer IP）。優先用 TRUST_MODEL_FILE、本項為缺檔 fallback。
       TRUSTED_PROXY_CIDRS: "${TRUSTED_PROXY_CIDRS:-}"
       # xdb region 檔（runtime WORKDIR=/app；由 Dockerfile runtime 段 COPY xdb/resources → /app/resources）。
       XDB_FILEPATH: "resources/ip2region.xdb"
