@@ -42,7 +42,7 @@
 
 ## D4 — 硬即時撤銷（Redis denylist、§3.9 閉口）
 
-- **Decision**：Redis denylist `revoked:user:{uid}=revoked_at`(unix)、TTL=access_ttl(3600s)+skew；`enforce_mw`（bearer→is_current 後）查：uid 在名單且 `claims.iat < revoked_at`→reject(8888)；**fail-OPEN**（Redis 不可達→不 reject、撤銷窗口被 access_ttl 兜底）。`revoke_user_sessions(uid)`：撤該 user 全部 active rotation chain(DB) + 清 pointer(DB current_session_id=NULL + Redis sess) + `SET revoked:user:{uid}=now EX access_ttl`；接 009 `deleteUser` + `updateUser(status=2 停用)` handler。re-enable 後新 token iat>revoked_at 自動放行、TTL 到期自清。
+- **Decision**：Redis denylist `revoked:user:{uid}=revoked_at`(unix)、TTL=access_ttl(3600s)+skew；`enforce_mw`（bearer→is_current 後）查：uid 在名單且 `claims.iat <= revoked_at`→reject(8888)；**fail-OPEN**（Redis 不可達→不 reject、撤銷窗口被 access_ttl 兜底）。〔★ as-built 校正：① `<=` 非 `<`——iat/revoked_at 皆 unix 秒粒度，同秒登入/撤銷 fail-secure；② refresh endpoint〔public、不過 enforce_mw〕亦對稱雙查 denylist（defense-in-depth）。〕`revoke_user_sessions(uid)`：撤該 user 全部 **active+used** rotation chain(DB)〔★ as-built：含 used、防被竊 used token grace 內 Benign 重鑄繞撤〕 + 清 pointer(DB current_session_id=NULL + Redis sess) + `SET revoked:user:{uid}=now EX access_ttl`；接 009 `deleteUser` + `updateUser(status=2 停用)` handler。re-enable 後新 token iat>revoked_at 自動放行、TTL 到期自清。
 - **Rationale**：閉 §3.9 gap（停用/刪 user 的 access token 活到過期）；Redis 共享→多副本一致；無新表→守零 migration（item 8）。
 - **Alternatives**：fail-CLOSED（Redis=全站 auth 單點、棄）；per-request 查 DB user-active（熱路徑 DB hit、棄）；DB denylist 表（違零 migration、棄）。
 
