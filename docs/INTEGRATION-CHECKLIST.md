@@ -80,7 +80,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management＋012 audit-log-query）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n・012 audit〔m005 migration＋sys_operation/access/login_log list+filter＋sys_user names_for_ids unfiltered〕/handler 3 唯讀端點/main audit group/lint glob＋base-web 審計中心頁〔NTabs 3 tab＋3 子表 payload 展開＋honest typings＋i18n〕〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management＋012 audit-log-query）＋D11（013 xff-real-ip-forensics）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n・012 audit〔m005 migration＋sys_operation/access/login_log list+filter＋sys_user names_for_ids unfiltered〕/handler 3 唯讀端點/main audit group/lint glob＋base-web 審計中心頁〔NTabs 3 tab＋3 子表 payload 展開＋honest typings＋i18n〕・013 xff-real-ip-forensics〔audit_ctx 兩層解析重寫〔normalize/resolve→(IpAddr,Confidence)/apply_cf_overlay/Confidence 七態〕＋config TrustModel〔新 toml dep〕＋m006＋3 entity 改名加欄＋3 facade 四欄寫+list filter＋model/audit AuditMeta＋handler wire+filter/auth＋base-web 審計四欄顯示/篩選/ip-confidence-tag+options/i18n＋deploy nginx geo/map+trust-model〕〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、見 §3.2）
 
 ---
 
@@ -107,7 +107,7 @@
 **部署層加固**:
 - [ ] nginx 自答 `/health` 雙 Content-Type（`add_header`→改 `default_type`;rev2 同形）
 - [ ] nginx prod 硬化:`server_tokens off`＋HSTS/X-Frame-Options/X-Content-Type-Options（公網前必做）
-- [ ] XFF append 可偽造→`set_real_ip_from` 信任邊界（公網前評估）
+- [x] ✅（2026-06-21、013-xff-real-ip-forensics）XFF 信任邊界已收——013 以 **rust 兩層信任模型**（`TrustModel` CIDR 集＋peer-gate、忽略客戶端注入 FR-001/SC-002）＋**nginx `geo $remote_addr` CF 驗證閘**（FR-010、$remote_addr 不可偽造）解決，**刻意不採 `set_real_ip_from`/realip**（不壓扁鏈、保多 CDN/IIS/混合拓樸解析力）;網路層「origin 不可繞過」仍為部署前提（spec Assumption、operator 防火牆/tunnel）。剩純 nginx 硬化（server_tokens/HSTS 等）見下方各條
 - [ ] image pin 一致性:alpine/openssl:latest（兩生成腳本）、base-web runtime nginx:alpine、base-web dev node:26-alpine（26.x 滑動）、postgres:17-alpine/debian patch 浮動 → 統一 pin 紀律一次處理
 - [ ] prod migrate 繼承 runtime image 無意義 HEALTHCHECK（migration 不開 port;>35s migration＋未來 `--wait` 假陰性伏筆→prod.yml 補 `healthcheck: disable`）
 - [x] ✅（已 007 T019、commit `e255545`）builder `cargo build --locked`（Dockerfile.rust-api.txt:58）＋dev `cargo install --locked`（:74）兩 stage 皆帶、無遺漏
@@ -270,13 +270,19 @@
 
 ### 3.16 013-xff-real-ip-forensics follow-up（收刀移交 2026-06-21;均不阻塞）
 
-**部署/硬化（公網前、與 §3.4 nginx 硬化／§3.11 同窗口）**:
-- [ ] XFF 長度/token 數上限（`audit_ctx` normalize split/parse 無上限、超長鏈解析成本；hyper/axum header cap+malformed-skip 已部分緩解、低風險）
-- [ ] cloudflared-in-docker 部署時 operator 須在 nginx geo + trust-model cdn 補 cloudflared 實際 ingress IP（013 geo 僅含 CF 官方段 v4×15+v6×7+loopback、docker bridge gateway 刻意排除以利端到端測偽造 negative；conf 已註明、operator 自填）
+**config 語意/cleanliness（review 衍生、非缺陷）**:
+- [ ] **`TrustModel.Binding.dual_role` 欄從不被消費**（spec'd data-model §5＋serde 解析，但 `resolve_client_ip` 只讀 `MyPublicEntry.dual_role`＋binding 相鄰內網驗證決定 `ProxySoft`、未讀 `binding.dual_role`）→ operator 在 `[[bindings]]` 設 `dual_role` 無效果;後續 resolve 消費它／自 schema 移除／文件標 no-op（U1 quality review 衍生）
+- [ ] **op-log count 斷言 EntityId-only 測試隔離脆弱性（pre-existing 007-era）**:013 修了 sys_user 兩處（`op_log_atomic_three_paths` 三查詢＋`add_user_create_roundtrip_and_dup` 補 `entity_table` 述詞、隔離跨表 entity_id 污染）;**sys_role/sys_menu/sys_casbin_rule 等 Operation-filtered count 斷言仍以 EntityId 為主**、潛在跨表同 entity_id committed 列污染（未觀察 flaky、但 dev DB 累積+`--ignored` 執行順序變化可能觸發偽紅）→ 統一補 `entity_table` 或 trace_id 隔離（U2b quality review 衍生）
+- [ ] `RequestContext.operator_id` never-read warning＝**007 起 pre-existing dead**（field set-but-never-read、handler 用 `Claims.uid` 非 ctx.operator_id;§3 不清 pre-existing dead code、未來 audit_ctx 重構順手）
+- [ ] specs/013 `quickstart.md` §1 TOML 範例 `internal_default` 置於 `[[my_public]]` 之後＝**root-scalar 排序 invalid**（TOML 語意當最後 table 的 key;**`deploy/trust-model.toml` 範本已正確置頂**、僅 spec quickstart 筆誤）→ 勘誤可選（沿 §3.15 spec 筆誤追蹤模式）
 
-**cleanliness（非缺陷）**:
-- [ ] `RequestContext.operator_id` never-read warning＝**007 起 pre-existing dead**（field set-but-never-read、handler 用 `Claims.uid` 非 ctx.operator_id；§3 不清 pre-existing dead code；未來 audit_ctx 重構順手）
-- [ ] dev DB 受稽核列全 `fallback`/`direct`＝**拓樸正確非 bug**（dev 全內網鏈→Fallback、m006 前舊列空白＝歷史不回填）；高可信態（`cdn_verified` 等）僅 prod 真經 CF 出現
+**部署 config（operator 維護、公網前）**:
+- [ ] **operator 須填 `trust-model.toml` 實際拓樸**:`my_public` 我方反代 public IP〔Tier-2 非 CF 路徑解析需要、dev 留空＝all-direct〕;cloudflared-in-docker 部署補其 ingress IP 進 nginx geo + trust-model〔013 geo 僅含 CF 官方段 v4×15+v6×7+loopback、docker bridge gateway 刻意排除以利測偽造 negative;conf 已註明〕
+- [ ] **CF 官方 IP 段重複維護**:CF v4/v6 段同列於 `deploy/nginx/nginx.conf` geo 與 `deploy/trust-model.toml` cdn 兩處、operator 更新 CF list 須**兩處同步**（漂移風險）→ 評估單一來源或文件警示
+- [ ] XFF 長度/token 數上限（`audit_ctx` `normalize_xff_tokens` split/parse 無上限）→ **見 §3.15 同條**（012 已登、013 沿用未加上限、公網前與 §3.4 nginx 硬化同窗口）
+
+**dev 行為註記（非 bug）**:
+- [ ] dev DB 受稽核列全 `fallback`/`direct`＝**拓樸正確**（dev 全內網鏈→Fallback、m006 前舊列空白＝歷史不回填）;高可信態（`cdn_verified` 等）僅 prod 真經 CF 出現
 
 **D4 角色變更 payload delta**：見 §3.12（user/role 寫端增強刀、013 未動 payload 結構）
 
