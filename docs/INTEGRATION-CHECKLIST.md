@@ -272,7 +272,7 @@
 
 **config 語意/cleanliness（review 衍生、非缺陷）**:
 - [ ] **`TrustModel.Binding.dual_role` 欄從不被消費**（spec'd data-model §5＋serde 解析，但 `resolve_client_ip` 只讀 `MyPublicEntry.dual_role`＋binding 相鄰內網驗證決定 `ProxySoft`、未讀 `binding.dual_role`）→ operator 在 `[[bindings]]` 設 `dual_role` 無效果;後續 resolve 消費它／自 schema 移除／文件標 no-op（U1 quality review 衍生）
-- [ ] **op-log count 斷言 EntityId-only 測試隔離脆弱性（pre-existing 007-era）**:013 修了 sys_user 兩處（`op_log_atomic_three_paths` 三查詢＋`add_user_create_roundtrip_and_dup` 補 `entity_table` 述詞、隔離跨表 entity_id 污染）;**sys_role/sys_menu/sys_casbin_rule 等 Operation-filtered count 斷言仍以 EntityId 為主**、潛在跨表同 entity_id committed 列污染（未觀察 flaky、但 dev DB 累積+`--ignored` 執行順序變化可能觸發偽紅）→ 統一補 `entity_table` 或 trace_id 隔離（U2b quality review 衍生）
+- [ ] **op-log count 斷言 EntityId-only 測試隔離脆弱性（pre-existing 007-era）**:013 補 sys_user 兩處 `entity_table` 述詞（只隔跨表）;**`op_log_atomic_three_paths` 已於 014（commit `7ec8fc3`、§3.17）改 trace_id 隔離、全 `--ignored` 套件 19/19 綠**。**殘留**:sys_role/sys_menu/sys_casbin_rule 等 Operation-filtered count 斷言仍以 EntityId 為主（sys_menu 多數已用 trace_id;`sys_casbin_rule role_menu_loop` F1 由 teardown cleanup+serial 保護;`sys_role`/`add_user` roundtrip 用【新 unique id】天然安全）——**未觀察 flaky**、潛在 dev DB 累積+`--ignored` 順序變化可能觸發 → 真失敗再統一 trace_id 化（U2b quality review 衍生）
 - [ ] `RequestContext.operator_id` never-read warning＝**007 起 pre-existing dead**（field set-but-never-read、handler 用 `Claims.uid` 非 ctx.operator_id;§3 不清 pre-existing dead code、未來 audit_ctx 重構順手）
 - [ ] specs/013 `quickstart.md` §1 TOML 範例 `internal_default` 置於 `[[my_public]]` 之後＝**root-scalar 排序 invalid**（TOML 語意當最後 table 的 key;**`deploy/trust-model.toml` 範本已正確置頂**、僅 spec quickstart 筆誤）→ 勘誤可選（沿 §3.15 spec 筆誤追蹤模式）
 
@@ -304,7 +304,7 @@
 - [ ] **Redis `sess:{uid}` pointer 熱快取 deferred**（data-model X-01 v1、is_current 直讀 DB PK）：§I.7-compliant 決策、避 stale-hit bug class;若日後 is_current QPS 高致 DB 熱點，可啟用已預留快取（redis.rs get/set_ex/del 已備、set_pointer/revoke_user_sessions 已留 invalidate-on-write DELETE 鉤子）→ 採 invalidate-on-write（非 write-through、避踢錯會話破 SC-006）。**low**
 
 **測試債（延續 §3.16 op-log 隔離脆弱性）**:
-- [ ] **`op_log_atomic_three_paths` 全 `--ignored` 套件仍偽紅**（§3.16 既有項的延續、013 修法被 014 實證不足）：013 給該測三查詢補 `entity_table='sys_user'` 述詞隔離【跨表】污染，但 014 U4 實測路徑 (c)/id=2 仍 `left:2 right:0`——disable user id=2 經【真 server】commit 的 op-log 列就是 `entity_table='sys_user' AND entity_id=2`、與斷言 filter【同表同 entity_id】完全重疊、`entity_table` 述詞無濟。真 fix＝trace_id/delta 隔離（memory `oplog-count-assert-nonidempotent`）;非 014 回歸（git-stash baseline 證 pre-existing）、非阻塞（U8 零回歸跑【非 ignored】套件即綠）。**med**
+- [x] ✅（2026-06-22、commit `7ec8fc3`）**`op_log_atomic_three_paths` 偽紅已修＝trace_id 隔離**：013 補 `entity_table` 述詞只隔【跨表】、014 U4 實測 (c)/id=2 仍 `left:2 right:0`（disable id=2 真 server commit 的 op-log = `entity_table='sys_user' AND entity_id=2`、與斷言 filter 同表同 entity_id 完全重疊、entity_table 無濟）→ 改唯一 `trace_id`（meta.trace_id="oplog-atomic-3paths-smoke"、三查詢 filter `TraceId`;本測 rollback 不 commit 故只命中自身未提交寫入）。**全 `--ignored` 套件 19/19 綠驗證**（memory `oplog-count-assert-nonidempotent`）。〔sys_role/sys_menu/sys_casbin_rule 等 §3.16 latent EntityId 斷言由 teardown cleanup+serial 保護、未失敗、本刀未動;真失敗再 trace_id 化〕
 
 ### 3.18 alt-login 4 流程 stub 刀（⚠️m 2026-06-22 重議→延後出波3、移 post-波3 v1-completeness slot）
 
