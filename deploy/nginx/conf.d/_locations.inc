@@ -20,6 +20,11 @@ location /api/ {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Request-Id $request_id;
+    # 013 FR-010 · CF 驗證旗標 + strip 後的權威 client IP（geo/map 定義於 nginx.conf http context）。
+    # ★ proxy_set_header 會【覆寫】client 偽造的同名 header＝防偽造核心：非 CF 源 $x_cf_verified=0、
+    #   $cf_cip_safe="" → rust overlay 不 fire。CF 只進 /api/，location / 不需加。
+    proxy_set_header X-CF-Verified $x_cf_verified;
+    proxy_set_header CF-Connecting-IP $cf_cip_safe;
 }
 
 location = /health {
