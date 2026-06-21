@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 3 進行中 — 第一刀 014 Auth/Token/Session ✅ 全完成（merge `3066bc2`）→ 波 3 後續**：Policy-governance 刀（§4.2 治理欄 adapter-invisible+archive+protected+restore+`PolicyMutated` gate、復用 011 `set_role_dimension` DB-first＋**casbin enforcer 跨實例 pub-sub 接 014 已建的 Redis 基建/watcher 範式**）／Button-Endpoint policy 縱切（runtime 三維授權編輯、純 policy 無新 entity;含 011 留 mock 的 button-auth-modal）／（⚠️m 拍板後）alt-login stub。前置拍板 ⚠️m alt-login 入波排程。波 3 de-risk：治理島形狀宜先 spike（可拋棄、DESIGN §8.5）。Auth 島 §3.9 follow-up（token 即時撤銷/JWT 參數硬編）已由 014 閉口
+**下一步**: **波 3 進行中 — 第一刀 014 ✅ → 波 3 剩兩刀**：① Policy-governance 刀（§4.2 治理欄 adapter-invisible+archive+protected+restore+`PolicyMutated` gate、復用 011 `set_role_dimension` DB-first＋**casbin enforcer 跨實例 pub-sub 接 014 已建的 Redis 基建/watcher 範式**）→ ② Button-Endpoint policy 縱切（runtime 三維授權編輯、純 policy 無新 entity;含 011 留 mock 的 button-auth-modal）。序由相依定（②復用①的 set_role_dimension）。**起手＝① 走 CLAUDE.md §3 階段 0 brainstorm**。**alt-login 4 流程 stub 刀＝⚠️m 2026-06-22 重議→延後出波3**（user 親決 C 案、移 post-波3 v1-completeness slot、詳 §3.18;前端 3 表單已完整但後端 4 全缺＋bind-wechat 空殼+真 OAuth、低 v1 功能價值）。波 3 de-risk：治理島形狀 spike **可略過**（011 DB-first + 014 Redis/watcher 已退兩核心風險、brainstorm 直接定形）。Auth 島 §3.9 已由 014 閉口
 
 ---
 
@@ -53,10 +53,10 @@
 - [x] **Auth/Token/Session 合刀**（014-auth-token-session ✅ 全完成、merge `3066bc2`、2026-06-22;§4.1 rotation chain〔+TOCTOU 加固〕＋§4.3 single-session〔resolve_policy/is_current policy-aware 修永遠踢〕＋硬即時撤銷 Redis denylist＋cleanup-job 新 crate＋2-instance 多副本驗證;零 migration、新 redis+cleanup-job crate;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)）
 - [ ] **Policy-governance 刀**（§4.2:治理欄 adapter-invisible＋archive 表＋protected＋restore＋`PolicyMutated` gate;rev2 034/035）
 - [ ] **Button/Endpoint policy 縱切**（runtime 三維授權編輯＋rollout;rev2 022/023/024;純 policy、無新 entity、非行為島）
-- [ ] **（⚠️m 拍板後）alt-login stub 刀**（§1.2 尾巴 4 流程 stub;captcha 2 端點已隨 ⚠️c 定案;DESIGN §8.2 待拍板刀位）
+- [—] ~~**alt-login stub 刀**~~ → **⚠️m 2026-06-22 重議→延後出波3**（移 post-波3 v1-completeness slot、詳 §3.18;§1.2 尾巴 4 流程〔reset-pwd/code-login/register/bind-wechat〕;captcha〔⚠️c〕同延〔實測拍定但未落地〕）
 
-**前置拍板（user 親決,1 項）**:
-- [ ] ⚠️m alt-login 4 流程 stub 入波排程（預設=入波;本項殘餘僅 alt-login;波 3 排程前）
+**前置拍板**:
+- [x] ✅（2026-06-22、user 親決 C 案）⚠️m 已決＝**重議→延後出波3**：alt-login 4 流程 stub〔含 captcha〕移 post-波3 v1-completeness slot（§3.18）;#13/§11.13「v1 啟 stub mode」拍板不變、僅 re-schedule within v1（§9.5/§11.13 排程性拍板 amendment、非默改）
 
 **出口條件（DESIGN §8.4）**:
 - [ ] §4 三台機器 invariants 逐條有自動化驗證（單測或 C-V contract）
@@ -306,6 +306,21 @@
 **測試債（延續 §3.16 op-log 隔離脆弱性）**:
 - [ ] **`op_log_atomic_three_paths` 全 `--ignored` 套件仍偽紅**（§3.16 既有項的延續、013 修法被 014 實證不足）：013 給該測三查詢補 `entity_table='sys_user'` 述詞隔離【跨表】污染，但 014 U4 實測路徑 (c)/id=2 仍 `left:2 right:0`——disable user id=2 經【真 server】commit 的 op-log 列就是 `entity_table='sys_user' AND entity_id=2`、與斷言 filter【同表同 entity_id】完全重疊、`entity_table` 述詞無濟。真 fix＝trace_id/delta 隔離（memory `oplog-count-assert-nonidempotent`）;非 014 回歸（git-stash baseline 證 pre-existing）、非阻塞（U8 零回歸跑【非 ignored】套件即綠）。**med**
 
+### 3.18 alt-login 4 流程 stub 刀（⚠️m 2026-06-22 重議→延後出波3、移 post-波3 v1-completeness slot）
+
+> ⚠️m 拍板（user 親決 C 案）：alt-login 不入波3、移後;波3 聚焦實質 authz/policy（Policy-governance + Button-Endpoint）。#13/§11.13「v1 啟 stub mode」不變、僅 re-schedule within v1。接地（2026-06-22 mapping、Explore 冷讀 base-web `views/_builtin/login/modules/` + rust-api `handler/auth.rs`）記此免未來刀重查：
+
+**4 流程現況**（前端 view ✅/❌、後端 rust-api endpoint、stub 工/風險）:
+- [ ] **code-login**：前端✅完整（phone+code+captcha 鈕、submit 是死 stub `window.$message`、從 pwd-login 頁有按鈕可達）;後端❌無 `/auth/codeLogin`。stub＝service fn + handler〔驗 phone→簽 JWT 回 LoginToken〕+ route。**低 (b)**
+- [ ] **register**：前端✅完整（phone+code+pwd+confirm+captcha、submit 死 stub、可達）;後端❌無 `/auth/register`。stub＝service fn + handler〔建 sys_user+hash+簽 JWT〕+ route。**低 (b)**
+- [ ] **reset-pwd**：前端✅完整（phone+code+pwd+confirm、submit 死 stub、忘記密碼鈕可達）;後端❌無 `/auth/resetPassword`。stub＝service fn + handler〔改 password hash〕+ route。**低 (b)**
+- [ ] **bind-wechat**：前端❌空殼（`<div></div>`、無表單/OAuth/返回鈕、不在 pwd-login 導覽、僅手打 URL 可達）;真 OAuth 本質難 stub（要微信 keys/redirect/sandbox）。整建 view+OAuth 模擬+endpoint。**中-高 (c)、最低 v1 價值**
+
+**工量**：3 表單 stub ≈ formulaic glue ~8-10h〔復用 login hash/JWT pattern〕、低風險;bind-wechat 佔近半工卻最低價值、待真 OAuth 需求再評。
+
+**★ ⚠️c-完整包 未落地 finding（2026-06-22 mapping 揭露、獨立於 alt-login、需追蹤）**:
+- [ ] ⚠️c（2026-06-12 **拍定**）的「alova demo 完整包」——`sendCaptcha`/`verifyCaptcha`〔code-login/register 用、前端 `useCaptcha` hook 是 500ms mock 零 HTTP〕＋`/auth/error`〔`fetchCustomBackendError` 呼〕＋alova demo 三頁端點——**rust-api 實測無對應 route**（**拍定≠落地**）。先前 CHECKLIST/DECISIONS「captcha 已隨 ⚠️c 拍定」措辭易誤讀為已做、實為**拍板待實作**。與 alt-login 同窗口或獨立排（alova demo 屬 demo-completeness、非核心）→ 排前先確認哪些 ⚠️c 端點真缺。
+
 ---
 
 ## 4. 跨 feature 待驗證項
@@ -314,7 +329,7 @@
 
 ## 5. 拍板項索引（常駐;結論全文與工程預設見 [DECISIONS §1](INTEGRATION-DECISIONS.md)）
 
-**已決 28**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜③ B=`system_settings` 第一刀(2026-06-16)｜⚠️a perf 保守預設(p95 300/500/1s・99.5%)｜⚠️b 審計讀端 做+波2 殿後｜⚠️o application-RI hybrid(intra 下沉 facade/跨 facade·restore 留 handler)｜⚠️u §IV 第10題 不採納｜⚠️x endpoint_lint 波0 豁免移波1｜⚠️y biz-msg i18n A(前端譯·msg=key;規約於 003-envelope 落定〔4 根+文法+13 碼 key+兩端接線+locale 外包 backend.〕·刀1+ 僅套用)｜⚠️aa BASE-WEB-I18N-WIRING ★ 軌道(constitution §III amend v1.1.0;授權 i18n inline 接線：service/request 攔截器/locales backend 命名空間/app.d.ts Schema)｜⚠️ab constitution §I.3 措辭 PATCH(釐清 msg 載 i18n key 對齊 ⚠️y、v1.1.1)｜⚠️ac constitution §I.6「無 retrofit」釐清=archetype 審計欄;既有表 domain forensic 刻意可逆演進放行(PATCH v1.1.2、013 analyze C1)
+**已決 29**:①flat-in-main 沿用｜② C+ typings-as-oracle｜④僅 join 表加 FK｜⑤凍結邊界=archetype+行為島+碼表入憲｜⚠️c /auth/error 翻案做＋demo 三頁完整包｜⚠️d redis tag 建時 pin 數字版｜⚠️e 5000→HTTP 200 信封｜⚠️f 13 碼矩陣整組凍結｜⚠️g 受控參照 rev2 source｜⚠️i MODAL-WIRING 五用途全授+BUILD-CONFIG 不收錄｜⚠️j rust-api 沿倉換分支｜⚠️k migration 短編號 mNNN_<name>｜⚠️p demo 全進 sys_menu seed 僅勾 R_SUPER｜⚠️q clean-slate＋整批移植｜⚠️r id 逐欄位忠實 typings｜⚠️s fork-delta 雙模式(原行註解保留+rev3-inline 標記)｜⚠️t schema 波 0 一次全建(rev2 終態 squash 基線+delta 顯式分離;seed 口徑 92 列/6 表勘誤 2026-06-13)｜⚠️v casbin_rule 委派式建表+adapter 併入 002(sub-crate 刀消解)｜③ B=`system_settings` 第一刀(2026-06-16)｜⚠️a perf 保守預設(p95 300/500/1s・99.5%)｜⚠️b 審計讀端 做+波2 殿後｜⚠️o application-RI hybrid(intra 下沉 facade/跨 facade·restore 留 handler)｜⚠️u §IV 第10題 不採納｜⚠️x endpoint_lint 波0 豁免移波1｜⚠️y biz-msg i18n A(前端譯·msg=key;規約於 003-envelope 落定〔4 根+文法+13 碼 key+兩端接線+locale 外包 backend.〕·刀1+ 僅套用)｜⚠️aa BASE-WEB-I18N-WIRING ★ 軌道(constitution §III amend v1.1.0;授權 i18n inline 接線：service/request 攔截器/locales backend 命名空間/app.d.ts Schema)｜⚠️ab constitution §I.3 措辭 PATCH(釐清 msg 載 i18n key 對齊 ⚠️y、v1.1.1)｜⚠️ac constitution §I.6「無 retrofit」釐清=archetype 審計欄;既有表 domain forensic 刻意可逆演進放行(PATCH v1.1.2、013 analyze C1)｜⚠️m alt-login 排程＝**重議→延後出波3**(2026-06-22、user 親決 C;alt-login 4 流程 stub〔含 captcha〕移 post-波3 v1-completeness slot、§3.18;#13 v1-stub-mode 不變、僅 re-schedule、§11.13 排程性拍板)
 
 **009-user clarify／as-built（spec.md ## Clarifications／contract §3.2;非 ⚠️ 碼級）**:self-lock 防自鎖對稱守門(禁超管自我移除超管角色/自我停用→2222 整筆拒)｜批次刪缺漏 idempotent skip(已不存在/已刪 id 靜默略過、cannot-delete-self 仍獨立整批拒)｜ILIKE 處方校正(`PgExpr::ilike().escape()` runtime 失效〔sea-query 0.32.7 escape hack 不含 pg ILIKE〕→改 `LOWER(col) LIKE ESCAPE`、權威見 user-management-contract §3.2 供 Role/Menu 刀繼承)
 
