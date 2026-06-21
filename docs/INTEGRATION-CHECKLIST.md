@@ -195,9 +195,9 @@
 **`enforce_mw` policy-step 上線＋5003 live（✅ 波1 008 兌現，非波2）**:
 - [x] ✅（2026-06-18、008）波 1 第一刀 system_settings＝**首個 policy-governed 端點**：新增 `require_policy(path,method)` per-route layer（**不改 enforce_mw 本體**、守契約 §3.4;DB-fresh `roles_of_user` 不信 claims.roles→`enforce_role_path_method`→`PermissionDenied`）、兩端點各掛 route_layer＋外層 enforce_mw;**首證 5003→HTTP403 live**（C-V-6 Admin/User GET/POST→403 code 5003 不洩值＋CDP）;`endpoint_coverage_lint`（⚠️x）立、分類 public（/health、/auth/login）/auth-only（/auth/getUserInfo）/policy-governed（system_settings×2）三類＋斷言 registered==as-built＋policy-governed⊆m002 seed。空字串 filter 守門＝§5.8、system_settings flat 無 filter→留波2 User
 **token 不隨 user 停用/軟刪即時失效（波2 User CRUD／波3 session revocation 觸發）**:
-- [ ] getUserInfo `find_by_id` 不濾 `deleted_at IS NULL`、`enforce_mw` 不查 user active → 已軟刪/停用 user 持既發 access token 仍可通關至過期（≤access_ttl ~1h）;login 端 `find_by_user_name` 已濾軟刪（無法新登入）。即時撤銷（user disable/delete 即踢）屬 §I.7 完整 session 機器=波3（rotation/reuse/revocation）;波2 User CRUD 若需即時失效須提前接 revocation hook
+- [x] ✅（2026-06-22、014 U4 閉口）getUserInfo `find_by_id` 不濾 `deleted_at IS NULL`、`enforce_mw` 不查 user active → 已軟刪/停用 user 持既發 access token 仍可通關至過期（≤access_ttl ~1h）;login 端 `find_by_user_name` 已濾軟刪（無法新登入）。即時撤銷（user disable/delete 即踢）屬 §I.7 完整 session 機器=波3。**014 U4 兌現**：Redis denylist `revoked:user:{uid}`＋`revoke_user_sessions`〔撤 active+used 全鏈+清 pointer〕＋`denylist_gate`〔enforce_mw+refresh 雙查 `iat<=revoked_at`→8888、同秒 fail-secure〕接 009 deleteUser/batchDelete〔逐 id〕/updateUser(status=2)→停用/刪 user 既發 access token 下個請求即拒、不分 policy、不等過期（FR-007/SC-004 100%）;re-enable iat>revoked_at 自動放行。詳 [DECISIONS §2](INTEGRATION-DECISIONS.md)
 **JWT 參數硬編（波3 refresh/session 或 settings 觸發）**:
-- [ ] JwtConfig 的 `access_ttl`(3600s)/`refresh_ttl`(7d)/`iss`(`rev3-admin`)/`aud`(`rev3-admin-web`) 為 main.rs boot 常數;波3 refresh/session policy 或 settings 若需可設定化（per-role TTL／runtime 調）再外移、本刀硬編足夠
+- [x] ✅（2026-06-22、014 確認硬編足夠）JwtConfig 的 `access_ttl`(3600s)/`refresh_ttl`(7d)/`iss`(`rev3-admin`)/`aud`(`rev3-admin-web`) 為 main.rs boot 常數;波3 refresh/session policy 或 settings 若需可設定化（per-role TTL／runtime 調）再外移、本刀硬編足夠。**014（波3 refresh/session 刀）未觸發外移需求**〔refresh 直用 `jwt.access_ttl` 算 denylist TTL、無 per-role TTL / runtime iss-aud 調需求〕→ 四參數仍硬編、足夠;**殘留條件＝未來 settings/per-role-TTL feature 若需可設定化再外移**（屆時重開）
 
 ### 3.10 008-system-settings follow-up（收刀移交 2026-06-18;均不阻塞、消費刀觸發時處理）
 
@@ -285,6 +285,26 @@
 - [ ] dev DB 受稽核列全 `fallback`/`direct`＝**拓樸正確**（dev 全內網鏈→Fallback、m006 前舊列空白＝歷史不回填）;高可信態（`cdn_verified` 等）僅 prod 真經 CF 出現
 
 **D4 角色變更 payload delta**：見 §3.12（user/role 寫端增強刀、013 未動 payload 結構）
+
+### 3.17 014-auth-token-session follow-up（收刀移交 2026-06-22;均不阻塞、operational/perf/test-debt 觸發時處理）
+
+**cleanup-job operational（過期 token 清理自動化）**:
+- [ ] **cleanup-job 無排程接上**：U5 建 binary（dry-run 預設／--execute／冪等）＋entrypoint `cleanup-job)` dispatch＋Dockerfile 四處 COPY（prod 5.7MB 落地驗），但【無 cron／compose service／scheduler】定期觸發 → 過期 `sys_token` 只增不減（denylist／rotation 正確性不受影響、純儲存膨脹）;後續接排程（host crontab／compose cron-sidecar／波4 obs 期 k8s CronJob 等）才真生效。**med**
+- [ ] **cleanup-job 最小權限 secret 未建**：`deploy/secrets/README.md:71` 早列 `cleanup_database_url`（『最小權限 role』、標『波 3』）但檔【未建】、cleanup-job `resolve_database_url` 走全權 `DATABASE_URL`（同 migration）→ 最小權限 role（僅 SELECT/DELETE `sys_token`）＋secret 注入待補（與上條接排程同窗口、公網前 least-privilege 硬化）。**low**
+
+**多副本部署（014 只驗證機制、prod 拓樸未落地）**:
+- [ ] **prod 真多副本拓樸未做**：014 C1 B-驗證版＝dev `rust-api-2`（profiles:[multi]）驗跨進程 invariant（S0~S4 全綠）;但 `deploy/nginx/conf.d/_locations.inc` prod 仍單一 `proxy_pass`、無 upstream{}/replicas（research §D 明示『nginx 真 LB／prod 多副本不做』）。設計已 multi-ready（watcher／denylist／shared-pointer）;真橫向擴展須加 nginx upstream 多 backend 或 replicas＋共用 DB/Redis、並接波3 Policy 刀的 casbin enforcer 跨實例 pub-sub。**low**
+
+**watcher/redis 韌性 nit（review 衍生、窄交集）**:
+- [ ] **settings watcher resubscribe 無 DB reconcile → backoff window publish loss**：watcher 僅在收到 message 時 re-read DB;若副本在斷線 backoff 窗口內錯過一次 `PUBLISH settings:invalidate`，重訂閱後【不主動 re-read】→ 持 stale `single_session_default` 直到下次 publish（fail 方向＝stale-policy 非安全破口、is_current/denylist 仍 fail-OPEN、dev 單副本不觸發、C-V S4 因 flip 在重訂閱【完成後】故綠）。修＝重訂閱成功瞬間補一次 `read_single_session_default` 對齊（一行消窗口）。**low**
+- [ ] **Redis boot connect 無顯式 timeout**：`RedisHandle::connect` 的 `get_multiplexed_async_connection().await` 無連線超時 → redis_url 指向黑洞 host（防火牆 DROP）時 boot 可能 hang（fail-OPEN 只在 Err 才降級）;正常容器內網無感、屬 misconfig 防護。修＝包 `tokio::time::timeout`。**low**
+- [ ] **`rust_api2_target` 卷殘留**：multi-profile 驗證用獨立 `rust_api2_target`（GB 級 build cache）、C-V 收尾 `down rust-api-2`（非 `down -v`）→ dev-only 驗證後持久殘留;純磁碟 housekeeping（`docker volume rm rev3-admin_rust_api2_target` 回收或 teardown 改 `down -v`）。**low**
+
+**perf lever（sanctioned defer、無 perf 壓力證據、勿過早優化）**:
+- [ ] **Redis `sess:{uid}` pointer 熱快取 deferred**（data-model X-01 v1、is_current 直讀 DB PK）：§I.7-compliant 決策、避 stale-hit bug class;若日後 is_current QPS 高致 DB 熱點，可啟用已預留快取（redis.rs get/set_ex/del 已備、set_pointer/revoke_user_sessions 已留 invalidate-on-write DELETE 鉤子）→ 採 invalidate-on-write（非 write-through、避踢錯會話破 SC-006）。**low**
+
+**測試債（延續 §3.16 op-log 隔離脆弱性）**:
+- [ ] **`op_log_atomic_three_paths` 全 `--ignored` 套件仍偽紅**（§3.16 既有項的延續、013 修法被 014 實證不足）：013 給該測三查詢補 `entity_table='sys_user'` 述詞隔離【跨表】污染，但 014 U4 實測路徑 (c)/id=2 仍 `left:2 right:0`——disable user id=2 經【真 server】commit 的 op-log 列就是 `entity_table='sys_user' AND entity_id=2`、與斷言 filter【同表同 entity_id】完全重疊、`entity_table` 述詞無濟。真 fix＝trace_id/delta 隔離（memory `oplog-count-assert-nonidempotent`）;非 014 回歸（git-stash baseline 證 pre-existing）、非阻塞（U8 零回歸跑【非 ignored】套件即綠）。**med**
 
 ---
 
