@@ -89,6 +89,7 @@
 - [ ] T031 [US4] nginx `geo $remote_addr $x_cf_verified`（CF 邊緣段）+ `map $x_cf_verified $cf_cip_safe` strip 非 CF 源 + `proxy_set_header X-CF-Verified`/`CF-Connecting-IP` in `deploy/nginx/nginx.conf` + `deploy/nginx/conf.d/_locations.inc`（L9；**不啟 realip**；既有 header 不 regress）
 - [ ] T032 [US4] compose CF 設定確認（`TRUST_MODEL_FILE` 掛載 + cdn `connecting_ip_header` 範本）in `deploy/trust-model.toml` + compose（L10；多由 T002 涵蓋）
 - [ ] T033 [US4] 驗 CF 端到端：`nginx -t` + `up -d --force-recreate front-nginx`；模擬 `X-CF-Verified:1`+`CF-Connecting-IP` → 相符 CDN_VERIFIED / 不符 CDN_MISMATCH（live/curl；C-V-9）
+- [ ] T033b [US4] **★ negative（E1 remediation）**：非 CF 源**偽造** `X-CF-Verified:1`/`CF-Connecting-IP` 直送 → nginx `geo`/`map` 把 `$x_cf_verified` 覆寫成 0·strip `CF-Connecting-IP` → rust **不採信、不升** CDN_VERIFIED（FR-010/SC-002 部署層防偽造；curl negative path）
 
 ---
 
