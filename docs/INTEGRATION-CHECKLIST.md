@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 2 data islands ✅ 全完成（2026-06-19;009 User `07b67d2`／010 Menu `3810103`／011 Role `b80c9e3`／012 Audit 殿後刀 `55d34ff`）→ 下一波＝波 3 行為島＋policy（未開始）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 2 data islands ✅（2026-06-19;009/010/011/012）＋D11 遞延刀 013-xff-real-ip-forensics ✅ 全完成（2026-06-21、merge `8980d00`）→ 下一波＝波 3 行為島＋policy（未開始）**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-21 013-xff-real-ip-forensics 全綠收刀（D11 遞延刀＝XFF→real_ip 鑑識;波 2 後獨立刀、收 012 §3.15 D11+§3.11 XFF 完整化）**（merge `8980d00`）:007 單值 XFF 解析重寫為**兩層信任模型**〔normalize IIS-aware／resolve→(IpAddr,Confidence) 四分支 peer-gate Direct·Tier-1 CDN 位置錨不硬gate CdnAnchored·Tier-2 走訪 ProxyClean/ProxySoft·Fallback／apply_cf_overlay CdnVerified/CdnMismatch real_ip 不變／Confidence 七態〕＋`TrustModel` TOML〔cdn/my_public/internal_default/bindings、per-set fail-safe、新 toml 0.8.23 parse-only dep〕。**四欄鑑識×三表全 4/4**：`m006` 可逆 delta〔rename client_ip→real_ip/operator_ip→operator_real_ip+add peer/confidence/operator_*、up→down→up+fresh chain、m001 凍結〕；**★ op-log 4/4 補完**＝AuditOperator 維持 Copy+net-new AuditMeta thread operator xff/confidence 過 ~15 facade（**user 親決補滿、反轉 D7「不動 16 facade」**）；honest wire。**012 審計中心擴充**：四欄顯示〔C2 序 ip_confidence(NTag 著色)→peer_ip→real_ip→x_forwarded_for、共用 ip-confidence-tag.tsx〕+三模糊一下拉篩〔C1：ip_host_like peer_ip/eq ip_confidence/op-log 補 xff ilike/空字串守門 curl 證〕+i18n〔confidence 七態 byte-identical〕。**nginx**（`89e0fdf` deploy）：geo $remote_addr CF 閘+map strip+proxy_set_header 覆寫〔**FR-010 偽造中和 cdn_anchored≠cdn_mismatch psql 證**〕+不啟 realip+零回歸既有 4 header+trust-model cdn 啟用、Tunnel loopback。6 執行單元 Workflow 驅動（U1`74f5c4d`→U2`493f015`+U2b`d4c1b74`→`c1fe429`／U3`25cab888`／U4 rust`627ebc6`+base-web`e79e7aa8`／U5`89e0fdf`／U6`3f2ebc6`〔清 IpForensics orphan〕）、每單元 implementer→spec+quality review＋主線獨立自驗＋逐單元 pin。C-V-0~9 全綠（純測 36+12 案例/lint 2+2/m006 可逆+fresh temp-DB 全鏈/live 四欄 psql/curl 守門/CF cdn_verified·mismatch/Tunnel/FR-010 negative/prod build/零回歸），final holistic（fresh-agent）**PASS**（5 US+10 FR+7 SC+跨單元接縫 byte-identical）。Constitution 9/9 PASS。pins rust-api `fca64a0`→`3f2ebc6`／base-web `1764154e`→`e79e7aa8`。013 follow-up 見 §3.16
 - **2026-06-19 012-audit-log-query 全綠收刀（波 2 殿後刀＝Audit;★ 波 2 data islands 全完成）**（merge `55d34ff`）:審計查詢讀端＋Super-only 審計中心單頁三分頁（/manage/audit、3 唯讀端點 getOperationLog/getAccessLog/getLoginAttempt R_SUPER GET）。**首個波 2 帶 migration 的刀＝m005 delta**（manage_audit menu+3 policy+menu policy+filter 索引×4、execute_unprepared 鏡像 m002/m001、sys_menu F3 partial-unique ON CONFLICT、**無新業務表/無 ALTER/up→down→up 可逆**）。3 facade list〔鏡像 sys_role::list、order desc、**★ IP 模糊 host(col)::text LIKE net-new**、文字 LOWER LIKE ESCAPE 非 ilike〕＋net-new names_for_ids unfiltered enrich〔含已刪〕＋handler §5.8 守門+日期 parse〔畸形→biz.audit.invalidDateRange 2222〕+parse_entity_id 守門+honest wire〔id number/IP 去 mask/nullable→Option/payload Option<Value>〕＋main audit group R_SUPER＋**lint[31→34]+全 migration glob seed**〔涵蓋 m005、原僅讀 m002 會 FAIL〕。base-web 100% 淨新 3 fetch+pruneNullParams+3 honest typing〔**payload unknown｜null 非 Record**〕+NTabs 3 tab+op-log payload renderExpand+i18n〔先 Schema 後 locale〕、Super-only 靠 m005 menu policy+dynamic getUserRoutes。**★ biz key 分層**〔rust biz.* vs base-web backend.biz.*、攔截器補 backend.〕。**★ CDP 接住 entityId= 空字串 400 bug→parse_entity_id 後端守門**〔fca64a0〕。4 commits Workflow 驅動（U1 m005 `fce18c4`→U2 rust 讀端 `be94fcd`→entityId 修正 `fca64a0`→U3 base-web `1764154e`）;C-V-0~9 全綠（純測 19/lint[34]+entity_access/live audit_query〔IP-fuzzy 首驗〕/policy-gate Admin·User→5003/m005 up→down→up/typecheck/CDP 3 tab 真發+payload 展開+super-only/零回歸/prod build）、唯讀無 op-log 寫（41→41、access-log +N=F1 基建）、final holistic 無 blocker（12 FR+9 SC+6 Edge 全覆蓋）。**m005 delta（seed+索引可逆）、無新 crate**;rust-api `30de791`→`fca64a0`、base-web `caa1e4bc`→`1764154e`。D11 三欄 IP 模型/D4 角色 payload delta 遞延後續刀
-- **2026-06-19 011-role-management 全綠收刀（波 2 第三刀＝Role;波 2 進行中）**（merge `b80c9e3`）:角色 CRUD（getRoleList 分頁/filter〔R_SUPER+R_ADMIN〕/add/update/delete/batch〔R_SUPER〕、delete guards 種子+使用中+自身、批次整批拒）＋**角色×選單授權**（getRoleMenu/updateRoleMenu、★全專案首個 runtime casbin policy WRITE＝**DB-first**〔net-new `sys_casbin_rule::set_role_dimension` 於 `mutate_in_txn` 直寫 `entity::casbin_rule` 11-col＋原子 op-log＋②protected-reject＋寫後 load_policy reload、**絕無 MgmtApi**——constitution §I.7 §4.2 ①②④⑤、B1 校正兌現〕、與 010 getUserRoutes 讀寫閉環）＋角色首頁（getRoleHome/updateRoleHome entity 寫原子）＋hasAuth `role:*` gating＋i18n 6 鍵〔含 menuProtected〕。**9 端點**（getRoleMenu/updateRoleMenu protected）。net-new facade sys_casbin_rule＋`sys_user_role::count_users_by_role_id`；id↔route_name 映射（sys_menu、orphan skip）。3 執行單元 Workflow 驅動（U1 `2332002`→U2 `e3d828e`→U3 base-web `caa1e4bc`）;C-V-0~11 全綠（純測 role_delete_guard/active_model／`endpoint_coverage_lint` `[&str;31]`＋entity_access_lint〔casbin_rule 僅 facade〕／live role_crud·guard·**role_menu_loop**〔讀寫閉環+②protected+F1 原子審計、snapshot+restore+psql 驗無殘留〕·home／C-V-7 policy-gate 5003／CDP 真發+換角色側欄+F2 redirect+hasAuth+cleanup／prod build）、holistic **SHIP**（10/10 SC、B1 零 MgmtApi、讀寫閉環閉合、零 overbuild;2 nit 修 G1 role_home trace_id／N1 C-V-7 method）。**零 migration/entity/schema、無新 crate**;rust-api `c377444`→`30de791`、base-web `a59c2738`→`caa1e4bc`。button-auth-modal 留 mock（波3）。011 follow-up 見 §3.14
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 2 全完成 → 波 3（行為島＋policy、未開始）**：Auth/Token/Session 合刀（rotation chain+reuse 偵測+single-session pointer+policy 三態、cleanup-job binary）／Policy-governance 刀（治理欄 adapter-invisible+archive+protected+restore+PolicyMutated gate）／Button-Endpoint policy 縱切（runtime 三維授權編輯、純 policy 無新 entity）／（⚠️m 拍板後）alt-login stub。前置拍板 ⚠️m alt-login 入波排程（預設入波;波 3 排程前）。波 3 de-risk：治理島形狀宜先 spike（可拋棄、DESIGN §8.5）。button-auth-modal（011 留 mock）亦波 3
+**下一步**: **波 2＋D11(013) 全完成 → 波 3（行為島＋policy、未開始）**：Auth/Token/Session 合刀（rotation chain+reuse 偵測+single-session pointer+policy 三態、cleanup-job binary）／Policy-governance 刀（治理欄 adapter-invisible+archive+protected+restore+PolicyMutated gate）／Button-Endpoint policy 縱切（runtime 三維授權編輯、純 policy 無新 entity）／（⚠️m 拍板後）alt-login stub。前置拍板 ⚠️m alt-login 入波排程（預設入波;波 3 排程前）。波 3 de-risk：治理島形狀宜先 spike（可拋棄、DESIGN §8.5）。button-auth-modal（011 留 mock）亦波 3
 
 ---
 
@@ -40,6 +40,10 @@
 ### 波 2 — data islands ✅ 全完成+已歸檔 (2026-06-19)
 
 > 四刀全收（User 009 `07b67d2`／Menu 010 `3810103`／Role 011 `b80c9e3`／Audit 012〔殿後刀〕`55d34ff`）;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### D11 遞延刀 — 013-xff-real-ip-forensics ✅ 全完成+已歸檔 (2026-06-21)
+
+> 波 2 後、波 3 前獨立刀（XFF→real_ip 鑑識、兩層信任模型+四欄×三表+審計中心顯示/篩選+nginx CF 閘/Tunnel;收 012 §3.15 D11+§3.11 XFF 完整化）;merge `8980d00`;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 3 — 行為島＋policy（未開始）
 
@@ -207,7 +211,7 @@
 ### 3.11 007-audit-overlay follow-up（XFF 解析完整化）
 
 **rust-api XFF 真實 client IP 解析尚不完整（未來 feature;user 拍板 2026-06-18、#3 衍生）**:
-- [ ] 拓樸分工已定（user 拍）:**nginx 維持忠實 append**（`proxy_add_x_forwarded_for` 把自己 IP 串進 XFF、不設 `set_real_ip_from`）、**真實 client IP 解析全由 rust-api `resolve_client_ip`（007 audit_ctx）負責**。惟現行 `resolve_client_ip`（rightmost-untrusted＋`TRUSTED_PROXY_CIDRS` gate）**尚不完整** → 後續開 feature 完整化（多跳 proxy 鏈精確處理／trusted-proxy CIDR 設定／fail-safe 邊界）;**公網部署前須收齊**（與 #2 nginx 硬化／#3 同部署窗口評估）
+- [x] ✅（2026-06-21、013-xff-real-ip-forensics merge `8980d00`）`resolve_client_ip` 已完整化＝**兩層信任模型**（peer-gate／Tier-1 CDN 位置錨／Tier-2 my-public+binding 走訪／CF overlay／Confidence 七態）＋IIS 正規化＋`TrustModel` TOML config（多跳 proxy 鏈逐點精確、per-set fail-safe 邊界）＋Cloudflare Tunnel；nginx 仍不啟 realip（不覆寫 $remote_addr），惟新增 `geo $remote_addr` CF-verified 閘〔$remote_addr 不可偽造、是「經 CF」唯一證明、FR-010〕。詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md) D11/013 bullet。**公網部署前殘項**（與 §3.4 nginx 硬化同窗口）：XFF 長度/token 數上限（013 未加、低風險、§3.16）
 
 ### 3.12 009-user-management follow-up（收刀移交 2026-06-18;均不阻塞、消費刀觸發時處理）
 
@@ -249,10 +253,10 @@
 ### 3.15 012-audit-log-query follow-up（收刀移交 2026-06-19;均不阻塞、消費刀觸發時處理）
 
 **三欄 IP forensic 模型＋寫端 capture（D11、後續審計增強刀;★ 宜與 §3.11 XFF 完整化【同一刀】收）**:
-- [ ] D11 `client_ip(peer)`/`xff_ip`/`real_ip` 三欄統一 forensic 模型＝後續刀（ALTER 3 日誌表加欄＋`audit_ctx` 寫端 peer/Cloudflare `CF-Connecting-IP` capture）。012 讀端先行、讀現 schema（op-log `operator_ip`／access·login `client_ip`〔已解析〕＋`x_forwarded_for`）。**與 §3.11（007 `resolve_client_ip` XFF 完整化）同動既有日誌表結構＋寫入基建→宜一刀收**;本刀 `manage_audit` menu／3 端點 policy 可被該刀沿用、讀端 wire 屆時加 3 IP 欄＋honest typing 對齊。
+- [x] ✅（2026-06-21、013-xff-real-ip-forensics merge `8980d00`）D11 IP forensic 模型已落地——**採四欄**（`peer_ip`/`real_ip`(←client_ip)/`x_forwarded_for`/`ip_confidence`、較原「三欄」更完整）×三審計表（`m006` 可逆 delta rename+add、§I.6 archetype B 六審計欄未觸）＋`audit_ctx` 寫端 peer/confidence capture＋Cloudflare `CF-Connecting-IP` overlay（nginx geo 閘）。**與 §3.11 同一刀收**（如預期）；012 `manage_audit` menu／3 端點 policy 由本刀沿用、讀端 wire 加四欄 honest typing 對齊。詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md) D11/013 bullet。
 
 **XFF 鑑識可見性＋硬化（2026-06-20 XFF 端到端盤點新發現;非阻塞、同 §3.4 nginx 硬化／上方 D11+§3.11 完整化窗口）**:
-- [ ] access/login 表格**不顯示 `xForwardedFor` 欄**（現可模糊搜尋〔facade `ilike(XForwardedFor)`、搜尋欄已接〕、但表格僅顯示 clientIp/region）→ raw XFF 鏈是 `resolve_client_ip` 退化（trusted 空→peer-only）/多跳時的鑑識 ground-truth、可見性弱;**spec FR-003 欄位清單未列 XFF＝spec-compliant**，宜補顯示欄或行展開（與三欄 IP 模型刀一起、或獨立小 UX 補）
+- [x] ✅（2026-06-21、013）審計中心三分頁已補**四欄全顯示**（C2 拍板序 `ip_confidence`(NTag 七態著色)→`peer_ip`→`real_ip`→`x_forwarded_for`、operation `operator_` 前綴）＋三模糊一下拉篩（C1）；raw XFF 鏈 `x_forwarded_for` 已為可見 column（非僅搜尋）
 - [ ] `audit_ctx` 讀 `x-forwarded-for` header＋`resolve_client_ip` split/parse **無長度/token 數上限**（超長 XFF 鏈→解析成本）→ 公網前評估上限（現 hyper/axum 預設 header size cap＋malformed-token-skip 已部分緩解、低風險;與 §3.4 nginx 硬化〔`set_real_ip_from`/`large_client_header_buffers`〕同窗口收）
 
 **審計 UX／scale 增強（低優先、規模/需求觸發;spec data-model §13 OUT）**:
@@ -263,6 +267,18 @@
 **as-built 紀要（cleanliness／勘誤、非缺陷）**:
 - [ ] rev3 wrapper `pruneNullParams`（前端剔空 filter）＋後端 `parse_*` 守門〔含 `parse_entity_id`、`fca64a0`〕為**雙防線、刻意保留**（其他 client 直送空字串仍須後端不 400、見 memory「數字 query param 空字串→serde 400」）;未來若要單一權威可評估前端是否續留（非急、現雙層皆綠）
 - [ ] specs/012 `data-model.md §6` 寫 rust 端 biz key 帶 `backend.` 前綴為**文件筆誤**（as-built＝**無前綴** `biz.audit.invalidDateRange`、攔截器 `translateBackendMsg` 補 `backend.`→locale `backend.biz.audit.invalidDateRange`）;as-built 權威見 [DECISIONS §2](INTEGRATION-DECISIONS.md) 012 bullet（spec 為設計快照、勘誤可選;消費此 key 一律 ref 既有 `biz.*` 慣例〔rust 端全無 backend 前綴〕）
+
+### 3.16 013-xff-real-ip-forensics follow-up（收刀移交 2026-06-21;均不阻塞）
+
+**部署/硬化（公網前、與 §3.4 nginx 硬化／§3.11 同窗口）**:
+- [ ] XFF 長度/token 數上限（`audit_ctx` normalize split/parse 無上限、超長鏈解析成本；hyper/axum header cap+malformed-skip 已部分緩解、低風險）
+- [ ] cloudflared-in-docker 部署時 operator 須在 nginx geo + trust-model cdn 補 cloudflared 實際 ingress IP（013 geo 僅含 CF 官方段 v4×15+v6×7+loopback、docker bridge gateway 刻意排除以利端到端測偽造 negative；conf 已註明、operator 自填）
+
+**cleanliness（非缺陷）**:
+- [ ] `RequestContext.operator_id` never-read warning＝**007 起 pre-existing dead**（field set-but-never-read、handler 用 `Claims.uid` 非 ctx.operator_id；§3 不清 pre-existing dead code；未來 audit_ctx 重構順手）
+- [ ] dev DB 受稽核列全 `fallback`/`direct`＝**拓樸正確非 bug**（dev 全內網鏈→Fallback、m006 前舊列空白＝歷史不回填）；高可信態（`cdn_verified` 等）僅 prod 真經 CF 出現
+
+**D4 角色變更 payload delta**：見 §3.12（user/role 寫端增強刀、013 未動 payload 結構）
 
 ---
 
@@ -279,6 +295,8 @@
 **010-menu clarify／as-built（spec.md ## Clarifications／menu-management-contract;非 ⚠️ 碼級）**:批次刪父子整批拒(逐項獨立驗證、批內任一 protected/有 active 子〔即使子同批被選〕即整批拒、no-partial、不做批內 cascade/排序)｜retroactive hasAuth gating 含 user/settings(user 頁 user:* gate〔code 已 seed〕、system-settings skip〔無 code+super-only moot〕)｜route store rev3-inline 例外(dynamic 分支合併前端 builtin 常數路由 login/403/404/500、修 FR-002／R-cr 預示缺口、user 拍板 option 1;C-V-11 零回歸註記為授權例外)
 
 **011-role clarify／as-built（spec.md ## Clarifications／role-management-contract;非 ⚠️ 碼級）**:menu-auth only(D1、button-auth/endpoint-auth＋policy 治理機留波3)｜Role×Menu 治理姿態＝DB-first 合規(D2、★ B1 校正後——直寫 casbin_rule＋同交易原子審計＋②protected-reject 整批拒＋寫後 load_policy reload、絕無 MgmtApi;archive/restore/un-protect/PolicyMutated-優化/publish-watcher 治理機留波3)｜delete guards 種子+使用中+自身(D3、批次整批拒)｜as-built:net-new facade `sys_casbin_rule`(set_role_dimension DB-first)＋`sys_user_role::count_users_by_role_id`;id↔route_name 經 sys_menu facade(orphan skip);roleId/menuIds 維 number 域(⚠️r);2 review-minor 修(set_role_dimension dedup desired 防重複 menu_id 撞 UNIQUE／SetDimensionError #[allow(dead_code)] payload);2 holistic nit 修(G1 role_home live op-log 斷言加 trace_id 守門非冪等／N1 C-V-7 method 對齊 DELETE)
+
+**013-xff clarify／as-built（brainstorm 拍板＋實作期 user 親決;非 ⚠️ 碼級）**:C3 Tier-1 CDN 錨不硬 gate(維持位置錨、防注入靠網路層主防線+CDN_ANCHORED≠CDN_VERIFIED in-band 訊號)｜C2 四欄全顯示(序 ip_confidence→peer_ip→real_ip→x_forwarded_for)｜C1 三模糊(real_ip/peer_ip/x_forwarded_for)+一下拉(ip_confidence)篩｜★ op-log 四欄補滿 4/4(實作期 user 親決「補滿 4/4」、反轉 D7「不動 16 facade」設計＝net-new AuditMeta bundle thread operator xff/confidence 過 ~15 facade、AuditOperator 維持 Copy)｜⚠️ac constitution §I.6 釐清背書 m006 ALTER 合規演進(已列已決 28)
 
 **開放 9**(依最晚決策點分組):
 - 波 1~3:⚠️m alt-login 入波(波3排程前)｜⚠️w login lockout(做、刀位/設計待排程;消費 audit-overlay 的 sys_login_attempt 索引)
