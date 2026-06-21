@@ -35,6 +35,8 @@ COPY rust-api/entity/Cargo.toml ./entity/
 COPY rust-api/sea-orm-adapter/Cargo.toml ./sea-orm-adapter/
 # 007: xdb crate(IP→region)
 COPY rust-api/xdb/Cargo.toml ./xdb/
+# 014 U5: cleanup-job crate(過期 token 清理 binary)
+COPY rust-api/cleanup-job/Cargo.toml ./cleanup-job/
 
 # --- Source 段 ---
 COPY rust-api/server/src ./server/src
@@ -42,6 +44,7 @@ COPY rust-api/migration/src ./migration/src
 COPY rust-api/entity/src ./entity/src
 COPY rust-api/sea-orm-adapter/src ./sea-orm-adapter/src
 COPY rust-api/xdb/src ./xdb/src
+COPY rust-api/cleanup-job/src ./cleanup-job/src
 # 007: xdb Cargo.toml 宣告 [[bench]] name=search,即使 --bins 不編 bench,
 # manifest parse 仍要求 bench 檔存在,故 benches/ 必須一併 COPY(缺檔→manifest parse error)。
 COPY rust-api/xdb/benches ./xdb/benches
@@ -59,6 +62,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     mkdir -p /out && \
     cp target/release/server \
        target/release/migration \
+       target/release/cleanup-job \
        /out/
 
 # =====================================================================
@@ -98,8 +102,8 @@ RUN groupadd -r -g 10001 rustapi && \
 
 WORKDIR /app
 
-# 從 builder 取 2 個 binary
-COPY --from=builder /out/server /out/migration /usr/local/bin/
+# 從 builder 取 3 個 binary
+COPY --from=builder /out/server /out/migration /out/cleanup-job /usr/local/bin/
 
 # Entrypoint dispatcher(deploy/entrypoint.rust-api.sh)
 COPY deploy/entrypoint.rust-api.sh /usr/local/bin/entrypoint.sh
