@@ -62,14 +62,18 @@ services:
       - ./rust-api:/app
       - rust_api_cargo_cache:/usr/local/cargo
       - rust_api_target:/app/target
+      # 013：信任拓樸 config（boot-only 載入；缺檔 fallback flat TRUSTED_PROXY_CIDRS）
+      - ./deploy/trust-model.toml:/etc/rev3/trust-model.toml:ro
     ports:
       - "127.0.0.1:31081:31081"
     environment:
       APP_JWT_JWT_SECRET: "${APP_JWT_JWT_SECRET:-dev_jwt_secret_for_local_only_x32xxxxxx}"
       APP_JWT_REFRESH_TOKEN_SECRET: "${APP_JWT_REFRESH_TOKEN_SECRET:-dev_refresh_secret_for_local_only_x32xx}"
       RUST_LOG: "info,tower_http=debug"
-      # 007 audit overlay：dev 直連即真 client（無 reverse-proxy 信任鏈）→ trusted 空 fail-safe；
-      #   經 front-nginx(:31080) 時若需驗 XFF 解析，臨時填 docker 段（見 spec C-V-16）。
+      # 013：信任拓樸 config 檔（兩層解析；含 docker bridge → 經 front-nginx 的 peer 視為 internal、
+      #   由 XFF 解析真實 client）。缺檔時 fallback 下方 flat TRUSTED_PROXY_CIDRS。
+      TRUST_MODEL_FILE: "/etc/rev3/trust-model.toml"
+      # 007/013 fallback：TRUST_MODEL_FILE 缺檔時的扁平 trusted 集（空＝all-direct fail-safe）。
       TRUSTED_PROXY_CIDRS: "${TRUSTED_PROXY_CIDRS:-}"
       # xdb region 檔（dev WORKDIR=/app、bind-mount、檔在 /app/xdb/resources/ip2region.xdb）。
       XDB_FILEPATH: "xdb/resources/ip2region.xdb"

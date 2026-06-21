@@ -1,0 +1,66 @@
+# ════════════════════════════════════════════════════════════════════════
+# trust-model.toml — XFF → real_ip 解析的信任拓樸設定（013-xff-real-ip-forensics）
+#
+# operator 維護。rust-api boot 時讀一次（TRUST_MODEL_FILE env 指向本檔）。
+# 缺檔 / 讀檔失敗 → fallback flat TRUSTED_PROXY_CIDRS env → all-direct（peer 即 real）。
+# 誤配 fail-safe：某集合任一 CIDR token 壞 → 該集合退保守（清空、不擴大信任）。
+#
+# ★ TOML 語意警告：internal_default 是 document-root scalar，
+#   必須排在所有 [[cdn]] / [[my_public]] / [[bindings]] array-of-table header 之前，
+#   否則會被當成「最後一個 table 的 key」而非 document root、解析錯誤。
+# ════════════════════════════════════════════════════════════════════════
+
+# 內網 / 我方受信跳（Tier-2 由右而左 skip 集）。
+# 含 docker bridge 段（172.16.0.0/12；dev：rust-api 的直連 peer＝front-nginx 172.20.x）
+# 與 loopback（127.0.0.0/8、::1；Cloudflare Tunnel 的 cloudflared 本機 ingress 必需）。
+internal_default = [
+  "10.0.0.0/8",
+  "172.16.0.0/12",
+  "192.168.0.0/16",
+  "127.0.0.0/8",
+  "::1",
+  "fc00::/7",
+]
+
+# ── Tier-1 CDN 位置錨（operator 自填官方 IP list、自行更新；空集＝無 Tier-1 錨）──
+# 已啟用 Cloudflare（U5 / 013）：networks＝cloudflare.com/ips-v4 + ips-v6 全段（operator 自更新）。
+# Tier-1 盲剝 CF 邊緣右側、錨出左一非 CF IP 為 real_ip；connecting_ip_header 供交叉驗證。
+[[cdn]]
+networks = [
+  # ── CF 官方邊緣段 v4（cloudflare.com/ips-v4）──
+  "173.245.48.0/20",
+  "103.21.244.0/22",
+  "103.22.200.0/22",
+  "103.31.4.0/22",
+  "141.101.64.0/18",
+  "108.162.192.0/18",
+  "190.93.240.0/20",
+  "188.114.96.0/20",
+  "197.234.240.0/22",
+  "198.41.128.0/17",
+  "162.158.0.0/15",
+  "104.16.0.0/13",
+  "104.24.0.0/14",
+  "172.64.0.0/13",
+  "131.0.72.0/22",
+  # ── CF 官方邊緣段 v6（cloudflare.com/ips-v6）──
+  "2400:cb00::/32",
+  "2606:4700::/32",
+  "2803:f800::/32",
+  "2405:b500::/32",
+  "2405:8100::/32",
+  "2a06:98c0::/29",
+  "2c0f:f248::/32",
+]
+connecting_ip_header = "CF-Connecting-IP"
+
+# ── 我方反代 public 出口（Tier-2；dev 無、留範例）──
+# [[my_public]]
+# networks = ["203.0.113.10"]
+# dual_role = false          # true＝此 public IP 也可能當直連 client → Tier-2 走過降 proxy_soft
+
+# ── 特例綁定：某 public 專屬後置內網（軟驗證，相鄰不符只降 confidence、不停線）──
+# [[bindings]]
+# public = "203.0.113.10"
+# internal = ["10.0.0.0/24"]
+# dual_role = false
