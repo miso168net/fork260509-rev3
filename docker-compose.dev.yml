@@ -86,6 +86,65 @@ services:
       start_period: 120s
     init: true
 
+  # ═══ 014 U7：多副本驗證用第二 rust-api 實例（profiles:[multi]、dev 預設 up 不啟）═══
+  # 用法:docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile multi up -d rust-api-2 --wait
+  #
+  # 目的(C-V-6 C1 拍板 B-驗證):證明跨副本共享狀態收斂 ——
+  #   ① settings:invalidate watcher 跨實例收斂(single_session_default)
+  #   ② shared session pointer(DB)跨副本一致踢(7777)
+  #   ③ Redis denylist 跨副本一致(8888)
+  #   ④ CLIENT KILL TYPE pubsub 後 watcher 重訂閱韌性(非永久脫鉤)
+  #
+  # 設計抉擇:
+  #   - entrypoint override = cargo run --bin server(非 cargo-watch):避免兩 cargo-watch 互相
+  #     rebuild-loop;靜態驗收期無 code change,跑既編好 binary 即可(範式同 migrate service)。
+  #   - target volume = 獨立 rust_api2_target(非共用 rust_api_target):rust-api 是 cargo-watch、
+  #     重編時持 build lock;共用 target 會與本實例 cargo run 的 target 互擾。獨立卷=乾淨隔離
+  #     (代價:首啟冷編 ~240s;profiles 為 opt-in 驗收用,可接受)。cargo registry/git cache
+  #     (rust_api_cargo_cache)read-mostly、可安全共用(實例1已 populate,實例2不重抓 crate)。
+  #   - jwt/refresh secret 走 _FILE(同 rust-api,共用同一 secret 檔)→ token 跨實例可驗;
+  #     ★ 注意:dev rust-api 雖另設 inline APP_JWT_JWT_SECRET,但 config.rs load_secret_file_first
+  #     是「_FILE 優先」、inline 被 shadow,故實例1實際也用 secret 檔值 → 兩實例同密鑰。
+  rust-api-2:
+    profiles: [multi]
+    image: rev3-admin-rust-api:dev
+    entrypoint: ["cargo", "run", "--bin", "server"]
+    volumes:
+      - ./rust-api:/app
+      - rust_api_cargo_cache:/usr/local/cargo
+      - rust_api2_target:/app/target
+      - ./deploy/trust-model.toml:/etc/rev3/trust-model.toml:ro
+    ports:
+      - "127.0.0.1:31082:31081"
+    environment:
+      APP_JWT_JWT_SECRET_FILE: /run/secrets/jwt_secret
+      APP_JWT_REFRESH_TOKEN_SECRET_FILE: /run/secrets/refresh_token_secret
+      APP_DATABASE_URL_FILE: /run/secrets/database_url
+      APP_REDIS_URL_FILE: /run/secrets/redis_url
+      RUST_LOG: "info,tower_http=debug"
+      TRUST_MODEL_FILE: "/etc/rev3/trust-model.toml"
+      TRUSTED_PROXY_CIDRS: "${TRUSTED_PROXY_CIDRS:-}"
+      XDB_FILEPATH: "xdb/resources/ip2region.xdb"
+    secrets:
+      - jwt_secret
+      - refresh_token_secret
+      - database_url
+      - redis_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis-stack:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/31081"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 240s
+    init: true
+    networks:
+      - rev3_net
+
   migrate:
     # ★ entrypoint 必須 override:dev image ENTRYPOINT 是 cargo-watch(跑 server),
     #   只設 command 會被 cargo-watch 當 watch 參數;此處整段換成 cargo run --bin migration up
@@ -108,3 +167,8 @@ services:
   redis-stack:
     ports:
       - "127.0.0.1:36379:6379"
+
+# 014 U7：rust-api-2 專用 target 卷(獨立隔離,避免與 rust-api cargo-watch 互擾)。
+# 無顯式 name:,繼承 master project name → 實際卷名 rev3-admin_rust_api2_target(§8.2.2 命名規則)。
+volumes:
+  rust_api2_target:
