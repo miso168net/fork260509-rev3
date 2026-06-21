@@ -91,7 +91,7 @@
 - **C join／狀態機**：`sys_user_role`＝零審計（硬刪）；`sys_token`＝僅 `created_at`＋`status` 狀態機（生命週期 §I.7）
 - **D 治理變體**：`casbin_rule`＝`protected`/`created_at`/`created_by` **對 stock adapter 隱形**（adapter 的 insert_many/load_policy 不碰這 3 欄）；archive＝原 grant `created_at/by`＋`archived_at/by`＋`archive_reason`（**無 update/delete 欄**、restore＝硬刪移回）
 
-**rev3 加嚴**：本標準自第一條 migration 即生效（DESIGN §3.4 schema 演進紀律：建表即帶 archetype 全欄；§8.6：同 entity 讀／寫同刀**或緊鄰兩刀**、schema 一次定稿）——**無 retrofit 條款**（rev2 的 retrofit 債模式不允許重演）。
+**rev3 加嚴**：本標準自第一條 migration 即生效（DESIGN §3.4 schema 演進紀律：建表即帶 archetype 全欄；§8.6：同 entity 讀／寫同刀**或緊鄰兩刀**、schema 一次定稿）——**無 retrofit 條款**（rev2 的 retrofit 債模式不允許重演）。 **〔v1.1.2 釐清・⚠️ac〕「無 retrofit」之標的＝archetype 審計欄**（即「建表漏帶審計欄、事後補」的 rev2 債形態）；**既有表加 domain 業務／forensic 欄的【刻意、規劃、可逆】演進【不在此限】**——例 D11（審計 log 表加 IP forensic 欄、寫端依設計排為後續刀〔`m006`、可逆〕）為**合規演進**，前提：archetype 欄規則不變（archetype B 不加 `updated_*`/`deleted_*`、不可竄改性維持）、且非「忘帶事後補」的意外債。
 
 ### I.7 行為島 invariants（待決⑤ 拍板新增）
 
@@ -242,4 +242,4 @@ DESIGN 仍為「核心事實」（設計契約＋詳細軌道定義＋行為島�
 
 ---
 
-**Version**: 1.1.1 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-16（v1.1.0：§III 新增 BASE-WEB-I18N-WIRING ★ 軌道〔⚠️aa、MINOR〕；v1.1.1：§I.3 釐清 `msg` 載 i18n key 對齊 ⚠️y〔⚠️ab、PATCH＝釐清〕）
+**Version**: 1.1.2 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-21（v1.1.0：§III 新增 BASE-WEB-I18N-WIRING ★ 軌道〔⚠️aa、MINOR〕；v1.1.1：§I.3 釐清 `msg` 載 i18n key 對齊 ⚠️y〔⚠️ab、PATCH＝釐清〕；v1.1.2：§I.6 釐清「無 retrofit」標的＝archetype 審計欄、既有表 domain forensic 之刻意可逆演進不在此限〔⚠️ac、PATCH＝釐清〕）
