@@ -28,6 +28,8 @@ curl -s .../auth/refreshToken -H 'Content-Type: application/json' -d '{"refreshT
 # 隔 >30s 或對已輪替的舊 R1 再送 → code 8888（Reuse）、psql 證該 rotation_chain 整鏈 status='revoked'
 psql ... -c "SELECT rotation_chain, status, used_at FROM sys_token WHERE user_id=<uid> ORDER BY id DESC LIMIT 5;"
 # refresh JWT 驗章失敗（亂改）→ 8888；handler 絕不回 3333/9999/9998
+# refresh token 的 sid≠current pointer → refresh 回 7777（非 8888、§I.7 第5掛點、D-04）
+# 同 chain 同秒連續 rotate 兩次 → psql 證兩列 token_hash 相異、無 UNIQUE violation（jti byte-distinct、D-06）
 ```
 
 ## C-V-4 — live single-session（resolve_policy 生效、7777）
@@ -41,6 +43,7 @@ psql ... -c "SELECT id, session_policy, current_session_id FROM sys_user WHERE i
 ## C-V-5 — live 硬即時撤銷（denylist、8888）
 ```bash
 # user 持有效 access token → updateUser(status=2 停用) 或 deleteUser → 該 token 下個請求立即 8888（不分 policy、不等過期）
+# ★ batchDeleteUser（多 id）→ 每個被刪 user 的 access token 皆立即 8888（D-02、loop 內各呼 revoke_user_sessions）
 redis-cli GET "revoked:user:<uid>"   # 存在、值=revoked_at
 # re-enable（status=1）→ 新 login 的 token 正常通關（iat>revoked_at）
 # Redis 不可達模擬（停 redis-stack）→ denylist 查 fail-OPEN（不誤鎖全站、既有 token 仍通至過期）
@@ -62,6 +65,7 @@ $DC --profile multi down rust-api-2   # 收尾（dev 預設仍 1 instance）
 $DC exec -T rust-api sh -c 'cd /app && DATABASE_URL=$(cat $APP_DATABASE_URL_FILE) cargo run -p cleanup-job'              # dry-run 只 count、不刪
 $DC exec -T rust-api sh -c 'cd /app && DATABASE_URL=$(cat $APP_DATABASE_URL_FILE) cargo run -p cleanup-job -- --execute' # 刪 expires_at<now-60s
 # 立刻再跑 --execute → 冪等（刪 0 列）；psql 證未過期 token 原封
+# ★ binary 形態 smoke（D-05、連動 D-01）：prod image 經 entrypoint dispatch（`entrypoint.sh cleanup-job`）跑 /usr/local/bin/cleanup-job binary——dev `cargo run` 只驗邏輯、此驗 binary+dispatch 落地
 ```
 
 ## C-V-8 — CDP 兩通道 + per-user UI
@@ -69,11 +73,14 @@ $DC exec -T rust-api sh -c 'cd /app && DATABASE_URL=$(cat $APP_DATABASE_URL_FILE
 - **7777**（他處登入）→ modal 提示後乾淨登出導回 /login；**8888**（reuse/停用）→ 直接登出導回 /login（無白屏、無 refresh 迴圈）。
 - 009 編輯 user → `session_policy` NSelect（inherit/on/off）改值 → updateUser 真打、psql 證 `sys_user.session_policy` 改。
 
-## C-V-9 — ★ prod target image build（新 cleanup-job crate + Redis crate）
+## C-V-9 — ★ prod target image build + runtime binary 斷言（新 cleanup-job crate + Redis crate；D-01 CRITICAL）
 ```bash
 docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api
-# ★ 新 workspace crate cleanup-job ⇒ prod Dockerfile 須補 COPY（Manifest 段 cleanup-job/Cargo.toml + Source 段 cleanup-job/src）；
-#   builder --bins 須含 cleanup-job binary；新 Redis crate subtree --locked 編入。dev bind-mount 遮 COPY 缺口、此步才暴露（§3 Phase 1 紀律）。
+# ★ build 綠 ≠ binary 在！cleanup-job 須【四處】COPY 齊：Manifest cleanup-job/Cargo.toml + Source cleanup-job/src
+#   + builder cp target/release/cleanup-job→/out〔Dockerfile:60-62〕+ runtime COPY /out/cleanup-job→/usr/local/bin/〔:102〕。
+RUNTIME_IMG=$(docker compose -f docker-compose.yml -f docker-compose.prod.yml config --images rust-api | tail -1)
+docker run --rm "$RUNTIME_IMG" ls -l /usr/local/bin/cleanup-job   # ★ D-01 斷言：binary 落地（缺則 entrypoint cleanup-job → exec not found、且 build 仍綠）
+#   Redis crate subtree --locked 編入。dev bind-mount/cargo run 系統性遮此缺口、唯此步暴露（§3 Phase 1 + rev2 binary-landing 變體）。
 ```
 
 ## C-V-10 — 零回歸

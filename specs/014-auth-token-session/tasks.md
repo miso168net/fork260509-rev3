@@ -15,7 +15,7 @@
 ## Phase 1: Setup (Shared Infrastructure)
 
 - [ ] T001 新增 async Redis crate（`rust-api/Cargo.toml` `[workspace.dependencies]` 加 `redis`〔或 `deadpool-redis`〕+ `server/Cargo.toml` `redis={workspace=true}` + `Cargo.lock` 釘版），容器內驗 1.86 編得過（C-V-0；★ 沿 toml/time MSRV 教訓、首選驗 build 綠者）
-- [ ] T002 [P] 建 cleanup-job 新 workspace crate 骨架（`rust-api/cleanup-job/Cargo.toml` + `src/main.rs` stub + `rust-api/Cargo.toml` `members` 加 `"cleanup-job"`）+ **prod Dockerfile COPY**（`deploy/Dockerfile.rust-api.txt` Manifest 段 `cleanup-job/Cargo.toml` + Source 段 `cleanup-job/src` + builder `--bins`）（D5；C-V-9 紀律）
+- [ ] T002 [P] 建 cleanup-job 新 workspace crate 骨架（`rust-api/cleanup-job/Cargo.toml` + `src/main.rs` stub + `rust-api/Cargo.toml` `members` 加 `"cleanup-job"`）+ **prod Dockerfile 四處 COPY〔D-01 CRITICAL〕**（`deploy/Dockerfile.rust-api.txt`：① Manifest 段 `cleanup-job/Cargo.toml` ② Source 段 `cleanup-job/src` ③ **builder cp 段〔:60-62〕加 `target/release/cleanup-job`→/out** ④ **runtime COPY〔:102〕加 `/out/cleanup-job`→/usr/local/bin/**；entrypoint 已有 `cleanup-job)` dispatch、缺 ③④ 則 `--bins` 編出卻不落地、prod exec-not-found、`build` 仍綠）（D5；C-V-9 紀律）
 - [ ] T003 [P] compose 第二 rust-api（`docker-compose.dev.yml` 加 `rust-api-2` service、host `:31082`、`profiles:[multi]`、共享同 DB+Redis、繼承 dev rust-api 定義）（D7；dev 預設不啟）
 
 ## Phase 2: Foundational (Blocking Prerequisites)
@@ -36,7 +36,7 @@
 - [ ] T010 [US1] `sys_token` facade：`find_by_hash` / `mark_used`〔UPDATE status='used',used_at WHERE id AND status='active' 冪等〕/ `revoke_chain`〔UPDATE status='revoked' WHERE rotation_chain〕in `rust-api/server/src/model/facade/sys_token.rs`（D3）
 - [ ] T011 [US1] `/auth/refreshToken` handler：verify refresh JWT〔失敗→8888〕→ pointer-first `is_current`〔失敗→7777〕→ sha256→`find_by_hash`→`decide_rotation`→Rotate〔FOR UPDATE `mark_used`+insert 新 active 同 chain〕/Benign〔insert 新、不撤〕/Reuse〔`revoke_chain`+warn→8888〕→ 簽新 pair〔新 jti〕in `rust-api/server/src/handler/auth.rs`（D3；依 T009,T010；§I.7：絕不回 3333/9999/9998）
 - [ ] T012 [US1] main.rs `/auth/refreshToken` route（public、非 enforce_mw 後）in `rust-api/server/src/main.rs`（依 T011）
-- [ ] T013 [US1] live（容器內、`--test-threads=1`、curl+psql）：rotate→新對／benign 雙擊→不撤／reuse→8888+psql 證 `rotation_chain` 整鏈 `status='revoked'`／驗章失敗→8888（C-V-3）
+- [ ] T013 [US1] live（容器內、`--test-threads=1`、curl+psql）：rotate→新對／benign 雙擊→不撤／reuse→8888+psql 證 `rotation_chain` 整鏈 `status='revoked'`／驗章失敗→8888／**refresh token sid≠pointer→回 7777 非 8888〔D-04、§I.7 第5掛點〕／同 chain 同秒連續 rotate 兩次→psql 證兩列 token_hash 相異無 UNIQUE violation〔D-06、§I.7 jti〕**（C-V-3）
 
 **Checkpoint**：US1＝refresh 輪替+盜用偵測，獨立可驗（MVP 可交付）。
 
@@ -46,12 +46,12 @@
 
 - [ ] T014 [US2] 純測 `resolve_policy` 三態 × 全域 on/off in `rust-api/server/src/auth/session.rs`（test-first）（C-V-1）
 - [ ] T015 [US2] `resolve_policy` 純函式 + `enum EffectivePolicy` in `rust-api/server/src/auth/session.rs`（令 T014 綠）（D2）
-- [ ] T016 [US2] `is_current` 補讀 `resolve_policy`〔讀 AppState `single_session_default` + user `session_policy`；effective off→放行不踢；維持 fail-OPEN〕+ `sess:{uid}` pointer 快取〔persist-then-cache：set_pointer 先 DB 後 Redis、is_current 讀 Redis→miss 回 DB lazy rehydrate〕in `rust-api/server/src/auth/enforce.rs` + `model/facade/sys_user.rs`（D2；依 T015,T006）
+- [ ] T016 [US2] `is_current` 補讀 `resolve_policy`〔讀 AppState `single_session_default` + user `session_policy`；effective off→放行不踢；維持 fail-OPEN〕+ `sess:{uid}` pointer 快取〔**invalidate-on-write**：set_pointer 寫 DB 後 best-effort **DELETE** Redis sess〔非 write-through 寫值、避 stale-hit、X-01〕、is_current 讀 Redis→hit 即用／miss 回 DB+rehydrate〕in `rust-api/server/src/auth/enforce.rs` + `model/facade/sys_user.rs`（D2；依 T015,T006）
 - [ ] T017 [US2] login `revoke_other_chains`〔effective on 時撤該 user 其他 active rotation_chain〕+ `set_pointer` 永遠執行 in `rust-api/server/src/handler/auth.rs` + `model/facade/sys_token.rs`（D2；依 T015；§I.7：set_pointer 永遠、即使 off）
 - [ ] T018 [US2] rust session_policy wire：`getUserList` item +`sessionPolicy`〔honest literal `'inherit'|'on'|'off'`〕+ `updateUser` 收+寫〔`UserWrite` +`session_policy:Option<String>`、`build_update_active_model` +`Set(session_policy)` None→不改〕in `rust-api/server/src/handler/system_manage.rs` + `model/facade/sys_user.rs`（D6）
 - [ ] T019 [P] [US2] base-web typing：`rev3-system-manage.d.ts` UserUpsertModel +`sessionPolicy?` + rev3 list-item 型帶 `sessionPolicy`（**不動 frozen `system-manage.d.ts` 的 User**）in `base-web/src/typings/api/rev3-system-manage.d.ts`（D6；honest wire；依 T018）
 - [ ] T020 [US2] base-web 009 編輯 drawer +`session_policy` NSelect（inherit/on/off）〔MODAL-WIRING ★ (a)、`rev3-inline` 紀律〕+ app.d.ts Schema 先擴 + 雙 locale `page.manage.user.sessionPolicy.*` 同 commit in `base-web/src/views/manage/user/modules/user-operate-drawer.vue` + `typings/app.d.ts` + `locales/langs/{zh-cn,en-us}.ts`（D6；依 T019）
-- [ ] T021 [US2] live + CDP：effective on→B 登入踢 A(7777)/off→並存/per-user override 蓋全域 + 008 切 `single_session_default` 熱載生效 + CDP 009 改 session_policy psql 證（C-V-4 / C-V-8 per-user 部分）
+- [ ] T021 [US2] live + CDP：effective on→B 登入踢 A(7777)/off→並存/per-user override 蓋全域 + 008 切 `single_session_default` 熱載生效 + **≥2 access gate（getUserInfo+getUserRoutes）effective-on 各回 7777〔D-03、§I.7 4-gate；4 gate 共用 enforce_mw〕** + CDP 009 改 session_policy psql 證（C-V-4 / C-V-8 per-user 部分）
 
 ## Phase 5: User Story 3 — 停用/刪除使用者即時失效（denylist）(P2)
 
@@ -60,7 +60,7 @@
 - [ ] T022 [US3] denylist ops：`set_revoked(uid)`〔`SET revoked:user:{uid}=now EX access_ttl`〕/ `revoked_at_of(uid)`〔`GET`、回 Option<i64>〕in `rust-api/server/src/redis.rs`（或 `model/facade/sys_session_denylist.rs`）（D4；依 T004）
 - [ ] T023 [US3] `enforce_mw` 查 denylist〔bearer→is_current 後、uid 在名單且 `claims.iat<revoked_at`→reject 8888、**fail-OPEN**〕in `rust-api/server/src/auth/enforce.rs`（D4；依 T022）
 - [ ] T024 [US3] `revoke_user_sessions(uid)`：撤該 user 全部 active rotation chain(DB) + 清 pointer〔DB `current_session_id=NULL` + Redis `sess:{uid}`〕+ `set_revoked`(Redis) in `rust-api/server/src/model/facade/sys_user.rs`（D4；依 T010,T022）
-- [ ] T025 [US3] 接 009：`deleteUser` + `updateUser(status=2 停用)` handler 呼 `revoke_user_sessions` in `rust-api/server/src/handler/system_manage.rs`（D4；依 T024；跨 feature、不破 009 既有 CRUD）
+- [ ] T025 [US3] 接 009：`deleteUser` + **`batch_delete_user`〔loop 內每 id 呼、D-02：否則批次刪的 user token 活到過期、違 FR-007/SC-004〕** + `updateUser(status=2 停用)` handler 呼 `revoke_user_sessions` in `rust-api/server/src/handler/system_manage.rs`（D4；依 T024；跨 feature、不破 009 既有 CRUD）
 - [ ] T026 [US3] live：停用/刪 user→access token 立即 8888（不分 policy）+ `redis-cli GET revoked:user:{uid}` + re-enable 新 login 正常〔iat>revoked_at〕+ 停 Redis→denylist fail-OPEN（C-V-5）
 
 ## Phase 6: User Story 4 — 多副本跨實例正確 (P2)
@@ -80,9 +80,9 @@
 ## Final Phase: Polish & Cross-Cutting
 
 - [ ] T031 lint 綠：`entity_access_lint`（sys_token/sys_user 寫走 facade、零 path-root entity::）+ `endpoint_coverage_lint`（`/auth/refreshToken` public 納入分類、`[&str;N]` bump、registered==as-built）（C-V-2）
-- [ ] T032 ★ prod target image build：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`（新 cleanup-job crate Manifest+Source COPY 無缺口、Redis crate `--locked` 編入、multi-stage）（C-V-9）
+- [ ] T032 ★ prod target image build + **runtime binary 斷言〔D-01〕**：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 後 `docker run --rm <prod-img> ls -l /usr/local/bin/cleanup-job`（**build 綠≠binary 在**；cleanup-job 四處 COPY 無缺口〔見 T002〕、Redis crate `--locked` 編入、multi-stage）（C-V-9）
 - [ ] T033 零回歸：006 login/getUserInfo/enforce、009 CRUD、008 設定、013 audit、`/health` + migration up→down→up〔**無新 migration**〕+ base-web `pnpm typecheck`（C-V-10）
-- [ ] T034 final holistic review（fresh-agent 冷讀）：5 US / 14 FR / 10 SC 全覆蓋 + **§I.7 §4.1+§4.3 invariants 逐條有自動化驗證**（§8.8 DoD）+ 7777/8888 兩通道 CDP + cross-unit 接縫一致
+- [ ] T034 final holistic review（fresh-agent 冷讀）：5 US / 14 FR / 10 SC 全覆蓋 + **§I.7 §4.1+§4.3 invariants 逐條有自動化驗證**（§8.8 DoD；**含 4-access-gate+refresh-第5掛點 7777〔D-03/D-04〕、同秒 jti 不撞鍵〔D-06〕、cleanup binary 落地+形態〔D-01/D-05〕、sess 快取 invalidate-on-write 無 stale-hit〔X-01〕**）+ 7777/8888 兩通道 CDP + cross-unit 接縫一致
 
 ---
 

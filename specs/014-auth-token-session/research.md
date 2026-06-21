@@ -50,7 +50,7 @@
 
 - **Decision**：新 workspace crate `cleanup-job`（`rust-api/cleanup-job/`、加入 `members`）：清 `sys_token` 過期列（`expires_at < now() - SKEW_MARGIN_SECS(60s)`、與 status 無關）；**dry-run 預設只 count、`--execute` 才物理刪、冪等、單旗標**（§I.7 §4.1 凍結、不開其他 CLI flag）。
 - **Rationale**：§I.7 明文「on-demand cleanup-job binary」。新 crate 便獨立部署/排程。
-- **★ 紀律**：**新 workspace crate ⇒ prod Dockerfile 須補 Manifest+Source COPY**（CLAUDE.md §3 Phase 1：dev bind-mount 遮 COPY 缺口、必跑 **prod target image build** 才暴露；verification-commands MUST 含 C-V prod build）。
+- **★ 紀律（D-01 校正）**：**新 workspace crate ⇒ prod Dockerfile 須補【四處】COPY**——① Manifest `cleanup-job/Cargo.toml` ② Source `cleanup-job/src` ③ **builder cp `target/release/cleanup-job`→/out〔`Dockerfile.rust-api.txt:60-62`〕** ④ **runtime `COPY /out/cleanup-job`→/usr/local/bin/〔:102〕**。entrypoint 已有 `cleanup-job)` dispatch（exec `/usr/local/bin/cleanup-job`）、缺 ③④ 則 `--bins` 編出卻不落地、prod `exec: not found`、**且 `build` 仍綠**（cp 未列不報錯）→ acceptance 漏。必跑 **prod build + runtime binary 斷言**（`docker run … ls /usr/local/bin/cleanup-job`）；dev bind-mount/`cargo run` 系統性遮缺口（rev2 binary-landing 變體、CLAUDE.md §3 Phase 1）。
 - **Alternatives**：server 內 tokio background task 定時清（與 on-demand binary 設計不符、§I.7 棄）；server 加 `[[bin]]`（不獨立、傾向新 crate）。
 
 ## D6 — per-user session_policy UI（動 009、跨 feature）
@@ -70,4 +70,6 @@
 - **is_current 4+1 gates**：現況唯 enforce_mw(1 處) → 014 確認 enforce_mw 覆蓋 getUserInfo/getUserRoutes/isRouteExist/系統管理全族（4 access gate 由 enforce_mw 統一掛），refresh 端點為第 5 掛點（pointer-first）。無需逐 handler 加。
 - **session_mode 熱載**：008 update_setting handler commit 後 `PUBLISH settings:invalidate`（D1 watcher 收→重載 AppState 快取）；008 動一行 publish（跨 feature 小改、授權內）。
 - **denylist key 形**：`revoked:user:{uid}` value=revoked_at(unix str)、`EX access_ttl`；enforce_mw `GET` 一次（熱路徑 +1 Redis GET、受全域 ⚠️a perf 預算）。
+- **sess 快取一致性（X-01 校正）**：`sess:{uid}` 採 **invalidate-on-write**（set_pointer best-effort **DELETE**、非 write-through 寫值）——write-through 若 Redis 寫失敗留 stale-hit、多副本下 is_current 讀 stale 恐踢錯會話（踢新留舊、破 SC-006）；DELETE 後下次 miss→DB rehydrate 正確值（契合 §I.7「可失憶 lazy rehydrate」、屬非凍結機制細節）。v1 亦可 defer 快取〔is_current 直讀 DB pointer〕、同 §I.7-compliant。
+- **4 access gate 7777 驗證（D-03）**：4 gate 共用同一 `enforce_mw`（單 middleware）→ is_current 一致；acceptance 驗 ≥2 gate（getUserInfo+getUserRoutes）effective-on 各回 7777 即代表（C-V-4）。refresh 端點第 5 掛點獨立驗 7777（C-V-3、D-04）。
 - **Redis crate MSRV**：pin + 容器內驗 1.86（Cargo.lock 釘、prod build 驗）；確切 crate/版 impl 接地。

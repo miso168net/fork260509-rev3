@@ -20,10 +20,11 @@
 | key / channel | 型 | 語意 | TTL |
 |---|---|---|---|
 | `revoked:user:{uid}` | string = `revoked_at`(unix) | 硬即時撤銷標記；enforce_mw 查 `claims.iat < revoked_at`→reject | `EX access_ttl`(3600)+skew |
-| `sess:{uid}` | string = `current_session_id` | pointer 熱快取（persist-then-cache：set_pointer 寫 DB 後 best-effort 寫此；is_current 讀此→miss 回 DB lazy rehydrate） | 無 / 長 TTL |
+| `sess:{uid}` | string = `current_session_id` | pointer 熱快取（**invalidate-on-write**：set_pointer 寫 DB 後 best-effort **DELETE 此**〔非 write-through 寫值、避 stale-hit〕；is_current 讀此→hit 即用／miss 回 DB+rehydrate） | 長 TTL〔兜底失憶〕 |
 | `settings:invalidate`（channel） | pub-sub | 008 update 後 PUBLISH；watcher SUBSCRIBE→重載 `single_session_default` 快取 | — |
 
 > 全 fail-OPEN：Redis 不可達 → denylist 不 reject、sess 快取 miss 回 DB、watcher 重試訂閱（§I.7）。
+> **★ X-01：sess 快取採 invalidate-on-write（非 write-through）**——write-through 若 best-effort 寫值失敗留 stale，多副本下 is_current 讀 stale-hit 恐踢錯會話（踢新留舊、破 SC-006）；改 set_pointer best-effort **DELETE**（idempotent、fail-OPEN）、下次 miss→DB rehydrate 正確值（契合 §I.7「可失憶 lazy rehydrate」、屬非凍結機制細節〔§I.7 欄級細節留非凍結面〕）。v1 亦可 defer 快取〔is_current 直讀 DB pointer〕、同 §I.7-compliant。
 
 ## 3. 解析期型（in-memory、純函式可測）
 
