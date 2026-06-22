@@ -55,6 +55,7 @@ list dimension 顯示：dimensionType(v2) = match v2 { "menu"|"button" => v2, _ 
 list dimension filter：?dimension=endpoint → WHERE v2 IN (HTTP_METHODS)；=menu/button → v2.eq
 restore：復用 015 restore（維度無關、(ptype,v0-v5) 7-col pre-check + created_at coerce + 審計{role,target,dimension}）
 ```
+- ★ **M3（restore 審計 dimension by-design、analyze R3-F4 釐清）**：restore 審計 payload `dimension` 欄記 **raw v2**（menu→`'menu'`／button→`'button'`／**endpoint→method〔`'GET'`/`'POST'`…〕**），`target`＝v1（path）→ endpoint 審計記 `{role, target=path, dimension=method}` 保**完整 (path,method) forensic 精度**；此與回收桶 **display 層 v2-推導 `'endpoint'`（UX 群組）刻意不同、不對齊**（兩者目的不同：審計求精確、display 求群組）。
 - archive_reason 保持 diagnostic（menu/button="role_dimension_revoke"、endpoint="role_endpoint_revoke"）；**回收桶不靠 archive_reason 分維度**（靠 v2-推導）。
 
 ## 5. PolicyMutated gate（§4.2 ③、維度無關復用）
