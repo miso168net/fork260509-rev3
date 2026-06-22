@@ -239,8 +239,8 @@
 
 ### 3.14 011-role-management follow-up（收刀移交 2026-06-19;均不阻塞、消費刀觸發時處理）
 
-**updateRoleMenu menuProtected 訊息泛化（波3 protected 管理刀觸發）**:
-- [ ] `set_role_dimension` 的 `SetDimensionError::Rejected(Vec<String>)` 已攜被擋下的 protected route_names，但 handler 泛化映射 `biz.role.menuProtected`（不顯示「哪些」受保護選單）；波3 protected 策略管理刀（un-protect/re-protect）若要 surface 具體 route_names，handler 改帶 payload（i18n 參數化或回 detail）
+**updateRoleMenu menuProtected 訊息泛化（★ 原 trigger un-protect 刀已死、re-home Button-Endpoint 或 standalone polish）**:
+- [ ] `set_role_dimension` 的 `SetDimensionError::Rejected(Vec<String>)` 已攜被擋下的 protected route_names，但 handler 泛化映射 `biz.role.menuProtected`（不顯示「哪些」受保護選單）。**原預定觸發＝波3 un-protect/re-protect 策略管理刀，但 015 A 拍板【un-protect 不做】→ 此 trigger 已死**；若仍要 surface 具體 route_names（純 UX 改善、與 un-protect 解耦），re-home 至 Button-Endpoint policy 縱切刀（同觸 protected/policy）或獨立 polish，handler 改帶 payload（i18n 參數化或回 detail）
 **casbin policy 治理機（波3 policy-governance 治理刀;復用 set_role_dimension）**:
 - [x] 011 revoke＝hard DELETE→**015-policy-governance 改 archive-move（可復原）**;archive/restore 三態/③PolicyMutated gate〔含空-diff〕/跨實例 `casbin:policy:invalidate` publish-watcher/回收桶 UI **已由 015 全兌現**（merge `65f1838`、見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）。**un-protect/re-protect 策略管理＝A 拍板【不做】**（受保護核心維持不可經 UI 撤銷、§4.2-faithful、做它須 §V.2 amend ②）。Button/Endpoint policy 縱切（波3殿後刀）復用 015 `set_role_dimension`+archive+protected
 **C-V-9 CDP 審計列殘留（cosmetic、非功能殘留）**:
@@ -320,6 +320,22 @@
 
 **★ ⚠️c-完整包 未落地 finding（2026-06-22 mapping 揭露、獨立於 alt-login、需追蹤）**:
 - [ ] ⚠️c（2026-06-12 **拍定**）的「alova demo 完整包」——`sendCaptcha`/`verifyCaptcha`〔code-login/register 用、前端 `useCaptcha` hook 是 500ms mock 零 HTTP〕＋`/auth/error`〔`fetchCustomBackendError` 呼〕＋alova demo 三頁端點——**rust-api 實測無對應 route**（**拍定≠落地**）。先前 CHECKLIST/DECISIONS「captcha 已隨 ⚠️c 拍定」措辭易誤讀為已做、實為**拍板待實作**。與 alt-login 同窗口或獨立排（alova demo 屬 demo-completeness、非核心）→ 排前先確認哪些 ⚠️c 端點真缺。
+
+### 3.19 015-policy-governance follow-up（收刀移交 2026-06-22;均不阻塞、消費刀觸發時處理）
+
+> 015 C-V-1~7 全綠＋holistic READY_TO_MERGE、零 blocking;下列為非阻塞長尾／forward-note（非缺漏）。
+
+**archive_reason 維度區分（Button-Endpoint policy 縱切觸發）**:
+- [ ] 015 archive_reason 硬寫 `"role_dimension_revoke"`（≤32 char）;Button-Endpoint 刀加 button/endpoint 維度 revoke→archive（復用 `set_role_dimension`+archive）時，archive_reason 應帶對應維度（如 `role_button_revoke`/`role_endpoint_revoke`）以利回收桶辨識/filter
+
+**archive 表 retention（purge 為 015 明示 out-of-scope）**:
+- [ ] `sys_casbin_policy_archive` 隨每次 revoke 無界增長;**purge/永久清除＝015 spec 明示不做**（封存只進可復原、非缺漏），長期 retention／歸檔策略待議（同 §3.16 ⚠️n log retention 家族;obs 波或實務量大時處理）
+
+**回收桶 UI createdTime 未顯欄（presentation choice、非缺漏、optional）**:
+- [ ] `ArchivedPolicy.createdTime`（原規則建立時間）wire honest 宣告但表格未顯欄（015 顯 role/target/dimension/archivedTime/archivedBy/archiveReason 6 欄、後端已回該欄）;若日後需原始授權時間追溯可補一欄（純 UI）
+
+**pre-existing test-debt（非 015 引入、觸碰 sys_casbin_rule.rs 時順手）**:
+- [ ] `sys_casbin_rule.rs:208` role_menu_loop test mod `use … ConnectionTrait` unused（011 `36efc95` 起、`cargo test` 建置 warning、`cargo build` 不報、非 015 引入）;Button-Endpoint 觸碰該檔時順手刪該 import
 
 ---
 
