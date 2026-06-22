@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 3 行為島＋policy 進行中 — 第一刀 014-auth-token-session ✅／第二刀 015-policy-governance（Policy 治理島 §4.2 完成刀）✅ 全完成（2026-06-22、merge `65f1838`）；波 3 剩殿後刀＝Button-Endpoint policy 縱切。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。下一步＝波 4 observability（未開始）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-22 016-button-endpoint-policy 全綠收刀（波 3 殿後刀＝Button-Endpoint 三維 RBAC runtime 編輯;★ 波 3 全完成）**（merge `fa17def`）:把 011 `set_role_dimension`（menu）＋015 治理島延伸到 **button＋endpoint 兩維度**，補完三維 RBAC runtime 編輯。**button 撿現成**（updateRoleButton 直呼 set_role_dimension(role,"button",codes)、011 寫側+015 治理島全免費繼承;all_buttons 自 sys_menu.buttons JSON registry、button_codes_for_role 讀端）。**★ endpoint 新 `set_role_endpoints`**〔(path,method) 雙鍵 diff＝真實 (v0=role,v1=path,v2=method) enforce 列、read-current v2∈HTTP_METHODS、DELETE 按 id、protected-reject 任何寫前;**★★ 絕無 v2='endpoint' 平行編碼**;治理 helper〔insert_archived/mutate_in_txn/reload_and_publish/watcher〕全復用 015;U2 Workflow encoding 對抗證偽 9 項全擊破〕。**§4.2 五 invariants 維度無關延伸**（①DB-first 零 MgmtApi／②protected-reject〔endpoint 15 protected=鎖出守門·button 0 protected moot〕／③gate 含空-diff／④原子+審計／⑤reload+publish 跨副本）。**回收桶三維 v2-推導**〔dimension_display+list filter 同改兩處、不改 archive_reason、restore 審計 raw-v2 M3〕。**base-web MODAL-WIRING(c)**〔button-auth un-mock+endpoint-auth-modal 新建〔(path,method) 合成 key〕+role-drawer 第三鈕+6 wrapper+Button/Endpoint typings+i18n endpointAuth/endpointProtected〕＋**typings 收斂 fold-in**〔RoleListItemRev3=Omit<Role,'roleDesc'>&{roleDesc:null}/User honest 讀型/新 fetchGetRoleListRev3·fetchGetUserListRev3 wrapper、消 §3.12/§3.14 type-lie〕。net-new 6 route R_SUPER+`AS_BUILT_ROUTES` 37→43+**M2 雙向 registry assertion**+`ALL_ENDPOINT_POLICIES` const。**5 執行單元 Workflow 驅動（rust serial→base-web 跨棧並行）**（U1 button`44ffd4f`→U2 endpoint`4929406`→U3 治理 v2-推導+gate+cv6`066f91b`→U4 base-web`d2a1990d`→U5 typings`c2c61893`）、每單元 implementer(TDD)→spec+code review〔U2 加 encoding 對抗證偽〕＋主線單元邊界獨立自驗+主線親跑 cv6 2-instance＋逐單元兩段式 commit。C-V-0~8 全綠（兩 lint[43]+M2 雙向 registry/live button〔archive-move+grant+restore+buttons 反映〕+endpoint〔雙鍵+鎖出+enforce 自 DB Enforcer 驗+UI-gateway getRoleList restore〕/gate 精準/curl Super200·Admin403/**2-instance cv6 button+endpoint 跨副本收斂+CLIENT KILL pubsub 重訂閱**/**CDP 三維 6/6**〔三鈕在地化+modal 真打+撤 protected→在地化原子拒+無 console error+§3.13 無回歸〕/零回歸 25+155+zero-migration+prod build〔binary 落地〕+typecheck）、final holistic（fresh-agent 冷讀+2 fresh 交叉）**READY_TO_FINISH**（0 critical/high/medium、endpoint 編碼鐵則成立、§4.2 五 invariants 延伸、SC-001~008+US1~US3 全覆蓋、constitution 9/9;3 LOW〔L1 buttonProtected i18n 不可達/L2 未引用 TS 型/L3 v2-推導 by-design〕）。dev DB pristine（oplog_casbin==2、total_p_rows 143）。**零 migration、零新 crate**（6 編輯端點/button/endpoint policy/button JSON 全波0 m002 已備、Constitution 9/9 PASS）。4 拍板：scope C／un-protect 不做（延續 015 A）／回收桶 v2-推導／endpoint 鎖出靠既有 15 protected seed。pins rust-api `2ad2029`→`066f91b`／base-web `0adfd12d`→`c2c61893`。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)
 - **2026-06-22 015-policy-governance 全綠收刀（波 3 第二刀＝Policy 治理島 §4.2 完成刀）**（merge `65f1838`）:把 011 `set_role_dimension` 寫側補成 §4.2 完整治理島。**① revoke→archive-move**〔snapshot 被撤 11-col→insert_archived→DELETE 同 txn 原子、可復原非硬刪;protected-reject 仍在任何寫前〕。**② restore 三態**〔查無 NotFound 2222／live 已存在 NoOp〔消費不重插不審計 0000〕／else Applied〔INSERT〔created_at 跨表 nullable→NN coerce〕+DELETE archive+Restore op-log {role,target,dimension} 同 txn〕〕。**③ PolicyMutated gate**〔net-new reload_and_publish=load_policy+PUBLISH casbin:policy:invalidate fail-OPEN;**updateRoleMenu 由 reload-on-changed 改 reload-on-Applied 含空-diff、調整 011、user 確認**;restorePolicy Applied→reload/NoOp·NotFound→skip〕。**④ 跨副本**〔net-new spawn_policy_watcher 嚴格鏡像 014、SUBSCRIBE casbin:policy:invalidate→load_policy、backoff 重訂閱、復用 014 Redis 基建+CASBIN_INVALIDATE_CHANNEL〕。**⑤ 回收桶 UI**〔base-web views/manage/policy-archive MODAL-WIRING(e)、list 鏡像 012/restore 鏡像 010、honest ArchivedPolicy 8 欄、elegant-router route 註冊 4 檔+route i18n 主線接住、restore 鈕無假碼 hasAuth 保 SC-006〕。net-new sys_casbin_policy_archive facade＋2 handler＋2 route＋AS_BUILT 37。**4 執行單元 Workflow 驅動 rust serial**（EU1 資料層`5163d5a`→EU2 HTTP+gate`383515b`→EU3 watcher`2ad2029`→EU4 UI base-web`0adfd12d`）、每單元 implementer(TDD)→spec+code review＋主線單元邊界獨立自驗＋逐單元兩段式 commit;3 主線接住〔EU1 cq 2 medium dead_code/D5 seed 污染／EU3 docstring nit／**EU4 elegant-router route 檔+route i18n 遺漏**〕。C-V-0~7 全綠（兩 lint[37]/facade live archive_restore D1~D6+gate live 空-diff+reload_publish 往返/curl Super200·Admin5003·NotFound2222/**2-instance 跨副本收斂+CLIENT KILL 重訂閱韌性**/**CDP 回收桶點復原+§3.13 消解**/零回歸 22+146+migration 零-diff+prod build），final holistic（fresh-agent）**READY_TO_MERGE**（5 §4.2 invariants+SC-001~008+US1~US3+wire byte 對齊無 type-lie+零 MgmtApi）。**零 migration、零新 crate**（archive 表/seed 全波0、Constitution 9/9 PASS）。1 拍板 A un-protect 不做＝protected 硬守門。pins rust-api `7ec8fc3`→`2ad2029`／base-web `f3b2bf07`→`0adfd12d`
-- **2026-06-22 014-auth-token-session 全綠收刀（波 3 第一刀＝Auth/Token/Session 合刀）**（merge `3066bc2`）:把 006 Auth 島最小段補成完整行為島。**★ rust-api 零 Redis client→本刀建 Redis 基建**（redis.rs fail-OPEN facade＋AppState redis/single_session_default＋boot watcher〔SUBSCRIBE settings:invalidate 重載/斷線 backoff 重訂閱〕＋008 publish；redis 0.27.6 1.86 編過）。**§4.1 rotation**：/auth/refreshToken＋decide_rotation 純函式四分支＋sys_token find_by_hash/mark_used/revoke_chain＋新 jti byte-distinct；**★ TOCTOU lock-then-redecide 加固**〔Rotate/Benign 鎖後重判、併發 revoke→Reuse 不重鑄、SC-002 live 證 active=0〕。**§4.3 single-session**：resolve_policy 純函式＋is_current policy-aware〔Off 放行修「永遠踢」bug、On→7777、fail-OPEN〕＋login revoke_other_chains＋session_policy wire。**硬即時撤銷**：Redis denylist＋denylist_gate〔enforce_mw＋refresh 雙查、iat<=revoked_at→8888 同秒 fail-secure〕＋revoke_user_sessions〔撤 active+used 全鏈防 grace 重鑄 SC-004〕接 009 delete/batch〔逐 id〕/disable。**cleanup-job 新 crate**〔dry-run/--execute/冪等/單旗標〕＋prod Dockerfile 四處 COPY〔D-01 binary 落地驗〕。**base-web session_policy UI**〔rev3 typing intersection＋i18n Schema-先＋drawer NSelect MODAL-WIRING(a)＋CDP 7777/8888 兩通道〕。**2-instance 驗證**〔rust-api-2 profiles:[multi]、C-V-6 跨進程收斂+CLIENT KILL watcher 重訂閱〕。8 執行單元 Workflow 驅動（U1`ddec5c2`→U2`a2ea33b`→U3`44885d9`→U4`b37fac3`→U5`a9d3986`/`7c08ed2`→U6`f3b2bf07`→U7`fc41667`→U8 holistic）、每單元 implementer→spec+quality review＋主線獨立自驗＋逐單元兩段式 commit。**3 設計時攔截 spec 未明示真漏洞**：U2 TOCTOU／U4 used-grace 重鑄／U4 同秒 `<`→`<=` fail-secure。C-V-0~10 全綠（純測/lint[35]/live rotation·single-session·denylist·cleanup·2-instance/CDP/prod build 三 binary/零回歸 146），final holistic（fresh-agent）**PASS**（5US+14FR+10SC+§I.7 §4.1/§4.3 invariants 全覆蓋）。**零 migration**、新 redis+cleanup-job crate、Constitution 9/9 PASS。pins rust-api `3f2ebc6`→`a9d3986`／base-web `e79e7aa8`→`f3b2bf07`。014 follow-up：research.md D4 `<`→`<=` doc-drift 已校正
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 3 進行中 — 第一刀 014 ✅／第二刀 015 ✅ → 波 3 剩殿後刀**：**Button-Endpoint policy 縱切**（runtime 三維授權編輯、純 policy 無新 entity、非行為島;含 011 留 mock 的 button-auth-modal、**復用 015 完成的 `set_role_dimension`+archive+protected 治理島**）。收完即波 3 全完成。**起手＝走 CLAUDE.md §3 階段 0 `superpowers:brainstorming`**（產 spec-design→手動 `/speckit-specify` 起 feature branch）。**alt-login 4 流程 stub 刀＝⚠️m 2026-06-22 重議→延後出波3**（user 親決 C 案、移 post-波3 v1-completeness slot、詳 §3.18;前端 3 表單已完整但後端 4 全缺＋bind-wechat 空殼+真 OAuth、低 v1 功能價值）。Auth 島 §3.9 已由 014 閉口、治理島 §4.2 已由 015 閉口
+**下一步**: **波 3 ✅ 全完成（014/015/016）→ 下一步＝波 4 observability（未開始）**：obs-min（loki+alloy+grafana 純 log、72h retention）／obs-full（prometheus+2 exporter+pushgateway+baseline alert+rust-api `/metrics` 埋點）／dashboard provisioning（皆 `profiles:[obs]`/`[metrics]` opt-in、一般 `up` 不啟）。**起手＝走 CLAUDE.md §3 階段 0 `superpowers:brainstorming`**。**alt-login 4 流程 stub 刀＝⚠️m 2026-06-22 重議→延後出波3**（user 親決 C 案、移 post-波3 v1-completeness slot、詳 §3.18）。Auth 島 §3.9 已由 014 閉口、治理島 §4.2 已由 015 閉口、三維 RBAC runtime 編輯已由 016 閉口（button-auth-modal mock 解除、§3.14）
 
 ---
 
@@ -45,23 +45,9 @@
 
 > 波 2 後、波 3 前獨立刀（XFF→real_ip 鑑識、兩層信任模型+四欄×三表+審計中心顯示/篩選+nginx CF 閘/Tunnel;收 012 §3.15 D11+§3.11 XFF 完整化）;merge `8980d00`;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
-### 波 3 — 行為島＋policy（進行中;第一刀 014 ✅／第二刀 015 Policy 治理島 §4.2 ✅ 已收 2026-06-22;剩殿後刀＝Button-Endpoint policy 縱切）
+### 波 3 — 行為島＋policy ✅ 全完成+已歸檔 (2026-06-22)
 
-行為島 2 刀＋policy 縱切。de-risk:治理島形狀應於波 1-2 期間先 spike（可拋棄、不算交付;DESIGN §8.5）。
-
-**刀/feature 清單**（素材=DESIGN §8.2 行為島/policy 縱切、§4 三台狀態機）:
-- [x] **Auth/Token/Session 合刀**（014-auth-token-session ✅ 全完成、merge `3066bc2`、2026-06-22;§4.1 rotation chain〔+TOCTOU 加固〕＋§4.3 single-session〔resolve_policy/is_current policy-aware 修永遠踢〕＋硬即時撤銷 Redis denylist＋cleanup-job 新 crate＋2-instance 多副本驗證;零 migration、新 redis+cleanup-job crate;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)）
-- [x] **Policy-governance 刀**（015-policy-governance ✅ 全完成、merge `65f1838`、2026-06-22;§4.2 revoke→archive-move〔同 txn 原子、可復原非硬刪〕＋restore 三態〔Applied/NoOp/NotFound、created_at 跨表 coerce〕＋PolicyMutated gate〔reload_and_publish on Applied 含空-diff、調整 011 reload-on-changed、user 確認〕＋跨副本 spawn_policy_watcher〔casbin:policy:invalidate、復用 014〕＋回收桶 UI〔MODAL-WIRING (e)〕;零 migration、零新 crate;4 執行單元 Workflow 驅動;C-V-1~7 全綠含 2-instance 收斂+CDP UI;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)、commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)）
-- [ ] **Button/Endpoint policy 縱切**（runtime 三維授權編輯＋rollout;rev2 022/023/024;純 policy、無新 entity、非行為島）
-- [—] ~~**alt-login stub 刀**~~ → **⚠️m 2026-06-22 重議→延後出波3**（移 post-波3 v1-completeness slot、詳 §3.18;§1.2 尾巴 4 流程〔reset-pwd/code-login/register/bind-wechat〕;captcha〔⚠️c〕同延〔實測拍定但未落地〕）
-
-**前置拍板**:
-- [x] ✅（2026-06-22、user 親決 C 案）⚠️m 已決＝**重議→延後出波3**：alt-login 4 流程 stub〔含 captcha〕移 post-波3 v1-completeness slot（§3.18）;#13/§11.13「v1 啟 stub mode」拍板不變、僅 re-schedule within v1（§9.5/§11.13 排程性拍板 amendment、非默改）
-
-**出口條件（DESIGN §8.4）**:
-- [ ] §4 三台機器 invariants 逐條有自動化驗證（單測或 C-V contract）
-- [ ] 7777/8888 兩通道 CDP 實證
-- [ ] protected 拒撤 live 驗證
+> 三刀全收（014 Auth/Token/Session `3066bc2`／015 Policy 治理島 §4.2 `65f1838`／016 Button-Endpoint 三維 RBAC runtime 編輯〔殿後刀〕`fa17def`）;出口三項達標〔§4 三台機器 invariants 逐條自動化驗證／7777·8888 兩通道 CDP〔014〕／protected 拒撤 live〔015 menu+016 endpoint〕〕。alt-login 4 流程 stub＝⚠️m 延後出波3（§3.18）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 4 — observability（未開始）
 
@@ -239,8 +225,8 @@
 
 ### 3.14 011-role-management follow-up（收刀移交 2026-06-19;均不阻塞、消費刀觸發時處理）
 
-**updateRoleMenu menuProtected 訊息泛化（★ 原 trigger un-protect 刀已死、re-home Button-Endpoint 或 standalone polish）**:
-- [ ] `set_role_dimension` 的 `SetDimensionError::Rejected(Vec<String>)` 已攜被擋下的 protected route_names，但 handler 泛化映射 `biz.role.menuProtected`（不顯示「哪些」受保護選單）。**原預定觸發＝波3 un-protect/re-protect 策略管理刀，但 015 A 拍板【un-protect 不做】→ 此 trigger 已死**；若仍要 surface 具體 route_names（純 UX 改善、與 un-protect 解耦），re-home 至 Button-Endpoint policy 縱切刀（同觸 protected/policy）或獨立 polish，handler 改帶 payload（i18n 參數化或回 detail）
+**updateRoleMenu/Endpoints protected 訊息泛化（016 沿用泛化、re-home 至 standalone UX polish）**:
+- [ ] `set_role_dimension`/`set_role_endpoints` 的 `Rejected` 已攜被擋 protected 目標（menu route_names／endpoint (path,method)），但 handler 泛化映射 `biz.role.menuProtected`／`biz.role.endpointProtected`（不顯示「哪些」）。**016 Button-Endpoint 刀沿用泛化（endpointProtected 未 surface 具體被擋 (path,method)）、un-protect 015 A 拍板【不做】**；若仍要 surface 具體目標（純 UX 改善、與 un-protect 解耦），獨立 polish 刀 handler 改帶 payload（i18n 參數化或回 detail）
 **casbin policy 治理機（波3 policy-governance 治理刀;復用 set_role_dimension）**:
 - [x] 011 revoke＝hard DELETE→**015-policy-governance 改 archive-move（可復原）**;archive/restore 三態/③PolicyMutated gate〔含空-diff〕/跨實例 `casbin:policy:invalidate` publish-watcher/回收桶 UI **已由 015 全兌現**（merge `65f1838`、見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）。**un-protect/re-protect 策略管理＝A 拍板【不做】**（受保護核心維持不可經 UI 撤銷、§4.2-faithful、做它須 §V.2 amend ②）。Button/Endpoint policy 縱切（波3殿後刀）復用 015 `set_role_dimension`+archive+protected
 **C-V-9 CDP 審計列殘留（cosmetic、非功能殘留）**:
@@ -326,7 +312,7 @@
 > 015 C-V-1~7 全綠＋holistic READY_TO_MERGE、零 blocking;下列為非阻塞長尾／forward-note（非缺漏）。
 
 **archive_reason 維度區分（Button-Endpoint policy 縱切觸發）**:
-- [ ] 015 archive_reason 硬寫 `"role_dimension_revoke"`（≤32 char）;Button-Endpoint 刀加 button/endpoint 維度 revoke→archive（復用 `set_role_dimension`+archive）時，archive_reason 應帶對應維度（如 `role_button_revoke`/`role_endpoint_revoke`）以利回收桶辨識/filter
+- [x] ✅（2026-06-22、016）016 endpoint revoke→archive 用 `role_endpoint_revoke`（button 沿用 `role_dimension_revoke`、不改 set_role_dimension 簽名）;★ 但**回收桶三維辨識靠 v2-推導**（`dimension_display(v2)` display + list facade dimension="endpoint"→`v2 IN HTTP_METHODS` filter）、**非靠 archive_reason**（archive_reason 純 diagnostic、不破 015 archive_reason 斷言）。維度 filter/display 經 v2-推導兌現（拍板「回收桶 v2-推導」）
 
 **archive 表 retention（purge 為 015 明示 out-of-scope）**:
 - [ ] `sys_casbin_policy_archive` 隨每次 revoke 無界增長;**purge/永久清除＝015 spec 明示不做**（封存只進可復原、非缺漏），長期 retention／歸檔策略待議（同 §3.16 ⚠️n log retention 家族;obs 波或實務量大時處理）
@@ -335,7 +321,18 @@
 - [ ] `ArchivedPolicy.createdTime`（原規則建立時間）wire honest 宣告但表格未顯欄（015 顯 role/target/dimension/archivedTime/archivedBy/archiveReason 6 欄、後端已回該欄）;若日後需原始授權時間追溯可補一欄（純 UI）
 
 **pre-existing test-debt（非 015 引入、觸碰 sys_casbin_rule.rs 時順手）**:
-- [ ] `sys_casbin_rule.rs:208` role_menu_loop test mod `use … ConnectionTrait` unused（011 `36efc95` 起、`cargo test` 建置 warning、`cargo build` 不報、非 015 引入）;Button-Endpoint 觸碰該檔時順手刪該 import
+- [ ] `sys_casbin_rule.rs` role_menu_loop test mod `use … ConnectionTrait` unused（011 `36efc95` 起 pre-existing、`cargo test` 建置 warning、`cargo build` 不報、非 015/016 引入）;**016 雖重觸該檔（set_role_endpoints+button/endpoint/gate live 測）但依 §3「不清 pre-existing dead code」未順手刪、仍留**;未來 audit_ctx/casbin 重構順手清
+
+### 3.20 016-button-endpoint-policy follow-up（收刀移交 2026-06-22;均不阻塞、低優先）
+
+**L1 buttonProtected i18n 鍵缺（不可達、登記不修）**:
+- [ ] rust `update_role_button` 把 `SetDimensionError::Rejected` 映 `biz.role.buttonProtected`，但 base-web 無對應 i18n 鍵（zh-cn/en-us/app.d.ts 皆無）。**button 維度 0 protected → 此路徑不可達**（撤按鈕一律可行、spec FR-012）;若曾觸發前端顯原始 key（graceful fallback、非崩潰）。**不補 i18n**（為不可達情境加碼違 CLAUDE.md §2）;若未來 button 維度引入 protected 項再補（先 Schema 後 locale）。
+
+**L2 未引用 TS 型（cleanliness、留）**:
+- [ ] `rev3-system-manage.d.ts` 的 `RoleButtonUpdate`/`RoleEndpointsUpdate` 宣告未被引用（wrapper inline-type payload）;data-model §6 有記載＝API body 形狀文件、harmless，留（移除屬可選 cleanliness）。
+
+**excel demo 仍用舊 user wrapper（out-of-scope、harmless）**:
+- [ ] `views/plugin/excel/index.vue` 仍呼 frozen `fetchGetUserList`（non-null User 型謊版）;D5 typings 收斂（U5）只收 role/user 管理頁 list、excel 為 demo 純顯示無編輯/驗證、harmless;未來 typings sweep 可一併換 `fetchGetUserListRev3`。
 
 ---
 
@@ -356,6 +353,8 @@
 **013-xff clarify／as-built（brainstorm 拍板＋實作期 user 親決;非 ⚠️ 碼級）**:C3 Tier-1 CDN 錨不硬 gate(維持位置錨、防注入靠網路層主防線+CDN_ANCHORED≠CDN_VERIFIED in-band 訊號)｜C2 四欄全顯示(序 ip_confidence→peer_ip→real_ip→x_forwarded_for)｜C1 三模糊(real_ip/peer_ip/x_forwarded_for)+一下拉(ip_confidence)篩｜★ op-log 四欄補滿 4/4(實作期 user 親決「補滿 4/4」、反轉 D7「不動 16 facade」設計＝net-new AuditMeta bundle thread operator xff/confidence 過 ~15 facade、AuditOperator 維持 Copy)｜⚠️ac constitution §I.6 釐清背書 m006 ALTER 合規演進(已列已決 28)
 
 **015-policy clarify／as-built（A 拍板 user 親決 2026-06-22;非 ⚠️ 碼級）**:**A un-protect/re-protect 不做**＝受保護核心授權維持不可經 UI 撤銷(防誤鎖核心存取;§4.2-faithful、做它須 §V.2 amend ② protected-reject)｜as-built:revoke→archive-move(同 txn 原子、可復原非硬刪)＋restore 三態(Applied/NoOp/NotFound、created_at 跨表 nullable→NN `unwrap_or(now)` coerce)＋PolicyMutated gate(updateRoleMenu **由 reload-on-changed 改 reload-on-Applied【含空-diff、§4.2 ③ 不優化、調整 011、user 確認】**、restorePolicy Applied→reload/NoOp·NotFound→skip)＋跨副本 `spawn_policy_watcher`(嚴格鏡像 014、復用 Redis 基建/`CASBIN_INVALIDATE_CHANNEL`)＋回收桶 UI(restore 鈕無 button-policy 種子、**不以假碼 hasAuth 隱藏**、後端 require_policy 為唯一安全邊界保 SC-006)｜零 migration、零新 crate(archive 表/seed 全波0已備)｜★ elegant-router 新 view→自動生成 route 註冊 4 檔+route.manage_policy-archive i18n(建檔當下看不到、主線最終 checkpoint 接住、見 memory)
+
+**016-button-endpoint clarify／as-built（4 拍板 user 親決 2026-06-22 brainstorm;非 ⚠️ 碼級）**:**scope C＝button＋endpoint 完整 runtime 編輯**(補完三維 RBAC)｜**un-protect 不做**(延續 015 A、endpoint 15 protected 不可經 UI 撤、§4.2-faithful)｜**回收桶 v2-推導**(dimension 由 v2 推導 menu|button=原值/HTTP method→endpoint、不改 archive_reason)｜**endpoint 鎖出靠既有 15 protected endpoint seed**(恢復路徑、零 migration、無硬鎖出)｜as-built:button＝reuse `set_role_dimension("button")`＋`all_buttons` 自 sys_menu.buttons JSON registry;**endpoint＝net-new `set_role_endpoints` (path,method) 雙鍵 diff＝真實 (v0=role,v1=path,v2=method) enforce 列〔DELETE 按 id、protected-reject 任何寫前、★絕無 v2='endpoint' 平行編碼、治理 helper 全復用 015〕**;`AS_BUILT_ROUTES` 37→43+M2 雙向 registry assertion〔`ALL_ENDPOINT_POLICIES`==registered policy-governed〕;base-web MODAL-WIRING (c)〔button un-mock+endpoint-auth-modal 新建+第三鈕〕;typings 收斂 fold-in〔RoleListItemRev3/User honest 讀型、新 rev3 wrapper 非改 frozen〕;roleId 維 number 域(⚠️r);3 LOW 不阻擋見 §3.20
 
 **開放 9**(依最晚決策點分組):
 - 波 1~3:⚠️m alt-login 入波(波3排程前)｜⚠️w login lockout(做、刀位/設計待排程;消費 audit-overlay 的 sys_login_attempt 索引)
