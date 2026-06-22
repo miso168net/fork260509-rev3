@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 處於波 0 進行中**（001-infra-deploy ✅ 已收刀 2026-06-13）：worktree／submodule、docs 核心四檔、graphify-out、tests/000、specs/、master compose（含 dev/prod override＋standalone×2）、deploy/、rust-api scaffold、SessionStart hook 均已落地；剩餘 ⏳＝GRAPHIFY-NOTES／REVIEW 報告／obs（波 4）等（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 波 0~3 全完成、波 4 observability 待開始**（最近收刀 016＝2026-06-22；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯（001-016）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。剩餘 ⏳＝GRAPHIFY-NOTES／REVIEW 報告／obs（波 4）等（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **無（波 3 全完成 2026-06-22）**。最近收刀＝**016-button-endpoint-policy ✅**（波 3 殿後刀＝Button-Endpoint 三維 RBAC runtime 編輯、merge `fa17def`）：把 011 `set_role_dimension`（menu）＋015 治理島延伸到 **button＋endpoint 兩維度**，補完三維 RBAC runtime 編輯。button＝撿現成（`updateRoleButton` 直呼 `set_role_dimension(role,"button",codes)`、011+015 全免費繼承;`all_buttons` 自 `sys_menu.buttons` JSON registry）；**endpoint＝net-new `set_role_endpoints`（(path,method) 雙鍵 diff＝真實 (v0=role,v1=path,v2=method) enforce 列、read-current v2∈HTTP_METHODS、DELETE 按 id、protected-reject 任何寫前、★絕無 v2='endpoint' 平行編碼、治理 helper〔archive/mutate_in_txn/reload_and_publish/watcher〕全復用 015）**；回收桶三維 v2-推導（dimension_display+list filter 同改兩處、不改 archive_reason、restore 審計 raw-v2 M3）；base-web MODAL-WIRING (c)（button-auth un-mock＋endpoint-auth-modal 新建＋role-drawer 第三鈕＋6 wrapper＋i18n）＋typings 收斂 fold-in（RoleListItemRev3/User honest 讀型、新 rev3 wrapper 非改 frozen）。5 執行單元 Workflow 驅動（U1 button `44ffd4f`→U2 endpoint `4929406`→U3 治理 v2-推導+gate+cv6 `066f91b`→U4 base-web `d2a1990d`→U5 typings `c2c61893`）。C-V-0~8 全綠（兩 lint[43]+M2 雙向 registry／live button+endpoint〔鎖出+enforce 自 DB Enforcer 驗+UI-gateway getRoleList restore〕／gate 精準／curl Super200·Admin403／2-instance cv6 button+endpoint 跨副本+CLIENT KILL pubsub 重訂閱／CDP 三維 6/6 在地化／零回歸 25+155+zero-migration+prod build〔binary 落地〕+typecheck）、holistic READY_TO_FINISH（0 critical/high/medium、endpoint 編碼鐵則成立、§4.2 五 invariants 延伸、SC-001~008+US1~US3 全覆蓋、3 LOW 見 CHECKLIST §3.20）。**零 migration、零新 crate、Constitution 9/9 PASS**。4 拍板：scope C／un-protect 不做（延續 015 A）／回收桶 v2-推導／endpoint 鎖出靠既有 15 protected seed。pins rust-api `2ad2029`→`066f91b`／base-web `0adfd12d`→`c2c61893`。詳 [DECISIONS §2](docs/INTEGRATION-DECISIONS.md)／[MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／CHECKLIST §2 波3。
-下一步: **波 4 observability（未開始）**——obs-min（loki+alloy+grafana 純 log、72h retention）／obs-full（prometheus+2 exporter+pushgateway+rust-api `/metrics` 埋點）／dashboard provisioning（皆 `profiles:[obs]`/`[metrics]` opt-in、一般 `up` 不啟）。或 **alt-login 4 流程 stub**（⚠️m post-波3 v1-completeness slot、CHECKLIST §3.18）。起手＝CLAUDE.md §3 階段 0 `superpowers:brainstorming`→手動 `/speckit-specify` 起 feature branch。
+Active feature: **無**（波 3 全完成 2026-06-22；014/015/016 三刀收齊）。最近收刀＝**016-button-endpoint-policy ✅**（Button-Endpoint 三維 RBAC runtime 編輯、merge `fa17def`、零 migration/零新 crate、Constitution 9/9、C-V-0~8 全綠、holistic READY_TO_FINISH）——as-built 詳帳見 [DECISIONS §2](docs/INTEGRATION-DECISIONS.md)／commit 史 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／波次狀態 CHECKLIST §2 波3；016 開放 follow-up 見 CHECKLIST §3.B/§3.H。
+下一步: **波 4 observability（未開始）**——obs-min／obs-full／dashboard provisioning（`profiles:[obs]`/`[metrics]` opt-in、一般 `up` 不啟）；或 **alt-login 4 流程 stub**（⚠️m post-波3 v1-completeness slot、CHECKLIST §3.D）。起手＝CLAUDE.md §3 階段 0 `superpowers:brainstorming`→手動 `/speckit-specify` 起 feature branch。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
@@ -609,7 +609,7 @@ docker compose exec acme acme.sh --version    # sanity check
 > 📖 **圖譜現況統計** 與 **已知抽取限制** 等細節 — **推論前必讀** [`docs/GRAPHIFY-NOTES.md`](docs/GRAPHIFY-NOTES.md) ⏳。
 
 **graphify 守則**：
-- `graphify-out/` 已建圖（2026-06-12 首建，2060 nodes/311 communities；commit `8f66fe0`）。圖譜索引 rev3 worktree（`base-web` / `rust-api` 整合分支），與整合碼同步；docs 後續大改（如 INTEGRATION-DESIGN 改名、四檔落地）後記得 `graphify update` 增量同步（已列 CHECKLIST §3.2）。
+- `graphify-out/` 已建圖（2026-06-12 首建，2060 nodes/311 communities；commit `8f66fe0`）。圖譜索引 rev3 worktree（`base-web` / `rust-api` 整合分支），與整合碼同步；docs 後續大改（如 INTEGRATION-DESIGN 改名、四檔落地）後記得 `graphify update` 增量同步（已列 CHECKLIST §2 持續性維護）。
 - 重跑前先讀 `graphify-out/cost.json` 看是否真有需要 —— 多數時候 `graphify update`（增量）即可。
 - 不要改 `graphify-out/cache/` —— graphify 內部 LLM 擷取快取，手改破壞下次 update 的 diff。
 - 新功能設計問題先用 `graphify query "..."` 試 —— 但 Vue component composition 是 graphify 工具盲點（`.vue` 的 template↔import 抓不全，見 `docs/GRAPHIFY-NOTES.md`），問 Vue SFC 之間 wiring 要直接讀 SFC。
