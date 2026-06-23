@@ -12,8 +12,8 @@
 **階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。下一步＝波 4 observability（未開始）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-23 pre-波4 follow-up sweep（§3.A/§3.B/§3.E/§3.G/§3.H、直接 surgical commits 非 spec-kit）**（outer `63a46f5`）:對照實碼驗證 §3 backlog→收 ripe 項。**rust**〔`d1cf733`〕清 dead（operator_id never-read／ConnectionTrait import）＋vendored adapter 移除被忽略 default-features=false（消 cargo future hard-error）＋settings/policy watcher reconnect 補一次 re-read/reload（補 backoff window 漏失 invalidate）＋Redis boot connect 包 tokio::timeout(5s)＋normalize_xff_tokens MAX_XFF_TOKENS=32 cap（test-first）。**base-web**〔`7a011c00`〕request 攔截器 onError 補 else-if：native axios error（403/404、code≠BACKEND_ERROR_CODE）也抽 data.msg 經 translateBackendMsg 在地化（§3.G、⚠️aa 授權、404 envelope curl 證+render 路徑同既有 biz-error）＋excel demo honest fetchGetUserListRev3 遷移＋016 dead type 註記。**deploy**〔outer `5b74cdb`/`eea0447`/`63a46f5`〕nginx server_tokens off+prod 443 HSTS/X-Frame/X-Content-Type（nginx -t 過）＋base-web runtime nginx:alpine→1.31.0-alpine（對齊 front-nginx；node/postgres 維持大版本 pin＝拍板#4）＋generate-secrets dual-write 連動重生。stale 自述校正（早已做）：/health 雙 CT・script chmod600/離線fallback・migrate healthcheck。未收（own-cut/defer）：§3.B drawer null-flow・§3.C・§3.F policy-seed（動 migration 需拍板）・§3.A trust-model/acme/cleanup-job/多副本・§3.E lint 守門・debian pin。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 - **2026-06-22 016-button-endpoint-policy 全綠收刀（波 3 殿後刀＝Button-Endpoint 三維 RBAC runtime 編輯;★ 波 3 全完成）**（merge `fa17def`）:把 011 `set_role_dimension`（menu）＋015 治理島延伸到 **button＋endpoint 兩維度**，補完三維 RBAC runtime 編輯。**button 撿現成**（updateRoleButton 直呼 set_role_dimension(role,"button",codes)、011 寫側+015 治理島全免費繼承;all_buttons 自 sys_menu.buttons JSON registry、button_codes_for_role 讀端）。**★ endpoint 新 `set_role_endpoints`**〔(path,method) 雙鍵 diff＝真實 (v0=role,v1=path,v2=method) enforce 列、read-current v2∈HTTP_METHODS、DELETE 按 id、protected-reject 任何寫前;**★★ 絕無 v2='endpoint' 平行編碼**;治理 helper〔insert_archived/mutate_in_txn/reload_and_publish/watcher〕全復用 015;U2 Workflow encoding 對抗證偽 9 項全擊破〕。**§4.2 五 invariants 維度無關延伸**（①DB-first 零 MgmtApi／②protected-reject〔endpoint 15 protected=鎖出守門·button 0 protected moot〕／③gate 含空-diff／④原子+審計／⑤reload+publish 跨副本）。**回收桶三維 v2-推導**〔dimension_display+list filter 同改兩處、不改 archive_reason、restore 審計 raw-v2 M3〕。**base-web MODAL-WIRING(c)**〔button-auth un-mock+endpoint-auth-modal 新建〔(path,method) 合成 key〕+role-drawer 第三鈕+6 wrapper+Button/Endpoint typings+i18n endpointAuth/endpointProtected〕＋**typings 收斂 fold-in**〔RoleListItemRev3=Omit<Role,'roleDesc'>&{roleDesc:null}/User honest 讀型/新 fetchGetRoleListRev3·fetchGetUserListRev3 wrapper、消 User/Role wire type-lie（§3.B）〕。net-new 6 route R_SUPER+`AS_BUILT_ROUTES` 37→43+**M2 雙向 registry assertion**+`ALL_ENDPOINT_POLICIES` const。**5 執行單元 Workflow 驅動（rust serial→base-web 跨棧並行）**（U1 button`44ffd4f`→U2 endpoint`4929406`→U3 治理 v2-推導+gate+cv6`066f91b`→U4 base-web`d2a1990d`→U5 typings`c2c61893`）、每單元 implementer(TDD)→spec+code review〔U2 加 encoding 對抗證偽〕＋主線單元邊界獨立自驗+主線親跑 cv6 2-instance＋逐單元兩段式 commit。C-V-0~8 全綠（兩 lint[43]+M2 雙向 registry/live button〔archive-move+grant+restore+buttons 反映〕+endpoint〔雙鍵+鎖出+enforce 自 DB Enforcer 驗+UI-gateway getRoleList restore〕/gate 精準/curl Super200·Admin403/**2-instance cv6 button+endpoint 跨副本收斂+CLIENT KILL pubsub 重訂閱**/**CDP 三維 6/6**〔三鈕在地化+modal 真打+撤 protected→在地化原子拒+無 console error+manage 頁無回歸〕/零回歸 25+155+zero-migration+prod build〔binary 落地〕+typecheck）、final holistic（fresh-agent 冷讀+2 fresh 交叉）**READY_TO_FINISH**（0 critical/high/medium、endpoint 編碼鐵則成立、§4.2 五 invariants 延伸、SC-001~008+US1~US3 全覆蓋、constitution 9/9;3 LOW〔L1 buttonProtected i18n 不可達/L2 未引用 TS 型/L3 v2-推導 by-design〕）。dev DB 寫端原子無自身殘留（H1：live 測 teardown 清自身 casbin op-log trace）。**零 migration、零新 crate**（6 編輯端點/button/endpoint policy/button JSON 全波0 m002 已備、Constitution 9/9 PASS）。4 拍板：scope C／un-protect 不做（延續 015 A）／回收桶 v2-推導／endpoint 鎖出靠既有 15 protected seed。pins rust-api `2ad2029`→`066f91b`／base-web `0adfd12d`→`c2c61893`。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)
-- **2026-06-22 015-policy-governance 全綠收刀（波 3 第二刀＝Policy 治理島 §4.2 完成刀）**（merge `65f1838`）:把 011 `set_role_dimension` 寫側補成 §4.2 完整治理島。**① revoke→archive-move**〔snapshot 被撤 11-col→insert_archived→DELETE 同 txn 原子、可復原非硬刪;protected-reject 仍在任何寫前〕。**② restore 三態**〔查無 NotFound 2222／live 已存在 NoOp〔消費不重插不審計 0000〕／else Applied〔INSERT〔created_at 跨表 nullable→NN coerce〕+DELETE archive+Restore op-log {role,target,dimension} 同 txn〕〕。**③ PolicyMutated gate**〔net-new reload_and_publish=load_policy+PUBLISH casbin:policy:invalidate fail-OPEN;**updateRoleMenu 由 reload-on-changed 改 reload-on-Applied 含空-diff、調整 011、user 確認**;restorePolicy Applied→reload/NoOp·NotFound→skip〕。**④ 跨副本**〔net-new spawn_policy_watcher 嚴格鏡像 014、SUBSCRIBE casbin:policy:invalidate→load_policy、backoff 重訂閱、復用 014 Redis 基建+CASBIN_INVALIDATE_CHANNEL〕。**⑤ 回收桶 UI**〔base-web views/manage/policy-archive MODAL-WIRING(e)、list 鏡像 012/restore 鏡像 010、honest ArchivedPolicy 8 欄、elegant-router route 註冊 4 檔+route i18n 主線接住、restore 鈕無假碼 hasAuth 保 SC-006〕。net-new sys_casbin_policy_archive facade＋2 handler＋2 route＋AS_BUILT 37。**4 執行單元 Workflow 驅動 rust serial**（EU1 資料層`5163d5a`→EU2 HTTP+gate`383515b`→EU3 watcher`2ad2029`→EU4 UI base-web`0adfd12d`）、每單元 implementer(TDD)→spec+code review＋主線單元邊界獨立自驗＋逐單元兩段式 commit;3 主線接住〔EU1 cq 2 medium dead_code/D5 seed 污染／EU3 docstring nit／**EU4 elegant-router route 檔+route i18n 遺漏**〕。C-V-0~7 全綠（兩 lint[37]/facade live archive_restore D1~D6+gate live 空-diff+reload_publish 往返/curl Super200·Admin5003·NotFound2222/**2-instance 跨副本收斂+CLIENT KILL 重訂閱韌性**/**CDP 回收桶點復原+console error 消解**/零回歸 22+146+migration 零-diff+prod build），final holistic（fresh-agent）**READY_TO_MERGE**（5 §4.2 invariants+SC-001~008+US1~US3+wire byte 對齊無 type-lie+零 MgmtApi）。**零 migration、零新 crate**（archive 表/seed 全波0、Constitution 9/9 PASS）。1 拍板 A un-protect 不做＝protected 硬守門。pins rust-api `7ec8fc3`→`2ad2029`／base-web `f3b2bf07`→`0adfd12d`
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
@@ -78,23 +78,23 @@
 
 > 公網/prod 部署前一次性硬化；dev 不受影響。原散於各刀，收成單一清單。
 
-- [ ] **nginx 硬化**〔001〕：prod `server_tokens off`＋HSTS/X-Frame-Options/X-Content-Type-Options（公網前必做）；`/health` 雙 Content-Type 改 `default_type`
-- [ ] **TLS/secret/腳本**〔001〕：`front_nginx_certs` 是否 `external: true`（拍板項）；compose secrets 預檢（bind 缺檔→建空目錄）；generate-secrets dual-write drift／generate-dev-cert renew 重生 CA＋私鑰 chmod 600／generate-* `docker pull` 離線 fallback
-- [ ] **image pin 一致性**〔001〕：alpine/openssl:latest、nginx:alpine、node:26 滑動、postgres:17 patch 浮動 → 統一 pin；prod builder node:20.19 vs dev node:26 分歧註記
+- [x] ✅ **nginx 硬化**〔001、pre-波4 2026-06-23〕：nginx.conf `server_tokens off`＋prod.conf 443 HSTS/X-Frame-Options/X-Content-Type-Options（`nginx -t` 掛 rev3_net 過）；`/health` 雙 Content-Type 早已 `default_type`（自述 stale）
+- [ ] **TLS/secret/腳本**〔001〕：仍 open＝`front_nginx_certs` 是否 `external: true`（拍板項）／compose secrets 預檢（bind 缺檔→建空目錄）。〔pre-波4 done：generate-secrets dual-write drift→依賴 leaf GENERATED 時 URL 連動重生✅；generate-dev-cert renew 重生 CA＋chmod 600／`docker pull` 離線 fallback 早已做（自述 stale）✅〕
+- [ ] **image pin 一致性**〔001〕：〔pre-波4 done：base-web runtime `nginx:alpine→nginx:1.31.0-alpine` 對齊 front-nginx✅；★ node:26/postgres:17 維持大版本 pin＝拍板#4 house style、刻意不 patch-pin〕。仍 open：alpine/openssl:latest（低、一次性）／debian:bookworm-slim（本機未 pull、不猜 date tag、延後）
 - [ ] **trust-model 部署**〔013〕：operator 填 `trust-model.toml` 實際拓樸（my_public／cloudflared ingress）；CF 官方 IP 段 nginx geo ↔ trust-model.toml 兩處同步（漂移風險、評單一來源）
-- [ ] **XFF 上限**〔012/013〕：`audit_ctx normalize_xff_tokens` 無長度/token 數上限 → 公網前評估（hyper header cap 已部分緩解、與 nginx 硬化同窗口）
+- [x] ✅ **XFF 上限**〔012/013、pre-波4 2026-06-23〕：`normalize_xff_tokens` 加 `MAX_XFF_TOKENS=32` token cap（test-first `normalize_caps_token_count`）
 - [ ] **cleanup-job 上線**〔014〕：無排程接上（過期 sys_token 只增不減、純儲存膨脹、med）→ cron/compose-sidecar/k8s CronJob；最小權限 secret `cleanup_database_url` 未建（走全權 DATABASE_URL、low）
 - [ ] **prod 多副本**〔014〕：dev rust-api-2 已驗 invariant；prod nginx 仍單一 proxy_pass、無 upstream/replicas（research §D 明示不做）→ 真橫向擴展待 nginx LB＋共用 DB/Redis（low）
-- [ ] **001 其他邊角**：prod migrate 無意義 HEALTHCHECK→disable；migrate redis depends_on 措辭對齊；dev watcher cargo-watch→bacon/watchexec 評估；`set_var` runtime（edition 2024 升級時）；rust-api/.gitignore `debug`/`target` pattern 錨；cargo cache 卷遮蓋/冷卷首啟 flap 已在 CLAUDE.md §8.2.1（quickstart 補述可選）
+- [ ] **001 其他邊角**：~~prod migrate 無意義 HEALTHCHECK→disable~~（早已 disable、自述 stale✅）；migrate redis depends_on 措辭對齊；dev watcher cargo-watch→bacon/watchexec 評估；`set_var` runtime（edition 2024 升級時）；rust-api/.gitignore `debug`/`target` pattern 錨；cargo cache 卷遮蓋/冷卷首啟 flap 已在 CLAUDE.md §8.2.1（quickstart 補述可選）
 
 ### 3.B typings 收斂 sweep（跨刀：009/010/011/016）
 
 > §3 歷史的 User〔009〕/Role〔011〕wire type-lie 已由 016 U5【管理頁】部分消解（見 MILESTONES §3）；下列殘餘 type-lie/frozen 殘留待一支 typings-sweep 刀統收。
 
-- [ ] **MenuList type-lie**〔010〕：frozen `fetchGetMenuList` 宣告分頁包、後端回裸陣列樹＝latent dead；reconcile（棄用或改型）＋檢視 Menu/MenuRoute nullable 欄
+- [x] ✅ **MenuList type-lie**〔010、pre-波4 2026-06-23〕：frozen `fetchGetMenuList` 已被 `fetchGetMenuListV2` 取代、rev3 wrapper 已註記 latent dead（不可動 frozen、確認消謊）；Menu/MenuRoute nullable 欄檢視仍可選
 - [ ] **drawer Model null-flow**〔016 U5 揭露〕：list 讀型誠實化後 `Object.assign(model,rowData)` 灌 null 進 frozen Model 非-null 欄＝靜默型不安全（runtime NInput null→'' 正常）；pre-existing upstream pattern、嚴格 null-safety 屬獨立 hardening、勿 bolt 進 sweep
-- [ ] **excel demo**〔016〕：`views/plugin/excel` 仍用 frozen `fetchGetUserList`；sweep 時換 `fetchGetUserListRev3`
-- [ ] **016 未引用型**：`RoleButtonUpdate`/`RoleEndpointsUpdate` 宣告未引用（harmless、留；sweep 順移）
+- [x] ✅ **excel demo**〔016、pre-波4 2026-06-23〕：`views/plugin/excel` 改用 `fetchGetUserListRev3`（getTableValue 簽名同步 User→UserListItemRev3、typecheck 過）
+- [x] ✅ **016 未引用型**〔pre-波4 2026-06-23〕：`RoleButtonUpdate`/`RoleEndpointsUpdate` 補「未引用、保留供具名化」註記（BASE-WEB-ADAPT 禁刪、不移除）
 
 ### 3.C 審計中心 enhancement（跨刀：005/009/012/015、接 obs波/scale）
 
@@ -115,21 +115,21 @@
 - [ ] op-log count EntityId-only 隔離脆弱性〔007-era；`op_log_atomic_three_paths` 014 已 trace_id 化；sys_role/menu/casbin 殘留未觀察 flaky、真失敗再統一 trace_id 化〕
 - [ ] `endpoint_coverage_lint` `first_string_after` 抽取假設字面字串〔008；引入 `.route(CONST,…)`/`require_policy(CONST,…)` 須加守門或 self-test〕
 - [ ] `validate_value_type` 非 enum 型保守放行〔008；新值型 seed 須補驗證分支＋守恆斷言〕
-- [ ] pre-existing dead：`sys_casbin_rule.rs` ConnectionTrait unused import〔011 起〕／`RequestContext.operator_id` never-read〔007 起〕——依「不清 pre-existing dead」、重構順手清
+- [x] ✅ pre-existing dead〔pre-波4 2026-06-23 重構順手清〕：`sys_casbin_rule.rs` ConnectionTrait unused import〔011 起〕已刪／`RequestContext.operator_id` never-read〔007 起〕已移除欄位+賦值
 
 ### 3.F policy-seed 對齊校正刀（跨刀：009/010/011）
 
 - [ ] R_ADMIN `user:edit` button vs updateUser R_SUPER-only 端點不對齊（見鈕、動作 403）〔009/010〕
 - [ ] R_ADMIN `getRoleList` policy 有但無 `manage_role` menu→access moot〔011〕→ 補 R_ADMIN manage_role menu 或收 getRoleList policy seed（忠實 seed、校正刀評估）
 
-### 3.G request interceptor i18n 刀（跨刀：003/009/010、三度遞延）
+### 3.G request interceptor i18n 刀 ✅ 全完成 (2026-06-23、pre-波4 sweep；待批次搬 MILESTONES §3)（跨刀：003/009/010）
 
-- [ ] `4040`/`5003`（HTTP 404/403）走 axios native error、`error.code≠BACKEND_ERROR` 不在地化（前端顯原生「Request failed with status code 403」）〔003 認定限制、009/010 守 frozen request interceptor §III 軌道未授改〕→ 專門 interceptor 刀拓寬 onError extraction（抽 `error.response.data.msg` 經 translateBackendMsg）
+- [x] ✅ 〔pre-波4 2026-06-23〕`4040`/`5003`（HTTP 404/403）native axios error 在地化：onError 補 else-if（`code≠BACKEND_ERROR_CODE` 但 `error.response.data.msg` 存在→`translateBackendMsg`）；⚠️aa BASE-WEB-I18N-WIRING §III.2(i) 授權涵蓋；自述「需新增 locale key」不成立（003 已備）；★ CDP 實證：真 HTTP 403→toast「权限不足」（非 raw key/英文、browser 軌驗）
 
 ### 3.H keep-deferred 雜項（consumer/觸發時、壓縮）
 
-- [ ] **rust robustness**〔014、low〕：settings watcher 重訂閱補一次 DB re-read 消 backoff window（一行）；Redis boot connect 包 `tokio::timeout`；Redis `sess:{uid}` pointer 熱快取 deferred（X-01 sanctioned、QPS 高再啟）
-- [ ] **vendored adapter**〔002〕：Cargo.toml redundant default-features（build warning、拍板允許動 vendored 時清）；examples fixture（builder 內跑 cargo test 時 COPY）
+- [ ] **rust robustness**〔014、low〕：〔pre-波4 done：settings/policy watcher reconnect 後補 DB re-read/reload✅；Redis boot connect 包 `tokio::timeout(5s)`✅〕仍 open：Redis `sess:{uid}` pointer 熱快取 deferred（X-01 sanctioned、QPS 高再啟）
+- [ ] **vendored adapter**〔002〕：〔pre-波4 done：移除 async-trait/tokio 被忽略的 default-features=false、消 build warning✅〕仍 open：examples fixture（builder 內跑 cargo test 時 COPY）
 - [ ] **optimization re-defer**：iframe props 內嵌〔010 D2〕；`filter_routes` 遞迴化〔010 D3〕；`batch_soft_delete` sentinel DbErr→自管 txn（robustness、非急）〔010〕；soft_delete 中途失敗審計覆蓋（注入約束衝突）〔005〕
 - [ ] **UX/cosmetic**〔low〕：endpoint modal 扁平 36-list→可按 path 群組＋synthKey 加固〔016〕；ArchivedPolicy createdTime 未顯欄〔015〕；protected 訊息泛化未 surface 具體被擋〔011/016〕；login fallback「No match」transient〔010、upstream soybean、動 frozen auth/index.ts〕
 - [ ] **misc**：dynamic route `/route/*` 真流量重抓〔000、低 archival〕；`inline_coverage_lint` 候選〔⚠️s、待 ⚠️q migrate〕；base-web i18n 單元測 fidelity〔003、待 vitest 環境〕；`TrustModel.Binding.dual_role` 從不消費〔013、消費/移除/標 no-op〕；rev2 redis `--dir` bug 回灌〔001、rev2 維護時〕；dispatcher `server)` 不 shift〔001、blob 凍結 won't-fix〕；pruneNullParams 雙防線〔012、by-design 刻意保留〕；specs 筆誤家族 255〔012〕/263〔013〕/338〔016〕（as-built 權威在 DECISIONS、spec 快照、勘誤可選、不單獨追蹤）
