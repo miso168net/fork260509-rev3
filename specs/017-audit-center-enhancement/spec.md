@@ -10,6 +10,12 @@
 
 審計中心（`/manage/audit`、超級管理員專用、三分頁：操作異動／API 存取／登入嘗試）目前只能線上分頁瀏覽。本功能補三項 forensic／operational 可視性缺口，使審計者能更有效地篩選、留存、與追溯敏感變更。
 
+## Clarifications
+
+### Session 2026-06-23
+
+- Q: op-log 匯出 CSV 的 `roles_before`/`roles_after` 如何呈現？ → A: 加專屬 `roles_before`／`roles_after` 兩欄（自前後快照抽出），payload 完整內容仍保留為獨立欄供 forensic。
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - 角色變更可事後追溯 (Priority: P1)
@@ -44,6 +50,7 @@
 3. **Given** 紀錄含中文（如操作者名、路徑），**When** 用試算表軟體（Excel）開啟匯出檔，**Then** 中文正確顯示不亂碼。
 4. **Given** 非超級管理員，**When** 嘗試匯出，**Then** 被拒（與瀏覽審計的存取限制一致）。
 5. **Given** 篩選結果為 0 列，**When** 匯出，**Then** 取得僅含表頭的 CSV（不報錯）。
+6. **Given** 操作異動分頁有角色變更紀錄，**When** 匯出 CSV，**Then** 檔案含專屬 `roles_before`／`roles_after` 欄（除既有欄與 payload 欄外），可直接分析角色 delta 而無需解析 payload JSON。
 
 ---
 
@@ -82,6 +89,7 @@
 
 **審計匯出（US2）**
 - **FR-005**: 系統 MUST 讓使用者將三個審計分頁（操作異動／API 存取／登入嘗試）各自匯出為 CSV。
+- **FR-005a**: 操作異動（op-log）之 CSV 匯出 MUST 額外提供專屬 `roles_before`／`roles_after` 欄（自前後快照抽出），供角色 delta 直接分析；payload 完整內容仍保留為獨立欄（clarification 2026-06-23）。
 - **FR-006**: 匯出內容 MUST 反映使用者當前套用的篩選條件（所見即所匯）。
 - **FR-007**: 單次匯出 MUST 上限 1 萬列；當符合列數超過上限時，系統 MUST 告知使用者僅匯出前 1 萬列。
 - **FR-008**: 匯出之 CSV MUST 能於常見試算表軟體正確開啟，且非 ASCII（中文）內容不亂碼。
@@ -102,7 +110,7 @@
 - **API 存取紀錄（Access Log record）**：每次已認證請求一列，含操作者、方法、路徑、HTTP 狀態、IP 鑑識欄、時間。狀態類別篩選作用於此。
 - **登入嘗試紀錄（Login Attempt record）**：每次登入嘗試一列。
 - **角色集（Role set）**：使用者所屬角色代碼之集合；於角色變更前後各取一份快照。
-- **CSV 匯出檔（CSV export artifact）**：依當前篩選產出的可下載審計資料檔（受 1 萬列上限約束）。
+- **CSV 匯出檔（CSV export artifact）**：依當前篩選產出的可下載審計資料檔（受 1 萬列上限約束）。op-log 匯出額外含專屬 `roles_before`／`roles_after` 欄。
 
 ## Success Criteria *(mandatory)*
 
