@@ -18,9 +18,9 @@
 # 冪等語義:
 #   - 零參數:已存在的 .txt 直接跳過,缺失的才補生
 #   - --force:強制重生全部(leaf + URL),URL 從新 leaf cat
-#   ⚠️ dual-write drift:只刪【單一 leaf】(如 postgres_password.txt)後【裸重跑】(無 --force)→
-#      leaf 重生(GENERATED)但對應 URL(database_url.txt)仍存在走 SKIPPED、保留舊密碼 → URL 與 leaf 不同步。
-#      刪 leaf 後須 --force 全重生(或一併刪對應 URL 檔)。
+#   dual-write drift 自動防護(§3.A):只刪【單一 leaf】(如 postgres_password.txt)後【裸重跑】(無 --force)→
+#      leaf 重生(GENERATED)而對應 URL(database_url.txt)仍存在時,gen_url 偵測依賴 leaf 本次 GENERATED→
+#      連動重生 URL(REGENERATED)、避免 URL 殘留舊密碼。(仍建議 --force 全重生最乾淨。)
 
 set -euo pipefail
 
@@ -75,10 +75,16 @@ echo "=== Step 2: 生成 URL secret(dual-write 從 leaf 組合)==="
 gen_url() {
     local name="$1"
     local value="$2"
+    local dep_leaf="$3"   # 依賴的 leaf;若本次 GENERATED 而 URL 已存在＝drift→連動重生(§3.A)
     local file="$SECRETS_DIR/${name}.txt"
     if [ ! -f "$file" ] || [ "$FORCE" -eq 1 ]; then
         printf '%s' "$value" > "$file"
         STATUS["$name"]="GENERATED"
+    elif [ "${STATUS[$dep_leaf]:-}" = "GENERATED" ]; then
+        # dual-write drift 自動防護:依賴 leaf 本次重生、URL 卻已存在→連動重生避免 stale 密碼。
+        printf '%s' "$value" > "$file"
+        STATUS["$name"]="REGENERATED(leaf drift)"
+        echo "⚠️  ${name}.txt 連動重生:依賴的 ${dep_leaf} 本次重生、避免 URL 殘留舊密碼"
     else
         STATUS["$name"]="SKIPPED"
     fi
@@ -90,8 +96,8 @@ RD_PASS="$(cat "$SECRETS_DIR/redis_password.txt")"
 DATABASE_URL="postgres://soybean:${PG_PASS}@postgres:5432/soybean_admin_rust"
 REDIS_URL="redis://:${RD_PASS}@redis-stack:6379"
 
-gen_url "database_url"          "$DATABASE_URL"
-gen_url "redis_url"             "$REDIS_URL"
+gen_url "database_url"          "$DATABASE_URL"  "postgres_password"
+gen_url "redis_url"             "$REDIS_URL"     "redis_password"
 
 # ============================================================
 # Step 3: 設定 secret 檔案權限
