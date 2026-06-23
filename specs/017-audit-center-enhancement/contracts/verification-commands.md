@@ -37,6 +37,7 @@ A=$(curl -s :31081/auth/login -d '{"userName":"Admin","password":"123456"}' -H '
 curl -s ":31081/systemManage/getAccessLog?httpStatusClass=4xx" -H "Authorization: Bearer $T"   # records 僅 400-499
 curl -s ":31081/systemManage/getAccessLog?httpStatusClass=" -H "Authorization: Bearer $T"       # 空 param→不報錯、視為未篩（守門）
 curl -s ":31081/systemManage/getAccessLog?httpStatusClass=xyz" -H "Authorization: Bearer $T"    # 無法識別→不報錯、未篩（FR-012）
+curl -s ":31081/systemManage/getAccessLog?httpStatusClass=4xx&httpStatus=200" -H "Authorization: Bearer $T"  # F3 AND 並存：records 為空（證交集非覆蓋；FR-011/SC-006）
 # C-3 export（三表）Super 200 回 CSV
 curl -s ":31081/systemManage/getAccessLog?export=true" -H "Authorization: Bearer $T" | head -c 200   # envelope data 為 CSV 字串（含 BOM）
 curl -s ":31081/systemManage/getOperationLog?export=true" -H "Authorization: Bearer $T" | head -c 300 # 含 rolesBefore/rolesAfter 欄
@@ -50,10 +51,10 @@ curl -s -o /dev/null -w '%{http_code}' ":31081/systemManage/getAccessLog?export=
 
 ```
 # 經真 server 帶自身 trace_id 跑 add/update/delete user（live smoke、--test-threads=1），再 psql 驗該 trace_id 的 op-log payload
-$RA 'cd /app && DATABASE_URL=... cargo test -p server --features <none> -- --ignored --test-threads=1 add_user_smoke update_user_smoke delete_user_smoke 2>&1 | tail'
+$RA 'cd /app && DATABASE_URL=... cargo test -p server -- --ignored --test-threads=1 add_user_create_roundtrip update_user_preserves delete_user_soft_delete op_log_atomic 2>&1 | tail'   # F1：擴充既有測之實際測名（子字串 filter）；看到 "0 passed / N filtered out" 即 filter 沒命中（bare-filter 假綠）
 # 或直接 psql 查特定 trace_id 列的 payload_before/after->>'roles'
 docker compose ... exec -T postgres psql -U postgres -d <db> -c \
-  "select operation, payload_before->'roles' rb, payload_after->'roles' ra from sys_operation_log where trace_id='<self-trace>' and entity_table='sys_user';"
+  "select operation, payload_before->'roles' rb, payload_after->'roles' ra, (payload_after ? 'current_session_id') sid_kept from sys_operation_log where trace_id='<self-trace>' and entity_table='sys_user';"   # F8：sid_kept 應 t（with_roles 未覆蓋既有欄、FR-013 forensic 零回歸）
 ```
 **Pass**：update 列 `rb`=改前角色集、`ra`=改後（scenario 1）；add 列 `ra`=初始角色、`rb` null/缺（INSERT before=None、scenario 2）；delete 列 `rb`=刪前角色、`ra`=`[]`（scenario 3）；未動角色 update 列 `rb`==`ra`（集合、scenario 4）。**斷言限自身 trace_id**（共享 seed entity_id append-only、勿絕對列數）。
 

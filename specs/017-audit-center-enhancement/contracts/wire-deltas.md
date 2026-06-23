@@ -24,6 +24,7 @@
 - **export=true 時 response 變體**：`{code:"0000", data:"<CSV 字串>", msg:...}`——`data` 為 CSV 文字（UTF-8 BOM 前綴）、**非** PageRes。未帶 export＝既有分頁 JSON（零變）。
 - op-log（getOperationLog）export CSV 含專屬欄 `rolesBefore`/`rolesAfter`（自 payload 抽）+ 既有 `payloadBefore`/`payloadAfter`（JSON 字串入格）。
 - cap：export 至多 10000 列；前端依 `total` 提示截斷（不在 wire）。
+- **F6 已知契約形態**：export 使同一路由依 `query.export` 條件式回兩種 data shape（`PageRes<T>` / CSV `String`）；登記為已知形態，供日後 §I.3 契約 schema oracle（待決②）加 discriminator（依 `query.export` 分流 schema）、勿誤判 schema 漂移（rust 型均為 `Res<serde_json::Value>`、無編譯期 type-lie）。
 
 ## C-4 op-log payload 內欄增量（不改端點 wire 形）
 

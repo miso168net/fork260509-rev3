@@ -53,7 +53,7 @@ description: "Task list for 017-audit-center-enhancement"
 - [ ] T004 [US1] create facade：`payload_after = Some(with_roles(after.audit_json(), role_codes))`（before 維持 None）in `rust-api/server/src/model/facade/sys_user.rs:279-289`
 - [ ] T005 [US1] update facade：replace_roles 之【前】`let roles_before = sys_user_role::roles_of_user(&txn, id).await?;`→`payload_before = Some(with_roles(before.audit_json(), &roles_before))`、`payload_after = Some(with_roles(after.audit_json(), role_codes))` in `rust-api/server/src/model/facade/sys_user.rs:300-337`
 - [ ] T006 [US1] soft_delete facade（del+batch 共用）：刪前 `roles_of_user(&txn,id)`→`payload_before = Some(with_roles(before.audit_json(), &roles_before))`、`payload_after = Some(with_roles(after.audit_json(), &[]))` in `rust-api/server/src/model/facade/sys_user.rs:51-87`
-- [ ] T007 [US1] live smoke：add/update/delete user 經真 server 帶自身 trace_id、psql 驗 op-log payload roles delta（4 scenario）in `rust-api/server/src/model/facade/sys_user.rs`（`#[ignore]`+`DATABASE_URL`+`--test-threads=1`、trace_id 隔離）— C-V-3
+- [ ] T007 [US1] live smoke：**擴充既有 3 支 `#[ignore]` smoke**（`add_user_create_roundtrip_and_dup`／`update_user_preserves_identity_and_replaces_roles`／`delete_user_soft_delete_and_idempotent_missing`；+ `op_log_atomic_three_paths`）斷言 op-log payload roles delta（4 scenario、trace_id 隔離）——**不新寫平行 smoke**（F1：避免測名不對齊 + bare-filter 假綠）in `rust-api/server/src/model/facade/sys_user.rs`（`#[ignore]`+`DATABASE_URL`+`--test-threads=1`）— C-V-3
 
 **Checkpoint**: US1 獨立可驗（op-log roles delta 可查）。
 
@@ -67,7 +67,7 @@ description: "Task list for 017-audit-center-enhancement"
 
 ### Tests (test-first)
 
-- [ ] T008 [US2] CSV helpers 純測：`csv_escape_field`（逗號/雙引號/換行）、`records_to_csv`（BOM+穩定英文表頭）、`parse_export`（"true"/"1"→true、其餘/空→false）in `rust-api/server/src/handler/system_manage.rs`（`#[cfg(test)]`、先紅）
+- [ ] T008 [US2] CSV helpers 純測：`csv_escape_field`（逗號/雙引號/換行）、`records_to_csv`（**BOM 僅檔首一次**+穩定英文表頭+**0 列→僅表頭**+**一筆 payload JSON 含逗號/雙引號/換行→整列欄位不錯位**〔F2 端到端轉義〕）、`parse_export`（"true"/"1"→true、其餘/空→false）in `rust-api/server/src/handler/system_manage.rs`（`#[cfg(test)]`、先紅）
 
 ### Implementation (rust)
 
@@ -173,4 +173,5 @@ US1（MVP）→ US2（匯出）→ US3（class filter）→ Polish。每 US 獨�
 ## Notes
 - [P]＝不同檔無相依；rust 全程 serial。
 - live op-log 斷言 trace_id 隔離（非絕對列數）。
+- **F7：task/contracts 內 `file:line` 為撰寫當下實證、行號可能 rot；implementer 一律 act-on-code 以 grep 符號名定位（勿盲信行號）。**
 - 收尾＝`superpowers:finishing-a-development-branch`→多段 commit→`merge --no-ff` 回 rev3-admin-root（push/merge 需 user 同意）。

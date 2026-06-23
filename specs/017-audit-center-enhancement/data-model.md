@@ -72,7 +72,7 @@ pub fn with_roles(v: Value, roles: &[String]) -> Value
 ```
 pub export: Option<String>,   // export wrapper 送 "true"
 ```
-- `parse_export(Option<&str>) -> bool`：`Some("true")|Some("1")` → true；其餘/空 → false（不 2222）。
+- `parse_export(Option<&str>) -> bool`：`Some("true")|Some("1")` → true；其餘/空 → false（不 2222）。（F9：前端 wrapper 僅送 `"true"`；`"1"` 為 curl 便利的額外接受值、無前端消費端。）
 
 ### 3.2 export 分支（三 handler）
 ```
@@ -93,7 +93,7 @@ if parse_export(q.export.as_deref()) {
 | access | id, operatorId, operatorName, method, path, httpStatus, realIp, peerIp, ipConfidence, xForwardedFor, region, traceId, createTime |
 | login | id, attemptedUserName, success, operatorId, operatorName, realIp, peerIp, ipConfidence, xForwardedFor, region, createTime |
 
-- **op-log rolesBefore/rolesAfter**（FR-005a）：自 `payloadBefore["roles"]`/`payloadAfter["roles"]` 抽（C-4 enrich 後存在）；payload 為 None 或無 roles key → 該欄空。payloadBefore/After 完整內容仍保留為獨立欄（JSON 字串）。
+- **op-log rolesBefore/rolesAfter**（FR-005a）：自 `payloadBefore["roles"]`/`payloadAfter["roles"]` 抽（C-4 enrich 後存在）。**F5 空值語意（延續 FR-004「空集合 vs 未記錄」可區分）**：payload 有 roles key 但空陣列 → 輸出 `[]`；payload 為 None 或無 roles key（非 user 寫操作／舊資料／INSERT before）→ 輸出空字串。payloadBefore/After 完整內容仍保留為獨立欄（JSON 字串、**F2 經 `csv_escape_field` 轉義**——含逗號/雙引號/換行不破欄位對齊）。
 - CSV escaper：每欄 quote、`"`→`""`、含逗號/換行/quote 安全；整檔前綴 `\u{FEFF}` BOM。
 
 ### 3.4 CSV 序列化 helper（rust 純函式，可測）
@@ -105,7 +105,7 @@ fn records_to_csv(headers: &[&str], rows: Vec<Vec<String>>) -> String   // BOM +
 ### 3.5 base-web export 端（`rev3-system-manage.ts` + 新 util）
 - 3 export wrapper：`fetchExportOperationLog/AccessLog/LoginAttempt(params)` → `request<string>({url, method:'get', params: pruneNullParams({...params, export:'true'})})`（回 `string`、非 *List）。
 - `downloadCsv(csv, filename)` util（`src/utils/`）：`new Blob([csv],{type:'text/csv;charset=utf-8'})` + `a[download]`；檔名 `<table>_<timestamp>.csv`。
-- 截斷 toast：component 讀 `pagination.itemCount`（=total）；`> CSV_EXPORT_CAP` → `$message.warning(exportTruncated)`。
+- 截斷 toast：component 讀 `pagination.itemCount`（=最近一次**同篩選 list 查詢**的 total）；`> CSV_EXPORT_CAP` → `$message.warning(exportTruncated)`。**F4 信號可靠性**：須以匯出前同篩選 list 的 total 為準（匯出前確保該分頁已載入，否則 itemCount 可能 stale/為當前頁 size）；total（查詢當下）與實際匯出列數的併發微小落差為低風險（審計表 append-only、admin 低頻）、可接受；嚴格保證可由後端 export 帶截斷旗標（follow-up、非本刀）。
 
 ---
 
