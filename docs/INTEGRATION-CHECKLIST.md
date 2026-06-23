@@ -83,7 +83,7 @@
 > 公網/prod 部署前一次性硬化；dev 不受影響。原散於各刀，收成單一清單。
 
 - [x] ✅ **nginx 硬化**〔001、pre-波4 2026-06-23〕：nginx.conf `server_tokens off`＋prod.conf 443 HSTS/X-Frame-Options/X-Content-Type-Options（`nginx -t` 掛 rev3_net 過）；`/health` 雙 Content-Type 早已 `default_type`（自述 stale）
-- [ ] **TLS/secret/腳本**〔001〕：仍 open＝`front_nginx_certs` 是否 `external: true`（拍板項）／compose secrets 預檢（bind 缺檔→建空目錄）。〔pre-波4 done：generate-secrets dual-write drift→依賴 leaf GENERATED 時 URL 連動重生✅；generate-dev-cert renew 重生 CA＋chmod 600／`docker pull` 離線 fallback 早已做（自述 stale）✅〕
+- [ ] **TLS/secret/腳本**〔001〕：仍 open＝`front_nginx_certs` 是否 `external: true`（**拍板項、prod-deploy 時定**）。〔已驗 done：compose secrets 預檢〔`deploy/preflight-secrets.sh` 自 001 已備＝缺/空/目錄 source→指名缺檔 exit 1✅、原列 open 屬 stale〕；generate-secrets dual-write 連動重生✅；generate-dev-cert renew＋chmod 600／離線 fallback✅〕
 - [ ] **image pin 一致性**〔001〕：〔pre-波4 done：base-web runtime `nginx:alpine→nginx:1.31.0-alpine` 對齊 front-nginx✅；★ node:26/postgres:17 維持大版本 pin＝拍板#4 house style、刻意不 patch-pin〕。仍 open：alpine/openssl:latest（低、一次性）／debian:bookworm-slim（本機未 pull、不猜 date tag、延後）
 - [ ] **trust-model 部署**〔013〕：operator 填 `trust-model.toml` 實際拓樸（my_public／cloudflared ingress）；CF 官方 IP 段 nginx geo ↔ trust-model.toml 兩處同步（漂移風險、評單一來源）
 - [x] ✅ **XFF 上限**〔012/013、pre-波4 2026-06-23〕：`normalize_xff_tokens` 加 `MAX_XFF_TOKENS=32` token cap（test-first `normalize_caps_token_count`）
