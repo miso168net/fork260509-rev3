@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **無**（波 3 全完成 2026-06-22；014/015/016 三刀收齊）。最近收刀＝**016-button-endpoint-policy ✅**（Button-Endpoint 三維 RBAC runtime 編輯、merge `fa17def`、零 migration/零新 crate、Constitution 9/9、C-V-0~8 全綠、holistic READY_TO_FINISH）——as-built 詳帳見 [DECISIONS §2](docs/INTEGRATION-DECISIONS.md)／commit 史 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／波次狀態 CHECKLIST §2 波3；016 開放 follow-up 見 CHECKLIST §3.B/§3.H。
-下一步: **波 4 observability（未開始）**——obs-min／obs-full／dashboard provisioning（`profiles:[obs]`/`[metrics]` opt-in、一般 `up` 不啟）；或 **alt-login 4 流程 stub**（⚠️m post-波3 v1-completeness slot、CHECKLIST §3.D）。起手＝CLAUDE.md §3 階段 0 `superpowers:brainstorming`→手動 `/speckit-specify` 起 feature branch。
+Active feature: **017-audit-center-enhancement**（波 4 前 §3.C 審計中心 enhancement 刀；SDD 鏈 specify→clarify→plan ✅ 已產）。spec＝[specs/017-audit-center-enhancement/spec.md](specs/017-audit-center-enhancement/spec.md)；plan＝[specs/017-audit-center-enhancement/plan.md](specs/017-audit-center-enhancement/plan.md)（research/data-model/contracts〔verification-commands+wire-deltas〕/quickstart 齊）。三子功能：C-1 http_status class filter（access-log）／C-3 CSV 匯出（既有讀端點加 export query-param 變體、CSV-in-envelope、cap 1萬、零 migration）／C-4 op-log 角色 delta（create/update/soft_delete 三寫端、jsonb）。**零 migration/crate/端點、Constitution 9/9 PASS**（item 2/7＝rev3 自建 audit 頁增強+page.manage UI i18n、留 analyze 複核）。spec-design＝[docs/superpowers/017-audit-center-enhancement.md](docs/superpowers/017-audit-center-enhancement.md)。
+下一步: **`/speckit-tasks`**（產 tasks.md）→ `/speckit-analyze`（跨檔一致性）→ 階段 2 `superpowers:executing-plans` + Workflow 驅動實作（C-4 先於 C-3 op-log roles 欄、rust serial）。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
