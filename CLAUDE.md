@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **017-audit-center-enhancement**（波 4 前 §3.C 審計中心 enhancement 刀；SDD 鏈 specify→clarify→plan ✅ 已產）。spec＝[specs/017-audit-center-enhancement/spec.md](specs/017-audit-center-enhancement/spec.md)；plan＝[specs/017-audit-center-enhancement/plan.md](specs/017-audit-center-enhancement/plan.md)（research/data-model/contracts〔verification-commands+wire-deltas〕/quickstart 齊）。三子功能：C-1 http_status class filter（access-log）／C-3 CSV 匯出（既有讀端點加 export query-param 變體、CSV-in-envelope、cap 1萬、零 migration）／C-4 op-log 角色 delta（create/update/soft_delete 三寫端、jsonb）。**零 migration/crate/端點、Constitution 9/9 PASS**（item 2/7＝rev3 自建 audit 頁增強+page.manage UI i18n、留 analyze 複核）。spec-design＝[docs/superpowers/017-audit-center-enhancement.md](docs/superpowers/017-audit-center-enhancement.md)。
-下一步: **`/speckit-tasks`**（產 tasks.md）→ `/speckit-analyze`（跨檔一致性）→ 階段 2 `superpowers:executing-plans` + Workflow 驅動實作（C-4 先於 C-3 op-log roles 欄、rust serial）。
+Active feature: **無**（017-audit-center-enhancement ✅ 全完成、2026-06-23 merge `c7f5936` 回 rev3-admin-root；feature branch 保留、未 push）。前一刀 017＝波 4 前 §3.C 審計中心 enhancement 三子功能：C-1 http_status class filter（access-log NSelect 2xx/4xx/5xx）／C-3 三審計 CSV 匯出（既有讀端點加 export query 變體、CSV-in-envelope、cap 1萬、BOM、op-log roles 欄）／C-4 op-log 角色 delta（create/update/soft_delete 三寫端 jsonb）。零 migration/crate/端點、Constitution 9/9 PASS、5 執行單元 Workflow 驅動、C-V-0~5 全綠（含 CDP UI 驗收）、holistic ALL PASS。spec＝[specs/017-audit-center-enhancement/spec.md](specs/017-audit-center-enhancement/spec.md)、spec-design＝[docs/superpowers/017-audit-center-enhancement.md](docs/superpowers/017-audit-center-enhancement.md)。
+下一步: **波 4 observability（未開始）** — obs-min（loki+alloy+grafana 純 log、72h retention）／obs-full（prometheus+2 exporter+pushgateway+baseline alert+rust-api `/metrics` 埋點）／dashboard provisioning（皆 `profiles:[obs]`/`[metrics]` opt-in）。起手＝CLAUDE.md §3 階段 0 `superpowers:brainstorming`。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
