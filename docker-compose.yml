@@ -1,4 +1,4 @@
-# rev3-admin master compose — base layer (5 service 共通定義 + migrate + acme 殼)
+# rev3-admin master compose — base layer (5 service 共通定義 + migrate + acme/cleanup-job 殼)
 #
 # 用法:
 #   dev:  docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --wait
@@ -139,6 +139,38 @@ services:
     init: true
     volumes:
       - front_nginx_certs:/acme.sh
+    networks:
+      - rev3_net
+
+  cleanup-job:
+    # 014 U5 cleanup-job binary 上線(§3.A、pre-波4 2026-06-23):過期 sys_token 週期清理 sidecar。
+    #   profiles:[prod] opt-in(一般 dev/prod up 不啟、與 acme 同 prod 軌);只刪 expires_at < now-60s 列
+    #   (冪等、不碰 valid token);DB URL 走 APP_DATABASE_URL_FILE(同 server、cleanup-job 自讀檔);
+    #   sleep-loop 週期(CLEANUP_INTERVAL_SECS 預設 86400=每日);binary 已在 prod image /usr/local/bin。
+    profiles: [prod]
+    build:
+      context: ./
+      dockerfile: deploy/Dockerfile.rust-api.txt
+      target: runtime
+    image: rev3-admin-rust-api:latest
+    # sidecar 跑 cleanup loop 非 server → 停用 image 繼承的 /health healthcheck(否則永遠 unhealthy)
+    healthcheck:
+      disable: true
+    entrypoint:
+      - sh
+      - -c
+      # $$ → compose 不 interpolate、留給容器內 sh 讀 CLEANUP_INTERVAL_SECS;cleanup-job 跑完即退、
+      # 由 while-loop 週期重跑(transient DB err 致 binary panic 不中斷 loop、sleep 後重試)
+      - 'while true; do /usr/local/bin/cleanup-job --execute; sleep $${CLEANUP_INTERVAL_SECS:-86400}; done'
+    environment:
+      APP_DATABASE_URL_FILE: /run/secrets/database_url
+      RUST_LOG: "info"
+    secrets:
+      - database_url
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
     networks:
       - rev3_net
 
