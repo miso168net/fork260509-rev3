@@ -90,3 +90,11 @@
 > 開放 follow-up 續見 [CHECKLIST §3.A~§3.H](INTEGRATION-CHECKLIST.md)（公網部署硬化／typings-sweep／審計 enhancement／alt-login／test-lint 健壯化／policy-seed 校正／interceptor i18n／keep-deferred 雜項）。
 > **舊→新 §錨對照**（重組前 per-feature §3.X 引用沿此解析）：§3.1/3.3/3.5→§3.H｜§3.2(graphify)→§2 持續性維護｜§3.4→§3.A｜§3.6→§3.G/§3.H｜§3.7~3.9·3.11(004/005/006/007 全 done)→本歸檔｜§3.10→§3.E/§3.H｜§3.12/3.13(User/Menu)→§3.B｜§3.14→§3.B/§3.F｜§3.15→§3.C/§3.A｜§3.16→§3.A/§3.E｜§3.17→§3.A/§3.H｜§3.18→§3.D｜§3.19→§3.C/§3.H｜§3.20→§3.B/§3.H。
 
+### §3.B／§3.F／§3.G 批次歸檔（2026-06-23、pre-波4）
+
+> CHECKLIST §3.B（typings 收斂 sweep）／§3.F（policy-seed 校正翻案）／§3.G（request interceptor i18n）三節全完成，依 [CLAUDE.md §7.5](../CLAUDE.md) 批次搬入、CHECKLIST 原處留收合指標。
+
+- **§3.B typings 收斂 sweep（跨刀 009/010/011/016）✅ 全完成 (2026-06-23)**：MenuList type-lie〔010、`fetchGetMenuListV2` 取代 frozen `fetchGetMenuList`、rev3 wrapper latent dead 註記、不可動 frozen 確認消謊〕／drawer Model null-flow〔016 U5 法 B、role/user-operate-drawer 編輯路徑 `Object.assign` 後 coalesce honest nullable 欄 null→''〔roleDesc／nickName/userPhone/userEmail〕、消 type-lie、submit 不送 null、CDP 開 drawer 無 error〕／excel demo〔016、`views/plugin/excel` 改 `fetchGetUserListRev3`、getTableValue 簽名 User→UserListItemRev3、typecheck 過〕／016 未引用型〔`RoleButtonUpdate`/`RoleEndpointsUpdate` 註記「未引用、保留供具名化」、BASE-WEB-ADAPT 禁刪〕。殘餘 User/Role wire type-lie 016 U5 已部分消解、若再現留未來 typings-sweep 刀。
+- **§3.F policy-seed 對齊校正 ✅ 翻案結案 (2026-06-23、維持現狀)**：深查翻案（pre-波4 triage）——updateUser POST 在 `ALL_ENDPOINT_POLICIES` registry、`manage_role` 為真 sys_menu→R_SUPER 經 016 endpoint/menu-auth-modal **runtime 即可授 R_ADMIN、零 migration、非缺陷**（原「必動 m002 需拍板」前提不成立）。**user 親決維持現狀**（不動 m002 seed；R_ADMIN 不對齊由 operator runtime 自授）。日後要 seed 開箱預設＝trivial 加 m002 兩列〔updateUser POST + manage_role menu，動 baseline 須再拍板〕。
+- **§3.G request interceptor i18n（跨刀 003/009/010）✅ 全完成 (2026-06-23、pre-波4 sweep)**：`4040`/`5003`（HTTP 404/403）native axios error 在地化——`onError` 補 else-if（`code≠BACKEND_ERROR_CODE` 但 `error.response.data.msg` 存在→`translateBackendMsg`）；⚠️aa BASE-WEB-I18N-WIRING §III.2(i) 授權涵蓋；003 locale 已備（自述「需新增 key」不成立）；CDP 實證真 HTTP 403→toast「权限不足」（非 raw key/英文、browser 軌驗）；commit `7a011c00`（base-web）。
+

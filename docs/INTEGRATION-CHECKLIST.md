@@ -91,14 +91,9 @@
 - [ ] **prod 多副本**〔014〕：dev rust-api-2 已驗 invariant；prod nginx 仍單一 proxy_pass、無 upstream/replicas（research §D 明示不做）→ 真橫向擴展待 nginx LB＋共用 DB/Redis（low）
 - [ ] **001 其他邊角**：~~prod migrate 無意義 HEALTHCHECK→disable~~（早已 disable、自述 stale✅）；migrate redis depends_on 措辭對齊；dev watcher cargo-watch→bacon/watchexec 評估；`set_var` runtime（edition 2024 升級時）；rust-api/.gitignore `debug`/`target` pattern 錨；cargo cache 卷遮蓋/冷卷首啟 flap 已在 CLAUDE.md §8.2.1（quickstart 補述可選）
 
-### 3.B typings 收斂 sweep（跨刀：009/010/011/016）
+### 3.B typings 收斂 sweep ✅ 全完成+已歸檔 (2026-06-23)
 
-> §3 歷史的 User〔009〕/Role〔011〕wire type-lie 已由 016 U5【管理頁】部分消解（見 MILESTONES §3）；下列殘餘 type-lie/frozen 殘留待一支 typings-sweep 刀統收。
-
-- [x] ✅ **MenuList type-lie**〔010、pre-波4 2026-06-23〕：frozen `fetchGetMenuList` 已被 `fetchGetMenuListV2` 取代、rev3 wrapper 已註記 latent dead（不可動 frozen、確認消謊）；Menu/MenuRoute nullable 欄檢視仍可選
-- [x] ✅ **drawer Model null-flow**〔016 U5、pre-波4 2026-06-23 法 B〕：role/user-operate-drawer 編輯路徑 Object.assign 後 coalesce honest 讀型 nullable 欄 null→''（roleDesc／nickName/userPhone/userEmail；消 type-lie、submit 不送 null、同 sessionPolicy 風格；CDP 開 drawer 無 error）
-- [x] ✅ **excel demo**〔016、pre-波4 2026-06-23〕：`views/plugin/excel` 改用 `fetchGetUserListRev3`（getTableValue 簽名同步 User→UserListItemRev3、typecheck 過）
-- [x] ✅ **016 未引用型**〔pre-波4 2026-06-23〕：`RoleButtonUpdate`/`RoleEndpointsUpdate` 補「未引用、保留供具名化」註記（BASE-WEB-ADAPT 禁刪、不移除）
+> 4 項全收（MenuList type-lie／drawer null-flow／excel demo／016 未引用型、跨刀 009/010/011/016）;詳 [MILESTONES §3](INTEGRATION-MILESTONES.md)。
 
 ### 3.C 審計中心 enhancement（跨刀：005/009/012/015、接 obs波/scale）
 
@@ -122,13 +117,13 @@
 - [ ] `validate_value_type` 非 enum 型保守放行〔008；新值型 seed 須補驗證分支＋守恆斷言〕
 - [x] ✅ pre-existing dead〔pre-波4 2026-06-23 重構順手清〕：`sys_casbin_rule.rs` ConnectionTrait unused import〔011 起〕已刪／`RequestContext.operator_id` never-read〔007 起〕已移除欄位+賦值
 
-### 3.F policy-seed 對齊校正刀 ✅ 翻案結案 (2026-06-23、維持現狀)（跨刀：009/010/011）
+### 3.F policy-seed 對齊校正 ✅ 翻案結案+已歸檔 (2026-06-23、維持現狀)
 
-> 深查翻案（pre-波4 triage）：updateUser POST 在 `ALL_ENDPOINT_POLICIES` registry、`manage_role` 為真 sys_menu → R_SUPER 經 016 endpoint/menu-auth-modal **runtime 即可授 R_ADMIN、零 migration、非缺陷**（原「必動 m002 需拍板」前提不成立）。**user 親決維持現狀**（不動 m002 seed；R_ADMIN 不對齊由 operator 按需 runtime 自授）。日後若要 seed 開箱預設＝trivial 加 m002 兩列（updateUser POST + manage_role menu，動 seed baseline 須再拍板）。
+> 翻案＝維持現狀〔updateUser/manage_role 經 016 runtime 可授 R_ADMIN、零 migration、非缺陷〕;詳 [MILESTONES §3](INTEGRATION-MILESTONES.md)。
 
-### 3.G request interceptor i18n 刀 ✅ 全完成 (2026-06-23、pre-波4 sweep；待批次搬 MILESTONES §3)（跨刀：003/009/010）
+### 3.G request interceptor i18n ✅ 全完成+已歸檔 (2026-06-23)
 
-- [x] ✅ 〔pre-波4 2026-06-23〕`4040`/`5003`（HTTP 404/403）native axios error 在地化：onError 補 else-if（`code≠BACKEND_ERROR_CODE` 但 `error.response.data.msg` 存在→`translateBackendMsg`）；⚠️aa BASE-WEB-I18N-WIRING §III.2(i) 授權涵蓋；自述「需新增 locale key」不成立（003 已備）；★ CDP 實證：真 HTTP 403→toast「权限不足」（非 raw key/英文、browser 軌驗）
+> 4040/5003（HTTP 404/403）native axios error 在地化（onError translateBackendMsg、⚠️aa 授權、CDP 驗 403 toast）;詳 [MILESTONES §3](INTEGRATION-MILESTONES.md)。
 
 ### 3.H keep-deferred 雜項（consumer/觸發時、壓縮）
 
