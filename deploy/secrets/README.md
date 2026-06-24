@@ -59,6 +59,7 @@ bash deploy/generate-secrets.sh --force
 | `redis_password` | `docker run --rm alpine/openssl rand -hex 24 > deploy/secrets/redis_password.txt` | **hex**（URL-safe，嵌入連線字串） |
 | `database_url` | `echo "postgres://soybean:$(cat deploy/secrets/postgres_password.txt)@postgres:5432/soybean_admin_rust" > deploy/secrets/database_url.txt` | 依賴 `postgres_password.txt` |
 | `redis_url` | `echo "redis://:$(cat deploy/secrets/redis_password.txt)@redis-stack:6379" > deploy/secrets/redis_url.txt` | 依賴 `redis_password.txt` |
+| `grafana_admin_password` | `docker run --rm alpine/openssl rand -base64 24 > deploy/secrets/grafana_admin_password.txt` | base64（非 URL，僅 grafana `GF_SECURITY_ADMIN_PASSWORD__FILE` 檔注入；018 obs U1） |
 
 > 註：上述 `echo` / `>` 會帶尾換行，而 `generate-secrets.sh` 用 `printf '%s'` 不帶；runtime 消費端（rust-api `load_secret` 會 `.trim()`、postgres/redis 亦容忍）會忽略尾換行,行為不受影響,但 byte 內容與腳本產物略異——優先用腳本生成。
 
@@ -68,8 +69,9 @@ bash deploy/generate-secrets.sh --force
 
 | 名稱 | 用途 | 預計波次 |
 |---|---|---|
-| `cleanup_database_url` | Cleanup job 專用連線字串（最小權限 role 同留該波） | 波 3 |
-| `grafana_admin_password` | Grafana 管理員密碼（`GF_SECURITY_ADMIN_PASSWORD__FILE`） | 波 4 |
+| `cleanup_database_url` | ~~Cleanup job 專用連線字串~~（014 as-built：cleanup-job **復用 `database_url`**、未另建獨立 secret） | 已決：復用 |
 | `acme_email` | acme.sh 申請 TLS 憑證的聯絡信箱 | acme 實際 cert acquisition 落地時 |
+
+> `grafana_admin_password` 已於 018 obs U1 落地（移至上方 always-on 表）。
 
 > exporter（postgres_exporter / redis_exporter）**無新 secret**：reuse 既有 leaf —— postgres_exporter 經 `DATA_SOURCE_PASS_FILE=/run/secrets/postgres_password`、redis_exporter 經 sh-wrapper（`export REDIS_PASSWORD="$(cat /run/secrets/redis_password)"`）。

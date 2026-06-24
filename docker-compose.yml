@@ -185,6 +185,12 @@ volumes:
   base_web_pnpm_store:
   rust_api_cargo_cache:
   rust_api_target:
+  # 018-observability obs-min 卷(profiles:[obs] opt-in、一般 up 不建;正典命名 §8.2.2)
+  loki_data:
+  grafana_data:
+  alloy_data:
+  # 018-observability metrics 卷(profiles:[metrics] opt-in、一般 up 不建)
+  prometheus_data:
 
 secrets:
   postgres_password:
@@ -199,3 +205,6 @@ secrets:
     file: ./deploy/secrets/database_url.txt
   redis_url:
     file: ./deploy/secrets/redis_url.txt
+  # 018-observability U1:grafana admin 密碼(GF_SECURITY_ADMIN_PASSWORD__FILE 注入)
+  grafana_admin_password:
+    file: ./deploy/secrets/grafana_admin_password.txt
