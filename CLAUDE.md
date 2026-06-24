@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 波 0~3 全完成、波 4 observability 待開始**（最近收刀 016＝2026-06-22；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯（001-016）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。剩餘 ⏳＝REVIEW 報告／obs（波 4）等（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 波 0~4 全完成**（最近收刀 018-observability＝2026-06-25；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯／**observability 觀測層**（001-018）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md)、候選遞延見 [CHECKLIST §4.2／§3.I](docs/INTEGRATION-CHECKLIST.md)（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **018-observability**（波 4 observability、一刀三執行單元 obs-min→obs-full→dashboard）。SDD 鏈：brainstorm✅／specify✅(`fe23266f`)／clarify✅(零問、12/12)／**plan✅** 落地。拍板 D1 一刀三單元／D2 rev2 對等+hindsight、defer 同 rev2（非-root alloy／alert notification／DB log purge ⚠️n／pg_trgm）。**★MSRV 1.86 Phase0 已解**（rev2 同 1.86 floor 已 ship 同版本 axum-prometheus 0.7.0/metrics 0.23/exporter 0.15/ureq 2、obs 鏈不拉 time、無需新 pin、殘餘 LOW=resolver drift；實作起手跑 C-V-MSRV 確證）。**Constitution 9/9 PASS**。rust 動點：U1 main.rs subscriber .json()+audit_ctx.rs:364 span／U2 main.rs /metrics+enforce.rs:124/126 counter+cleanup-job push_metrics(不引 chrono)。spec＝[specs/018-observability/spec.md](specs/018-observability/spec.md)、plan＝[specs/018-observability/plan.md](specs/018-observability/plan.md)、spec-design＝[docs/superpowers/018-observability.md](docs/superpowers/018-observability.md)。
-下一步: `/speckit-tasks`（產 dependency-ordered tasks.md、U1 obs-min→U2 obs-full→U3 dashboard 執行單元）→ `/speckit-analyze` 跨檔一致性 → 階段 2 `superpowers:executing-plans` + Workflow 驅動 TDD（**不** `/speckit-implement`）。實作起手即跑 [C-V-MSRV](specs/018-observability/contracts/verification-commands.md)（容器內 `cargo build -p server -p cleanup-job` + `cargo tree -i time` 確認 obs 未引 time edge）。
+Active feature: **（無）**——波 4 observability ✅ 全完成（018-observability merge `c1a3224`、feature branch 保留;一刀三執行單元 obs-min→obs-full→dashboard、完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert＋rust RUSTAPI-SOURCE-ISOLATION 埋点：json log+trace_id 關聯〔fields_trace_id〕／/metrics+casbin_enforce_total{decision}／cleanup pushgateway push〕、零 base-web/零 migration/零新 crate、MSRV 1.86 確證、Constitution 9/9）。3 攔截真缺陷皆經驗修〔FR-006 explicit completion event／grafana `$__file{}` provider／5xx alert noDataState=OK〕。C-V-0~8+prod build+MSRV 全綠、final holistic CONCERNS 無 BLOCK。as-built 詳 [DECISIONS §2](docs/INTEGRATION-DECISIONS.md)／[REVIEW-018](docs/REVIEW-018-observability.md)。
+下一步: 目前無 active feature。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md);候選遞延＝alt-login stub〔⚠️m〕／audit scale〔pg_trgm·archive purge〕／log retention purge〔⚠️n〕（[CHECKLIST §4.2](docs/INTEGRATION-CHECKLIST.md)）;018 自身遞延 backlog 見 [CHECKLIST §3.I](docs/INTEGRATION-CHECKLIST.md)。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工

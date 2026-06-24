@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。pre-波4 017-audit-center-enhancement ✅ 全完成（2026-06-23、merge `c7f5936`）＝審計中心 enhancement（C-1 class filter／C-3 CSV 匯出／C-4 op-log 角色 delta、零 migration/端點/crate）。波 4 observability 啟動＝018-observability brainstorm 落地（`676b13be`、pending `/speckit-specify`）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 4 observability ✅ 全完成（2026-06-25）— 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert〕、rust 埋点 RUSTAPI-SOURCE-ISOLATION〔json log+trace_id 關聯／/metrics+casbin counter／cleanup push〕、零 base-web/零 migration/零新 crate、MSRV 1.86 確證。波 3 ✅（014/015/016）＋pre-波4 017 ✅（merge `c7f5936`）＋波 2 ✅（009-012）＋D11 013 ✅ 已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-25 波 4 observability ✅ 全綠收刀：018-observability merge `c1a3224`**：一刀三執行單元（U0 MSRV→U1 obs-min log→U2 obs-full metrics→U3 dashboard→Polish）;rust json log+trace_id 關聯〔fields_trace_id join sys_access_log〕／`/metrics`+casbin_enforce_total{decision}+cleanup pushgateway／6 grafana dashboard〔CDP 實渲染〕／3 alert〔5xx idle false-firing 修〕。4 Workflow 驅動+整體 holistic CONCERNS 無 BLOCK;C-V-0~8+prod build+MSRV 全綠;零 base-web/migration/新 crate、Constitution 9/9。詳 [DECISIONS §2](INTEGRATION-DECISIONS.md)／[REVIEW-018](REVIEW-018-observability.md)
 - **2026-06-24 波 4 啟動：018-observability Phase 0 brainstorm 落地**：一刀 018＋三執行單元 obs-min→obs-full→dashboard（D1）、rev2 對等+hindsight、defer 同 rev2（D2）；act-on-code 接地（axum 0.7／無 log-side trace_id span→U1 含小 rust 單元／nginx 404+JSON 已就緒不動／`grafana_admin_password` DESIGN:706 落差須補／★MSRV 1.86 必檢）。spec-design `676b13be`、pending 手動 `/speckit-specify`。詳 [018 spec-design](superpowers/018-observability.md)
-- **2026-06-24 graphify 圖譜：同步 008-017 + GRAPHIFY-NOTES 落地 + prune docs 源倉**：`--update` 補回缺席 rust 後端（4176→5127）→ 再 prune docs 源倉 noise（5127→3271 node、加 `.graphifyignore`、修 graph↔manifest desync）；新 `docs/GRAPHIFY-NOTES.md`（8 抽取盲點清單）、拔 CLAUDE.md ⏳＋圖統計改指 GRAPHIFY-NOTES §1。commit `f1e762a`/`d54e693`/`21f1a58`/`631dfef`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 4 observability 啟動中＝018-observability**（一刀三單元 obs-min→obs-full→dashboard）：Phase 0 brainstorm ✅ 落地（spec-design `676b13be`、拍板 D1 一刀三單元／D2 rev2 對等+hindsight）。**下一步＝手動 `/speckit-specify`**（input＝`docs/superpowers/018-observability.md`、起 `018-observability` feature branch）→ clarify/plan/tasks/analyze（research.md 首要＝★MSRV 1.86 新 dep 檢）→ 階段 2 Workflow TDD。**alt-login 4 流程 stub 刀＝⚠️m 2026-06-22 重議→延後出波3**（user 親決 C 案、移 post-波3 v1-completeness slot、詳 §3.D）。Auth 島 follow-up 已由 014 閉口、治理島 §4.2 已由 015 閉口、三維 RBAC runtime 編輯已由 016 閉口（button-auth-modal mock 解除、§3.B）
+**下一步**: **波 4 observability ✅ 全完成、目前無 active feature**（018-observability merge `c1a3224`、feature branch 保留）。下一波 roadmap 見 [DESIGN §8.4](INTEGRATION-DESIGN.md);候選遞延項＝alt-login 4 流程 stub〔⚠️m post-波3 v1-completeness slot、§4.2〕／audit scale 兩項〔pg_trgm／archive purge、§4.2〕／log retention purge〔⚠️n、§4.2〕。018 自身遞延 backlog 見 §3.I。Auth 島／治理島 §4.2／三維 RBAC runtime 編輯／觀測層皆已閉口
 
 ---
 
@@ -53,19 +53,9 @@
 
 > 波 3 後、波 4 前獨立 enhancement 刀（審計中心三子功能 C-1 http_status class filter／C-3 CSV 匯出／C-4 op-log 角色 delta;零 migration/端點/crate、§3.C 三項兌現）;merge `c7f5936`;commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
-### 波 4 — observability（未開始）
+### 波 4 — observability ✅ 全完成+已歸檔 (2026-06-25)
 
-包覆全體之刀（profiles opt-in、一般 `up` 不啟）。無前置拍板（⑥a-d 為「入波排程時」、不阻塞本波）。
-
-**刀/feature 清單**（素材=DESIGN §8.2 包覆全體）:
-- [ ] **obs-min 刀**（loki＋alloy＋grafana 純 log 三件套、72h retention;rev2 031）
-- [ ] **obs-full 刀**（prometheus＋2 exporter＋pushgateway＋baseline alert＋rust-api `/metrics` in-process 埋點;rev2 032）
-- [ ] **dashboard provisioning 刀**（grafana 面板 provisioning;rev2 033）
-
-**出口條件（DESIGN §8.4）**:
-- [ ] obs/metrics profile 起停乾淨（一般 `up` 不啟）
-- [ ] provisioning 重建無 crash-loop
-- [ ] rust-api log/metrics 兩軌可查
+> 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert＋rust RUSTAPI-SOURCE-ISOLATION 埋点〕。出口三項達標〔obs/metrics profile 起停乾淨〔C-V-0〕／provisioning 冪等無 crash-loop〔C-V-5〕／rust-api log+metrics 兩軌可查〔C-V-2 trace_id join＋C-V-3 promql〕〕。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);018 遞延 backlog 見 §3.I。
 
 ### 持續性維護
 
@@ -130,6 +120,12 @@
 - **optimization re-defer**：~~iframe props 內嵌〔010 D2〕~~（moot：rev3 動態選單不走 iframe-page props 路徑✅）；~~`filter_routes` 遞迴化〔010 D3〕~~（stale：rust+前端兩端早已遞迴✅）；`batch_soft_delete` sentinel DbErr→自管 txn〔OWN-CUT、併下次 menu 治理刀〕〔010〕；soft_delete 中途失敗審計（原子性已由 mutate_in_txn 保證、僅缺 fault-inject 測、OWN-CUT）〔005〕
 - **UX/cosmetic**〔low〕：~~endpoint modal 扁平→可按 path 群組〔016〕~~（pre-波4 done：path 群組 NTree+check-strategy=child✅、synthKey 016 已加固、CDP 驗渲染）；~~ArchivedPolicy createdTime 未顯欄〔015〕~~（pre-波4 done：加「建立时间」欄✅、CDP 驗欄頭）；protected 訊息泛化未 surface 具體〔OWN-CUT：facade 已攜 detail、缺 AppError 攜帶+i18n 插值+暴露安全評估〕〔011/016〕；login fallback「No match」transient〔**永不/won't-fix**：動 frozen upstream auth/index.ts、低收益〕〔010〕
 - **misc**：dynamic route `/route/*` 真流量重抓〔000、低 archival〕；`inline_coverage_lint` 候選〔⚠️s、待 ⚠️q migrate〕；base-web i18n 單元測 fidelity〔003、待 vitest 環境〕；~~`TrustModel.Binding.dual_role` 從不消費〔013〕~~（pre-波4 done：net-dead 確認〔只寫不讀〕、移除欄位✅、`b63928b`）；rev2 redis `--dir` bug 回灌〔001、rev2 維護時〕；dispatcher `server)` 不 shift〔001、**永不/won't-fix**、blob 凍結〕；pruneNullParams 雙防線〔012、**永不/by-design 刻意保留、非待辦**〕；specs 筆誤家族 255〔012〕/263〔013〕/338〔016〕（as-built 權威在 DECISIONS、spec 快照、勘誤可選、不單獨追蹤）
+
+### 3.I observability follow-up（018、非 blocker、spec 容許/正確設計）
+
+- [ ] **postgres dashboard docker 空態**〔018 U3、low/cosmetic〕：community 板 grafana 9628 的 `release`／`instance` template var 依賴 k8s label（kubernetes_namespace/release）、docker 下 postgres_exporter v0.19.1 不 emit→該類 filter 面板空態〔核心 pg_up/連線/DB stats 仍出圖、spec C-V-6「panel 有資料/正確空態」容許〕。欲消空面板：改 docker 友善板（grafana 12485）或重寫變數 query（`label_values(pg_up,instance)`）。
+- **request-completion /health log 噪音**〔018 U1、by-design 非待辦〕：FR-006「每請求一行」使 /health 探針亦每次輸出一行 INFO log〔loki 72h+opt-in 已界範圍〕;如噪音過大可選 subscriber path 過濾〔權衡 join 完整性〕。
+- [ ] **spec as-built 全面校正**〔018、doc〕：data-model §1.3 noDataState（5xx as-built=OK）／tasks T019／C-V-4 contract（已部分校正會假失敗的命令）留 `/speckit-analyze` 批次對齊 as-built。
 
 ---
 
