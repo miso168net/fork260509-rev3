@@ -1,29 +1,24 @@
 ---
 type: community
-members: 16
+members: 11
 ---
 
 # Community 75
 
-**Members:** 16 nodes
+**Members:** 11 nodes
 
 ## Members
-- [[changelog_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[cleanup_3]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa changelog)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa cleanup)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa gen-route)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa git-commit)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa git-commit-verify)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa release)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[codebash (sa update-pkg)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[command_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[gen-route_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[git-commit_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[git-commit-verify_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[release_3]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[update-pkg_3]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
-- [[コマンド]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/command.md
+- [[.oxlintrc.json]] - code - base-web/.oxlintrc.json
+- [[categories]] - code - base-web/.oxlintrc.json
+- [[correctness]] - code - base-web/.oxlintrc.json
+- [[importno-unassigned-import]] - code - base-web/.oxlintrc.json
+- [[plugins]] - code - base-web/.oxlintrc.json
+- [[rules]] - code - base-web/.oxlintrc.json
+- [[suspicious]] - code - base-web/.oxlintrc.json
+- [[unicornconsistent-function-scoping]] - code - base-web/.oxlintrc.json
+- [[unicornno-array-reverse]] - code - base-web/.oxlintrc.json
+- [[unicornno-array-sort]] - code - base-web/.oxlintrc.json
+- [[unicornrequire-module-specifiers]] - code - base-web/.oxlintrc.json
 
 ## Live Query (requires Dataview plugin)
 

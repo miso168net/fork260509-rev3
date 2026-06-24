@@ -1,18 +1,14 @@
 ---
 type: community
-members: 5
+members: 1
 ---
 
 # Community 331
 
-**Members:** 5 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[component_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/component.md
-- [[布局和页面的混合组件]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/component.md
-- [[布局组件]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/component.md
-- [[路由组件]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/component.md
-- [[页面组件]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/component.md
+- [[client.ts]] - code - base-web/packages/alova/src/client.ts
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/name.ts"
 type: "code"
-community: "Community 103"
+community: "Community 30"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_103
+  - community/Community_30
 ---
 
 # getColorName()
@@ -19,4 +19,4 @@ tags:
 - [[name.ts_1]] - `contains` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_103
+#graphify/code #graphify/EXTRACTED #community/Community_30

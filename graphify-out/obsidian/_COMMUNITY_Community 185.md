@@ -1,21 +1,19 @@
 ---
 type: community
-members: 8
+members: 6
 ---
 
 # Community 185
 
-**Members:** 8 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_68]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_59]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_58]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_28]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_53]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📦 Build_11]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_38]] - document - base-web/CHANGELOG.md
-- [[v0.9.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.1...v0.9.2) (2022-02-11)]] - document - base-web/CHANGELOG.md
+- [[csv_escape_field()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[push_csv_line()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[records_to_csv()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[records_to_csv_bom_once_and_stable_header()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[records_to_csv_payload_json_cell_no_field_misalign()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[records_to_csv_zero_rows_header_only()]] - code - rust-api/server/src/handler/system_manage.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,7 +23,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+- 6 edges to [[_COMMUNITY_SysManage Handler & DTOs (rust)]]
+- 3 edges to [[_COMMUNITY_Community 20]]
 
 ## Top bridge nodes
-- [[v0.9.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.1...v0.9.2) (2022-02-11)]] - degree 8, connects to 1 community
+- [[records_to_csv()]] - degree 9, connects to 2 communities
+- [[csv_escape_field()]] - degree 2, connects to 1 community
+- [[push_csv_line()]] - degree 2, connects to 1 community
+- [[records_to_csv_bom_once_and_stable_header()]] - degree 2, connects to 1 community
+- [[records_to_csv_zero_rows_header_only()]] - degree 2, connects to 1 community

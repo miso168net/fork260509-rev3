@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 243
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[.ok()]] - code - rust-api/server/src/envelope.rs
-- [[PageRes]] - code - rust-api/server/src/envelope.rs
-- [[Res]] - code - rust-api/server/src/envelope.rs
-- [[Resserde_jsonValue]] - code - rust-api/server/src/envelope.rs
-- [[envelope.rs]] - code - rust-api/server/src/envelope.rs
-- [[page_res_no_pages_no_success_empty_records()]] - code - rust-api/server/src/envelope.rs
-- [[res_serialization_field_order_and_shape()]] - code - rust-api/server/src/envelope.rs
+- [[Route plugin_charts_vchart (VChart demo page)]] - code - base-web/src/router/elegant/routes.ts
+- [[Route plugin_gantt_vtable (VTable gantt demo page)]] - code - base-web/src/router/elegant/routes.ts
+- [[Route plugin_tables_vtable (VTable table demo page)]] - code - base-web/src/router/elegant/routes.ts
+- [[VisActor logo icon (visactor.svg)]] - image - base-web/src/assets/svg-icon/visactor.svg
 
 ## Live Query (requires Dataview plugin)
 

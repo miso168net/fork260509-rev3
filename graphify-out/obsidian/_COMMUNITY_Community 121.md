@@ -1,25 +1,21 @@
 ---
 type: community
-members: 12
+members: 8
 ---
 
 # Community 121
 
-**Members:** 12 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[all_migration_seeds()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[endpoint_authz_coverage()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[endpoint_coverage_lint.rs]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[enforce_rs()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[extract_policy_routes()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[extract_registry_pairs()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[extract_routes()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[first_string_after()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[main_rs()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[migration_src_dir()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[scan_self_test()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
-- [[whiten_comments()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_64]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_55]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_54]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_24]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_49]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_7]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_34]] - document - base-web/CHANGELOG.md
+- [[v0.9.4(httpsgithub.comhonghuangdcsoybean-admincomparemain-0428...v0.9.4) (2022-04-29)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,3 +23,9 @@ members: 12
 TABLE source_file, type FROM #community/Community_121
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v0.9.4(httpsgithub.comhonghuangdcsoybean-admincomparemain-0428...v0.9.4) (2022-04-29)]] - degree 8, connects to 1 community

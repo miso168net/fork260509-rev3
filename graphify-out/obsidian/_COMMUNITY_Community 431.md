@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 431
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[darkColor]] - code - base-web/src/components/custom/wave-bg.vue
-- [[wave-bg.vue]] - code - base-web/src/components/custom/wave-bg.vue
+- [[index.vue_50]] - code - base-web/src/views/plugin/print/index.vue
 
 ## Live Query (requires Dataview plugin)
 

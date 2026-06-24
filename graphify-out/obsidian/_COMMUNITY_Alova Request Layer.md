@@ -59,10 +59,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 8 edges to [[_COMMUNITY_Auth & Locale Service]]
+- 7 edges to [[_COMMUNITY_Auth & Locale Service]]
+- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
 
 ## Top bridge nodes
-- [[index.ts_31]] - degree 17, connects to 1 community
+- [[index.ts_31]] - degree 17, connects to 2 communities
 - [[service.ts]] - degree 5, connects to 1 community
 - [[getServiceBaseURL()]] - degree 5, connects to 1 community
 - [[index.ts_30]] - degree 4, connects to 1 community

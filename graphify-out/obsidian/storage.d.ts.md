@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/storage.d.ts"
 type: "code"
-community: "Community 380"
+community: "Community 252"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_380
+  - community/Community_252
 ---
 
 # storage.d.ts
@@ -15,4 +15,4 @@ tags:
 - [[Local]] - `contains` [EXTRACTED]
 - [[Session]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_380
+#graphify/code #graphify/EXTRACTED #community/Community_252

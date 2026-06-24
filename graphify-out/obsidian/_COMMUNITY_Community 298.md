@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 298
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[SoybeanAdmin 路由跳转流程图 (Route Guard Flow Diagram)]] - image - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
-- [[not-found 捕获 (Not-Found Capture)]] - concept - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
-- [[固定路由 (Constant Routes)]] - concept - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
-- [[权限路由 (Auth Routes)]] - concept - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
-- [[权限路由守卫 (Permission Route Guard)]] - concept - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
-- [[路由初始化 (Route Initialization)]] - concept - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
+- [[originOpts_1]] - code - base-web/src/views/home/modules/pie-chart.vue
+- [[pie-chart.vue]] - code - base-web/src/views/home/modules/pie-chart.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +17,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_298
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 183]]
-
-## Top bridge nodes
-- [[权限路由守卫 (Permission Route Guard)]] - degree 3, connects to 1 community

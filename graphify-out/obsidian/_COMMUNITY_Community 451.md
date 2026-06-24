@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 451
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[TS 写法规范]] - document - fork260509-soybean-admin-docs/src/jp/standard/ts.md
-- [[ts]] - document - fork260509-soybean-admin-docs/src/jp/standard/ts.md
+- [[activity.svg — pulseheartbeat zigzag line icon]] - image - base-web/src/assets/svg-icon/activity.svg
 
 ## Live Query (requires Dataview plugin)
 

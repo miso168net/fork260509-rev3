@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 88
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[Route Guard]] - rationale - fork260509-soybean-admin-docs/src/jp/guide/router/guard.md
-- [[Router Guard]] - document - fork260509-soybean-admin-docs/src/guide/router/guard.md
-- [[Router Guard Flowchart (PDF)]] - document - fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf
-- [[Router Guard Flowchart (PNG)]] - image - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[Router Guard Guide]] - document - fork260509-soybean-admin-docs/src/guide/router/guard.md
-- [[Router Push Guide]] - document - fork260509-soybean-admin-docs/src/guide/router/push.md
-- [[Router guard flow]] - document - fork260509-soybean-admin-docs/src/guide/router/guard.md
-- [[guard]] - document - fork260509-soybean-admin-docs/src/guide/router/guard.md
-- [[redirectFromLogin_3]] - concept - fork260509-soybean-admin-docs/src/guide/router/push.md
-- [[routerPushByKey_3]] - concept - fork260509-soybean-admin-docs/src/guide/router/push.md
-- [[toLogin_3]] - concept - fork260509-soybean-admin-docs/src/guide/router/push.md
-- [[toggleLoginModule_3]] - concept - fork260509-soybean-admin-docs/src/guide/router/push.md
-- [[type LoginModule]] - concept - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[useRouterPush]] - concept - fork260509-soybean-admin-docs/src/guide/router/push.md
-- [[路由守卫流程]] - concept - fork260509-soybean-admin-docs/src/zh/guide/router/guard.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_50]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_7]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_41]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_42]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_35]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_25]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🤖 CI_2]] - document - base-web/CHANGELOG.md
+- [[v1.0.0(httpsgithub.comsoybeanjssoybean-admincomparev0.10.4...v1.0.0) (2024-03-31)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,10 +27,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 4 edges to [[_COMMUNITY_Community 90]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[Route Guard]] - degree 5, connects to 1 community
-- [[Router guard flow]] - degree 4, connects to 1 community
-- [[路由守卫流程]] - degree 4, connects to 1 community
-- [[routerPushByKey_3]] - degree 2, connects to 1 community
+- [[v1.0.0(httpsgithub.comsoybeanjssoybean-admincomparev0.10.4...v1.0.0) (2024-03-31)]] - degree 10, connects to 1 community

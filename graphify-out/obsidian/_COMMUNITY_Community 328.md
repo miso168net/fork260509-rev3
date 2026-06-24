@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 328
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[cache_4]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
-- [[codets ({)_15]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
-- [[ルートキャッシュ]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
-- [[使い方]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
-- [[原理_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
+- [[index.vue_33]] - code - base-web/src/views/manage/user/index.vue
+- [[label_2]] - code - base-web/src/views/manage/user/index.vue
 
 ## Live Query (requires Dataview plugin)
 

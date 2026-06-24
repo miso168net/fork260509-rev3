@@ -1,29 +1,25 @@
 ---
 type: community
-members: 16
+members: 12
 ---
 
 # Community 71
 
-**Members:** 16 nodes
+**Members:** 12 nodes
 
 ## Members
-- [[build]] - code - base-web/package.json
-- [[buildtest]] - code - base-web/package.json
-- [[cleanup]] - code - base-web/package.json
-- [[commit]] - code - base-web/package.json
-- [[commitzh]] - code - base-web/package.json
-- [[dev]] - code - base-web/package.json
-- [[devprod]] - code - base-web/package.json
-- [[fmt]] - code - base-web/package.json
-- [[gen-route]] - code - base-web/package.json
-- [[lint]] - code - base-web/package.json
-- [[prepare]] - code - base-web/package.json
-- [[preview]] - code - base-web/package.json
-- [[release]] - code - base-web/package.json
-- [[scripts]] - code - base-web/package.json
-- [[typecheck]] - code - base-web/package.json
-- [[update-pkg]] - code - base-web/package.json
+- [[ChartHooks]] - code - base-web/src/hooks/common/echarts.ts
+- [[ECOption]] - code - base-web/src/hooks/common/echarts.ts
+- [[barOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[data.ts_1]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[echarts.ts]] - code - base-web/src/hooks/common/echarts.ts
+- [[gaugeOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[getPictorialBarOption()]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[getScatterOption()]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[lineOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[pieOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[radarOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
+- [[useEcharts()]] - code - base-web/src/hooks/common/echarts.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -33,7 +29,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 42]]
+- 3 edges to [[_COMMUNITY_Router & Menu Store]]
 
 ## Top bridge nodes
-- [[scripts]] - degree 16, connects to 1 community
+- [[echarts.ts]] - degree 6, connects to 1 community
+- [[useEcharts()]] - degree 2, connects to 1 community

@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 339
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Four-Dot Pulsing Loading Animation]] - concept - fork260509-soybean-admin-docs/src/assets/loading01.png
-- [[Soybean Logo Mark (blue tri-arm swirl shown on loading screen)]] - image - fork260509-soybean-admin-docs/src/assets/loading01.png
-- [[SoybeanAdmin Initial Loading Screen (loading01.png)]] - image - fork260509-soybean-admin-docs/src/assets/loading01.png
-- [[System Title Text 'Soybean 管理系统']] - concept - fork260509-soybean-admin-docs/src/assets/loading01.png
+- [[slider-tab.vue]] - code - base-web/packages/materials/src/libs/page-tab/slider-tab.vue
 
 ## Live Query (requires Dataview plugin)
 

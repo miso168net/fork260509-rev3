@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Community 44"
+community: "Menu/Route Facade (rust)"
 location: "L1562"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Menu/Route_Facade_rust
 ---
 
 # sample()
@@ -16,4 +16,4 @@ tags:
 - [[menu_crud_create_update_roundtrip_and_dup()]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust

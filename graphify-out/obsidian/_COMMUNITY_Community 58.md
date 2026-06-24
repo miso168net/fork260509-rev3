@@ -1,30 +1,28 @@
 ---
 type: community
-members: 17
+members: 15
 ---
 
 # Community 58
 
-**Members:** 17 nodes
+**Members:** 15 nodes
 
 ## Members
-- [[AllRole]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[CommonSearchParams_1]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[IconType]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[Menu_1]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[MenuButton]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[MenuList]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[MenuPropsOfRoute]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[MenuTree]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[MenuType]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[Role]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[RoleList]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[RoleSearchParams]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[User]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[UserGender]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[UserList]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[UserSearchParams]] - code - base-web/src/typings/api/system-manage.d.ts
-- [[system-manage.d.ts]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[LoginReq]] - code - rust-api/server/src/handler/auth.rs
+- [[LoginToken_1]] - code - rust-api/server/src/handler/auth.rs
+- [[RefreshReq]] - code - rust-api/server/src/handler/auth.rs
+- [[Success]] - code - rust-api/server/src/handler/auth.rs
+- [[UserInfo_1]] - code - rust-api/server/src/handler/auth.rs
+- [[auth.rs]] - code - rust-api/server/src/handler/auth.rs
+- [[decide_rotation()]] - code - rust-api/server/src/auth/session.rs
+- [[is_current()]] - code - rust-api/server/src/auth/enforce.rs
+- [[issue_rotated_pair()]] - code - rust-api/server/src/handler/auth.rs
+- [[login()]] - code - rust-api/server/src/handler/auth.rs
+- [[login_inner()]] - code - rust-api/server/src/handler/auth.rs
+- [[refresh_token()]] - code - rust-api/server/src/handler/auth.rs
+- [[resolve_policy()]] - code - rust-api/server/src/auth/session.rs
+- [[revoke_chain_and_logout()]] - code - rust-api/server/src/handler/auth.rs
+- [[rotate_locked_or_revoke()]] - code - rust-api/server/src/handler/auth.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,3 +30,15 @@ members: 17
 TABLE source_file, type FROM #community/Community_58
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 4 edges to [[_COMMUNITY_Community 48]]
+- 2 edges to [[_COMMUNITY_Community 54]]
+- 1 edge to [[_COMMUNITY_Community 112]]
+
+## Top bridge nodes
+- [[decide_rotation()]] - degree 4, connects to 2 communities
+- [[auth.rs]] - degree 12, connects to 1 community
+- [[refresh_token()]] - degree 6, connects to 1 community
+- [[is_current()]] - degree 4, connects to 1 community
+- [[resolve_policy()]] - degree 3, connects to 1 community

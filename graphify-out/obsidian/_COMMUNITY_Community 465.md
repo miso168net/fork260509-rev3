@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 465
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Bug Report Issue Template (CN)]] - document - base-web/.github/ISSUE_TEMPLATE/bug-report_cn.yaml
-- [[Bug Report Issue Template (EN)]] - document - base-web/.github/ISSUE_TEMPLATE/bug-report_en.yaml
+- [[ActiveModel_10]] - code - rust-api/entity/src/system_settings.rs
 
 ## Live Query (requires Dataview plugin)
 

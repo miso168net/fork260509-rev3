@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/index.ts"
 type: "code"
-community: "Community 41"
+community: "Router & Menu Store"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Router__Menu_Store
 ---
 
 # setupRouter()
@@ -17,4 +17,4 @@ tags:
 - [[main.ts]] - `imports` [EXTRACTED]
 - [[setupApp()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

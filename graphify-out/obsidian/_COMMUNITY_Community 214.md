@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 214
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[AntDesignVue Theme Configuration]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[NaiveUI Theme Configuration]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[UI Theme]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[codets ()_2]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[codets ()_3]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[codevue (template)_4]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[codevue (template)_5]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
-- [[ui]] - document - fork260509-soybean-admin-docs/src/guide/theme/ui.md
+- [[custom-icon-select.vue]] - code - base-web/src/components/custom/custom-icon-select.vue
+- [[handleChange()]] - code - base-web/src/components/custom/custom-icon-select.vue
+- [[iconsList]] - code - base-web/src/components/custom/custom-icon-select.vue
+- [[searchValue]] - code - base-web/src/components/custom/custom-icon-select.vue
+- [[selectedIcon]] - code - base-web/src/components/custom/custom-icon-select.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,9 +20,3 @@ members: 8
 TABLE source_file, type FROM #community/Community_214
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 113]]
-
-## Top bridge nodes
-- [[NaiveUI Theme Configuration]] - degree 5, connects to 1 community

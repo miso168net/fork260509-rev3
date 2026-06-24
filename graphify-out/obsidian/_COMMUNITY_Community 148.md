@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 148
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[1. type RouteKey]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[2. type RoutePath]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[3. type RouteMeta]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[Auto-generation]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[Configuration properties]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[Note_2]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[System Routing]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[codetypescript ( Route meta information interface)]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[codetypescript ({)]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
-- [[intro_4]] - document - fork260509-soybean-admin-docs/src/guide/router/intro.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_52]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_43]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_43]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_37]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_5]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🤖 CI_3]] - document - base-web/CHANGELOG.md
+- [[v1.0.0-beta.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.0-beta.1...v1.0.0-beta.2) (2024-03-27)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,3 +22,9 @@ members: 10
 TABLE source_file, type FROM #community/Community_148
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.0.0-beta.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.0-beta.1...v1.0.0-beta.2) (2024-03-27)]] - degree 7, connects to 1 community

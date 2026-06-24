@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 355
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Route plugin_charts_vchart (VChart demo page)]] - code - base-web/src/router/elegant/routes.ts
-- [[Route plugin_gantt_vtable (VTable gantt demo page)]] - code - base-web/src/router/elegant/routes.ts
-- [[Route plugin_tables_vtable (VTable table demo page)]] - code - base-web/src/router/elegant/routes.ts
-- [[VisActor logo icon (visactor.svg)]] - image - base-web/src/assets/svg-icon/visactor.svg
+- [[button-icon.vue]] - code - base-web/src/components/custom/button-icon.vue
 
 ## Live Query (requires Dataview plugin)
 

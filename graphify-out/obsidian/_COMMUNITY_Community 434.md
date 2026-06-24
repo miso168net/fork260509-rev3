@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 434
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Window]] - code - base-web/src/typings/global.d.ts
-- [[global.d.ts]] - code - base-web/src/typings/global.d.ts
+- [[index.vue_54]] - code - base-web/src/views/plugin/video/index.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 407
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Avatar SVG Icon]] - image - base-web/src/assets/svg-icon/avatar.svg
-- [[Copy SVG Icon]] - image - base-web/src/assets/svg-icon/copy.svg
-- [[setupUnplugin]] - code - base-web/build/plugins/unplugin.ts
+- [[index.vue_28]] - code - base-web/src/views/function/tab/index.vue
 
 ## Live Query (requires Dataview plugin)
 

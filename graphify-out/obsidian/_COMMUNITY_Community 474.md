@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 474
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[.into_response()]] - code - rust-api/server/src/envelope.rs
-- [[ResT]] - code - rust-api/server/src/envelope.rs
+- [[fetchBatchDeleteUser (rev3 user batch soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
 
 ## Live Query (requires Dataview plugin)
 

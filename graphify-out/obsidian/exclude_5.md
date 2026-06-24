@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/tsconfig.json"
 type: "code"
-community: "Community 64"
+community: "Community 46"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_64
+  - community/Community_46
 ---
 
 # exclude
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[tsconfig.json_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_64
+#graphify/code #graphify/EXTRACTED #community/Community_46

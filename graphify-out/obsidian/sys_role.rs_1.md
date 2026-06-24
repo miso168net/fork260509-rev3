@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 40"
+community: "Community 10"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_40
+  - community/Community_10
 ---
 
 # sys_role.rs
@@ -35,4 +35,4 @@ tags:
 - [[soft_delete()_1]] - `contains` [EXTRACTED]
 - [[update()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_40
+#graphify/code #graphify/EXTRACTED #community/Community_10

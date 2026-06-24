@@ -1,29 +1,24 @@
 ---
 type: community
-members: 16
+members: 11
 ---
 
 # Community 77
 
-**Members:** 16 nodes
+**Members:** 11 nodes
 
 ## Members
-- [[changelog_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[cleanup_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa changelog)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa cleanup)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa gen-route)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa git-commit)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa git-commit-verify)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa release)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[codebash (sa update-pkg)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[command_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[gen-route_3]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[git-commit_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[git-commit-verify_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[release_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[update-pkg_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
-- [[命令]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/command.md
+- [[barMarkPointSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[circularProgressTickSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[colors_6]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[data.ts_2]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[dataSpecs]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[goldenMedals]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[histogramDifferentBinSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[liquidChartSmartInvertSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[rankingBarSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[shapeWordCloudSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
+- [[stackedDashAreaSpec]] - code - base-web/src/views/plugin/charts/vchart/data.ts
 
 ## Live Query (requires Dataview plugin)
 

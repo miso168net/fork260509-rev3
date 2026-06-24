@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 216
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[AntDesignVue 主题配置]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[NaiveUI 主题配置]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[codets ()_10]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[codets ()_11]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[codevue (template)_20]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[codevue (template)_21]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[ui_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
-- [[组件库主题]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/ui.md
+- [[fixed]] - code - base-web/src/theme/preset/dark.json
+- [[footer_1]] - code - base-web/src/theme/preset/dark.json
+- [[height_4]] - code - base-web/src/theme/preset/dark.json
+- [[right]] - code - base-web/src/theme/preset/dark.json
+- [[visible_9]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_216
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 68]]
+
+## Top bridge nodes
+- [[footer_1]] - degree 5, connects to 1 community

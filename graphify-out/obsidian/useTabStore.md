@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/tab/index.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "Router & Menu Store"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/Router__Menu_Store
 ---
 
 # useTabStore
@@ -17,4 +17,4 @@ tags:
 - [[index.ts_35]] - `imports` [EXTRACTED]
 - [[index.ts_36]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

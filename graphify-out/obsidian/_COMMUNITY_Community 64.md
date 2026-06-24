@@ -1,30 +1,26 @@
 ---
 type: community
-members: 17
+members: 13
 ---
 
 # Community 64
 
-**Members:** 17 nodes
+**Members:** 13 nodes
 
 ## Members
-- [[allowSyntheticDefaultImports_5]] - code - base-web/packages/materials/tsconfig.json
-- [[compilerOptions_5]] - code - base-web/packages/materials/tsconfig.json
-- [[esModuleInterop_5]] - code - base-web/packages/materials/tsconfig.json
-- [[exclude_5]] - code - base-web/packages/materials/tsconfig.json
-- [[forceConsistentCasingInFileNames_5]] - code - base-web/packages/materials/tsconfig.json
-- [[include_5]] - code - base-web/packages/materials/tsconfig.json
-- [[jsx_5]] - code - base-web/packages/materials/tsconfig.json
-- [[lib_5]] - code - base-web/packages/materials/tsconfig.json
-- [[module_5]] - code - base-web/packages/materials/tsconfig.json
-- [[moduleResolution_6]] - code - base-web/packages/materials/tsconfig.json
-- [[noUnusedLocals_5]] - code - base-web/packages/materials/tsconfig.json
-- [[resolveJsonModule_5]] - code - base-web/packages/materials/tsconfig.json
-- [[strict_5]] - code - base-web/packages/materials/tsconfig.json
-- [[strictNullChecks_5]] - code - base-web/packages/materials/tsconfig.json
-- [[target_5]] - code - base-web/packages/materials/tsconfig.json
-- [[tsconfig.json_5]] - code - base-web/packages/materials/tsconfig.json
-- [[types_5]] - code - base-web/packages/materials/tsconfig.json
+- [[unnamed]] - code - base-web/packages/alova/package.json
+- [[.client]] - code - base-web/packages/alova/package.json
+- [[.fetch]] - code - base-web/packages/alova/package.json
+- [[.mock]] - code - base-web/packages/alova/package.json
+- [[@alovamock]] - code - base-web/packages/alova/package.json
+- [[@sautils_1]] - code - base-web/packages/alova/package.json
+- [[alova]] - code - base-web/packages/alova/package.json
+- [[dependencies_1]] - code - base-web/packages/alova/package.json
+- [[exports]] - code - base-web/packages/alova/package.json
+- [[name_2]] - code - base-web/packages/alova/package.json
+- [[package.json_1]] - code - base-web/packages/alova/package.json
+- [[typesVersions]] - code - base-web/packages/alova/package.json
+- [[version_2]] - code - base-web/packages/alova/package.json
 
 ## Live Query (requires Dataview plugin)
 

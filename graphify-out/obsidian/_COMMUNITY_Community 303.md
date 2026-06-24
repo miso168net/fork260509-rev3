@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 303
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_70]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_61]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_59]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_29]] - document - base-web/CHANGELOG.md
-- [[v0.1.3(httpsgithub.comhonghuangdcsoybean-admincomparev0.1.2...v0.1.3) (2022-01-24)]] - document - base-web/CHANGELOG.md
+- [[index.vue_43]] - code - base-web/src/views/plugin/excel/index.vue
+- [[label_3]] - code - base-web/src/views/plugin/excel/index.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +17,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_303
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v0.1.3(httpsgithub.comhonghuangdcsoybean-admincomparev0.1.2...v0.1.3) (2022-01-24)]] - degree 5, connects to 1 community

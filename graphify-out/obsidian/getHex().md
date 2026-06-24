@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "Community 83"
+community: "Community 30"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Community_30
 ---
 
 # getHex()
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_4]] - `imports` [EXTRACTED]
 - [[name.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Community_30

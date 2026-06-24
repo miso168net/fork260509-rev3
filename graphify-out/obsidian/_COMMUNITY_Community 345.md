@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 345
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_25]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_23]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_14]] - document - base-web/CHANGELOG.md
-- [[v1.2.7(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.6...v1.2.7) (2024-07-12)]] - document - base-web/CHANGELOG.md
+- [[exception-base.vue]] - code - base-web/src/components/common/exception-base.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,9 +16,3 @@ members: 4
 TABLE source_file, type FROM #community/Community_345
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.2.7(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.6...v1.2.7) (2024-07-12)]] - degree 4, connects to 1 community

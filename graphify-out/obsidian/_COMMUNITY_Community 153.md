@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 153
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[.connect()]] - code - rust-api/server/src/redis.rs
-- [[.del()]] - code - rust-api/server/src/redis.rs
-- [[.get()]] - code - rust-api/server/src/redis.rs
-- [[.publish()]] - code - rust-api/server/src/redis.rs
-- [[.revoked_at_of()]] - code - rust-api/server/src/redis.rs
-- [[.set_ex()]] - code - rust-api/server/src/redis.rs
-- [[.set_revoked()]] - code - rust-api/server/src/redis.rs
-- [[.subscribe_pubsub()]] - code - rust-api/server/src/redis.rs
-- [[RedisHandle]] - code - rust-api/server/src/redis.rs
-- [[redis.rs]] - code - rust-api/server/src/redis.rs
+- [[collapsedWidth_2]] - code - base-web/src/theme/preset/default.json
+- [[inverted_4]] - code - base-web/src/theme/preset/default.json
+- [[mixChildMenuWidth_2]] - code - base-web/src/theme/preset/default.json
+- [[mixCollapsedWidth_2]] - code - base-web/src/theme/preset/default.json
+- [[mixWidth_2]] - code - base-web/src/theme/preset/default.json
+- [[sider_4]] - code - base-web/src/theme/preset/default.json
+- [[width_2]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,3 +22,9 @@ members: 10
 TABLE source_file, type FROM #community/Community_153
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 67]]
+
+## Top bridge nodes
+- [[sider_4]] - degree 7, connects to 1 community

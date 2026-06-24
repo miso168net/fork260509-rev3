@@ -1,17 +1,16 @@
 ---
 source_file: "base-web/src/assets/svg-icon/custom-icon.svg"
 type: "image"
-community: "Community 136"
+community: "Community 322"
 tags:
   - graphify/image
-  - graphify/EXTRACTED
-  - community/Community_136
+  - graphify/INFERRED
+  - community/Community_322
 ---
 
 # custom-icon.svg Local Icon
 
 ## Connections
-- [[SvgIcon Global Component (icon  local-icon props)]] - `references` [EXTRACTED]
 - [[base-web local SVG icon convention (srcassetssvg-icon)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_136
+#graphify/image #graphify/INFERRED #community/Community_322

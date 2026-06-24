@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "Community 47"
+community: "Community 28"
 location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_47
+  - community/Community_28
 ---
 
 # README.en_US.md
@@ -28,4 +28,4 @@ tags:
 - [[Usage]] - `contains` [EXTRACTED]
 - [[Version]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_47
+#graphify/document #graphify/EXTRACTED #community/Community_28

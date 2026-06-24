@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/home/modules/pie-chart.vue"
 type: "code"
-community: "Community 438"
+community: "Community 298"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_438
+  - community/Community_298
 ---
 
 # pie-chart.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[originOpts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_438
+#graphify/code #graphify/EXTRACTED #community/Community_298

@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/layout/modules/content-settings.vue"
 type: "code"
-community: "Community 552"
+community: "Community 388"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_552
+  - community/Community_388
 ---
 
 # content-settings.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_552
+#graphify/code #graphify/EXTRACTED #community/Community_388

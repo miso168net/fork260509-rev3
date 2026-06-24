@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Community 300"
+community: "Community 193"
 location: "L1115"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_300
+  - community/Community_193
 ---
 
 # &nbsp;&nbsp;&nbsp;📖 Documentation
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.2.3(httpsgithub.comsoybeanjssoybean-admincomparev1.2.2...v1.2.3) (2024-06-13)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_300
+#graphify/document #graphify/EXTRACTED #community/Community_193

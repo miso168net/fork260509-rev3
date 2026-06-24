@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 172
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[unnamed_2]] - code - base-web/packages/color/package.json
-- [[@sautils_3]] - code - base-web/packages/color/package.json
-- [[colord]] - code - base-web/packages/color/package.json
-- [[dependencies_3]] - code - base-web/packages/color/package.json
-- [[exports_2]] - code - base-web/packages/color/package.json
-- [[name_4]] - code - base-web/packages/color/package.json
-- [[package.json_3]] - code - base-web/packages/color/package.json
-- [[typesVersions_2]] - code - base-web/packages/color/package.json
-- [[version_4]] - code - base-web/packages/color/package.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_9]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_8]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build]] - document - base-web/CHANGELOG.md
+- [[v1.3.13(httpsgithub.comsoybeanjssoybean-admincomparev1.3.12...v1.3.13) (2025-03-19)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,3 +21,9 @@ members: 9
 TABLE source_file, type FROM #community/Community_172
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.13(httpsgithub.comsoybeanjssoybean-admincomparev1.3.12...v1.3.13) (2025-03-19)]] - degree 6, connects to 1 community

@@ -1,30 +1,26 @@
 ---
 type: community
-members: 17
+members: 13
 ---
 
 # Community 68
 
-**Members:** 17 nodes
+**Members:** 13 nodes
 
 ## Members
-- [[.code()]] - code - rust-api/server/src/error.rs
-- [[.from()]] - code - rust-api/server/src/error.rs
-- [[.http()]] - code - rust-api/server/src/error.rs
-- [[.into_response()_1]] - code - rust-api/server/src/error.rs
-- [[.key()]] - code - rust-api/server/src/error.rs
-- [[AppError]] - code - rust-api/server/src/error.rs
-- [[all_emittable()]] - code - rust-api/server/src/error.rs
-- [[conforms_grammar()]] - code - rust-api/server/src/error.rs
-- [[each_variant_matches_matrix()]] - code - rust-api/server/src/error.rs
-- [[emitted_codes_subset_of_nine()]] - code - rust-api/server/src/error.rs
-- [[error.rs]] - code - rust-api/server/src/error.rs
-- [[error_envelope_data_null_field_order()]] - code - rust-api/server/src/error.rs
-- [[into_response_http_mapping()]] - code - rust-api/server/src/error.rs
-- [[is_cjk()]] - code - rust-api/server/src/error.rs
-- [[is_semantic_key()]] - code - rust-api/server/src/error.rs
-- [[keys_are_semantic_no_cjk()]] - code - rust-api/server/src/error.rs
-- [[keys_conform_grammar_four_roots()]] - code - rust-api/server/src/error.rs
+- [[colourWeakness]] - code - base-web/src/theme/preset/dark.json
+- [[dark.json]] - code - base-web/src/theme/preset/dark.json
+- [[desc_2]] - code - base-web/src/theme/preset/dark.json
+- [[fixedHeaderAndTab_1]] - code - base-web/src/theme/preset/dark.json
+- [[grayscale]] - code - base-web/src/theme/preset/dark.json
+- [[i18nkey_2]] - code - base-web/src/theme/preset/dark.json
+- [[isInfoFollowPrimary_1]] - code - base-web/src/theme/preset/dark.json
+- [[name_12]] - code - base-web/src/theme/preset/dark.json
+- [[recommendColor_1]] - code - base-web/src/theme/preset/dark.json
+- [[themeColor_1]] - code - base-web/src/theme/preset/dark.json
+- [[themeRadius_1]] - code - base-web/src/theme/preset/dark.json
+- [[themeScheme_1]] - code - base-web/src/theme/preset/dark.json
+- [[version_12]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,3 +28,17 @@ members: 17
 TABLE source_file, type FROM #community/Community_68
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 217]]
+- 1 edge to [[_COMMUNITY_Community 266]]
+- 1 edge to [[_COMMUNITY_Community 267]]
+- 1 edge to [[_COMMUNITY_Community 111]]
+- 1 edge to [[_COMMUNITY_Community 187]]
+- 1 edge to [[_COMMUNITY_Community 157]]
+- 1 edge to [[_COMMUNITY_Community 216]]
+- 1 edge to [[_COMMUNITY_Community 188]]
+- 1 edge to [[_COMMUNITY_Community 110]]
+
+## Top bridge nodes
+- [[dark.json]] - degree 21, connects to 9 communities

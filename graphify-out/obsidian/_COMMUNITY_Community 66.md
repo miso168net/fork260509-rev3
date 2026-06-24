@@ -1,30 +1,26 @@
 ---
 type: community
-members: 17
+members: 13
 ---
 
 # Community 66
 
-**Members:** 17 nodes
+**Members:** 13 nodes
 
 ## Members
-- [[auth_buttons_for_roles_filters_only_button_acts()]] - code - rust-api/server/src/auth/enforce.rs
-- [[auth_endpoint_pairs_for_role_filters_only_method_acts()]] - code - rust-api/server/src/auth/enforce.rs
-- [[auth_enforce_role_union_helper()]] - code - rust-api/server/src/auth/enforce.rs
-- [[auth_enforce_seam_super_allow_user_deny()]] - code - rust-api/server/src/auth/enforce.rs
-- [[auth_is_endpoint_method_recognizes_http_methods_only()]] - code - rust-api/server/src/auth/enforce.rs
-- [[bearer()]] - code - rust-api/server/src/auth/enforce.rs
-- [[button_codes_for_role()]] - code - rust-api/server/src/auth/enforce.rs
-- [[buttons_for_roles()]] - code - rust-api/server/src/auth/enforce.rs
-- [[denylist_gate()]] - code - rust-api/server/src/auth/enforce.rs
-- [[endpoint_pairs_for_role()]] - code - rust-api/server/src/auth/enforce.rs
-- [[enforce.rs]] - code - rust-api/server/src/auth/enforce.rs
-- [[enforce_mw()]] - code - rust-api/server/src/auth/enforce.rs
-- [[enforce_role_path_method()]] - code - rust-api/server/src/auth/enforce.rs
-- [[get_user_info()]] - code - rust-api/server/src/handler/auth.rs
-- [[is_endpoint_method()]] - code - rust-api/server/src/auth/enforce.rs
-- [[require_policy()]] - code - rust-api/server/src/auth/enforce.rs
-- [[revoke_user_sessions()]] - code - rust-api/server/src/auth/enforce.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_7]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_10]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_18]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂务_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_4]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_3]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_6]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_9]] - document - base-web/CHANGELOG.zh_CN.md
+- [[CHANGELOG.zh_CN]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.1.2(httpsgithub.comsoybeanjssoybean-admincomparev1.1.1...v1.1.2) (2024-05-24)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.4(httpsgithub.comsoybeanjssoybean-admincomparev1.2.3...v1.2.4) (2024-06-14)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.7(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.6...v1.2.7) (2024-07-12)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[更新日志]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,11 +30,26 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 4 edges to [[_COMMUNITY_Community 91]]
-- 3 edges to [[_COMMUNITY_Community 135]]
+- 1 edge to [[_COMMUNITY_Community 127]]
+- 1 edge to [[_COMMUNITY_Community 208]]
+- 1 edge to [[_COMMUNITY_Community 227]]
+- 1 edge to [[_COMMUNITY_Community 152]]
+- 1 edge to [[_COMMUNITY_Community 207]]
+- 1 edge to [[_COMMUNITY_Community 126]]
+- 1 edge to [[_COMMUNITY_Community 181]]
+- 1 edge to [[_COMMUNITY_Community 151]]
+- 1 edge to [[_COMMUNITY_Community 150]]
+- 1 edge to [[_COMMUNITY_Community 206]]
+- 1 edge to [[_COMMUNITY_Community 205]]
+- 1 edge to [[_COMMUNITY_Community 204]]
+- 1 edge to [[_COMMUNITY_Community 228]]
+- 1 edge to [[_COMMUNITY_Community 229]]
+- 1 edge to [[_COMMUNITY_Community 180]]
+- 1 edge to [[_COMMUNITY_Community 179]]
+- 1 edge to [[_COMMUNITY_Community 176]]
+- 1 edge to [[_COMMUNITY_Community 125]]
+- 1 edge to [[_COMMUNITY_Community 178]]
+- 1 edge to [[_COMMUNITY_Community 177]]
 
 ## Top bridge nodes
-- [[enforce.rs]] - degree 19, connects to 2 communities
-- [[enforce_mw()]] - degree 4, connects to 1 community
-- [[denylist_gate()]] - degree 3, connects to 1 community
-- [[get_user_info()]] - degree 2, connects to 1 community
+- [[更新日志]] - degree 24, connects to 20 communities

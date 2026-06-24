@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "Community 167"
+community: "Community 110"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_167
+  - community/Community_110
 ---
 
 # inverted
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[colors_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_167
+#graphify/code #graphify/EXTRACTED #community/Community_110

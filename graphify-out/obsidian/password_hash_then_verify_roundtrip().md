@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/password.rs"
 type: "code"
-community: "Community 158"
+community: "Community 96"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_158
+  - community/Community_96
 ---
 
 # password_hash_then_verify_roundtrip()
@@ -15,4 +15,4 @@ tags:
 - [[hash_password()]] - `calls` [EXTRACTED]
 - [[password.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_158
+#graphify/code #graphify/EXTRACTED #community/Community_96

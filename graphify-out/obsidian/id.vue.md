@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/manage/user-detail/[id].vue"
 type: "code"
-community: "Community 584"
+community: "Community 420"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_584
+  - community/Community_420
 ---
 
 # [id].vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_584
+#graphify/code #graphify/EXTRACTED #community/Community_420

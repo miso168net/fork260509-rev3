@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "Community 167"
+community: "Community 110"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_167
+  - community/Community_110
 ---
 
 # dark
@@ -15,4 +15,4 @@ tags:
 - [[colors_3]] - `contains` [EXTRACTED]
 - [[tokens_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_167
+#graphify/code #graphify/EXTRACTED #community/Community_110

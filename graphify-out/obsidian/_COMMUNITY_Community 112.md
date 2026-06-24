@@ -1,26 +1,22 @@
 ---
 type: community
-members: 13
+members: 9
 ---
 
 # Community 112
 
-**Members:** 13 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[codets ()_8]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[codets (async function login() {)_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[codets (async function login() {)_5]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[codets (const isHttpProxy = import.meta.env.DEV && import.meta.env.V)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[codets (import type { AxiosResponse } from 'axios';)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[codets (import { createFlatRequest, createRequest } from '@saaxios')_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[usage_5]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[使用]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[使用请求实例_1]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[创建请求实例 `request`]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[导入请求实例创建函数]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[确认创建请求实例函数的范型参数]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
-- [[获取请求的基础路径]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/usage.md
+- [[find_by_hash()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[find_by_hash_for_update()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[insert_token()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[mark_used()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[revoke_all_user_chains()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[revoke_chain()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[revoke_other_chains()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[sys_token.rs_1]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[toctou_revoked_chain_locks_to_reuse_no_rebake()]] - code - rust-api/server/src/model/facade/sys_token.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,3 +24,9 @@ members: 13
 TABLE source_file, type FROM #community/Community_112
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 58]]
+
+## Top bridge nodes
+- [[toctou_revoked_chain_locks_to_reuse_no_rebake()]] - degree 6, connects to 1 community

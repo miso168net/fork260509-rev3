@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 340
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Admin 类型]] - document - fork260509-soybean-admin-docs/src/zh/awesome/index.md
-- [[index_15]] - document - fork260509-soybean-admin-docs/src/zh/awesome/index.md
-- [[周边生态]] - document - fork260509-soybean-admin-docs/src/zh/awesome/index.md
-- [[开源项目或作品]] - document - fork260509-soybean-admin-docs/src/zh/awesome/index.md
+- [[svg-close.vue]] - code - base-web/packages/materials/src/libs/page-tab/svg-close.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 310
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_19]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_19]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_6]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_12]] - document - base-web/CHANGELOG.md
-- [[v1.3.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.3...v1.3.4) (2024-08-01)]] - document - base-web/CHANGELOG.md
+- [[main()_1]] - code - rust-api/migration/src/main.rs
+- [[main.rs_1]] - code - rust-api/migration/src/main.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +17,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_310
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.3.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.3...v1.3.4) (2024-08-01)]] - degree 5, connects to 1 community

@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 93
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[Breakpoint Types]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[Debugging]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[Debugging Steps]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[JavaScript and TypeScript Debugging]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[Overview_1]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[Vue Debugging]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[codebash]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[codebash (npm i -g tsx)_1]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[codejson ({)_12]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[codejson ({)_13]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[codets ( vite.config.ts)_1]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[codets (function transformToKebabCase(input string) string {)_1]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[debug_1]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[tsx - The TypeScript Execution Tool]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[tsx Debugging Steps]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
+- [[.audit_json()_3]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[build_update_active_model()_3]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[entitysystem_settingsModel]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[find_all()]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[find_by_key()]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[sample_model()]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[system_settings.rs_2]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[system_settings_update_oplog_inet_roundtrip()]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[update_by_key()]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[update_by_key_active_model_sets_value_and_audit_cols()]] - code - rust-api/server/src/model/facade/system_settings.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,3 +25,9 @@ members: 15
 TABLE source_file, type FROM #community/Community_93
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_MenuRoute Facade (rust)]]
+
+## Top bridge nodes
+- [[update_by_key()]] - degree 5, connects to 1 community

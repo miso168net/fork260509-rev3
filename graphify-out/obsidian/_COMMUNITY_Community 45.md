@@ -1,34 +1,30 @@
 ---
 type: community
-members: 21
+members: 17
 ---
 
 # Community 45
 
-**Members:** 21 nodes
+**Members:** 17 nodes
 
 ## Members
-- [[@]] - code - base-web/tsconfig.json
-- [[allowSyntheticDefaultImports]] - code - base-web/tsconfig.json
-- [[compilerOptions]] - code - base-web/tsconfig.json
-- [[esModuleInterop]] - code - base-web/tsconfig.json
-- [[exclude]] - code - base-web/tsconfig.json
-- [[forceConsistentCasingInFileNames]] - code - base-web/tsconfig.json
-- [[include]] - code - base-web/tsconfig.json
-- [[isolatedModules]] - code - base-web/tsconfig.json
-- [[jsx]] - code - base-web/tsconfig.json
-- [[jsxImportSource]] - code - base-web/tsconfig.json
-- [[lib]] - code - base-web/tsconfig.json
-- [[module]] - code - base-web/tsconfig.json
-- [[moduleResolution]] - code - base-web/tsconfig.json
-- [[noUnusedLocals]] - code - base-web/tsconfig.json
-- [[paths]] - code - base-web/tsconfig.json
-- [[resolveJsonModule]] - code - base-web/tsconfig.json
-- [[strict]] - code - base-web/tsconfig.json
-- [[strictNullChecks]] - code - base-web/tsconfig.json
-- [[target]] - code - base-web/tsconfig.json
-- [[tsconfig.json]] - code - base-web/tsconfig.json
-- [[types]] - code - base-web/tsconfig.json
+- [[allowSyntheticDefaultImports_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[compilerOptions_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[esModuleInterop_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[exclude_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[forceConsistentCasingInFileNames_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[include_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[jsx_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[lib_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[module_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[moduleResolution_5]] - code - base-web/packages/hooks/tsconfig.json
+- [[noUnusedLocals_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[resolveJsonModule_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[strict_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[strictNullChecks_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[target_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[tsconfig.json_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[types_4]] - code - base-web/packages/hooks/tsconfig.json
 
 ## Live Query (requires Dataview plugin)
 

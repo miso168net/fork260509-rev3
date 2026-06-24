@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 241
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[Get code from Gitee]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Get the Code from GitHub]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Getting the Code]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Install dependencies]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[codebash ( Clone the code)]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[codebash ( Clone the code)_1]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[codebash (pnpm i)_1]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
+- [[CasbinRule_1]] - code - rust-api/sea-orm-adapter/src/migration.rs
+- [[down()]] - code - rust-api/sea-orm-adapter/src/migration.rs
+- [[migration.rs]] - code - rust-api/sea-orm-adapter/src/migration.rs
+- [[up()]] - code - rust-api/sea-orm-adapter/src/migration.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,9 +19,3 @@ members: 7
 TABLE source_file, type FROM #community/Community_241
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 89]]
-
-## Top bridge nodes
-- [[Getting the Code]] - degree 4, connects to 1 community

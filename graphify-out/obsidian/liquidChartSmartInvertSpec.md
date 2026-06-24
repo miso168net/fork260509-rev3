@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/vchart/data.ts"
 type: "code"
-community: "Community 126"
+community: "Community 77"
 location: "L258"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_126
+  - community/Community_77
 ---
 
 # liquidChartSmartInvertSpec
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[data.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_126
+#graphify/code #graphify/EXTRACTED #community/Community_77

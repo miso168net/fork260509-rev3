@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 235
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_3]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂项_2]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug 修复_2]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_2]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🚀 新功能_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🛠 优化_2]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.3.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.1...v1.3.2) (2024-07-30)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[baidu-map.vue]] - code - base-web/src/views/plugin/map/components/baidu-map.vue
+- [[gaode-map.vue]] - code - base-web/src/views/plugin/map/components/gaode-map.vue
+- [[index.ts_39]] - code - base-web/src/views/plugin/map/components/index.ts
+- [[tencent-map.vue]] - code - base-web/src/views/plugin/map/components/tencent-map.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,9 +19,3 @@ members: 7
 TABLE source_file, type FROM #community/Community_235
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
-
-## Top bridge nodes
-- [[v1.3.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.1...v1.3.2) (2024-07-30)_1]] - degree 7, connects to 1 community

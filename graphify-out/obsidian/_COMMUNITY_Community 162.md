@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 162
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_2]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_2]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_1]] - document - base-web/CHANGELOG.md
-- [[v2.1.0(httpsgithub.comsoybeanjssoybean-admincomparev2.0.2...v2.1.0) (2026-03-09)]] - document - base-web/CHANGELOG.md
+- [[en-us.ts]] - code - base-web/src/locales/langs/en-us.ts
+- [[local]] - code - base-web/src/locales/langs/en-us.ts
+- [[local_1]] - code - base-web/src/locales/langs/zh-cn.ts
+- [[locale.ts]] - code - base-web/src/locales/locale.ts
+- [[locales]] - code - base-web/src/locales/locale.ts
+- [[zh-cn.ts]] - code - base-web/src/locales/langs/zh-cn.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,7 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
 
 ## Top bridge nodes
-- [[v2.1.0(httpsgithub.comsoybeanjssoybean-admincomparev2.0.2...v2.1.0) (2026-03-09)]] - degree 9, connects to 1 community
+- [[locale.ts]] - degree 4, connects to 1 community

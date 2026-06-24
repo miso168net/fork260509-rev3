@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 204
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[SystemSettingItem]] - code - rust-api/server/src/handler/system_settings.rs
-- [[UpdateReq]] - code - rust-api/server/src/handler/system_settings.rs
-- [[get_system_settings()]] - code - rust-api/server/src/handler/system_settings.rs
-- [[system_settings.rs_1]] - code - rust-api/server/src/handler/system_settings.rs
-- [[update_setting()]] - code - rust-api/server/src/handler/system_settings.rs
-- [[validate_value_type()]] - code - rust-api/server/src/handler/system_settings.rs
-- [[validate_value_type_enum_accepts_members()]] - code - rust-api/server/src/handler/system_settings.rs
-- [[validate_value_type_enum_rejects_nonmember()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_13]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 日常任务]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复错误_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_10]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.0...v1.2.1) (2024-06-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_204
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.2.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.0...v1.2.1) (2024-06-07)_1]] - degree 5, connects to 1 community

@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 473
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[.from_rule()]] - code - rust-api/sea-orm-adapter/src/action.rs
-- [[RuleWithType'a]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[fetchDeleteUser (rev3 user soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
 
 ## Live Query (requires Dataview plugin)
 

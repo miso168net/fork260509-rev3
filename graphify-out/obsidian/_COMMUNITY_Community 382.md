@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 382
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[PkgJson]] - code - base-web/src/views/about/index.vue
-- [[index.vue_19]] - code - base-web/src/views/about/index.vue
-- [[transformVersionData()]] - code - base-web/src/views/about/index.vue
+- [[theme-radius.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/appearance/modules/theme-radius.vue
 
 ## Live Query (requires Dataview plugin)
 

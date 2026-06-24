@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 409
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model]] - code - rust-api/entity/src/casbin_rule.rs
-- [[Relation]] - code - rust-api/entity/src/casbin_rule.rs
-- [[casbin_rule.rs]] - code - rust-api/entity/src/casbin_rule.rs
+- [[index.vue_30]] - code - base-web/src/views/home/index.vue
 
 ## Live Query (requires Dataview plugin)
 

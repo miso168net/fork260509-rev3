@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 305
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_48]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_39]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_40]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_14]] - document - base-web/CHANGELOG.md
-- [[v1.0.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.1...v1.0.2) (2024-04-08)]] - document - base-web/CHANGELOG.md
+- [[.deleted_at_column()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[entitysys_roleEntity]] - code - rust-api/server/src/model/facade/sys_role.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +17,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_305
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.0.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.1...v1.0.2) (2024-04-08)]] - degree 5, connects to 1 community

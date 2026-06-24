@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 280
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[codets (export function setupLoading() {)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/loading.md
-- [[codetypescript (async function setupApp() {)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/loading.md
-- [[loading_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/loading.md
-- [[システムロード]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/loading.md
-- [[描画原理]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/loading.md
-- [[样式]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/loading.md
+- [[.migrations()]] - code - rust-api/migration/src/lib.rs
+- [[Migrator]] - code - rust-api/migration/src/lib.rs
+- [[lib.rs_1]] - code - rust-api/migration/src/lib.rs
 
 ## Live Query (requires Dataview plugin)
 

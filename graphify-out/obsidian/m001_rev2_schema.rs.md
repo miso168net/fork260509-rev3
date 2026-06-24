@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/m001_rev2_schema.rs"
 type: "code"
-community: "Community 87"
+community: "Community 59"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_87
+  - community/Community_59
 ---
 
 # m001_rev2_schema.rs
@@ -25,4 +25,4 @@ tags:
 - [[SysUserRole]] - `contains` [EXTRACTED]
 - [[SystemSettings]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_87
+#graphify/code #graphify/EXTRACTED #community/Community_59

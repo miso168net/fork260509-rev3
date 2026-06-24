@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 412
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_3]] - code - rust-api/entity/src/sys_login_attempt.rs
-- [[Relation_3]] - code - rust-api/entity/src/sys_login_attempt.rs
-- [[sys_login_attempt.rs]] - code - rust-api/entity/src/sys_login_attempt.rs
+- [[header-banner.vue]] - code - base-web/src/views/home/modules/header-banner.vue
 
 ## Live Query (requires Dataview plugin)
 

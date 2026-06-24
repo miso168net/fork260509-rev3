@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 453
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[software]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/software.md
-- [[ソフトウェアインストールガイド]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/software.md
+- [[About page (base-websrcviewsaboutindex.vue)]] - code - base-web/src/views/about/index.vue
 
 ## Live Query (requires Dataview plugin)
 

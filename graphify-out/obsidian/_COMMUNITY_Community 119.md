@@ -1,25 +1,21 @@
 ---
 type: community
-members: 12
+members: 8
 ---
 
 # Community 119
 
-**Members:** 12 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[.as_str()_1]] - code - rust-api/server/src/model/audit.rs
-- [[AuditEvent]] - code - rust-api/server/src/model/audit.rs
-- [[AuditMeta]] - code - rust-api/server/src/model/audit.rs
-- [[AuditOperation]] - code - rust-api/server/src/model/audit.rs
-- [[AuditOperator]] - code - rust-api/server/src/model/audit.rs
-- [[AuditSerialize]] - code - rust-api/server/src/model/audit.rs
-- [[audit.rs]] - code - rust-api/server/src/model/audit.rs
-- [[with_roles()]] - code - rust-api/server/src/model/audit.rs
-- [[with_roles_empty_yields_empty_array_not_null()]] - code - rust-api/server/src/model/audit.rs
-- [[with_roles_non_object_passthrough()]] - code - rust-api/server/src/model/audit.rs
-- [[with_roles_preserves_existing_keys()]] - code - rust-api/server/src/model/audit.rs
-- [[with_roles_sorts_role_codes()]] - code - rust-api/server/src/model/audit.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_3]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_2]] - document - base-web/CHANGELOG.md
+- [[v2.0.1(httpsgithub.comsoybeanjssoybean-admincomparev2.0.0...v2.0.1) (2025-12-04)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,7 +25,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 40]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[audit.rs]] - degree 11, connects to 1 community
+- [[v2.0.1(httpsgithub.comsoybeanjssoybean-admincomparev2.0.0...v2.0.1) (2025-12-04)]] - degree 8, connects to 1 community

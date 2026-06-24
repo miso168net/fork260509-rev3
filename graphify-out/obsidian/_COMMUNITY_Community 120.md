@@ -1,25 +1,21 @@
 ---
 type: community
-members: 12
+members: 8
 ---
 
 # Community 120
 
-**Members:** 12 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[RestoreOutcome]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[archive_restore_move_noop_applied_notfound_coerce_protected()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[cleanup()_1]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[insert_archived()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[list()_1]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[menu_rows_of()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[meta_for()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[restore()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[restore_menu_rows()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[role_id_of()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[run_body()]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
-- [[sys_casbin_policy_archive.rs_1]] - code - rust-api/server/src/model/facade/sys_casbin_policy_archive.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_62]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_53]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_52]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_22]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_47]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_5]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_32]] - document - base-web/CHANGELOG.md
+- [[v0.9.6(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.5...v0.9.6) (2022-06-16)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,7 +25,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 40]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[restore()]] - degree 3, connects to 1 community
+- [[v0.9.6(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.5...v0.9.6) (2022-06-16)]] - degree 8, connects to 1 community

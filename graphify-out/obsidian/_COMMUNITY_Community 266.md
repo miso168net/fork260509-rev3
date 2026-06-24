@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 266
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_6]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂务_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 修复_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;💅 重构_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_5]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[layout_1]] - code - base-web/src/theme/preset/dark.json
+- [[mode_1]] - code - base-web/src/theme/preset/dark.json
+- [[scrollMode]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,7 +20,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
+- 1 edge to [[_COMMUNITY_Community 68]]
 
 ## Top bridge nodes
-- [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)_1]] - degree 6, connects to 1 community
+- [[layout_1]] - degree 3, connects to 1 community

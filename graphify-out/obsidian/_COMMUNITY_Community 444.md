@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 444
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[logout()]] - code - base-web/src/layouts/modules/global-header/components/user-avatar.vue
-- [[user-avatar.vue]] - code - base-web/src/layouts/modules/global-header/components/user-avatar.vue
+- [[index.vue_63]] - code - base-web/src/views/_builtin/500/index.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 278
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[codets (interface RequestOptionResponseData = any {)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/request/intro.md
-- [[intro_9]] - document - fork260509-soybean-admin-docs/src/jp/guide/request/intro.md
-- [[リクエスト]] - document - fork260509-soybean-admin-docs/src/jp/guide/request/intro.md
-- [[リクエスト関数の紹介]] - document - fork260509-soybean-admin-docs/src/jp/guide/request/intro.md
-- [[リクエスト関連の設定紹介]] - document - fork260509-soybean-admin-docs/src/jp/guide/request/intro.md
-- [[複数のリクエスト環境]] - document - fork260509-soybean-admin-docs/src/jp/guide/request/intro.md
+- [[Model]] - code - rust-api/entity/src/casbin_rule.rs
+- [[Relation]] - code - rust-api/entity/src/casbin_rule.rs
+- [[casbin_rule.rs]] - code - rust-api/entity/src/casbin_rule.rs
 
 ## Live Query (requires Dataview plugin)
 

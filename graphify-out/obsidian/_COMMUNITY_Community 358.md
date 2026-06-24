@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 358
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[@soybeanjscli_1]] - document - fork260509-soybean-admin-docs/src/jp/recommend/soybean-cli.md
-- [[soybean-cli]] - document - fork260509-soybean-admin-docs/src/jp/recommend/soybean-cli.md
-- [[紹介_4]] - document - fork260509-soybean-admin-docs/src/jp/recommend/soybean-cli.md
-- [[関連リンク_3]] - document - fork260509-soybean-admin-docs/src/jp/recommend/soybean-cli.md
+- [[soybean-avatar.vue]] - code - base-web/src/components/custom/soybean-avatar.vue
 
 ## Live Query (requires Dataview plugin)
 

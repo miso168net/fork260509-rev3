@@ -1,43 +1,31 @@
 ---
 type: community
-members: 30
+members: 18
 ---
 
 # Community 35
 
-**Members:** 30 nodes
+**Members:** 18 nodes
 
 ## Members
-- [[CenterLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CenterLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomCenterLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomCenterLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomFirstLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomFirstLevelRouteNotSingleKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomLastLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomLastLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomMultiLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomSingleLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[CustomSingleLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[ElegantConstRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[ElegantRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[FirstLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[FirstLevelRouteNotSingleKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[GeneratedRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[GeneratedRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[GetChildRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[LastLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[LastLevelRouteKey_1]] - code - base-web/src/typings/elegant-router.d.ts
-- [[MultiLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[RouteKey_1]] - code - base-web/src/typings/elegant-router.d.ts
-- [[RouteLayout]] - code - base-web/src/typings/elegant-router.d.ts
-- [[RouteMap_1]] - code - base-web/src/typings/elegant-router.d.ts
-- [[RoutePath_1]] - code - base-web/src/typings/elegant-router.d.ts
-- [[SingleLevelRoute]] - code - base-web/src/typings/elegant-router.d.ts
-- [[SingleLevelRouteKey]] - code - base-web/src/typings/elegant-router.d.ts
-- [[elegant-router.d.ts]] - code - base-web/src/typings/elegant-router.d.ts
+- [[NOT_FOUND_ROUTE]] - code - base-web/src/router/routes/builtin.ts
+- [[ROOT_ROUTE]] - code - base-web/src/router/routes/builtin.ts
+- [[builtin.ts]] - code - base-web/src/router/routes/builtin.ts
+- [[builtinRoutes]] - code - base-web/src/router/routes/builtin.ts
+- [[createBuiltinVueRoutes()]] - code - base-web/src/router/routes/builtin.ts
+- [[createStaticRoutes()]] - code - base-web/src/router/routes/index.ts
+- [[customRoutes]] - code - base-web/src/router/routes/index.ts
+- [[generatedRoutes]] - code - base-web/src/router/elegant/routes.ts
+- [[getAuthVueRoutes()]] - code - base-web/src/router/routes/index.ts
+- [[imports.ts]] - code - base-web/src/router/elegant/imports.ts
+- [[index.ts_27]] - code - base-web/src/router/routes/index.ts
+- [[index.vue_4]] - code - base-web/src/layouts/blank-layout/index.vue
+- [[layouts]] - code - base-web/src/router/elegant/imports.ts
+- [[routeMap]] - code - base-web/src/router/elegant/transform.ts
+- [[routes.ts]] - code - base-web/src/router/elegant/routes.ts
+- [[transform.ts]] - code - base-web/src/router/elegant/transform.ts
+- [[transformElegantRouteToVueRoute()]] - code - base-web/src/router/elegant/transform.ts
+- [[transformElegantRoutesToVueRoutes()]] - code - base-web/src/router/elegant/transform.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -45,3 +33,17 @@ members: 30
 TABLE source_file, type FROM #community/Community_35
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 6 edges to [[_COMMUNITY_Common Hooks & Store]]
+- 4 edges to [[_COMMUNITY_Router & Menu Store]]
+- 3 edges to [[_COMMUNITY_App Bootstrap & Service Stack]]
+- 3 edges to [[_COMMUNITY_Router & Menu Store]]
+- 1 edge to [[_COMMUNITY_Community 81]]
+
+## Top bridge nodes
+- [[builtin.ts]] - degree 12, connects to 4 communities
+- [[transform.ts]] - degree 10, connects to 3 communities
+- [[index.ts_27]] - degree 11, connects to 2 communities
+- [[imports.ts]] - degree 6, connects to 2 communities
+- [[createBuiltinVueRoutes()]] - degree 3, connects to 1 community

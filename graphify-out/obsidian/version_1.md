@@ -1,17 +1,17 @@
 ---
-source_file: "fork260509-soybean-admin-docs/src/guide/intro.md"
-type: "document"
-community: "Community 173"
-location: "L19"
+source_file: "base-web/.vscode/launch.json"
+type: "code"
+community: "Community 259"
+location: "L2"
 tags:
-  - graphify/document
+  - graphify/code
   - graphify/EXTRACTED
-  - community/Community_173
+  - community/Community_259
 ---
 
-# Version
+# version
 
 ## Connections
-- [[Introduction_1]] - `contains` [EXTRACTED]
+- [[launch.json]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_173
+#graphify/code #graphify/EXTRACTED #community/Community_259

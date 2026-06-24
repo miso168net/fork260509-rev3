@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/m006_audit_ip_forensics.rs"
 type: "code"
-community: "Community 369"
+community: "Community 240"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_369
+  - community/Community_240
 ---
 
 # Migration
@@ -16,4 +16,4 @@ tags:
 - [[.up()_5]] - `method` [EXTRACTED]
 - [[m006_audit_ip_forensics.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_369
+#graphify/code #graphify/EXTRACTED #community/Community_240

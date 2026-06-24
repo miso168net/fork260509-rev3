@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 396
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[intro_17]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/intro.md
-- [[原理_5]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/intro.md
-- [[系统主题]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/intro.md
+- [[index.vue_21]] - code - base-web/src/views/alova/scenes/index.vue
 
 ## Live Query (requires Dataview plugin)
 

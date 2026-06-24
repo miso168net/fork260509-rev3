@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 425
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[codevue (script lang=ts setup)_3]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/logo.md
-- [[logo_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/logo.md
-- [[概要_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/logo.md
+- [[index.vue_40]] - code - base-web/src/views/plugin/copy/index.vue
 
 ## Live Query (requires Dataview plugin)
 

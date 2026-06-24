@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/global-sider/index.vue"
 type: "code"
-community: "Community 332"
+community: "Community 209"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_332
+  - community/Community_209
 ---
 
 # index.vue
@@ -17,4 +17,4 @@ tags:
 - [[menuWrapperClass]] - `contains` [EXTRACTED]
 - [[showLogo]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_332
+#graphify/code #graphify/EXTRACTED #community/Community_209

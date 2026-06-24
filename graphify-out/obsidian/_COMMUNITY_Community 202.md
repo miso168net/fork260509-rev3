@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 202
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[intro_6]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[ドキュメント]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[ブラウザサポート]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[ブランチ]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[参加方法]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[学ぶべき基本知識]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[特徴]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[紹介]] - document - fork260509-soybean-admin-docs/src/jp/guide/intro.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_30]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_25]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_22]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_15]] - document - base-web/CHANGELOG.md
+- [[v1.2.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.1...v1.2.2) (2024-06-12)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_202
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.2.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.1...v1.2.2) (2024-06-12)]] - degree 5, connects to 1 community

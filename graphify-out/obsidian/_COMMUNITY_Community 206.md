@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 206
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[Changelog 描述（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[pr_cn]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[后续计划（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[实现方案和 API（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[对用户的影响和可能的风险（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[请求合并前的自查清单]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[这个变动的性质是]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[需求背景]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_11]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项_4]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复错误]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_8]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.3(httpsgithub.comsoybeanjssoybean-admincomparev1.2.2...v1.2.3) (2024-06-13)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_206
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.2.3(httpsgithub.comsoybeanjssoybean-admincomparev1.2.2...v1.2.3) (2024-06-13)_1]] - degree 5, connects to 1 community

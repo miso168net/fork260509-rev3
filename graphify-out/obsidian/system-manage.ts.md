@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/api/system-manage.ts"
 type: "code"
-community: "Community 55"
+community: "Community 38"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_55
+  - community/Community_38
 ---
 
 # system-manage.ts
@@ -22,4 +22,4 @@ tags:
 - [[index.ts_29]] - `imports_from` [EXTRACTED]
 - [[request]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_55
+#graphify/code #graphify/EXTRACTED #community/Community_38

@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 471
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[main()_1]] - code - rust-api/migration/src/main.rs
-- [[main.rs_1]] - code - rust-api/migration/src/main.rs
+- [[mod.rs_3]] - code - rust-api/server/src/model/mod.rs
 
 ## Live Query (requires Dataview plugin)
 

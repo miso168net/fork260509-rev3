@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 258
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_10]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_10]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_9]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_8]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📦 Build]] - document - base-web/CHANGELOG.md
-- [[v1.3.13(httpsgithub.comsoybeanjssoybean-admincomparev1.3.12...v1.3.13) (2025-03-19)]] - document - base-web/CHANGELOG.md
+- [[buildTime]] - code - base-web/vite.config.ts
+- [[vite.config.ts]] - code - base-web/vite.config.ts
+- [[viteEnv]] - code - base-web/vite.config.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_258
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.3.13(httpsgithub.comsoybeanjssoybean-admincomparev1.3.12...v1.3.13) (2025-03-19)]] - degree 6, connects to 1 community

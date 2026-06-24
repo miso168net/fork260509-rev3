@@ -1,24 +1,21 @@
 ---
 type: community
-members: 11
+members: 8
 ---
 
 # Community 123
 
-**Members:** 11 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[Claims]] - code - rust-api/server/src/auth/jwt.rs
-- [[jwt.rs]] - code - rust-api/server/src/auth/jwt.rs
-- [[jwt_claims_serde_roundtrip()]] - code - rust-api/server/src/auth/jwt.rs
-- [[jwt_expired_rejected()]] - code - rust-api/server/src/auth/jwt.rs
-- [[jwt_sign_verify_roundtrip()]] - code - rust-api/server/src/auth/jwt.rs
-- [[jwt_wrong_aud_rejected()]] - code - rust-api/server/src/auth/jwt.rs
-- [[jwt_wrong_secret_rejected()]] - code - rust-api/server/src/auth/jwt.rs
-- [[now()]] - code - rust-api/server/src/auth/jwt.rs
-- [[sample_claims()]] - code - rust-api/server/src/auth/jwt.rs
-- [[sign()]] - code - rust-api/server/src/auth/jwt.rs
-- [[verify()]] - code - rust-api/server/src/auth/jwt.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_23]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_21]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_20]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_6]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_17]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_14]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_7]] - document - base-web/CHANGELOG.md
+- [[v1.3.0(httpsgithub.comsoybeanjssoybean-admincomparev1.2.8...v1.3.0) (2024-07-22)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,3 +23,9 @@ members: 11
 TABLE source_file, type FROM #community/Community_123
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.0(httpsgithub.comsoybeanjssoybean-admincomparev1.2.8...v1.3.0) (2024-07-22)]] - degree 8, connects to 1 community

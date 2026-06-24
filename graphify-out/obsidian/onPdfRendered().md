@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/pdf/index.vue"
 type: "code"
-community: "Community 144"
+community: "Community 90"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_144
+  - community/Community_90
 ---
 
 # onPdfRendered()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_48]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_144
+#graphify/code #graphify/EXTRACTED #community/Community_90

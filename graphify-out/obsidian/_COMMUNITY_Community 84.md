@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 84
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[AntFlowConfig]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
-- [[CustomEdgeData]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
-- [[CustomGraphData]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
-- [[CustomNodeData]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
-- [[NodeStatus]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
-- [[NodeStatusConfig]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
-- [[antv-g6-flow.ts]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
-- [[data.ts]] - code - base-web/src/views/plugin/charts/antv/data.ts
-- [[getFlowData()]] - code - base-web/src/views/plugin/charts/antv/data.ts
-- [[getNodeIcon()]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
-- [[getNodeStatusTag()]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
-- [[nodeStatus]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
-- [[status.ts]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
-- [[types.ts]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
-- [[useAntFlow()]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_5]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_5]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_3]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_3]] - document - base-web/CHANGELOG.md
+- [[v2.0.0(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0) (2025-11-02)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,9 +27,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 2 edges to [[_COMMUNITY_Community 72]]
-- 1 edge to [[_COMMUNITY_Theme Palette & UnoCSS]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[antv-g6-flow.ts]] - degree 11, connects to 2 communities
-- [[useAntFlow()]] - degree 2, connects to 1 community
+- [[v2.0.0(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0) (2025-11-02)]] - degree 10, connects to 1 community

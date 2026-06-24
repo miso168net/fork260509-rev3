@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 452
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[other]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/other.md
-- [[其他教程]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/other.md
+- [[Cast Icon (Feather screen-cast glyph)]] - image - base-web/src/assets/svg-icon/cast.svg
 
 ## Live Query (requires Dataview plugin)
 

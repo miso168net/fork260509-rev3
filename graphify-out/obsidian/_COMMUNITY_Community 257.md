@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 257
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_24]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_22]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_21]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_7]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_18]] - document - base-web/CHANGELOG.md
-- [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)]] - document - base-web/CHANGELOG.md
+- [[color()]] - code - base-web/src/views/plugin/tables/vtable/index.vue
+- [[index]] - code - base-web/src/views/plugin/tables/vtable/index.vue
+- [[index.vue_52]] - code - base-web/src/views/plugin/tables/vtable/index.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_257
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)]] - degree 6, connects to 1 community

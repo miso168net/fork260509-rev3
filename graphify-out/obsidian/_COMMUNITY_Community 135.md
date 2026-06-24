@@ -1,24 +1,21 @@
 ---
 type: community
-members: 11
+members: 8
 ---
 
 # Community 135
 
-**Members:** 11 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[RouteExistQuery]] - code - rust-api/server/src/handler/route.rs
-- [[auth_menu_routes_for_roles_filters_only_menu_acts()]] - code - rust-api/server/src/auth/enforce.rs
-- [[flatten_names_value()]] - code - rust-api/server/src/handler/route.rs
-- [[get_constant_routes()]] - code - rust-api/server/src/handler/route.rs
-- [[get_user_routes()]] - code - rust-api/server/src/handler/route.rs
-- [[init_enforcer()]] - code - rust-api/server/src/auth/enforce.rs
-- [[is_route_exist()]] - code - rust-api/server/src/handler/route.rs
-- [[live_get_user_routes_per_role_filtering()]] - code - rust-api/server/src/handler/route.rs
-- [[menu_routes_for_roles()]] - code - rust-api/server/src/auth/enforce.rs
-- [[route.rs]] - code - rust-api/server/src/handler/route.rs
-- [[user_visible_route_names()]] - code - rust-api/server/src/handler/route.rs
+- [[collect_rs()]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[entity_access_lint.rs]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[entity_access_only_via_facade()]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[is_exempt()]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[scan_entity_paths()]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[scan_self_test()_1]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[server_src()]] - code - rust-api/server/tests/entity_access_lint.rs
+- [[whiten()]] - code - rust-api/server/tests/entity_access_lint.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,11 +23,3 @@ members: 11
 TABLE source_file, type FROM #community/Community_135
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 66]]
-
-## Top bridge nodes
-- [[menu_routes_for_roles()]] - degree 4, connects to 1 community
-- [[init_enforcer()]] - degree 2, connects to 1 community
-- [[auth_menu_routes_for_roles_filters_only_menu_acts()]] - degree 2, connects to 1 community

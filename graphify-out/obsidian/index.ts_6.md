@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/types/index.ts"
 type: "code"
-community: "Community 102"
+community: "Theme Palette & UnoCSS"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_102
+  - community/Theme_Palette__UnoCSS
 ---
 
 # index.ts
@@ -25,4 +25,4 @@ tags:
 - [[palette.ts]] - `imports_from` [EXTRACTED]
 - [[recommend.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_102
+#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS

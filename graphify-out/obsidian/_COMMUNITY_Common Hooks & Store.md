@@ -1,29 +1,25 @@
 ---
 type: community
-members: 31
+members: 20
 ---
 
 # Common Hooks & Store
 
-**Members:** 31 nodes
+**Members:** 20 nodes
 
 ## Members
-- [[captcha.ts]] - code - base-web/src/hooks/business/captcha.ts
 - [[filterAuthRouteByRoles()]] - code - base-web/src/store/modules/route/shared.ts
 - [[filterAuthRoutesByRoles()]] - code - base-web/src/store/modules/route/shared.ts
 - [[findMenuPath()]] - code - base-web/src/store/modules/route/shared.ts
-- [[form.ts]] - code - base-web/src/hooks/common/form.ts
 - [[getBreadcrumbsByRoute()]] - code - base-web/src/store/modules/route/shared.ts
 - [[getCacheRouteNames()]] - code - base-web/src/store/modules/route/shared.ts
 - [[getGlobalMenuByBaseRoute()]] - code - base-web/src/store/modules/route/shared.ts
 - [[getGlobalMenusByAuthRoutes()]] - code - base-web/src/store/modules/route/shared.ts
 - [[getSelectedMenuKeyPathByKey()]] - code - base-web/src/store/modules/route/shared.ts
 - [[icon.ts]] - code - base-web/src/hooks/common/icon.ts
-- [[index.ts_7]] - code - base-web/packages/hooks/src/index.ts
 - [[index.ts_35]] - code - base-web/src/store/modules/route/index.ts
 - [[isRouteExistByRouteName()]] - code - base-web/src/store/modules/route/shared.ts
 - [[recursiveGetIsRouteExistByRouteName()]] - code - base-web/src/store/modules/route/shared.ts
-- [[reg.ts]] - code - base-web/src/constants/reg.ts
 - [[shared.ts_6]] - code - base-web/src/store/modules/route/shared.ts
 - [[sortRouteByOrder()]] - code - base-web/src/store/modules/route/shared.ts
 - [[sortRoutesByOrder()]] - code - base-web/src/store/modules/route/shared.ts
@@ -31,14 +27,7 @@ members: 31
 - [[transformMenuToBreadcrumb()]] - code - base-web/src/store/modules/route/shared.ts
 - [[transformMenuToSearchMenus()]] - code - base-web/src/store/modules/route/shared.ts
 - [[updateLocaleOfGlobalMenus()]] - code - base-web/src/store/modules/route/shared.ts
-- [[use-count-down.ts]] - code - base-web/packages/hooks/src/use-count-down.ts
-- [[use-svg-icon-render.ts]] - code - base-web/packages/hooks/src/use-svg-icon-render.ts
-- [[useCaptcha()]] - code - base-web/src/hooks/business/captcha.ts
-- [[useCountDown()]] - code - base-web/packages/hooks/src/use-count-down.ts
-- [[useFormRules()]] - code - base-web/src/hooks/common/form.ts
-- [[useNaiveForm()]] - code - base-web/src/hooks/common/form.ts
 - [[useSvgIcon()]] - code - base-web/src/hooks/common/icon.ts
-- [[useSvgIconRender()]] - code - base-web/packages/hooks/src/use-svg-icon-render.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -48,17 +37,16 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 9 edges to [[_COMMUNITY_Auth & Locale Service]]
-- 8 edges to [[_COMMUNITY_Community 43]]
-- 7 edges to [[_COMMUNITY_Router & Menu Store]]
-- 5 edges to [[_COMMUNITY_Axios Request Factory]]
-- 2 edges to [[_COMMUNITY_Community 53]]
-- 1 edge to [[_COMMUNITY_Community 268]]
-- 1 edge to [[_COMMUNITY_Community 55]]
+- 6 edges to [[_COMMUNITY_Router & Menu Store]]
+- 6 edges to [[_COMMUNITY_Community 35]]
+- 4 edges to [[_COMMUNITY_Router & Menu Store]]
+- 3 edges to [[_COMMUNITY_Axios Request Factory]]
+- 3 edges to [[_COMMUNITY_Auth & Locale Service]]
+- 2 edges to [[_COMMUNITY_Router & Menu Store]]
+- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
 
 ## Top bridge nodes
-- [[index.ts_35]] - degree 32, connects to 5 communities
-- [[index.ts_7]] - degree 13, connects to 4 communities
+- [[index.ts_35]] - degree 32, connects to 6 communities
 - [[shared.ts_6]] - degree 19, connects to 1 community
-- [[captcha.ts]] - degree 4, connects to 1 community
-- [[form.ts]] - degree 4, connects to 1 community
+- [[icon.ts]] - degree 4, connects to 1 community
+- [[useSvgIcon()]] - degree 4, connects to 1 community

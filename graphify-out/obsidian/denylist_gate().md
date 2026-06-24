@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Community 66"
+community: "Community 48"
 location: "L287"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_66
+  - community/Community_48
 ---
 
 # denylist_gate()
@@ -16,4 +16,4 @@ tags:
 - [[enforce_mw()]] - `calls` [EXTRACTED]
 - [[refresh_token()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_66
+#graphify/code #graphify/EXTRACTED #community/Community_48

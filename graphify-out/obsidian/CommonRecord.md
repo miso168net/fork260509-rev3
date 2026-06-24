@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/common.d.ts"
 type: "code"
-community: "Community 274"
+community: "Community 161"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_274
+  - community/Community_161
 ---
 
 # CommonRecord
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[common.d.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_274
+#graphify/code #graphify/EXTRACTED #community/Community_161

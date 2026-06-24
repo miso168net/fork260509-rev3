@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/tests/entity_access_lint.rs"
 type: "code"
-community: "Community 212"
+community: "Community 135"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_212
+  - community/Community_135
 ---
 
 # collect_rs()
@@ -15,4 +15,4 @@ tags:
 - [[entity_access_lint.rs]] - `contains` [EXTRACTED]
 - [[entity_access_only_via_facade()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_212
+#graphify/code #graphify/EXTRACTED #community/Community_135

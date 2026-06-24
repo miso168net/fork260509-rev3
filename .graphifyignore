@@ -9,10 +9,13 @@
 # 理由:base-web/ 與 fork260509-soybean-admin-base/ 透過 git worktree 共用 .git(rust 同理),
 #      內容高度重疊(101/102 .ts 同相對路徑 → 撞 node ID)。
 #      改為索引 worktree(rev3 整合分支 = 真實碼),排除對應源倉(example/main 分支)。
-#      docs 源倉 fork260509-soybean-admin-docs/ 非 worktree、純參考,保留索引。
+#      docs 源倉 fork260509-soybean-admin-docs/ 非 worktree、純參考;2026-06-24 改為【排除】
+#      (與整合碼無關、~1856 noise 節點〔多語 nodejs/use-table/FAQ/structure 文件〕蓋過程式碼真節點、
+#       prune 出圖;CLAUDE.md §8.3 本意=只索引 base-web/rust-api worktree 真實碼)。
 # ============================================================
 fork260509-soybean-admin-base/
 fork260509-rev2-anew-rust-api/
+fork260509-soybean-admin-docs/
 
 # ============================================================
 # graphify 自己的輸出

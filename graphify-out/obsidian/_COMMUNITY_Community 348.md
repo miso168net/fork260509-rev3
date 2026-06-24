@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 348
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_14]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_11]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🚀 功能_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.2.0(httpsgithub.comsoybeanjssoybean-admincomparev1.1.5...v1.2.0) (2024-06-06)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[lang-switch.vue]] - code - base-web/src/components/common/lang-switch.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,9 +16,3 @@ members: 4
 TABLE source_file, type FROM #community/Community_348
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
-
-## Top bridge nodes
-- [[v1.2.0(httpsgithub.comsoybeanjssoybean-admincomparev1.1.5...v1.2.0) (2024-06-06)_1]] - degree 4, connects to 1 community

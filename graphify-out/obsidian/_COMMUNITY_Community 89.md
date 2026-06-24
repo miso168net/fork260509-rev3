@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 89
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[Apifox Cloud Mock]] - concept - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Directory Structure]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Environment Preparation]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Install Vue - Official, disable Vetur]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Mock]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Plugin configuration]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Quick Start]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[Quick Start Guide]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[SoybeanJS CLI (sa) npm scripts]] - concept - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[VSCode Plugins]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[codeblock5 (soybean-admin)]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[codejson ({)]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[npm scripts]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
-- [[pnpm Monorepo Packages]] - concept - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[quick-start]] - document - fork260509-soybean-admin-docs/src/guide/quick-start.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_7]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_3]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_7]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_6]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_5]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_3]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_4]] - document - base-web/CHANGELOG.md
+- [[v2.0.0-beta.1(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0-beta.1) (2025-10-25)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,14 +27,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 2 edges to [[_COMMUNITY_Community 97]]
-- 1 edge to [[_COMMUNITY_Community 241]]
-- 1 edge to [[_COMMUNITY_CI Workflows & Issue Templates]]
-- 1 edge to [[_COMMUNITY_EcosystemAwesome Docs]]
-- 1 edge to [[_COMMUNITY_useTable Guide Concepts]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[Quick Start]] - degree 10, connects to 2 communities
-- [[Apifox Cloud Mock]] - degree 4, connects to 2 communities
-- [[Directory Structure]] - degree 3, connects to 1 community
-- [[SoybeanJS CLI (sa) npm scripts]] - degree 2, connects to 1 community
+- [[v2.0.0-beta.1(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0-beta.1) (2025-10-25)]] - degree 10, connects to 1 community

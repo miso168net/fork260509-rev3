@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 448
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[.deleted_at_column()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
-- [[entitysys_userEntity]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[pwd-login.vue]] - code - base-web/src/views/_builtin/login/modules/pwd-login.vue
 
 ## Live Query (requires Dataview plugin)
 

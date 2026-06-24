@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.oxlintrc.json"
 type: "code"
-community: "Community 124"
+community: "Community 75"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_124
+  - community/Community_75
 ---
 
 # categories
@@ -16,4 +16,4 @@ tags:
 - [[correctness]] - `contains` [EXTRACTED]
 - [[suspicious]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_124
+#graphify/code #graphify/EXTRACTED #community/Community_75

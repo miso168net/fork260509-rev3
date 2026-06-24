@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 86
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[SFC顺序]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[Vue 写法规范]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets ( 相当于在`created`钩子中执行)_1]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (async function init() {)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (const count = ref(0);)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (const exposed = {)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (const router = useRouter();)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (defineEmits();)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (definePropsProps();)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (import { ref } from 'vue';)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (interface Emits {)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (interface Props {)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[codets (watchEffect(() = {)_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[script_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
-- [[vue_4]] - document - fork260509-soybean-admin-docs/src/zh/standard/vue.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_58]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_49]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_48]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_18]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_43]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_9]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_28]] - document - base-web/CHANGELOG.md
+- [[v0.10.0(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.9...v0.10.0) (2023-05-31)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,3 +25,9 @@ members: 15
 TABLE source_file, type FROM #community/Community_86
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v0.10.0(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.9...v0.10.0) (2023-05-31)]] - degree 10, connects to 1 community

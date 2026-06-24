@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "Community 83"
+community: "Community 30"
 location: "L162"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Community_30
 ---
 
 # getValue()
@@ -15,4 +15,4 @@ tags:
 - [[antd.ts]] - `contains` [EXTRACTED]
 - [[getAntDPaletteColorByIndex()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Community_30

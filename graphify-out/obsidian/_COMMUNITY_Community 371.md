@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 371
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[basicGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
-- [[customGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
-- [[data.ts_4]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
-- [[linkGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
+- [[vertical-menu.vue]] - code - base-web/src/layouts/modules/global-menu/modules/vertical-menu.vue
 
 ## Live Query (requires Dataview plugin)
 

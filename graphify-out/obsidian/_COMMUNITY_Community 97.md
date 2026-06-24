@@ -1,27 +1,22 @@
 ---
 type: community
-members: 14
+members: 9
 ---
 
 # Community 97
 
-**Members:** 14 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[Elegant Router (automated file-based routing)]] - concept - fork260509-soybean-admin-docs/src/jp/guide/intro.md
-- [[File-based Route Structure Conventions]] - rationale - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[Principle_1]] - document - fork260509-soybean-admin-docs/src/guide/router/cache.md
-- [[Route Caching]] - document - fork260509-soybean-admin-docs/src/guide/router/cache.md
-- [[Route Caching Guide]] - document - fork260509-soybean-admin-docs/src/guide/router/cache.md
-- [[Route Component String Convention]] - concept - fork260509-soybean-admin-docs/src/jp/guide/router/component.md
-- [[Route Creation Guide]] - document - fork260509-soybean-admin-docs/src/guide/router/create.md
-- [[Route Naming Rules]] - rationale - fork260509-soybean-admin-docs/src/guide/router/create.md
-- [[Route Structure Guide]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[Two-level Route Transformation]] - rationale - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[Usage_1]] - document - fork260509-soybean-admin-docs/src/guide/router/cache.md
-- [[cache_3]] - document - fork260509-soybean-admin-docs/src/guide/router/cache.md
-- [[codejs ({)]] - document - fork260509-soybean-admin-docs/src/guide/router/cache.md
-- [[路由缓存 (keep-alive + meta.keepAlive)]] - rationale - fork260509-soybean-admin-docs/src/zh/guide/router/cache.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_66]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_14]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_57]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_56]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_26]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_51]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_9]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_36]] - document - base-web/CHANGELOG.md
+- [[v0.9.3(httpsgithub.comhonghuangdcsoybean-admincompareold-version...v0.9.3) (2022-03-12)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -31,15 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 2 edges to [[_COMMUNITY_Community 89]]
-- 2 edges to [[_COMMUNITY_Community 134]]
-- 1 edge to [[_COMMUNITY_Community 90]]
-- 1 edge to [[_COMMUNITY_EcosystemAwesome Docs]]
-- 1 edge to [[_COMMUNITY_Community 176]]
-- 1 edge to [[_COMMUNITY_CI Workflows & Issue Templates]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[Route Caching]] - degree 9, connects to 2 communities
-- [[Elegant Router (automated file-based routing)]] - degree 6, connects to 2 communities
-- [[Route Naming Rules]] - degree 5, connects to 2 communities
-- [[File-based Route Structure Conventions]] - degree 5, connects to 2 communities
+- [[v0.9.3(httpsgithub.comhonghuangdcsoybean-admincompareold-version...v0.9.3) (2022-03-12)]] - degree 9, connects to 1 community

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/recommend.ts"
 type: "code"
-community: "Community 103"
+community: "Community 30"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_103
+  - community/Community_30
 ---
 
 # getRecommendedColorPaletteFamily()
@@ -19,4 +19,4 @@ tags:
 - [[isValidColor()]] - `calls` [EXTRACTED]
 - [[recommend.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_103
+#graphify/code #graphify/EXTRACTED #community/Community_30

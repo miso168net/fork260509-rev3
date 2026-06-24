@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 151
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[codeblock1 (const isHttpProxy = import.meta.env.DEV && import.meta.env.V)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[codets_3]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[codets_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[codets ({)_26]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[proxy_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[代理]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[原理_3]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[开启关闭]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[概述_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
-- [[注意_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/proxy.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_8]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂务_3]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_6]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_4]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🤖 CI_6]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.6(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.5...v1.2.6) (2024-06-21)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,3 +22,9 @@ members: 10
 TABLE source_file, type FROM #community/Community_151
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.2.6(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.5...v1.2.6) (2024-06-21)_1]] - degree 7, connects to 1 community

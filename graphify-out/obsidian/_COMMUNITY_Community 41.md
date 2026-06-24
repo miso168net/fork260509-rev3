@@ -1,37 +1,30 @@
 ---
 type: community
-members: 24
+members: 17
 ---
 
 # Community 41
 
-**Members:** 24 nodes
+**Members:** 17 nodes
 
 ## Members
-- [[App.vue]] - code - base-web/src/App.vue
-- [[app.ts_1]] - code - base-web/src/plugins/app.ts
-- [[assets.ts]] - code - base-web/src/plugins/assets.ts
-- [[components.ts]] - code - base-web/src/plugins/components.ts
-- [[dayjs.ts_1]] - code - base-web/src/plugins/dayjs.ts
-- [[getHtmlBuildTime()]] - code - base-web/src/plugins/app.ts
-- [[getLocale()]] - code - base-web/src/locales/index.ts
-- [[iconify.ts]] - code - base-web/src/plugins/iconify.ts
-- [[index.ts_24]] - code - base-web/src/plugins/index.ts
-- [[main.ts]] - code - base-web/src/main.ts
-- [[naiveDateLocale]] - code - base-web/src/App.vue
-- [[naiveLocale]] - code - base-web/src/App.vue
-- [[nprogress.ts]] - code - base-web/src/plugins/nprogress.ts
-- [[setDayjsLocale()]] - code - base-web/src/locales/dayjs.ts
-- [[setupApp()]] - code - base-web/src/main.ts
-- [[setupAppErrorHandle()]] - code - base-web/src/plugins/app.ts
-- [[setupAppVersionNotification()]] - code - base-web/src/plugins/app.ts
-- [[setupDayjs()]] - code - base-web/src/plugins/dayjs.ts
-- [[setupI18n()]] - code - base-web/src/locales/index.ts
-- [[setupIconifyOffline()]] - code - base-web/src/plugins/iconify.ts
-- [[setupNProgress()]] - code - base-web/src/plugins/nprogress.ts
-- [[setupProNaiveComponents()]] - code - base-web/src/plugins/components.ts
-- [[setupRouter()]] - code - base-web/src/router/index.ts
-- [[setupStore()]] - code - base-web/src/store/index.ts
+- [[allowSyntheticDefaultImports_3]] - code - base-web/packages/color/tsconfig.json
+- [[compilerOptions_3]] - code - base-web/packages/color/tsconfig.json
+- [[esModuleInterop_3]] - code - base-web/packages/color/tsconfig.json
+- [[exclude_3]] - code - base-web/packages/color/tsconfig.json
+- [[forceConsistentCasingInFileNames_3]] - code - base-web/packages/color/tsconfig.json
+- [[include_3]] - code - base-web/packages/color/tsconfig.json
+- [[jsx_3]] - code - base-web/packages/color/tsconfig.json
+- [[lib_3]] - code - base-web/packages/color/tsconfig.json
+- [[module_3]] - code - base-web/packages/color/tsconfig.json
+- [[moduleResolution_4]] - code - base-web/packages/color/tsconfig.json
+- [[noUnusedLocals_3]] - code - base-web/packages/color/tsconfig.json
+- [[resolveJsonModule_3]] - code - base-web/packages/color/tsconfig.json
+- [[strict_3]] - code - base-web/packages/color/tsconfig.json
+- [[strictNullChecks_3]] - code - base-web/packages/color/tsconfig.json
+- [[target_3]] - code - base-web/packages/color/tsconfig.json
+- [[tsconfig.json_3]] - code - base-web/packages/color/tsconfig.json
+- [[types_3]] - code - base-web/packages/color/tsconfig.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -39,17 +32,3 @@ members: 24
 TABLE source_file, type FROM #community/Community_41
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 7 edges to [[_COMMUNITY_Auth & Locale Service]]
-- 3 edges to [[_COMMUNITY_Theme Palette & UnoCSS]]
-- 2 edges to [[_COMMUNITY_Community 53]]
-- 2 edges to [[_COMMUNITY_Router & Menu Store]]
-- 1 edge to [[_COMMUNITY_Community 61]]
-
-## Top bridge nodes
-- [[main.ts]] - degree 17, connects to 4 communities
-- [[setupRouter()]] - degree 4, connects to 2 communities
-- [[setupApp()]] - degree 11, connects to 1 community
-- [[index.ts_24]] - degree 7, connects to 1 community
-- [[app.ts_1]] - degree 5, connects to 1 community

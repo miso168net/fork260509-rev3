@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user_role.rs"
 type: "code"
-community: "Community 327"
+community: "Community 215"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_327
+  - community/Community_215
 ---
 
 # sys_user_role.rs
@@ -17,4 +17,4 @@ tags:
 - [[roles_for_users()]] - `contains` [EXTRACTED]
 - [[roles_of_user()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_327
+#graphify/code #graphify/EXTRACTED #community/Community_215

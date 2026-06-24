@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/antv/index.vue"
 type: "code"
-community: "Community 427"
+community: "Community 286"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_427
+  - community/Community_286
 ---
 
 # nodeData
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_37]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_427
+#graphify/code #graphify/EXTRACTED #community/Community_286

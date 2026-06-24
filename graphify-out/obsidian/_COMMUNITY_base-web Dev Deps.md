@@ -49,7 +49,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 42]]
+- 1 edge to [[_COMMUNITY_Community 31]]
 
 ## Top bridge nodes
 - [[devDependencies]] - degree 32, connects to 1 community

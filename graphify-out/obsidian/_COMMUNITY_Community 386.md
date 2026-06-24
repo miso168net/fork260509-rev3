@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 386
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[buildTime]] - code - base-web/vite.config.ts
-- [[vite.config.ts]] - code - base-web/vite.config.ts
-- [[viteEnv]] - code - base-web/vite.config.ts
+- [[watermark-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/general/modules/watermark-settings.vue
 
 ## Live Query (requires Dataview plugin)
 

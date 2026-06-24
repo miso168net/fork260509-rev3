@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 360
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[@soybeanjscli_2]] - document - fork260509-soybean-admin-docs/src/recommend/soybean-cli.md
-- [[Introduce_2]] - document - fork260509-soybean-admin-docs/src/recommend/soybean-cli.md
-- [[Related links_1]] - document - fork260509-soybean-admin-docs/src/recommend/soybean-cli.md
-- [[soybean-cli_1]] - document - fork260509-soybean-admin-docs/src/recommend/soybean-cli.md
+- [[map-sdk.ts]] - code - base-web/src/constants/map-sdk.ts
 
 ## Live Query (requires Dataview plugin)
 

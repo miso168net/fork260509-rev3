@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/assets.ts"
 type: "code"
-community: "Community 41"
+community: "Auth & Locale Service"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Auth__Locale_Service
 ---
 
 # assets.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[main.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

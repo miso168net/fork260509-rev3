@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 152
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[1. type RouteKey_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[2. type RoutePath_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[3. type RouteMeta_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[codetypescript ( 路由元信息接口)]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[codetypescript ({)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[intro_16]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[注意_3]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[系统路由]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[自动生成]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
-- [[配置属性]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/intro.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_3]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug 修复_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 新功能_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.3.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.1...v1.3.2) (2024-07-30)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,3 +22,9 @@ members: 10
 TABLE source_file, type FROM #community/Community_152
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.3.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.1...v1.3.2) (2024-07-30)_1]] - degree 7, connects to 1 community

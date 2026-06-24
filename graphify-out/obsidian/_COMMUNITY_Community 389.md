@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 389
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[intro_7]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/intro.md
-- [[コマンドライン]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/intro.md
-- [[概述]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/intro.md
+- [[header-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/modules/header-settings.vue
 
 ## Live Query (requires Dataview plugin)
 

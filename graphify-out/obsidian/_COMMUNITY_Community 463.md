@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 463
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[extensions.json_1]] - code - fork260509-soybean-admin-docs/.vscode/extensions.json
-- [[recommendations_1]] - code - fork260509-soybean-admin-docs/.vscode/extensions.json
+- [[ActiveModel_8]] - code - rust-api/entity/src/sys_user.rs
 
 ## Live Query (requires Dataview plugin)
 

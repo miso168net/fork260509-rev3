@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 410
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_1]] - code - rust-api/entity/src/sys_access_log.rs
-- [[Relation_1]] - code - rust-api/entity/src/sys_access_log.rs
-- [[sys_access_log.rs]] - code - rust-api/entity/src/sys_access_log.rs
+- [[card-data.vue]] - code - base-web/src/views/home/modules/card-data.vue
 
 ## Live Query (requires Dataview plugin)
 

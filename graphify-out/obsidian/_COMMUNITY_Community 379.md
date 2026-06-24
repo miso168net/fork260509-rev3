@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 379
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[LoginToken]] - code - base-web/src/typings/api/auth.d.ts
-- [[UserInfo]] - code - base-web/src/typings/api/auth.d.ts
-- [[auth.d.ts]] - code - base-web/src/typings/api/auth.d.ts
+- [[config-operation.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/config-operation.vue
 
 ## Live Query (requires Dataview plugin)
 

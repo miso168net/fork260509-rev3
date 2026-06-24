@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 454
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Tutorial]] - document - fork260509-soybean-admin-docs/src/tutorial/index.md
-- [[index_13]] - document - fork260509-soybean-admin-docs/src/tutorial/index.md
+- [[ActiveModel]] - code - rust-api/entity/src/casbin_rule.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,14 @@
 ---
 type: community
-members: 5
+members: 1
 ---
 
 # Community 330
 
-**Members:** 5 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Git Hooks_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/git-hooks.md
-- [[codeshell (git add .)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/git-hooks.md
-- [[git-hooks_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/git-hooks.md
-- [[写在前面]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/git-hooks.md
-- [[移除git-hooks]] - document - fork260509-soybean-admin-docs/src/zh/guide/cli/git-hooks.md
+- [[eslint.config.js]] - code - base-web/eslint.config.js
 
 ## Live Query (requires Dataview plugin)
 

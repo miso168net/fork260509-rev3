@@ -1,30 +1,27 @@
 ---
 type: community
-members: 17
+members: 14
 ---
 
 # Community 63
 
-**Members:** 17 nodes
+**Members:** 14 nodes
 
 ## Members
-- [[allowSyntheticDefaultImports_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[compilerOptions_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[esModuleInterop_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[exclude_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[forceConsistentCasingInFileNames_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[include_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[jsx_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[lib_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[module_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[moduleResolution_5]] - code - base-web/packages/hooks/tsconfig.json
-- [[noUnusedLocals_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[resolveJsonModule_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[strict_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[strictNullChecks_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[target_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[tsconfig.json_4]] - code - base-web/packages/hooks/tsconfig.json
-- [[types_4]] - code - base-web/packages/hooks/tsconfig.json
+- [[AntFlowConfig]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
+- [[CustomEdgeData]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
+- [[CustomGraphData]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
+- [[CustomNodeData]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
+- [[NodeStatus]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
+- [[NodeStatusConfig]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
+- [[antv-g6-flow.ts]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
+- [[data.ts]] - code - base-web/src/views/plugin/charts/antv/data.ts
+- [[getFlowData()]] - code - base-web/src/views/plugin/charts/antv/data.ts
+- [[getNodeIcon()]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
+- [[getNodeStatusTag()]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
+- [[nodeStatus]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
+- [[status.ts]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
+- [[types.ts]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,3 +29,9 @@ members: 17
 TABLE source_file, type FROM #community/Community_63
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 3 edges to [[_COMMUNITY_Router & Menu Store]]
+
+## Top bridge nodes
+- [[antv-g6-flow.ts]] - degree 11, connects to 1 community

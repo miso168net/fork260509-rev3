@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 95
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[JavaScript 和 TypeScript 调试]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[Vue 调试]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[codebash ( 安装 tsx)]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[codebash (npm i -g tsx)_2]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[codejson ({)_19]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[codejson ({)_20]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[codets ( vite.config.ts)_2]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[codets (function transformToKebabCase(input string) string {)_2]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[debug_2]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[tsx - TypeScript 执行利器]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[tsx 调试步骤]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[断点类型]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[概述_4]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[调试]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
-- [[调试步骤]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/debug.md
+- [[.connect()]] - code - rust-api/server/src/redis.rs
+- [[.del()]] - code - rust-api/server/src/redis.rs
+- [[.get()]] - code - rust-api/server/src/redis.rs
+- [[.publish()]] - code - rust-api/server/src/redis.rs
+- [[.revoked_at_of()]] - code - rust-api/server/src/redis.rs
+- [[.set_ex()]] - code - rust-api/server/src/redis.rs
+- [[.set_revoked()]] - code - rust-api/server/src/redis.rs
+- [[.subscribe_pubsub()]] - code - rust-api/server/src/redis.rs
+- [[RedisHandle]] - code - rust-api/server/src/redis.rs
+- [[redis.rs]] - code - rust-api/server/src/redis.rs
 
 ## Live Query (requires Dataview plugin)
 

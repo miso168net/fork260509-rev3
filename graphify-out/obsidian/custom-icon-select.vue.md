@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/components/custom/custom-icon-select.vue"
 type: "code"
-community: "Community 326"
+community: "Community 214"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_326
+  - community/Community_214
 ---
 
 # custom-icon-select.vue
@@ -17,4 +17,4 @@ tags:
 - [[searchValue]] - `contains` [EXTRACTED]
 - [[selectedIcon]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_326
+#graphify/code #graphify/EXTRACTED #community/Community_214

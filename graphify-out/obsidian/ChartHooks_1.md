@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/vchart.ts"
 type: "code"
-community: "Community 72"
+community: "Router & Menu Store"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/Router__Menu_Store
 ---
 
 # ChartHooks
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[vchart.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

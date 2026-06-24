@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/main.ts"
 type: "code"
-community: "Community 41"
+community: "Auth & Locale Service"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Auth__Locale_Service
 ---
 
 # main.ts
@@ -30,4 +30,4 @@ tags:
 - [[setupRouter()]] - `imports` [EXTRACTED]
 - [[setupStore()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

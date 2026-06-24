@@ -1,17 +1,17 @@
 ---
-source_file: "fork260509-soybean-admin-docs/src/guide/cli/command.md"
-type: "document"
-community: "Community 388"
-location: "L1"
+source_file: "base-web/packages/scripts/src/index.ts"
+type: "code"
+community: "@sa/scripts CLI"
+location: "L8"
 tags:
-  - graphify/document
+  - graphify/code
   - graphify/EXTRACTED
-  - community/Community_388
+  - community/sa/scripts_CLI
 ---
 
-# command.md
+# Command
 
 ## Connections
-- [[Command Line]] - `contains` [EXTRACTED]
+- [[index.ts_13]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_388
+#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI

@@ -1,18 +1,14 @@
 ---
 type: community
-members: 5
+members: 1
 ---
 
 # Community 333
 
-**Members:** 5 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[cache_5]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/cache.md
-- [[codets ({)_27]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/cache.md
-- [[原理_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/cache.md
-- [[用法]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/cache.md
-- [[路由缓存]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/cache.md
+- [[mock.ts]] - code - base-web/packages/alova/src/mock.ts
 
 ## Live Query (requires Dataview plugin)
 

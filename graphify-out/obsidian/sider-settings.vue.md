@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/layout/modules/sider-settings.vue"
 type: "code"
-community: "Community 404"
+community: "Community 248"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_404
+  - community/Community_248
 ---
 
 # sider-settings.vue
@@ -15,4 +15,4 @@ tags:
 - [[isHybridLayoutMode]] - `contains` [EXTRACTED]
 - [[isMixLayoutMode]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_404
+#graphify/code #graphify/EXTRACTED #community/Community_248

@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 233
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_9]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂项_3]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 错误修复]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_7]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🔥 性能]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🛠 优化_5]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.2.5(httpsgithub.comsoybeanjssoybean-admincomparev1.2.4...v1.2.5) (2024-06-15)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[Map]] - code - base-web/src/typings/package.d.ts
+- [[Point]] - code - base-web/src/typings/package.d.ts
+- [[Window_1]] - code - base-web/src/typings/package.d.ts
+- [[package.d.ts]] - code - base-web/src/typings/package.d.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,9 +19,3 @@ members: 7
 TABLE source_file, type FROM #community/Community_233
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
-
-## Top bridge nodes
-- [[v1.2.5(httpsgithub.comsoybeanjssoybean-admincomparev1.2.4...v1.2.5) (2024-06-15)_1]] - degree 7, connects to 1 community

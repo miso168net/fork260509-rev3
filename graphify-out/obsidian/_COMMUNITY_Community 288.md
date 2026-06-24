@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 288
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[Icon Rendering Principle]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[Local svg icon rendering principle]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[Note]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[Related configuration]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[System Icons]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[intro_2]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
+- [[Api.SystemManage.UpdateSystemSettingReq DTO]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
+- [[fetchUpdateSystemSetting (update single setting value)]] - code - base-web/src/service/api/rev3-system-settings.ts
 
 ## Live Query (requires Dataview plugin)
 

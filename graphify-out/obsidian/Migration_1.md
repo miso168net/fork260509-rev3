@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/m002_rev2_seeds.rs"
 type: "code"
-community: "Community 364"
+community: "Community 238"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_364
+  - community/Community_238
 ---
 
 # Migration
@@ -16,4 +16,4 @@ tags:
 - [[.up()_1]] - `method` [EXTRACTED]
 - [[m002_rev2_seeds.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_364
+#graphify/code #graphify/EXTRACTED #community/Community_238

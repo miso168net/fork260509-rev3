@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 422
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_4]] - code - rust-api/entity/src/sys_menu.rs
-- [[Relation_4]] - code - rust-api/entity/src/sys_menu.rs
-- [[sys_menu.rs]] - code - rust-api/entity/src/sys_menu.rs
+- [[index.vue_35]] - code - base-web/src/views/multi-menu/second_child_home/index.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,24 +1,21 @@
 ---
 type: community
-members: 11
+members: 8
 ---
 
 # Community 131
 
-**Members:** 11 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[Code Check]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[Code Formatting with ESLint and Prettier]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[Formatting Check]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[codebash (pnpm i lint-staged -D)_1]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[codebash (pnpm i simple-git-hooks -D)_1]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[codejson ({)_9]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[codejson ({)_10]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[codejson ({)_11]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[lint-staged_1]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[lint_3]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
-- [[simple-git-hooks_3]] - document - fork260509-soybean-admin-docs/src/standard/lint.md
+- [[getLayout()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[getLayoutAndPage()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[getPage()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[getPathParamFromRoutePath()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[getRoutePathByRouteName()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[getRoutePathWithParam()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[shared.ts_9]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[transformLayoutAndPageToComponent()]] - code - base-web/src/views/manage/menu/modules/shared.ts
 
 ## Live Query (requires Dataview plugin)
 

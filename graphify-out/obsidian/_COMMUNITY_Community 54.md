@@ -1,32 +1,29 @@
 ---
 type: community
-members: 19
+members: 16
 ---
 
 # Community 54
 
-**Members:** 19 nodes
+**Members:** 16 nodes
 
 ## Members
-- [[.add_policies()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.add_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.clear_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.is_filtered()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.load_filtered_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.load_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.new()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.normalize_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.remove_filtered_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.remove_policies()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.remove_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.save_policy()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[.transform_policy_line()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[SeaOrmAdapter]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[SeaOrmAdapterC]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[adapter.rs]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[round_trip_live()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[test_adapter()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
-- [[to_owned()]] - code - rust-api/sea-orm-adapter/src/adapter.rs
+- [[EffectivePolicy]] - code - rust-api/server/src/auth/session.rs
+- [[RotationDecision]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_active_is_rotate()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_none_is_not_found()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_revoked_is_reuse()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_unknown_status_is_reuse()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_used_at_exact_grace_boundary_is_reuse()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_used_beyond_grace_is_reuse()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_used_with_null_used_at_is_reuse_fail_closed()]] - code - rust-api/server/src/auth/session.rs
+- [[decide_rotation_used_within_grace_is_benign()]] - code - rust-api/server/src/auth/session.rs
+- [[resolve_policy_explicit_off_overrides_global()]] - code - rust-api/server/src/auth/session.rs
+- [[resolve_policy_explicit_on_overrides_global()]] - code - rust-api/server/src/auth/session.rs
+- [[resolve_policy_inherit_follows_global_false()]] - code - rust-api/server/src/auth/session.rs
+- [[resolve_policy_inherit_follows_global_true()]] - code - rust-api/server/src/auth/session.rs
+- [[resolve_policy_unknown_follows_global()]] - code - rust-api/server/src/auth/session.rs
+- [[session.rs]] - code - rust-api/server/src/auth/session.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,3 +31,9 @@ members: 19
 TABLE source_file, type FROM #community/Community_54
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 58]]
+
+## Top bridge nodes
+- [[session.rs]] - degree 17, connects to 1 community

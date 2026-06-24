@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 416
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_9]] - code - rust-api/entity/src/sys_user_role.rs
-- [[Relation_9]] - code - rust-api/entity/src/sys_user_role.rs
-- [[sys_user_role.rs]] - code - rust-api/entity/src/sys_user_role.rs
+- [[role-operate-drawer.vue]] - code - base-web/src/views/manage/role/modules/role-operate-drawer.vue
 
 ## Live Query (requires Dataview plugin)
 

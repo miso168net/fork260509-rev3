@@ -1,27 +1,22 @@
 ---
 type: community
-members: 14
+members: 9
 ---
 
 # Community 99
 
-**Members:** 14 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[codejson ({)_3]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[codets ()_5]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[codets (!-- ある.tsファイル --)]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[codets (import { useRouterPush } from '@hookscommonrouter';)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[codevue (!-- ある.vueファイル --)]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[push_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[redirectFromLogin_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[routerPushByKey_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[toLogin_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[toggleLoginModule_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[ルート遷移]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[介绍]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[使用方法_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
-- [[詳細説明]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/push.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_67]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_58]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_57]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_27]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_52]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_37]] - document - base-web/CHANGELOG.md
+- [[v0.10.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.2...old-version) (23-06-07)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,3 +24,9 @@ members: 14
 TABLE source_file, type FROM #community/Community_99
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v0.10.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.2...old-version) (23-06-07)]] - degree 9, connects to 1 community

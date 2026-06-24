@@ -1,21 +1,19 @@
 ---
 type: community
-members: 8
+members: 6
 ---
 
 # Community 188
 
-**Members:** 8 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_38]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_32]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_32]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_8]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_28]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_18]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_21]] - document - base-web/CHANGELOG.md
-- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)]] - document - base-web/CHANGELOG.md
+- [[enableTime]] - code - base-web/src/theme/preset/dark.json
+- [[enableUserName]] - code - base-web/src/theme/preset/dark.json
+- [[text]] - code - base-web/src/theme/preset/dark.json
+- [[timeFormat]] - code - base-web/src/theme/preset/dark.json
+- [[visible_10]] - code - base-web/src/theme/preset/dark.json
+- [[watermark]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,7 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+- 1 edge to [[_COMMUNITY_Community 68]]
 
 ## Top bridge nodes
-- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)]] - degree 8, connects to 1 community
+- [[watermark]] - degree 6, connects to 1 community

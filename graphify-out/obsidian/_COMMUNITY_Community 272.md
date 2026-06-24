@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 272
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[cache_2]] - code - base-web/src/theme/preset/default.json
-- [[closeTabByMiddleClick_2]] - code - base-web/src/theme/preset/default.json
-- [[height_6]] - code - base-web/src/theme/preset/default.json
-- [[mode_4]] - code - base-web/src/theme/preset/default.json
-- [[tab_4]] - code - base-web/src/theme/preset/default.json
-- [[visible_14]] - code - base-web/src/theme/preset/default.json
+- [[Model_5]] - code - rust-api/entity/src/sys_operation_log.rs
+- [[Relation_5]] - code - rust-api/entity/src/sys_operation_log.rs
+- [[sys_operation_log.rs]] - code - rust-api/entity/src/sys_operation_log.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_272
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 108]]
-
-## Top bridge nodes
-- [[tab_4]] - degree 6, connects to 1 community

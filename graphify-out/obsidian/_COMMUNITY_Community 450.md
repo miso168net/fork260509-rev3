@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 450
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[tools]] - document - fork260509-soybean-admin-docs/src/jp/standard/tools.md
-- [[工具规范]] - document - fork260509-soybean-admin-docs/src/jp/standard/tools.md
+- [[reset-pwd.vue]] - code - base-web/src/views/_builtin/login/modules/reset-pwd.vue
 
 ## Live Query (requires Dataview plugin)
 

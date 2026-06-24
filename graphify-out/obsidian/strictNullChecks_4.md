@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/tsconfig.json"
 type: "code"
-community: "Community 63"
+community: "Community 45"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/Community_45
 ---
 
 # strictNullChecks
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/Community_45

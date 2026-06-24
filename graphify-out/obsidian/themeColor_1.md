@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/naive-ui.d.ts"
 type: "code"
-community: "Community 109"
+community: "Community 70"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_109
+  - community/Community_70
 ---
 
 # ThemeColor
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[naive-ui.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_109
+#graphify/code #graphify/EXTRACTED #community/Community_70

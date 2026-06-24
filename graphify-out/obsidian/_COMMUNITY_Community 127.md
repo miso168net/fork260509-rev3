@@ -1,24 +1,21 @@
 ---
 type: community
-members: 11
+members: 8
 ---
 
 # Community 127
 
-**Members:** 11 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[activePath]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[getActivePathIndex()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[handleClose()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[handleDown()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[handleEnter()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[handleSearch]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[handleUp()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[keyword]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[registerShortcut()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[search()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
-- [[search-modal.vue]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🎨 样式]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug 修复]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 新功能]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.3.5(httpsgithub.comsoybeanjssoybean-admincomparev1.3.4...v1.3.5) (2024-09-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,3 +23,9 @@ members: 11
 TABLE source_file, type FROM #community/Community_127
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.3.5(httpsgithub.comsoybeanjssoybean-admincomparev1.3.4...v1.3.5) (2024-09-07)_1]] - degree 8, connects to 1 community

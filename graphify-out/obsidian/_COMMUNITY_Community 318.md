@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 318
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[fixed_1]] - code - base-web/src/theme/preset/default.json
-- [[footer_2]] - code - base-web/src/theme/preset/default.json
-- [[height_7]] - code - base-web/src/theme/preset/default.json
-- [[right_1]] - code - base-web/src/theme/preset/default.json
-- [[visible_15]] - code - base-web/src/theme/preset/default.json
+- [[&str]] - code - rust-api/xdb/src/ip_value.rs
+- [[.to_u32_ip()_1]] - code - rust-api/xdb/src/ip_value.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +17,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_318
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 108]]
-
-## Top bridge nodes
-- [[footer_2]] - degree 5, connects to 1 community

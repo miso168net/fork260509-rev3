@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 435
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[getLocalIcons()]] - code - base-web/src/utils/icon.ts
-- [[icon.ts_1]] - code - base-web/src/utils/icon.ts
+- [[ConfigProvider.vue]] - code - base-web/src/views/pro-naive/ConfigProvider.vue
 
 ## Live Query (requires Dataview plugin)
 

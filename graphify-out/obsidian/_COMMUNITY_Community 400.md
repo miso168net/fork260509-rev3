@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 400
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Home HeaderBanner Module (dashboard greeting banner)]] - code - base-web/src/views/home/modules/header-banner.vue
-- [[Soybean Mascot Avatar Image]] - image - base-web/src/assets/imgs/soybean.jpg
-- [[SoybeanAvatar Component (custom avatar component)]] - code - base-web/src/components/custom/soybean-avatar.vue
+- [[network-toggle-request.vue]] - code - base-web/src/views/alova/scenes/modules/network-toggle-request.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 361
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[create_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/create.md
-- [[命令创建]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/create.md
-- [[手动创建]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/create.md
-- [[路由创建]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/create.md
+- [[index.vue_5]] - code - base-web/src/layouts/modules/global-breadcrumb/index.vue
 
 ## Live Query (requires Dataview plugin)
 

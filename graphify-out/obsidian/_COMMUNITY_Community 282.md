@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 282
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[codets (export function setupLoading() {)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/loading.md
-- [[codetypescript (async function setupApp() {)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/loading.md
-- [[loading_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/loading.md
-- [[样式_1]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/loading.md
-- [[渲染原理]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/loading.md
-- [[系统加载]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/loading.md
+- [[Model_10]] - code - rust-api/entity/src/system_settings.rs
+- [[Relation_10]] - code - rust-api/entity/src/system_settings.rs
+- [[system_settings.rs]] - code - rust-api/entity/src/system_settings.rs
 
 ## Live Query (requires Dataview plugin)
 

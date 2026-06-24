@@ -1,27 +1,22 @@
 ---
 type: community
-members: 14
+members: 9
 ---
 
 # Community 101
 
-**Members:** 14 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[unnamed_7]] - code - base-web/packages/utils/package.json
-- [[@typescrypto-js]] - code - base-web/packages/utils/package.json
-- [[colord_1]] - code - base-web/packages/utils/package.json
-- [[crypto-js]] - code - base-web/packages/utils/package.json
-- [[dependencies_6]] - code - base-web/packages/utils/package.json
-- [[devDependencies_4]] - code - base-web/packages/utils/package.json
-- [[exports_7]] - code - base-web/packages/utils/package.json
-- [[klona]] - code - base-web/packages/utils/package.json
-- [[localforage]] - code - base-web/packages/utils/package.json
-- [[name_9]] - code - base-web/packages/utils/package.json
-- [[nanoid]] - code - base-web/packages/utils/package.json
-- [[package.json_8]] - code - base-web/packages/utils/package.json
-- [[typesVersions_7]] - code - base-web/packages/utils/package.json
-- [[version_9]] - code - base-web/packages/utils/package.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_72]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_16]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_63]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_60]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_30]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_54]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_12]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_41]] - document - base-web/CHANGELOG.md
+- [[v0.1.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.0.5...v0.1.1) (2022-01-20)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -29,3 +24,9 @@ members: 14
 TABLE source_file, type FROM #community/Community_101
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v0.1.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.0.5...v0.1.1) (2022-01-20)]] - degree 9, connects to 1 community

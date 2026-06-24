@@ -1,29 +1,25 @@
 ---
 type: community
-members: 16
+members: 12
 ---
 
 # Community 72
 
-**Members:** 16 nodes
+**Members:** 12 nodes
 
 ## Members
-- [[ChartHooks]] - code - base-web/src/hooks/common/echarts.ts
-- [[ChartHooks_1]] - code - base-web/src/hooks/common/vchart.ts
-- [[ECOption]] - code - base-web/src/hooks/common/echarts.ts
-- [[barOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[data.ts_1]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[echarts.ts]] - code - base-web/src/hooks/common/echarts.ts
-- [[gaugeOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[getPictorialBarOption()]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[getScatterOption()]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[lineOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[pieOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[radarOptions]] - code - base-web/src/views/plugin/charts/echarts/data.ts
-- [[useEcharts()]] - code - base-web/src/hooks/common/echarts.ts
-- [[useThemeStore]] - code - base-web/src/store/modules/theme/index.ts
-- [[useVChart()]] - code - base-web/src/hooks/common/vchart.ts
-- [[vchart.ts]] - code - base-web/src/hooks/common/vchart.ts
+- [[.as_str()_1]] - code - rust-api/server/src/model/audit.rs
+- [[AuditEvent]] - code - rust-api/server/src/model/audit.rs
+- [[AuditMeta]] - code - rust-api/server/src/model/audit.rs
+- [[AuditOperation]] - code - rust-api/server/src/model/audit.rs
+- [[AuditOperator]] - code - rust-api/server/src/model/audit.rs
+- [[AuditSerialize]] - code - rust-api/server/src/model/audit.rs
+- [[audit.rs]] - code - rust-api/server/src/model/audit.rs
+- [[with_roles()]] - code - rust-api/server/src/model/audit.rs
+- [[with_roles_empty_yields_empty_array_not_null()]] - code - rust-api/server/src/model/audit.rs
+- [[with_roles_non_object_passthrough()]] - code - rust-api/server/src/model/audit.rs
+- [[with_roles_preserves_existing_keys()]] - code - rust-api/server/src/model/audit.rs
+- [[with_roles_sorts_role_codes()]] - code - rust-api/server/src/model/audit.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -33,12 +29,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Theme Palette & UnoCSS]]
-- 3 edges to [[_COMMUNITY_Router & Menu Store]]
-- 2 edges to [[_COMMUNITY_Community 84]]
-- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
+- 1 edge to [[_COMMUNITY_MenuRoute Facade (rust)]]
 
 ## Top bridge nodes
-- [[useThemeStore]] - degree 11, connects to 4 communities
-- [[echarts.ts]] - degree 6, connects to 1 community
-- [[vchart.ts]] - degree 4, connects to 1 community
+- [[audit.rs]] - degree 11, connects to 1 community

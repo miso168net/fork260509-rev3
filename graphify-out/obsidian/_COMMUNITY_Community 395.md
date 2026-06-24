@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 395
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[guard_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/guard.md
-- [[路由守卫]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/guard.md
-- [[路由守卫流程图]] - document - fork260509-soybean-admin-docs/src/zh/guide/router/guard.md
+- [[index.vue_20]] - code - base-web/src/views/alova/request/index.vue
 
 ## Live Query (requires Dataview plugin)
 

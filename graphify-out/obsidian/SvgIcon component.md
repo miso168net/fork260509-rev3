@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/components/custom/svg-icon.vue"
 type: "code"
-community: "Community 391"
+community: "Community 260"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_391
+  - community/Community_260
 ---
 
 # SvgIcon component
@@ -14,4 +14,4 @@ tags:
 - [[defaultLocalIcon missing-icon fallback]] - `conceptually_related_to` [EXTRACTED]
 - [[no-icon.svg (broken heart fallback icon)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_391
+#graphify/code #graphify/EXTRACTED #community/Community_260

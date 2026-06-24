@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/route.d.ts"
 type: "code"
-community: "Community 352"
+community: "Community 232"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_352
+  - community/Community_232
 ---
 
 # route.d.ts
@@ -16,4 +16,4 @@ tags:
 - [[MenuRoute]] - `contains` [EXTRACTED]
 - [[UserRoute]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_352
+#graphify/code #graphify/EXTRACTED #community/Community_232

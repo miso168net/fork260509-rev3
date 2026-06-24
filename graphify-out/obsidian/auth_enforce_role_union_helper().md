@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Community 66"
+community: "Community 48"
 location: "L400"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_66
+  - community/Community_48
 ---
 
 # auth_enforce_role_union_helper()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[enforce.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_66
+#graphify/code #graphify/EXTRACTED #community/Community_48

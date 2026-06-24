@@ -1,19 +1,20 @@
 ---
-source_file: "fork260509-soybean-admin-docs/src/recommend/alova.md"
-type: "document"
-community: "Community 359"
-location: "L1"
+source_file: "base-web/src/service-alova/request/index.ts"
+type: "code"
+community: "Alova Request Layer"
+location: "L28"
 tags:
-  - graphify/document
+  - graphify/code
   - graphify/EXTRACTED
-  - community/Community_359
+  - community/Alova_Request_Layer
 ---
 
-# Alova
+# alova
 
 ## Connections
-- [[Introduce_1]] - `contains` [EXTRACTED]
-- [[Related links]] - `contains` [EXTRACTED]
-- [[alova_3]] - `contains` [EXTRACTED]
+- [[auth.ts_2]] - `imports` [EXTRACTED]
+- [[index.ts_31]] - `contains` [EXTRACTED]
+- [[route.ts_2]] - `imports` [EXTRACTED]
+- [[system-manage.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_359
+#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer

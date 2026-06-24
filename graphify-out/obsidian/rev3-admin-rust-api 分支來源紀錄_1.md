@@ -1,11 +1,11 @@
 ---
 source_file: "rust-api/x_fork.branch-origin.md"
 type: "document"
-community: "Community 336"
+community: "Community 218"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_336
+  - community/Community_218
 ---
 
 # rev3-admin-rust-api 分支來源紀錄
@@ -14,4 +14,4 @@ tags:
 - [[miso168netfork260509-rev2-anew-rust-api repo]] - `references` [EXTRACTED]
 - [[rev3-admin-rust-api branch]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_336
+#graphify/document #graphify/EXTRACTED #community/Community_218

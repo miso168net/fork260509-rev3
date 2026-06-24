@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/iconify.ts"
 type: "code"
-community: "Community 41"
+community: "Auth & Locale Service"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/Auth__Locale_Service
 ---
 
 # setupIconifyOffline()
@@ -16,4 +16,4 @@ tags:
 - [[main.ts]] - `imports` [EXTRACTED]
 - [[setupApp()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

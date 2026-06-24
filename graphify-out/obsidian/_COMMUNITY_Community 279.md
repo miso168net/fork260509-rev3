@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 279
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[codebash (git cherry-pick --continue)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/sync.md
-- [[codebash (git cherry-pick commit id)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/sync.md
-- [[codebash (git fetch otherOrigin)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/sync.md
-- [[codebash (git remote add otherOrigin httpsgithub.comsoybeanjssoyb)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/sync.md
-- [[sync_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/sync.md
-- [[コードの同期]] - document - fork260509-soybean-admin-docs/src/jp/guide/sync.md
+- [[Model_11]] - code - rust-api/sea-orm-adapter/src/entity.rs
+- [[Relation_11]] - code - rust-api/sea-orm-adapter/src/entity.rs
+- [[entity.rs]] - code - rust-api/sea-orm-adapter/src/entity.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,20 +1,16 @@
 ---
 type: community
-members: 7
+members: 3
 ---
 
 # Community 244
 
-**Members:** 7 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[.down()_2]] - code - rust-api/migration/src/m003_user_role_fk.rs
-- [[.up()_2]] - code - rust-api/migration/src/m003_user_role_fk.rs
-- [[Migration_2]] - code - rust-api/migration/src/m003_user_role_fk.rs
-- [[SysRole_1]] - code - rust-api/migration/src/m003_user_role_fk.rs
-- [[SysUser_1]] - code - rust-api/migration/src/m003_user_role_fk.rs
-- [[SysUserRole_1]] - code - rust-api/migration/src/m003_user_role_fk.rs
-- [[m003_user_role_fk.rs]] - code - rust-api/migration/src/m003_user_role_fk.rs
+- [[PkgJson]] - code - base-web/src/views/about/index.vue
+- [[index.vue_19]] - code - base-web/src/views/about/index.vue
+- [[transformVersionData()]] - code - base-web/src/views/about/index.vue
 
 ## Live Query (requires Dataview plugin)
 

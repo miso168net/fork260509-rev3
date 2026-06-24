@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/index.ts"
 type: "code"
-community: "Common Hooks & Store"
+community: "Axios Request Factory"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Hooks__Store
+  - community/Axios_Request_Factory
 ---
 
 # index.ts
@@ -26,4 +26,4 @@ tags:
 - [[use-svg-icon-render.ts]] - `imports_from` [EXTRACTED]
 - [[use-table.ts]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store
+#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory

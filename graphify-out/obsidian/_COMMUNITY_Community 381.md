@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 381
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[ImportMeta]] - code - base-web/src/typings/vite-env.d.ts
-- [[RouterHistoryMode]] - code - base-web/src/typings/vite-env.d.ts
-- [[vite-env.d.ts]] - code - base-web/src/typings/vite-env.d.ts
+- [[theme-color.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/appearance/modules/theme-color.vue
 
 ## Live Query (requires Dataview plugin)
 

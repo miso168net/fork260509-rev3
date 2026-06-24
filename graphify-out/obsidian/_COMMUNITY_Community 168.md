@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 168
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[breadcrumb_1]] - code - base-web/src/theme/preset/dark.json
-- [[globalSearch_1]] - code - base-web/src/theme/preset/dark.json
-- [[header_2]] - code - base-web/src/theme/preset/dark.json
-- [[height_2]] - code - base-web/src/theme/preset/dark.json
-- [[multilingual_1]] - code - base-web/src/theme/preset/dark.json
-- [[showIcon]] - code - base-web/src/theme/preset/dark.json
-- [[visible_5]] - code - base-web/src/theme/preset/dark.json
-- [[visible_6]] - code - base-web/src/theme/preset/dark.json
-- [[visible_7]] - code - base-web/src/theme/preset/dark.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_41]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_34]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_35]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_30]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_21]] - document - base-web/CHANGELOG.md
+- [[v1.0.9(httpsgithub.comsoybeanjssoybean-admincomparev1.0.8...v1.0.9) (2024-05-05)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,7 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 107]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[header_2]] - degree 5, connects to 1 community
+- [[v1.0.9(httpsgithub.comsoybeanjssoybean-admincomparev1.0.8...v1.0.9) (2024-05-05)]] - degree 6, connects to 1 community

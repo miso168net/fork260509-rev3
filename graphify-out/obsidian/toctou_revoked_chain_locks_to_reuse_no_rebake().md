@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_token.rs"
 type: "code"
-community: "Community 177"
+community: "Community 112"
 location: "L151"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_177
+  - community/Community_112
 ---
 
 # toctou_revoked_chain_locks_to_reuse_no_rebake()
@@ -19,4 +19,4 @@ tags:
 - [[revoke_chain()]] - `calls` [EXTRACTED]
 - [[sys_token.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_177
+#graphify/code #graphify/EXTRACTED #community/Community_112

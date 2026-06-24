@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/x_fork.branch-origin.md"
 type: "document"
-community: "Community 275"
+community: "Community 184"
 location: "L23"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_275
+  - community/Community_184
 ---
 
 # 如何比對 rev3-admin-base-web 與來源的差異
@@ -15,4 +15,4 @@ tags:
 - [[codebash (git log example..rev3-admin-base-web --oneline     只在 rev3-)]] - `contains` [EXTRACTED]
 - [[rev3-admin-base-web 分支來源紀錄]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_275
+#graphify/document #graphify/EXTRACTED #community/Community_184

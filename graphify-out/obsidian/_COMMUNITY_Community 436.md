@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 436
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[$t()]] - code - base-web/src/views/function/multi-tab/index.vue
-- [[index.vue_25]] - code - base-web/src/views/function/multi-tab/index.vue
+- [[index.vue_55]] - code - base-web/src/views/pro-naive/form/basic/index.vue
 
 ## Live Query (requires Dataview plugin)
 

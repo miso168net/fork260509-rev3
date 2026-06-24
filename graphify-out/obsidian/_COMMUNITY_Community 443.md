@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 443
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[extensions.json]] - code - base-web/.vscode/extensions.json
-- [[recommendations]] - code - base-web/.vscode/extensions.json
+- [[index.vue_62]] - code - base-web/src/views/_builtin/404/index.vue
 
 ## Live Query (requires Dataview plugin)
 

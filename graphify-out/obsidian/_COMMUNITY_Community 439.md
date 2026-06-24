@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 439
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index.vue_32]] - code - base-web/src/views/manage/role/index.vue
-- [[label_1]] - code - base-web/src/views/manage/role/index.vue
+- [[index.vue_58]] - code - base-web/src/views/pro-naive/table/remote/index.vue
 
 ## Live Query (requires Dataview plugin)
 

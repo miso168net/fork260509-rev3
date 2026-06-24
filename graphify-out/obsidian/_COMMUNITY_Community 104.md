@@ -1,26 +1,22 @@
 ---
 type: community
-members: 13
+members: 9
 ---
 
 # Community 104
 
-**Members:** 13 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[unnamed_1]] - code - base-web/packages/axios/package.json
-- [[@sautils_2]] - code - base-web/packages/axios/package.json
-- [[@typesqs]] - code - base-web/packages/axios/package.json
-- [[axios]] - code - base-web/packages/axios/package.json
-- [[axios-retry]] - code - base-web/packages/axios/package.json
-- [[dependencies_2]] - code - base-web/packages/axios/package.json
-- [[devDependencies_1]] - code - base-web/packages/axios/package.json
-- [[exports_1]] - code - base-web/packages/axios/package.json
-- [[name_3]] - code - base-web/packages/axios/package.json
-- [[package.json_2]] - code - base-web/packages/axios/package.json
-- [[qs]] - code - base-web/packages/axios/package.json
-- [[typesVersions_1]] - code - base-web/packages/axios/package.json
-- [[version_3]] - code - base-web/packages/axios/package.json
+- [[.oxfmtrc.json]] - code - base-web/.oxfmtrc.json
+- [[arrowParens]] - code - base-web/.oxfmtrc.json
+- [[experimentalSortPackageJson]] - code - base-web/.oxfmtrc.json
+- [[htmlWhitespaceSensitivity]] - code - base-web/.oxfmtrc.json
+- [[ignorePatterns]] - code - base-web/.oxfmtrc.json
+- [[printWidth]] - code - base-web/.oxfmtrc.json
+- [[singleQuote]] - code - base-web/.oxfmtrc.json
+- [[sortScripts]] - code - base-web/.oxfmtrc.json
+- [[trailingComma]] - code - base-web/.oxfmtrc.json
 
 ## Live Query (requires Dataview plugin)
 

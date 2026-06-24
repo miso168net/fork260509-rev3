@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 200
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[codets (export const overrideThemeSettings PartialApp.Theme.ThemeS)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[codets (export const themeSettings App.Theme.ThemeSetting = {)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[config_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[主题配置]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[初始化配置]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[环境说明]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[类型定义]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
-- [[配置覆盖更新]] - document - fork260509-soybean-admin-docs/src/zh/guide/theme/config.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_48]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_39]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_40]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_14]] - document - base-web/CHANGELOG.md
+- [[v1.0.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.1...v1.0.2) (2024-04-08)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_200
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.0.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.1...v1.0.2) (2024-04-08)]] - degree 5, connects to 1 community

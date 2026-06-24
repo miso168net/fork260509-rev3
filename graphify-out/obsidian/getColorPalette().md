@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/index.ts"
 type: "code"
-community: "Community 83"
+community: "Theme Palette & UnoCSS"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Theme_Palette__UnoCSS
 ---
 
 # getColorPalette()
@@ -22,4 +22,4 @@ tags:
 - [[setupLoading()]] - `calls` [EXTRACTED]
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS

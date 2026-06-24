@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/tables/vtable/index.vue"
 type: "code"
-community: "Community 385"
+community: "Community 257"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_385
+  - community/Community_257
 ---
 
 # index
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_52]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_385
+#graphify/code #graphify/EXTRACTED #community/Community_257

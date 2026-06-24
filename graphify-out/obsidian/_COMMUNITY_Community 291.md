@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 291
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[Background]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
-- [[Capabilities]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
-- [[Introduction_4]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
-- [[PageSpy_1]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
-- [[Related Links_1]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
-- [[page-spy_1]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
+- [[logout()]] - code - base-web/src/layouts/modules/global-header/components/user-avatar.vue
+- [[user-avatar.vue]] - code - base-web/src/layouts/modules/global-header/components/user-avatar.vue
 
 ## Live Query (requires Dataview plugin)
 

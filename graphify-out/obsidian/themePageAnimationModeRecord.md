@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/app.ts"
 type: "code"
-community: "Community 38"
+community: "Community 69"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Community_69
 ---
 
 # themePageAnimationModeRecord
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[app.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Community_69

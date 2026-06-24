@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 146
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[.audit_json()_3]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[build_update_active_model()_3]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[entitysystem_settingsModel]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[find_all()]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[find_by_key()]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[sample_model()]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[system_settings.rs_2]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[system_settings_update_oplog_inet_roundtrip()]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[update_by_key()]] - code - rust-api/server/src/model/facade/system_settings.rs
-- [[update_by_key_active_model_sets_value_and_audit_cols()]] - code - rust-api/server/src/model/facade/system_settings.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations]] - document - base-web/CHANGELOG.md
+- [[v2.1.1(httpsgithub.comsoybeanjssoybean-admincomparev2.1.0...v2.1.1) (2026-05-13)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,7 +24,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 40]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[update_by_key()]] - degree 5, connects to 1 community
+- [[v2.1.1(httpsgithub.comsoybeanjssoybean-admincomparev2.1.0...v2.1.1) (2026-05-13)]] - degree 7, connects to 1 community

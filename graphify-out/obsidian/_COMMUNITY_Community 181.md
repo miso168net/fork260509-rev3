@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 181
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[About page (base-websrcviewsaboutindex.vue)]] - code - base-web/src/views/about/index.vue
-- [[TS Debugger launch configuration]] - concept - fork260509-soybean-admin-docs/src/assets/VSCode调试指南01.png
-- [[VS Code Debugging Tutorial (debug.md)]] - document - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[VS Code breakpoint debugging workflow (4 annotated steps)]] - rationale - fork260509-soybean-admin-docs/src/assets/VSCode调试指南01.png
-- [[VSCode Debugging Guide 02 (screenshot)]] - image - fork260509-soybean-admin-docs/src/assets/VSCode调试指南02.png
-- [[VSCode Debugging Guide 03 (breakpoint hit in about page onMounted)]] - image - fork260509-soybean-admin-docs/src/assets/VSCode调试指南03.png
-- [[VSCode 调试指南 Screenshot 01 — launch TS Debugger]] - image - fork260509-soybean-admin-docs/src/assets/VSCode调试指南01.png
-- [[Vue Debugger launch configuration (launch.json, type chrome, url localhost9527)]] - concept - fork260509-soybean-admin-docs/src/tutorial/debug.md
-- [[debug.ts sample script (transformToKebabCase + start)]] - concept - fork260509-soybean-admin-docs/src/assets/VSCode调试指南01.png
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_6]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂务_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;💅 重构_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_5]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,3 +21,9 @@ members: 9
 TABLE source_file, type FROM #community/Community_181
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)_1]] - degree 6, connects to 1 community

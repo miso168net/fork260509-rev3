@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 175
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[unnamed_3]] - code - base-web/packages/hooks/package.json
-- [[@saaxios_1]] - code - base-web/packages/hooks/package.json
-- [[@sautils_4]] - code - base-web/packages/hooks/package.json
-- [[dependencies_4]] - code - base-web/packages/hooks/package.json
-- [[exports_3]] - code - base-web/packages/hooks/package.json
-- [[name_5]] - code - base-web/packages/hooks/package.json
-- [[package.json_4]] - code - base-web/packages/hooks/package.json
-- [[typesVersions_3]] - code - base-web/packages/hooks/package.json
-- [[version_5]] - code - base-web/packages/hooks/package.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_6]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_6]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_5]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_3]] - document - base-web/CHANGELOG.md
+- [[v2.0.0-beta.2(httpsgithub.comsoybeanjssoybean-admincomparev2.0.0-beta.1...v2.0.0-beta.2) (2025-10-27)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,3 +21,9 @@ members: 9
 TABLE source_file, type FROM #community/Community_175
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v2.0.0-beta.2(httpsgithub.comsoybeanjssoybean-admincomparev2.0.0-beta.1...v2.0.0-beta.2) (2025-10-27)]] - degree 6, connects to 1 community

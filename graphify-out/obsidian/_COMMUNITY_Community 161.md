@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 161
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_63]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles_12]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_54]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_53]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_23]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_48]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📦 Build_6]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_33]] - document - base-web/CHANGELOG.md
-- [[v0.9.5(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.4...v0.9.5) (2022-06-07)]] - document - base-web/CHANGELOG.md
+- [[CommonRecord]] - code - base-web/src/typings/api/common.d.ts
+- [[CommonSearchParams]] - code - base-web/src/typings/api/common.d.ts
+- [[EnableStatus]] - code - base-web/src/typings/api/common.d.ts
+- [[PaginatingCommonParams]] - code - base-web/src/typings/api/common.d.ts
+- [[PaginatingQueryRecord]] - code - base-web/src/typings/api/common.d.ts
+- [[common.d.ts_1]] - code - base-web/src/typings/api/common.d.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,9 +21,3 @@ members: 9
 TABLE source_file, type FROM #community/Community_161
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v0.9.5(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.4...v0.9.5) (2022-06-07)]] - degree 9, connects to 1 community

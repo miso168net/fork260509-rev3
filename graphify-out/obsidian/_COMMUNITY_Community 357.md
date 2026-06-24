@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 357
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Alova]] - document - fork260509-soybean-admin-docs/src/jp/recommend/alova.md
-- [[alova_2]] - document - fork260509-soybean-admin-docs/src/jp/recommend/alova.md
-- [[紹介_1]] - document - fork260509-soybean-admin-docs/src/jp/recommend/alova.md
-- [[関連リンク]] - document - fork260509-soybean-admin-docs/src/jp/recommend/alova.md
+- [[look-forward.vue]] - code - base-web/src/components/custom/look-forward.vue
 
 ## Live Query (requires Dataview plugin)
 

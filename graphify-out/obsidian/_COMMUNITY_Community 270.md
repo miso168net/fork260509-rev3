@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 270
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[cache_1]] - code - base-web/src/theme/preset/dark.json
-- [[closeTabByMiddleClick_1]] - code - base-web/src/theme/preset/dark.json
-- [[height_3]] - code - base-web/src/theme/preset/dark.json
-- [[mode_2]] - code - base-web/src/theme/preset/dark.json
-- [[tab_2]] - code - base-web/src/theme/preset/dark.json
-- [[visible_8]] - code - base-web/src/theme/preset/dark.json
+- [[Model_2]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
+- [[Relation_2]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
+- [[sys_casbin_policy_archive.rs]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_270
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 107]]
-
-## Top bridge nodes
-- [[tab_2]] - degree 6, connects to 1 community

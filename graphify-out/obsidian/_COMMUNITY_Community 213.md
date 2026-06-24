@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 213
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[About Environment]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[Initial Config]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[Override Update]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[Theme Config]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[Typedef]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[codets (export const overrideThemeSettings PartialApp.Theme.ThemeS)]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[codets (export const themeSettings App.Theme.ThemeSetting = {)]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
-- [[config]] - document - fork260509-soybean-admin-docs/src/guide/theme/config.md
+- [[404 Not Found page view (_builtin404)]] - code - base-web/src/views/_builtin/404/index.vue
+- [[ExceptionBase component]] - code - base-web/src/components/common/exception-base.vue
+- [[no-permission.svg (403 Illustration)]] - image - base-web/src/assets/svg-icon/no-permission.svg
+- [[not-found.svg (404 Page Not Found Illustration)]] - image - base-web/src/assets/svg-icon/not-found.svg
+- [[service-error.svg (500 Illustration)]] - image - base-web/src/assets/svg-icon/service-error.svg
 
 ## Live Query (requires Dataview plugin)
 

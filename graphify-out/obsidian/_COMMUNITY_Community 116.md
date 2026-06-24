@@ -1,25 +1,21 @@
 ---
 type: community
-members: 12
+members: 8
 ---
 
 # Community 116
 
-**Members:** 12 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[Git]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[Git の初期設定]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[Git の基本コマンド]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (git add .)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (git cherry-pick commit_id)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (git commit --amend --date=2022-07-29T2345)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (git config --global user.name Soybean)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (git pull origin main)_2]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (git rebase -i HEAD~n   n为要合并commit的个数)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (ssh-keygen -t rsa -C soybeanjs@outlook.com)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[codebash (ssh-keygen)]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
-- [[git]] - document - fork260509-soybean-admin-docs/src/jp/tutorial/git.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_38]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_32]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_32]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_8]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_28]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_18]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_21]] - document - base-web/CHANGELOG.md
+- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,3 +23,9 @@ members: 12
 TABLE source_file, type FROM #community/Community_116
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)]] - degree 8, connects to 1 community

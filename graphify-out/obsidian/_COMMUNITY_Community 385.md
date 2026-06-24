@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 385
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[color()]] - code - base-web/src/views/plugin/tables/vtable/index.vue
-- [[index]] - code - base-web/src/views/plugin/tables/vtable/index.vue
-- [[index.vue_52]] - code - base-web/src/views/plugin/tables/vtable/index.vue
+- [[global-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/general/modules/global-settings.vue
 
 ## Live Query (requires Dataview plugin)
 

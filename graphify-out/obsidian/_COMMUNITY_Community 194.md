@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 194
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_20]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂项_8]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_5]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;💅 重构_2]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_15]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🚀 功能_3]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🛠 优化_10]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_42]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_36]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_1]] - document - base-web/CHANGELOG.md
+- [[v1.0.8(httpsgithub.comsoybeanjssoybean-admincomparev1.0.7...v1.0.8) (2024-04-27)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,7 +22,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)_1]] - degree 8, connects to 1 community
+- [[v1.0.8(httpsgithub.comsoybeanjssoybean-admincomparev1.0.7...v1.0.8) (2024-04-27)]] - degree 5, connects to 1 community

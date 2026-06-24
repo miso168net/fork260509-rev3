@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 292
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[Backend Integration]] - document - fork260509-soybean-admin-docs/src/guide/request/backend.md
-- [[Configure other codes related to backend requests]] - document - fork260509-soybean-admin-docs/src/guide/request/backend.md
-- [[Configure the success code of backend request]] - document - fork260509-soybean-admin-docs/src/guide/request/backend.md
-- [[Confirm the data structure type of the backend return result]] - document - fork260509-soybean-admin-docs/src/guide/request/backend.md
-- [[backend]] - document - fork260509-soybean-admin-docs/src/guide/request/backend.md
-- [[codets (type ResponseT = unknown = {)]] - document - fork260509-soybean-admin-docs/src/guide/request/backend.md
+- [[unnamed_9]] - code - base-web/src/layouts/modules/global-tab/index.vue
+- [[index.vue_13]] - code - base-web/src/layouts/modules/global-tab/index.vue
 
 ## Live Query (requires Dataview plugin)
 

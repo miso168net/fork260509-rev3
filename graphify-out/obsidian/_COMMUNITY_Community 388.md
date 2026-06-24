@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 388
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Command Line]] - document - fork260509-soybean-admin-docs/src/guide/cli/command.md
-- [[Overview]] - document - fork260509-soybean-admin-docs/src/guide/cli/command.md
-- [[command]] - document - fork260509-soybean-admin-docs/src/guide/cli/command.md
+- [[content-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/modules/content-settings.vue
 
 ## Live Query (requires Dataview plugin)
 

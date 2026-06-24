@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 402
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[CreativityBanner (home module component, creativity-banner.vue)]] - code - base-web/src/views/home/modules/creativity-banner.vue
-- [[Home page view (viewshomeindex.vue)]] - code - base-web/src/views/home/index.vue
-- [[banner.svg — flat-style hero illustration a person presenting a large analyt…]] - image - base-web/src/assets/svg-icon/banner.svg
+- [[index.vue_22]] - code - base-web/src/views/function/hide-child/one/index.vue
 
 ## Live Query (requires Dataview plugin)
 

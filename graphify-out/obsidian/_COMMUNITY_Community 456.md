@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 456
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index_18]] - document - fork260509-soybean-admin-docs/src/zh/recommend/index.md
-- [[前言_2]] - document - fork260509-soybean-admin-docs/src/zh/recommend/index.md
+- [[ActiveModel_1]] - code - rust-api/entity/src/sys_access_log.rs
 
 ## Live Query (requires Dataview plugin)
 

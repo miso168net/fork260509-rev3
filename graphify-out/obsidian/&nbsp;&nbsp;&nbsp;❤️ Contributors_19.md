@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Community 310"
+community: "base-web CHANGELOG"
 location: "L873"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_310
+  - community/base-web_CHANGELOG
 ---
 
 # &nbsp;&nbsp;&nbsp;❤️ Contributors
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.3.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.3...v1.3.4) (2024-08-01)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_310
+#graphify/document #graphify/EXTRACTED #community/base-web_CHANGELOG

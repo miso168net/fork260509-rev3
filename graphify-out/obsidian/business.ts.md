@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "Community 38"
+community: "Community 60"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/Community_60
 ---
 
 # business.ts
@@ -23,4 +23,4 @@ tags:
 - [[userGenderOptions]] - `contains` [EXTRACTED]
 - [[userGenderRecord]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/Community_60

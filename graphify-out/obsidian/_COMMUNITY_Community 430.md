@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 430
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[count-to.vue]] - code - base-web/src/components/custom/count-to.vue
-- [[start()]] - code - base-web/src/components/custom/count-to.vue
+- [[index.vue_49]] - code - base-web/src/views/plugin/pinyin/index.vue
 
 ## Live Query (requires Dataview plugin)
 

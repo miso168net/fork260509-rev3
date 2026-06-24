@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 293
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[backend_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/backend.md
-- [[codets (type ResponseT = unknown = {)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/backend.md
-- [[对接后端]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/backend.md
-- [[确认后端的返回结果的数据结构类型]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/backend.md
-- [[配置其他后端请求相关的 code]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/backend.md
-- [[配置后端请求成功的 code]] - document - fork260509-soybean-admin-docs/src/zh/guide/request/backend.md
+- [[Window]] - code - base-web/src/typings/global.d.ts
+- [[global.d.ts]] - code - base-web/src/typings/global.d.ts
 
 ## Live Query (requires Dataview plugin)
 

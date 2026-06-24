@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Community 345"
+community: "Community 219"
 location: "L1018"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_345
+  - community/Community_219
 ---
 
 # &nbsp;&nbsp;&nbsp;🏡 Chore
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.2.7(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.6...v1.2.7) (2024-07-12)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_345
+#graphify/document #graphify/EXTRACTED #community/Community_219

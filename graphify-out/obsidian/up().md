@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/migration.rs"
 type: "code"
-community: "Community 366"
+community: "Community 241"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_366
+  - community/Community_241
 ---
 
 # up()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[migration.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_366
+#graphify/code #graphify/EXTRACTED #community/Community_241

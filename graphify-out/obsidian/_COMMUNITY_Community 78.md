@@ -1,29 +1,24 @@
 ---
 type: community
-members: 16
+members: 11
 ---
 
 # Community 78
 
-**Members:** 16 nodes
+**Members:** 11 nodes
 
 ## Members
-- [[codebash ( 包含图标组件数据)]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codehtml (div)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codehtml (icon-local-custom-icon class=text-24px text-red )_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codehtml (svg-icon icon=mdi-emoticon )_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codehtml (svg-icon local-icon=custom-icon style=font-size24px;col)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codehtml (svg-icon v-for=icon in icons key=icon icon=icon cla)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codetypescript (import AntDesign from '@iconifyjsonjsonant-design.json';)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codetypescript (import { addCollection } from '@iconifyvue';)_2]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codetypescript (import { useSvgIcon } from '@hookscommonicon';)_1]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[codevue (script lang=ts setup)_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[usage_4]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[一、静态用法：直接写在 template 中]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[三、通过 render 函数渲染 适用于 NaiveUI 的图标渲染]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[二、动态渲染 根据图标名称渲染对应图标]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[四、离线加载：添加指定的离线 iconify 图标集合]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
-- [[图标教程]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/usage.md
+- [[activePath]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[getActivePathIndex()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[handleClose()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[handleDown()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[handleEnter()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[handleSearch]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[handleUp()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[keyword]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[registerShortcut()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[search()]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
+- [[search-modal.vue]] - code - base-web/src/layouts/modules/global-search/components/search-modal.vue
 
 ## Live Query (requires Dataview plugin)
 

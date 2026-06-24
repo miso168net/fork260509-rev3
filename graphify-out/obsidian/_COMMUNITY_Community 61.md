@@ -1,30 +1,27 @@
 ---
 type: community
-members: 17
+members: 14
 ---
 
 # Community 61
 
-**Members:** 17 nodes
+**Members:** 14 nodes
 
 ## Members
-- [[SoybeanAdmin 路由跳转流程图 (Router Guard Flow Diagram)]] - image - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[createDocumentTitleGuard()]] - code - base-web/src/router/guard/title.ts
-- [[createProgressGuard()]] - code - base-web/src/router/guard/progress.ts
-- [[createRouteGuard()]] - code - base-web/src/router/guard/route.ts
-- [[createRouterGuard()]] - code - base-web/src/router/guard/index.ts
-- [[index.ts_26]] - code - base-web/src/router/guard/index.ts
-- [[not-found 捕获]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[progress.ts]] - code - base-web/src/router/guard/progress.ts
-- [[title.ts]] - code - base-web/src/router/guard/title.ts
-- [[固定路由 (Constant Routes — routes that do not require login)]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[权限路由 (Auth Routes — routes that require login permission)]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[权限路由守卫 (Permission Route Guard — 开始→守卫→结束 lane)]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[路由初始化]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[路由跳转_1]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[路由跳转触发]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[跳转403路由]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
-- [[跳转登录路由 (Redirect to Login — next = login when not logged in)]] - concept - fork260509-soybean-admin-docs/src/assets/router-guard-flow.png
+- [[.constructor()]] - code - base-web/packages/utils/src/crypto.ts
+- [[.decrypt()]] - code - base-web/packages/utils/src/crypto.ts
+- [[.encrypt()]] - code - base-web/packages/utils/src/crypto.ts
+- [[Crypto]] - code - base-web/packages/utils/src/crypto.ts
+- [[LocalForage]] - code - base-web/packages/utils/src/storage.ts
+- [[LocalforageDriver]] - code - base-web/packages/utils/src/storage.ts
+- [[StorageType]] - code - base-web/packages/utils/src/storage.ts
+- [[createLocalforage()]] - code - base-web/packages/utils/src/storage.ts
+- [[createStorage()]] - code - base-web/packages/utils/src/storage.ts
+- [[crypto.ts]] - code - base-web/packages/utils/src/crypto.ts
+- [[index.ts_20]] - code - base-web/packages/utils/src/index.ts
+- [[klona.ts]] - code - base-web/packages/utils/src/klona.ts
+- [[nanoid.ts]] - code - base-web/packages/utils/src/nanoid.ts
+- [[storage.ts]] - code - base-web/packages/utils/src/storage.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,14 +31,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 43]]
-- 2 edges to [[_COMMUNITY_Router & Menu Store]]
-- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
-- 1 edge to [[_COMMUNITY_Community 41]]
+- 3 edges to [[_COMMUNITY_Auth & Locale Service]]
+- 1 edge to [[_COMMUNITY_Axios Request Factory]]
+- 1 edge to [[_COMMUNITY_Axios Request Factory]]
+- 1 edge to [[_COMMUNITY_Router & Menu Store]]
 
 ## Top bridge nodes
-- [[index.ts_26]] - degree 8, connects to 2 communities
-- [[createRouterGuard()]] - degree 7, connects to 2 communities
-- [[路由初始化]] - degree 9, connects to 1 community
-- [[createRouteGuard()]] - degree 5, connects to 1 community
-- [[title.ts]] - degree 3, connects to 1 community
+- [[index.ts_20]] - degree 8, connects to 4 communities
+- [[createStorage()]] - degree 2, connects to 1 community
+- [[createLocalforage()]] - degree 2, connects to 1 community

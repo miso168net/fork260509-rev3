@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 377
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[layout_3]] - code - base-web/src/theme/preset/default.json
-- [[mode_3]] - code - base-web/src/theme/preset/default.json
-- [[scrollMode_1]] - code - base-web/src/theme/preset/default.json
+- [[layout-mode-card.vue]] - code - base-web/src/layouts/modules/theme-drawer/components/layout-mode-card.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -18,9 +16,3 @@ members: 3
 TABLE source_file, type FROM #community/Community_377
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 108]]
-
-## Top bridge nodes
-- [[layout_3]] - degree 3, connects to 1 community

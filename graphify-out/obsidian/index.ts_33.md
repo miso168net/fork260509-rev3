@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/app/index.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "Router & Menu Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/Router__Menu_Store
 ---
 
 # index.ts
@@ -32,4 +32,4 @@ tags:
 - [[useTabStore]] - `imports` [EXTRACTED]
 - [[useThemeStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

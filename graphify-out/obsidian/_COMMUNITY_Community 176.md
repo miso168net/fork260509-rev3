@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 176
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[Routing Component Guide]] - document - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[layout.base]] - concept - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[layout.base$view.RouteKey Mixed Component]] - concept - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[layout.base$view.RouteKey 混合组件（单级路由）]] - concept - fork260509-soybean-admin-docs/src/zh/guide/router/component.md
-- [[layout.blank]] - concept - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[view.RouteKey Page Component]] - concept - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[一级路由（单级路由）结构]] - concept - fork260509-soybean-admin-docs/src/zh/guide/router/structure.md
-- [[下划线开头文件夹的聚合路由]] - concept - fork260509-soybean-admin-docs/src/zh/guide/router/structure.md
-- [[二级路由结构]] - concept - fork260509-soybean-admin-docs/src/zh/guide/router/structure.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_19]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项_7]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复错误_3]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_14]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 功能_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.1.1(httpsgithub.comsoybeanjssoybean-admincomparev1.1.0...v1.1.1) (2024-05-20)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,9 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 90]]
-- 1 edge to [[_COMMUNITY_Community 97]]
+- 1 edge to [[_COMMUNITY_Community 66]]
 
 ## Top bridge nodes
-- [[view.RouteKey Page Component]] - degree 4, connects to 1 community
-- [[layout.base$view.RouteKey Mixed Component]] - degree 4, connects to 1 community
+- [[v1.1.1(httpsgithub.comsoybeanjssoybean-admincomparev1.1.0...v1.1.1) (2024-05-20)_1]] - degree 6, connects to 1 community

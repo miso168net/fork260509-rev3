@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 326
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[custom-icon-select.vue]] - code - base-web/src/components/custom/custom-icon-select.vue
-- [[handleChange()]] - code - base-web/src/components/custom/custom-icon-select.vue
-- [[iconsList]] - code - base-web/src/components/custom/custom-icon-select.vue
-- [[searchValue]] - code - base-web/src/components/custom/custom-icon-select.vue
-- [[selectedIcon]] - code - base-web/src/components/custom/custom-icon-select.vue
+- [[Feather Icons icon set]] - concept - base-web/src/assets/svg-icon/wind.svg
+- [[Wind Icon (svg-icon asset)]] - image - base-web/src/assets/svg-icon/wind.svg
 
 ## Live Query (requires Dataview plugin)
 

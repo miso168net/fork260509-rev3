@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 201
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[editor.codeActionsOnSave_1]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[editor.formatOnSave_1]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[eslint.validate_1]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[prettier.enable]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[settings.json_1]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[source.fixAll.eslint_1]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[source.organizeImports]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
-- [[unocss.root_1]] - code - fork260509-soybean-admin-docs/.vscode/settings.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_31]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_27]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_26]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_23]] - document - base-web/CHANGELOG.md
+- [[v1.2.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.0...v1.2.1) (2024-06-07)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_201
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.2.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.0...v1.2.1) (2024-06-07)]] - degree 5, connects to 1 community

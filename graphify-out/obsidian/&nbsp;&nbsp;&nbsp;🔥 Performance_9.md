@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Community 140"
+community: "Community 86"
 location: "L2348"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_140
+  - community/Community_86
 ---
 
 # &nbsp;&nbsp;&nbsp;🔥 Performance
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v0.10.0(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.9...v0.10.0) (2023-05-31)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_140
+#graphify/document #graphify/EXTRACTED #community/Community_86

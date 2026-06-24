@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 470
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index_8]] - document - fork260509-soybean-admin-docs/src/jp/recommend/index.md
-- [[前書き]] - document - fork260509-soybean-admin-docs/src/jp/recommend/index.md
+- [[mod.rs_2]] - code - rust-api/server/src/model/facade/mod.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 215
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[AntDesignVue のテーマ設定]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[NaiveUI のテーマ設定]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[codets ()_6]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[codets ()_7]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[codevue (template)_10]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[codevue (template)_11]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[ui_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
-- [[コンポーネントライブラリのテーマ]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/ui.md
+- [[count_users_by_role_id()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[replace_roles_in_txn()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[roles_for_users()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[roles_of_user()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[sys_user_role.rs_1]] - code - rust-api/server/src/model/facade/sys_user_role.rs
 
 ## Live Query (requires Dataview plugin)
 

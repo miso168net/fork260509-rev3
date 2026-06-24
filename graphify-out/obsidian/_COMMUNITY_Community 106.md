@@ -1,26 +1,22 @@
 ---
 type: community
-members: 13
+members: 9
 ---
 
 # Community 106
 
-**Members:** 13 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[unnamed]] - code - base-web/packages/alova/package.json
-- [[.client]] - code - base-web/packages/alova/package.json
-- [[.fetch]] - code - base-web/packages/alova/package.json
-- [[.mock]] - code - base-web/packages/alova/package.json
-- [[@alovamock]] - code - base-web/packages/alova/package.json
-- [[@sautils_1]] - code - base-web/packages/alova/package.json
-- [[alova]] - code - base-web/packages/alova/package.json
-- [[dependencies_1]] - code - base-web/packages/alova/package.json
-- [[exports]] - code - base-web/packages/alova/package.json
-- [[name_2]] - code - base-web/packages/alova/package.json
-- [[package.json_1]] - code - base-web/packages/alova/package.json
-- [[typesVersions]] - code - base-web/packages/alova/package.json
-- [[version_2]] - code - base-web/packages/alova/package.json
+- [[base-text_2]] - code - base-web/src/theme/preset/default.json
+- [[colors_4]] - code - base-web/src/theme/preset/default.json
+- [[colors_5]] - code - base-web/src/theme/preset/default.json
+- [[container_2]] - code - base-web/src/theme/preset/default.json
+- [[dark_3]] - code - base-web/src/theme/preset/default.json
+- [[inverted_5]] - code - base-web/src/theme/preset/default.json
+- [[layout_4]] - code - base-web/src/theme/preset/default.json
+- [[light_3]] - code - base-web/src/theme/preset/default.json
+- [[tokens_2]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,3 +24,11 @@ members: 13
 TABLE source_file, type FROM #community/Community_106
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 67]]
+- 1 edge to [[_COMMUNITY_Community 231]]
+
+## Top bridge nodes
+- [[tokens_2]] - degree 3, connects to 1 community
+- [[light_3]] - degree 3, connects to 1 community

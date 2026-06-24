@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 459
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[TS 写法规范_1]] - document - fork260509-soybean-admin-docs/src/zh/standard/ts.md
-- [[ts_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/ts.md
+- [[ActiveModel_4]] - code - rust-api/entity/src/sys_menu.rs
 
 ## Live Query (requires Dataview plugin)
 

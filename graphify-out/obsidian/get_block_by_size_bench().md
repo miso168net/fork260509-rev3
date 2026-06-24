@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/benches/search.rs"
 type: "code"
-community: "Community 65"
+community: "Community 47"
 location: "L16"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_65
+  - community/Community_47
 ---
 
 # get_block_by_size_bench()
@@ -16,4 +16,4 @@ tags:
 - [[get_full_cache()]] - `calls` [INFERRED]
 - [[search.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_65
+#graphify/code #graphify/INFERRED #community/Community_47

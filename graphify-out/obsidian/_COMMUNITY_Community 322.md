@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 322
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[Git Hooks_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/git-hooks.md
-- [[codeshell (git add .)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/git-hooks.md
-- [[git-hooks を無効化する方法]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/git-hooks.md
-- [[git-hooks_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/git-hooks.md
-- [[はじめに]] - document - fork260509-soybean-admin-docs/src/jp/guide/cli/git-hooks.md
+- [[base-web local SVG icon convention (srcassetssvg-icon)]] - concept - base-web/src/assets/svg-icon/custom-icon.svg
+- [[custom-icon.svg Local Icon]] - image - base-web/src/assets/svg-icon/custom-icon.svg
 
 ## Live Query (requires Dataview plugin)
 

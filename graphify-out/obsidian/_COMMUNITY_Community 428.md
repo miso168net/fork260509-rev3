@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 428
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Api.SystemManage.UpdateSystemSettingReq DTO]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
-- [[fetchUpdateSystemSetting (update single setting value)]] - code - base-web/src/service/api/rev3-system-settings.ts
+- [[index.vue_46]] - code - base-web/src/views/plugin/icon/index.vue
 
 ## Live Query (requires Dataview plugin)
 

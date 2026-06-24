@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 182
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[@soybeanjscli Recommendation Doc]] - document - fork260509-soybean-admin-docs/src/recommend/soybean-cli.md
-- [[Alova (3)]] - concept - fork260509-soybean-admin-docs/src/jp/recommend/alova.md
-- [[Alova Recommendation Doc]] - document - fork260509-soybean-admin-docs/src/recommend/alova.md
-- [[PageSpy_3]] - concept - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
-- [[PageSpy Recommendation Doc]] - document - fork260509-soybean-admin-docs/src/recommend/page-spy.md
-- [[Recommended Technologies Preface]] - document - fork260509-soybean-admin-docs/src/recommend/index.md
-- [[klona (2)]] - concept - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[klona Recommendation Doc]] - document - fork260509-soybean-admin-docs/src/recommend/klona.md
-- [[推荐技术前言（中文）]] - document - fork260509-soybean-admin-docs/src/zh/recommend/index.md
+- [[cache_2]] - code - base-web/src/theme/preset/default.json
+- [[closeTabByMiddleClick_2]] - code - base-web/src/theme/preset/default.json
+- [[height_6]] - code - base-web/src/theme/preset/default.json
+- [[mode_4]] - code - base-web/src/theme/preset/default.json
+- [[tab_4]] - code - base-web/src/theme/preset/default.json
+- [[visible_14]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,10 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 2 edges to [[_COMMUNITY_Community 157]]
-- 1 edge to [[_COMMUNITY_Community 183]]
+- 1 edge to [[_COMMUNITY_Community 67]]
 
 ## Top bridge nodes
-- [[推荐技术前言（中文）]] - degree 4, connects to 1 community
-- [[PageSpy_3]] - degree 3, connects to 1 community
-- [[@soybeanjscli Recommendation Doc]] - degree 2, connects to 1 community
+- [[tab_4]] - degree 6, connects to 1 community

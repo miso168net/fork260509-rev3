@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 359
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Alova_1]] - document - fork260509-soybean-admin-docs/src/recommend/alova.md
-- [[Introduce_1]] - document - fork260509-soybean-admin-docs/src/recommend/alova.md
-- [[Related links]] - document - fork260509-soybean-admin-docs/src/recommend/alova.md
-- [[alova_3]] - document - fork260509-soybean-admin-docs/src/recommend/alova.md
+- [[web-site-link.vue]] - code - base-web/src/components/custom/web-site-link.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 423
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Empty-state UI illustration pattern]] - concept - base-web/src/assets/svg-icon/empty-data.svg
-- [[currentColor theme-adaptive accent technique]] - rationale - base-web/src/assets/svg-icon/empty-data.svg
-- [[empty-data.svg — empty-state illustration]] - image - base-web/src/assets/svg-icon/empty-data.svg
+- [[index.vue_36]] - code - base-web/src/views/plugin/barcode/index.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 170
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[breadcrumb_2]] - code - base-web/src/theme/preset/default.json
-- [[globalSearch_2]] - code - base-web/src/theme/preset/default.json
-- [[header_4]] - code - base-web/src/theme/preset/default.json
-- [[height_5]] - code - base-web/src/theme/preset/default.json
-- [[multilingual_2]] - code - base-web/src/theme/preset/default.json
-- [[showIcon_1]] - code - base-web/src/theme/preset/default.json
-- [[visible_11]] - code - base-web/src/theme/preset/default.json
-- [[visible_12]] - code - base-web/src/theme/preset/default.json
-- [[visible_13]] - code - base-web/src/theme/preset/default.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_39]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_33]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_29]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_19]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_22]] - document - base-web/CHANGELOG.md
+- [[v1.1.0-beta.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,7 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 108]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[header_4]] - degree 5, connects to 1 community
+- [[v1.1.0-beta.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)]] - degree 6, connects to 1 community

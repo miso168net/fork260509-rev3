@@ -1,18 +1,17 @@
 ---
 source_file: "base-web/src/router/guard/index.ts"
 type: "code"
-community: "Community 61"
+community: "Router & Menu Store"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/Router__Menu_Store
 ---
 
 # createRouterGuard()
 
 ## Connections
-- [[SoybeanAdmin 路由跳转流程图 (Router Guard Flow Diagram)]] - `conceptually_related_to` [INFERRED]
 - [[createDocumentTitleGuard()]] - `calls` [EXTRACTED]
 - [[createProgressGuard()]] - `calls` [EXTRACTED]
 - [[createRouteGuard()]] - `calls` [EXTRACTED]
@@ -20,4 +19,4 @@ tags:
 - [[index.ts_26]] - `contains` [EXTRACTED]
 - [[setupRouter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

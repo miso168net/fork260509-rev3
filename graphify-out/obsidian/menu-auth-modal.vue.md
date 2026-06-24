@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/menu-auth-modal.vue"
 type: "code"
-community: "Community 579"
+community: "Community 415"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_579
+  - community/Community_415
 ---
 
 # menu-auth-modal.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_579
+#graphify/code #graphify/EXTRACTED #community/Community_415

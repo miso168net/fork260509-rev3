@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 208
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[Folder structure_2]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[Generated routes_2]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[Multi-level route (level 3 route and above)]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[Transformed Vue routes_2]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[codeblock8 (views)]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[codeblock9 (views)]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[codets ({)_8]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
-- [[codets ({)_9]] - document - fork260509-soybean-admin-docs/src/guide/router/structure.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚨 重大变更]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.3.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.3...v1.3.4) (2024-08-01)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,7 +22,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 80]]
+- 1 edge to [[_COMMUNITY_Community 66]]
 
 ## Top bridge nodes
-- [[Multi-level route (level 3 route and above)]] - degree 4, connects to 1 community
+- [[v1.3.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.3...v1.3.4) (2024-08-01)_1]] - degree 5, connects to 1 community

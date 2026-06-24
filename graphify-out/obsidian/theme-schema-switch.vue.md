@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/common/theme-schema-switch.vue"
 type: "code"
-community: "Community 517"
+community: "Community 353"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_517
+  - community/Community_353
 ---
 
 # theme-schema-switch.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_517
+#graphify/code #graphify/EXTRACTED #community/Community_353

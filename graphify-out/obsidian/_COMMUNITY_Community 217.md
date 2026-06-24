@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 217
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[ApiPost (API debug & mock tool)]] - concept - fork260509-soybean-admin-docs/src/tutorial/software.md
-- [[Charles (packet capture tool)]] - concept - fork260509-soybean-admin-docs/src/tutorial/software.md
-- [[Fiddler (packet capture tool)]] - concept - fork260509-soybean-admin-docs/src/tutorial/software.md
-- [[Postman (API debug & mock tool)]] - concept - fork260509-soybean-admin-docs/src/tutorial/software.md
-- [[Typora]] - concept - fork260509-soybean-admin-docs/src/zh/tutorial/software.md
-- [[Xftp]] - concept - fork260509-soybean-admin-docs/src/zh/tutorial/software.md
-- [[Xshell]] - concept - fork260509-soybean-admin-docs/src/zh/tutorial/software.md
-- [[软件安装教程_1]] - document - fork260509-soybean-admin-docs/src/zh/tutorial/software.md
+- [[error_1]] - code - base-web/src/theme/preset/dark.json
+- [[info_1]] - code - base-web/src/theme/preset/dark.json
+- [[otherColor_1]] - code - base-web/src/theme/preset/dark.json
+- [[success_1]] - code - base-web/src/theme/preset/dark.json
+- [[warning_1]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_217
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 68]]
+
+## Top bridge nodes
+- [[otherColor_1]] - degree 5, connects to 1 community

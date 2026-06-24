@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 321
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[Git Hooks]] - document - fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md
-- [[Remove git-hooks]] - document - fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md
-- [[Write in the front]] - document - fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md
-- [[codeshell (git add .)]] - document - fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md
-- [[git-hooks]] - document - fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md
+- [[Chrome Icon]] - image - base-web/src/assets/svg-icon/chrome.svg
+- [[Google Chrome Browser]] - concept - base-web/src/assets/svg-icon/chrome.svg
 
 ## Live Query (requires Dataview plugin)
 

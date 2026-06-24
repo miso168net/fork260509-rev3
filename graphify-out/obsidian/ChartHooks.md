@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/echarts.ts"
 type: "code"
-community: "Community 72"
+community: "Community 71"
 location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/Community_71
 ---
 
 # ChartHooks
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[echarts.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/Community_71

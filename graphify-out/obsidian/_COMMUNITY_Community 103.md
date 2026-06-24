@@ -1,26 +1,22 @@
 ---
 type: community
-members: 13
+members: 9
 ---
 
 # Community 103
 
-**Members:** 13 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[colorNameMap]] - code - base-web/packages/color/src/constant/name.ts
-- [[colorNames]] - code - base-web/packages/color/src/constant/name.ts
-- [[colord.ts]] - code - base-web/packages/color/src/shared/colord.ts
-- [[getColorName()]] - code - base-web/packages/color/src/shared/name.ts
-- [[getDeltaE()]] - code - base-web/packages/color/src/shared/colord.ts
-- [[getHsl()]] - code - base-web/packages/color/src/shared/colord.ts
-- [[getNearestColorPaletteFamily()]] - code - base-web/packages/color/src/palette/recommend.ts
-- [[getRecommendedColorPaletteFamily()]] - code - base-web/packages/color/src/palette/recommend.ts
-- [[isWhiteColor()]] - code - base-web/packages/color/src/shared/colord.ts
-- [[mixColor()]] - code - base-web/packages/color/src/shared/colord.ts
-- [[name.ts]] - code - base-web/packages/color/src/constant/name.ts
-- [[name.ts_1]] - code - base-web/packages/color/src/shared/name.ts
-- [[transformHslToHex()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_1]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_1]] - document - base-web/CHANGELOG.md
+- [[v2.1.0(httpsgithub.comsoybeanjssoybean-admincomparev2.0.2...v2.1.0) (2026-03-09)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,14 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 10 edges to [[_COMMUNITY_Community 102]]
-- 8 edges to [[_COMMUNITY_Community 83]]
-- 3 edges to [[_COMMUNITY_Theme Palette & UnoCSS]]
-- 2 edges to [[_COMMUNITY_Community 219]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[colord.ts]] - degree 13, connects to 4 communities
-- [[name.ts_1]] - degree 8, connects to 3 communities
-- [[getColorName()]] - degree 6, connects to 3 communities
-- [[getRecommendedColorPaletteFamily()]] - degree 6, connects to 2 communities
-- [[getHsl()]] - degree 6, connects to 1 community
+- [[v2.1.0(httpsgithub.comsoybeanjssoybean-admincomparev2.0.2...v2.1.0) (2026-03-09)]] - degree 9, connects to 1 community

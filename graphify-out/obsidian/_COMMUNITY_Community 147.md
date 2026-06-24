@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 147
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[Enabledisable]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[Note_1]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[Outlined]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[Principle]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[Proxy]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[codeblock1 (const isHttpProxy = import.meta.env.DEV && import.meta.env.V)]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[codets]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[codets ({)_2]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[codets ({)_3]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
-- [[proxy]] - document - fork260509-soybean-admin-docs/src/guide/request/proxy.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_13]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_11]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_4]] - document - base-web/CHANGELOG.md
+- [[v1.3.8(httpsgithub.comsoybeanjssoybean-admincomparev1.3.7...v1.3.8) (2024-10-25)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,3 +22,9 @@ members: 10
 TABLE source_file, type FROM #community/Community_147
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.8(httpsgithub.comsoybeanjssoybean-admincomparev1.3.7...v1.3.8) (2024-10-25)]] - degree 7, connects to 1 community

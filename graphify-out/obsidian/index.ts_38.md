@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/plugins/index.ts"
 type: "code"
-community: "Community 53"
+community: "Router & Menu Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_53
+  - community/Router__Menu_Store
 ---
 
 # index.ts
@@ -18,4 +18,4 @@ tags:
 - [[index.ts_32]] - `imports_from` [EXTRACTED]
 - [[resetSetupStore()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_53
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

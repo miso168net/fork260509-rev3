@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 179
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[Icon Tutorial_1]] - document - fork260509-soybean-admin-docs/src/guide/icon/usage.md
-- [[Iconify]] - concept - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[Local SVG Icon Rendering]] - rationale - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[Offline Iconify Icon Loading]] - rationale - fork260509-soybean-admin-docs/src/guide/icon/usage.md
-- [[SvgIcon Global Component]] - concept - fork260509-soybean-admin-docs/src/guide/icon/usage.md
-- [[System Icons Guide]] - document - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[unplugin-icons (2)]] - concept - fork260509-soybean-admin-docs/src/guide/icon/intro.md
-- [[useSvgIconRender]] - concept - fork260509-soybean-admin-docs/src/guide/icon/usage.md
-- [[vite-plugin-svg-icons (2)]] - concept - fork260509-soybean-admin-docs/src/guide/icon/intro.md
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_17]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项_6]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_3]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_13]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_8]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.1.3(httpsgithub.comsoybeanjssoybean-admincomparev1.1.2...v1.1.3) (2024-06-02)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,12 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 136]]
-- 2 edges to [[_COMMUNITY_Community 180]]
-- 1 edge to [[_COMMUNITY_Community 90]]
+- 1 edge to [[_COMMUNITY_Community 66]]
 
 ## Top bridge nodes
-- [[Local SVG Icon Rendering]] - degree 6, connects to 2 communities
-- [[unplugin-icons (2)]] - degree 6, connects to 1 community
-- [[System Icons Guide]] - degree 5, connects to 1 community
-- [[vite-plugin-svg-icons (2)]] - degree 3, connects to 1 community
+- [[v1.1.3(httpsgithub.comsoybeanjssoybean-admincomparev1.1.2...v1.1.3) (2024-06-02)_1]] - degree 6, connects to 1 community

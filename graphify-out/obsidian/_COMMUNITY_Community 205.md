@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 205
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[getLayout()]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[getLayoutAndPage()]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[getPage()]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[getPathParamFromRoutePath()]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[getRoutePathByRouteName()]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[getRoutePathWithParam()]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[shared.ts_9]] - code - base-web/src/views/manage/menu/modules/shared.ts
-- [[transformLayoutAndPageToComponent()]] - code - base-web/src/views/manage/menu/modules/shared.ts
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_12]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复错误_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_9]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 特性]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.2.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.1...v1.2.2) (2024-06-12)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_205
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.2.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.1...v1.2.2) (2024-06-12)_1]] - degree 5, connects to 1 community

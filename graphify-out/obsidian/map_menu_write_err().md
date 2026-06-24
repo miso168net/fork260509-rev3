@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 287"
+community: "Community 186"
 location: "L724"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_287
+  - community/Community_186
 ---
 
 # map_menu_write_err()
@@ -15,4 +15,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[update_menu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_287
+#graphify/code #graphify/EXTRACTED #community/Community_186

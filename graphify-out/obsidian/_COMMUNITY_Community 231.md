@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 231
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_14]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_14]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_4]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_11]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_10]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_9]] - document - base-web/CHANGELOG.md
-- [[v1.3.9(httpsgithub.comsoybeanjssoybean-admincomparev1.3.8...v1.3.9) (2024-11-17)]] - document - base-web/CHANGELOG.md
+- [[boxShadow_2]] - code - base-web/src/theme/preset/default.json
+- [[header_5]] - code - base-web/src/theme/preset/default.json
+- [[sider_5]] - code - base-web/src/theme/preset/default.json
+- [[tab_5]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,7 +21,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+- 1 edge to [[_COMMUNITY_Community 106]]
 
 ## Top bridge nodes
-- [[v1.3.9(httpsgithub.comsoybeanjssoybean-admincomparev1.3.8...v1.3.9) (2024-11-17)]] - degree 7, connects to 1 community
+- [[boxShadow_2]] - degree 4, connects to 1 community

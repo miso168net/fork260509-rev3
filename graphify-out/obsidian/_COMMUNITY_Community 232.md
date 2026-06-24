@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 232
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations]] - document - base-web/CHANGELOG.md
-- [[v2.1.1(httpsgithub.comsoybeanjssoybean-admincomparev2.1.0...v2.1.1) (2026-05-13)]] - document - base-web/CHANGELOG.md
+- [[ElegantConstRoute_1]] - code - base-web/src/typings/api/route.d.ts
+- [[MenuRoute]] - code - base-web/src/typings/api/route.d.ts
+- [[UserRoute]] - code - base-web/src/typings/api/route.d.ts
+- [[route.d.ts]] - code - base-web/src/typings/api/route.d.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,9 +19,3 @@ members: 7
 TABLE source_file, type FROM #community/Community_232
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v2.1.1(httpsgithub.comsoybeanjssoybean-admincomparev2.1.0...v2.1.1) (2026-05-13)]] - degree 7, connects to 1 community

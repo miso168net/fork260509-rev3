@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 144
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[currentRotation]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[handleDownload()]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[handlePrint()]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[handleRotate()]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[index.vue_48]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[onPdfRendered()]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[pageCount]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[rotations]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[showAllPages]] - code - base-web/src/views/plugin/pdf/index.vue
-- [[showAllPagesChange()]] - code - base-web/src/views/plugin/pdf/index.vue
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_21]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_20]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_18]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_13]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_13]] - document - base-web/CHANGELOG.md
+- [[v1.3.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.1...v1.3.2) (2024-07-30)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,3 +22,9 @@ members: 10
 TABLE source_file, type FROM #community/Community_144
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.1...v1.3.2) (2024-07-30)]] - degree 7, connects to 1 community

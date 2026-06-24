@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 437
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[line-chart.vue]] - code - base-web/src/views/home/modules/line-chart.vue
-- [[originOpts]] - code - base-web/src/views/home/modules/line-chart.vue
+- [[index.vue_56]] - code - base-web/src/views/pro-naive/form/query/index.vue
 
 ## Live Query (requires Dataview plugin)
 

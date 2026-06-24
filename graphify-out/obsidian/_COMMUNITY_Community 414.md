@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 414
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_6]] - code - rust-api/entity/src/sys_role.rs
-- [[Relation_6]] - code - rust-api/entity/src/sys_role.rs
-- [[sys_role.rs]] - code - rust-api/entity/src/sys_role.rs
+- [[button-auth-modal.vue]] - code - base-web/src/views/manage/role/modules/button-auth-modal.vue
 
 ## Live Query (requires Dataview plugin)
 

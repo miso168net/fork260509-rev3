@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 420
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[AppState]] - code - rust-api/server/src/state.rs
-- [[JwtConfig]] - code - rust-api/server/src/state.rs
-- [[state.rs]] - code - rust-api/server/src/state.rs
+- [[id.vue]] - code - base-web/src/views/manage/user-detail/[id].vue
 
 ## Live Query (requires Dataview plugin)
 

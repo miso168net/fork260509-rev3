@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 418
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_10]] - code - rust-api/entity/src/system_settings.rs
-- [[Relation_10]] - code - rust-api/entity/src/system_settings.rs
-- [[system_settings.rs]] - code - rust-api/entity/src/system_settings.rs
+- [[user-operate-drawer.vue]] - code - base-web/src/views/manage/user/modules/user-operate-drawer.vue
 
 ## Live Query (requires Dataview plugin)
 

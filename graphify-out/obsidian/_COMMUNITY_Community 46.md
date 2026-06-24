@@ -1,34 +1,30 @@
 ---
 type: community
-members: 21
+members: 17
 ---
 
 # Community 46
 
-**Members:** 21 nodes
+**Members:** 17 nodes
 
 ## Members
-- [[allowSyntheticDefaultImports_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[baseUrl_1]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[compilerOptions_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[esModuleInterop_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[exclude_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[forceConsistentCasingInFileNames_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[include_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[isolatedModules_1]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[jsx_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[jsxImportSource_1]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[lib_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[module_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[moduleResolution_10]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[noUnusedLocals_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[outDir]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[resolveJsonModule_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[strict_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[strictNullChecks_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[target_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[tsconfig.json_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
-- [[types_9]] - code - fork260509-soybean-admin-docs/tsconfig.json
+- [[allowSyntheticDefaultImports_5]] - code - base-web/packages/materials/tsconfig.json
+- [[compilerOptions_5]] - code - base-web/packages/materials/tsconfig.json
+- [[esModuleInterop_5]] - code - base-web/packages/materials/tsconfig.json
+- [[exclude_5]] - code - base-web/packages/materials/tsconfig.json
+- [[forceConsistentCasingInFileNames_5]] - code - base-web/packages/materials/tsconfig.json
+- [[include_5]] - code - base-web/packages/materials/tsconfig.json
+- [[jsx_5]] - code - base-web/packages/materials/tsconfig.json
+- [[lib_5]] - code - base-web/packages/materials/tsconfig.json
+- [[module_5]] - code - base-web/packages/materials/tsconfig.json
+- [[moduleResolution_6]] - code - base-web/packages/materials/tsconfig.json
+- [[noUnusedLocals_5]] - code - base-web/packages/materials/tsconfig.json
+- [[resolveJsonModule_5]] - code - base-web/packages/materials/tsconfig.json
+- [[strict_5]] - code - base-web/packages/materials/tsconfig.json
+- [[strictNullChecks_5]] - code - base-web/packages/materials/tsconfig.json
+- [[target_5]] - code - base-web/packages/materials/tsconfig.json
+- [[tsconfig.json_5]] - code - base-web/packages/materials/tsconfig.json
+- [[types_5]] - code - base-web/packages/materials/tsconfig.json
 
 ## Live Query (requires Dataview plugin)
 

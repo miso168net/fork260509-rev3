@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Community 66"
+community: "Community 48"
 location: "L225"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_66
+  - community/Community_48
 ---
 
 # endpoint_pairs_for_role()
@@ -16,4 +16,4 @@ tags:
 - [[enforce.rs]] - `contains` [EXTRACTED]
 - [[is_endpoint_method()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_66
+#graphify/code #graphify/EXTRACTED #community/Community_48

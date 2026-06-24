@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/components/common/exception-base.vue"
 type: "code"
-community: "Community 323"
+community: "Community 213"
 location: "lines 25-33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_323
+  - community/Community_213
 ---
 
 # ExceptionBase component
@@ -17,4 +17,4 @@ tags:
 - [[not-found.svg (404 Page Not Found Illustration)]] - `references` [EXTRACTED]
 - [[service-error.svg (500 Illustration)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_323
+#graphify/code #graphify/EXTRACTED #community/Community_213

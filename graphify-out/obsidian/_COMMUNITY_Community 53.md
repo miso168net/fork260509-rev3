@@ -1,32 +1,29 @@
 ---
 type: community
-members: 19
+members: 16
 ---
 
 # Community 53
 
-**Members:** 19 nodes
+**Members:** 16 nodes
 
 ## Members
-- [[.constructor()]] - code - base-web/packages/utils/src/crypto.ts
-- [[.decrypt()]] - code - base-web/packages/utils/src/crypto.ts
-- [[.encrypt()]] - code - base-web/packages/utils/src/crypto.ts
-- [[Crypto]] - code - base-web/packages/utils/src/crypto.ts
-- [[LocalForage]] - code - base-web/packages/utils/src/storage.ts
-- [[LocalforageDriver]] - code - base-web/packages/utils/src/storage.ts
-- [[SetupStoreId]] - code - base-web/src/enum/index.ts
-- [[StorageType]] - code - base-web/packages/utils/src/storage.ts
-- [[createLocalforage()]] - code - base-web/packages/utils/src/storage.ts
-- [[createStorage()]] - code - base-web/packages/utils/src/storage.ts
-- [[crypto.ts]] - code - base-web/packages/utils/src/crypto.ts
-- [[index.ts_20]] - code - base-web/packages/utils/src/index.ts
-- [[index.ts_21]] - code - base-web/src/enum/index.ts
-- [[index.ts_32]] - code - base-web/src/store/index.ts
-- [[index.ts_38]] - code - base-web/src/store/plugins/index.ts
-- [[klona.ts]] - code - base-web/packages/utils/src/klona.ts
-- [[nanoid.ts]] - code - base-web/packages/utils/src/nanoid.ts
-- [[resetSetupStore()]] - code - base-web/src/store/plugins/index.ts
-- [[storage.ts]] - code - base-web/packages/utils/src/storage.ts
+- [[.from_slice()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[Rule]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[Rule'a]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[RuleWithType]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[action.rs]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[add_policies()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[add_policy()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[clear_policy()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[create_active_model()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[create_condition_from_rule()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[load_filtered_policy()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[load_policy()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[remove_filtered_policy()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[remove_policies()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[remove_policy()]] - code - rust-api/sea-orm-adapter/src/action.rs
+- [[save_policies()]] - code - rust-api/sea-orm-adapter/src/action.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,18 +31,3 @@ members: 19
 TABLE source_file, type FROM #community/Community_53
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 7 edges to [[_COMMUNITY_Auth & Locale Service]]
-- 2 edges to [[_COMMUNITY_Axios Request Factory]]
-- 2 edges to [[_COMMUNITY_Community 41]]
-- 2 edges to [[_COMMUNITY_Common Hooks & Store]]
-- 2 edges to [[_COMMUNITY_Router & Menu Store]]
-- 2 edges to [[_COMMUNITY_Theme Palette & UnoCSS]]
-
-## Top bridge nodes
-- [[index.ts_21]] - degree 7, connects to 4 communities
-- [[SetupStoreId]] - degree 7, connects to 4 communities
-- [[index.ts_20]] - degree 8, connects to 2 communities
-- [[index.ts_32]] - degree 4, connects to 1 community
-- [[createStorage()]] - degree 2, connects to 1 community

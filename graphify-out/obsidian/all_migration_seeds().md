@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/tests/endpoint_coverage_lint.rs"
 type: "code"
-community: "Community 121"
+community: "Community 73"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_121
+  - community/Community_73
 ---
 
 # all_migration_seeds()
@@ -16,4 +16,4 @@ tags:
 - [[endpoint_coverage_lint.rs]] - `contains` [EXTRACTED]
 - [[migration_src_dir()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_121
+#graphify/code #graphify/EXTRACTED #community/Community_73

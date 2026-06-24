@@ -1,24 +1,21 @@
 ---
 type: community
-members: 11
+members: 8
 ---
 
 # Community 128
 
-**Members:** 11 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[getSiderAndCollapsedWidth()]] - code - base-web/src/layouts/base-layout/index.vue
-- [[headerProps]] - code - base-web/src/layouts/base-layout/index.vue
-- [[index.vue_3]] - code - base-web/src/layouts/base-layout/index.vue
-- [[isTopHybridHeaderFirst]] - code - base-web/src/layouts/base-layout/index.vue
-- [[isTopHybridSidebarFirst]] - code - base-web/src/layouts/base-layout/index.vue
-- [[isVerticalHybridHeaderFirst]] - code - base-web/src/layouts/base-layout/index.vue
-- [[isVerticalMix]] - code - base-web/src/layouts/base-layout/index.vue
-- [[layoutMode]] - code - base-web/src/layouts/base-layout/index.vue
-- [[siderCollapsedWidth]] - code - base-web/src/layouts/base-layout/index.vue
-- [[siderVisible]] - code - base-web/src/layouts/base-layout/index.vue
-- [[siderWidth]] - code - base-web/src/layouts/base-layout/index.vue
+- [[Changelog 描述（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[pr_cn]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[后续计划（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[实现方案和 API（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[对用户的影响和可能的风险（非新功能可选）]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[请求合并前的自查清单]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[这个变动的性质是]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[需求背景]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,9 +23,3 @@ members: 11
 TABLE source_file, type FROM #community/Community_128
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 43]]
-
-## Top bridge nodes
-- [[index.vue_3]] - degree 11, connects to 1 community

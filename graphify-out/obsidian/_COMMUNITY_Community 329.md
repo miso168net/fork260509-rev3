@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 329
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[UnoCSS のダークモード]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/unocss.md
-- [[UnoCSS テーマ]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/unocss.md
-- [[codeblock2 (export default defineConfigTheme({)]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/unocss.md
-- [[codets (import { themeVars } from '.srcthemevars';)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/unocss.md
-- [[unocss_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/unocss.md
+- [[agent.ts]] - code - base-web/src/utils/agent.ts
+- [[isPC()]] - code - base-web/src/utils/agent.ts
 
 ## Live Query (requires Dataview plugin)
 

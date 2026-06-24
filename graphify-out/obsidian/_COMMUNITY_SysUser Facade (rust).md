@@ -48,7 +48,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 40]]
+- 3 edges to [[_COMMUNITY_MenuRoute Facade (rust)]]
 
 ## Top bridge nodes
 - [[update()_2]] - degree 10, connects to 1 community

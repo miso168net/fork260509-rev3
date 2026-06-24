@@ -1,21 +1,19 @@
 ---
 type: community
-members: 8
+members: 6
 ---
 
 # Community 191
 
-**Members:** 8 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_8]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_8]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_7]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_3]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_6]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_5]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_5]] - document - base-web/CHANGELOG.md
-- [[v1.3.15(httpsgithub.comsoybeanjssoybean-admincomparev1.3.14...v1.3.15) (2025-06-24)]] - document - base-web/CHANGELOG.md
+- [[unnamed_6]] - code - base-web/packages/uno-preset/package.json
+- [[exports_6]] - code - base-web/packages/uno-preset/package.json
+- [[name_8]] - code - base-web/packages/uno-preset/package.json
+- [[package.json_7]] - code - base-web/packages/uno-preset/package.json
+- [[typesVersions_6]] - code - base-web/packages/uno-preset/package.json
+- [[version_8]] - code - base-web/packages/uno-preset/package.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,9 +21,3 @@ members: 8
 TABLE source_file, type FROM #community/Community_191
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.3.15(httpsgithub.comsoybeanjssoybean-admincomparev1.3.14...v1.3.15) (2025-06-24)]] - degree 8, connects to 1 community

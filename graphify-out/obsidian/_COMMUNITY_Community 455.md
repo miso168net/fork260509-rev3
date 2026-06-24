@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 455
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Software installation tutorial]] - document - fork260509-soybean-admin-docs/src/tutorial/software.md
-- [[software_1]] - document - fork260509-soybean-admin-docs/src/tutorial/software.md
+- [[lib.rs]] - code - rust-api/entity/src/lib.rs
 
 ## Live Query (requires Dataview plugin)
 

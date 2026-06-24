@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 432
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[unnamed_9]] - code - base-web/src/layouts/modules/global-tab/index.vue
-- [[index.vue_13]] - code - base-web/src/layouts/modules/global-tab/index.vue
+- [[index.vue_51]] - code - base-web/src/views/plugin/swiper/index.vue
 
 ## Live Query (requires Dataview plugin)
 

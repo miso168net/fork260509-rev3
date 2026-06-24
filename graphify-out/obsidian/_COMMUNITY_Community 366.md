@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 366
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[CasbinRule_1]] - code - rust-api/sea-orm-adapter/src/migration.rs
-- [[down()]] - code - rust-api/sea-orm-adapter/src/migration.rs
-- [[migration.rs]] - code - rust-api/sea-orm-adapter/src/migration.rs
-- [[up()]] - code - rust-api/sea-orm-adapter/src/migration.rs
+- [[index.vue_10]] - code - base-web/src/layouts/modules/global-menu/index.vue
 
 ## Live Query (requires Dataview plugin)
 

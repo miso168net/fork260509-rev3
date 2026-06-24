@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 441
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[data.ts_3]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
-- [[ganttTasks]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
+- [[index.vue_60]] - code - base-web/src/views/user-center/index.vue
 
 ## Live Query (requires Dataview plugin)
 

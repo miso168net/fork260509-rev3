@@ -1,22 +1,20 @@
 ---
 type: community
-members: 9
+members: 7
 ---
 
 # Community 159
 
-**Members:** 9 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_54]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles_9]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_45]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_45]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_17]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_39]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🔥 Performance_7]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_27]] - document - base-web/CHANGELOG.md
-- [[v0.10.4(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.3...v0.10.4) (23-09-20)]] - document - base-web/CHANGELOG.md
+- [[.ok()]] - code - rust-api/server/src/envelope.rs
+- [[PageRes]] - code - rust-api/server/src/envelope.rs
+- [[Res]] - code - rust-api/server/src/envelope.rs
+- [[Resserde_jsonValue]] - code - rust-api/server/src/envelope.rs
+- [[envelope.rs]] - code - rust-api/server/src/envelope.rs
+- [[page_res_no_pages_no_success_empty_records()]] - code - rust-api/server/src/envelope.rs
+- [[res_serialization_field_order_and_shape()]] - code - rust-api/server/src/envelope.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,9 +22,3 @@ members: 9
 TABLE source_file, type FROM #community/Community_159
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v0.10.4(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.3...v0.10.4) (23-09-20)]] - degree 9, connects to 1 community

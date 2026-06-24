@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 299
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[customListRecords]] - code - base-web/src/views/plugin/tables/vtable/data.ts
-- [[data.ts_5]] - code - base-web/src/views/plugin/tables/vtable/data.ts
-- [[listTableRecords]] - code - base-web/src/views/plugin/tables/vtable/data.ts
-- [[pivotChartColumns]] - code - base-web/src/views/plugin/tables/vtable/data.ts
-- [[pivotChartIndicators]] - code - base-web/src/views/plugin/tables/vtable/data.ts
-- [[pivotChartRows]] - code - base-web/src/views/plugin/tables/vtable/data.ts
+- [[index.vue_31]] - code - base-web/src/views/manage/menu/index.vue
+- [[label]] - code - base-web/src/views/manage/menu/index.vue
 
 ## Live Query (requires Dataview plugin)
 

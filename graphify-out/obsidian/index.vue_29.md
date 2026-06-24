@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/function/toggle-auth/index.vue"
 type: "code"
-community: "Community 572"
+community: "Community 408"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_572
+  - community/Community_408
 ---
 
 # index.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_572
+#graphify/code #graphify/EXTRACTED #community/Community_408

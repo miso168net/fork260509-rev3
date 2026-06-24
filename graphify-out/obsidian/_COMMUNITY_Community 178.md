@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 178
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[build_user_route_tree()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[flatten_names()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[menu_tree_ancestor_inclusion()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[menu_tree_empty_directory_dropped()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[menu_tree_invisible_leaf_dropped()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[menu_tree_nesting_and_order()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[menu_tree_wire_id_is_string()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[menu_tree_wire_meta_mapping()]] - code - rust-api/server/src/model/facade/sys_menu.rs
-- [[visible_set()]] - code - rust-api/server/src/model/facade/sys_menu.rs
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_21]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复的错误]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_16]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 特性_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_11]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.1.0-beta.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,11 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 11 edges to [[_COMMUNITY_MenuRoute Facade (rust)]]
+- 1 edge to [[_COMMUNITY_Community 66]]
 
 ## Top bridge nodes
-- [[build_user_route_tree()]] - degree 8, connects to 1 community
-- [[visible_set()]] - degree 7, connects to 1 community
-- [[menu_tree_ancestor_inclusion()]] - degree 4, connects to 1 community
-- [[menu_tree_wire_meta_mapping()]] - degree 4, connects to 1 community
-- [[menu_tree_invisible_leaf_dropped()]] - degree 4, connects to 1 community
+- [[v1.1.0-beta.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)_1]] - degree 6, connects to 1 community

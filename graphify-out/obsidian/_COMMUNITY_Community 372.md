@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 372
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index_5]] - document - fork260509-soybean-admin-docs/src/jp/awesome/index.md
-- [[オープンソースプロジェクト・作品]] - document - fork260509-soybean-admin-docs/src/jp/awesome/index.md
-- [[周辺エコシステム]] - document - fork260509-soybean-admin-docs/src/jp/awesome/index.md
+- [[vertical-mix-menu.vue]] - code - base-web/src/layouts/modules/global-menu/modules/vertical-mix-menu.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/xdb/src/lib.rs"
 type: "code"
-community: "Community 656"
+community: "Community 472"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_656
+  - community/Community_472
 ---
 
 # lib.rs
 
-#graphify/code #graphify/EXTRACTED #community/Community_656
+#graphify/code #graphify/EXTRACTED #community/Community_472

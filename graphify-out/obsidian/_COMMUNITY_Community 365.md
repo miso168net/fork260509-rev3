@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 365
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[.down()_3]] - code - rust-api/migration/src/m004_demo_menu_seeds.rs
-- [[.up()_3]] - code - rust-api/migration/src/m004_demo_menu_seeds.rs
-- [[Migration_3]] - code - rust-api/migration/src/m004_demo_menu_seeds.rs
-- [[m004_demo_menu_seeds.rs]] - code - rust-api/migration/src/m004_demo_menu_seeds.rs
+- [[index.vue_9]] - code - base-web/src/layouts/modules/global-logo/index.vue
 
 ## Live Query (requires Dataview plugin)
 

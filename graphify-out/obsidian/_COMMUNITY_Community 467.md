@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 467
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[antv-flow.vue]] - code - base-web/src/views/plugin/charts/antv/modules/antv-flow.vue
-- [[{ graph }]] - code - base-web/src/views/plugin/charts/antv/modules/antv-flow.vue
+- [[lib.rs_2]] - code - rust-api/sea-orm-adapter/src/lib.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/plugin/video/index.vue"
 type: "code"
-community: "Community 598"
+community: "Community 434"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_598
+  - community/Community_434
 ---
 
 # index.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_598
+#graphify/code #graphify/EXTRACTED #community/Community_434

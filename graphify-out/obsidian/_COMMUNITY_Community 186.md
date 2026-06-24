@@ -1,21 +1,19 @@
 ---
 type: community
-members: 8
+members: 6
 ---
 
 # Community 186
 
-**Members:** 8 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_64]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_55]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_54]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_24]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_49]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📦 Build_7]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_34]] - document - base-web/CHANGELOG.md
-- [[v0.9.4(httpsgithub.comhonghuangdcsoybean-admincomparemain-0428...v0.9.4) (2022-04-29)]] - document - base-web/CHANGELOG.md
+- [[add_menu()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[map_menu_write_err()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[menu_write_from_req()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[str_enum_to_i16()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[update_menu()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[value_to_opt_i64()]] - code - rust-api/server/src/handler/system_manage.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,7 +23,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+- 6 edges to [[_COMMUNITY_SysManage Handler & DTOs (rust)]]
+- 1 edge to [[_COMMUNITY_Community 20]]
 
 ## Top bridge nodes
-- [[v0.9.4(httpsgithub.comhonghuangdcsoybean-admincomparemain-0428...v0.9.4) (2022-04-29)]] - degree 8, connects to 1 community
+- [[str_enum_to_i16()]] - degree 3, connects to 2 communities
+- [[menu_write_from_req()]] - degree 5, connects to 1 community
+- [[update_menu()]] - degree 4, connects to 1 community
+- [[value_to_opt_i64()]] - degree 3, connects to 1 community
+- [[map_menu_write_err()]] - degree 2, connects to 1 community

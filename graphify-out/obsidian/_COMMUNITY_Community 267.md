@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 267
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[unnamed_6]] - code - base-web/packages/uno-preset/package.json
-- [[exports_6]] - code - base-web/packages/uno-preset/package.json
-- [[name_8]] - code - base-web/packages/uno-preset/package.json
-- [[package.json_7]] - code - base-web/packages/uno-preset/package.json
-- [[typesVersions_6]] - code - base-web/packages/uno-preset/package.json
-- [[version_8]] - code - base-web/packages/uno-preset/package.json
+- [[animate]] - code - base-web/src/theme/preset/dark.json
+- [[animateMode]] - code - base-web/src/theme/preset/dark.json
+- [[page]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,3 +18,9 @@ members: 6
 TABLE source_file, type FROM #community/Community_267
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 68]]
+
+## Top bridge nodes
+- [[page]] - degree 3, connects to 1 community

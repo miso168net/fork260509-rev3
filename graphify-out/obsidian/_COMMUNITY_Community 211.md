@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 211
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[handler_404()]] - code - rust-api/server/src/main.rs
-- [[health()]] - code - rust-api/server/src/main.rs
-- [[main()_2]] - code - rust-api/server/src/main.rs
-- [[main.rs_2]] - code - rust-api/server/src/main.rs
-- [[read_single_session_default()]] - code - rust-api/server/src/main.rs
-- [[shutdown_signal()]] - code - rust-api/server/src/main.rs
-- [[spawn_policy_watcher()]] - code - rust-api/server/src/main.rs
-- [[spawn_settings_watcher()]] - code - rust-api/server/src/main.rs
+- [[error_2]] - code - base-web/src/theme/preset/default.json
+- [[info_2]] - code - base-web/src/theme/preset/default.json
+- [[otherColor_2]] - code - base-web/src/theme/preset/default.json
+- [[success_2]] - code - base-web/src/theme/preset/default.json
+- [[warning_2]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_211
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 67]]
+
+## Top bridge nodes
+- [[otherColor_2]] - degree 5, connects to 1 community

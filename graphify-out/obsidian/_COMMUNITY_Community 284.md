@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 284
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[Sync code]] - document - fork260509-soybean-admin-docs/src/guide/sync.md
-- [[codebash (git cherry-pick --continue)]] - document - fork260509-soybean-admin-docs/src/guide/sync.md
-- [[codebash (git cherry-pick commit id)]] - document - fork260509-soybean-admin-docs/src/guide/sync.md
-- [[codebash (git fetch otherOrigin)]] - document - fork260509-soybean-admin-docs/src/guide/sync.md
-- [[codebash (git remote add otherOrigin httpsgithub.comsoybeanjssoyb)]] - document - fork260509-soybean-admin-docs/src/guide/sync.md
-- [[sync]] - document - fork260509-soybean-admin-docs/src/guide/sync.md
+- [[Empty-state UI illustration pattern]] - concept - base-web/src/assets/svg-icon/empty-data.svg
+- [[currentColor theme-adaptive accent technique]] - rationale - base-web/src/assets/svg-icon/empty-data.svg
+- [[empty-data.svg — empty-state illustration]] - image - base-web/src/assets/svg-icon/empty-data.svg
 
 ## Live Query (requires Dataview plugin)
 

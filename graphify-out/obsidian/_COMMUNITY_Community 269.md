@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 269
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[en-us.ts]] - code - base-web/src/locales/langs/en-us.ts
-- [[local]] - code - base-web/src/locales/langs/en-us.ts
-- [[local_1]] - code - base-web/src/locales/langs/zh-cn.ts
-- [[locale.ts]] - code - base-web/src/locales/locale.ts
-- [[locales]] - code - base-web/src/locales/locale.ts
-- [[zh-cn.ts]] - code - base-web/src/locales/langs/zh-cn.ts
+- [[Model_1]] - code - rust-api/entity/src/sys_access_log.rs
+- [[Relation_1]] - code - rust-api/entity/src/sys_access_log.rs
+- [[sys_access_log.rs]] - code - rust-api/entity/src/sys_access_log.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_269
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
-
-## Top bridge nodes
-- [[locale.ts]] - degree 4, connects to 1 community

@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 433
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[GlobalComponents]] - code - base-web/src/typings/components.d.ts
-- [[components.d.ts]] - code - base-web/src/typings/components.d.ts
+- [[index.vue_53]] - code - base-web/src/views/plugin/typeit/index.vue
 
 ## Live Query (requires Dataview plugin)
 

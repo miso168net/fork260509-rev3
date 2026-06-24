@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 374
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[naive.ts]] - code - base-web/src/locales/naive.ts
-- [[naiveDateLocales]] - code - base-web/src/locales/naive.ts
-- [[naiveLocales]] - code - base-web/src/locales/naive.ts
+- [[search-footer.vue]] - code - base-web/src/layouts/modules/global-search/components/search-footer.vue
 
 ## Live Query (requires Dataview plugin)
 

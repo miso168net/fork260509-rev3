@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 265
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_16]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂项_5]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_2]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_12]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🛠 优化_7]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.1.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.3...v1.1.4) (2024-06-06)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[Home HeaderBanner Module (dashboard greeting banner)]] - code - base-web/src/views/home/modules/header-banner.vue
+- [[Soybean Mascot Avatar Image]] - image - base-web/src/assets/imgs/soybean.jpg
+- [[SoybeanAvatar Component (custom avatar component)]] - code - base-web/src/components/custom/soybean-avatar.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_265
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
-
-## Top bridge nodes
-- [[v1.1.4(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.3...v1.1.4) (2024-06-06)_1]] - degree 6, connects to 1 community

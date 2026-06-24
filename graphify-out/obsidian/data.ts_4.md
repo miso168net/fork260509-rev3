@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/gantt/vtable/data.ts"
 type: "code"
-community: "Community 371"
+community: "Community 234"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_371
+  - community/Community_234
 ---
 
 # data.ts
@@ -16,4 +16,4 @@ tags:
 - [[customGanttRecords]] - `contains` [EXTRACTED]
 - [[linkGanttRecords]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_371
+#graphify/code #graphify/EXTRACTED #community/Community_234

@@ -1,18 +1,14 @@
 ---
 type: community
-members: 5
+members: 1
 ---
 
 # Community 334
 
-**Members:** 5 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Layout components]] - document - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[Mixed components of layout and page]] - document - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[Page components]] - document - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[Routing component]] - document - fork260509-soybean-admin-docs/src/guide/router/component.md
-- [[component]] - document - fork260509-soybean-admin-docs/src/guide/router/component.md
+- [[index.module.css.d.ts]] - code - base-web/packages/materials/src/libs/admin-layout/index.module.css.d.ts
 
 ## Live Query (requires Dataview plugin)
 

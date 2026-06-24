@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "Community 91"
+community: "Community 58"
 location: "L298"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_91
+  - community/Community_58
 ---
 
 # refresh_token()
@@ -19,4 +19,4 @@ tags:
 - [[revoke_chain_and_logout()]] - `calls` [EXTRACTED]
 - [[rotate_locked_or_revoke()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_91
+#graphify/code #graphify/INFERRED #community/Community_58

@@ -1,19 +1,34 @@
 ---
-source_file: "fork260509-soybean-admin-docs/src/guide/request/intro.md"
-type: "document"
-community: "Community 294"
-location: "L1"
+source_file: "base-web/src/service/request/index.ts"
+type: "code"
+community: "Community 38"
+location: "L13"
 tags:
-  - graphify/document
+  - graphify/code
   - graphify/EXTRACTED
-  - community/Community_294
+  - community/Community_38
 ---
 
-# Request
+# request
 
 ## Connections
-- [[Introduction to Request Related Configuration]] - `contains` [EXTRACTED]
-- [[Multiple Request Environments]] - `contains` [EXTRACTED]
-- [[intro_3]] - `contains` [EXTRACTED]
+- [[auth.ts_1]] - `imports` [EXTRACTED]
+- [[createHookRequest()]] - `calls` [INFERRED]
+- [[fetchCustomBackendError()]] - `calls` [EXTRACTED]
+- [[fetchGetAllPages()]] - `calls` [EXTRACTED]
+- [[fetchGetAllRoles()]] - `calls` [EXTRACTED]
+- [[fetchGetConstantRoutes()]] - `calls` [EXTRACTED]
+- [[fetchGetMenuList()]] - `calls` [EXTRACTED]
+- [[fetchGetMenuTree()]] - `calls` [EXTRACTED]
+- [[fetchGetRoleList()]] - `calls` [EXTRACTED]
+- [[fetchGetUserInfo()]] - `calls` [EXTRACTED]
+- [[fetchGetUserList()]] - `calls` [EXTRACTED]
+- [[fetchGetUserRoutes()]] - `calls` [EXTRACTED]
+- [[fetchIsRouteExist()]] - `calls` [EXTRACTED]
+- [[fetchLogin()]] - `calls` [EXTRACTED]
+- [[fetchRefreshToken()]] - `calls` [EXTRACTED]
+- [[index.ts_29]] - `contains` [EXTRACTED]
+- [[route.ts_1]] - `imports` [EXTRACTED]
+- [[system-manage.ts]] - `imports` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_294
+#graphify/code #graphify/EXTRACTED #community/Community_38

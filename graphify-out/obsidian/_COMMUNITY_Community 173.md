@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 173
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[Basic knowledge you need to master]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[Branch]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[Browser Support_1]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[Documentation_1]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[Features_1]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[How to Join Us]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[Introduction_1]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[Version_1]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
-- [[intro]] - document - fork260509-soybean-admin-docs/src/guide/intro.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_17]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_17]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_12]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_10]] - document - base-web/CHANGELOG.md
+- [[v1.3.6(httpsgithub.comsoybeanjssoybean-admincomparev1.3.5...v1.3.6) (2024-09-20)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,3 +21,9 @@ members: 9
 TABLE source_file, type FROM #community/Community_173
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.6(httpsgithub.comsoybeanjssoybean-admincomparev1.3.5...v1.3.6) (2024-09-20)]] - degree 6, connects to 1 community

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "Community 377"
+community: "Community 250"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_377
+  - community/Community_250
 ---
 
 # layout
@@ -16,4 +16,4 @@ tags:
 - [[mode_3]] - `contains` [EXTRACTED]
 - [[scrollMode_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_377
+#graphify/code #graphify/EXTRACTED #community/Community_250

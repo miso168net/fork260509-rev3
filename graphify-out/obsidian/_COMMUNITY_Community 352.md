@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 352
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[ElegantConstRoute_1]] - code - base-web/src/typings/api/route.d.ts
-- [[MenuRoute]] - code - base-web/src/typings/api/route.d.ts
-- [[UserRoute]] - code - base-web/src/typings/api/route.d.ts
-- [[route.d.ts]] - code - base-web/src/typings/api/route.d.ts
+- [[system-logo.vue]] - code - base-web/src/components/common/system-logo.vue
 
 ## Live Query (requires Dataview plugin)
 

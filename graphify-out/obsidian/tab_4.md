@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "Community 272"
+community: "Community 182"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_272
+  - community/Community_182
 ---
 
 # tab
@@ -19,4 +19,4 @@ tags:
 - [[mode_4]] - `contains` [EXTRACTED]
 - [[visible_14]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_272
+#graphify/code #graphify/EXTRACTED #community/Community_182

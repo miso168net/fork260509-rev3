@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 283
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[PageSpy_2]] - document - fork260509-soybean-admin-docs/src/zh/recommend/page-spy.md
-- [[page-spy_2]] - document - fork260509-soybean-admin-docs/src/zh/recommend/page-spy.md
-- [[介绍_5]] - document - fork260509-soybean-admin-docs/src/zh/recommend/page-spy.md
-- [[相关链接_2]] - document - fork260509-soybean-admin-docs/src/zh/recommend/page-spy.md
-- [[背景_1]] - document - fork260509-soybean-admin-docs/src/zh/recommend/page-spy.md
-- [[能力]] - document - fork260509-soybean-admin-docs/src/zh/recommend/page-spy.md
+- [[Avatar SVG Icon]] - image - base-web/src/assets/svg-icon/avatar.svg
+- [[Copy SVG Icon]] - image - base-web/src/assets/svg-icon/copy.svg
+- [[setupUnplugin]] - code - base-web/build/plugins/unplugin.ts
 
 ## Live Query (requires Dataview plugin)
 

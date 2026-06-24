@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 273
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[enableTime_1]] - code - base-web/src/theme/preset/default.json
-- [[enableUserName_1]] - code - base-web/src/theme/preset/default.json
-- [[text_1]] - code - base-web/src/theme/preset/default.json
-- [[timeFormat_1]] - code - base-web/src/theme/preset/default.json
-- [[visible_16]] - code - base-web/src/theme/preset/default.json
-- [[watermark_1]] - code - base-web/src/theme/preset/default.json
+- [[Model_6]] - code - rust-api/entity/src/sys_role.rs
+- [[Relation_6]] - code - rust-api/entity/src/sys_role.rs
+- [[sys_role.rs]] - code - rust-api/entity/src/sys_role.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,9 +18,3 @@ members: 6
 TABLE source_file, type FROM #community/Community_273
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 108]]
-
-## Top bridge nodes
-- [[watermark_1]] - degree 6, connects to 1 community

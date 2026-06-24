@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/home/modules/header-banner.vue"
 type: "code"
-community: "Community 400"
+community: "Community 265"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_400
+  - community/Community_265
 ---
 
 # Home HeaderBanner Module (dashboard greeting banner)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Soybean Mascot Avatar Image]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_400
+#graphify/code #graphify/EXTRACTED #community/Community_265

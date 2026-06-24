@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 383
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[menu-operate-modal.vue]] - code - base-web/src/views/manage/menu/modules/menu-operate-modal.vue
-- [[{ layout, page }]] - code - base-web/src/views/manage/menu/modules/menu-operate-modal.vue
-- [[{ path, param }]] - code - base-web/src/views/manage/menu/modules/menu-operate-modal.vue
+- [[theme-schema.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/appearance/modules/theme-schema.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/index.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "Router & Menu Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/Router__Menu_Store
 ---
 
 # index.ts
@@ -35,4 +35,4 @@ tags:
 - [[useThemeStore]] - `contains` [EXTRACTED]
 - [[vchart.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

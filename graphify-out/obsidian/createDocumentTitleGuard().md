@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/title.ts"
 type: "code"
-community: "Community 61"
+community: "Router & Menu Store"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/Router__Menu_Store
 ---
 
 # createDocumentTitleGuard()
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_26]] - `imports` [EXTRACTED]
 - [[title.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

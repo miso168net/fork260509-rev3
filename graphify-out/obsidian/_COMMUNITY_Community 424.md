@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 424
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[intro_11]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/intro.md
-- [[システムテーマ]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/intro.md
-- [[原理_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/theme/intro.md
+- [[index.vue_39]] - code - base-web/src/views/plugin/charts/vchart/index.vue
 
 ## Live Query (requires Dataview plugin)
 

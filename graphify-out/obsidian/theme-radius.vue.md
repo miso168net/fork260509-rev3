@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/appearance/modules/theme-radius.vue"
 type: "code"
-community: "Community 546"
+community: "Community 382"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_546
+  - community/Community_382
 ---
 
 # theme-radius.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_546
+#graphify/code #graphify/EXTRACTED #community/Community_382

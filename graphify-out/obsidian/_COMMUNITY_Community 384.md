@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 384
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[date]] - code - base-web/src/views/plugin/charts/echarts/index.vue
-- [[index.vue_38]] - code - base-web/src/views/plugin/charts/echarts/index.vue
-- [[second]] - code - base-web/src/views/plugin/charts/echarts/index.vue
+- [[index.vue_16]] - code - base-web/src/layouts/modules/theme-drawer/modules/general/index.vue
 
 ## Live Query (requires Dataview plugin)
 

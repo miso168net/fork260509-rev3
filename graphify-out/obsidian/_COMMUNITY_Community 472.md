@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 472
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[SoftDeletable]] - code - rust-api/server/src/model/soft_delete.rs
-- [[soft_delete.rs]] - code - rust-api/server/src/model/soft_delete.rs
+- [[lib.rs_3]] - code - rust-api/xdb/src/lib.rs
 
 ## Live Query (requires Dataview plugin)
 

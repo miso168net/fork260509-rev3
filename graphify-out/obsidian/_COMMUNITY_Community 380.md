@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 380
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Local]] - code - base-web/src/typings/storage.d.ts
-- [[Session]] - code - base-web/src/typings/storage.d.ts
-- [[storage.d.ts]] - code - base-web/src/typings/storage.d.ts
+- [[index.vue_15]] - code - base-web/src/layouts/modules/theme-drawer/modules/appearance/index.vue
 
 ## Live Query (requires Dataview plugin)
 

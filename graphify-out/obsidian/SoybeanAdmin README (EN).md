@@ -11,14 +11,10 @@ tags:
 # SoybeanAdmin README (EN)
 
 ## Connections
-- [[Conventional Commits Standard]] - `references` [EXTRACTED]
 - [[Elegant Router]] - `references` [EXTRACTED]
 - [[SoybeanAdmin]] - `references` [EXTRACTED]
-- [[SoybeanAdmin Ecosystem Document]] - `references` [EXTRACTED]
 - [[SoybeanJS Code Specification]] - `references` [EXTRACTED]
 - [[SoybeanUI]] - `references` [EXTRACTED]
 - [[pnpm Monorepo Architecture]] - `references` [EXTRACTED]
-- [[sa CLI (packagesscripts)]] - `references` [INFERRED]
-- [[simple-git-hooks (3)]] - `references` [EXTRACTED]
 
 #graphify/document #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates

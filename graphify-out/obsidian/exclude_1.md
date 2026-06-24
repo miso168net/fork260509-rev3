@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/tsconfig.json"
 type: "code"
-community: "Community 57"
+community: "Community 40"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_57
+  - community/Community_40
 ---
 
 # exclude
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[tsconfig.json_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_57
+#graphify/code #graphify/EXTRACTED #community/Community_40

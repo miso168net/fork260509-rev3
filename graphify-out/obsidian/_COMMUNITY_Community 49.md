@@ -1,33 +1,30 @@
 ---
 type: community
-members: 20
+members: 17
 ---
 
 # Community 49
 
-**Members:** 20 nodes
+**Members:** 17 nodes
 
 ## Members
-- [[API]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[`klona(input)`]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[`klonafull`]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[`klonajson`]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[`klonalite`]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[`klona` (デフォルト)]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[codebash (npm install --save klona)]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[codejavascript (import { klona } from 'klona';)]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[codejavascript (import { klona } from 'klona';)_1]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[codejavascript (import { klona } from 'klonafull';)]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[codejavascript (import { klona } from 'klonajson';)]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[codejavascript (import { klona } from 'klonalite';)]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[klona_2]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[klona_1]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[インストール]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[モード]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[使用方法_2]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[特徴_1]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[紹介_2]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
-- [[関連リンク_1]] - document - fork260509-soybean-admin-docs/src/jp/recommend/klona.md
+- [[allowSyntheticDefaultImports_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[compilerOptions_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[esModuleInterop_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[exclude_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[forceConsistentCasingInFileNames_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[include_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[jsx_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[lib_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[module_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[moduleResolution_7]] - code - base-web/packages/scripts/tsconfig.json
+- [[noUnusedLocals_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[resolveJsonModule_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[strict_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[strictNullChecks_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[target_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[tsconfig.json_6]] - code - base-web/packages/scripts/tsconfig.json
+- [[types_6]] - code - base-web/packages/scripts/tsconfig.json
 
 ## Live Query (requires Dataview plugin)
 

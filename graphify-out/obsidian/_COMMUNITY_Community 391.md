@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 391
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[SvgIcon component]] - code - base-web/src/components/custom/svg-icon.vue
-- [[defaultLocalIcon missing-icon fallback]] - rationale - base-web/src/components/custom/svg-icon.vue
-- [[no-icon.svg (broken heart fallback icon)]] - image - base-web/src/assets/svg-icon/no-icon.svg
+- [[tab-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/modules/tab-settings.vue
 
 ## Live Query (requires Dataview plugin)
 

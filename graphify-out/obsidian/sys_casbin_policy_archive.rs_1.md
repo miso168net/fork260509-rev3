@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_policy_archive.rs"
 type: "code"
-community: "Community 120"
+community: "Community 10"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_120
+  - community/Community_10
 ---
 
 # sys_casbin_policy_archive.rs
@@ -24,4 +24,4 @@ tags:
 - [[role_id_of()]] - `contains` [EXTRACTED]
 - [[run_body()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_120
+#graphify/code #graphify/EXTRACTED #community/Community_10

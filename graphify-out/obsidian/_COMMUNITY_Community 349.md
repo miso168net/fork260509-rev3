@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 349
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_15]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂务_4]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.1.5(httpsgithub.comsoybeanjssoybean-admincomparev1.1.4...v1.1.5) (2024-06-06)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[menu-toggler.vue]] - code - base-web/src/components/common/menu-toggler.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -19,9 +16,3 @@ members: 4
 TABLE source_file, type FROM #community/Community_349
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
-
-## Top bridge nodes
-- [[v1.1.5(httpsgithub.comsoybeanjssoybean-admincomparev1.1.4...v1.1.5) (2024-06-06)_1]] - degree 4, connects to 1 community

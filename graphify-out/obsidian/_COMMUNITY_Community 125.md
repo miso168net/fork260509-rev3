@@ -1,24 +1,21 @@
 ---
 type: community
-members: 11
+members: 8
 ---
 
 # Community 125
 
-**Members:** 11 nodes
+**Members:** 8 nodes
 
 ## Members
-- [[unnamed_8]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[closeAll()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[closeCurrent()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[closeLeft()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[closeOther()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[closeRight()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[context-menu.vue]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[opt]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[pin()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[result]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
-- [[unpin()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_20]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂项_8]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_5]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;💅 重构_2]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_15]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 功能_3]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🛠 优化_10]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,3 +23,9 @@ members: 11
 TABLE source_file, type FROM #community/Community_125
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 66]]
+
+## Top bridge nodes
+- [[v1.1.0(httpsgithub.comhonghuangdcsoybean-admincomparev1.0.9...v1.1.0) (2024-05-07)_1]] - degree 8, connects to 1 community

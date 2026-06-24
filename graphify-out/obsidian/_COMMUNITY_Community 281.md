@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 281
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[PageSpy]] - document - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
-- [[page-spy]] - document - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
-- [[機能]] - document - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
-- [[紹介_3]] - document - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
-- [[背景]] - document - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
-- [[関連リンク_2]] - document - fork260509-soybean-admin-docs/src/jp/recommend/page-spy.md
+- [[Model_4]] - code - rust-api/entity/src/sys_menu.rs
+- [[Relation_4]] - code - rust-api/entity/src/sys_menu.rs
+- [[sys_menu.rs]] - code - rust-api/entity/src/sys_menu.rs
 
 ## Live Query (requires Dataview plugin)
 

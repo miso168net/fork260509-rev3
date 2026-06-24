@@ -1,19 +1,15 @@
 ---
 type: community
-members: 6
+members: 2
 ---
 
 # Community 290
 
-**Members:** 6 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[iconify 图标渲染原理]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md
-- [[intro_14]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md
-- [[本地 svg 图标渲染原理]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md
-- [[相关配置]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md
-- [[系统图标]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md
-- [[请注意]] - document - fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md
+- [[darkColor]] - code - base-web/src/components/custom/wave-bg.vue
+- [[wave-bg.vue]] - code - base-web/src/components/custom/wave-bg.vue
 
 ## Live Query (requires Dataview plugin)
 

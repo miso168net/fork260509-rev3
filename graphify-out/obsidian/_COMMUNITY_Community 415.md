@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 415
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_7]] - code - rust-api/entity/src/sys_token.rs
-- [[Relation_7]] - code - rust-api/entity/src/sys_token.rs
-- [[sys_token.rs]] - code - rust-api/entity/src/sys_token.rs
+- [[menu-auth-modal.vue]] - code - base-web/src/views/manage/role/modules/menu-auth-modal.vue
 
 ## Live Query (requires Dataview plugin)
 

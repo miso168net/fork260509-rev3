@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 417
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_8]] - code - rust-api/entity/src/sys_user.rs
-- [[Relation_8]] - code - rust-api/entity/src/sys_user.rs
-- [[sys_user.rs]] - code - rust-api/entity/src/sys_user.rs
+- [[role-search.vue]] - code - base-web/src/views/manage/role/modules/role-search.vue
 
 ## Live Query (requires Dataview plugin)
 

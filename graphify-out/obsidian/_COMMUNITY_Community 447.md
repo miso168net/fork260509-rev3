@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 447
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[.deleted_at_column()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
-- [[entitysys_roleEntity]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[code-login.vue]] - code - base-web/src/views/_builtin/login/modules/code-login.vue
 
 ## Live Query (requires Dataview plugin)
 

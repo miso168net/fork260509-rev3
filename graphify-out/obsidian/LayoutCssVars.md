@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/types/index.ts"
 type: "code"
-community: "Community 52"
+community: "Community 3"
 location: "L231"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_52
+  - community/Community_3
 ---
 
 # LayoutCssVars
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_12]] - `contains` [EXTRACTED]
 - [[shared.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_52
+#graphify/code #graphify/EXTRACTED #community/Community_3

@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 354
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[baidu-map.vue]] - code - base-web/src/views/plugin/map/components/baidu-map.vue
-- [[gaode-map.vue]] - code - base-web/src/views/plugin/map/components/gaode-map.vue
-- [[index.ts_39]] - code - base-web/src/views/plugin/map/components/index.ts
-- [[tencent-map.vue]] - code - base-web/src/views/plugin/map/components/tencent-map.vue
+- [[better-scroll.vue]] - code - base-web/src/components/custom/better-scroll.vue
 
 ## Live Query (requires Dataview plugin)
 

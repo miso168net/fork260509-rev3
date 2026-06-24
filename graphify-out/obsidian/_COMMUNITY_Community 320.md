@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 320
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[Option]] - code - base-web/src/typings/common.d.ts
-- [[RecordNullable]] - code - base-web/src/typings/common.d.ts
-- [[StrategicPattern]] - code - base-web/src/typings/common.d.ts
-- [[YesOrNo]] - code - base-web/src/typings/common.d.ts
-- [[common.d.ts]] - code - base-web/src/typings/common.d.ts
+- [[Alova Logo SVG Icon]] - image - base-web/src/assets/svg-icon/alova.svg
+- [[Alova Request Strategy Library]] - concept - base-web/src/assets/svg-icon/alova.svg
 
 ## Live Query (requires Dataview plugin)
 

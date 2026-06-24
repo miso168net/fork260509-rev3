@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/route.ts"
 type: "code"
-community: "Community 43"
+community: "Router & Menu Store"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_43
+  - community/Router__Menu_Store
 ---
 
 # initRoute()
@@ -15,6 +15,5 @@ tags:
 - [[getRouteQueryOfLoginRoute()]] - `calls` [EXTRACTED]
 - [[route.ts]] - `contains` [EXTRACTED]
 - [[useRouteStore]] - `calls` [EXTRACTED]
-- [[路由初始化]] - `semantically_similar_to` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_43
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

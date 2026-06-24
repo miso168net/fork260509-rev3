@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/visactor.svg"
 type: "image"
-community: "Community 355"
+community: "Community 243"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Community_355
+  - community/Community_243
 ---
 
 # VisActor logo icon (visactor.svg)
@@ -15,4 +15,4 @@ tags:
 - [[Route plugin_gantt_vtable (VTable gantt demo page)]] - `references` [EXTRACTED]
 - [[Route plugin_tables_vtable (VTable table demo page)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_355
+#graphify/image #graphify/EXTRACTED #community/Community_243

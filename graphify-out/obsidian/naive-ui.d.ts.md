@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/naive-ui.d.ts"
 type: "code"
-community: "Community 109"
+community: "Community 70"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_109
+  - community/Community_70
 ---
 
 # naive-ui.d.ts
@@ -25,4 +25,4 @@ tags:
 - [[TableOperateType]] - `contains` [EXTRACTED]
 - [[ThemeColor_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_109
+#graphify/code #graphify/EXTRACTED #community/Community_70

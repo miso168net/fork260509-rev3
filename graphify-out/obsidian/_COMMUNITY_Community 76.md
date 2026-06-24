@@ -1,29 +1,24 @@
 ---
 type: community
-members: 16
+members: 11
 ---
 
 # Community 76
 
-**Members:** 16 nodes
+**Members:** 11 nodes
 
 ## Members
-- [[codebash ( アイコンコンポーネントデータ)]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codehtml (div)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codehtml (icon-local-custom-icon class=text-24px text-red )_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codehtml (svg-icon icon=mdi-emoticon )_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codehtml (svg-icon local-icon=custom-icon style=font-size24px;col)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codehtml (svg-icon v-for=icon in icons key=icon icon=icon cla)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codetypescript (import AntDesign from '@iconifyjsonjsonant-design.json';)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codetypescript (import { addCollection } from '@iconifyvue';)_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codetypescript (import { useSvgIcon } from '@hookscommonicon';)]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[codevue (script lang=ts setup)_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[usage_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[アイコンチュートリアル]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[一、静的な使用方法：template 内で直接記述する]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[三、render 関数を使用してレンダリング：NaiveUI のアイコン表示向け]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[二、動的レンダリング：アイコン名に応じて適切なアイコンをレンダリング]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
-- [[四、オフラインロード：指定した iconify アイコンコレクションを追加]] - document - fork260509-soybean-admin-docs/src/jp/guide/icon/usage.md
+- [[unnamed_8]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[closeAll()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[closeCurrent()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[closeLeft()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[closeOther()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[closeRight()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[context-menu.vue]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[opt]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[pin()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[result]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
+- [[unpin()]] - code - base-web/src/layouts/modules/global-tab/context-menu.vue
 
 ## Live Query (requires Dataview plugin)
 

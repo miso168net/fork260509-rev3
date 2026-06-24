@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "Community 83"
+community: "Community 30"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_83
+  - community/Community_30
 ---
 
 # antd.ts
@@ -27,4 +27,4 @@ tags:
 - [[isValidColor()]] - `imports` [EXTRACTED]
 - [[mixColor()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_83
+#graphify/code #graphify/EXTRACTED #community/Community_30

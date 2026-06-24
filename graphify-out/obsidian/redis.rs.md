@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/redis.rs"
 type: "code"
-community: "Community 153"
+community: "Community 95"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/Community_95
 ---
 
 # redis.rs
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[RedisHandle]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/Community_95

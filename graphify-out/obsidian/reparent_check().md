@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Community 44"
+community: "Menu/Route Facade (rust)"
 location: "L653"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_44
+  - community/Menu/Route_Facade_rust
 ---
 
 # reparent_check()
@@ -18,4 +18,4 @@ tags:
 - [[update()]] - `calls` [EXTRACTED]
 - [[would_cycle()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_44
+#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust

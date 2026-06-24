@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 421
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_11]] - code - rust-api/sea-orm-adapter/src/entity.rs
-- [[Relation_11]] - code - rust-api/sea-orm-adapter/src/entity.rs
-- [[entity.rs]] - code - rust-api/sea-orm-adapter/src/entity.rs
+- [[index.vue_34]] - code - base-web/src/views/multi-menu/first_child/index.vue
 
 ## Live Query (requires Dataview plugin)
 

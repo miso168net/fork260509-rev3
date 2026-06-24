@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 263
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_21]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 修复的错误]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;📖 文档_16]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🚀 特性_1]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🛠 优化_11]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.1.0-beta.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[add_role()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[role_write_from_req()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[update_role()]] - code - rust-api/server/src/handler/system_manage.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,7 +20,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
+- 3 edges to [[_COMMUNITY_SysManage Handler & DTOs (rust)]]
+- 1 edge to [[_COMMUNITY_Community 20]]
 
 ## Top bridge nodes
-- [[v1.1.0-beta.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.1.0-beta.1...v1.1.0-beta.2) (2024-05-07)_1]] - degree 6, connects to 1 community
+- [[role_write_from_req()]] - degree 4, connects to 2 communities
+- [[add_role()]] - degree 2, connects to 1 community
+- [[update_role()]] - degree 2, connects to 1 community

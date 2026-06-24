@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 323
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[404 Not Found page view (_builtin404)]] - code - base-web/src/views/_builtin/404/index.vue
-- [[ExceptionBase component]] - code - base-web/src/components/common/exception-base.vue
-- [[no-permission.svg (403 Illustration)]] - image - base-web/src/assets/svg-icon/no-permission.svg
-- [[not-found.svg (404 Page Not Found Illustration)]] - image - base-web/src/assets/svg-icon/not-found.svg
-- [[service-error.svg (500 Illustration)]] - image - base-web/src/assets/svg-icon/service-error.svg
+- [[Expectation Illustration (expectation.svg)]] - image - base-web/src/assets/svg-icon/expectation.svg
+- [[LookForward component]] - code - base-web/src/components/custom/look-forward.vue
 
 ## Live Query (requires Dataview plugin)
 

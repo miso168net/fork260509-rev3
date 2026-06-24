@@ -1,19 +1,16 @@
 ---
 type: community
-members: 6
+members: 3
 ---
 
 # Community 262
 
-**Members:** 6 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_22]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🏡 杂务_5]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🐞 错误修复_6]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;💅 重构_3]] - document - base-web/CHANGELOG.zh_CN.md
-- [[&nbsp;&nbsp;&nbsp;🚀 功能_4]] - document - base-web/CHANGELOG.zh_CN.md
-- [[v1.1.0-beta.1(httpsgithub.comsoybeanjssoybean-admincomparev1.0.9...v1.1.0-beta.1) (2024-05-07)_1]] - document - base-web/CHANGELOG.zh_CN.md
+- [[batch_delete_role()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[delete_role()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[role_delete_guard()]] - code - rust-api/server/src/handler/system_manage.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,7 +20,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 105]]
+- 3 edges to [[_COMMUNITY_SysManage Handler & DTOs (rust)]]
+- 1 edge to [[_COMMUNITY_Community 10]]
 
 ## Top bridge nodes
-- [[v1.1.0-beta.1(httpsgithub.comsoybeanjssoybean-admincomparev1.0.9...v1.1.0-beta.1) (2024-05-07)_1]] - degree 6, connects to 1 community
+- [[role_delete_guard()]] - degree 4, connects to 2 communities
+- [[delete_role()]] - degree 2, connects to 1 community
+- [[batch_delete_role()]] - degree 2, connects to 1 community

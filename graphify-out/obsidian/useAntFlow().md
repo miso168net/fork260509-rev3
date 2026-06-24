@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts"
 type: "code"
-community: "Community 84"
+community: "Router & Menu Store"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_84
+  - community/Router__Menu_Store
 ---
 
 # useAntFlow()
@@ -15,4 +15,4 @@ tags:
 - [[antv-g6-flow.ts]] - `contains` [EXTRACTED]
 - [[useThemeStore]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_84
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

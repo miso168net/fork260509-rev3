@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 475
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[&str]] - code - rust-api/xdb/src/ip_value.rs
-- [[.to_u32_ip()_1]] - code - rust-api/xdb/src/ip_value.rs
+- [[menuTypeRecord (business constants)]] - code - base-web/src/constants/business.ts
 
 ## Live Query (requires Dataview plugin)
 

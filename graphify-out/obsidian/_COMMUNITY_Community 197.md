@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 197
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[API Realization (Optional if not new feature)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[Additional Plan (Optional if not new feature)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[Changelog description (Optional if not new feature)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[Self Check before Merge]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[This is a ...]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[What's the background]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[What's the effect (Optional if not new feature)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
-- [[pr_en]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_22]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_6]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_19]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_16]] - document - base-web/CHANGELOG.md
+- [[v1.3.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.0...v1.3.1) (2024-07-22)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -23,3 +20,9 @@ members: 8
 TABLE source_file, type FROM #community/Community_197
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.0...v1.3.1) (2024-07-22)]] - degree 5, connects to 1 community

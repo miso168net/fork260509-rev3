@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/package.json"
 type: "code"
-community: "Community 133"
+community: "Community 80"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_133
+  - community/Community_80
 ---
 
 # typed-css-modules
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[devDependencies_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_133
+#graphify/code #graphify/EXTRACTED #community/Community_80

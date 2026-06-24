@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/manage/menu/modules/menu-operate-modal.vue"
 type: "code"
-community: "Community 383"
+community: "Community 255"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_383
+  - community/Community_255
 ---
 
 # menu-operate-modal.vue
@@ -15,4 +15,4 @@ tags:
 - [[{ layout, page }]] - `contains` [EXTRACTED]
 - [[{ path, param }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_383
+#graphify/code #graphify/EXTRACTED #community/Community_255

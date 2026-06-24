@@ -1,20 +1,17 @@
 ---
 type: community
-members: 7
+members: 4
 ---
 
 # Community 238
 
-**Members:** 7 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[OperationLogFilter]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[audit_query_oplog_access_login_filters()]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[ilike()_2]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[ip_host_like()]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[list()_3]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[sys_operation_log.rs_1]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[write_in_txn()]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
+- [[.down()_1]] - code - rust-api/migration/src/m002_rev2_seeds.rs
+- [[.up()_1]] - code - rust-api/migration/src/m002_rev2_seeds.rs
+- [[Migration_1]] - code - rust-api/migration/src/m002_rev2_seeds.rs
+- [[m002_rev2_seeds.rs]] - code - rust-api/migration/src/m002_rev2_seeds.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 429
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Api.SystemManage.SystemSetting DTO (KV setting)]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
-- [[fetchGetSystemSettings (read all system settings KV)]] - code - base-web/src/service/api/rev3-system-settings.ts
+- [[index.vue_47]] - code - base-web/src/views/plugin/map/index.vue
 
 ## Live Query (requires Dataview plugin)
 

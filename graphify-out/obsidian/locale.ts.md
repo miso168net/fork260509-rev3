@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/locale.ts"
 type: "code"
-community: "Community 269"
+community: "Community 162"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_269
+  - community/Community_162
 ---
 
 # locale.ts
@@ -17,4 +17,4 @@ tags:
 - [[locales]] - `contains` [EXTRACTED]
 - [[zh-cn.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_269
+#graphify/code #graphify/EXTRACTED #community/Community_162

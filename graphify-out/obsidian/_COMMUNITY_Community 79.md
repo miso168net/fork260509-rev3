@@ -1,29 +1,24 @@
 ---
 type: community
-members: 16
+members: 11
 ---
 
 # Community 79
 
-**Members:** 16 nodes
+**Members:** 11 nodes
 
 ## Members
-- [[GitHub からコードを取得]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[Mock_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[VSCode プラグイン]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[Vue - Official をインストールし、Vetur を無効化]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[codebash ( クローン)]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[codebash (pnpm i)_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[codeblock4 (soybean-admin)]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[codejson ({)_2]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[npm scripts_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[quick-start_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[クイックスタート]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[コードの取得]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[ディレクトリ構成]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[プラグイン設定]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[依存関係のインストール]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
-- [[環境準備]] - document - fork260509-soybean-admin-docs/src/jp/guide/quick-start.md
+- [[LoginAttemptEvent]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[LoginAttemptFilter]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[ilike()_1]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[list()_2]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[login_attempt_active_model()]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[login_attempt_active_model_failed_pre_identity_shape()]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[login_attempt_active_model_maps_ipv4_to_32_success_shape()]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[login_attempt_active_model_maps_ipv6_to_128()]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[sample()_1]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[sys_login_attempt.rs_1]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
+- [[write()_1]] - code - rust-api/server/src/model/facade/sys_login_attempt.rs
 
 ## Live Query (requires Dataview plugin)
 

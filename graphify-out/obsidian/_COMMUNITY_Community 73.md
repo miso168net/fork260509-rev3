@@ -1,29 +1,25 @@
 ---
 type: community
-members: 16
+members: 12
 ---
 
 # Community 73
 
-**Members:** 16 nodes
+**Members:** 12 nodes
 
 ## Members
-- [[Commands]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[changelog]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[cleanup_2]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa changelog)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa cleanup)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa gen-route)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa git-commit)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa git-commit-verify)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa release)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[codebash (sa update-pkg)]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[gen-route_1]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[git-commit]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[git-commit-verify]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[intro_1]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[release_2]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
-- [[update-pkg_2]] - document - fork260509-soybean-admin-docs/src/guide/cli/intro.md
+- [[all_migration_seeds()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[endpoint_authz_coverage()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[endpoint_coverage_lint.rs]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[enforce_rs()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[extract_policy_routes()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[extract_registry_pairs()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[extract_routes()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[first_string_after()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[main_rs()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[migration_src_dir()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[scan_self_test()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
+- [[whiten_comments()]] - code - rust-api/server/tests/endpoint_coverage_lint.rs
 
 ## Live Query (requires Dataview plugin)
 

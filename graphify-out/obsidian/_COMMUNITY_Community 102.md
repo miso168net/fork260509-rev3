@@ -1,26 +1,22 @@
 ---
 type: community
-members: 13
+members: 9
 ---
 
 # Community 102
 
-**Members:** 13 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[ColorPalette]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteFamily]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteFamilyWithNearestPalette]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteMatch]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteNumber]] - code - base-web/packages/color/src/types/index.ts
-- [[ColorPaletteWithDelta]] - code - base-web/packages/color/src/types/index.ts
-- [[colorPalettes]] - code - base-web/packages/color/src/constant/palette.ts
-- [[index.ts_2]] - code - base-web/packages/color/src/index.ts
-- [[index.ts_3]] - code - base-web/packages/color/src/constant/index.ts
-- [[index.ts_5]] - code - base-web/packages/color/src/shared/index.ts
-- [[index.ts_6]] - code - base-web/packages/color/src/types/index.ts
-- [[palette.ts]] - code - base-web/packages/color/src/constant/palette.ts
-- [[recommend.ts]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_59]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_11]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_50]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_49]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_19]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_44]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_2]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_29]] - document - base-web/CHANGELOG.md
+- [[v0.9.9(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.8...v0.9.9) (2023-03-13)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,14 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 11 edges to [[_COMMUNITY_Community 83]]
-- 10 edges to [[_COMMUNITY_Community 103]]
-- 3 edges to [[_COMMUNITY_Theme Palette & UnoCSS]]
-- 1 edge to [[_COMMUNITY_Community 219]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[index.ts_2]] - degree 9, connects to 3 communities
-- [[recommend.ts]] - degree 19, connects to 2 communities
-- [[index.ts_5]] - degree 6, connects to 2 communities
-- [[index.ts_6]] - degree 12, connects to 1 community
-- [[index.ts_3]] - degree 5, connects to 1 community
+- [[v0.9.9(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.8...v0.9.9) (2023-03-13)]] - degree 9, connects to 1 community

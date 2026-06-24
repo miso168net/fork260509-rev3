@@ -1,18 +1,15 @@
 ---
 type: community
-members: 5
+members: 2
 ---
 
 # Community 309
 
-**Members:** 5 nodes
+**Members:** 2 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_22]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles_6]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_19]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_16]] - document - base-web/CHANGELOG.md
-- [[v1.3.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.0...v1.3.1) (2024-07-22)]] - document - base-web/CHANGELOG.md
+- [[Bug Report Issue Template (CN)]] - document - base-web/.github/ISSUE_TEMPLATE/bug-report_cn.yaml
+- [[Bug Report Issue Template (EN)]] - document - base-web/.github/ISSUE_TEMPLATE/bug-report_en.yaml
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +17,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_309
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
-
-## Top bridge nodes
-- [[v1.3.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.0...v1.3.1) (2024-07-22)]] - degree 5, connects to 1 community

@@ -1,30 +1,26 @@
 ---
 type: community
-members: 17
+members: 13
 ---
 
 # Community 69
 
-**Members:** 17 nodes
+**Members:** 13 nodes
 
 ## Members
-- [[allowSyntheticDefaultImports_8]] - code - base-web/packages/utils/tsconfig.json
-- [[compilerOptions_8]] - code - base-web/packages/utils/tsconfig.json
-- [[esModuleInterop_8]] - code - base-web/packages/utils/tsconfig.json
-- [[exclude_8]] - code - base-web/packages/utils/tsconfig.json
-- [[forceConsistentCasingInFileNames_8]] - code - base-web/packages/utils/tsconfig.json
-- [[include_8]] - code - base-web/packages/utils/tsconfig.json
-- [[jsx_8]] - code - base-web/packages/utils/tsconfig.json
-- [[lib_8]] - code - base-web/packages/utils/tsconfig.json
-- [[module_8]] - code - base-web/packages/utils/tsconfig.json
-- [[moduleResolution_9]] - code - base-web/packages/utils/tsconfig.json
-- [[noUnusedLocals_8]] - code - base-web/packages/utils/tsconfig.json
-- [[resolveJsonModule_8]] - code - base-web/packages/utils/tsconfig.json
-- [[strict_8]] - code - base-web/packages/utils/tsconfig.json
-- [[strictNullChecks_8]] - code - base-web/packages/utils/tsconfig.json
-- [[target_8]] - code - base-web/packages/utils/tsconfig.json
-- [[tsconfig.json_8]] - code - base-web/packages/utils/tsconfig.json
-- [[types_8]] - code - base-web/packages/utils/tsconfig.json
+- [[app.ts]] - code - base-web/src/constants/app.ts
+- [[loginModuleRecord]] - code - base-web/src/constants/app.ts
+- [[themeLayoutModeOptions]] - code - base-web/src/constants/app.ts
+- [[themeLayoutModeRecord]] - code - base-web/src/constants/app.ts
+- [[themePageAnimationModeOptions]] - code - base-web/src/constants/app.ts
+- [[themePageAnimationModeRecord]] - code - base-web/src/constants/app.ts
+- [[themeSchemaOptions]] - code - base-web/src/constants/app.ts
+- [[themeSchemaRecord]] - code - base-web/src/constants/app.ts
+- [[themeScrollModeOptions]] - code - base-web/src/constants/app.ts
+- [[themeScrollModeRecord]] - code - base-web/src/constants/app.ts
+- [[themeTabModeOptions]] - code - base-web/src/constants/app.ts
+- [[themeTabModeRecord]] - code - base-web/src/constants/app.ts
+- [[watermarkTimeFormatOptions]] - code - base-web/src/constants/app.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,3 +28,11 @@ members: 17
 TABLE source_file, type FROM #community/Community_69
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 2 edges to [[_COMMUNITY_Community 60]]
+- 1 edge to [[_COMMUNITY_Theme Palette & UnoCSS]]
+- 1 edge to [[_COMMUNITY_Theme Palette & UnoCSS]]
+
+## Top bridge nodes
+- [[app.ts]] - degree 16, connects to 3 communities

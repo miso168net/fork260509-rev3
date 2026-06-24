@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/system-manage.d.ts"
 type: "code"
-community: "Community 58"
+community: "Community 37"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_58
+  - community/Community_37
 ---
 
 # system-manage.d.ts
@@ -29,4 +29,4 @@ tags:
 - [[UserList]] - `contains` [EXTRACTED]
 - [[UserSearchParams]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Community_37

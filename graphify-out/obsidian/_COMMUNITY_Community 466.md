@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 466
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index.vue_31]] - code - base-web/src/views/manage/menu/index.vue
-- [[label]] - code - base-web/src/views/manage/menu/index.vue
+- [[ActiveModel_11]] - code - rust-api/sea-orm-adapter/src/entity.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,22 +1,19 @@
 ---
 type: community
-members: 9
+members: 6
 ---
 
 # Community 166
 
-**Members:** 9 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[.oxfmtrc.json]] - code - base-web/.oxfmtrc.json
-- [[arrowParens]] - code - base-web/.oxfmtrc.json
-- [[experimentalSortPackageJson]] - code - base-web/.oxfmtrc.json
-- [[htmlWhitespaceSensitivity]] - code - base-web/.oxfmtrc.json
-- [[ignorePatterns]] - code - base-web/.oxfmtrc.json
-- [[printWidth]] - code - base-web/.oxfmtrc.json
-- [[singleQuote]] - code - base-web/.oxfmtrc.json
-- [[sortScripts]] - code - base-web/.oxfmtrc.json
-- [[trailingComma]] - code - base-web/.oxfmtrc.json
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_55]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_46]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_46]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_40]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_8]] - document - base-web/CHANGELOG.md
+- [[v0.10.3(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.2...v0.10.3) (23-06-15)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,3 +21,9 @@ members: 9
 TABLE source_file, type FROM #community/Community_166
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v0.10.3(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.2...v0.10.3) (23-06-15)]] - degree 6, connects to 1 community

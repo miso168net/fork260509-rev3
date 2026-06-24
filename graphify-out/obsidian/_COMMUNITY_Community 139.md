@@ -1,23 +1,20 @@
 ---
 type: community
-members: 10
+members: 7
 ---
 
 # Community 139
 
-**Members:** 10 nodes
+**Members:** 7 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_5]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles_2]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_5]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_4]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_3]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_2]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚨 Breaking Changes_2]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_3]] - document - base-web/CHANGELOG.md
-- [[v2.0.0(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0) (2025-11-02)]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_47]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_39]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_13]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_33]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_3]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_24]] - document - base-web/CHANGELOG.md
+- [[v1.0.3(httpsgithub.comsoybeanjssoybean-admincomparev1.0.2...v1.0.3) (2024-04-16)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -30,4 +27,4 @@ SORT file.name ASC
 - 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[v2.0.0(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0) (2025-11-02)]] - degree 10, connects to 1 community
+- [[v1.0.3(httpsgithub.comsoybeanjssoybean-admincomparev1.0.2...v1.0.3) (2024-04-16)]] - degree 7, connects to 1 community

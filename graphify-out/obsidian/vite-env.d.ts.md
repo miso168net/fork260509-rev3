@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/vite-env.d.ts"
 type: "code"
-community: "Community 381"
+community: "Community 253"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_381
+  - community/Community_253
 ---
 
 # vite-env.d.ts
@@ -15,4 +15,4 @@ tags:
 - [[ImportMeta]] - `contains` [EXTRACTED]
 - [[RouterHistoryMode]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_381
+#graphify/code #graphify/EXTRACTED #community/Community_253

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Community 37"
+community: "Community 19"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/Community_19
 ---
 
 # config.rs
@@ -40,4 +40,4 @@ tags:
 - [[read_secret_file()]] - `contains` [EXTRACTED]
 - [[trust_model_fallback()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/Community_19

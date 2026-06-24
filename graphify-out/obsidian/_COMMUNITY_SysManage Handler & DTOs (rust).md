@@ -105,13 +105,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 27 edges to [[_COMMUNITY_Community 39]]
-- 8 edges to [[_COMMUNITY_Community 203]]
-- 7 edges to [[_COMMUNITY_Community 240]]
-- 6 edges to [[_COMMUNITY_Community 286]]
-- 6 edges to [[_COMMUNITY_Community 287]]
-- 3 edges to [[_COMMUNITY_Community 398]]
-- 3 edges to [[_COMMUNITY_Community 399]]
+- 27 edges to [[_COMMUNITY_Community 20]]
+- 8 edges to [[_COMMUNITY_Community 130]]
+- 7 edges to [[_COMMUNITY_Community 155]]
+- 6 edges to [[_COMMUNITY_Community 185]]
+- 6 edges to [[_COMMUNITY_Community 186]]
+- 3 edges to [[_COMMUNITY_Community 262]]
+- 3 edges to [[_COMMUNITY_Community 263]]
 
 ## Top bridge nodes
 - [[system_manage.rs]] - degree 147, connects to 7 communities

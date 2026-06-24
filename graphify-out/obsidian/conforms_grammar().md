@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "Community 68"
+community: "Community 50"
 location: "L178"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_68
+  - community/Community_50
 ---
 
 # conforms_grammar()
@@ -15,4 +15,4 @@ tags:
 - [[error.rs]] - `contains` [EXTRACTED]
 - [[is_semantic_key()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_68
+#graphify/code #graphify/EXTRACTED #community/Community_50

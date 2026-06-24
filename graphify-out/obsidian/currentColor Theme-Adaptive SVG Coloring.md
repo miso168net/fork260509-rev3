@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/no-permission.svg"
 type: "rationale"
-community: "Community 370"
+community: "Community 242"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_370
+  - community/Community_242
 ---
 
 # currentColor Theme-Adaptive SVG Coloring
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[No-Permission (403) Illustration]] - `implements` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_370
+#graphify/rationale #graphify/EXTRACTED #community/Community_242

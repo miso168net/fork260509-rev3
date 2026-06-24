@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 397
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[configurations_1]] - code - fork260509-soybean-admin-docs/.vscode/launch.json
-- [[launch.json_1]] - code - fork260509-soybean-admin-docs/.vscode/launch.json
-- [[version_15]] - code - fork260509-soybean-admin-docs/.vscode/launch.json
+- [[browser-visibility-request.vue]] - code - base-web/src/views/alova/scenes/modules/browser-visibility-request.vue
 
 ## Live Query (requires Dataview plugin)
 

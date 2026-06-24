@@ -1,17 +1,14 @@
 ---
 type: community
-members: 4
+members: 1
 ---
 
 # Community 370
 
-**Members:** 4 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[403 Exception Page (base-web)]] - concept - base-web/src/assets/svg-icon/no-permission.svg
-- [[HTTP 403 Forbidden]] - concept - base-web/src/assets/svg-icon/no-permission.svg
-- [[No-Permission (403) Illustration]] - image - base-web/src/assets/svg-icon/no-permission.svg
-- [[currentColor Theme-Adaptive SVG Coloring]] - rationale - base-web/src/assets/svg-icon/no-permission.svg
+- [[vertical-hybrid-header-first.vue]] - code - base-web/src/layouts/modules/global-menu/modules/vertical-hybrid-header-first.vue
 
 ## Live Query (requires Dataview plugin)
 

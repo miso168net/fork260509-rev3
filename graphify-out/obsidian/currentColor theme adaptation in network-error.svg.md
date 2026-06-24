@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/network-error.svg"
 type: "rationale"
-community: "Community 486"
+community: "Community 325"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_486
+  - community/Community_325
 ---
 
 # currentColor theme adaptation in network-error.svg
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[network-error.svg (network error illustration)]] - `implements` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_486
+#graphify/rationale #graphify/EXTRACTED #community/Community_325

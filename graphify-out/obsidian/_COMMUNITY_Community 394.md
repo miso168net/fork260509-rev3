@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 394
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[guard_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/guard.md
-- [[ルートガード]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/guard.md
-- [[ルートガードのフローチャート]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/guard.md
+- [[swiper.d.ts]] - code - base-web/src/typings/swiper.d.ts
 
 ## Live Query (requires Dataview plugin)
 

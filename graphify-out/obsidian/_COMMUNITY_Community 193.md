@@ -1,21 +1,18 @@
 ---
 type: community
-members: 8
+members: 5
 ---
 
 # Community 193
 
-**Members:** 8 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_4]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_4]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_3]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_2]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🚀 Features_1]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_2]] - document - base-web/CHANGELOG.md
-- [[v2.0.1(httpsgithub.comsoybeanjssoybean-admincomparev2.0.0...v2.0.1) (2025-12-04)]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_29]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_26]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_24]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_21]] - document - base-web/CHANGELOG.md
+- [[v1.2.3(httpsgithub.comsoybeanjssoybean-admincomparev1.2.2...v1.2.3) (2024-06-13)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,4 +25,4 @@ SORT file.name ASC
 - 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[v2.0.1(httpsgithub.comsoybeanjssoybean-admincomparev2.0.0...v2.0.1) (2025-12-04)]] - degree 8, connects to 1 community
+- [[v1.2.3(httpsgithub.comsoybeanjssoybean-admincomparev1.2.2...v1.2.3) (2024-06-13)]] - degree 5, connects to 1 community

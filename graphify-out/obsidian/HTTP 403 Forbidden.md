@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/no-permission.svg"
 type: "concept"
-community: "Community 370"
+community: "Community 242"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_370
+  - community/Community_242
 ---
 
 # HTTP 403 Forbidden
@@ -14,4 +14,4 @@ tags:
 - [[403 Exception Page (base-web)]] - `conceptually_related_to` [INFERRED]
 - [[No-Permission (403) Illustration]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_370
+#graphify/concept #graphify/EXTRACTED #community/Community_242

@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 457
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[synthesis_2]] - document - fork260509-soybean-admin-docs/src/zh/standard/synthesis.md
-- [[综合_1]] - document - fork260509-soybean-admin-docs/src/zh/standard/synthesis.md
+- [[ActiveModel_2]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
 
 ## Live Query (requires Dataview plugin)
 

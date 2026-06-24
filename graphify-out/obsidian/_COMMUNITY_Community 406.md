@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 406
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[donate_2]] - document - fork260509-soybean-admin-docs/src/zh/other/donate.md
-- [[捐赠]] - document - fork260509-soybean-admin-docs/src/zh/other/donate.md
-- [[捐赠列表]] - document - fork260509-soybean-admin-docs/src/zh/other/donate.md
+- [[index.vue_27]] - code - base-web/src/views/function/super-page/index.vue
 
 ## Live Query (requires Dataview plugin)
 

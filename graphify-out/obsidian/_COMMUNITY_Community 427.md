@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 427
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index.vue_37]] - code - base-web/src/views/plugin/charts/antv/index.vue
-- [[nodeData]] - code - base-web/src/views/plugin/charts/antv/index.vue
+- [[index.vue_42]] - code - base-web/src/views/plugin/editor/quill/index.vue
 
 ## Live Query (requires Dataview plugin)
 

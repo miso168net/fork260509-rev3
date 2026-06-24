@@ -1,28 +1,23 @@
 ---
 type: community
-members: 15
+members: 10
 ---
 
 # Community 83
 
-**Members:** 15 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[ColorIndex]] - code - base-web/packages/color/src/types/index.ts
-- [[antd.ts]] - code - base-web/packages/color/src/palette/antd.ts
-- [[darkColorMap]] - code - base-web/packages/color/src/palette/antd.ts
-- [[getAntDColorPalette()]] - code - base-web/packages/color/src/palette/antd.ts
-- [[getAntDPaletteColorByIndex()]] - code - base-web/packages/color/src/palette/antd.ts
-- [[getColorPalette()]] - code - base-web/packages/color/src/palette/index.ts
-- [[getHex()]] - code - base-web/packages/color/src/shared/colord.ts
-- [[getHsv()]] - code - base-web/packages/color/src/shared/colord.ts
-- [[getHue()]] - code - base-web/packages/color/src/palette/antd.ts
-- [[getRecommendedColorPalette()]] - code - base-web/packages/color/src/palette/recommend.ts
-- [[getRecommendedPaletteColorByNumber()]] - code - base-web/packages/color/src/palette/recommend.ts
-- [[getSaturation()]] - code - base-web/packages/color/src/palette/antd.ts
-- [[getValue()]] - code - base-web/packages/color/src/palette/antd.ts
-- [[index.ts_4]] - code - base-web/packages/color/src/palette/index.ts
-- [[isValidColor()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_61]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_52]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_51]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_21]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_46]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🔥 Performance_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_31]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🤖 CI_5]] - document - base-web/CHANGELOG.md
+- [[v0.9.7(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.6...v0.9.7) (2022-11-08)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -32,13 +27,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 11 edges to [[_COMMUNITY_Community 102]]
-- 8 edges to [[_COMMUNITY_Community 103]]
-- 6 edges to [[_COMMUNITY_Theme Palette & UnoCSS]]
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[antd.ts]] - degree 14, connects to 2 communities
-- [[index.ts_4]] - degree 11, connects to 2 communities
-- [[getRecommendedColorPalette()]] - degree 5, connects to 2 communities
-- [[isValidColor()]] - degree 5, connects to 2 communities
-- [[getColorPalette()]] - degree 9, connects to 1 community
+- [[v0.9.7(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.6...v0.9.7) (2022-11-08)]] - degree 10, connects to 1 community

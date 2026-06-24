@@ -1,16 +1,14 @@
 ---
 type: community
-members: 3
+members: 1
 ---
 
 # Community 411
 
-**Members:** 3 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Model_2]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
-- [[Relation_2]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
-- [[sys_casbin_policy_archive.rs]] - code - rust-api/entity/src/sys_casbin_policy_archive.rs
+- [[creativity-banner.vue]] - code - base-web/src/views/home/modules/creativity-banner.vue
 
 ## Live Query (requires Dataview plugin)
 
