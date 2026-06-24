@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 波 0~3 全完成、波 4 observability 待開始**（最近收刀 016＝2026-06-22；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯（001-016）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。剩餘 ⏳＝GRAPHIFY-NOTES／REVIEW 報告／obs（波 4）等（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 波 0~3 全完成、波 4 observability 待開始**（最近收刀 016＝2026-06-22；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯（001-016）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。剩餘 ⏳＝REVIEW 報告／obs（波 4）等（見各處 ⏳）；落地一項就拔該處 ⏳（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -58,7 +58,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── INTEGRATION-DECISIONS.md           ← 伴生活帳：§1 決策紀錄表 + §2 波次實施帳（§7.2）
 │   ├── INTEGRATION-CHECKLIST.md           ← 動態 todo（SOP 注入、不無限膨脹 §7.3）
 │   ├── INTEGRATION-MILESTONES.md          ← commit 里程碑永久紀錄（append-only，不在 SOP 注入 §7.4）
-│   ├── GRAPHIFY-NOTES.md       ⏳          ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3；尚未落地）
+│   ├── GRAPHIFY-NOTES.md                  ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3）
 │   ├── REVIEW-<NNN>-<NNN>.md   ⏳          ← Claude workflow review 彙整報告（隨 feature 產出）
 │   └── superpowers/                       ← 持久記錄 + brainstorm 決策（§7.4；000 已落地）
 │       └── <NNN>-<feature-name>.md        ← 每個 feature 的 Phase 0 brainstorm
@@ -390,7 +390,7 @@ Active feature: **無**（017-audit-center-enhancement ✅ 全完成、2026-06-2
 
 > 以下 `DESIGN`／`DECISIONS`／`CHECKLIST`／`MILESTONES`（帶不帶 `.md` 皆同）即 `docs/INTEGRATION-*.md` 對應同名四檔簡稱。
 
-rev3 整合的核心 docs 階層（DESIGN／DECISIONS／CHECKLIST／MILESTONES 已落地；GRAPHIFY-NOTES 仍 ⏳；rev2 研究三檔不移植不重作 §7.1），內容流動：「研究歷史（rev2 史料、已內化）」→「設計權威（凍結藍圖）＋伴生活帳」→「動態 todo」;**`INTEGRATION-DESIGN.md` 是核心事實、`INTEGRATION-DECISIONS.md` 是它的活頁**。
+rev3 整合的核心 docs 階層（DESIGN／DECISIONS／CHECKLIST／MILESTONES／GRAPHIFY-NOTES 已落地；rev2 研究三檔不移植不重作 §7.1），內容流動：「研究歷史（rev2 史料、已內化）」→「設計權威（凍結藍圖）＋伴生活帳」→「動態 todo」;**`INTEGRATION-DESIGN.md` 是核心事實、`INTEGRATION-DECISIONS.md` 是它的活頁**。
 
 **★ 不引用本機 memory（全專案文件、強制）**:任何 repo 內 git-tracked 文件(CLAUDE.md／DESIGN／DECISIONS／CHECKLIST／MILESTONES／spec／brainstorm 等)**一律不引用 `~/.claude/projects/.../memory/` 的 Claude 記憶**(含 `[[memory-slug]]` wikilink)。理由:memory 是 **per-machine／per-user 本機記憶、不在 repo**——換機、換維護者、別人 clone 皆不存在,committed 文件依賴它＝dangling、對他人無意義(同 §7.3 引用紀律「cross-ref 改指權威 repo 文件」之精神)。某 memory 內容若重要到值得被文件引用 → **先提取進 repo 文件**(CLAUDE.md 對應段／DESIGN／DECISIONS 等)、再引用那個 **repo §錨**;memory 只供 Claude 跨 session recall、**非 repo 引用目標**。
 
@@ -606,7 +606,7 @@ docker compose exec acme acme.sh --version    # sanity check
 - 找路徑：`graphify path "節點A" "節點B"`
 - 增量更新：`graphify update`（會用 `manifest.json` 比對變更）
 
-> 📖 **圖譜現況統計** 與 **已知抽取限制** 等細節 — **推論前必讀** [`docs/GRAPHIFY-NOTES.md`](docs/GRAPHIFY-NOTES.md) ⏳。
+> 📖 **圖譜現況統計** 與 **已知抽取限制** 等細節 — **推論前必讀** [`docs/GRAPHIFY-NOTES.md`](docs/GRAPHIFY-NOTES.md)。
 
 **graphify 守則**：
 - `graphify-out/` 已建圖（2026-06-12 首建，2060 nodes/311 communities；commit `8f66fe0`）。圖譜索引 rev3 worktree（`base-web` / `rust-api` 整合分支），與整合碼同步；docs 後續大改（如 INTEGRATION-DESIGN 改名、四檔落地）後記得 `graphify update` 增量同步（已列 CHECKLIST §2 持續性維護）。
