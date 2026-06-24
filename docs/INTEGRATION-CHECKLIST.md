@@ -12,8 +12,8 @@
 **階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。pre-波4 017-audit-center-enhancement ✅ 全完成（2026-06-23、merge `c7f5936`）＝審計中心 enhancement（C-1 class filter／C-3 CSV 匯出／C-4 op-log 角色 delta、零 migration/端點/crate）。下一步＝波 4 observability（未開始）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-23 §3.A cleanup-job 排程上線（pre-波4 backlog、014 follow-up）**：加 profile-gated compose sidecar（`cleanup-job` service、`profiles:[prod]` opt-in、sleep-loop `cleanup-job --execute` 每日、復用 prod image+database_url secret、healthcheck disabled）→ 過期 sys_token 週期清理（docker-compose.yml 單檔）。live 驗（dev+--profile prod）executed 刪 0 列+running 非 crash-loop+sh escaping 無誤+收掉乾淨。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
-- **2026-06-23 017-audit-center-enhancement ✅ 全完成收刀（波 4 前 §3.C 審計中心 enhancement）**（merge `c7f5936`）：三子功能零 migration/端點/crate — C-4 op-log 角色 delta（with_roles+三寫端 enrich+4 live smoke）／C-3 三審計 CSV 匯出（export query 變體+CSV-in-envelope+BOM+op-log roles 欄+前端 downloadCsv/截斷 toast）／C-1 access-log http_status 類別 filter（2xx/4xx/5xx 半開區間+NSelect）。5 執行單元 Workflow 驅動（EU1-5）、雙 review+holistic ALL PASS、C-V-0~5 全綠（含 CDP UI 驗收、CDP 抓出並修 class filter label i18n）。pins rust-api `e988a29`/base-web `a555326d`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
+- **2026-06-24 §3.C F4 審計 CSV 截斷信號嚴格化（最後一個 codeable §3 實質項）**：export data 裸 CSV 字串→`{csv,truncated}`（後端 `is_export_truncated(total)=total>CAP` 權威旗標）、前端截斷 toast 棄 stale `pagination.itemCount`；rust 2 單元測+base-web `AuditCsvExport` 型/3 wrapper/3 onExport/清 orphan。CDP 三 tab export 回 `{csv,truncated:false}` 驗。pins rust `483eeba`/base-web `134ddcc2`/outer `7ac45c7`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
+- **2026-06-24 審計頁 render bug 修（CDP 接地）**：子表 flex-height NDataTable 被 NTabs 夾在 `display:block` 的 NCard content 內、flex 鏈斷→body 塌 0px→有資料列被裁不顯（012 latent、空表看不出）；index.vue 補 flex 鏈、三子表元件不動。CDP 三 tab body_h 0→177/119/177 列現形驗。pin base-web `2ad39a2b`/outer `ea30721`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
@@ -78,6 +78,14 @@
 
 > 2026-06-22 thematic 重組（de-bloat）：原 per-feature §3.1~§3.20 散列收成跨刀主題群 §3.A~§3.H；已結 follow-up 與**舊→新 §錨對照**見 [MILESTONES §3](INTEGRATION-MILESTONES.md) + git history（pre-debloat `16b53a3`）。均不阻塞、消費刀/觸發時處理。
 
+> **★ 為何剩餘 `[ ]` 多輪收不掉（停泊分類、非待辦遺漏；2026-06-24 校準）**：可做的實質 hygiene 已收完（含 F4＝最後一個 codeable 項）。剩餘 `[ ]` 按**性質停泊**、`[x]`＝做完、以下多數本質「現在不可能做完」、故長期掛 `[ ]` 屬正常：
+> - **DEFER-prod**（拍板待真 prod 拓樸）：cert `external`／trust-model.toml 填值
+> - **WON'T-DO**（已決不做）：prod 多副本〔research §D〕／login fallback〔frozen upstream〕／dispatcher〔blob 凍結〕／pruneNullParams〔by-design〕
+> - **TRIGGER**（觸發時才有工作）：lint CONST 守門／validate_value_type／`set_var`〔edition 2024〕／examples fixture
+> - **REACTIVE**（真 flaky 才修）：op-log count EntityId 隔離脆弱性
+> - **SCALE**（規模到才有 ROI）：pg_trgm GIN／Redis pointer 熱快取／archive purge
+> - **OWN-CUT**（併未來刀）：batch_soft_delete sentinel／soft_delete fault-test／protected 訊息泛化
+
 ### 3.A 公網/prod 部署前硬化（跨刀彙整：001/012/013/014）
 
 > 公網/prod 部署前一次性硬化；dev 不受影響。原散於各刀，收成單一清單。
@@ -88,7 +96,7 @@
 - [ ] **trust-model 部署**〔013〕：operator 填 `trust-model.toml` 實際拓樸（my_public／cloudflared ingress）；CF 官方 IP 段 nginx geo ↔ trust-model.toml 兩處同步（漂移風險、評單一來源）
 - [x] ✅ **XFF 上限**〔012/013、pre-波4 2026-06-23〕：`normalize_xff_tokens` 加 `MAX_XFF_TOKENS=32` token cap（test-first `normalize_caps_token_count`）
 - [x] ✅ **cleanup-job 上線**〔014、pre-波4 2026-06-23〕：profile-gated compose sidecar（`cleanup-job` service、`profiles:[prod]` opt-in、sleep-loop `--execute` 每日〔`CLEANUP_INTERVAL_SECS` 預設 86400〕、復用 prod image+database_url secret〔APP_DATABASE_URL_FILE〕、healthcheck disabled；docker-compose.yml）;live 驗 executed 刪 0 列+running 非 crash-loop。仍 open（low）：最小權限 secret `cleanup_database_url`（現走全權 DATABASE_URL）
-- [ ] **prod 多副本**〔014〕：dev rust-api-2 已驗 invariant；prod nginx 仍單一 proxy_pass、無 upstream/replicas（research §D 明示不做）→ 真橫向擴展待 nginx LB＋共用 DB/Redis（low）
+- [ ] ~~**prod 多副本**〔014〕~~ **WON'T-DO v1**（research §D 明示不做）：dev rust-api-2 已驗 invariant；prod nginx 仍單一 proxy_pass，真橫向擴展待 nginx LB＋共用 DB/Redis（另案、非 v1）
 - [ ] **001 其他邊角**：~~prod migrate 無意義 HEALTHCHECK→disable~~（早已 disable、自述 stale✅）；migrate redis depends_on 措辭對齊；dev watcher cargo-watch→bacon/watchexec 評估；`set_var` runtime（edition 2024 升級時）；rust-api/.gitignore `debug`/`target` pattern 錨；cargo cache 卷遮蓋/冷卷首啟 flap 已在 CLAUDE.md §8.2.1（quickstart 補述可選）
 
 ### 3.B typings 收斂 sweep ✅ 全完成+已歸檔 (2026-06-23)
@@ -102,7 +110,7 @@
 - [x] ✅ op-log payload 角色集 delta〔009/012、017 C-4 2026-06-23〕：三寫端 with_roles enrich；**`current_session_id` 保留不遮蔽**（017 D3 拍板＝非 redact、forensic session 關聯）
 - [ ] 模糊 LIKE seq-scan → `pg_trgm` GIN〔012；017 C-2 明示 out-of-scope：scale-gated、需 CREATE EXTENSION+migration、規模增長再做〕
 - [ ] archive 表 retention/purge〔015；017 C-5 明示 out-of-scope：purge spec 明示不做、log-retention ⚠️n 家族、obs波或量大時處理〕
-- [ ] **CSV 截斷信號嚴格化**〔017 F4〕：前端截斷 toast 依 `pagination.itemCount`（最近同篩選 list total）、user 改篩未重查時可能 stale;嚴格保證＝後端 export response 帶截斷旗標（審計 append-only/admin 低頻、現低風險、data-model §3.5 已記）
+- [x] ✅ **CSV 截斷信號嚴格化**〔017 F4、2026-06-24〕：export data 改 `{csv,truncated}`、後端 `is_export_truncated(total)` 權威旗標；前端 3 onExport 棄 stale `pagination.itemCount`、清 cap 鏡像 orphan。rust `483eeba`/base-web `134ddcc2`/outer `7ac45c7`、詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 
 ### 3.D alt-login stub 刀（post-波3 future feature；⚠️m）
 
