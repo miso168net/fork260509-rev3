@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/dynamic.md"
 type: "document"
-community: "RouteMeta"
+community: "Community 90"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/RouteMeta
+  - community/Community_90
 ---
 
 # Route Permissions Guide
@@ -16,4 +16,4 @@ tags:
 - [[fetchGetConstantRoutes]] - `references` [EXTRACTED]
 - [[fetchGetUserRoutes]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/RouteMeta
+#graphify/document #graphify/EXTRACTED #community/Community_90

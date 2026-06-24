@@ -1,0 +1,22 @@
+---
+type: community
+members: 5
+---
+
+# Community 328
+
+**Members:** 5 nodes
+
+## Members
+- [[cache_4]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
+- [[codets ({)_15]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
+- [[ルートキャッシュ]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
+- [[使い方]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
+- [[原理_1]] - document - fork260509-soybean-admin-docs/src/jp/guide/router/cache.md
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_328
+SORT file.name ASC
+```

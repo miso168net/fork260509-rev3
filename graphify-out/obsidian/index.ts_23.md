@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/index.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Auth & Locale Service"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Auth__Locale_Service
 ---
 
 # index.ts
@@ -17,7 +17,6 @@ tags:
 - [[common.ts_1]] - `imports_from` [EXTRACTED]
 - [[form.ts]] - `imports_from` [EXTRACTED]
 - [[getLocale()]] - `contains` [EXTRACTED]
-- [[i18n]] - `contains` [EXTRACTED]
 - [[index.ts_29]] - `imports_from` [EXTRACTED]
 - [[index.ts_31]] - `imports_from` [EXTRACTED]
 - [[index.ts_33]] - `imports_from` [EXTRACTED]
@@ -25,6 +24,7 @@ tags:
 - [[loading.ts]] - `imports_from` [EXTRACTED]
 - [[localStg]] - `imports` [EXTRACTED]
 - [[locale.ts]] - `imports_from` [EXTRACTED]
+- [[localesindex.ts ($t, setupI18n)]] - `contains` [EXTRACTED]
 - [[main.ts]] - `imports_from` [EXTRACTED]
 - [[setLocale()]] - `contains` [EXTRACTED]
 - [[setupI18n()]] - `contains` [EXTRACTED]
@@ -34,4 +34,4 @@ tags:
 - [[table.ts]] - `imports_from` [EXTRACTED]
 - [[title.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

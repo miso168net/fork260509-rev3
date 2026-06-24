@@ -1,20 +1,20 @@
 ---
-source_file: "fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md"
-type: "concept"
-community: "Project Meta & Monorepo"
+source_file: "fork260509-soybean-admin-docs/src/jp/standard/lint.md"
+type: "document"
+community: "Community 130"
+location: "L27"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/Community_130
 ---
 
 # simple-git-hooks
 
 ## Connections
-- [[Git Hooks Guide Doc]] - `references` [EXTRACTED]
-- [[Git Hooks Pre-commit Checks (simple-git-hooks)]] - `references` [EXTRACTED]
-- [[SoybeanAdmin README (EN)]] - `references` [EXTRACTED]
-- [[base-web pnpm-workspace.yaml]] - `references` [EXTRACTED]
-- [[sa CLI (packagesscripts)]] - `conceptually_related_to` [INFERRED]
+- [[codebash (pnpm i simple-git-hooks -D)]] - `contains` [EXTRACTED]
+- [[codejson ({)_5]] - `contains` [EXTRACTED]
+- [[codejson ({)_6]] - `contains` [EXTRACTED]
+- [[コードチェック]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/Community_130

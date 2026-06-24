@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/standard/vue.md"
 type: "rationale"
-community: "Vue Writing Standards"
+community: "Community 100"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Vue_Writing_Standards
+  - community/Community_100
 ---
 
 # init() Initialization Pattern
 
 ## Connections
-- [[Vue Writing Standards]] - `references` [EXTRACTED]
+- [[Vue Writing Standards_1]] - `references` [EXTRACTED]
 - [[Vue Writing Standards (JP)]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Vue_Writing_Standards
+#graphify/rationale #graphify/EXTRACTED #community/Community_100

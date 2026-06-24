@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/settings.json"
 type: "code"
-community: "VSCode Workspace Settings"
+community: "Community 48"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/VSCode_Workspace_Settings
+  - community/Community_48
 ---
 
 # unocss.root
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[settings.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/VSCode_Workspace_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_48

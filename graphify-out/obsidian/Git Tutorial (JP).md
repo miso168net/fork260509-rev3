@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/tutorial/git.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 157"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Debugging__Routing_Docs
+  - community/Community_157
 ---
 
 # Git Tutorial (JP)
@@ -14,4 +14,4 @@ tags:
 - [[@soybeanjscli (2)]] - `conceptually_related_to` [INFERRED]
 - [[Tutorial Index (JP)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/INFERRED #community/Debugging__Routing_Docs
+#graphify/document #graphify/INFERRED #community/Community_157

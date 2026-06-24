@@ -1,20 +1,20 @@
 ---
 source_file: "base-web/packages/axios/src/type.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Axios Request Factory"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Axios_Request_Factory
 ---
 
 # ResponseType
 
 ## Connections
-- [[index.ts (2)]] - `imports` [EXTRACTED]
+- [[index.ts_1]] - `imports` [EXTRACTED]
 - [[shared.ts]] - `imports` [EXTRACTED]
-- [[type.ts (2)]] - `contains` [EXTRACTED]
+- [[type.ts_1]] - `contains` [EXTRACTED]
 - [[use-request.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory

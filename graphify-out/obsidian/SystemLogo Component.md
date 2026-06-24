@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/logo.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 180"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_180
 ---
 
 # SystemLogo Component
@@ -17,4 +17,4 @@ tags:
 - [[setupLoading]] - `references` [EXTRACTED]
 - [[本地 logo 图标 (svg-iconlogo.svg)]] - `references` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_180

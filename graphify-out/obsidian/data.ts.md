@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/antv/data.ts"
 type: "code"
-community: "antv-g6-flow.ts"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/antv-g6-flowts
+  - community/Community_84
 ---
 
 # data.ts
@@ -16,4 +16,4 @@ tags:
 - [[getFlowData()]] - `contains` [EXTRACTED]
 - [[types.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/antv-g6-flowts
+#graphify/code #graphify/EXTRACTED #community/Community_84

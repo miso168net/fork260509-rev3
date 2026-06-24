@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-loading.ts"
 type: "code"
-community: "Composable Hooks"
+community: "Axios Request Factory"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Composable_Hooks
+  - community/Axios_Request_Factory
 ---
 
 # useLoading()
@@ -18,4 +18,4 @@ tags:
 - [[useCaptcha()]] - `calls` [INFERRED]
 - [[useTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Composable_Hooks
+#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory

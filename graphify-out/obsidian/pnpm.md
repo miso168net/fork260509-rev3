@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "engines"
+community: "Community 42"
 location: "L131"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/engines
+  - community/Community_42
 ---
 
 # pnpm
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[engines]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/engines
+#graphify/code #graphify/EXTRACTED #community/Community_42

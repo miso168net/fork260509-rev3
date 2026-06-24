@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "business.ts"
+community: "Community 38"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/businessts
+  - community/Community_38
 ---
 
 # business.ts
 
 ## Connections
-- [[common.ts (2)]] - `imports_from` [EXTRACTED]
+- [[common.ts_1]] - `imports_from` [EXTRACTED]
 - [[enableStatusOptions]] - `contains` [EXTRACTED]
 - [[enableStatusRecord]] - `contains` [EXTRACTED]
 - [[menuIconTypeOptions]] - `contains` [EXTRACTED]
@@ -23,4 +23,4 @@ tags:
 - [[userGenderOptions]] - `contains` [EXTRACTED]
 - [[userGenderRecord]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/businessts
+#graphify/code #graphify/EXTRACTED #community/Community_38

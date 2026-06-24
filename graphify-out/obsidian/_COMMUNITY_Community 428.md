@@ -1,0 +1,19 @@
+---
+type: community
+members: 2
+---
+
+# Community 428
+
+**Members:** 2 nodes
+
+## Members
+- [[Api.SystemManage.UpdateSystemSettingReq DTO]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
+- [[fetchUpdateSystemSetting (update single setting value)]] - code - base-web/src/service/api/rev3-system-settings.ts
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_428
+SORT file.name ASC
+```

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/compact.json"
 type: "code"
-community: "Theme Settings Presets"
+community: "Community 36"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Settings_Presets
+  - community/Community_36
 ---
 
 # header
@@ -18,4 +18,4 @@ tags:
 - [[height]] - `contains` [EXTRACTED]
 - [[multilingual]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Settings_Presets
+#graphify/code #graphify/EXTRACTED #community/Community_36

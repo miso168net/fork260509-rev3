@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/union-key.d.ts"
 type: "code"
-community: "union-key.d.ts"
+community: "Community 218"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/union-keydts
+  - community/Community_218
 ---
 
 # LoginModule
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[union-key.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/union-keydts
+#graphify/code #graphify/EXTRACTED #community/Community_218

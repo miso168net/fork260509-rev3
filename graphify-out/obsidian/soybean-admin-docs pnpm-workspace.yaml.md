@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/pnpm-workspace.yaml"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # soybean-admin-docs pnpm-workspace.yaml
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[base-web pnpm-workspace.yaml]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Project_Meta__Monorepo
+#graphify/document #graphify/INFERRED #community/CI_Workflows__Issue_Templates

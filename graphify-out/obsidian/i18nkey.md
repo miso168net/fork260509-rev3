@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/theme/preset/azir.json"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Theme Design Tokens"
-location: "L4"
+community: "App Theme Type Decls"
+location: "L857"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Design_Tokens
+  - community/App_Theme_Type_Decls
 ---
 
-# i18nkey
+# I18nKey
 
 ## Connections
-- [[azir.json]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Design_Tokens
+#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/cli/git-hooks.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # simple-git-hooks (3)
@@ -17,4 +17,4 @@ tags:
 - [[base-web pnpm-workspace.yaml]] - `references` [EXTRACTED]
 - [[sa CLI (packagesscripts)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates

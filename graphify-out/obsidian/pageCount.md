@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/views/plugin/pdf/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 144"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_144
 ---
 
 # pageCount
 
 ## Connections
-- [[index.vue (49)]] - `contains` [EXTRACTED]
+- [[index.vue_48]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_144

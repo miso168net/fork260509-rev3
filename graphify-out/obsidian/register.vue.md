@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/_builtin/login/modules/register.vue"
 type: "code"
-community: "register.vue"
+community: "Community 613"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/registervue
+  - community/Community_613
 ---
 
 # register.vue
 
-#graphify/code #graphify/EXTRACTED #community/registervue
+#graphify/code #graphify/EXTRACTED #community/Community_613

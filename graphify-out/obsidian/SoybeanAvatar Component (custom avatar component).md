@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/components/custom/soybean-avatar.vue"
 type: "code"
-community: "Soybean Mascot Avatar Image (AI-generate"
+community: "Community 400"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Soybean_Mascot_Avatar_Image_AI-generate
+  - community/Community_400
 ---
 
 # SoybeanAvatar Component (custom avatar component)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Soybean Mascot Avatar Image]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Soybean_Mascot_Avatar_Image_AI-generate
+#graphify/code #graphify/EXTRACTED #community/Community_400

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/icon/intro.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 179"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_179
 ---
 
 # unplugin-icons (2)
@@ -18,4 +18,4 @@ tags:
 - [[Offline Iconify Icon Loading]] - `semantically_similar_to` [INFERRED]
 - [[System Icons Guide]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_179

@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/router/dynamic.md"
 type: "concept"
-community: "RouteMeta"
+community: "Community 90"
 location: "### 固定路由"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/RouteMeta
+  - community/Community_90
 ---
 
 # meta.constant 固定路由标记
@@ -15,4 +15,4 @@ tags:
 - [[RouteMeta (2)]] - `shares_data_with` [EXTRACTED]
 - [[Static Route Mode]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/RouteMeta
+#graphify/concept #graphify/EXTRACTED #community/Community_90

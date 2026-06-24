@@ -1,12 +1,12 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/router/dynamic.md"
 type: "concept"
-community: "RouteMeta"
+community: "Community 90"
 location: "### 开启/关闭"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/RouteMeta
+  - community/Community_90
 ---
 
 # VITE_AUTH_ROUTE_MODE 环境变量
@@ -15,4 +15,4 @@ tags:
 - [[Dynamic Route Mode]] - `references` [EXTRACTED]
 - [[Static Route Mode]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/RouteMeta
+#graphify/concept #graphify/EXTRACTED #community/Community_90

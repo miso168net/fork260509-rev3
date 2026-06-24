@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-request.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Axios Request Factory"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Axios_Request_Factory
 ---
 
 # use-request.ts
@@ -23,7 +23,7 @@ tags:
 - [[ResponseType]] - `imports` [EXTRACTED]
 - [[createFlatRequest()]] - `imports` [EXTRACTED]
 - [[createHookRequest()]] - `contains` [EXTRACTED]
-- [[index.ts (2)]] - `imports_from` [EXTRACTED]
+- [[index.ts_1]] - `imports_from` [EXTRACTED]
 - [[use-loading.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory

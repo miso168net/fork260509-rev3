@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/public/router-guard-flow.pdf"
 type: "document"
-community: "Route Guard"
+community: "Community 88"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Route_Guard
+  - community/Community_88
 ---
 
 # Router Guard Flowchart (PDF)
@@ -14,4 +14,4 @@ tags:
 - [[Route Guard]] - `references` [EXTRACTED]
 - [[路由守卫流程]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Route_Guard
+#graphify/document #graphify/EXTRACTED #community/Community_88

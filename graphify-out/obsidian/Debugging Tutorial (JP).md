@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/tutorial/debug.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 183"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_183
 ---
 
 # Debugging Tutorial (JP)
@@ -16,4 +16,4 @@ tags:
 - [[VSCode Vue Debugger Launch Config]] - `references` [EXTRACTED]
 - [[tsx TypeScript Runner]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_183

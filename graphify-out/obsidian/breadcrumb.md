@@ -1,18 +1,17 @@
 ---
-source_file: "base-web/src/theme/preset/compact.json"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Theme Settings Presets"
-location: "L9"
+community: "App Theme Type Decls"
+location: "L234"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Settings_Presets
+  - community/App_Theme_Type_Decls
 ---
 
-# breadcrumb
+# Breadcrumb
 
 ## Connections
-- [[header (2)]] - `contains` [EXTRACTED]
-- [[visible]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Settings_Presets
+#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls

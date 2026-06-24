@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/hooks/common/echarts.ts"
 type: "code"
-community: "data.ts"
+community: "Community 72"
 location: "L35"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/datats
+  - community/Community_72
 ---
 
 # ECOption
 
 ## Connections
-- [[data.ts (2)]] - `imports` [EXTRACTED]
+- [[data.ts_1]] - `imports` [EXTRACTED]
 - [[echarts.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/datats
+#graphify/code #graphify/EXTRACTED #community/Community_72

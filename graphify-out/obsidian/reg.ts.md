@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/reg.ts"
 type: "code"
-community: "Composable Hooks"
+community: "Common Hooks & Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Composable_Hooks
+  - community/Common_Hooks__Store
 ---
 
 # reg.ts
@@ -15,4 +15,4 @@ tags:
 - [[captcha.ts]] - `imports_from` [EXTRACTED]
 - [[form.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Composable_Hooks
+#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store

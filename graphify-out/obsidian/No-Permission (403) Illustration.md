@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/no-permission.svg"
 type: "image"
-community: "No-Permission (403) Illustration"
+community: "Community 370"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/No-Permission_403_Illustration
+  - community/Community_370
 ---
 
 # No-Permission (403) Illustration
@@ -15,4 +15,4 @@ tags:
 - [[HTTP 403 Forbidden]] - `references` [EXTRACTED]
 - [[currentColor Theme-Adaptive SVG Coloring]] - `implements` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/No-Permission_403_Illustration
+#graphify/image #graphify/EXTRACTED #community/Community_370

@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/pro-naive/table/remote/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 603"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_603
 ---
 
 # index.vue
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_603

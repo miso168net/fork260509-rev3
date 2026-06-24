@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/assets/VSCode调试指南02.png"
 type: "image"
-community: "Debugging & Routing Docs"
+community: "Community 338"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_338
 ---
 
 # VSCode Debug Guide 02 — Active tsx Debug Session Screenshot
@@ -16,4 +16,4 @@ tags:
 - [[VSCode Debugging Tutorial (tutorialdebug.md)]] - `references` [EXTRACTED]
 - [[transformToKebabCase (debug.ts sample function)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/image #graphify/EXTRACTED #community/Community_338

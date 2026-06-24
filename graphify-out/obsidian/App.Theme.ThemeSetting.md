@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/config.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 156"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_156
 ---
 
 # App.Theme.ThemeSetting
@@ -15,4 +15,4 @@ tags:
 - [[overrideThemeSettings (2)]] - `references` [EXTRACTED]
 - [[themeSettings (2)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_156

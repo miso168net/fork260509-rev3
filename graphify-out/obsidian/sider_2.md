@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "sider"
+community: "Community 236"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sider
+  - community/Community_236
 ---
 
 # sider
@@ -20,4 +20,4 @@ tags:
 - [[mixWidth_1]] - `contains` [EXTRACTED]
 - [[width_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sider
+#graphify/code #graphify/EXTRACTED #community/Community_236

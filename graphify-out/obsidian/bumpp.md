@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/packages/scripts/package.json"
 type: "code"
-community: "CLI Scripts Package"
+community: "@sa/scripts CLI"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/sa/scripts_CLI
 ---
 
 # bumpp
 
 ## Connections
-- [[devDependencies (4)]] - `contains` [EXTRACTED]
+- [[devDependencies_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI

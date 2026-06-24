@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/views/manage/menu/modules/shared.ts"
 type: "code"
-community: "shared.ts"
+community: "Community 205"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sharedts
+  - community/Community_205
 ---
 
 # getLayout()
 
 ## Connections
 - [[getLayoutAndPage()]] - `calls` [EXTRACTED]
-- [[shared.ts (10)]] - `contains` [EXTRACTED]
+- [[shared.ts_9]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sharedts
+#graphify/code #graphify/EXTRACTED #community/Community_205

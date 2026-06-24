@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/page-tab/shared.ts"
 type: "code"
-community: "Admin Layout Logic"
+community: "Community 219"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_219
 ---
 
 # shared.ts
@@ -21,4 +21,4 @@ tags:
 - [[index.ts_12]] - `imports_from` [EXTRACTED]
 - [[transformColorWithOpacity()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_219

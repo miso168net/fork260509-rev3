@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # SoybeanAdmin README (EN)
@@ -21,4 +21,4 @@ tags:
 - [[sa CLI (packagesscripts)]] - `references` [INFERRED]
 - [[simple-git-hooks (3)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates

@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/layouts/base-layout/index.vue"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "index.vue"
-location: "L31"
+community: "App Theme Type Decls"
+location: "L203"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/App_Theme_Type_Decls
 ---
 
-# headerProps
+# HeaderProps
 
 ## Connections
-- [[index.vue (4)]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls

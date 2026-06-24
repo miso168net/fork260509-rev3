@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/index.ts"
 type: "code"
-community: "Color Palette System"
+community: "Community 83"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Palette_System
+  - community/Community_83
 ---
 
 # getColorPalette()
@@ -17,9 +17,9 @@ tags:
 - [[getHex()]] - `calls` [EXTRACTED]
 - [[getPaletteColorByNumber()]] - `calls` [EXTRACTED]
 - [[getRecommendedColorPalette()]] - `calls` [EXTRACTED]
-- [[index.ts (5)]] - `contains` [EXTRACTED]
+- [[index.ts_4]] - `contains` [EXTRACTED]
 - [[loading.ts]] - `imports` [EXTRACTED]
 - [[setupLoading()]] - `calls` [EXTRACTED]
-- [[shared.ts (9)]] - `imports` [EXTRACTED]
+- [[shared.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Palette_System
+#graphify/code #graphify/EXTRACTED #community/Community_83

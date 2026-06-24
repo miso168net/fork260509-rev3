@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/main.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 41"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_41
 ---
 
 # setupApp()
@@ -24,4 +24,4 @@ tags:
 - [[setupRouter()]] - `calls` [EXTRACTED]
 - [[setupStore()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_41

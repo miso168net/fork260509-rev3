@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/standard/ts.md"
 type: "document"
-community: "Vue Writing Standards"
+community: "Community 100"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Vue_Writing_Standards
+  - community/Community_100
 ---
 
 # TS Writing Standard (JP, placeholder)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[TS Writing Standard (placeholder, empty)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Vue_Writing_Standards
+#graphify/document #graphify/INFERRED #community/Community_100

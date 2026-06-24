@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/tutorial/debug.md"
 type: "document"
-community: "VSCode 调试指南 Screenshot 01 — launch TS De"
+community: "Community 181"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/VSCode__Screenshot_01__launch_TS_De
+  - community/Community_181
 ---
 
 # VS Code Debugging Tutorial (debug.md)
@@ -16,4 +16,4 @@ tags:
 - [[VSCode 调试指南 Screenshot 01 — launch TS Debugger]] - `references` [EXTRACTED]
 - [[Vue Debugger launch configuration (launch.json, type chrome, url localhost9527)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/VSCode__Screenshot_01__launch_TS_De
+#graphify/document #graphify/EXTRACTED #community/Community_181

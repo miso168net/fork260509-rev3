@@ -1,16 +1,16 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/quick-start.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 89"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/Community_89
 ---
 
 # pnpm Monorepo Packages
 
 ## Connections
-- [[Quick Start Guide (env, npm scripts, directory structure)]] - `references` [EXTRACTED]
+- [[Quick Start]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/EXTRACTED #community/Community_89

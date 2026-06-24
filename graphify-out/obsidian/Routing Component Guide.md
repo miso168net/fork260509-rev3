@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/component.md"
 type: "document"
-community: "Routing Component Guide"
+community: "Community 176"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Routing_Component_Guide
+  - community/Community_176
 ---
 
 # Routing Component Guide
@@ -16,4 +16,4 @@ tags:
 - [[layout.blank]] - `references` [EXTRACTED]
 - [[view.RouteKey Page Component]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Routing_Component_Guide
+#graphify/document #graphify/EXTRACTED #community/Community_176

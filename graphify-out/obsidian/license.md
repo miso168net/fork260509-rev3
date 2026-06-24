@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/package.json"
-type: "code"
-community: "package.json"
-location: "L19"
+source_file: "base-web/README.en_US.md"
+type: "document"
+community: "Community 47"
+location: "L247"
 tags:
-  - graphify/code
+  - graphify/document
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_47
 ---
 
-# license
+# License
 
 ## Connections
-- [[package.json]] - `contains` [EXTRACTED]
+- [[README.en_US]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/document #graphify/EXTRACTED #community/Community_47

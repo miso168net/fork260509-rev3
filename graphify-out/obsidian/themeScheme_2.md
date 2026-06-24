@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "default.json"
+community: "Community 108"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/defaultjson
+  - community/Community_108
 ---
 
 # themeScheme
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[default.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/defaultjson
+#graphify/code #graphify/EXTRACTED #community/Community_108

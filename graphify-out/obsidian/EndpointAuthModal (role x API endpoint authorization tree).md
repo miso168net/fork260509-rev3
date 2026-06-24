@@ -1,0 +1,20 @@
+---
+source_file: "base-web/src/views/manage/role/modules/endpoint-auth-modal.vue"
+type: "code"
+community: "rev3 User/Role Service Wrappers"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/rev3_User/Role_Service_Wrappers
+---
+
+# EndpointAuthModal (role x API endpoint authorization tree)
+
+## Connections
+- [[Api.SystemManage.Endpoint DTO (path + method)]] - `references` [EXTRACTED]
+- [[RoleOperateDrawer (role addedit form, hosts 3 auth modals)]] - `references` [EXTRACTED]
+- [[fetchGetAllEndpoints (all authorizable API endpoints registry)]] - `calls` [EXTRACTED]
+- [[fetchGetRoleEndpoints (role's authorized endpoints)]] - `calls` [EXTRACTED]
+- [[fetchUpdateRoleEndpoints (DB-first casbin endpoint policy write)]] - `calls` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers

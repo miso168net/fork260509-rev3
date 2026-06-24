@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/sync.md"
 type: "rationale"
-community: "Ecosystem Projects"
+community: "Ecosystem/Awesome Docs"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Ecosystem/Awesome_Docs
 ---
 
 # Upstream Sync via cherry-pick
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 - [[Sync Code Guide]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/rationale #graphify/EXTRACTED #community/Ecosystem/Awesome_Docs

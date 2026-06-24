@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/route.d.ts"
 type: "code"
-community: "route.d.ts"
+community: "Community 352"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/routedts
+  - community/Community_352
 ---
 
 # ElegantConstRoute
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[route.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/routedts
+#graphify/code #graphify/EXTRACTED #community/Community_352

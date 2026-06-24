@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/intro.md"
 type: "document"
-community: "Icons & UnoCSS Styling"
+community: "Community 156"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_156
 ---
 
 # System Theme Guide
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[System Theme Architecture]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/document #graphify/EXTRACTED #community/Community_156

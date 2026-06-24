@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/package.d.ts"
 type: "code"
-community: "package.d.ts"
+community: "Community 353"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagedts
+  - community/Community_353
 ---
 
 # package.d.ts
@@ -14,6 +14,6 @@ tags:
 ## Connections
 - [[Map]] - `contains` [EXTRACTED]
 - [[Point]] - `contains` [EXTRACTED]
-- [[Window (2)]] - `contains` [EXTRACTED]
+- [[Window_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagedts
+#graphify/code #graphify/EXTRACTED #community/Community_353

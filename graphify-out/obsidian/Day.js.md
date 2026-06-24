@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/faq/index.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # Day.js
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin FAQ]] - `references` [EXTRACTED]
 - [[SoybeanAdmin 常见问题 FAQ]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates

@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/packages/color/src/types/index.ts"
 type: "code"
-community: "Color Palette System"
+community: "Community 102"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Palette_System
+  - community/Community_102
 ---
 
 # ColorPaletteWithDelta
 
 ## Connections
-- [[index.ts (7)]] - `contains` [EXTRACTED]
+- [[index.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Palette_System
+#graphify/code #graphify/EXTRACTED #community/Community_102

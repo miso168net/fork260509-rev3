@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/recommend.ts"
 type: "code"
-community: "Color Palette System"
+community: "Community 102"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Palette_System
+  - community/Community_102
 ---
 
 # recommend.ts
@@ -25,11 +25,11 @@ tags:
 - [[getRecommendedColorPalette()]] - `contains` [EXTRACTED]
 - [[getRecommendedColorPaletteFamily()]] - `contains` [EXTRACTED]
 - [[getRecommendedPaletteColorByNumber()]] - `contains` [EXTRACTED]
-- [[index.ts (4)]] - `imports_from` [EXTRACTED]
-- [[index.ts (5)]] - `imports_from` [EXTRACTED]
-- [[index.ts (6)]] - `imports_from` [EXTRACTED]
-- [[index.ts (7)]] - `imports_from` [EXTRACTED]
+- [[index.ts_3]] - `imports_from` [EXTRACTED]
+- [[index.ts_4]] - `imports_from` [EXTRACTED]
+- [[index.ts_5]] - `imports_from` [EXTRACTED]
+- [[index.ts_6]] - `imports_from` [EXTRACTED]
 - [[isValidColor()]] - `imports` [EXTRACTED]
 - [[transformHslToHex()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Palette_System
+#graphify/code #graphify/EXTRACTED #community/Community_102

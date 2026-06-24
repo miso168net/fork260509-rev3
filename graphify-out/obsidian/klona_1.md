@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/recommend/klona.md"
-type: "concept"
-community: "Debugging & Routing Docs"
+type: "document"
+community: "Community 49"
+location: "L1"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_49
 ---
 
-# klona
+# klona.md
 
 ## Connections
-- [[klona Recommendation Doc]] - `references` [EXTRACTED]
-- [[推荐技术前言（中文）]] - `conceptually_related_to` [INFERRED]
+- [[klona_2]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_49

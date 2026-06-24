@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/assets.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 41"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_41
 ---
 
 # assets.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[main.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_41

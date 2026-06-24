@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "dark.json"
+community: "Community 107"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/darkjson
+  - community/Community_107
 ---
 
 # isInfoFollowPrimary
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[dark.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/darkjson
+#graphify/code #graphify/EXTRACTED #community/Community_107

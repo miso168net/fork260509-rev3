@@ -1,37 +1,37 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "dark.json"
+community: "Community 107"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/darkjson
+  - community/Community_107
 ---
 
 # dark.json
 
 ## Connections
 - [[colourWeakness]] - `contains` [EXTRACTED]
-- [[desc (3)]] - `contains` [EXTRACTED]
-- [[fixedHeaderAndTab (2)]] - `contains` [EXTRACTED]
-- [[footer (2)]] - `contains` [EXTRACTED]
+- [[desc_2]] - `contains` [EXTRACTED]
+- [[fixedHeaderAndTab_1]] - `contains` [EXTRACTED]
+- [[footer_1]] - `contains` [EXTRACTED]
 - [[grayscale]] - `contains` [EXTRACTED]
-- [[header (3)]] - `contains` [EXTRACTED]
-- [[i18nkey (3)]] - `contains` [EXTRACTED]
-- [[isInfoFollowPrimary (2)]] - `contains` [EXTRACTED]
-- [[layout (2)]] - `contains` [EXTRACTED]
-- [[name (13)]] - `contains` [EXTRACTED]
-- [[otherColor (2)]] - `contains` [EXTRACTED]
+- [[header_2]] - `contains` [EXTRACTED]
+- [[i18nkey_2]] - `contains` [EXTRACTED]
+- [[isInfoFollowPrimary_1]] - `contains` [EXTRACTED]
+- [[layout_1]] - `contains` [EXTRACTED]
+- [[name_12]] - `contains` [EXTRACTED]
+- [[otherColor_1]] - `contains` [EXTRACTED]
 - [[page]] - `contains` [EXTRACTED]
-- [[recommendColor (2)]] - `contains` [EXTRACTED]
-- [[sider (3)]] - `contains` [EXTRACTED]
-- [[tab (3)]] - `contains` [EXTRACTED]
-- [[themeColor (2)]] - `contains` [EXTRACTED]
-- [[themeRadius (2)]] - `contains` [EXTRACTED]
-- [[themeScheme (2)]] - `contains` [EXTRACTED]
-- [[tokens (2)]] - `contains` [EXTRACTED]
-- [[version (13)]] - `contains` [EXTRACTED]
+- [[recommendColor_1]] - `contains` [EXTRACTED]
+- [[sider_2]] - `contains` [EXTRACTED]
+- [[tab_2]] - `contains` [EXTRACTED]
+- [[themeColor_1]] - `contains` [EXTRACTED]
+- [[themeRadius_1]] - `contains` [EXTRACTED]
+- [[themeScheme_1]] - `contains` [EXTRACTED]
+- [[tokens_1]] - `contains` [EXTRACTED]
+- [[version_12]] - `contains` [EXTRACTED]
 - [[watermark]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/darkjson
+#graphify/code #graphify/EXTRACTED #community/Community_107

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "Color Palette System"
+community: "Community 83"
 location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Palette_System
+  - community/Community_83
 ---
 
 # getAntDColorPalette()
@@ -14,6 +14,6 @@ tags:
 ## Connections
 - [[antd.ts]] - `contains` [EXTRACTED]
 - [[getColorPalette()]] - `calls` [EXTRACTED]
-- [[index.ts (5)]] - `imports` [EXTRACTED]
+- [[index.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Palette_System
+#graphify/code #graphify/EXTRACTED #community/Community_83

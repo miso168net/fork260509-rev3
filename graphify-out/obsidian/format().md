@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/views/plugin/gantt/dhtmlx/index.vue"
 type: "code"
-community: "index.vue"
+community: "Community 392"
 location: "L88"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/Community_392
 ---
 
 # format()
 
 ## Connections
-- [[index.vue (45)]] - `contains` [EXTRACTED]
+- [[index.vue_44]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/Community_392

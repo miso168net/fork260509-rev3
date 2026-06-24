@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/request/backend.md"
 type: "document"
-community: "FAQ & Deployment Issues"
+community: "useTable Guide Concepts"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/useTable_Guide_Concepts
 ---
 
 # Backend Integration Guide
@@ -14,4 +14,4 @@ tags:
 - [[App.Service.Response]] - `references` [EXTRACTED]
 - [[Request Introduction]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/document #graphify/EXTRACTED #community/useTable_Guide_Concepts

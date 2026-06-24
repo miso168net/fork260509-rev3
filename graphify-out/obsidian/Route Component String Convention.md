@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/router/component.md"
 type: "concept"
-community: "Elegant Router (automated file-based rou"
+community: "Community 97"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/Elegant_Router_automated_file-based_rou
+  - community/Community_97
 ---
 
 # Route Component String Convention
 
 ## Connections
 - [[Elegant Router (automated file-based routing)]] - `conceptually_related_to` [INFERRED]
-- [[Route Caching (keep-alive)]] - `conceptually_related_to` [INFERRED]
+- [[Route Caching]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/Elegant_Router_automated_file-based_rou
+#graphify/concept #graphify/INFERRED #community/Community_97

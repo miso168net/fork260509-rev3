@@ -1,17 +1,20 @@
 ---
 source_file: "rust-api/x_fork.branch-origin.md"
 type: "document"
-community: "rev3-admin-rust-api branch"
+community: "Community 297"
+location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/rev3-admin-rust-api_branch
+  - community/Community_297
 ---
 
 # rev3-admin-rust-api 分支來源紀錄
 
 ## Connections
-- [[miso168netfork260509-rev2-anew-rust-api repo]] - `references` [EXTRACTED]
-- [[rev3-admin-rust-api branch]] - `references` [EXTRACTED]
+- [[x_fork.branch-origin_1]] - `contains` [EXTRACTED]
+- [[如何比對 rev3-admin-rust-api 與 main 的差異]] - `contains` [EXTRACTED]
+- [[歷史說明_1]] - `contains` [EXTRACTED]
+- [[注意事項_2]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/rev3-admin-rust-api_branch
+#graphify/document #graphify/EXTRACTED #community/Community_297

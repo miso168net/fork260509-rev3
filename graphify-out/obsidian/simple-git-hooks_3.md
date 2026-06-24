@@ -1,20 +1,20 @@
 ---
-source_file: "fork260509-soybean-admin-docs/src/jp/standard/lint.md"
-type: "concept"
-community: "Debugging & Routing Docs"
+source_file: "fork260509-soybean-admin-docs/src/standard/lint.md"
+type: "document"
+community: "Community 131"
+location: "L27"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_131
 ---
 
 # simple-git-hooks
 
 ## Connections
-- [[@soybeanjscli_1]] - `references` [EXTRACTED]
-- [[Formatting Check Standard (ESLintPrettier, lint-staged, simple-git-hooks)]] - `references` [EXTRACTED]
-- [[git-commit-verify Command]] - `references` [EXTRACTED]
-- [[lint-staged]] - `references` [EXTRACTED]
-- [[格式化检查（Lint 规范）]] - `references` [EXTRACTED]
+- [[Code Check]] - `contains` [EXTRACTED]
+- [[codebash (pnpm i simple-git-hooks -D)_1]] - `contains` [EXTRACTED]
+- [[codejson ({)_10]] - `contains` [EXTRACTED]
+- [[codejson ({)_11]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_131

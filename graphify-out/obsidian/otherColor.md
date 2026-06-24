@@ -1,21 +1,17 @@
 ---
-source_file: "base-web/src/theme/preset/azir.json"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Theme Design Tokens"
-location: "L9"
+community: "App Theme Type Decls"
+location: "L138"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Design_Tokens
+  - community/App_Theme_Type_Decls
 ---
 
-# otherColor
+# OtherColor
 
 ## Connections
-- [[azir.json]] - `contains` [EXTRACTED]
-- [[error]] - `contains` [EXTRACTED]
-- [[info]] - `contains` [EXTRACTED]
-- [[success]] - `contains` [EXTRACTED]
-- [[warning]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Design_Tokens
+#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls

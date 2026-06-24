@@ -1,19 +1,20 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/hooks/use-table.md"
-type: "concept"
-community: "FAQ & Deployment Issues"
+type: "document"
+community: "useTable Docs (en)"
+location: "L138"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/useTable_Docs_en
 ---
 
 # useNaiveTable
 
 ## Connections
-- [[Naive UI]] - `references` [EXTRACTED]
-- [[useNaivePaginatedTable]] - `references` [EXTRACTED]
-- [[useTable]] - `references` [EXTRACTED]
-- [[useTable Guide]] - `references` [EXTRACTED]
+- [[Function signature_1]] - `contains` [EXTRACTED]
+- [[Usage example_1]] - `contains` [EXTRACTED]
+- [[UseNaiveTableOptions interface]] - `contains` [EXTRACTED]
+- [[useTable Function]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/document #graphify/EXTRACTED #community/useTable_Docs_en

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/index.md"
 type: "document"
-community: "Ecosystem Projects"
+community: "Ecosystem/Awesome Docs"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Ecosystem/Awesome_Docs
 ---
 
 # SoybeanAdmin Docs Homepage
@@ -15,4 +15,4 @@ tags:
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 - [[SoybeanJS Team]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/document #graphify/EXTRACTED #community/Ecosystem/Awesome_Docs

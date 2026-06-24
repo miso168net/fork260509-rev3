@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/src/constant.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Alova Request Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Alova_Request_Layer
 ---
 
 # constant.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer

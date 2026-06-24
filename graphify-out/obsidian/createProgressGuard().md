@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/router/guard/progress.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 61"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_61
 ---
 
 # createProgressGuard()
 
 ## Connections
 - [[createRouterGuard()]] - `calls` [EXTRACTED]
-- [[index.ts (27)]] - `imports` [EXTRACTED]
+- [[index.ts_26]] - `imports` [EXTRACTED]
 - [[progress.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_61

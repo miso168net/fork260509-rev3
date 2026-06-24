@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/packages/materials/src/types/index.ts"
 type: "code"
-community: "Admin Layout Logic"
+community: "Community 52"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Admin_Layout_Logic
+  - community/Community_52
 ---
 
 # AdminLayoutSiderConfig
 
 ## Connections
-- [[index.ts (13)]] - `contains` [EXTRACTED]
+- [[index.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Admin_Layout_Logic
+#graphify/code #graphify/EXTRACTED #community/Community_52

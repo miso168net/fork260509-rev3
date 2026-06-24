@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/router.ts"
 type: "code"
-community: "CLI Scripts Package"
+community: "@sa/scripts CLI"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/sa/scripts_CLI
 ---
 
 # router.ts
 
 ## Connections
-- [[PromptObject (2)]] - `contains` [EXTRACTED]
+- [[PromptObject_1]] - `contains` [EXTRACTED]
 - [[generateRoute()]] - `contains` [EXTRACTED]
-- [[index.ts (15)]] - `re_exports` [EXTRACTED]
+- [[index.ts_14]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI

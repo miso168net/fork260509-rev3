@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "Generated Route Wiring"
+community: "Community 43"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_43
 ---
 
 # transform.ts
@@ -15,12 +15,12 @@ tags:
 - [[builtin.ts]] - `imports_from` [EXTRACTED]
 - [[getRouteName()]] - `contains` [EXTRACTED]
 - [[getRoutePath()]] - `contains` [EXTRACTED]
-- [[index.ts (28)]] - `imports_from` [EXTRACTED]
-- [[index.ts (36)]] - `imports_from` [EXTRACTED]
+- [[index.ts_27]] - `imports_from` [EXTRACTED]
+- [[index.ts_35]] - `imports_from` [EXTRACTED]
 - [[route.ts]] - `imports_from` [EXTRACTED]
 - [[routeMap]] - `contains` [EXTRACTED]
-- [[shared.ts (8)]] - `imports_from` [EXTRACTED]
+- [[shared.ts_7]] - `imports_from` [EXTRACTED]
 - [[transformElegantRouteToVueRoute()]] - `contains` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_43

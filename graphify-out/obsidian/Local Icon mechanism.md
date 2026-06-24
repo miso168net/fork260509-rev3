@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/icon/intro.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 180"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_180
 ---
 
 # Local Icon mechanism
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SystemLogo Component]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_180

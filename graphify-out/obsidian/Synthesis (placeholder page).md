@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/standard/synthesis.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 114"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Debugging__Routing_Docs
+  - community/Community_114
 ---
 
 # Synthesis (placeholder page)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Coding Standards Overview]] - `conceptually_related_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Debugging__Routing_Docs
+#graphify/document #graphify/INFERRED #community/Community_114

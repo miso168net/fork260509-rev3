@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts"
 type: "code"
-community: "antv-g6-flow.ts"
+community: "Community 84"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/antv-g6-flowts
+  - community/Community_84
 ---
 
 # antv-g6-flow.ts
@@ -17,11 +17,11 @@ tags:
 - [[CustomGraphData]] - `imports` [EXTRACTED]
 - [[CustomNodeData]] - `imports` [EXTRACTED]
 - [[getNodeIcon()]] - `imports` [EXTRACTED]
-- [[index.ts (38)]] - `imports_from` [EXTRACTED]
+- [[index.ts_37]] - `imports_from` [EXTRACTED]
 - [[nodeStatus]] - `imports` [EXTRACTED]
 - [[status.ts]] - `imports_from` [EXTRACTED]
 - [[types.ts]] - `imports_from` [EXTRACTED]
 - [[useAntFlow()]] - `contains` [EXTRACTED]
 - [[useThemeStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/antv-g6-flowts
+#graphify/code #graphify/EXTRACTED #community/Community_84

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/router.ts"
 type: "code"
-community: "CLI Scripts Package"
+community: "@sa/scripts CLI"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CLI_Scripts_Package
+  - community/sa/scripts_CLI
 ---
 
 # PromptObject
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[router.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CLI_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI

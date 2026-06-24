@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/tsconfig.json"
 type: "code"
-community: "TSConfig Compiler Options"
+community: "Community 64"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/TSConfig_Compiler_Options
+  - community/Community_64
 ---
 
 # forceConsistentCasingInFileNames
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/TSConfig_Compiler_Options
+#graphify/code #graphify/EXTRACTED #community/Community_64

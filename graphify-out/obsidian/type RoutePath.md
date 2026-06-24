@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/router/intro.md"
 type: "concept"
-community: "Elegant Router"
+community: "Community 90"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Elegant_Router
+  - community/Community_90
 ---
 
 # type RoutePath
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[RouteKey (3)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Elegant_Router
+#graphify/concept #graphify/EXTRACTED #community/Community_90

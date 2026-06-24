@@ -1,17 +1,19 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/push.md"
-type: "concept"
-community: "Route Guard"
+type: "document"
+community: "Community 98"
+location: "L28"
 tags:
-  - graphify/concept
-  - graphify/INFERRED
-  - community/Route_Guard
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Community_98
 ---
 
 # routerPushByKey
 
 ## Connections
-- [[RouteKey (3)]] - `references` [INFERRED]
-- [[useRouterPush]] - `references` [EXTRACTED]
+- [[codejson ({)_1]] - `contains` [EXTRACTED]
+- [[codets (import { useRouterPush } from '@hookscommonrouter';)]] - `contains` [EXTRACTED]
+- [[explanation]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/INFERRED #community/Route_Guard
+#graphify/document #graphify/EXTRACTED #community/Community_98

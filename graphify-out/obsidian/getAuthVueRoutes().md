@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/router/routes/index.ts"
 type: "code"
-community: "Generated Route Wiring"
+community: "Community 43"
 location: "L231"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_43
 ---
 
 # getAuthVueRoutes()
 
 ## Connections
-- [[index.ts (28)]] - `contains` [EXTRACTED]
-- [[index.ts (36)]] - `imports` [EXTRACTED]
+- [[index.ts_27]] - `contains` [EXTRACTED]
+- [[index.ts_35]] - `imports` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_43

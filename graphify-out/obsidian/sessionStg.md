@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/utils/storage.ts"
 type: "code"
-community: "Auth Store & Tokens"
+community: "Auth & Locale Service"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Tokens
+  - community/Auth__Locale_Service
 ---
 
 # sessionStg
 
 ## Connections
-- [[storage.ts (2)]] - `contains` [EXTRACTED]
+- [[storage.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Tokens
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

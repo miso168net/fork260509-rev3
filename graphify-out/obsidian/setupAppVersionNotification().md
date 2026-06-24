@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/plugins/app.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Community 41"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_41
 ---
 
 # setupAppVersionNotification()
 
 ## Connections
-- [[app.ts (2)]] - `contains` [EXTRACTED]
+- [[app.ts_1]] - `contains` [EXTRACTED]
 - [[main.ts]] - `imports` [EXTRACTED]
 - [[setupApp()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_41

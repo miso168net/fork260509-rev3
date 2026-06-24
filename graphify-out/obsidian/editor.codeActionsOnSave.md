@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/settings.json"
 type: "code"
-community: "VSCode Workspace Settings"
+community: "Community 48"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/VSCode_Workspace_Settings
+  - community/Community_48
 ---
 
 # editor.codeActionsOnSave
@@ -16,4 +16,4 @@ tags:
 - [[source.fixAll.eslint]] - `contains` [EXTRACTED]
 - [[source.fixAll.oxc]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/VSCode_Workspace_Settings
+#graphify/code #graphify/EXTRACTED #community/Community_48

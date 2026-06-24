@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "package.json"
+community: "Community 42"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_42
 ---
 
 # package.json
@@ -24,9 +24,9 @@ tags:
 - [[name]] - `contains` [EXTRACTED]
 - [[repository]] - `contains` [EXTRACTED]
 - [[scripts]] - `contains` [EXTRACTED]
-- [[simple-git-hooks (2)]] - `contains` [EXTRACTED]
+- [[simple-git-hooks_1]] - `contains` [EXTRACTED]
 - [[type]] - `contains` [EXTRACTED]
 - [[version]] - `contains` [EXTRACTED]
 - [[website]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_42

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "colord.ts"
+community: "Community 83"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/colordts
+  - community/Community_83
 ---
 
 # getHex()
@@ -17,7 +17,7 @@ tags:
 - [[getAntDPaletteColorByIndex()]] - `calls` [EXTRACTED]
 - [[getColorName()]] - `calls` [EXTRACTED]
 - [[getColorPalette()]] - `calls` [EXTRACTED]
-- [[index.ts (5)]] - `imports` [EXTRACTED]
-- [[name.ts (2)]] - `imports` [EXTRACTED]
+- [[index.ts_4]] - `imports` [EXTRACTED]
+- [[name.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/colordts
+#graphify/code #graphify/EXTRACTED #community/Community_83

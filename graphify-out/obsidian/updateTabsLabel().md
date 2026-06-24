@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/store/modules/tab/shared.ts"
 type: "code"
-community: "Tab Management Utils"
+community: "Router & Menu Store"
 location: "L218"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Tab_Management_Utils
+  - community/Router__Menu_Store
 ---
 
 # updateTabsLabel()
 
 ## Connections
 - [[getAllTabs()]] - `calls` [EXTRACTED]
-- [[shared.ts (8)]] - `contains` [EXTRACTED]
+- [[shared.ts_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Tab_Management_Utils
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

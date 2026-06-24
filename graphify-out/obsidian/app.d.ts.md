@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Global App Types"
+community: "App Theme Type Decls"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_App_Types
+  - community/App_Theme_Type_Decls
 ---
 
 # app.d.ts
@@ -14,15 +14,15 @@ tags:
 ## Connections
 - [[$T]] - `contains` [EXTRACTED]
 - [[BaseToken]] - `contains` [EXTRACTED]
-- [[Breadcrumb (4)]] - `contains` [EXTRACTED]
-- [[ColorPaletteNumber (2)]] - `contains` [EXTRACTED]
+- [[Breadcrumb]] - `contains` [EXTRACTED]
+- [[ColorPaletteNumber_1]] - `contains` [EXTRACTED]
 - [[DemoResponse]] - `contains` [EXTRACTED]
 - [[DropdownKey]] - `contains` [EXTRACTED]
 - [[FormMsg]] - `contains` [EXTRACTED]
 - [[FormRule]] - `contains` [EXTRACTED]
 - [[GetI18nKey]] - `contains` [EXTRACTED]
-- [[HeaderProps (2)]] - `contains` [EXTRACTED]
-- [[I18nKey (5)]] - `contains` [EXTRACTED]
+- [[HeaderProps]] - `contains` [EXTRACTED]
+- [[I18nKey]] - `contains` [EXTRACTED]
 - [[I18nRouteKey]] - `contains` [EXTRACTED]
 - [[LangOption]] - `contains` [EXTRACTED]
 - [[LangType]] - `contains` [EXTRACTED]
@@ -30,21 +30,21 @@ tags:
 - [[Menu]] - `contains` [EXTRACTED]
 - [[NaiveUIThemeOverride]] - `contains` [EXTRACTED]
 - [[OtherBaseURLKey]] - `contains` [EXTRACTED]
-- [[OtherColor (4)]] - `contains` [EXTRACTED]
+- [[OtherColor]] - `contains` [EXTRACTED]
 - [[OtherServiceConfigItem]] - `contains` [EXTRACTED]
 - [[Response]] - `contains` [EXTRACTED]
 - [[RouteKey]] - `contains` [EXTRACTED]
 - [[RouteLocationNormalizedLoaded]] - `contains` [EXTRACTED]
-- [[RouteMap (2)]] - `contains` [EXTRACTED]
+- [[RouteMap]] - `contains` [EXTRACTED]
 - [[RoutePath]] - `contains` [EXTRACTED]
 - [[RouterPushOptions]] - `contains` [EXTRACTED]
 - [[Schema]] - `contains` [EXTRACTED]
 - [[ServiceConfig]] - `contains` [EXTRACTED]
 - [[ServiceConfigItem]] - `contains` [EXTRACTED]
 - [[SimpleServiceConfig]] - `contains` [EXTRACTED]
-- [[Tab (7)]] - `contains` [EXTRACTED]
+- [[Tab]] - `contains` [EXTRACTED]
 - [[TabRoute]] - `contains` [EXTRACTED]
-- [[ThemeColor (4)]] - `contains` [EXTRACTED]
+- [[ThemeColor]] - `contains` [EXTRACTED]
 - [[ThemeColorKey]] - `contains` [EXTRACTED]
 - [[ThemePaletteColor]] - `contains` [EXTRACTED]
 - [[ThemeSetting]] - `contains` [EXTRACTED]
@@ -56,4 +56,4 @@ tags:
 - [[TranslateOptions]] - `contains` [EXTRACTED]
 - [[VNode]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_App_Types
+#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls

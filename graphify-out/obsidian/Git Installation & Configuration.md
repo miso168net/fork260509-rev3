@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/tutorial/git.md"
 type: "concept"
-community: "Debugging & Routing Docs"
+community: "Community 122"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_122
 ---
 
 # Git Installation & Configuration
@@ -16,4 +16,4 @@ tags:
 - [[SSH Key Generation & Upload]] - `references` [EXTRACTED]
 - [[环境准备 (git  NodeJS=18.12  pnpm=8.7)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/concept #graphify/EXTRACTED #community/Community_122

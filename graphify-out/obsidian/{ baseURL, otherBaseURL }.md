@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/service/request/index.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Auth & Locale Service"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Auth__Locale_Service
 ---
 
 # { baseURL, otherBaseURL }
 
 ## Connections
-- [[index.ts (30)]] - `contains` [EXTRACTED]
+- [[index.ts_29]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

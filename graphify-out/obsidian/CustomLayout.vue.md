@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/.vitepress/theme/CustomLayout.vue"
 type: "code"
-community: "CustomLayout.vue"
+community: "Community 461"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CustomLayoutvue
+  - community/Community_461
 ---
 
 # CustomLayout.vue
 
 ## Connections
-- [[index.ts (41)]] - `imports_from` [EXTRACTED]
+- [[index.ts_40]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CustomLayoutvue
+#graphify/code #graphify/EXTRACTED #community/Community_461

@@ -1,0 +1,30 @@
+---
+type: community
+members: 7
+---
+
+# Community 231
+
+**Members:** 7 nodes
+
+## Members
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_14]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_14]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_4]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_11]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🛠 Optimizations_9]] - document - base-web/CHANGELOG.md
+- [[v1.3.9(httpsgithub.comsoybeanjssoybean-admincomparev1.3.8...v1.3.9) (2024-11-17)]] - document - base-web/CHANGELOG.md
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_231
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+
+## Top bridge nodes
+- [[v1.3.9(httpsgithub.comsoybeanjssoybean-admincomparev1.3.8...v1.3.9) (2024-11-17)]] - degree 7, connects to 1 community

@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/custom/better-scroll.vue"
 type: "code"
-community: "better-scroll.vue"
+community: "Community 518"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/better-scrollvue
+  - community/Community_518
 ---
 
 # better-scroll.vue
 
-#graphify/code #graphify/EXTRACTED #community/better-scrollvue
+#graphify/code #graphify/EXTRACTED #community/Community_518

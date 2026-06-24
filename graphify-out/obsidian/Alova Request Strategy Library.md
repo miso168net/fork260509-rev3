@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/alova.svg"
 type: "concept"
-community: "Alova Request Strategy Library"
+community: "Community 481"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Alova_Request_Strategy_Library
+  - community/Community_481
 ---
 
 # Alova Request Strategy Library
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Alova Logo SVG Icon]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Alova_Request_Strategy_Library
+#graphify/concept #graphify/EXTRACTED #community/Community_481

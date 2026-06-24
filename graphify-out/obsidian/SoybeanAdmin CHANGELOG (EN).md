@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # SoybeanAdmin CHANGELOG (EN)
@@ -17,4 +17,4 @@ tags:
 - [[opencode AI Comment Workflow]] - `references` [EXTRACTED]
 - [[sa CLI (packagesscripts)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Project_Meta__Monorepo
+#graphify/document #graphify/INFERRED #community/CI_Workflows__Issue_Templates

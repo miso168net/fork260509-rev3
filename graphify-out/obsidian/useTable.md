@@ -1,18 +1,22 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/hooks/use-table.md"
-type: "concept"
-community: "FAQ & Deployment Issues"
+type: "document"
+community: "useTable Docs (en)"
+location: "L15"
 tags:
-  - graphify/concept
+  - graphify/document
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/useTable_Docs_en
 ---
 
 # useTable
 
 ## Connections
-- [[useNaiveTable]] - `references` [EXTRACTED]
-- [[useTable Guide]] - `references` [EXTRACTED]
-- [[useTableOperate]] - `conceptually_related_to` [EXTRACTED]
+- [[Function signature]] - `contains` [EXTRACTED]
+- [[Notes]] - `contains` [EXTRACTED]
+- [[Return value]] - `contains` [EXTRACTED]
+- [[Usage example]] - `contains` [EXTRACTED]
+- [[UseTableOptions interface]] - `contains` [EXTRACTED]
+- [[useTable Function]] - `contains` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/document #graphify/EXTRACTED #community/useTable_Docs_en

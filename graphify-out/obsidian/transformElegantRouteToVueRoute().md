@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "Generated Route Wiring"
+community: "Community 43"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Generated_Route_Wiring
+  - community/Community_43
 ---
 
 # transformElegantRouteToVueRoute()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[transform.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Generated_Route_Wiring
+#graphify/code #graphify/EXTRACTED #community/Community_43

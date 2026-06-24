@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/common/icon-tooltip.vue"
 type: "code"
-community: "icon-tooltip.vue"
+community: "Community 511"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/icon-tooltipvue
+  - community/Community_511
 ---
 
 # icon-tooltip.vue
 
-#graphify/code #graphify/EXTRACTED #community/icon-tooltipvue
+#graphify/code #graphify/EXTRACTED #community/Community_511

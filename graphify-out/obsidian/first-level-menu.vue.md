@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/global-menu/components/first-level-menu.vue"
 type: "code"
-community: "first-level-menu.vue"
+community: "Community 373"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/first-level-menuvue
+  - community/Community_373
 ---
 
 # first-level-menu.vue
@@ -15,4 +15,4 @@ tags:
 - [[dark]] - `contains` [EXTRACTED]
 - [[light]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/first-level-menuvue
+#graphify/code #graphify/EXTRACTED #community/Community_373

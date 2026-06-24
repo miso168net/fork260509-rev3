@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/system-manage.d.ts"
 type: "code"
-community: "System Menu Types"
+community: "Community 58"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/System_Menu_Types
+  - community/Community_58
 ---
 
 # CommonSearchParams
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system-manage.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/System_Menu_Types
+#graphify/code #graphify/EXTRACTED #community/Community_58

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/index.ts"
 type: "code"
-community: "Service Request Layer"
+community: "Axios Request Factory"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Service_Request_Layer
+  - community/Axios_Request_Factory
 ---
 
 # createCommonRequest()
@@ -17,7 +17,7 @@ tags:
 - [[createFlatRequest()]] - `calls` [EXTRACTED]
 - [[createRequest()]] - `calls` [EXTRACTED]
 - [[createRetryOptions()]] - `calls` [EXTRACTED]
-- [[index.ts (2)]] - `contains` [EXTRACTED]
+- [[index.ts_1]] - `contains` [EXTRACTED]
 - [[transformResponse()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Service_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory

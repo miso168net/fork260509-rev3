@@ -1,19 +1,19 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/quick-start.md"
 type: "concept"
-community: "FAQ & Deployment Issues"
+community: "Community 89"
 tags:
   - graphify/concept
-  - graphify/INFERRED
-  - community/FAQ__Deployment_Issues
+  - graphify/EXTRACTED
+  - community/Community_89
 ---
 
 # Apifox Cloud Mock
 
 ## Connections
+- [[Quick Start]] - `references` [EXTRACTED]
 - [[Quick Start Guide]] - `references` [EXTRACTED]
-- [[Quick Start Guide (env, npm scripts, directory structure)]] - `references` [EXTRACTED]
 - [[SoybeanAdmin (2)]] - `conceptually_related_to` [INFERRED]
 - [[request Instance]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/FAQ__Deployment_Issues
+#graphify/concept #graphify/EXTRACTED #community/Community_89

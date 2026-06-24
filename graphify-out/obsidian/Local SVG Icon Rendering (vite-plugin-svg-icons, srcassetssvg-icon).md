@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/icon/intro.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 136"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_136
 ---
 
 # Local SVG Icon Rendering (vite-plugin-svg-icons, src/assets/svg-icon)
@@ -18,4 +18,4 @@ tags:
 - [[unplugin-icons (2)]] - `references` [EXTRACTED]
 - [[vite-plugin-svg-icons (2)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/EXTRACTED #community/Community_136

@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/hooks/use-table.md"
 type: "document"
-community: "FAQ & Deployment Issues"
+community: "useTable Guide Concepts"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/FAQ__Deployment_Issues
+  - community/useTable_Guide_Concepts
 ---
 
 # useTable Guide
@@ -13,8 +13,8 @@ tags:
 ## Connections
 - [[defaultTransform]] - `references` [EXTRACTED]
 - [[useNaivePaginatedTable]] - `references` [EXTRACTED]
-- [[useNaiveTable]] - `references` [EXTRACTED]
-- [[useTable]] - `references` [EXTRACTED]
+- [[useNaiveTable_1]] - `references` [EXTRACTED]
+- [[useTable_1]] - `references` [EXTRACTED]
 - [[useTableOperate]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/FAQ__Deployment_Issues
+#graphify/document #graphify/EXTRACTED #community/useTable_Guide_Concepts

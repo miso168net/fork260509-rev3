@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Global App Types"
+community: "App Theme Type Decls"
 location: "L192"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Global_App_Types
+  - community/App_Theme_Type_Decls
 ---
 
 # RoutePath
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Global_App_Types
+#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls

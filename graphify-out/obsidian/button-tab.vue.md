@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/packages/materials/src/libs/page-tab/button-tab.vue"
 type: "code"
-community: "button-tab.vue"
+community: "Community 499"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/button-tabvue
+  - community/Community_499
 ---
 
 # button-tab.vue
 
-#graphify/code #graphify/EXTRACTED #community/button-tabvue
+#graphify/code #graphify/EXTRACTED #community/Community_499

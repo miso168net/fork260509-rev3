@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/release.yml"
 type: "document"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # Release GitHub Actions Workflow
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[githublogen Changelog Generator]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_Meta__Monorepo
+#graphify/document #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates

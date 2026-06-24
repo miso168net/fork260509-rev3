@@ -1,21 +1,21 @@
 ---
 source_file: "base-web/src/locales/dayjs.ts"
 type: "code"
-community: "Router Guard Flow"
+community: "Auth & Locale Service"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Auth__Locale_Service
 ---
 
 # dayjs.ts
 
 ## Connections
-- [[dayjs.ts (2)]] - `imports_from` [EXTRACTED]
-- [[index.ts (34)]] - `imports_from` [EXTRACTED]
+- [[dayjs.ts_1]] - `imports_from` [EXTRACTED]
+- [[index.ts_33]] - `imports_from` [EXTRACTED]
 - [[localStg]] - `imports` [EXTRACTED]
 - [[setDayjsLocale()]] - `contains` [EXTRACTED]
-- [[storage.ts (2)]] - `imports_from` [EXTRACTED]
+- [[storage.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

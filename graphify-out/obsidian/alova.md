@@ -1,17 +1,19 @@
 ---
-source_file: "base-web/packages/alova/package.json"
-type: "code"
-community: "package.json"
-location: "L20"
+source_file: "fork260509-soybean-admin-docs/src/jp/recommend/alova.md"
+type: "document"
+community: "Community 357"
+location: "L1"
 tags:
-  - graphify/code
+  - graphify/document
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_357
 ---
 
-# alova
+# Alova
 
 ## Connections
-- [[dependencies (2)]] - `contains` [EXTRACTED]
+- [[alova_2]] - `contains` [EXTRACTED]
+- [[紹介_1]] - `contains` [EXTRACTED]
+- [[関連リンク]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/document #graphify/EXTRACTED #community/Community_357

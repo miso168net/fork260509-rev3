@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/push.md"
 type: "document"
-community: "Route Guard"
+community: "Community 88"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Route_Guard
+  - community/Community_88
 ---
 
 # Router Push Guide
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[useRouterPush]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Route_Guard
+#graphify/document #graphify/EXTRACTED #community/Community_88

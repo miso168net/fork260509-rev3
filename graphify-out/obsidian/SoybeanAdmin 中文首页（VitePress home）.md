@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/index.md"
 type: "document"
-community: "Icons & UnoCSS Styling"
+community: "Community 246"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_246
 ---
 
 # SoybeanAdmin 中文首页（VitePress home）
@@ -16,4 +16,4 @@ tags:
 - [[SoybeanJS 团队成员列表]] - `references` [EXTRACTED]
 - [[同步上游代码 cherry-pick 工作流]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/document #graphify/EXTRACTED #community/Community_246

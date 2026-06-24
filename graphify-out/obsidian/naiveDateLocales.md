@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/naive.ts"
 type: "code"
-community: "naive.ts"
+community: "Community 374"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/naivets
+  - community/Community_374
 ---
 
 # naiveDateLocales
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[naive.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/naivets
+#graphify/code #graphify/EXTRACTED #community/Community_374

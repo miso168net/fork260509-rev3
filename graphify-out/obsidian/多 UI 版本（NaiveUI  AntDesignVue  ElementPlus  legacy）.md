@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/intro.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Ecosystem/Awesome Docs"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Ecosystem/Awesome_Docs
 ---
 
 # 多 UI 版本（NaiveUI / AntDesignVue / ElementPlus / legacy）
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Ecosystem/Awesome_Docs

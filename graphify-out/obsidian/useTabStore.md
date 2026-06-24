@@ -1,20 +1,20 @@
 ---
 source_file: "base-web/src/store/modules/tab/index.ts"
 type: "code"
-community: "index.ts"
+community: "Auth & Locale Service"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Auth__Locale_Service
 ---
 
 # useTabStore
 
 ## Connections
-- [[index.ts (34)]] - `imports` [EXTRACTED]
-- [[index.ts (35)]] - `imports` [EXTRACTED]
-- [[index.ts (36)]] - `imports` [EXTRACTED]
-- [[index.ts (37)]] - `contains` [EXTRACTED]
+- [[index.ts_33]] - `imports` [EXTRACTED]
+- [[index.ts_34]] - `imports` [EXTRACTED]
+- [[index.ts_35]] - `imports` [EXTRACTED]
+- [[index.ts_36]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

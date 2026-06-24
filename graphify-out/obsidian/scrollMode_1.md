@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "layout"
+community: "Community 377"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/layout
+  - community/Community_377
 ---
 
 # scrollMode
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[layout_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/layout
+#graphify/code #graphify/EXTRACTED #community/Community_377

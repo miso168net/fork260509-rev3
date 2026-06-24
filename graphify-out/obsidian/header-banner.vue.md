@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/home/modules/header-banner.vue"
 type: "code"
-community: "header-banner.vue"
+community: "Community 576"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/header-bannervue
+  - community/Community_576
 ---
 
 # header-banner.vue
 
-#graphify/code #graphify/EXTRACTED #community/header-bannervue
+#graphify/code #graphify/EXTRACTED #community/Community_576

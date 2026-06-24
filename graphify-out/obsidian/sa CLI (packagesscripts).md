@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/cli/command.md"
 type: "concept"
-community: "Project Meta & Monorepo"
+community: "CI Workflows & Issue Templates"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/Project_Meta__Monorepo
+  - community/CI_Workflows__Issue_Templates
 ---
 
 # sa CLI (packages/scripts)
@@ -18,4 +18,4 @@ tags:
 - [[sa Commands Usage Doc]] - `references` [EXTRACTED]
 - [[simple-git-hooks (3)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/Project_Meta__Monorepo
+#graphify/concept #graphify/INFERRED #community/CI_Workflows__Issue_Templates

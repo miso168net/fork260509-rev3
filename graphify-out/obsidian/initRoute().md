@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/route.ts"
 type: "code"
-community: "route.ts"
+community: "Community 43"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/routets
+  - community/Community_43
 ---
 
 # initRoute()
@@ -17,4 +17,4 @@ tags:
 - [[useRouteStore]] - `calls` [EXTRACTED]
 - [[路由初始化]] - `semantically_similar_to` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/routets
+#graphify/code #graphify/EXTRACTED #community/Community_43

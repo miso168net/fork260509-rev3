@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/packages/axios/package.json"
 type: "code"
-community: "package.json"
+community: "Community 104"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/Community_104
 ---
 
 # axios-retry
 
 ## Connections
-- [[dependencies (3)]] - `contains` [EXTRACTED]
+- [[dependencies_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/Community_104

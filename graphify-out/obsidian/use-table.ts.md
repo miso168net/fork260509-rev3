@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-table.ts"
 type: "code"
-community: "Composable Hooks"
+community: "Axios Request Factory"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Composable_Hooks
+  - community/Axios_Request_Factory
 ---
 
 # use-table.ts
@@ -19,9 +19,9 @@ tags:
 - [[Transform]] - `contains` [EXTRACTED]
 - [[UseTableOptions]] - `contains` [EXTRACTED]
 - [[getTableData()]] - `contains` [EXTRACTED]
-- [[index.ts (8)]] - `re_exports` [EXTRACTED]
+- [[index.ts_7]] - `re_exports` [EXTRACTED]
 - [[use-boolean.ts]] - `imports_from` [EXTRACTED]
 - [[use-loading.ts]] - `imports_from` [EXTRACTED]
 - [[useTable()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Composable_Hooks
+#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory

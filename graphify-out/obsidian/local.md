@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/locales/langs/en-us.ts"
+source_file: "base-web/src/typings/storage.d.ts"
 type: "code"
-community: "Router Guard Flow"
-location: "L1"
+community: "Community 380"
+location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router_Guard_Flow
+  - community/Community_380
 ---
 
-# local
+# Local
 
 ## Connections
-- [[en-us.ts]] - `contains` [EXTRACTED]
+- [[storage.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router_Guard_Flow
+#graphify/code #graphify/EXTRACTED #community/Community_380

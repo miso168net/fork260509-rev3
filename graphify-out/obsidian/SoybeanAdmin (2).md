@@ -1,23 +1,23 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/intro.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Ecosystem/Awesome Docs"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Ecosystem/Awesome_Docs
 ---
 
 # SoybeanAdmin (2)
 
 ## Connections
 - [[Apifox Cloud Mock]] - `conceptually_related_to` [INFERRED]
+- [[Ecosystem_1]] - `references` [EXTRACTED]
 - [[Elegant Router (automated file-based routing)]] - `references` [EXTRACTED]
 - [[Naive UI]] - `references` [EXTRACTED]
 - [[SoybeanAdmin (周边生态语境)]] - `semantically_similar_to` [INFERRED]
 - [[SoybeanAdmin Cooperation Services (JP)]] - `references` [EXTRACTED]
 - [[SoybeanAdmin Docs Homepage]] - `references` [EXTRACTED]
-- [[SoybeanAdmin Ecosystem Projects (Awesome, JP)]] - `references` [EXTRACTED]
 - [[SoybeanAdmin Introduction]] - `references` [EXTRACTED]
 - [[UnoCSS (2)]] - `references` [EXTRACTED]
 - [[Upstream Sync via cherry-pick]] - `references` [EXTRACTED]
@@ -27,4 +27,4 @@ tags:
 - [[多 UI 版本（NaiveUI  AntDesignVue  ElementPlus  legacy）]] - `references` [EXTRACTED]
 - [[定制化管理后台开发服务]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Ecosystem/Awesome_Docs

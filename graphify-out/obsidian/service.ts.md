@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/service.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Alova Request Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Alova_Request_Layer
 ---
 
 # service.ts
@@ -15,7 +15,7 @@ tags:
 - [[createProxyPattern()]] - `contains` [EXTRACTED]
 - [[createServiceConfig()]] - `contains` [EXTRACTED]
 - [[getServiceBaseURL()]] - `contains` [EXTRACTED]
-- [[index.ts (30)]] - `imports_from` [EXTRACTED]
-- [[index.ts (32)]] - `imports_from` [EXTRACTED]
+- [[index.ts_29]] - `imports_from` [EXTRACTED]
+- [[index.ts_31]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer

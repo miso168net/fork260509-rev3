@@ -1,17 +1,17 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/index.md"
 type: "concept"
-community: "Icons & UnoCSS Styling"
+community: "Community 246"
 tags:
   - graphify/concept
-  - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - graphify/INFERRED
+  - community/Community_246
 ---
 
 # SoybeanJS 团队成员列表
 
 ## Connections
+- [[Donation List]] - `conceptually_related_to` [INFERRED]
 - [[SoybeanAdmin 中文首页（VitePress home）]] - `references` [EXTRACTED]
-- [[捐赠列表（中文）]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/concept #graphify/INFERRED #community/Community_246

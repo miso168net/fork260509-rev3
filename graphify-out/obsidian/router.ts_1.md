@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/router.ts"
 type: "code"
-community: "index.ts"
+community: "Router & Menu Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Router__Menu_Store
 ---
 
 # router.ts
@@ -19,4 +19,4 @@ tags:
 - [[router]] - `imports` [EXTRACTED]
 - [[useRouterPush()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store

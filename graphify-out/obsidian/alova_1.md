@@ -1,20 +1,19 @@
 ---
-source_file: "base-web/src/service-alova/request/index.ts"
-type: "code"
-community: "User & Captcha APIs"
-location: "L28"
+source_file: "fork260509-soybean-admin-docs/src/recommend/alova.md"
+type: "document"
+community: "Community 359"
+location: "L1"
 tags:
-  - graphify/code
+  - graphify/document
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Community_359
 ---
 
-# alova
+# Alova
 
 ## Connections
-- [[auth.ts_2]] - `imports` [EXTRACTED]
-- [[index.ts_31]] - `contains` [EXTRACTED]
-- [[route.ts_2]] - `imports` [EXTRACTED]
-- [[system-manage.ts_1]] - `imports` [EXTRACTED]
+- [[Introduce_1]] - `contains` [EXTRACTED]
+- [[Related links]] - `contains` [EXTRACTED]
+- [[alova_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/document #graphify/EXTRACTED #community/Community_359

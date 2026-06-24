@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/auth.d.ts"
 type: "code"
-community: "auth.d.ts"
+community: "Community 379"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/authdts
+  - community/Community_379
 ---
 
 # LoginToken
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[auth.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/authdts
+#graphify/code #graphify/EXTRACTED #community/Community_379

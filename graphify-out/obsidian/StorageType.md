@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/src/storage.ts"
 type: "code"
-community: "index.ts"
+community: "Community 53"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/Community_53
 ---
 
 # StorageType
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[storage.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/Community_53

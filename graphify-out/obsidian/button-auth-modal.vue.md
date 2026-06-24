@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/button-auth-modal.vue"
 type: "code"
-community: "button-auth-modal.vue"
+community: "Community 578"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/button-auth-modalvue
+  - community/Community_578
 ---
 
 # button-auth-modal.vue
 
-#graphify/code #graphify/EXTRACTED #community/button-auth-modalvue
+#graphify/code #graphify/EXTRACTED #community/Community_578

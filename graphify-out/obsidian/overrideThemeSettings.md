@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/theme/settings.ts"
 type: "code"
-community: "Theme Token Engine"
+community: "Theme Palette & UnoCSS"
 location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Token_Engine
+  - community/Theme_Palette__UnoCSS
 ---
 
 # overrideThemeSettings
 
 ## Connections
 - [[settings.ts]] - `contains` [EXTRACTED]
-- [[shared.ts (9)]] - `imports` [EXTRACTED]
+- [[shared.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Token_Engine
+#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS

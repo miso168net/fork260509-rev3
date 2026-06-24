@@ -1,17 +1,17 @@
 ---
 source_file: "base-web/src/views/plugin/charts/vchart/data.ts"
 type: "code"
-community: "data.ts"
+community: "Community 126"
 location: "L779"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/datats
+  - community/Community_126
 ---
 
 # histogramDifferentBinSpec
 
 ## Connections
-- [[data.ts (3)]] - `contains` [EXTRACTED]
+- [[data.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/datats
+#graphify/code #graphify/EXTRACTED #community/Community_126

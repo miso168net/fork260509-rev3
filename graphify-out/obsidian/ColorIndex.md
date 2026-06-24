@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/packages/color/src/types/index.ts"
 type: "code"
-community: "antd.ts"
+community: "Community 83"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/antdts
+  - community/Community_83
 ---
 
 # ColorIndex
 
 ## Connections
 - [[antd.ts]] - `imports` [EXTRACTED]
-- [[index.ts (7)]] - `contains` [EXTRACTED]
+- [[index.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/antdts
+#graphify/code #graphify/EXTRACTED #community/Community_83

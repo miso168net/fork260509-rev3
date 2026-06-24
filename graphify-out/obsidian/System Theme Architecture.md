@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/theme/intro.md"
 type: "rationale"
-community: "Icons & UnoCSS Styling"
+community: "Community 156"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_156
 ---
 
 # System Theme Architecture
@@ -16,4 +16,4 @@ tags:
 - [[setupLoading]] - `conceptually_related_to` [INFERRED]
 - [[themeSettings (2)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/rationale #graphify/EXTRACTED #community/Community_156

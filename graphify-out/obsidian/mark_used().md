@@ -1,0 +1,17 @@
+---
+source_file: "rust-api/server/src/model/facade/sys_token.rs"
+type: "code"
+community: "Community 177"
+location: "L75"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_177
+---
+
+# mark_used()
+
+## Connections
+- [[sys_token.rs_1]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_177

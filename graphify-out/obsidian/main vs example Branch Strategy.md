@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/guide/intro.md"
 type: "concept"
-community: "Ecosystem Projects"
+community: "Ecosystem/Awesome Docs"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Ecosystem_Projects
+  - community/Ecosystem/Awesome_Docs
 ---
 
 # main vs example Branch Strategy
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin (2)]] - `references` [EXTRACTED]
 - [[soybean-admin-go]] - `conceptually_related_to` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Ecosystem_Projects
+#graphify/concept #graphify/EXTRACTED #community/Ecosystem/Awesome_Docs

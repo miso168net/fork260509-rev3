@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "page"
+community: "Community 378"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/page
+  - community/Community_378
 ---
 
 # animate
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[page_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/page
+#graphify/code #graphify/EXTRACTED #community/Community_378

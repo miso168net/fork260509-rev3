@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.oxlintrc.json"
 type: "code"
-community: "rules"
+community: "Community 124"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rules
+  - community/Community_124
 ---
 
 # plugins
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.oxlintrc.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rules
+#graphify/code #graphify/EXTRACTED #community/Community_124

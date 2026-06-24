@@ -1,0 +1,17 @@
+---
+source_file: "rust-api/server/src/model/facade/sys_user.rs"
+type: "code"
+community: "SysUser Facade (rust)"
+location: "L408"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/SysUser_Facade_rust
+---
+
+# names_for_ids()
+
+## Connections
+- [[sys_user.rs_1]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/SysUser_Facade_rust

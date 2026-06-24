@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/custom-icon.svg"
 type: "image"
-community: "Icons & UnoCSS Styling"
+community: "Community 136"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_136
 ---
 
 # custom-icon.svg Local Icon
@@ -14,4 +14,4 @@ tags:
 - [[SvgIcon Global Component (icon  local-icon props)]] - `references` [EXTRACTED]
 - [[base-web local SVG icon convention (srcassetssvg-icon)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/image #graphify/EXTRACTED #community/Icons__UnoCSS_Styling
+#graphify/image #graphify/EXTRACTED #community/Community_136

@@ -1,0 +1,17 @@
+---
+source_file: "fork260509-soybean-admin-docs/src/zh/guide/cli/intro.md"
+type: "document"
+community: "Community 390"
+location: "L1"
+tags:
+  - graphify/document
+  - graphify/EXTRACTED
+  - community/Community_390
+---
+
+# intro.md
+
+## Connections
+- [[命令行]] - `contains` [EXTRACTED]
+
+#graphify/document #graphify/EXTRACTED #community/Community_390

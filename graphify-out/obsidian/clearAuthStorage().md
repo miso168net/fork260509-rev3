@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/store/modules/auth/shared.ts"
 type: "code"
-community: "Auth Store & Tokens"
+community: "Auth & Locale Service"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Tokens
+  - community/Auth__Locale_Service
 ---
 
 # clearAuthStorage()
 
 ## Connections
-- [[index.ts (35)]] - `imports` [EXTRACTED]
-- [[shared.ts (6)]] - `contains` [EXTRACTED]
+- [[index.ts_34]] - `imports` [EXTRACTED]
+- [[shared.ts_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Tokens
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

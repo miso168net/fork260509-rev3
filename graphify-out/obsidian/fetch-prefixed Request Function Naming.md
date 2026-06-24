@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/standard/naming.md"
 type: "rationale"
-community: "Vue Writing Standards"
+community: "Community 100"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Vue_Writing_Standards
+  - community/Community_100
 ---
 
 # fetch-prefixed Request Function Naming
@@ -14,4 +14,4 @@ tags:
 - [[Naming Conventions Standard]] - `references` [EXTRACTED]
 - [[命名规范（Naming Convention）]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Vue_Writing_Standards
+#graphify/rationale #graphify/EXTRACTED #community/Community_100

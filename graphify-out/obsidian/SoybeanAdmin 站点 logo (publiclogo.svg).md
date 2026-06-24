@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/public/logo.svg"
 type: "image"
-community: "Icons & UnoCSS Styling"
+community: "Community 180"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/Icons__UnoCSS_Styling
+  - community/Community_180
 ---
 
 # SoybeanAdmin 站点 logo (public/logo.svg)
@@ -15,4 +15,4 @@ tags:
 - [[SoybeanAdmin 中文首页（VitePress home）]] - `references` [EXTRACTED]
 - [[favicon.svg (SoybeanAdmin browser tab icon)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Icons__UnoCSS_Styling
+#graphify/image #graphify/INFERRED #community/Community_180

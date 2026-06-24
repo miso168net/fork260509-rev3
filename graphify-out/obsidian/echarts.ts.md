@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/echarts.ts"
 type: "code"
-community: "data.ts"
+community: "Community 72"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/datats
+  - community/Community_72
 ---
 
 # echarts.ts
@@ -14,9 +14,9 @@ tags:
 ## Connections
 - [[ChartHooks]] - `contains` [EXTRACTED]
 - [[ECOption]] - `contains` [EXTRACTED]
-- [[data.ts (2)]] - `imports_from` [EXTRACTED]
-- [[index.ts (38)]] - `imports_from` [EXTRACTED]
+- [[data.ts_1]] - `imports_from` [EXTRACTED]
+- [[index.ts_37]] - `imports_from` [EXTRACTED]
 - [[useEcharts()]] - `contains` [EXTRACTED]
 - [[useThemeStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/datats
+#graphify/code #graphify/EXTRACTED #community/Community_72

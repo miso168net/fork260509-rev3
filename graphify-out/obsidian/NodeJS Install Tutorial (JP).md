@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/jp/tutorial/nodejs.md"
 type: "document"
-community: "Debugging & Routing Docs"
+community: "Community 122"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Debugging__Routing_Docs
+  - community/Community_122
 ---
 
 # NodeJS Install Tutorial (JP)
@@ -16,4 +16,4 @@ tags:
 - [[fnm Node Version Manager]] - `references` [EXTRACTED]
 - [[nvm Node Version Manager]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Debugging__Routing_Docs
+#graphify/document #graphify/EXTRACTED #community/Community_122

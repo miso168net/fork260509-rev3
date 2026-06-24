@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/guide/router/dynamic.md"
 type: "rationale"
-community: "RouteMeta"
+community: "Community 90"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/RouteMeta
+  - community/Community_90
 ---
 
 # Dynamic Route Mode
@@ -20,4 +20,4 @@ tags:
 - [[fetchGetUserRoutes]] - `references` [EXTRACTED]
 - [[meta.roles 路由角色权限]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/RouteMeta
+#graphify/rationale #graphify/EXTRACTED #community/Community_90

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/tsconfig.json"
 type: "code"
-community: "TSConfig Compiler Options"
+community: "Community 59"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/TSConfig_Compiler_Options
+  - community/Community_59
 ---
 
 # compilerOptions
@@ -27,4 +27,4 @@ tags:
 - [[tsconfig.json_2]] - `contains` [EXTRACTED]
 - [[types_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/TSConfig_Compiler_Options
+#graphify/code #graphify/EXTRACTED #community/Community_59

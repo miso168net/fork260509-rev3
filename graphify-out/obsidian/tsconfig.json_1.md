@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/tsconfig.json"
 type: "code"
-community: "TSConfig Compiler Options"
+community: "Community 57"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/TSConfig_Compiler_Options
+  - community/Community_57
 ---
 
 # tsconfig.json
@@ -16,4 +16,4 @@ tags:
 - [[exclude_1]] - `contains` [EXTRACTED]
 - [[include_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/TSConfig_Compiler_Options
+#graphify/code #graphify/EXTRACTED #community/Community_57

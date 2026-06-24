@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/common/pin-toggler.vue"
 type: "code"
-community: "pin-toggler.vue"
+community: "Community 514"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/pin-togglervue
+  - community/Community_514
 ---
 
 # pin-toggler.vue
 
-#graphify/code #graphify/EXTRACTED #community/pin-togglervue
+#graphify/code #graphify/EXTRACTED #community/Community_514

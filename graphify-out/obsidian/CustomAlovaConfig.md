@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/src/type.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Alova Request Layer"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Alova_Request_Layer
 ---
 
 # CustomAlovaConfig
@@ -15,4 +15,4 @@ tags:
 - [[index.ts]] - `imports` [EXTRACTED]
 - [[type.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer

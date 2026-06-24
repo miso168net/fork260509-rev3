@@ -1,11 +1,11 @@
 ---
 source_file: "fork260509-soybean-admin-docs/src/zh/guide/router/cache.md"
 type: "rationale"
-community: "Elegant Router (automated file-based rou"
+community: "Community 97"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Elegant_Router_automated_file-based_rou
+  - community/Community_97
 ---
 
 # 路由缓存 (keep-alive + meta.keepAlive)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Elegant Router (automated file-based routing)]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Elegant_Router_automated_file-based_rou
+#graphify/rationale #graphify/EXTRACTED #community/Community_97

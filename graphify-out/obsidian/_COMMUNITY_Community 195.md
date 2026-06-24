@@ -1,0 +1,31 @@
+---
+type: community
+members: 8
+---
+
+# Community 195
+
+**Members:** 8 nodes
+
+## Members
+- [[&nbsp;&nbsp;&nbsp;❤️ 贡献者_5]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🏡 杂务]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🐞 修复]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;💅 重构]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;📖 文档_4]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚀 功能]] - document - base-web/CHANGELOG.zh_CN.md
+- [[&nbsp;&nbsp;&nbsp;🚨 破坏性变更]] - document - base-web/CHANGELOG.zh_CN.md
+- [[v1.3.0(httpsgithub.comsoybeanjssoybean-admincomparev1.2.8...v1.3.0) (2024-07-22)_1]] - document - base-web/CHANGELOG.zh_CN.md
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Community_195
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 105]]
+
+## Top bridge nodes
+- [[v1.3.0(httpsgithub.comsoybeanjssoybean-admincomparev1.2.8...v1.3.0) (2024-07-22)_1]] - degree 8, connects to 1 community

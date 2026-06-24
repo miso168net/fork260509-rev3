@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/request/index.ts"
 type: "code"
-community: "User & Captcha APIs"
+community: "Alova Request Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User__Captcha_APIs
+  - community/Alova_Request_Layer
 ---
 
 # index.ts
@@ -30,4 +30,4 @@ tags:
 - [[useAuthStore]] - `imports` [EXTRACTED]
 - [[{ baseURL }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User__Captcha_APIs
+#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer
