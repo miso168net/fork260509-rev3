@@ -1,0 +1,28 @@
+# 018-observability U2 obs-full：prometheus scrape 配置（metrics 軌、profiles:[metrics]）。
+# ★ job 名（rust-api/postgres/redis/pushgateway）＝ alert up{job=} selector，不可漂（rules.yml 依賴）。
+# retention 15d 走 compose command flag（--storage.tsdb.retention.time），非本檔。
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # 後端應用 metrics（axum_http_*／casbin_enforce_total；rust-api 容器內 :31081/metrics）。
+  - job_name: rust-api
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["rust-api:31081"]
+
+  # Postgres 依賴健康（postgres_exporter、reuse postgres_password、內網 :9187）。
+  - job_name: postgres
+    static_configs:
+      - targets: ["postgres_exporter:9187"]
+
+  # Redis 依賴健康（redis_exporter、reuse redis_password、內網 :9121）。
+  - job_name: redis
+    static_configs:
+      - targets: ["redis_exporter:9121"]
+
+  # cleanup-job push（pushgateway short-lived job metrics；honor_labels 保留 push 端 job 標籤）。
+  - job_name: pushgateway
+    honor_labels: true
+    static_configs:
+      - targets: ["pushgateway:9091"]

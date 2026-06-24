@@ -77,3 +77,38 @@ services:
     volumes:
       - front_nginx_certs:/acme.sh
     restart: unless-stopped
+
+  # ═══ 018-observability obs internal-only override（prod）═══
+  #   ★ internal-only：obs service 不映任何 host port（dev override 才映 33000/33100/33090/39091）→
+  #     prod 觀測端點僅內網 rev3_net 可達、不對外（spec FR-003、Out-of-Scope「prod internal-only 落實」）。
+  #   ★ config bind-mount 須與 dev 對齊（base 層不放 bind-mount、dev/prod override 各自提供；同 trust-model.toml 模式）
+  #     ——否則 prod loki 退預設 config（非 72h retention）、alloy 無 KEEP relabel、grafana 無 datasource/dashboard
+  #     provisioning、prometheus 無 4-job scrape（U1 spec-review LOW 接住）。皆 profiles:[obs]/[metrics] opt-in。
+  loki:
+    volumes:
+      - ./deploy/loki-config.yml:/etc/loki/loki-config.yml:ro
+    restart: unless-stopped
+
+  alloy:
+    volumes:
+      - ./deploy/alloy-config.alloy:/etc/alloy/config.alloy:ro
+    restart: unless-stopped
+
+  grafana:
+    volumes:
+      - ./deploy/grafana-provisioning:/etc/grafana/provisioning:ro
+    restart: unless-stopped
+
+  prometheus:
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    restart: unless-stopped
+
+  postgres_exporter:
+    restart: unless-stopped
+
+  redis_exporter:
+    restart: unless-stopped
+
+  pushgateway:
+    restart: unless-stopped

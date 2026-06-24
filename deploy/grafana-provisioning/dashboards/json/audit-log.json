@@ -1,0 +1,142 @@
+{
+  "uid": "obs-audit-log",
+  "title": "審計日誌 (Audit Log)",
+  "tags": ["obs", "rev3-admin", "audit-log", "loki"],
+  "schemaVersion": 39,
+  "editable": false,
+  "graphTooltip": 0,
+  "time": { "from": "now-1h", "to": "now" },
+  "refresh": "30s",
+  "timezone": "browser",
+  "annotations": { "list": [] },
+  "templating": {
+    "list": [
+      {
+        "name": "service",
+        "label": "service",
+        "type": "query",
+        "datasource": { "type": "loki", "uid": "loki" },
+        "query": { "label": "service", "stream": "{compose_project=\"rev3-admin\"}", "type": 1 },
+        "refresh": 2,
+        "includeAll": true,
+        "multi": true,
+        "allValue": ".+",
+        "current": { "text": "All", "value": "$__all" }
+      },
+      {
+        "name": "trace_id",
+        "label": "trace_id (drill)",
+        "type": "textbox",
+        "query": "",
+        "current": { "text": "", "value": "" },
+        "description": "輸入 trace_id 過濾 rust-api log（對應 sys_access_log / sys_operation_log 的 trace_id）。留空＝不過濾。"
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "logs",
+      "title": "全工作區 log（本工作區、compose_project=rev3-admin）",
+      "description": "{compose_project=\"rev3-admin\", service=~\"$service\"}；★ 僅本工作區 log（FR-007）。包含結構化與非結構化（cargo-watch 等）行。",
+      "datasource": { "type": "loki", "uid": "loki" },
+      "gridPos": { "h": 11, "w": 24, "x": 0, "y": 0 },
+      "options": {
+        "showTime": true,
+        "showLabels": false,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "prettifyLogMessage": false,
+        "enableLogDetails": true,
+        "dedupStrategy": "none",
+        "sortOrder": "Descending"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "loki", "uid": "loki" },
+          "expr": "{compose_project=\"rev3-admin\", service=~\"$service\"}",
+          "queryType": "range"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "logs",
+      "title": "rust-api 結構化 log（JSON guard）",
+      "description": "{compose_project=\"rev3-admin\", service=\"rust-api\"} |~ `^{` | json；★ 行首 JSON guard（|~ `^{`）過濾非-JSON 行（cargo-watch），否則 | json 對純文字回 400 整片空白。",
+      "datasource": { "type": "loki", "uid": "loki" },
+      "gridPos": { "h": 11, "w": 24, "x": 0, "y": 11 },
+      "options": {
+        "showTime": true,
+        "showLabels": false,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "prettifyLogMessage": true,
+        "enableLogDetails": true,
+        "dedupStrategy": "none",
+        "sortOrder": "Descending"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "loki", "uid": "loki" },
+          "expr": "{compose_project=\"rev3-admin\", service=\"rust-api\"} |~ `^{` | json",
+          "queryType": "range"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "logs",
+      "title": "trace_id drill（rust-api、依 $trace_id 過濾）",
+      "description": "{compose_project=\"rev3-admin\", service=\"rust-api\"} |~ `^{` | json | fields_trace_id =~ `$trace_id`；★ trace_id 巢狀於 fields → loki | json 攤平為 fields_trace_id。$trace_id 留空時 regex `` 匹配全部行。對應 DB 審計列 sys_access_log.trace_id / sys_operation_log.trace_id（FR-006）。",
+      "datasource": { "type": "loki", "uid": "loki" },
+      "gridPos": { "h": 11, "w": 24, "x": 0, "y": 22 },
+      "options": {
+        "showTime": true,
+        "showLabels": true,
+        "showCommonLabels": false,
+        "wrapLogMessage": true,
+        "prettifyLogMessage": true,
+        "enableLogDetails": true,
+        "dedupStrategy": "none",
+        "sortOrder": "Descending"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "loki", "uid": "loki" },
+          "expr": "{compose_project=\"rev3-admin\", service=\"rust-api\"} |~ `^{` | json | fields_trace_id =~ `$trace_id`",
+          "queryType": "range"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "log 量速率 by service（行/秒）",
+      "description": "sum by (service) (rate({compose_project=\"rev3-admin\"}[5m]))；各 service log 產出速率。",
+      "datasource": { "type": "loki", "uid": "loki" },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 33 },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "logs",
+          "custom": { "drawStyle": "line", "fillOpacity": 15, "lineWidth": 1, "showPoints": "never", "stacking": { "mode": "normal" } },
+          "color": { "mode": "palette-classic" }
+        },
+        "overrides": []
+      },
+      "options": { "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }, "tooltip": { "mode": "multi", "sort": "desc" } },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "loki", "uid": "loki" },
+          "expr": "sum by (service) (rate({compose_project=\"rev3-admin\"}[5m]))",
+          "queryType": "range",
+          "legendFormat": "{{service}}"
+        }
+      ]
+    }
+  ]
+}
