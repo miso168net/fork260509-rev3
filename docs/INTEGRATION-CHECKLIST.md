@@ -121,13 +121,15 @@
 
 > 4040/5003（HTTP 404/403）native axios error 在地化（onError translateBackendMsg、⚠️aa 授權、CDP 驗 403 toast）;詳 [MILESTONES §3](INTEGRATION-MILESTONES.md)。
 
-### 3.H keep-deferred 雜項（consumer/觸發時、壓縮）
+### 3.H keep-deferred 雜項【參考清單、非勾選】（觸發/own-cut/永不混合、壓縮）
 
-- [ ] **rust robustness**〔014、low〕：〔pre-波4 done：settings/policy watcher reconnect 後補 DB re-read/reload✅；Redis boot connect 包 `tokio::timeout(5s)`✅〕仍 open：Redis `sess:{uid}` pointer 熱快取 deferred（X-01 sanctioned、QPS 高再啟）
-- [ ] **vendored adapter**〔002〕：〔pre-波4 done：移除 async-trait/tokio 被忽略的 default-features=false、消 build warning✅〕仍 open：examples fixture（builder 內跑 cargo test 時 COPY）
-- [ ] **optimization re-defer**：~~iframe props 內嵌〔010 D2〕~~（moot：rev3 動態選單不走 iframe-page props 路徑✅）；~~`filter_routes` 遞迴化〔010 D3〕~~（stale：rust+前端兩端早已遞迴✅）；`batch_soft_delete` sentinel DbErr→自管 txn（own-cut、非急、併下次 menu 治理刀）〔010〕；soft_delete 中途失敗審計（原子性已由 mutate_in_txn 保證、僅缺 fault-inject 測、own-cut）〔005〕
-- [ ] **UX/cosmetic**〔low〕：~~endpoint modal 扁平→可按 path 群組〔016〕~~（pre-波4 done：path 群組 NTree+check-strategy=child✅、synthKey 016 已加固、CDP 驗渲染）；~~ArchivedPolicy createdTime 未顯欄〔015〕~~（pre-波4 done：加「建立时间」欄✅、CDP 驗欄頭）；protected 訊息泛化未 surface 具體（own-cut：facade 已攜 detail、缺 AppError 攜帶+i18n 插值+暴露安全評估）〔011/016〕；login fallback「No match」transient（wont-fix：動 frozen upstream auth/index.ts、低收益）〔010〕
-- [ ] **misc**：dynamic route `/route/*` 真流量重抓〔000、低 archival〕；`inline_coverage_lint` 候選〔⚠️s、待 ⚠️q migrate〕；base-web i18n 單元測 fidelity〔003、待 vitest 環境〕；~~`TrustModel.Binding.dual_role` 從不消費〔013〕~~（pre-波4 done：net-dead 確認〔只寫不讀〕、移除欄位✅、`b63928b`）；rev2 redis `--dir` bug 回灌〔001、rev2 維護時〕；dispatcher `server)` 不 shift〔001、blob 凍結 won't-fix〕；pruneNullParams 雙防線〔012、by-design 刻意保留〕；specs 筆誤家族 255〔012〕/263〔013〕/338〔016〕（as-built 權威在 DECISIONS、spec 快照、勘誤可選、不單獨追蹤）
+> 本節為 deferred 雜項**參考**、非待辦勾選——含「觸發時做」「own-cut 併未來刀」「won't-fix/by-design **永不**」三種混合（各項「何時」見內聯括註）。故刻意**不用 `[ ]`、不期待歸零**；真有觸發再從這撈。
+
+- **rust robustness**〔014、low〕：〔pre-波4 done：settings/policy watcher reconnect 後補 DB re-read/reload✅；Redis boot connect 包 `tokio::timeout(5s)`✅〕仍 open〔SCALE〕：Redis `sess:{uid}` pointer 熱快取 deferred（X-01 sanctioned、QPS 高再啟）
+- **vendored adapter**〔002〕：〔pre-波4 done：移除 async-trait/tokio 被忽略的 default-features=false、消 build warning✅〕仍 open〔TRIGGER〕：examples fixture（builder 內跑 cargo test 時 COPY）
+- **optimization re-defer**：~~iframe props 內嵌〔010 D2〕~~（moot：rev3 動態選單不走 iframe-page props 路徑✅）；~~`filter_routes` 遞迴化〔010 D3〕~~（stale：rust+前端兩端早已遞迴✅）；`batch_soft_delete` sentinel DbErr→自管 txn〔OWN-CUT、併下次 menu 治理刀〕〔010〕；soft_delete 中途失敗審計（原子性已由 mutate_in_txn 保證、僅缺 fault-inject 測、OWN-CUT）〔005〕
+- **UX/cosmetic**〔low〕：~~endpoint modal 扁平→可按 path 群組〔016〕~~（pre-波4 done：path 群組 NTree+check-strategy=child✅、synthKey 016 已加固、CDP 驗渲染）；~~ArchivedPolicy createdTime 未顯欄〔015〕~~（pre-波4 done：加「建立时间」欄✅、CDP 驗欄頭）；protected 訊息泛化未 surface 具體〔OWN-CUT：facade 已攜 detail、缺 AppError 攜帶+i18n 插值+暴露安全評估〕〔011/016〕；login fallback「No match」transient〔**永不/won't-fix**：動 frozen upstream auth/index.ts、低收益〕〔010〕
+- **misc**：dynamic route `/route/*` 真流量重抓〔000、低 archival〕；`inline_coverage_lint` 候選〔⚠️s、待 ⚠️q migrate〕；base-web i18n 單元測 fidelity〔003、待 vitest 環境〕；~~`TrustModel.Binding.dual_role` 從不消費〔013〕~~（pre-波4 done：net-dead 確認〔只寫不讀〕、移除欄位✅、`b63928b`）；rev2 redis `--dir` bug 回灌〔001、rev2 維護時〕；dispatcher `server)` 不 shift〔001、**永不/won't-fix**、blob 凍結〕；pruneNullParams 雙防線〔012、**永不/by-design 刻意保留、非待辦**〕；specs 筆誤家族 255〔012〕/263〔013〕/338〔016〕（as-built 權威在 DECISIONS、spec 快照、勘誤可選、不單獨追蹤）
 
 ---
 
