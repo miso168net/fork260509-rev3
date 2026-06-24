@@ -63,6 +63,7 @@
 | `7ac45c7` | 2026-06-24 | **§3.C F4 審計 CSV 截斷信號嚴格化（最後一個 codeable §3 項；rust `483eeba`/base-web `134ddcc2`）** — C-3 export 截斷 toast 原依前端 stale `pagination.itemCount`（最近同篩選 list total、改篩未重查即漂移）→改後端權威旗標。**rust**：export data 由裸 CSV 字串改 `{csv,truncated}`（`ExportCsv` camelCase）、`truncated=is_export_truncated(total)=total>CSV_EXPORT_CAP`〔facade list 的 total 為完整計數、不受 size=CAP 限〕、3 export 分支同步；2 單元測〔boundary ==CAP→false 剛好全取／>CAP→true；序列化鎖 wire 形〕。**base-web**：新 `Api.SystemManage.AuditCsvExport`＋3 wrapper `request<string>`→`request<AuditCsvExport>`＋3 onExport 讀 `data.truncated`＋清 orphan〔3 vue 的 CSV_EXPORT_CAP import/pagination destructure、download.ts 的 cap 常數〕。驗：cargo test 168 passed／typecheck 綠／CDP 三 tab export XHR 回 `{csv,truncated:false}`〔BOM+表頭、無 console 例外〕。truncated=true 路徑由單元測覆蓋（dev 無 >1萬列）。 |
 | `f1e762a` | 2026-06-24 | graphify 增量同步到 008-017（補回缺席 rust 後端、4176→5127 node／5917 edge／661 community；全 rust 64 AST＋base-web semantic、外科式 dedup=False 併入） |
 | `d54e693` | 2026-06-24 | GRAPHIFY-NOTES.md 落地（§1 圖統計／§2 八抽取盲點／§3 守則／§4 維護紀律）＋拔 CLAUDE.md GRAPHIFY-NOTES ⏳ |
+| `21f1a58`+`631dfef` | 2026-06-24 | graphify prune docs 源倉出圖（5127→3271 node／4053 edge／477 community；移除 1856 noise 節點＋加 .graphifyignore 排除；GRAPHIFY-NOTES §1 統計＋§2.4 校正〔Changelog 屬 base-web 非 docs〕＋CLAUDE.md 統計改指 GRAPHIFY-NOTES） |
 
 ---
 

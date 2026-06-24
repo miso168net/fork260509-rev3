@@ -12,7 +12,7 @@
 **階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。pre-波4 017-audit-center-enhancement ✅ 全完成（2026-06-23、merge `c7f5936`）＝審計中心 enhancement（C-1 class filter／C-3 CSV 匯出／C-4 op-log 角色 delta、零 migration/端點/crate）。下一步＝波 4 observability（未開始）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-24 graphify 圖譜增量同步到 008-017 ＋ GRAPHIFY-NOTES 落地**：`--update` 補回缺席 rust 後端（4176→5127 node、外科式 `dedup=False` 併入、修 graph↔manifest desync）；新 `docs/GRAPHIFY-NOTES.md`（§1 統計／§2 八抽取盲點〔runtime pub/sub 耦合、跨模組 qualified-call 漏邊…〕／§3 守則／§4 維護紀律）、拔 CLAUDE.md GRAPHIFY-NOTES ⏳。commit `f1e762a`/`d54e693`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
+- **2026-06-24 graphify 圖譜：同步 008-017 + GRAPHIFY-NOTES 落地 + prune docs 源倉**：`--update` 補回缺席 rust 後端（4176→5127）→ 再 prune docs 源倉 noise（5127→3271 node、加 `.graphifyignore`、修 graph↔manifest desync）；新 `docs/GRAPHIFY-NOTES.md`（8 抽取盲點清單）、拔 CLAUDE.md ⏳＋圖統計改指 GRAPHIFY-NOTES §1。commit `f1e762a`/`d54e693`/`21f1a58`/`631dfef`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 - **2026-06-24 §3.C F4 審計 CSV 截斷信號嚴格化（最後一個 codeable §3 實質項）**：export data 裸 CSV 字串→`{csv,truncated}`（後端 `is_export_truncated(total)=total>CAP` 權威旗標）、前端截斷 toast 棄 stale `pagination.itemCount`；rust 2 單元測+base-web `AuditCsvExport` 型/3 wrapper/3 onExport/清 orphan。CDP 三 tab export 回 `{csv,truncated:false}` 驗。pins rust `483eeba`/base-web `134ddcc2`/outer `7ac45c7`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 
 > 以下為預計`下一步` (不要合到`最新進展`)
