@@ -168,6 +168,24 @@ services:
     ports:
       - "127.0.0.1:36379:6379"
 
+  # ═══ 018-observability U1 obs-min dev override（host port 綁 127.0.0.1 loopback + config bind-mount）═══
+  #   networks 繼承 base（不重列）；profiles:[obs] 由 base 定義、override 不重設。
+  loki:
+    ports:
+      - "127.0.0.1:33100:3100"
+    volumes:
+      - ./deploy/loki-config.yml:/etc/loki/loki-config.yml:ro
+
+  alloy:
+    volumes:
+      - ./deploy/alloy-config.alloy:/etc/alloy/config.alloy:ro
+
+  grafana:
+    ports:
+      - "127.0.0.1:33000:3000"
+    volumes:
+      - ./deploy/grafana-provisioning:/etc/grafana/provisioning:ro
+
 # 014 U7：rust-api-2 專用 target 卷(獨立隔離,避免與 rust-api cargo-watch 互擾)。
 # 無顯式 name:,繼承 master project name → 實際卷名 rev3-admin_rust_api2_target(§8.2.2 命名規則)。
 volumes:

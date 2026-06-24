@@ -1,0 +1,49 @@
+// 018-observability U1 obs-min：grafana Alloy docker-SD log 採集（取代 EOL promtail）。
+// data-model §2.4／research R7 hindsight：relabel KEEP rule 限本工作區（compose project=rev3-admin）、
+// 漏 keep ⇒ 採到並存其他 workspace 的容器 log（FR-007 違反）。
+
+// 從 docker.sock 發現所有容器（unix socket、alloy user:root 才讀得到）。
+discovery.docker "containers" {
+	host = "unix:///var/run/docker.sock"
+}
+
+// relabel：① KEEP 限 compose project=rev3-admin（FR-007）；② 抽 service／container／compose_project 標籤。
+discovery.relabel "containers" {
+	targets = discovery.docker.containers.targets
+
+	// ★ KEEP：僅本工作區容器（compose project label==rev3-admin），其餘 drop。
+	rule {
+		source_labels = ["__meta_docker_container_label_com_docker_compose_project"]
+		regex         = "rev3-admin"
+		action        = "keep"
+	}
+
+	rule {
+		source_labels = ["__meta_docker_container_label_com_docker_compose_service"]
+		target_label  = "service"
+	}
+
+	rule {
+		source_labels = ["__meta_docker_container_name"]
+		target_label  = "container"
+	}
+
+	rule {
+		source_labels = ["__meta_docker_container_label_com_docker_compose_project"]
+		target_label  = "compose_project"
+	}
+}
+
+// 讀容器 log（docker.sock）、targets 取 relabel 輸出、forward 至 loki.write。
+loki.source.docker "containers" {
+	host       = "unix:///var/run/docker.sock"
+	targets    = discovery.relabel.containers.output
+	forward_to = [loki.write.default.receiver]
+}
+
+// 推送至 loki push API。
+loki.write "default" {
+	endpoint {
+		url = "http://loki:3100/loki/api/v1/push"
+	}
+}

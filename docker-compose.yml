@@ -174,6 +174,53 @@ services:
     networks:
       - rev3_net
 
+  # ═══ 018-observability U1 obs-min（log 軌、profiles:[obs] opt-in、一般 up 不啟）═══
+  # ★ 每個 obs service MUST networks:[rev3_net]（rev3 無 default network、漏接＝service DNS 靜默不通）。
+  #   loki_data/grafana_data/alloy_data 卷與 grafana_admin_password secret 已於頂層宣告（勿重複）。
+  loki:
+    profiles: [obs]
+    image: grafana/loki:3.7.2
+    command: ["-config.file=/etc/loki/loki-config.yml"]
+    volumes:
+      - loki_data:/loki
+    networks:
+      - rev3_net
+
+  alloy:
+    profiles: [obs]
+    image: grafana/alloy:v1.16.1
+    # user:root 讀 docker.sock（docker-SD 採集所有容器 stdout log）。
+    user: root
+    command:
+      - run
+      - /etc/alloy/config.alloy
+      - --storage.path=/var/lib/alloy/data
+      - --server.http.listen-addr=0.0.0.0:12345
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - alloy_data:/var/lib/alloy/data
+    depends_on:
+      - loki
+    networks:
+      - rev3_net
+
+  grafana:
+    profiles: [obs, metrics]
+    image: grafana/grafana:13.0.2
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+    secrets:
+      - grafana_admin_password
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      loki:
+        condition: service_started
+        required: false
+    networks:
+      - rev3_net
+
 networks:
   rev3_net:
 
