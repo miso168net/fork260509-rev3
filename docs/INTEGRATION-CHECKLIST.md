@@ -78,45 +78,33 @@
 
 > 2026-06-22 thematic 重組（de-bloat）：原 per-feature §3.1~§3.20 散列收成跨刀主題群 §3.A~§3.H；已結 follow-up 與**舊→新 §錨對照**見 [MILESTONES §3](INTEGRATION-MILESTONES.md) + git history（pre-debloat `16b53a3`）。均不阻塞、消費刀/觸發時處理。
 
-> **★ 為何剩餘 `[ ]` 多輪收不掉（停泊分類、非待辦遺漏；2026-06-24 校準）**：可做的實質 hygiene 已收完（含 F4＝最後一個 codeable 項）。剩餘 `[ ]` 按**性質停泊**、`[x]`＝做完、以下多數本質「現在不可能做完」、故長期掛 `[ ]` 屬正常：
-> - **DEFER-prod**（拍板待真 prod 拓樸）：cert `external`／trust-model.toml 填值
-> - **WON'T-DO**（已決不做）：prod 多副本〔research §D〕／login fallback〔frozen upstream〕／dispatcher〔blob 凍結〕／pruneNullParams〔by-design〕
-> - **TRIGGER**（觸發時才有工作）：lint CONST 守門／validate_value_type／`set_var`〔edition 2024〕／examples fixture
-> - **REACTIVE**（真 flaky 才修）：op-log count EntityId 隔離脆弱性
-> - **SCALE**（規模到才有 ROI）：pg_trgm GIN／Redis pointer 熱快取／archive purge
-> - **OWN-CUT**（併未來刀）：batch_soft_delete sentinel／soft_delete fault-test／protected 訊息泛化
+> **★ 為何剩餘 `[ ]` 多輪收不掉 + §3／§4 分流（2026-06-24 校準）**：可做的實質 hygiene 已收完（含 F4＝最後一個 codeable 項）。剩餘按「本版觸發時做」vs「未來版本/長期」分流（`[x]`＝做完；以下皆**非待辦遺漏**）：
+> - **§3 留（本版剩餘、觸發/反應時做、波4 可能命中）**：TRIGGER〔lint CONST 守門／validate_value_type／`set_var` edition2024〕｜REACTIVE〔op-log count 隔離〕｜OWN-CUT〔batch_soft_delete／soft_delete fault-test／protected 訊息，併的是 rev3 內未來刀〕｜low-doable〔image pin 殘留／001 邊角／examples fixture／misc〕
+> - **§4.2 移（未來版本實現、非 v1、長期追蹤）**：DEFER-prod〔cert external／trust-model 填值，需真 prod 環境〕｜WON'T-DO v1〔prod 多副本〕｜SCALE〔pg_trgm／archive purge〕｜scheduled-feature〔alt-login〕。（§3.H 雜項內同性質項 Redis 熱快取/login fallback/dispatcher/pruneNullParams 保留壓縮原處、不重列）
 
 ### 3.A 公網/prod 部署前硬化（跨刀彙整：001/012/013/014）
 
 > 公網/prod 部署前一次性硬化；dev 不受影響。原散於各刀，收成單一清單。
 
 - [x] ✅ **nginx 硬化**〔001、pre-波4 2026-06-23〕：nginx.conf `server_tokens off`＋prod.conf 443 HSTS/X-Frame-Options/X-Content-Type-Options（`nginx -t` 掛 rev3_net 過）；`/health` 雙 Content-Type 早已 `default_type`（自述 stale）
-- [ ] **TLS/secret/腳本**〔001〕：仍 open＝`front_nginx_certs` 是否 `external: true`（**拍板項、prod-deploy 時定**）。〔已驗 done：compose secrets 預檢〔`deploy/preflight-secrets.sh` 自 001 已備＝缺/空/目錄 source→指名缺檔 exit 1✅、原列 open 屬 stale〕；generate-secrets dual-write 連動重生✅；generate-dev-cert renew＋chmod 600／離線 fallback✅〕
-- [ ] **image pin 一致性**〔001〕：〔pre-波4 done：base-web runtime `nginx:alpine→nginx:1.31.0-alpine` 對齊 front-nginx✅；★ node:26/postgres:17 維持大版本 pin＝拍板#4 house style、刻意不 patch-pin〕。仍 open：alpine/openssl:latest（低、一次性）／debian:bookworm-slim（本機未 pull、不猜 date tag、延後）
-- [ ] **trust-model 部署**〔013〕：operator 填 `trust-model.toml` 實際拓樸（my_public／cloudflared ingress）；CF 官方 IP 段 nginx geo ↔ trust-model.toml 兩處同步（漂移風險、評單一來源）
+- [x] ✅ **TLS/secret/腳本**〔001〕：compose secrets 預檢〔`deploy/preflight-secrets.sh` 自 001 已備✅〕／generate-secrets dual-write 連動重生✅／generate-dev-cert renew＋chmod 600／離線 fallback✅。（`front_nginx_certs external:true` 拍板、需真 prod → 移 §4.2）
+- [ ] **image pin 一致性**〔001〕：〔pre-波4 done：base-web runtime `nginx:alpine→nginx:1.31.0-alpine` 對齊 front-nginx✅；★ node:26/postgres:17 維持大版本 pin＝拍板#4 house style、刻意不 patch-pin〕。仍 open（low/觸發）：alpine/openssl:latest（低、一次性）／debian:bookworm-slim（本機未 pull、不猜 date tag、延後）
 - [x] ✅ **XFF 上限**〔012/013、pre-波4 2026-06-23〕：`normalize_xff_tokens` 加 `MAX_XFF_TOKENS=32` token cap（test-first `normalize_caps_token_count`）
 - [x] ✅ **cleanup-job 上線**〔014、pre-波4 2026-06-23〕：profile-gated compose sidecar（`cleanup-job` service、`profiles:[prod]` opt-in、sleep-loop `--execute` 每日〔`CLEANUP_INTERVAL_SECS` 預設 86400〕、復用 prod image+database_url secret〔APP_DATABASE_URL_FILE〕、healthcheck disabled；docker-compose.yml）;live 驗 executed 刪 0 列+running 非 crash-loop。仍 open（low）：最小權限 secret `cleanup_database_url`（現走全權 DATABASE_URL）
-- [ ] ~~**prod 多副本**〔014〕~~ **WON'T-DO v1**（research §D 明示不做）：dev rust-api-2 已驗 invariant；prod nginx 仍單一 proxy_pass，真橫向擴展待 nginx LB＋共用 DB/Redis（另案、非 v1）
+- 〔→ §4.2〕餘「需真 prod 環境/拓樸」項（trust-model 部署填值〔013〕／prod 多副本〔014、research §D 不做 v1〕／cert external）已移 §4.2 未來版本實現
 - [ ] **001 其他邊角**：~~prod migrate 無意義 HEALTHCHECK→disable~~（早已 disable、自述 stale✅）；migrate redis depends_on 措辭對齊；dev watcher cargo-watch→bacon/watchexec 評估；`set_var` runtime（edition 2024 升級時）；rust-api/.gitignore `debug`/`target` pattern 錨；cargo cache 卷遮蓋/冷卷首啟 flap 已在 CLAUDE.md §8.2.1（quickstart 補述可選）
 
 ### 3.B typings 收斂 sweep ✅ 全完成+已歸檔 (2026-06-23)
 
 > 4 項全收（MenuList type-lie／drawer null-flow／excel demo／016 未引用型、跨刀 009/010/011/016）;詳 [MILESTONES §3](INTEGRATION-MILESTONES.md)。
 
-### 3.C 審計中心 enhancement（跨刀：005/009/012/015、接 obs波/scale）
+### 3.C 審計中心 enhancement ✅ 四項全完成 (C-1/C-3/C-4/F4、2026-06-23~24)
 
-- [x] ✅ http_status 2xx/4xx/5xx 類別 quick-filter〔012、017 C-1 2026-06-23〕
-- [x] ✅ 審計匯出 CSV〔012、017 C-3 2026-06-23〕：三分頁 export query 變體+CSV-in-envelope+BOM+op-log roles 欄
-- [x] ✅ op-log payload 角色集 delta〔009/012、017 C-4 2026-06-23〕：三寫端 with_roles enrich；**`current_session_id` 保留不遮蔽**（017 D3 拍板＝非 redact、forensic session 關聯）
-- [ ] 模糊 LIKE seq-scan → `pg_trgm` GIN〔012；017 C-2 明示 out-of-scope：scale-gated、需 CREATE EXTENSION+migration、規模增長再做〕
-- [ ] archive 表 retention/purge〔015；017 C-5 明示 out-of-scope：purge spec 明示不做、log-retention ⚠️n 家族、obs波或量大時處理〕
-- [x] ✅ **CSV 截斷信號嚴格化**〔017 F4、2026-06-24〕：export data 改 `{csv,truncated}`、後端 `is_export_truncated(total)` 權威旗標；前端 3 onExport 棄 stale `pagination.itemCount`、清 cap 鏡像 orphan。rust `483eeba`/base-web `134ddcc2`/outer `7ac45c7`、詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
+> C-1 http_status 類別 filter／C-3 CSV 匯出／C-4 op-log 角色 delta（017 收、merge `c7f5936`）＋F4 CSV 截斷信號嚴格化（2026-06-24、`7ac45c7`）兌現，詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)。**兩 scale 項（模糊 LIKE→`pg_trgm` GIN／archive retention-purge）移 §4.2 未來版本**。
 
-### 3.D alt-login stub 刀（post-波3 future feature；⚠️m）
+### 3.D alt-login stub 刀 → 移 §4.2 未來版本實現 (排程 future feature、⚠️m、2026-06-24)
 
-> 完整接地/工量見 DECISIONS §1 ⚠️m；前端 3 表單已完整、後端 4 全缺。
-
-- [ ] code-login／register／reset-pwd 後端 stub（service+handler+route、復用 hash/JWT、低）；bind-wechat（前端空殼＋真 OAuth、中-高、最低 v1 價值）；⚠️c alova-demo 完整包（sendCaptcha/verifyCaptcha/`/auth/error`、拍定≠落地、排前確認真缺端點）
+> 排程 post-波3 v1-completeness slot；接地/工量見 [DECISIONS §1](INTEGRATION-DECISIONS.md) ⚠️m。內容移 §4.2 長期追蹤。
 
 ### 3.E test/lint 健壯化（跨刀：007/008/011/013、觸發時加守門）
 
@@ -143,7 +131,20 @@
 
 ---
 
-## 4. 跨 feature 待驗證項
+## 4. 跨 feature 待驗證項 / 未來版本實現
+
+> 兩用途：**(a) 跨 feature 待驗證項**（目前無）；**(b) 未來版本實現**＝明確【非 rev3 v1 範圍】的長期項（需真 prod 環境/拓樸、scale v1 不會到、已決不做 v1、或排程 future feature）。與 §3 區別：**§3＝本版剩餘、觸發/反應時做（波4 可能命中）**；**§4.2＝未來版本才實現、長期追蹤**（仍隨 SOP 注入、不遺失）。§3.H 雜項內亦有同性質項（Redis 熱快取/login fallback/dispatcher/pruneNullParams）、保留壓縮原處不重列。
+
+### 4.1 跨 feature 待驗證項
+
+（目前無）
+
+### 4.2 未來版本實現（非 v1、長期追蹤）
+
+- [ ] **prod 部署前 TLS/拓樸**（需真 prod 環境）〔001/013〕：`front_nginx_certs` 是否 `external:true`（拍板項、prod-deploy 時定）／operator 填 `trust-model.toml` 實際拓樸（my_public／cloudflared ingress；CF 官方 IP 段 nginx geo ↔ trust-model.toml 兩處同步、漂移風險、評單一來源）
+- [ ] **prod 多副本**〔014〕：research §D 明示不做 v1；真橫向擴展待 nginx LB＋共用 DB/Redis（dev rust-api-2 invariant 已驗、prod nginx 仍單一 proxy_pass）
+- [ ] **審計 scale 兩項**〔012/015/017〕：模糊 LIKE seq-scan→`pg_trgm` GIN（C-2、需 CREATE EXTENSION+migration、規模增長再做）／archive 表 retention/purge（C-5、purge spec 明示不做、log-retention ⚠️n 家族、obs波或量大時）
+- [ ] **alt-login 4 流程 stub**（排程 future feature、⚠️m、post-波3 v1-completeness slot）〔原 §3.D〕：code-login／register／reset-pwd 後端 stub（service+handler+route、復用 hash/JWT）／bind-wechat（前端空殼＋真 OAuth、最低 v1 價值）／⚠️c alova-demo 完整包（sendCaptcha/verifyCaptcha/`/auth/error`、排前確認真缺端點）；前端 3 表單已完整、後端 4 全缺；接地見 [DECISIONS §1](INTEGRATION-DECISIONS.md) ⚠️m
 
 ---
 
