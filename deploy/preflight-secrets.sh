@@ -11,8 +11,10 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SECRETS_DIR="$SCRIPT_DIR/secrets"
 
-# 與 generate-secrets.sh 同一份 6 個必須 secret
-REQUIRED=(jwt_secret refresh_token_secret postgres_password redis_password database_url redis_url)
+# 與 generate-secrets.sh 同一份 7 個必須 secret（018 obs U1 加 grafana_admin_password：
+#   僅 grafana[profiles:obs,metrics] 消費，但 generate-secrets.sh 一律生成、納入預檢免「舊 6-secret
+#   機器跑 --profile obs 時 compose 自動建空目錄→grafana $__file{} 讀到空密碼、admin 登入靜默壞」）。
+REQUIRED=(jwt_secret refresh_token_secret postgres_password redis_password grafana_admin_password database_url redis_url)
 
 missing=()
 for name in "${REQUIRED[@]}"; do
@@ -31,4 +33,4 @@ if [ "${#missing[@]}" -gt 0 ]; then
     exit 1
 fi
 
-echo "✅ 6 個必須 secret 檔齊備(deploy/secrets/)。可 up。"
+echo "✅ 7 個必須 secret 檔齊備(deploy/secrets/)。可 up。"

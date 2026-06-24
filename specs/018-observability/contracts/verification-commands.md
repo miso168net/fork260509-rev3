@@ -24,11 +24,12 @@ docker volume ls | grep -E 'rev3-admin_(loki|grafana|alloy|prometheus)_data' && 
 **期望**：obs service／卷皆未建（FR-001）。
 
 ## C-V-1（SC-002、log 軌）
+> ★ rust-api dev 容器【無 curl/wget】、alloy 容器【無 wget】——凡內網 HTTP 查詢一律走【prometheus 容器的 wget】（rev3_net 內可達 rust-api:31081／loki:3100／grafana:3000）。
 ```bash
 $DC --profile obs up -d --wait                    # 起 loki+alloy+grafana
-$DC exec -T rust-api sh -c 'curl -s http://localhost:31081/health'   # 產生容器 log
-# LogQL（容器內網查 loki，繞 host port-forward）
-$DC exec -T alloy sh -c 'wget -qO- "http://loki:3100/loki/api/v1/query_range?query=%7Bcompose_project%3D%22rev3-admin%22%7D&limit=5"' | grep -q '"values"' && echo "PASS: log 採到"
+$DC exec -T prometheus sh -c 'wget -qO- http://rust-api:31081/health'   # 產生容器 log（prometheus 有 wget）
+# LogQL（prometheus 容器 wget 查 loki，繞 host port-forward；★ 勿用 alloy／rust-api 容器=無 wget/curl）
+$DC exec -T prometheus sh -c 'wget -qO- "http://loki:3100/loki/api/v1/query_range?query=%7Bcompose_project%3D%22rev3-admin%22%7D&limit=5"' | grep -q '"values"' && echo "PASS: log 採到"
 ```
 **期望**：loki/alloy/grafana healthy；LogQL `{compose_project="rev3-admin"}` 回容器 log（涵蓋多 service）。
 
@@ -46,7 +47,7 @@ $DC exec -T postgres psql -U soybean -d soybean_admin_rust -tAc \
 ## C-V-3（SC-004、metrics 軌）
 ```bash
 $DC --profile metrics up -d --wait                # 起 prometheus+2 exporter+pushgateway(+grafana)
-$DC exec -T rust-api sh -c 'curl -s http://localhost:31081/metrics' | grep -E '^(axum_http_requests_total|casbin_enforce_total)' && echo "PASS: app metric"
+$DC exec -T prometheus sh -c 'wget -qO- http://rust-api:31081/metrics' | grep -E '^(axum_http_requests_total|casbin_enforce_total)' && echo "PASS: app metric"  # ★ rust-api 容器無 curl/wget、走 prometheus wget
 # ★ prometheus 4 target 全 up==1（漏 networks:[rev3_net] 或 redis REDIS_ADDR 會靜默 down、容器卻起得來）
 $DC exec -T prometheus sh -c 'wget -qO- "http://localhost:9090/api/v1/query?query=up"' | grep -oE '"job":"(rust-api|postgres|redis|pushgateway)"[^}]*"1"'   # 4 job 皆 1（含 up{job="redis"}==1 驗 REDIS_ADDR）
 # 觸發一次 enforce allow + deny 後再抓 casbin_enforce_total{decision="allow"|"deny"}
@@ -57,11 +58,19 @@ $DC exec -T prometheus sh -c 'wget -qO- http://pushgateway:9091/metrics' | grep 
 **期望**：`/metrics` 含 axum_http_*／casbin_enforce_total{decision}；**prometheus 4 target（rust-api/postgres/redis/pushgateway）皆 up==1**；pushgateway 含 cleanup_job_*（手動觸發 cleanup-job 後、dry-run 也推）。
 
 ## C-V-4（SC-005、alert）
+> ★ 告警為【grafana-managed unified alerting】（T019、datasourceUid prometheus）、**不在** prometheus rules API（`prometheus :9090/api/v1/rules` 查 grafana-managed rule 必空＝假失敗）——須查【grafana alerting API】（host curl :33000、admin basic auth；127.0.0.1 IPv4 慢用長 --max-time）。
 ```bash
-$DC exec -T prometheus sh -c 'wget -qO- http://localhost:9090/api/v1/rules' | grep -cE 'obsfull-(rustapi-down|infra-exporter-down|rustapi-high-5xx)'   # =3
-# 模擬：停 postgres_exporter → up{job="postgres"}=0 → infra-exporter-down 經 2m 轉 Alerting（grafana alert 狀態查）
+GPW=$(cat deploy/secrets/grafana_admin_password.txt)
+# 3 baseline rule provisioned（provisioning API、provenance=file）：
+curl -s --max-time 20 -u "admin:$GPW" http://127.0.0.1:33000/api/v1/provisioning/alert-rules \
+  | grep -oE 'obsfull-(rustapi-down|infra-exporter-down|rustapi-high-5xx)' | sort -u | wc -l   # =3
+# 規則即時狀態（inactive/pending/firing）：
+curl -s --max-time 20 -u "admin:$GPW" http://127.0.0.1:33000/api/prometheus/grafana/api/v1/rules \
+  | grep -oE '"name":"obsfull-[a-z0-9-]+"[^}]*"state":"[a-z]+"'
+# 模擬：停 postgres_exporter → up{job="postgres"}=0 → infra-exporter-down 經 group interval+for 進 pending→firing
+$DC stop postgres_exporter   # 驗畢 $DC start postgres_exporter 還原
 ```
-**期望**：3 baseline rule provisioned；模擬 down 經 `for` 門檻轉 Alerting（v1 不投遞、僅狀態可見）。
+**期望**：3 baseline rule provisioned（provenance=file）；模擬 down 經 `for` 門檻轉 pending/firing（v1 不投遞、僅狀態可見）。★ 高-5xx rule noDataState=OK（idle 零 5xx 維持 inactive、非誤 firing）。
 
 ## C-V-5（SC-006、provisioning 冪等）
 ```bash

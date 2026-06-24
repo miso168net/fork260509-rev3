@@ -2,6 +2,13 @@
 # 顯式 uid: prometheus（alert rule datasourceUid + dashboard panel 依賴穩定 uid、漂移即斷）。
 apiVersion: 1
 
+# deleteDatasources guard（與 loki.yml 對齊、research R7 hindsight）：重建時先 delete 同名再 reinsert，
+# 免 uid 既存衝突致 grafana provisioning crash-loop（FR-019 冪等；prometheus 雖非 isDefault、風險較低，
+# 補此 guard 為一致性與防禦同類 uid-conflict）。
+deleteDatasources:
+  - name: Prometheus
+    orgId: 1
+
 datasources:
   - name: Prometheus
     type: prometheus
