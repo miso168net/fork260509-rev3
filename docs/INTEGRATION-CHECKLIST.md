@@ -35,44 +35,44 @@
 
 ### 波 1 — 第一刀＝`system_settings` 打樋 ✅ 全完成+已歸檔 (2026-06-18)
 
-> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);D1 波2 選單可見性 follow-up（010 已兌現）。
+> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 2 — data islands ✅ 全完成+已歸檔 (2026-06-19)
 
-> 四刀全收（User 009 `07b67d2`／Menu 010 `3810103`／Role 011 `b80c9e3`／Audit 012〔殿後刀〕`55d34ff`）;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### D11 遞延刀 — 013-xff-real-ip-forensics ✅ 全完成+已歸檔 (2026-06-21)
 
-> 波 2 後、波 3 前獨立刀（XFF→real_ip 鑑識、兩層信任模型+四欄×三表+審計中心顯示/篩選+nginx CF 閘/Tunnel;收 012 D11+007 XFF 完整化）;merge `8980d00`;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 3 — 行為島＋policy ✅ 全完成+已歸檔 (2026-06-22)
 
-> 三刀全收（014 Auth/Token/Session `3066bc2`／015 Policy 治理島 §4.2 `65f1838`／016 Button-Endpoint 三維 RBAC runtime 編輯〔殿後刀〕`fa17def`）;出口三項達標〔§4 三台機器 invariants 逐條自動化驗證／7777·8888 兩通道 CDP〔014〕／protected 拒撤 live〔015 menu+016 endpoint〕〕。alt-login 4 流程 stub＝⚠️m 延後出波3（§3.D）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### pre-波4 017-audit-center-enhancement ✅ 全完成+已歸檔 (2026-06-23)
 
-> 波 3 後、波 4 前獨立 enhancement 刀（審計中心三子功能 C-1 http_status class filter／C-3 CSV 匯出／C-4 op-log 角色 delta;零 migration/端點/crate、§3.C 三項兌現）;merge `c7f5936`;commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
 
 ### 波 4 — observability ✅ 全完成+已歸檔 (2026-06-25)
 
-> 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert＋rust RUSTAPI-SOURCE-ISOLATION 埋点〕。出口三項達標〔obs/metrics profile 起停乾淨〔C-V-0〕／provisioning 冪等無 crash-loop〔C-V-5〕／rust-api log+metrics 兩軌可查〔C-V-2 trace_id join＋C-V-3 promql〕〕。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);018 遞延 backlog 見 §3.I。
+> as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);018 遞延 backlog 見 §3.I。
 
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management＋012 audit-log-query）＋D11（013 xff-real-ip-forensics）＋波 3（014 auth-token-session／015 policy-governance／016 button-endpoint-policy）＋pre-波4（017 audit-center-enhancement）新碼均未入圖**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n・012 audit〔m005 migration＋sys_operation/access/login_log list+filter＋sys_user names_for_ids unfiltered〕/handler 3 唯讀端點/main audit group/lint glob＋base-web 審計中心頁〔NTabs 3 tab＋3 子表 payload 展開＋honest typings＋i18n〕・013 xff-real-ip-forensics〔audit_ctx 兩層解析重寫〔normalize/resolve→(IpAddr,Confidence)/apply_cf_overlay/Confidence 七態〕＋config TrustModel〔新 toml dep〕＋m006＋3 entity 改名加欄＋3 facade 四欄寫+list filter＋model/audit AuditMeta＋handler wire+filter/auth＋base-web 審計四欄顯示/篩選/ip-confidence-tag+options/i18n＋deploy nginx geo/map+trust-model〕・014 auth-token-session〔Redis 基建/rotation/single-session/denylist/cleanup-job crate/2-instance compose〕・015 policy-governance〔sys_casbin_policy_archive facade/archive-restore/gate/spawn_policy_watcher/回收桶 UI〕・016 button-endpoint-policy〔set_role_endpoints 雙鍵 diff/all_buttons JSON registry/endpoint registry+M2 lint/回收桶 v2-推導/base-web 三維 role drawer UI〕〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、docs 入圖另案）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 2026-06-13、4176 nodes/567 communities——**早於 001 收刀**,**波 0 全收（001-007 七刀）＋波 1（008 system_settings）＋波 2（009 user-management＋010 menu-management＋011 role-management＋012 audit-log-query）＋D11（013 xff-real-ip-forensics）＋波 3（014 auth-token-session／015 policy-governance／016 button-endpoint-policy）＋pre-波4（017 audit-center-enhancement）＋波4（018 observability〔rust 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job push_metrics;deploy obs config loki/alloy/prometheus/grafana-provisioning〕）新碼均未入圖（★ 註：本項起首「最近一輪 2026-06-13/4176 nodes」與 [MILESTONES §1](INTEGRATION-MILESTONES.md) 的 2026-06-24 graphify update〔4176→5127 同步 008-017→prune 3271 nodes〕矛盾＝前 session 漏更;待以 `graphify-out/manifest.json`／[GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md) 核實圖譜實況後校正日期/節點數/已入圖範圍）**〔001 scaffold/compose/deploy・002 migration×4/sea-orm-adapter・003 envelope/i18n・004 entity crate/soft-delete lint・005 audit・006 auth runtime・007 xdb crate/audit_ctx・008 system_settings facade/handler/require_policy/endpoint_coverage_lint＋base-web 新頁/wrapper/i18n・009 user CRUD facade/handler＋base-web user 接線・010 menu facade/handler/enforce〔menu_routes_for_roles〕/flat→tree 序列化/route.rs＋base-web menu 接線/.env dynamic/route store 例外・011 role facade〔★ net-new sys_casbin_rule set_role_dimension DB-first＋sys_role CRUD＋sys_user_role count＋sys_menu id↔route_name〕/handler 9 端點/main/lint＋base-web role 接線/menu-auth-modal/i18n・012 audit〔m005 migration＋sys_operation/access/login_log list+filter＋sys_user names_for_ids unfiltered〕/handler 3 唯讀端點/main audit group/lint glob＋base-web 審計中心頁〔NTabs 3 tab＋3 子表 payload 展開＋honest typings＋i18n〕・013 xff-real-ip-forensics〔audit_ctx 兩層解析重寫〔normalize/resolve→(IpAddr,Confidence)/apply_cf_overlay/Confidence 七態〕＋config TrustModel〔新 toml dep〕＋m006＋3 entity 改名加欄＋3 facade 四欄寫+list filter＋model/audit AuditMeta＋handler wire+filter/auth＋base-web 審計四欄顯示/篩選/ip-confidence-tag+options/i18n＋deploy nginx geo/map+trust-model〕・014 auth-token-session〔Redis 基建/rotation/single-session/denylist/cleanup-job crate/2-instance compose〕・015 policy-governance〔sys_casbin_policy_archive facade/archive-restore/gate/spawn_policy_watcher/回收桶 UI〕・016 button-endpoint-policy〔set_role_endpoints 雙鍵 diff/all_buttons JSON registry/endpoint registry+M2 lint/回收桶 v2-推導/base-web 三維 role drawer UI〕〕,待一輪 update;docs 同期大改〔INTEGRATION-* 四檔／008 specs〕亦未入圖、惟 `.graphifyignore` 排除 docs/、docs 入圖另案）
 
 ---
 
 ## 3. Follow-up Backlog
 
-> 2026-06-22 thematic 重組（de-bloat）：原 per-feature §3.1~§3.20 散列收成跨刀主題群 §3.A~§3.H；已結 follow-up 與**舊→新 §錨對照**見 [MILESTONES §3](INTEGRATION-MILESTONES.md) + git history（pre-debloat `16b53a3`）。均不阻塞、消費刀/觸發時處理。
+> 2026-06-22 thematic 重組（de-bloat）：原 per-feature §3.1 至 §3.20 散列收成跨刀主題群 §3.A 至 §3.H；已結 follow-up 與**舊→新 §錨對照**見 [MILESTONES §3](INTEGRATION-MILESTONES.md) + git history（pre-debloat `16b53a3`）。均不阻塞、消費刀/觸發時處理。
 
 > **★ 為何剩餘 `[ ]` 多輪收不掉 + §3／§4 分流（2026-06-24 校準）**：可做的實質 hygiene 已收完（含 F4＝最後一個 codeable 項）。剩餘按「本版觸發時做」vs「未來版本/長期」分流（`[x]`＝做完；以下皆**非待辦遺漏**）：
 > - **§3 留（本版剩餘、觸發/反應時做、波4 可能命中）**：TRIGGER〔lint CONST 守門／validate_value_type／`set_var` edition2024〕｜REACTIVE〔op-log count 隔離〕｜OWN-CUT〔batch_soft_delete／soft_delete fault-test／protected 訊息，併的是 rev3 內未來刀〕｜low-doable〔image pin 殘留／001 邊角／examples fixture／misc〕
 > - **§4.2 移（未來版本實現、非 v1、長期追蹤）**：DEFER-prod〔cert external／trust-model 填值，需真 prod 環境〕｜WON'T-DO v1〔prod 多副本〕｜SCALE〔pg_trgm／archive purge〕｜scheduled-feature〔alt-login〕。（§3.H 雜項內同性質項 Redis 熱快取/login fallback/dispatcher/pruneNullParams 保留壓縮原處、不重列）
 
-### 3.A 公網/prod 部署前硬化（跨刀彙整：001/012/013/014）
+### 3.A 公網/prod 部署前硬化（跨刀彙整：001/012/013/014/018）
 
 > 公網/prod 部署前一次性硬化；dev 不受影響。原散於各刀，收成單一清單。
 
@@ -83,6 +83,7 @@
 - [x] ✅ **cleanup-job 上線**〔014、pre-波4 2026-06-23〕：profile-gated compose sidecar（`cleanup-job` service、`profiles:[prod]` opt-in、sleep-loop `--execute` 每日〔`CLEANUP_INTERVAL_SECS` 預設 86400〕、復用 prod image+database_url secret〔APP_DATABASE_URL_FILE〕、healthcheck disabled；docker-compose.yml）;live 驗 executed 刪 0 列+running 非 crash-loop。仍 open（low）：最小權限 secret `cleanup_database_url`（現走全權 DATABASE_URL）
 - 〔→ §4.2〕餘「需真 prod 環境/拓樸」項（trust-model 部署填值〔013〕／prod 多副本〔014、research §D 不做 v1〕／cert external）已移 §4.2 未來版本實現
 - [ ] **001 其他邊角**：~~prod migrate 無意義 HEALTHCHECK→disable~~（早已 disable、自述 stale✅）；migrate redis depends_on 措辭對齊；dev watcher cargo-watch→bacon/watchexec 評估；`set_var` runtime（edition 2024 升級時）；rust-api/.gitignore `debug`/`target` pattern 錨；cargo cache 卷遮蓋/冷卷首啟 flap 已在 CLAUDE.md §8.2.1（quickstart 補述可選）
+- [ ] **alloy 非-root 硬化**〔018、prod security pass、brainstorm §5 defer〕：obs alloy 現 `user:root` 讀 `/var/run/docker.sock`（docker-SD 採集全容器 stdout）;prod 硬化時改非-root user + docker group/sock 權限（dev 不受影響、功能不變）。同類 prod-only 硬化，可與本節其他項一併處理。
 
 ### 3.B typings 收斂 sweep ✅ 全完成+已歸檔 (2026-06-23)
 
@@ -124,7 +125,7 @@
 ### 3.I observability follow-up（018、非 blocker、spec 容許/正確設計）
 
 - [ ] **postgres dashboard docker 空態**〔018 U3、low/cosmetic〕：community 板 grafana 9628 的 `release`／`instance` template var 依賴 k8s label（kubernetes_namespace/release）、docker 下 postgres_exporter v0.19.1 不 emit→該類 filter 面板空態〔核心 pg_up/連線/DB stats 仍出圖、spec C-V-6「panel 有資料/正確空態」容許〕。欲消空面板：改 docker 友善板（grafana 12485）或重寫變數 query（`label_values(pg_up,instance)`）。
-- **request-completion /health log 噪音**〔018 U1、by-design 非待辦〕：FR-006「每請求一行」使 /health 探針亦每次輸出一行 INFO log〔loki 72h+opt-in 已界範圍〕;如噪音過大可選 subscriber path 過濾〔權衡 join 完整性〕。
+- **request-completion 無認證請求 log 噪音**〔018 U1、by-design 非待辦〕：FR-006「每請求一行」使所有無認證請求亦輸出一行 INFO log——尤其 `/health`（docker healthcheck）與 `/metrics`（prometheus scrape、metrics profile 啟用時每 15s）〔loki 72h+opt-in 已界範圍〕;如噪音過大可選 subscriber path 過濾〔權衡 trace_id join 完整性〕。
 - [ ] **spec as-built 全面校正**〔018、doc〕：data-model §1.3 noDataState（5xx as-built=OK）／tasks T019／C-V-4 contract（已部分校正會假失敗的命令）留 `/speckit-analyze` 批次對齊 as-built。
 
 ---
@@ -143,6 +144,7 @@
 - [ ] **prod 多副本**〔014〕：research §D 明示不做 v1；真橫向擴展待 nginx LB＋共用 DB/Redis（dev rust-api-2 invariant 已驗、prod nginx 仍單一 proxy_pass）
 - [ ] **審計 scale 兩項**〔012/015/017〕：模糊 LIKE seq-scan→`pg_trgm` GIN（C-2、需 CREATE EXTENSION+migration、規模增長再做）／archive 表 retention/purge（C-5、purge spec 明示不做、log-retention ⚠️n 家族、obs波或量大時）
 - [ ] **alt-login 4 流程 stub**（排程 future feature、⚠️m、post-波3 v1-completeness slot）〔原 §3.D〕：code-login／register／reset-pwd 後端 stub（service+handler+route、復用 hash/JWT）／bind-wechat（前端空殼＋真 OAuth、最低 v1 價值）／⚠️c alova-demo 完整包（sendCaptcha/verifyCaptcha/`/auth/error`、排前確認真缺端點）；前端 3 表單已完整、後端 4 全缺；接地見 [DECISIONS §1](INTEGRATION-DECISIONS.md) ⚠️m
+- [ ] **obs alert notification 投遞 channel**（FR-017 v1 明確排除、future feature）〔018〕：波 4 已 provision 3 baseline grafana alert rule（rules-only、條件成立轉 Alerting、僅介面狀態可見）;v1 **不投遞**通知。未來版本加 grafana contact point + notification policy（需 channel creds：email SMTP／webhook／IM bot）;brainstorm §5／spec Out-of-Scope defer，與 alt-login 同屬 v1-completeness 後排程 feature
 
 ---
 

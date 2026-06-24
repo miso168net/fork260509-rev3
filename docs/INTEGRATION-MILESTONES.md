@@ -85,6 +85,26 @@
 
 > 1 刀打樋（merge `b52dafe`）＝最輕 KV entity 跑完 §8.1 全管線、達 3 全專案首次（首個 policy-governed 端點＋require_policy 5003 live／首個 op-log threading live consumer INET round-trip／立 endpoint_coverage_lint ⚠️x）;零 migration、無新 crate;C-V-0~11 全綠、holistic ready-to-merge 0 blocking。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);D1 波2 選單可見性 follow-up（010 已兌現）。
 
+### 波 2 — data islands ✅ 全完成+已歸檔 (2026-06-19)
+
+> 四刀全收（User 009 `07b67d2`／Menu 010 `3810103`／Role 011 `b80c9e3`／Audit 012〔殿後刀〕`55d34ff`）;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### D11 遞延刀 — 013-xff-real-ip-forensics ✅ 全完成+已歸檔 (2026-06-21)
+
+> 波 2 後、波 3 前獨立刀（XFF→real_ip 鑑識、兩層信任模型+四欄×三表+審計中心顯示/篩選+nginx CF 閘/Tunnel;收 012 D11+007 XFF 完整化）;merge `8980d00`;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### 波 3 — 行為島＋policy ✅ 全完成+已歸檔 (2026-06-22)
+
+> 三刀全收（014 Auth/Token/Session `3066bc2`／015 Policy 治理島 §4.2 `65f1838`／016 Button-Endpoint 三維 RBAC runtime 編輯〔殿後刀〕`fa17def`）;出口三項達標〔§4 三台機器 invariants 逐條自動化驗證／7777·8888 兩通道 CDP〔014〕／protected 拒撤 live〔015 menu+016 endpoint〕〕。alt-login 4 流程 stub＝⚠️m 延後出波3（§3.D）。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### pre-波4 017-audit-center-enhancement ✅ 全完成+已歸檔 (2026-06-23)
+
+> 波 3 後、波 4 前獨立 enhancement 刀（審計中心三子功能 C-1 http_status class filter／C-3 CSV 匯出／C-4 op-log 角色 delta;零 migration/端點/crate、§3.C 三項兌現）;merge `c7f5936`;as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md)。
+
+### 波 4 — observability ✅ 全完成+已歸檔 (2026-06-25)
+
+> 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert＋rust RUSTAPI-SOURCE-ISOLATION 埋点〕。出口三項達標〔obs/metrics profile 起停乾淨〔C-V-0〕／provisioning 冪等無 crash-loop〔C-V-5〕／rust-api log+metrics 兩軌可查〔C-V-2 trace_id join＋C-V-3 promql〕〕。as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);018 遞延 backlog 見 [CHECKLIST §3.I]。
+
 ---
 
 ## §3 Follow-up Backlog — 完成＋歸檔
