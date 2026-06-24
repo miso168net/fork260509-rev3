@@ -1,6 +1,8 @@
 # 018-observability U2 obs-full：grafana-managed unified alerting 規則 provisioning（rules-only D3）。
 # ★ 3 baseline rule（FR-015）；★ 不 provision contact point/notification policy（送信延後、FR-017/Out-of-Scope）。
-# noDataState/execErrState=Alerting（採集端 down＝no-data 也視為告警）；datasourceUid: prometheus（對齊 datasources/prometheus.yml uid）。
+# noDataState=Alerting 僅用於 down 類 rule（採集端/服務 down＝無 up 資料 視為告警）；★ 高-5xx rule 改 noDataState=OK
+#   （無 5xx 資料＝健康、非告警；否則 idle/零 5xx 時 ratio query 回空向量、被 noData=Alerting 誤升 Firing＝false positive）。
+# execErrState=Alerting（rule 評估錯誤值得標示）；datasourceUid: prometheus（對齊 datasources/prometheus.yml uid）。
 # 每 rule 結構：data[] 含 prometheus query（refId A、relativeTimeRange）＋ __expr__ threshold（refId C、condition）。
 # job 名（rust-api/postgres/redis）對齊 prometheus.yml job_name；up selector 不可漂。
 apiVersion: 1
@@ -108,7 +110,9 @@ groups:
         title: obsfull-rustapi-high-5xx
         condition: C
         for: 5m
-        noDataState: Alerting
+        # ★ 無 5xx 資料＝健康（不同於 down rule 的「無 up 資料＝target 沒了」）→ noDataState: OK，
+        #   否則 idle/零 5xx 時 ratio 回空向量、被 noData=Alerting 誤升 Firing（false positive）。
+        noDataState: OK
         execErrState: Alerting
         labels:
           severity: warning
@@ -123,7 +127,7 @@ groups:
             model:
               refId: A
               editorMode: code
-              expr: sum(rate(axum_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(axum_http_requests_total[5m])), 1)
+              expr: (sum(rate(axum_http_requests_total{status=~"5.."}[5m])) or vector(0)) / clamp_min(sum(rate(axum_http_requests_total[5m])) or vector(0), 1)
               instant: true
               range: false
               intervalMs: 1000
