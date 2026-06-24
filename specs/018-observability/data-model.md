@@ -7,17 +7,17 @@
 ### 1.1 Metric（6，U2）
 | metric | 型 | label | 來源 | 備註 |
 |---|---|---|---|---|
-| `axum_http_requests_total` | counter | method／status／endpoint(=matched-path) | axum-prometheus 自動 | endpoint=低基數 matched path（FR-012） |
+| `axum_http_requests_total` | counter | method／status／endpoint(=matched-path) | axum-prometheus 自動 | endpoint=低基數 matched path（FR-009） |
 | `axum_http_requests_duration_seconds` | histogram | （bucket le） | axum-prometheus 自動 | p50/p95/p99 由 histogram_quantile |
 | `axum_http_requests_pending` | gauge | — | axum-prometheus 自動 | in-flight |
-| `casbin_enforce_total` | counter | **decision(=allow\|deny)** | 自埋 enforce.rs | ★ 唯一 label、勿加高基數 |
+| `casbin_enforce_total` | counter | **decision(=allow\|deny)** | 自埋 enforce.rs | ★ 唯一 label、勿加高基數；fail-closed DB-error（require_policy `?` 早退）**不計入**（research R3(a) 取捨、勿在 `?` 處補 counter 而誤改控制流） |
 | `cleanup_job_last_success_timestamp` | gauge | — | cleanup-job push | unix epoch 秒；dry-run 也算成功 |
 | `cleanup_job_rows_deleted` | gauge | — | cleanup-job push | dry-run=0／execute=實刪數 |
 
 ### 1.2 Log JSON 欄位（U1）
 subscriber `.json()` 後每行為合法 JSON；request span 帶 structured field：
 - `fields_trace_id`（巢狀於 `fields`、非 top-level）＝ trace_id（honor `x-request-id` trim≤64 else uuid-v4），**log↔DB 審計列關聯鍵**（join `sys_access_log.trace_id`／`sys_operation_log.trace_id`）。
-- 同 span 可帶：`method`／`path`／`http_status`／`ip_confidence`（七態）／`client_ip`／`peer_ip`。
+- 本刀 request span 實放欄位＝`trace_id`／`method`／`path`（T005）。`http_status`（回應狀態、`next.run().await` 回來後才有、`.instrument()` 進入點放不進）／`ip_confidence`／`client_ip`／`peer_ip` **非本 entry-span field、仍只進 `sys_access_log`**（勿嘗試塞進進入點 span）。
 
 ### 1.3 Alert rule（3，U2、rules-only D3）
 | uid | expr | for | severity |
@@ -51,6 +51,8 @@ subscriber `.json()` 後每行為合法 JSON；request span 帶 structured field
 | redis_exporter | `oliver006/redis_exporter:v1.85.0-alpine` ★ | `metrics` | 無／:9121，sh-wrapper 讀 redis_password |
 | pushgateway | `prom/pushgateway:v1.11.3` | `metrics` | 39091／:9091，in-memory |
 
+> ★ **每個新 obs service MUST `networks: [rev3_net]`**（rev3 全 service 顯式 join `rev3_net`、無 default network；漏接＝service DNS 不通、scrape/datasource 全靜默 down、容器卻起得來）。★ `redis_exporter` 須 `REDIS_ADDR=redis://redis-stack:6379`（redis 服務名＝`redis-stack` 非 `redis`）。★ `postgres_exporter` `DATA_SOURCE_URI=postgres:5432/soybean_admin_rust?sslmode=disable`（DB 名＝`soybean_admin_rust`、`DATA_SOURCE_USER=soybean`）。
+
 ### 2.2 卷（正典命名、CLAUDE.md §8.2.2）
 `loki_data`／`grafana_data`／`alloy_data`（`obs`）；`prometheus_data`（`metrics`）。exporter/pushgateway 無持久卷。
 
@@ -70,7 +72,7 @@ subscriber `.json()` 後每行為合法 JSON；request span 帶 structured field
 **零改**（FR-004）：base-web 不動、無 migration、無 entity 變更。
 
 ## 5. nginx
-**不需動**：`/api/metrics` 404 與 JSON log＋X-Request-Id 已落地（001、grounding 證實）。
+**不需動**：`/api/metrics` 404（`_locations.inc:12` exact-match）＋ **nginx access log** JSON（`json_combined`）＋ X-Request-Id 皆 001 已落地。★ 此「JSON log」指 **nginx** access log；**rust-api subscriber 仍純文字 `fmt()`、由 U1 T006 改 `.json()`**（兩者不同主體、勿因 nginx 已 JSON 而跳過 T006）。
 
 ## 6. rust 整合觸點（act-on-code `file:line`、U1/U2）
 | 單元 | 檔:行 | 動作 |
@@ -80,8 +82,8 @@ subscriber `.json()` 後每行為合法 JSON；request span 帶 structured field
 | U2 | `server/src/main.rs:~555`（router build 前） | `let (prometheus_layer, metric_handle) = PrometheusMetricLayer::pair();`（無 OnceLock guard、main 唯一呼叫者） |
 | U2 | `server/src/main.rs:~556`（public route 群） | `.route("/metrics", get(move \|\| async move { metric_handle.render() }))` |
 | U2 | `server/src/main.rs:~574`（audit_mw layer 之後、with_state 前） | `.layer(prometheus_layer)`（更外層、endpoint=matched path 低基數） |
-| U2 | `server/src/auth/enforce.rs:124`（allow）／`:126-127`（deny） | `metrics::counter!("casbin_enforce_total","decision"=>…).increment(1)`（helper 2 site） |
-| U2 | `cleanup-job/src/main.rs:~63`（dry-run/execute 匯流、main 結束前） | `push_metrics(now_epoch, deleted)`；新 `fn push_metrics`（ureq PUT `pushgateway:9091`、best-effort、std SystemTime 取秒、不引 chrono） |
+| U2 | `server/src/auth/enforce.rs` ~L123 `return true`（allow、迴圈內命中即計）／~L126 `false`（deny、全 role 落空後一次） | `metrics::counter!("casbin_enforce_total","decision"=>…).increment(1)`（helper 2 site；揮發行號、以 `return true`/`false` 兩點為準） |
+| U2 | `cleanup-job/src/main.rs:41-63`（execute/dry-run **互斥 if/else、無現成匯流點**） | 先 hoist `let deleted:u64`（execute=`rows_affected`／dry-run=0）出兩分支，於匯流後單點呼叫新 `fn push_metrics(now_epoch, deleted)`（ureq PUT `pushgateway:9091`、best-effort、std SystemTime 取秒、不引 chrono） |
 
 ## 7. 狀態轉移（alert）
 alert rule：`Normal`→（條件持續 ≥ `for` 門檻）→`Alerting`（critical/warning）；v1 **不投遞**（無 contact point）。其餘訊號無狀態機。

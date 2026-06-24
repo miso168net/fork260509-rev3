@@ -37,7 +37,7 @@ $DC exec -T alloy sh -c 'wget -qO- "http://loki:3100/loki/api/v1/query_range?que
 # 打一個已認證請求（curl 取 token→帶 Authorization 打 audit 讀端點），記其 trace_id
 # 1) loki 查該請求 log 行的 fields_trace_id
 # 2) psql 查 sys_access_log 最新列 trace_id
-$DC exec -T postgres psql -U "$(cat deploy/secrets/postgres_user.txt 2>/dev/null || echo soybean)" -d soybean_admin -tAc \
+$DC exec -T postgres psql -U soybean -d soybean_admin_rust -tAc \
   "select trace_id from sys_access_log order by created_at desc limit 1;"
 # LogQL 以該 trace_id drill：{compose_project="rev3-admin"} | json | fields_trace_id="<上面那個>"
 ```
@@ -47,11 +47,14 @@ $DC exec -T postgres psql -U "$(cat deploy/secrets/postgres_user.txt 2>/dev/null
 ```bash
 $DC --profile metrics up -d --wait                # 起 prometheus+2 exporter+pushgateway(+grafana)
 $DC exec -T rust-api sh -c 'curl -s http://localhost:31081/metrics' | grep -E '^(axum_http_requests_total|casbin_enforce_total)' && echo "PASS: app metric"
+# ★ prometheus 4 target 全 up==1（漏 networks:[rev3_net] 或 redis REDIS_ADDR 會靜默 down、容器卻起得來）
+$DC exec -T prometheus sh -c 'wget -qO- "http://localhost:9090/api/v1/query?query=up"' | grep -oE '"job":"(rust-api|postgres|redis|pushgateway)"[^}]*"1"'   # 4 job 皆 1（含 up{job="redis"}==1 驗 REDIS_ADDR）
 # 觸發一次 enforce allow + deny 後再抓 casbin_enforce_total{decision="allow"|"deny"}
-# cleanup-job 跑一次後 pushgateway 有 cleanup_job_*
+# ★ cleanup-job 是 profiles:[prod]（非 metrics）→ 不會隨 --profile metrics 起，須手動觸發一次
+$DC run --rm cleanup-job >/dev/null 2>&1 || true
 $DC exec -T prometheus sh -c 'wget -qO- http://pushgateway:9091/metrics' | grep -q cleanup_job_last_success_timestamp && echo "PASS: cleanup gauge"
 ```
-**期望**：`/metrics` 含 axum_http_*／casbin_enforce_total{decision}；pushgateway 含 cleanup_job_*（dry-run 也推）。
+**期望**：`/metrics` 含 axum_http_*／casbin_enforce_total{decision}；**prometheus 4 target（rust-api/postgres/redis/pushgateway）皆 up==1**；pushgateway 含 cleanup_job_*（手動觸發 cleanup-job 後、dry-run 也推）。
 
 ## C-V-4（SC-005、alert）
 ```bash
@@ -71,7 +74,7 @@ $DC restart grafana && sleep 5 && $DC logs grafana --tail 50 | grep -iE 'crash|p
 ## C-V-6（SC-007、dashboard、CDP）★ curl≠UI
 ```bash
 # CDP（9229）登入 grafana :33000（admin / deploy/secrets/grafana_admin_password.txt），逐一開 6 dashboard uid 確認載入＋datasource 接妥＋panel 有資料/正確空態
-# 參考 tests/000 的 CDP scripts；defer 風險登 backlog 若 CDP 環境不就緒
+# 參考 tests/000 的 CDP scripts；★ 若 CDP 環境不就緒而 defer C-V-6 → 於 INTEGRATION-CHECKLIST Follow-up Backlog 顯式登一條補測（CLAUDE.md §3「CDP defer 須 backlog 登記」、curl≠UI），不只靠本註腳
 ```
 **期望**：6 dashboard（obs-master-overview/rust-api/audit-log/cleanup-job/postgres/redis）皆載入、datasource 自動接、audit-log 顯本工作區 log（compose_project 對齊）。
 
