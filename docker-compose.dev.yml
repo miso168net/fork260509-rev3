@@ -186,6 +186,18 @@ services:
     volumes:
       - ./deploy/grafana-provisioning:/etc/grafana/provisioning:ro
 
+  # ═══ 018-observability U2 obs-full metrics dev override（host port 綁 127.0.0.1 + config bind-mount）═══
+  #   networks 繼承 base（不重列）；profiles:[metrics] 由 base 定義、override 不重設。
+  prometheus:
+    ports:
+      - "127.0.0.1:33090:9090"
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  pushgateway:
+    ports:
+      - "127.0.0.1:39091:9091"
+
 # 014 U7：rust-api-2 專用 target 卷(獨立隔離,避免與 rust-api cargo-watch 互擾)。
 # 無顯式 name:,繼承 master project name → 實際卷名 rev3-admin_rust_api2_target(§8.2.2 命名規則)。
 volumes:

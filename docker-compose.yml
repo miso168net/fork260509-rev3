@@ -221,6 +221,57 @@ services:
     networks:
       - rev3_net
 
+  # ═══ 018-observability U2 obs-full（metrics 軌、profiles:[metrics] opt-in、一般 up 不啟）═══
+  # ★ 每個 obs service MUST networks:[rev3_net]（漏接＝prometheus scrape 該 target 靜默 down、容器卻起得來）。
+  #   prometheus_data 卷已於頂層宣告（勿重複）；exporter/pushgateway 無持久卷。
+  prometheus:
+    profiles: [metrics]
+    image: prom/prometheus:v3.12.0
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=15d
+    volumes:
+      - prometheus_data:/prometheus
+    networks:
+      - rev3_net
+
+  postgres_exporter:
+    profiles: [metrics]
+    image: prometheuscommunity/postgres-exporter:v0.19.1
+    environment:
+      # DB 名＝soybean_admin_rust（對齊 postgres POSTGRES_DB）；reuse postgres_password、零新依賴憑證（FR-021）。
+      DATA_SOURCE_URI: postgres:5432/soybean_admin_rust?sslmode=disable
+      DATA_SOURCE_USER: soybean
+      DATA_SOURCE_PASS_FILE: /run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    networks:
+      - rev3_net
+
+  redis_exporter:
+    profiles: [metrics]
+    # ★ -alpine 變體（bare=FROM scratch 無 sh、下方 sh-wrapper 會掛、research R7 hindsight）。
+    image: oliver006/redis_exporter:v1.85.0-alpine
+    # ★ REDIS_ADDR 指 redis 服務名＝redis-stack（非 redis）；sh-wrapper export 密碼（reuse redis_password、FR-021）。
+    environment:
+      REDIS_ADDR: redis://redis-stack:6379
+    entrypoint:
+      - sh
+      - -c
+      - 'export REDIS_PASSWORD="$(cat /run/secrets/redis_password)"; exec /redis_exporter'
+    secrets:
+      - redis_password
+    networks:
+      - rev3_net
+
+  pushgateway:
+    profiles: [metrics]
+    # cleanup-job 推 short-lived job metrics；in-memory（restart 失憶、無持久卷）。
+    image: prom/pushgateway:v1.11.3
+    networks:
+      - rev3_net
+
 networks:
   rev3_net:
 

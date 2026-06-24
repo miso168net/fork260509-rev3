@@ -1,0 +1,13 @@
+# 018-observability U2 obs-full：grafana prometheus datasource provisioning（冪等、FR-019）。
+# 顯式 uid: prometheus（alert rule datasourceUid + dashboard panel 依賴穩定 uid、漂移即斷）。
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    uid: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    jsonData:
+      httpMethod: POST
+      timeInterval: 15s
