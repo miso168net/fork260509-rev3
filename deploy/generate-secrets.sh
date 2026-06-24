@@ -12,7 +12,7 @@
 #   - jwt/refresh leaf: openssl rand -base64 48(64 chars)→ 通過 rust-api validate_secret(len ≥ 32)
 #   - postgres/redis leaf: openssl rand -hex 24(48 hex chars,URL-safe;熵同 base64 24)→ 嵌入 URL 不被 + / = 破壞
 #   - URL: 從 leaf cat 組合(同次同源 dual-write,不重呼 gen_rand)
-#   - grafana_admin_password(018 obs U1 加;僅經 grafana GF_SECURITY_ADMIN_PASSWORD__FILE 檔注入、
+#   - grafana_admin_password(018 obs U1 加;僅經 grafana GF_SECURITY_ADMIN_PASSWORD=$__file{...} 檔注入、
 #     非 URL→base64 安全;obs exporter 復用 postgres/redis secret、不在此另生)
 #   - 不含 cleanup_database_url(014 cleanup-job 復用 database_url、非獨立 secret);acme_email 亦不在此
 #
@@ -67,7 +67,7 @@ gen_leaf "jwt_secret"            -base64 48
 gen_leaf "refresh_token_secret"  -base64 48
 gen_leaf "postgres_password"     -hex 24
 gen_leaf "redis_password"        -hex 24
-# grafana_admin_password(018 obs U1):僅經 GF_SECURITY_ADMIN_PASSWORD__FILE 檔注入、非 URL→base64 安全。
+# grafana_admin_password(018 obs U1):僅經 GF_SECURITY_ADMIN_PASSWORD=$__file{...} 檔注入、非 URL→base64 安全。
 gen_leaf "grafana_admin_password" -base64 24
 
 # ============================================================

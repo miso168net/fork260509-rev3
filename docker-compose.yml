@@ -208,7 +208,7 @@ services:
     profiles: [obs, metrics]
     image: grafana/grafana:13.0.2
     environment:
-      GF_SECURITY_ADMIN_PASSWORD__FILE: /run/secrets/grafana_admin_password
+      GF_SECURITY_ADMIN_PASSWORD: "$$__file{/run/secrets/grafana_admin_password}"
       GF_AUTH_ANONYMOUS_ENABLED: "false"
     secrets:
       - grafana_admin_password
@@ -252,6 +252,6 @@ secrets:
     file: ./deploy/secrets/database_url.txt
   redis_url:
     file: ./deploy/secrets/redis_url.txt
-  # 018-observability U1:grafana admin 密碼(GF_SECURITY_ADMIN_PASSWORD__FILE 注入)
+  # 018-observability U1:grafana admin 密碼(GF_SECURITY_ADMIN_PASSWORD $__file{} provider 注入)
   grafana_admin_password:
     file: ./deploy/secrets/grafana_admin_password.txt

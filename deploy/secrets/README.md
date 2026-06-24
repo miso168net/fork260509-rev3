@@ -59,7 +59,7 @@ bash deploy/generate-secrets.sh --force
 | `redis_password` | `docker run --rm alpine/openssl rand -hex 24 > deploy/secrets/redis_password.txt` | **hex**（URL-safe，嵌入連線字串） |
 | `database_url` | `echo "postgres://soybean:$(cat deploy/secrets/postgres_password.txt)@postgres:5432/soybean_admin_rust" > deploy/secrets/database_url.txt` | 依賴 `postgres_password.txt` |
 | `redis_url` | `echo "redis://:$(cat deploy/secrets/redis_password.txt)@redis-stack:6379" > deploy/secrets/redis_url.txt` | 依賴 `redis_password.txt` |
-| `grafana_admin_password` | `docker run --rm alpine/openssl rand -base64 24 > deploy/secrets/grafana_admin_password.txt` | base64（非 URL，僅 grafana `GF_SECURITY_ADMIN_PASSWORD__FILE` 檔注入；018 obs U1） |
+| `grafana_admin_password` | `docker run --rm alpine/openssl rand -base64 24 > deploy/secrets/grafana_admin_password.txt` | base64（非 URL，僅 grafana `GF_SECURITY_ADMIN_PASSWORD=$__file{...}` 檔注入；018 obs U1） |
 
 > 註：上述 `echo` / `>` 會帶尾換行，而 `generate-secrets.sh` 用 `printf '%s'` 不帶；runtime 消費端（rust-api `load_secret` 會 `.trim()`、postgres/redis 亦容忍）會忽略尾換行,行為不受影響,但 byte 內容與腳本產物略異——優先用腳本生成。
 
