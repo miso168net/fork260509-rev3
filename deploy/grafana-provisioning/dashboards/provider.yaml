@@ -1,0 +1,16 @@
+# 018-observability U3：grafana dashboard provider（file-based provisioning、FR-018/019）。
+# disableDeletion + allowUiUpdates:false ＝ as-code 權威、UI 不可覆寫（冪等重建）。
+# foldersFromFilesStructure:false ＝ 不依目錄結構建 folder；json 子目錄為唯一掃描來源。
+# ★ json 寫入採 staging + atomic-mv（U3 落地紀律），避免 provider 於 updateIntervalSeconds 週期讀到半成品 orphan。
+apiVersion: 1
+
+providers:
+  - name: obs
+    orgId: 1
+    type: file
+    disableDeletion: true
+    allowUiUpdates: false
+    updateIntervalSeconds: 30
+    options:
+      path: /etc/grafana/provisioning/dashboards/json
+      foldersFromFilesStructure: false
