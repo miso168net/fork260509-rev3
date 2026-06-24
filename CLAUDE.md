@@ -64,7 +64,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │       └── <NNN>-<feature-name>.md        ← 每個 feature 的 Phase 0 brainstorm
 ├── specs/                                 ← spec-kit feature 規格目錄（001 已落地；每 feature 一個 <NNN>-<feature-name>/；工作流見 §3）
 ├── tests/                                 ← 跨 feature 測試素材（外層 git 追蹤；tests/000-base-web-docker-bootstrap/ = mock API 捕獲 raw 資料 + CDP scripts，見 §7.4 000 文件）
-├── graphify-out/                          ← 知識圖譜輸出（已建圖 2060 nodes/311 communities；外層 git 追蹤 GRAPH_REPORT.md + graph.json + graph.html + obsidian/ 內 notes；只排除個人化/可重產項目）
+├── graphify-out/                          ← 知識圖譜輸出（已建圖、現況統計詳 docs/GRAPHIFY-NOTES.md §1；外層 git 追蹤 GRAPH_REPORT.md + graph.json + graph.html + obsidian/ 內 notes；只排除個人化/可重產項目）
 │   ├── GRAPH_REPORT.md                    ← 含 god nodes / surprises / suggested questions
 │   ├── graph.json                         ← 結構化圖譜資料（可被 graphify query 查）
 │   ├── graph.html                         ← 互動視覺化（3MB+ 內嵌 JS，刻意 git-tracked）
@@ -609,7 +609,7 @@ docker compose exec acme acme.sh --version    # sanity check
 > 📖 **圖譜現況統計** 與 **已知抽取限制** 等細節 — **推論前必讀** [`docs/GRAPHIFY-NOTES.md`](docs/GRAPHIFY-NOTES.md)。
 
 **graphify 守則**：
-- `graphify-out/` 已建圖（2026-06-12 首建，2060 nodes/311 communities；commit `8f66fe0`）。圖譜索引 rev3 worktree（`base-web` / `rust-api` 整合分支），與整合碼同步；docs 後續大改（如 INTEGRATION-DESIGN 改名、四檔落地）後記得 `graphify update` 增量同步（已列 CHECKLIST §2 持續性維護）。
+- `graphify-out/` 已建圖（2026-06-12 首建 commit `8f66fe0`；現況統計詳 [GRAPHIFY-NOTES §1](docs/GRAPHIFY-NOTES.md)）。圖譜索引 rev3 worktree（`base-web` / `rust-api` 整合分支、已排除 docs 源倉），與整合碼同步；碼/文件大改後記得 `graphify update` 增量同步。
 - 重跑前先讀 `graphify-out/cost.json` 看是否真有需要 —— 多數時候 `graphify update`（增量）即可。
 - 不要改 `graphify-out/cache/` —— graphify 內部 LLM 擷取快取，手改破壞下次 update 的 diff。
 - 新功能設計問題先用 `graphify query "..."` 試 —— 但 Vue component composition 是 graphify 工具盲點（`.vue` 的 template↔import 抓不全，見 `docs/GRAPHIFY-NOTES.md`），問 Vue SFC 之間 wiring 要直接讀 SFC。

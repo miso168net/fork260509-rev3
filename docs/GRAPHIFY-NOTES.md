@@ -8,28 +8,29 @@
 
 ---
 
-## 1. 圖譜現況統計（2026-06-24 update 後）
+## 1. 圖譜現況統計（2026-06-24、prune docs 源倉後）
 
 | 指標 | 值 |
 |---|---|
-| 節點 | **5127** |
-| 邊 | **5917** |
-| 社群 | **661**（最大 88、中位數 5、<3 節點的 thin 社群 234） |
+| 節點 | **3271** |
+| 邊 | **4053** |
+| 社群 | **477**（最大 88、中位數 4、<3 節點的 thin 社群 191） |
 
 **節點來源組成**：
 
 | 來源 | 節點數 | 說明 |
 |---|---|---|
 | `base-web/` | 2425 | Vue 前端 worktree（AST + semantic subagent） |
-| `fork260509-soybean-admin-docs/` | 1856 | soybean 官方文件源倉（**噪音**、見 §2.4） |
 | `rust-api/` | 835 | Rust 後端 worktree（**AST-only**、見 §2.3） |
 | `docker-compose.yml` | 11 | compose service 拓撲 |
 
-**file_type**：code 2599／document 2223／concept 222／rationale 47／image 36
-**edge confidence**：EXTRACTED 5747／INFERRED 170／AMBIGUOUS 0
-**edge relation（top）**：contains 3942／calls 769／references 506／imports 227／imports_from 200／conceptually_related_to 101／method 63／re_exports 38／semantically_similar_to 27／depends_on 21
+> docs 源倉 `fork260509-soybean-admin-docs/`（~1856 noise 節點）已於 2026-06-24 prune 出圖並加入 `.graphifyignore`（見 §2.4）；圖現只含 base-web/rust-api worktree 真碼 + compose。
 
-> **★ 關鍵觀察**：97% 的邊是 EXTRACTED（AST 結構事實）、INFERRED 僅 3%、AMBIGUOUS 0。所以本圖的風險 **不是「畫錯邊」**（虛構關係極少）、**而是「漏畫邊」**（§2 盲點）。推論時主要防「圖沒抓到 ⇒ 誤判無關係」、而非防「圖亂連」。
+**file_type**：code 2511／document 693／concept 35／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
+**edge confidence**：EXTRACTED 3974／INFERRED 79／AMBIGUOUS 0
+**edge relation（top）**：contains 2570／calls 769／imports 226／imports_from 196／references 136／method 63／re_exports 38／depends_on 21／conceptually_related_to 16／semantically_similar_to 8
+
+> **★ 關鍵觀察**：98% 的邊是 EXTRACTED（AST 結構事實）、INFERRED 僅 2%、AMBIGUOUS 0。所以本圖的風險 **不是「畫錯邊」**（虛構關係極少）、**而是「漏畫邊」**（§2 盲點）。推論時主要防「圖沒抓到 ⇒ 誤判無關係」、而非防「圖亂連」。
 
 ---
 
@@ -53,9 +54,9 @@ pub/sub channel、redis key、event bus、動態 config key 這類**靠執行期
 rust 後端走 AST（`calls`/`contains`/`imports` 完整），但**幾乎沒有 LLM semantic 概念邊**：實測 rust 涉入的 `semantically_similar_to`/`conceptually_related_to`/`shares_data_with` 概念邊僅 **5 條**（base-web 有 177 條）。
 → rust 的「結構」可信（誰呼叫誰、誰 import 誰），但「跨檔概念關聯／同類設計」圖上幾乎空白；要這類洞察須讀碼、或對 rust 另跑 semantic pass。
 
-### 2.4 docs 源倉過度索引（噪音）
-`fork260509-soybean-admin-docs/` 在 2026-06-12 原始建圖時被一併索引（1856 節點 ≈ 全圖 36%），與整合碼無關。後果：god node 榜首 `Changelog`（77 邊）、多語 `nodejs.md`/`use-table.md`/FAQ 各自成社群——**都是文件噪音、非程式核心**。
-→ 看 god nodes / 社群時自動濾掉 `fork260509-soybean-admin-docs/` 來源節點。（根治＝未來對該源倉 prune，屬 graphify 維護。）
+### 2.4 docs 源倉過度索引（噪音）— ✅ 已 prune（2026-06-24）
+`fork260509-soybean-admin-docs/` 曾在 2026-06-12 原始建圖時被一併索引（1856 節點 ≈ 全圖 36%、多語 `nodejs.md`/`use-table.md`/`structure.md`/FAQ 各自成社群），與整合碼無關。**2026-06-24 已 prune 出圖**（外科式移除 1856 節點+牽連邊、5127→3271）並加入 `.graphifyignore`（永久不再索引）。
+→ ⚠️ **校正**：god node `Changelog`（77 邊）/`更新日志`（24）**不是** docs 源倉、而是 **base-web 自己的 `CHANGELOG.md`**（worktree 真碼、prune 後仍居 god node 榜首）。它程式價值低但屬合法 worktree 內容、未 prune；若也想清，需另外針對 base-web `CHANGELOG.md` 處理。
 
 ### 2.5 `const`／字面值不成節點
 AST 不把 `const`/字串字面值抽成節點（如 §2.1 的 `CASBIN_INVALIDATE_CHANNEL`）。靠常數耦合的關係因此**雙重隱形**（既無節點、又無邊）。
