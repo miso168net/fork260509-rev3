@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。pre-波4 017-audit-center-enhancement ✅ 全完成（2026-06-23、merge `c7f5936`）＝審計中心 enhancement（C-1 class filter／C-3 CSV 匯出／C-4 op-log 角色 delta、零 migration/端點/crate）。下一步＝波 4 observability（未開始）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**波 3 行為島＋policy ✅ 全完成（2026-06-22）— 三刀全收：014-auth-token-session ✅／015-policy-governance ✅／016-button-endpoint-policy ✅（merge `fa17def`）。pre-波4 017-audit-center-enhancement ✅ 全完成（2026-06-23、merge `c7f5936`）＝審計中心 enhancement（C-1 class filter／C-3 CSV 匯出／C-4 op-log 角色 delta、零 migration/端點/crate）。波 4 observability 啟動＝018-observability brainstorm 落地（`676b13be`、pending `/speckit-specify`）。波 2 ✅（009/010/011/012）＋D11 遞延刀 013 ✅已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-24 波 4 啟動：018-observability Phase 0 brainstorm 落地**：一刀 018＋三執行單元 obs-min→obs-full→dashboard（D1）、rev2 對等+hindsight、defer 同 rev2（D2）；act-on-code 接地（axum 0.7／無 log-side trace_id span→U1 含小 rust 單元／nginx 404+JSON 已就緒不動／`grafana_admin_password` DESIGN:706 落差須補／★MSRV 1.86 必檢）。spec-design `676b13be`、pending 手動 `/speckit-specify`。詳 [018 spec-design](superpowers/018-observability.md)
 - **2026-06-24 graphify 圖譜：同步 008-017 + GRAPHIFY-NOTES 落地 + prune docs 源倉**：`--update` 補回缺席 rust 後端（4176→5127）→ 再 prune docs 源倉 noise（5127→3271 node、加 `.graphifyignore`、修 graph↔manifest desync）；新 `docs/GRAPHIFY-NOTES.md`（8 抽取盲點清單）、拔 CLAUDE.md ⏳＋圖統計改指 GRAPHIFY-NOTES §1。commit `f1e762a`/`d54e693`/`21f1a58`/`631dfef`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
-- **2026-06-24 §3.C F4 審計 CSV 截斷信號嚴格化（最後一個 codeable §3 實質項）**：export data 裸 CSV 字串→`{csv,truncated}`（後端 `is_export_truncated(total)=total>CAP` 權威旗標）、前端截斷 toast 棄 stale `pagination.itemCount`；rust 2 單元測+base-web `AuditCsvExport` 型/3 wrapper/3 onExport/清 orphan。CDP 三 tab export 回 `{csv,truncated:false}` 驗。pins rust `483eeba`/base-web `134ddcc2`/outer `7ac45c7`。詳 [MILESTONES §1](INTEGRATION-MILESTONES.md)
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 3 ✅ 全完成（014/015/016）→ 下一步＝波 4 observability（未開始）**：obs-min（loki+alloy+grafana 純 log、72h retention）／obs-full（prometheus+2 exporter+pushgateway+baseline alert+rust-api `/metrics` 埋點）／dashboard provisioning（皆 `profiles:[obs]`/`[metrics]` opt-in、一般 `up` 不啟）。**起手＝走 CLAUDE.md §3 階段 0 `superpowers:brainstorming`**。**alt-login 4 流程 stub 刀＝⚠️m 2026-06-22 重議→延後出波3**（user 親決 C 案、移 post-波3 v1-completeness slot、詳 §3.D）。Auth 島 follow-up 已由 014 閉口、治理島 §4.2 已由 015 閉口、三維 RBAC runtime 編輯已由 016 閉口（button-auth-modal mock 解除、§3.B）
+**下一步**: **波 4 observability 啟動中＝018-observability**（一刀三單元 obs-min→obs-full→dashboard）：Phase 0 brainstorm ✅ 落地（spec-design `676b13be`、拍板 D1 一刀三單元／D2 rev2 對等+hindsight）。**下一步＝手動 `/speckit-specify`**（input＝`docs/superpowers/018-observability.md`、起 `018-observability` feature branch）→ clarify/plan/tasks/analyze（research.md 首要＝★MSRV 1.86 新 dep 檢）→ 階段 2 Workflow TDD。**alt-login 4 流程 stub 刀＝⚠️m 2026-06-22 重議→延後出波3**（user 親決 C 案、移 post-波3 v1-completeness slot、詳 §3.D）。Auth 島 follow-up 已由 014 閉口、治理島 §4.2 已由 015 閉口、三維 RBAC runtime 編輯已由 016 閉口（button-auth-modal mock 解除、§3.B）
 
 ---
 

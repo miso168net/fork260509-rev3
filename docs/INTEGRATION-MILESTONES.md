@@ -64,6 +64,7 @@
 | `f1e762a` | 2026-06-24 | graphify 增量同步到 008-017（補回缺席 rust 後端、4176→5127 node／5917 edge／661 community；全 rust 64 AST＋base-web semantic、外科式 dedup=False 併入） |
 | `d54e693` | 2026-06-24 | GRAPHIFY-NOTES.md 落地（§1 圖統計／§2 八抽取盲點／§3 守則／§4 維護紀律）＋拔 CLAUDE.md GRAPHIFY-NOTES ⏳ |
 | `21f1a58`+`631dfef` | 2026-06-24 | graphify prune docs 源倉出圖（5127→3271 node／4053 edge／477 community；移除 1856 noise 節點＋加 .graphifyignore 排除；GRAPHIFY-NOTES §1 統計＋§2.4 校正〔Changelog 屬 base-web 非 docs〕＋CLAUDE.md 統計改指 GRAPHIFY-NOTES） |
+| `676b13b` | 2026-06-24 | **018-observability Phase 0 brainstorm 落地（波 4 啟動）** — spec-design `docs/superpowers/018-observability.md`；2 user 拍板 D1（一刀 018＋三執行單元 obs-min→obs-full→dashboard、否決照搬 rev2 三刀）/D2（rev2 對等+hindsight、defer 同 rev2：非-root alloy／alert notification／DB log purge ⚠️n／pg_trgm）。act-on-code 接地（不信 rev2 假設/DESIGN 目標態）：axum 0.7（axum-prometheus 0.7.0 相容、無 0.8 遷移）／log-side trace_id span 不存在（trace_id 僅進 DB 審計欄、subscriber 純文字 fmt）→ U1 obs-min 含小 rust 單元（info_span request＋fmt().json()＋tracing-subscriber json feature）／nginx `/api/metrics` 404＋JSON log＋X-Request-Id 已就緒（001、不動）／`grafana_admin_password` DESIGN:706 宣稱 5-leaf/8 檔 vs 實 4-leaf/6 檔落差（grafana 是「波4 再加」deferred、須補 generate-secrets+compose+grafana _FILE）／metrics 全 greenfield（無 /metrics·axum-prometheus·cleanup-job pushgateway）／★MSRV Rust 1.86 新 dep 必檢。pending 手動 `/speckit-specify`。 |
 
 ---
 
