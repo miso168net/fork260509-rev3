@@ -25,7 +25,7 @@ web 結構（plan.md）：rust-api backend `rust-api/server/src/`、base-web fro
 
 **Purpose**: act-on-code 接地 + 環境基線。
 
-- [ ] T001 [P] act-on-code 再接地：核對 login/login_inner/單一寫點 file:line 仍符 research.md（行號會漂），**★ 確認寫端 `IpAddr→IpNetwork` 轉換（D-04）並記下確切轉換**供 count 端鏡像 — `rust-api/server/src/handler/auth.rs` + `rust-api/server/src/model/facade/sys_login_attempt.rs`
+- [ ] T001 [P] act-on-code 再接地：核對 login/login_inner/單一寫點 file:line 仍符 research.md（行號會漂），**★ 確認寫端 `IpAddr→IpNetwork` 轉換（D-04）並把確切轉換形式（如 `.into()`／`IpNetwork::from(addr)`）記入 data-model.md §2 或 count 方法碼註解、作為 T003 驗收基準**（不可只「心記」、須落字供 count 端逐位鏡像） — `rust-api/server/src/handler/auth.rs` + `rust-api/server/src/model/facade/sys_login_attempt.rs`
 - [ ] T002 [P] dev stack 基線綠：`docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --wait`、rust-api `/health` 200、`cargo test -p server` 既有綠、base-web `pnpm typecheck` 綠 — 容器內 `docker exec`
 
 ---
@@ -34,7 +34,7 @@ web 結構（plan.md）：rust-api backend `rust-api/server/src/`、base-web fro
 
 **⚠️ CRITICAL**: 本 phase 完成前 US 不能開工。
 
-- [ ] T003 Facade：append `count_failed_by_user_since(conn, user: &str, since)` ＋ `count_failed_by_ip_since(conn, real_ip: IpNetwork, since)`，各 `WHERE <key>=? AND success=false AND created_at>=?` `.count(conn)`；IpNetwork 用 T001 確認之同款轉換、走既有 `idx_login_attempt_{user,ip}_time` — `rust-api/server/src/model/facade/sys_login_attempt.rs`
+- [ ] T003 Facade：append `count_failed_by_user_since(conn, user: &str, since)` ＋ `count_failed_by_ip_since(conn, real_ip: IpNetwork, since)`，各 `WHERE <key>=? AND success=false AND created_at>=?` `.count(conn)`；IpNetwork 用 T001 確認之同款轉換、走既有 `idx_login_attempt_{user,ip}_time`（★ 驗收：count 端 `IpAddr→IpNetwork` 轉換與寫端**逐位一致**，否則 `.eq()` 永不中、per-ip 鎖靜默失效——C-V-3 acceptance 接住） — `rust-api/server/src/model/facade/sys_login_attempt.rs`
 - [ ] T004 Test-first（RED）：`is_locked_out` 單元測（per-user 邊界 4/5/6、per-ip 邊界 19/20/21、OR 語意〔任一達即鎖〕、both=0 未鎖）＋ 4 const（`PER_USER_THRESHOLD=5`/`PER_USER_WINDOW_SECS=900`/`PER_IP_THRESHOLD=20`/`PER_IP_WINDOW_SECS=900`）＋ stub `fn is_locked_out(ip_fails:i64,user_fails:i64)->bool{false}` — `rust-api/server/src/handler/auth.rs`（`#[cfg(test)]`）
 - [ ] T005 Implement `is_locked_out` 本體 `ip_fails>=PER_IP_THRESHOLD || user_fails>=PER_USER_THRESHOLD` → T004 測 GREEN — `rust-api/server/src/handler/auth.rs`
 
@@ -53,7 +53,7 @@ web 結構（plan.md）：rust-api backend `rust-api/server/src/`、base-web fro
 - [ ] T006 [US1] Gate 插點：handler 在呼叫 `login_inner` **前** 算 `since=(Utc::now()-900s).into()`、`ip_fails/user_fails = count_*.unwrap_or(0)`〔fail-OPEN/D-07〕、`is_locked_out`→短路 `r=Err((None, AppError::Biz("auth.login.locked".into())))`（跳過 login_inner）、**匯流既有單一寫點(196-212)**、**login_inner 簽名/6 路徑不動** — `rust-api/server/src/handler/auth.rs`
 - [ ] T007 [US1] In-crate `#[ignore]` live smoke（DB-gated、`--test-threads=1`、拋棄式帳號）：per-user 鎖 after 5 fails ＋ 隔離（換帳號不鎖）＋ gated 列寫入（success=false/operator=None/ctx 四欄照填、FR-008） — `rust-api/server/src/handler/auth.rs`（`#[cfg(test)]`）
 - [ ] T008 [P] [US1] base-web i18n Schema：`App.I18n.Schema.backend.auth.login` 加 `locked: string`（★ **先 Schema**、`rev3-inline` 標記） — `base-web/src/typings/app.d.ts`
-- [ ] T009 [US1] base-web locale：加 `backend.auth.login.locked`（zh-cn「登录失败次数过多，请稍后再试」/ en-us「Too many failed login attempts. Please try again later.」、`rev3-inline`） — `base-web/src/locales/langs/zh-cn.ts` + `base-web/src/locales/langs/en-us.ts`（依 T008、同 commit）
+- [ ] T009 [US1] base-web locale：加 `backend.auth.login.locked`（zh-cn「登录失败次数过多，请稍后再试」/ en-us「Too many failed login attempts. Please try again later.」、`rev3-inline`）（★ zh-cn locale **MUST 簡體中文**、對齊 base-web 既有 zh-cn 慣例〔如「用户名或密码错误」〕、**勿改繁體**；spec FR-012 的繁體「登入失敗次數過多」僅 doc 示意、非 locale 值） — `base-web/src/locales/langs/zh-cn.ts` + `base-web/src/locales/langs/en-us.ts`（依 T008、同 commit）
 - [ ] T010 [US1] Acceptance C-V-3 + C-V-7：curl 5 fails→6th 2222 ＋ psql 驗 gated 列；CDP 驗鎖中在地化 toast（curl≠modal） — 依 `specs/019-login-lockout/contracts/verification-commands.md`
 
 **Checkpoint**: US1 per-user 鎖 end-to-end 可獨立驗（MVP；此時 gate 已上線，per-ip/恢復/fail-OPEN 行為亦生效，待 US2/US3 驗證）。
