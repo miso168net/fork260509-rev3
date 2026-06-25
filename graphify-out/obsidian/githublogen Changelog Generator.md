@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/release.yml"
 type: "concept"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # githublogen Changelog Generator
@@ -14,4 +14,4 @@ tags:
 - [[Release GitHub Actions Workflow]] - `references` [EXTRACTED]
 - [[SoybeanAdmin CHANGELOG (EN)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/concept #graphify/EXTRACTED #community/Community_22

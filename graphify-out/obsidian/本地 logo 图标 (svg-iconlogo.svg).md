@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/logo.svg"
 type: "image"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # 本地 logo 图标 (svg-icon/logo.svg)
@@ -15,4 +15,4 @@ tags:
 - [[SoybeanAdmin Logo]] - `conceptually_related_to` [INFERRED]
 - [[favicon.svg (SoybeanAdmin browser tab icon)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/CI_Workflows__Issue_Templates
+#graphify/image #graphify/INFERRED #community/Community_22

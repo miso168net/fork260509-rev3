@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "concept"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # SoybeanJS Code Specification
@@ -14,4 +14,4 @@ tags:
 - [[Lint Code GitHub Actions Workflow]] - `conceptually_related_to` [INFERRED]
 - [[SoybeanAdmin README (EN)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/INFERRED #community/CI_Workflows__Issue_Templates
+#graphify/concept #graphify/INFERRED #community/Community_22

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "concept"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # App.Service.Response (backend envelope type)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[servicerequestindex.ts (createFlatRequest axios layer)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/concept #graphify/EXTRACTED #community/Community_5

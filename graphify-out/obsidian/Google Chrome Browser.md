@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/chrome.svg"
 type: "concept"
-community: "Community 321"
+community: "Community 325"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_321
+  - community/Community_325
 ---
 
 # Google Chrome Browser
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Chrome Icon]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_321
+#graphify/concept #graphify/EXTRACTED #community/Community_325

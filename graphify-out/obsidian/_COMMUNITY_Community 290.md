@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[darkColor]] - code - base-web/src/components/custom/wave-bg.vue
-- [[wave-bg.vue]] - code - base-web/src/components/custom/wave-bg.vue
+- [[Api.SystemManage.UpdateSystemSettingReq DTO]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
+- [[fetchUpdateSystemSetting (update single setting value)]] - code - base-web/src/service/api/rev3-system-settings.ts
 
 ## Live Query (requires Dataview plugin)
 

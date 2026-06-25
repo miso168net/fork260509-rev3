@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[menuTypeRecord (business constants)]] - code - base-web/src/constants/business.ts
+- [[fetchDeleteUser (rev3 user soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
 
 ## Live Query (requires Dataview plugin)
 

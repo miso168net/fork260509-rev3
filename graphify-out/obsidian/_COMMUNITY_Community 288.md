@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Api.SystemManage.UpdateSystemSettingReq DTO]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
-- [[fetchUpdateSystemSetting (update single setting value)]] - code - base-web/src/service/api/rev3-system-settings.ts
+- [[index.vue_37]] - code - base-web/src/views/plugin/charts/antv/index.vue
+- [[nodeData]] - code - base-web/src/views/plugin/charts/antv/index.vue
 
 ## Live Query (requires Dataview plugin)
 

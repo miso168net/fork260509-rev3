@@ -8,9 +8,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[animate]] - code - base-web/src/theme/preset/dark.json
-- [[animateMode]] - code - base-web/src/theme/preset/dark.json
-- [[page]] - code - base-web/src/theme/preset/dark.json
+- [[Home HeaderBanner Module (dashboard greeting banner)]] - code - base-web/src/views/home/modules/header-banner.vue
+- [[Soybean Mascot Avatar Image]] - image - base-web/src/assets/imgs/soybean.jpg
+- [[SoybeanAvatar Component (custom avatar component)]] - code - base-web/src/components/custom/soybean-avatar.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -18,9 +18,3 @@ members: 3
 TABLE source_file, type FROM #community/Community_267
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 68]]
-
-## Top bridge nodes
-- [[page]] - degree 3, connects to 1 community

@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[index.vue_51]] - code - base-web/src/views/plugin/swiper/index.vue
+- [[index.vue_49]] - code - base-web/src/views/plugin/pinyin/index.vue
 
 ## Live Query (requires Dataview plugin)
 

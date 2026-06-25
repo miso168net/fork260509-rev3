@@ -1,15 +1,16 @@
 ---
 type: community
-members: 2
+members: 3
 ---
 
 # Community 287
 
-**Members:** 2 nodes
+**Members:** 3 nodes
 
 ## Members
-- [[Api.SystemManage.SystemSetting DTO (KV setting)]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
-- [[fetchGetSystemSettings (read all system settings KV)]] - code - base-web/src/service/api/rev3-system-settings.ts
+- [[ImportMeta]] - code - base-web/src/typings/vite-env.d.ts
+- [[RouterHistoryMode]] - code - base-web/src/typings/vite-env.d.ts
+- [[vite-env.d.ts]] - code - base-web/src/typings/vite-env.d.ts
 
 ## Live Query (requires Dataview plugin)
 

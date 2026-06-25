@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-settings.d.ts"
 type: "code"
-community: "Community 288"
+community: "Community 290"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_288
+  - community/Community_290
 ---
 
 # Api.SystemManage.UpdateSystemSettingReq DTO
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[fetchUpdateSystemSetting (update single setting value)]] - `references` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_288
+#graphify/code #graphify/INFERRED #community/Community_290

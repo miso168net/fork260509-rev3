@@ -1,45 +1,44 @@
 ---
 type: community
-members: 32
+members: 31
 ---
 
 # rev3 User/Role Service Wrappers
 
-**Members:** 32 nodes
+**Members:** 31 nodes
 
 ## Members
-- [[Api.SystemManage.Button DTO (code + label)]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[Api.SystemManage.Endpoint DTO (path + method)]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[Api.SystemManage.RoleListItemRev3 DTO (honest role list item)]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[Api.SystemManage.RoleUpsertModel DTO]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[Api.SystemManage.SessionPolicy literal union]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[Api.SystemManage.UserListItemRev3 DTO (honest user list item)]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[Api.SystemManage.UserUpsertModel DTO]] - code - base-web/src/typings/api/rev3-system-manage.d.ts
-- [[ButtonAuthModal (role x button authorization tree)]] - code - base-web/src/views/manage/role/modules/button-auth-modal.vue
-- [[EndpointAuthModal (role x API endpoint authorization tree)]] - code - base-web/src/views/manage/role/modules/endpoint-auth-modal.vue
-- [[ManageRole view (role list + CRUD + RBAC gating)]] - code - base-web/src/views/manage/role/index.vue
-- [[MenuAuthModal (role x menu authorization tree + home select)]] - code - base-web/src/views/manage/role/modules/menu-auth-modal.vue
-- [[Rationale DB-first casbin policy write, archived rules restorable (constitution I.74.2)]] - rationale - base-web/src/service/api/rev3-system-manage.ts
-- [[Rationale number id - String(id) for backend serde String fields]] - rationale - base-web/src/service/api/rev3-system-manage.ts
-- [[RoleOperateDrawer (role addedit form, hosts 3 auth modals)]] - code - base-web/src/views/manage/role/modules/role-operate-drawer.vue
-- [[fetchAddRole (rev3 role write wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchAddUser (rev3 user write wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchBatchDeleteRole (rev3 role batch soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchDeleteRole (rev3 role soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetAllButtons (all authorizable buttons registry)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetAllEndpoints (all authorizable API endpoints registry)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetRoleButton (role's authorized button codes)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetRoleEndpoints (role's authorized endpoints)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetRoleHome (role login landing route_name)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetRoleListRev3 (honest role list read, roleDesc nullable)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetRoleMenu (role's authorized menu ids)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchGetUserListRev3 (honest user list read, nullable fields)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchUpdateRole (rev3 role write wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchUpdateRoleButton (DB-first casbin button policy write)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchUpdateRoleEndpoints (DB-first casbin endpoint policy write)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchUpdateRoleHome (role login landing write)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchUpdateRoleMenu (DB-first casbin policy write)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[fetchUpdateUser (rev3 user write wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
+- [[.audit_json()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[UserFilter]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[UserWrite]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[add_user_create_roundtrip_and_dup()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[audit_json_redacts_password()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[build_create_active_model()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[build_create_active_model_sets_create_fields()_1]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[build_update_active_model()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[build_update_active_model_pairs_and_preserves_identity()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[clear_pointer()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[create()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[delete_user_soft_delete_and_idempotent_missing()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[entitysys_userModel]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[find_active_by_id()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[find_active_excludes_soft_deleted()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[find_by_id()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[find_by_user_name()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[ids_for_name_ilike()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[ilike()_4]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[list_active()_1]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[names_for_ids()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[now()_3]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[op_log_atomic_three_paths()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[op_log_oplog_threading_ip_trace()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[sample_fields()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[session_gate_of()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[set_pointer()]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[soft_delete()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[sys_user.rs_1]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[update()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[update_user_preserves_identity_and_replaces_roles()]] - code - rust-api/server/src/model/facade/sys_user.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -47,3 +46,11 @@ members: 32
 TABLE source_file, type FROM #community/rev3_User/Role_Service_Wrappers
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 3 edges to [[_COMMUNITY_Axios Request Factory]]
+
+## Top bridge nodes
+- [[update()_2]] - degree 10, connects to 1 community
+- [[soft_delete()_2]] - degree 9, connects to 1 community
+- [[create()_2]] - degree 6, connects to 1 community

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/audit/index.vue"
 type: "code"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # ManageAudit view (super-only audit center, 3-tab page)
@@ -16,4 +16,4 @@ tags:
 - [[OperationLogTable (operation audit table + payload expand + CSV export)]] - `references` [EXTRACTED]
 - [[Rationale NCard displayblock breaks flex-height chain, table body collapses to 0px inside NTabs]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_8

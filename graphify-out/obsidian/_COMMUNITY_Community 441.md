@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[index.vue_60]] - code - base-web/src/views/user-center/index.vue
+- [[index.vue_58]] - code - base-web/src/views/pro-naive/table/remote/index.vue
 
 ## Live Query (requires Dataview plugin)
 

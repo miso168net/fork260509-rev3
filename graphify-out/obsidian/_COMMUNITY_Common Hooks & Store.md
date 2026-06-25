@@ -37,11 +37,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 6 edges to [[_COMMUNITY_Router & Menu Store]]
+- 8 edges to [[_COMMUNITY_Router & Menu Store]]
 - 6 edges to [[_COMMUNITY_Community 35]]
-- 4 edges to [[_COMMUNITY_Router & Menu Store]]
 - 3 edges to [[_COMMUNITY_Axios Request Factory]]
 - 3 edges to [[_COMMUNITY_Auth & Locale Service]]
+- 2 edges to [[_COMMUNITY_Router & Menu Store]]
 - 2 edges to [[_COMMUNITY_Router & Menu Store]]
 - 1 edge to [[_COMMUNITY_Auth & Locale Service]]
 

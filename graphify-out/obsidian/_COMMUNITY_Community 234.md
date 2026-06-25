@@ -8,10 +8,10 @@ members: 4
 **Members:** 4 nodes
 
 ## Members
-- [[basicGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
-- [[customGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
-- [[data.ts_4]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
-- [[linkGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
+- [[Map]] - code - base-web/src/typings/package.d.ts
+- [[Point]] - code - base-web/src/typings/package.d.ts
+- [[Window_1]] - code - base-web/src/typings/package.d.ts
+- [[package.d.ts]] - code - base-web/src/typings/package.d.ts
 
 ## Live Query (requires Dataview plugin)
 

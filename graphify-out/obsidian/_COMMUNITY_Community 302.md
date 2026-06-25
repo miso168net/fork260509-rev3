@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[extensions.json]] - code - base-web/.vscode/extensions.json
-- [[recommendations]] - code - base-web/.vscode/extensions.json
+- [[Expectation Illustration (expectation.svg)]] - image - base-web/src/assets/svg-icon/expectation.svg
+- [[LookForward component]] - code - base-web/src/components/custom/look-forward.vue
 
 ## Live Query (requires Dataview plugin)
 

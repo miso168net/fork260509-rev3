@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 480
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Tools Standard (JP, placeholder)]] - document - fork260509-soybean-admin-docs/src/jp/standard/tools.md
-- [[Tools Standard (placeholder, empty)]] - document - fork260509-soybean-admin-docs/src/standard/tools.md
+- [[redis_exporter compose service (Redis metrics, profilesmetrics, v1.85.0-alpine)]] - code - docker-compose.yml
 
 ## Live Query (requires Dataview plugin)
 

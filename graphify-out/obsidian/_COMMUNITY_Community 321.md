@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Chrome Icon]] - image - base-web/src/assets/svg-icon/chrome.svg
-- [[Google Chrome Browser]] - concept - base-web/src/assets/svg-icon/chrome.svg
+- [[&str]] - code - rust-api/xdb/src/ip_value.rs
+- [[.to_u32_ip()_1]] - code - rust-api/xdb/src/ip_value.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/locales/langs/zh-cn.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # zh-cn.ts locale messages
@@ -15,4 +15,4 @@ tags:
 - [[translate-backend-msg.spec.ts (i18n boundary test)]] - `references` [EXTRACTED]
 - [[zh-cn backend. message keys]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/request/index.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # service/request/index.ts (createFlatRequest axios layer)
@@ -18,4 +18,4 @@ tags:
 - [[translate-backend-msg.spec.ts (i18n boundary test)]] - `semantically_similar_to` [INFERRED]
 - [[translateBackendMsg (backend. prefix translation boundary)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

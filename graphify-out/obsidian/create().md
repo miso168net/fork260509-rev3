@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Community 158"
+community: "Menu/Route Facade (rust)"
 location: "L761"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_158
+  - community/Menu/Route_Facade_rust
 ---
 
 # create()
@@ -20,4 +20,4 @@ tags:
 - [[now()_1]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_158
+#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust

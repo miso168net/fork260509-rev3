@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[index.vue_7]] - code - base-web/src/layouts/modules/global-footer/index.vue
+- [[map-sdk.ts]] - code - base-web/src/constants/map-sdk.ts
 
 ## Live Query (requires Dataview plugin)
 

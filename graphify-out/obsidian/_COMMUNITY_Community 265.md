@@ -8,9 +8,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[Home HeaderBanner Module (dashboard greeting banner)]] - code - base-web/src/views/home/modules/header-banner.vue
-- [[Soybean Mascot Avatar Image]] - image - base-web/src/assets/imgs/soybean.jpg
-- [[SoybeanAvatar Component (custom avatar component)]] - code - base-web/src/components/custom/soybean-avatar.vue
+- [[add_role()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[role_write_from_req()]] - code - rust-api/server/src/handler/system_manage.rs
+- [[update_role()]] - code - rust-api/server/src/handler/system_manage.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -18,3 +18,12 @@ members: 3
 TABLE source_file, type FROM #community/Community_265
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 3 edges to [[_COMMUNITY_SysManage Handler & DTOs (rust)]]
+- 1 edge to [[_COMMUNITY_Community 19]]
+
+## Top bridge nodes
+- [[role_write_from_req()]] - degree 4, connects to 2 communities
+- [[add_role()]] - degree 2, connects to 1 community
+- [[update_role()]] - degree 2, connects to 1 community

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/index.vue"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # ManageRole view (role list + CRUD + RBAC gating)
@@ -16,4 +16,4 @@ tags:
 - [[fetchDeleteRole (rev3 role soft-delete wrapper)]] - `calls` [EXTRACTED]
 - [[fetchGetRoleListRev3 (honest role list read, roleDesc nullable)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[GlobalComponents]] - code - base-web/src/typings/components.d.ts
-- [[components.d.ts]] - code - base-web/src/typings/components.d.ts
+- [[Heart Icon (svg-icon asset)]] - image - base-web/src/assets/svg-icon/heart.svg
+- [[base-web Local SVG Icon Set (srcassetssvg-icon)]] - concept - base-web/src/assets/svg-icon/heart.svg
 
 ## Live Query (requires Dataview plugin)
 

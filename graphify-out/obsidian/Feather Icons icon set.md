@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/wind.svg"
 type: "concept"
-community: "Community 326"
+community: "Community 329"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_326
+  - community/Community_329
 ---
 
 # Feather Icons icon set
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Wind Icon (svg-icon asset)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_326
+#graphify/concept #graphify/EXTRACTED #community/Community_329

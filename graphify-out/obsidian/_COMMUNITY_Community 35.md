@@ -36,9 +36,10 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 6 edges to [[_COMMUNITY_Common Hooks & Store]]
-- 4 edges to [[_COMMUNITY_Router & Menu Store]]
-- 3 edges to [[_COMMUNITY_App Bootstrap & Service Stack]]
+- 3 edges to [[_COMMUNITY_Community 5]]
 - 3 edges to [[_COMMUNITY_Router & Menu Store]]
+- 2 edges to [[_COMMUNITY_Router & Menu Store]]
+- 2 edges to [[_COMMUNITY_Router & Menu Store]]
 - 1 edge to [[_COMMUNITY_Community 81]]
 
 ## Top bridge nodes

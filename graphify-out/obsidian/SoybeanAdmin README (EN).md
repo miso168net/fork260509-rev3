@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # SoybeanAdmin README (EN)
@@ -17,4 +17,4 @@ tags:
 - [[SoybeanUI]] - `references` [EXTRACTED]
 - [[pnpm Monorepo Architecture]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/document #graphify/EXTRACTED #community/Community_22

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/policy-archive/modules/policy-archive-table.vue"
 type: "code"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # PolicyArchiveTable (archived policy list + restore)
@@ -18,4 +18,4 @@ tags:
 - [[fetchGetArchivedPolicies (policy recycle bin read)]] - `calls` [EXTRACTED]
 - [[fetchRestorePolicy (restore archived policy)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_8

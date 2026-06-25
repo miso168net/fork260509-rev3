@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/locales/langs/en-us.ts"
 type: "concept"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # en-us backend.* message keys
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[en-us.ts locale messages]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/concept #graphify/EXTRACTED #community/Community_5

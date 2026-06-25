@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # base-web compose service
@@ -14,4 +14,4 @@ tags:
 - [[front-nginx compose service]] - `depends_on` [EXTRACTED]
 - [[manageuserindex.vue (user list page)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/INFERRED #community/Community_5

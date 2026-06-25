@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/tsconfig.json"
 type: "code"
-community: "Community 41"
+community: "TSConfig Compiler Options"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_41
+  - community/TSConfig_Compiler_Options
 ---
 
 # types
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_41
+#graphify/code #graphify/EXTRACTED #community/TSConfig_Compiler_Options

@@ -13,6 +13,7 @@ tags:
 
 ## Connections
 - [[main()]] - `contains` [EXTRACTED]
+- [[push_metrics()]] - `contains` [EXTRACTED]
 - [[resolve_database_url()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/Community_268

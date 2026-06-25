@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/alova.svg"
 type: "image"
-community: "Community 320"
+community: "Community 323"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Community_320
+  - community/Community_323
 ---
 
 # Alova Logo SVG Icon
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Alova Request Strategy Library]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_320
+#graphify/image #graphify/EXTRACTED #community/Community_323

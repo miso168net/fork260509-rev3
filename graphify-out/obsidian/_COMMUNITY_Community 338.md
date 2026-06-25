@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[index.module.css.d.ts_1]] - code - base-web/packages/materials/src/libs/page-tab/index.module.css.d.ts
+- [[chrome-tab-bg.vue]] - code - base-web/packages/materials/src/libs/page-tab/chrome-tab-bg.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # fetchExportAccessLog (access log CSV export)
@@ -15,4 +15,4 @@ tags:
 - [[Api.SystemManage.AuditCsvExport DTO (csv + truncated)]] - `references` [EXTRACTED]
 - [[pruneNullParams (strip unset filter params helper)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_8

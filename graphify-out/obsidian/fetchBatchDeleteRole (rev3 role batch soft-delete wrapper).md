@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # fetchBatchDeleteRole (rev3 role batch soft-delete wrapper)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[ManageRole view (role list + CRUD + RBAC gating)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

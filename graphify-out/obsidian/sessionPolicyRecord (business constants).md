@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # sessionPolicyRecord (business constants)
@@ -14,4 +14,4 @@ tags:
 - [[App.I18n.Schema (i18n key schema)]] - `references` [INFERRED]
 - [[user-operate-drawer.vue (user addedit drawer)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/INFERRED #community/Community_5

@@ -8,9 +8,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[layout_1]] - code - base-web/src/theme/preset/dark.json
-- [[mode_1]] - code - base-web/src/theme/preset/dark.json
-- [[scrollMode]] - code - base-web/src/theme/preset/dark.json
+- [[CreativityBanner (home module component, creativity-banner.vue)]] - code - base-web/src/views/home/modules/creativity-banner.vue
+- [[Home page view (viewshomeindex.vue)]] - code - base-web/src/views/home/index.vue
+- [[banner.svg — flat-style hero illustration a person presenting a large analyt…]] - image - base-web/src/assets/svg-icon/banner.svg
 
 ## Live Query (requires Dataview plugin)
 
@@ -18,9 +18,3 @@ members: 3
 TABLE source_file, type FROM #community/Community_266
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 68]]
-
-## Top bridge nodes
-- [[layout_1]] - degree 3, connects to 1 community

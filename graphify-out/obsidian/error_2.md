@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "Community 211"
+community: "otherColor"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_211
+  - community/otherColor
 ---
 
 # error
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[otherColor_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_211
+#graphify/code #graphify/EXTRACTED #community/otherColor

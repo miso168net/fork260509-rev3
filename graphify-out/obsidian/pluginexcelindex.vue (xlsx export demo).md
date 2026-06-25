@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/plugin/excel/index.vue"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # plugin/excel/index.vue (xlsx export demo)
@@ -17,4 +17,4 @@ tags:
 - [[userGenderRecord (business constants)]] - `references` [EXTRACTED]
 - [[xlsx dependency]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

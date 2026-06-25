@@ -8,23 +8,23 @@ members: 17
 **Members:** 17 nodes
 
 ## Members
-- [[allowSyntheticDefaultImports_8]] - code - base-web/packages/utils/tsconfig.json
-- [[compilerOptions_8]] - code - base-web/packages/utils/tsconfig.json
-- [[esModuleInterop_8]] - code - base-web/packages/utils/tsconfig.json
-- [[exclude_8]] - code - base-web/packages/utils/tsconfig.json
-- [[forceConsistentCasingInFileNames_8]] - code - base-web/packages/utils/tsconfig.json
-- [[include_8]] - code - base-web/packages/utils/tsconfig.json
-- [[jsx_8]] - code - base-web/packages/utils/tsconfig.json
-- [[lib_8]] - code - base-web/packages/utils/tsconfig.json
-- [[module_8]] - code - base-web/packages/utils/tsconfig.json
-- [[moduleResolution_9]] - code - base-web/packages/utils/tsconfig.json
-- [[noUnusedLocals_8]] - code - base-web/packages/utils/tsconfig.json
-- [[resolveJsonModule_8]] - code - base-web/packages/utils/tsconfig.json
-- [[strict_8]] - code - base-web/packages/utils/tsconfig.json
-- [[strictNullChecks_8]] - code - base-web/packages/utils/tsconfig.json
-- [[target_8]] - code - base-web/packages/utils/tsconfig.json
-- [[tsconfig.json_8]] - code - base-web/packages/utils/tsconfig.json
-- [[types_8]] - code - base-web/packages/utils/tsconfig.json
+- [[AllRole]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[CommonSearchParams_1]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[IconType]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[Menu_1]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[MenuButton]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[MenuList]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[MenuPropsOfRoute]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[MenuTree]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[MenuType]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[Role]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[RoleList]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[RoleSearchParams]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[User]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[UserGender]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[UserList]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[UserSearchParams]] - code - base-web/src/typings/api/system-manage.d.ts
+- [[system-manage.d.ts]] - code - base-web/src/typings/api/system-manage.d.ts
 
 ## Live Query (requires Dataview plugin)
 

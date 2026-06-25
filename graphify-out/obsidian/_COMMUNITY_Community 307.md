@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[el]] - code - base-web/src/layouts/modules/global-content/index.vue
-- [[index.vue_6]] - code - base-web/src/layouts/modules/global-content/index.vue
+- [[.deleted_at_column()_2]] - code - rust-api/server/src/model/facade/sys_user.rs
+- [[entitysys_userEntity]] - code - rust-api/server/src/model/facade/sys_user.rs
 
 ## Live Query (requires Dataview plugin)
 

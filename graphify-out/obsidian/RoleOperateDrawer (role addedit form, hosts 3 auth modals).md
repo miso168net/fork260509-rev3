@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/role-operate-drawer.vue"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # RoleOperateDrawer (role add/edit form, hosts 3 auth modals)
@@ -19,4 +19,4 @@ tags:
 - [[fetchAddRole (rev3 role write wrapper)]] - `calls` [EXTRACTED]
 - [[fetchUpdateRole (rev3 role write wrapper)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

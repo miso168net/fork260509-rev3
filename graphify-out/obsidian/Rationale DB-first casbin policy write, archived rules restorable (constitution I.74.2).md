@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "rationale"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # Rationale: DB-first casbin policy write, archived rules restorable (constitution I.7/4.2)
@@ -15,4 +15,4 @@ tags:
 - [[fetchUpdateRoleEndpoints (DB-first casbin endpoint policy write)]] - `references` [EXTRACTED]
 - [[fetchUpdateRoleMenu (DB-first casbin policy write)]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/rationale #graphify/EXTRACTED #community/Community_12

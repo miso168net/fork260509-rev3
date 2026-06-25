@@ -8,11 +8,11 @@ members: 5
 **Members:** 5 nodes
 
 ## Members
-- [[error_1]] - code - base-web/src/theme/preset/dark.json
-- [[info_1]] - code - base-web/src/theme/preset/dark.json
-- [[otherColor_1]] - code - base-web/src/theme/preset/dark.json
-- [[success_1]] - code - base-web/src/theme/preset/dark.json
-- [[warning_1]] - code - base-web/src/theme/preset/dark.json
+- [[Rust axum + Casbin backend (planned)]] - concept - rust-api/x_fork.branch-origin.md
+- [[miso168netfork260509-rev2-anew-rust-api repo]] - concept - rust-api/x_fork.branch-origin.md
+- [[rev3-admin-root umbrella repo (fork260509-rev3)]] - concept - rust-api/x_fork.branch-origin.md
+- [[rev3-admin-rust-api branch]] - concept - rust-api/x_fork.branch-origin.md
+- [[rev3-admin-rust-api 分支來源紀錄_1]] - document - rust-api/x_fork.branch-origin.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +20,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_217
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 68]]
-
-## Top bridge nodes
-- [[otherColor_1]] - degree 5, connects to 1 community

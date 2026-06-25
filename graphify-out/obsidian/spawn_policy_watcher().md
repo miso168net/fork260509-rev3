@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/main.rs"
 type: "code"
 community: "Community 134"
-location: "L677"
+location: "L691"
 tags:
   - graphify/code
   - graphify/EXTRACTED

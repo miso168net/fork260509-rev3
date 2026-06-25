@@ -43,11 +43,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 11 edges to [[_COMMUNITY_Router & Menu Store]]
+- 12 edges to [[_COMMUNITY_Router & Menu Store]]
 - 7 edges to [[_COMMUNITY_Community 38]]
 - 7 edges to [[_COMMUNITY_Alova Request Layer]]
 - 6 edges to [[_COMMUNITY_Auth & Locale Service]]
-- 5 edges to [[_COMMUNITY_Router & Menu Store]]
+- 4 edges to [[_COMMUNITY_Router & Menu Store]]
 - 3 edges to [[_COMMUNITY_Axios Request Factory]]
 - 3 edges to [[_COMMUNITY_Community 61]]
 - 3 edges to [[_COMMUNITY_Common Hooks & Store]]

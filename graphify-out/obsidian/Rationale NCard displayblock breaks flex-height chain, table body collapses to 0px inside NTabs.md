@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/audit/index.vue"
 type: "rationale"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # Rationale: NCard display:block breaks flex-height chain, table body collapses to 0px inside NTabs
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[ManageAudit view (super-only audit center, 3-tab page)]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/rationale #graphify/EXTRACTED #community/Community_8

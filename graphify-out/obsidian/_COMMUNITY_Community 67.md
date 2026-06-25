@@ -30,14 +30,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 211]]
-- 1 edge to [[_COMMUNITY_Community 250]]
+- 1 edge to [[_COMMUNITY_otherColor]]
+- 1 edge to [[_COMMUNITY_layout]]
 - 1 edge to [[_COMMUNITY_Community 251]]
 - 1 edge to [[_COMMUNITY_Community 107]]
-- 1 edge to [[_COMMUNITY_Community 182]]
+- 1 edge to [[_COMMUNITY_tab]]
 - 1 edge to [[_COMMUNITY_Community 153]]
-- 1 edge to [[_COMMUNITY_Community 210]]
-- 1 edge to [[_COMMUNITY_Community 183]]
+- 1 edge to [[_COMMUNITY_footer]]
+- 1 edge to [[_COMMUNITY_watermark]]
 - 1 edge to [[_COMMUNITY_Community 106]]
 
 ## Top bridge nodes

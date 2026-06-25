@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/router/elegant/imports.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # elegant/imports.ts (layouts + views map)
@@ -20,4 +20,4 @@ tags:
 - [[system-settingsindex.vue (KV settings page)]] - `references` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes + routeMap]] - `depends_on` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

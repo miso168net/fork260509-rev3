@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # userGenderRecord (business constants)
@@ -16,4 +16,4 @@ tags:
 - [[pluginexcelindex.vue (xlsx export demo)]] - `references` [EXTRACTED]
 - [[user-operate-drawer.vue (user addedit drawer)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

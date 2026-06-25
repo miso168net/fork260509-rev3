@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # fetchUpdateRoleEndpoints (DB-first casbin endpoint policy write)
@@ -15,4 +15,4 @@ tags:
 - [[EndpointAuthModal (role x API endpoint authorization tree)]] - `calls` [EXTRACTED]
 - [[Rationale DB-first casbin policy write, archived rules restorable (constitution I.74.2)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

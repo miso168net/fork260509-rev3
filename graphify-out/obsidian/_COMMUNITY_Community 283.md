@@ -8,9 +8,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[Avatar SVG Icon]] - image - base-web/src/assets/svg-icon/avatar.svg
-- [[Copy SVG Icon]] - image - base-web/src/assets/svg-icon/copy.svg
-- [[setupUnplugin]] - code - base-web/build/plugins/unplugin.ts
+- [[Model_4]] - code - rust-api/entity/src/sys_menu.rs
+- [[Relation_4]] - code - rust-api/entity/src/sys_menu.rs
+- [[sys_menu.rs]] - code - rust-api/entity/src/sys_menu.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/linter.yml"
 type: "concept"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # GitHub Super-Linter
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Lint Code GitHub Actions Workflow]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/concept #graphify/EXTRACTED #community/Community_22

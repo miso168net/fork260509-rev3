@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/components.d.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # components.d.ts (auto-registered component types)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[manageuserindex.vue (user list page)]] - `references` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/INFERRED #community/Community_5

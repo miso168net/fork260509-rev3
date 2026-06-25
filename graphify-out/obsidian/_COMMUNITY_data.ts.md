@@ -1,17 +1,17 @@
 ---
 type: community
-cohesion: 1.00
-members: 2
+members: 4
 ---
 
 # data.ts
 
-**Cohesion:** 1.00 - tightly connected
-**Members:** 2 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[data.ts (4)]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
-- [[ganttTasks]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
+- [[basicGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
+- [[customGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
+- [[data.ts_4]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
+- [[linkGanttRecords]] - code - base-web/src/views/plugin/gantt/vtable/data.ts
 
 ## Live Query (requires Dataview plugin)
 

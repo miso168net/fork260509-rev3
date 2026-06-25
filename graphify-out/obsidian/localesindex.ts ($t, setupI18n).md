@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/locales/index.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # locales/index.ts ($t, setupI18n)
@@ -19,4 +19,4 @@ tags:
 - [[translateBackendMsg (backend. prefix translation boundary)]] - `calls` [EXTRACTED]
 - [[vue-i18n dependency]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

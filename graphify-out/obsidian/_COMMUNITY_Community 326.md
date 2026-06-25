@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Feather Icons icon set]] - concept - base-web/src/assets/svg-icon/wind.svg
-- [[Wind Icon (svg-icon asset)]] - image - base-web/src/assets/svg-icon/wind.svg
+- [[base-web local SVG icon convention (srcassetssvg-icon)]] - concept - base-web/src/assets/svg-icon/custom-icon.svg
+- [[custom-icon.svg Local Icon]] - image - base-web/src/assets/svg-icon/custom-icon.svg
 
 ## Live Query (requires Dataview plugin)
 

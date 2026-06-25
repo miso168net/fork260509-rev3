@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # SoybeanAdmin CHANGELOG (EN)
@@ -16,4 +16,4 @@ tags:
 - [[githublogen Changelog Generator]] - `conceptually_related_to` [INFERRED]
 - [[opencode AI Comment Workflow]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/document #graphify/EXTRACTED #community/Community_22

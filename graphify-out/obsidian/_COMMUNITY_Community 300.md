@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[data.ts_3]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
-- [[ganttTasks]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
+- [[extensions.json]] - code - base-web/.vscode/extensions.json
+- [[recommendations]] - code - base-web/.vscode/extensions.json
 
 ## Live Query (requires Dataview plugin)
 

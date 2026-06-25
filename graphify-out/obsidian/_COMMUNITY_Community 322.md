@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[base-web local SVG icon convention (srcassetssvg-icon)]] - concept - base-web/src/assets/svg-icon/custom-icon.svg
-- [[custom-icon.svg Local Icon]] - image - base-web/src/assets/svg-icon/custom-icon.svg
+- [[.to_u32_ip()]] - code - rust-api/xdb/src/ip_value.rs
+- [[u32]] - code - rust-api/xdb/src/ip_value.rs
 
 ## Live Query (requires Dataview plugin)
 

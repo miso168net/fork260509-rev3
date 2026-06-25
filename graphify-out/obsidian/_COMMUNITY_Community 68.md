@@ -30,12 +30,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 217]]
-- 1 edge to [[_COMMUNITY_Community 266]]
+- 1 edge to [[_COMMUNITY_otherColor]]
+- 1 edge to [[_COMMUNITY_layout]]
 - 1 edge to [[_COMMUNITY_Community 267]]
 - 1 edge to [[_COMMUNITY_Community 111]]
 - 1 edge to [[_COMMUNITY_Community 187]]
-- 1 edge to [[_COMMUNITY_Community 157]]
+- 1 edge to [[_COMMUNITY_sider]]
 - 1 edge to [[_COMMUNITY_Community 216]]
 - 1 edge to [[_COMMUNITY_Community 188]]
 - 1 edge to [[_COMMUNITY_Community 110]]

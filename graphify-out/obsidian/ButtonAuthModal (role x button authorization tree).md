@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/button-auth-modal.vue"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # ButtonAuthModal (role x button authorization tree)
@@ -17,4 +17,4 @@ tags:
 - [[fetchGetRoleButton (role's authorized button codes)]] - `calls` [EXTRACTED]
 - [[fetchUpdateRoleButton (DB-first casbin button policy write)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

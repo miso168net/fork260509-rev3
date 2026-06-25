@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[fetchDeleteUser (rev3 user soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
+- [[mod.rs_3]] - code - rust-api/server/src/model/mod.rs
 
 ## Live Query (requires Dataview plugin)
 

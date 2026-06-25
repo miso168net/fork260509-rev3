@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[index.vue_33]] - code - base-web/src/views/manage/user/index.vue
-- [[label_2]] - code - base-web/src/views/manage/user/index.vue
+- [[currentColor theme adaptation in network-error.svg]] - rationale - base-web/src/assets/svg-icon/network-error.svg
+- [[network-error.svg (network error illustration)]] - image - base-web/src/assets/svg-icon/network-error.svg
 
 ## Live Query (requires Dataview plugin)
 

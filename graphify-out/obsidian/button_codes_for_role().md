@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
 community: "Community 48"
-location: "L151"
+location: "L156"
 tags:
   - graphify/code
   - graphify/EXTRACTED

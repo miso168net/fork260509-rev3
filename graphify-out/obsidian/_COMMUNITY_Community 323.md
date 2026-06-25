@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Expectation Illustration (expectation.svg)]] - image - base-web/src/assets/svg-icon/expectation.svg
-- [[LookForward component]] - code - base-web/src/components/custom/look-forward.vue
+- [[Alova Logo SVG Icon]] - image - base-web/src/assets/svg-icon/alova.svg
+- [[Alova Request Strategy Library]] - concept - base-web/src/assets/svg-icon/alova.svg
 
 ## Live Query (requires Dataview plugin)
 

@@ -8,9 +8,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[Empty-state UI illustration pattern]] - concept - base-web/src/assets/svg-icon/empty-data.svg
-- [[currentColor theme-adaptive accent technique]] - rationale - base-web/src/assets/svg-icon/empty-data.svg
-- [[empty-data.svg — empty-state illustration]] - image - base-web/src/assets/svg-icon/empty-data.svg
+- [[Model_5]] - code - rust-api/entity/src/sys_operation_log.rs
+- [[Relation_5]] - code - rust-api/entity/src/sys_operation_log.rs
+- [[sys_operation_log.rs]] - code - rust-api/entity/src/sys_operation_log.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Pull Request Template (CN)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
-- [[Pull Request Template (EN)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
+- [[SoftDeletable]] - code - rust-api/server/src/model/soft_delete.rs
+- [[soft_delete.rs]] - code - rust-api/server/src/model/soft_delete.rs
 
 ## Live Query (requires Dataview plugin)
 

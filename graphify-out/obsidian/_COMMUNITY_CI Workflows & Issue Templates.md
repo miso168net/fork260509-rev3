@@ -8,31 +8,31 @@ members: 25
 **Members:** 25 nodes
 
 ## Members
-- [[Elegant Router]] - concept - base-web/README.en_US.md
-- [[Feature Request Issue Template (CN)]] - document - base-web/.github/ISSUE_TEMPLATE/feature_request_cn.yaml
-- [[Feature Request Issue Template (EN)]] - document - base-web/.github/ISSUE_TEMPLATE/feature_request_en.yaml
-- [[GitHub Super-Linter]] - concept - base-web/.github/workflows/linter.yml
-- [[Lint Code GitHub Actions Workflow]] - document - base-web/.github/workflows/linter.yml
-- [[Local SVG Icon Collection (base-web svg-icon assets)]] - concept - base-web/src/assets/svg-icon/logo.svg
-- [[Release GitHub Actions Workflow]] - document - base-web/.github/workflows/release.yml
-- [[SoybeanAdmin]] - concept - base-web/README.en_US.md
-- [[SoybeanAdmin CHANGELOG (EN)]] - document - base-web/CHANGELOG.md
-- [[SoybeanAdmin CHANGELOG (zh_CN)]] - document - base-web/CHANGELOG.zh_CN.md
-- [[SoybeanAdmin Logo]] - concept - base-web/public/favicon.svg
-- [[SoybeanAdmin README (EN)]] - document - base-web/README.en_US.md
-- [[SoybeanJS Code Specification]] - concept - base-web/README.en_US.md
-- [[SoybeanUI]] - concept - base-web/README.en_US.md
-- [[base-web pnpm-workspace.yaml]] - document - base-web/pnpm-workspace.yaml
-- [[favicon.svg (SoybeanAdmin browser tab icon)]] - image - base-web/public/favicon.svg
-- [[githublogen Changelog Generator]] - concept - base-web/.github/workflows/release.yml
-- [[index.html (Vite SPA entry)]] - code - base-web/index.html
-- [[opencode AI Agent (anomalycoopencode)]] - concept - base-web/.github/workflows/opencode.yml
-- [[opencode AI Comment Workflow]] - document - base-web/.github/workflows/opencode.yml
-- [[pnpm Monorepo Architecture]] - rationale - base-web/README.en_US.md
-- [[rev3-admin-base-web Branch Origin Record]] - document - base-web/x_fork.branch-origin.md
-- [[rev3-admin-base-web branch]] - concept - base-web/x_fork.branch-origin.md
-- [[rev3-admin-root umbrella repo]] - concept - base-web/x_fork.branch-origin.md
-- [[本地 logo 图标 (svg-iconlogo.svg)]] - image - base-web/src/assets/svg-icon/logo.svg
+- [[.audit_json()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[RoleFilter]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[RoleWrite]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[batch_soft_delete()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[build_create_active_model()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[build_update_active_model()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[create()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[entitysys_roleModel]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[find_active()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[find_active_by_id()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[guard_for()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[home_of_roles()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[ilike()_3]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[list()_4]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[now()_2]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[role_active_model_create_sets_create_fields()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[role_active_model_update_pairs_and_preserves_identity()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[role_crud_roundtrip_and_dup_and_filter()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[role_guard_seeded_in_use_self_and_batch_reject()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[role_home_update_reflects_and_audits()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[sample_fields()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[set_home()]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[soft_delete()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[sys_role.rs_1]] - code - rust-api/server/src/model/facade/sys_role.rs
+- [[update()_1]] - code - rust-api/server/src/model/facade/sys_role.rs
 
 ## Live Query (requires Dataview plugin)
 
@@ -40,3 +40,14 @@ members: 25
 TABLE source_file, type FROM #community/CI_Workflows__Issue_Templates
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 5 edges to [[_COMMUNITY_Axios Request Factory]]
+- 1 edge to [[_COMMUNITY_Community 264]]
+
+## Top bridge nodes
+- [[update()_1]] - degree 10, connects to 1 community
+- [[create()_1]] - degree 7, connects to 1 community
+- [[set_home()]] - degree 7, connects to 1 community
+- [[soft_delete()_1]] - degree 7, connects to 1 community
+- [[batch_soft_delete()_1]] - degree 7, connects to 1 community

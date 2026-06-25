@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[count-to.vue]] - code - base-web/src/components/custom/count-to.vue
-- [[start()]] - code - base-web/src/components/custom/count-to.vue
+- [[Api.SystemManage.SystemSetting DTO (KV setting)]] - code - base-web/src/typings/api/rev3-system-settings.d.ts
+- [[fetchGetSystemSettings (read all system settings KV)]] - code - base-web/src/service/api/rev3-system-settings.ts
 
 ## Live Query (requires Dataview plugin)
 

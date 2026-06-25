@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "Community 266"
+community: "layout"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_266
+  - community/layout
 ---
 
 # scrollMode
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[layout_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_266
+#graphify/code #graphify/EXTRACTED #community/layout

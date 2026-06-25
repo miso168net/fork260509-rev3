@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[agent.ts]] - code - base-web/src/utils/agent.ts
-- [[isPC()]] - code - base-web/src/utils/agent.ts
+- [[Feather Icons icon set]] - concept - base-web/src/assets/svg-icon/wind.svg
+- [[Wind Icon (svg-icon asset)]] - image - base-web/src/assets/svg-icon/wind.svg
 
 ## Live Query (requires Dataview plugin)
 

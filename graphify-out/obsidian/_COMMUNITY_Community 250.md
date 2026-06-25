@@ -8,9 +8,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[layout_3]] - code - base-web/src/theme/preset/default.json
-- [[mode_3]] - code - base-web/src/theme/preset/default.json
-- [[scrollMode_1]] - code - base-web/src/theme/preset/default.json
+- [[footer-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/modules/footer-settings.vue
+- [[isMixHorizontalMode]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/modules/footer-settings.vue
+- [[isWrapperScrollMode]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/modules/footer-settings.vue
 
 ## Live Query (requires Dataview plugin)
 
@@ -18,9 +18,3 @@ members: 3
 TABLE source_file, type FROM #community/Community_250
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 67]]
-
-## Top bridge nodes
-- [[layout_3]] - degree 3, connects to 1 community

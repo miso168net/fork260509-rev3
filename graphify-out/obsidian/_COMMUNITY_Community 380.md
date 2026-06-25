@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[index.vue_15]] - code - base-web/src/layouts/modules/theme-drawer/modules/appearance/index.vue
+- [[setting-item.vue]] - code - base-web/src/layouts/modules/theme-drawer/components/setting-item.vue
 
 ## Live Query (requires Dataview plugin)
 

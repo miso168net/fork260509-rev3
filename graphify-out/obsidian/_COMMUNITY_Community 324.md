@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Heart Icon (svg-icon asset)]] - image - base-web/src/assets/svg-icon/heart.svg
-- [[base-web Local SVG Icon Set (srcassetssvg-icon)]] - concept - base-web/src/assets/svg-icon/heart.svg
+- [[At-Sign Icon (Feather @ symbol, local SVG asset)]] - image - base-web/src/assets/svg-icon/at-sign.svg
+- [[localIcons demo list (pluginicon view)]] - code - base-web/src/views/plugin/icon/index.vue
 
 ## Live Query (requires Dataview plugin)
 

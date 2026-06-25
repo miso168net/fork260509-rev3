@@ -26,12 +26,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 10 edges to [[_COMMUNITY_MenuRoute Facade (rust)]]
-- 1 edge to [[_COMMUNITY_MenuRoute Facade (rust)]]
+- 11 edges to [[_COMMUNITY_MenuRoute Facade (rust)]]
 
 ## Top bridge nodes
-- [[menu_tree_wire_meta_mapping()]] - degree 4, connects to 2 communities
 - [[build_user_route_tree()]] - degree 8, connects to 1 community
 - [[visible_set()]] - degree 7, connects to 1 community
 - [[menu_tree_ancestor_inclusion()]] - degree 4, connects to 1 community
+- [[menu_tree_wire_meta_mapping()]] - degree 4, connects to 1 community
 - [[menu_tree_invisible_leaf_dropped()]] - degree 4, connects to 1 community

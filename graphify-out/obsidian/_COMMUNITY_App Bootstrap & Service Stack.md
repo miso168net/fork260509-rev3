@@ -1,59 +1,61 @@
 ---
 type: community
-members: 46
+members: 48
 ---
 
 # App Bootstrap & Service Stack
 
-**Members:** 46 nodes
+**Members:** 48 nodes
 
 ## Members
-- [[@elegant-routervue dependency]] - concept - base-web/package.json
-- [[App.I18n.Schema (i18n key schema)]] - code - base-web/src/typings/app.d.ts
-- [[App.Service.Response (backend envelope type)]] - concept - base-web/src/typings/app.d.ts
-- [[TableHeaderOperation component]] - code - base-web/src/components/advanced/table-header-operation.vue
-- [[acme compose service (prod profile cert skeleton)]] - code - docker-compose.yml
-- [[base-web compose service]] - code - docker-compose.yml
-- [[base-web package.json (soybean-admin deps)]] - code - base-web/package.json
-- [[cleanup-job compose service (expired token sidecar)]] - code - docker-compose.yml
-- [[components.d.ts (auto-registered component types)]] - code - base-web/src/typings/components.d.ts
-- [[downloadCsv (CSV export util)]] - code - base-web/src/utils/download.ts
-- [[elegant-router.d.ts (RouteMapRouteKey types)]] - code - base-web/src/typings/elegant-router.d.ts
-- [[elegantimports.ts (layouts + views map)]] - code - base-web/src/router/elegant/imports.ts
-- [[elegantroutes.ts (generatedRoutes)]] - code - base-web/src/router/elegant/routes.ts
-- [[en-us backend. message keys]] - concept - base-web/src/locales/langs/en-us.ts
-- [[en-us.ts locale messages]] - code - base-web/src/locales/langs/en-us.ts
-- [[enableStatusRecord (business constants)]] - code - base-web/src/constants/business.ts
-- [[front-nginx compose service]] - code - docker-compose.yml
-- [[front_nginx_certs volume]] - concept - docker-compose.yml
-- [[localesindex.ts ($t, setupI18n)]] - code - base-web/src/locales/index.ts
-- [[manageuserindex.vue (user list page)]] - code - base-web/src/views/manage/user/index.vue
-- [[migrate compose service (one-shot schema gate)]] - code - docker-compose.yml
-- [[naive-ui dependency]] - concept - base-web/package.json
-- [[package.json test script (tsx translate-backend-msg.spec.ts)]] - concept - base-web/package.json
-- [[pluginexcelindex.vue (xlsx export demo)]] - code - base-web/src/views/plugin/excel/index.vue
-- [[postgres compose service]] - code - docker-compose.yml
-- [[postgres_data volume]] - concept - docker-compose.yml
-- [[redis-stack compose service]] - code - docker-compose.yml
-- [[redis_stack_data volume]] - concept - docker-compose.yml
-- [[rust-api compose service]] - code - docker-compose.yml
-- [[serviceapi (barrel fetchGetAllRoles, fetchGetUserRoutes etc.)]] - code - base-web/src/service/api/index.ts
-- [[serviceapirev3-system-manage.ts (honest user wrappers)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[serviceapirev3-system-settings.ts (settings wrappers)]] - code - base-web/src/service/api/rev3-system-settings.ts
-- [[servicerequestindex.ts (createFlatRequest axios layer)]] - code - base-web/src/service/request/index.ts
-- [[sessionPolicyRecord (business constants)]] - code - base-web/src/constants/business.ts
-- [[system-settingsindex.vue (KV settings page)]] - code - base-web/src/views/manage/system-settings/index.vue
-- [[transformElegantRoutesToVueRoutes + routeMap]] - code - base-web/src/router/elegant/transform.ts
-- [[translate-backend-msg.spec.ts (i18n boundary test)]] - code - base-web/src/locales/__tests__/translate-backend-msg.spec.ts
-- [[translateBackendMsg (backend. prefix translation boundary)]] - code - base-web/src/locales/index.ts
-- [[useRouteStore (route pinia store)]] - code - base-web/src/store/modules/route/index.ts
-- [[user-operate-drawer.vue (user addedit drawer)]] - code - base-web/src/views/manage/user/modules/user-operate-drawer.vue
-- [[userGenderRecord (business constants)]] - code - base-web/src/constants/business.ts
-- [[vue-i18n dependency]] - concept - base-web/package.json
-- [[vue-router dependency]] - concept - base-web/package.json
-- [[xlsx dependency]] - concept - base-web/package.json
-- [[zh-cn backend. message keys]] - concept - base-web/src/locales/langs/zh-cn.ts
-- [[zh-cn.ts locale messages]] - code - base-web/src/locales/langs/zh-cn.ts
+- [[AdminLayoutContentConfig]] - code - base-web/packages/materials/src/types/index.ts
+- [[AdminLayoutFooterConfig]] - code - base-web/packages/materials/src/types/index.ts
+- [[AdminLayoutHeaderConfig]] - code - base-web/packages/materials/src/types/index.ts
+- [[AdminLayoutProps]] - code - base-web/packages/materials/src/types/index.ts
+- [[AdminLayoutSiderConfig]] - code - base-web/packages/materials/src/types/index.ts
+- [[AdminLayoutTabConfig]] - code - base-web/packages/materials/src/types/index.ts
+- [[Kebab]] - code - base-web/packages/materials/src/types/index.ts
+- [[KebabCase]] - code - base-web/packages/materials/src/types/index.ts
+- [[LayoutCssVars]] - code - base-web/packages/materials/src/types/index.ts
+- [[LayoutCssVarsProps]] - code - base-web/packages/materials/src/types/index.ts
+- [[LayoutMode]] - code - base-web/packages/materials/src/types/index.ts
+- [[LayoutScrollMode]] - code - base-web/packages/materials/src/types/index.ts
+- [[PageTabCssVars]] - code - base-web/packages/materials/src/types/index.ts
+- [[PageTabCssVarsProps]] - code - base-web/packages/materials/src/types/index.ts
+- [[PageTabMode]] - code - base-web/packages/materials/src/types/index.ts
+- [[PageTabProps]] - code - base-web/packages/materials/src/types/index.ts
+- [[Prefix]] - code - base-web/packages/materials/src/types/index.ts
+- [[addColorAlpha()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[createCssVars()]] - code - base-web/packages/materials/src/libs/page-tab/shared.ts
+- [[createLayoutCssVars()]] - code - base-web/packages/materials/src/libs/admin-layout/shared.ts
+- [[createLayoutCssVarsByCssVarsProps()]] - code - base-web/packages/materials/src/libs/admin-layout/shared.ts
+- [[createTabCssVars()]] - code - base-web/packages/materials/src/libs/page-tab/shared.ts
+- [[fixedHeaderAndTab]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[footerLeftGapClass]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[handleClickMask()]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[headerLeftGapClass]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[index.ts_8]] - code - base-web/packages/materials/src/index.ts
+- [[index.ts_9]] - code - base-web/packages/materials/src/libs/admin-layout/index.ts
+- [[index.ts_10]] - code - base-web/packages/materials/src/libs/page-tab/index.ts
+- [[index.ts_11]] - code - base-web/packages/materials/src/libs/simple-scrollbar/index.ts
+- [[index.ts_12]] - code - base-web/packages/materials/src/types/index.ts
+- [[index.vue]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[index.vue_1]] - code - base-web/packages/materials/src/libs/page-tab/index.vue
+- [[index.vue_2]] - code - base-web/packages/materials/src/libs/simple-scrollbar/index.vue
+- [[isContentScroll]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[isHorizontal]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[isVertical]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[isWrapperScroll]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[leftGapClass]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[shared.ts_1]] - code - base-web/packages/materials/src/libs/admin-layout/shared.ts
+- [[shared.ts_2]] - code - base-web/packages/materials/src/libs/page-tab/shared.ts
+- [[showFooter]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[showHeader]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[showMobileSider]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[showSider]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[showTab]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[siderPaddingClass]] - code - base-web/packages/materials/src/libs/admin-layout/index.vue
+- [[transformColorWithOpacity()]] - code - base-web/packages/color/src/shared/colord.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -63,9 +65,11 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_Community 35]]
-- 1 edge to [[_COMMUNITY_Auth & Locale Service]]
+- 2 edges to [[_COMMUNITY_Community 29]]
+- 2 edges to [[_COMMUNITY_Community 54]]
+- 1 edge to [[_COMMUNITY_Community 31]]
 
 ## Top bridge nodes
-- [[elegantimports.ts (layouts + views map)]] - degree 8, connects to 1 community
-- [[localesindex.ts ($t, setupI18n)]] - degree 7, connects to 1 community
+- [[addColorAlpha()]] - degree 6, connects to 2 communities
+- [[shared.ts_2]] - degree 8, connects to 1 community
+- [[transformColorWithOpacity()]] - degree 4, connects to 1 community

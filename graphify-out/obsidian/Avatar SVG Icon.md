@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/avatar.svg"
 type: "image"
-community: "Community 283"
+community: "setupUnplugin (registers src/assets/svg-"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/Community_283
+  - community/setupUnplugin_registers_src/assets/svg-
 ---
 
 # Avatar SVG Icon
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[setupUnplugin]] - `references` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Community_283
+#graphify/image #graphify/INFERRED #community/setupUnplugin_registers_src/assets/svg-

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # App.I18n.Schema (i18n key schema)
@@ -19,4 +19,4 @@ tags:
 - [[zh-cn backend. message keys]] - `shares_data_with` [INFERRED]
 - [[zh-cn.ts locale messages]] - `implements` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/INFERRED #community/Community_5

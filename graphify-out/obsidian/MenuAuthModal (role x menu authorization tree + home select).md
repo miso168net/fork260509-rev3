@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/menu-auth-modal.vue"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # MenuAuthModal (role x menu authorization tree + home select)
@@ -17,4 +17,4 @@ tags:
 - [[fetchUpdateRoleHome (role login landing write)]] - `calls` [EXTRACTED]
 - [[fetchUpdateRoleMenu (DB-first casbin policy write)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

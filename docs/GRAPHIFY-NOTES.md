@@ -8,23 +8,24 @@
 
 ---
 
-## 1. 圖譜現況統計（2026-06-24、prune docs 源倉後）
+## 1. 圖譜現況統計（2026-06-25、018 obs 增量後）
 
 | 指標 | 值 |
 |---|---|
-| 節點 | **3271** |
-| 邊 | **4053** |
-| 社群 | **477**（最大 88、中位數 4、<3 節點的 thin 社群 191） |
+| 節點 | **3284** |
+| 邊 | **4062** |
+| 社群 | **482**（最大 88、中位數 4） |
 
 **節點來源組成**：
 
 | 來源 | 節點數 | 說明 |
 |---|---|---|
 | `base-web/` | 2425 | Vue 前端 worktree（AST + semantic subagent） |
-| `rust-api/` | 835 | Rust 後端 worktree（**AST-only**、見 §2.3） |
-| `docker-compose.yml` | 11 | compose service 拓撲 |
+| `rust-api/` | 836 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job `push_metrics` 已入圖、`request` 升 god node 18 edges） |
+| `docker-compose.yml` | 23 | compose service 拓撲（018 obs 加 7 service＋4 卷＋1 secret，手刻入圖、profiles opt-in） |
 
-> docs 源倉 `fork260509-soybean-admin-docs/`（~1856 noise 節點）已於 2026-06-24 prune 出圖並加入 `.graphifyignore`（見 §2.4）；圖現只含 base-web/rust-api worktree 真碼 + compose。
+> docs 源倉 `fork260509-soybean-admin-docs/`（~1856 noise 節點）已於 2026-06-24 prune 出圖並加入 `.graphifyignore`（見 §2.4）；圖現只含 base-web/rust-api worktree 真碼 + master compose。
+> **2026-06-25 018 obs 增量**（外科式 `dedup=False` 配方、見 §4）：rust AST 4 變更檔 + 手刻 master compose obs 節點，3271→3284（+13）、成長閘 PASS；community ID 重分群後置換、以 membership-overlap 由 git HEAD obsidian frontmatter 重對齊 hand-label（非按 ID）。★ obsidian vault 有 ~3300 stale orphan note（2026-06-24 docs prune 後未清、export 不刪舊檔）、屬已知 cruft、與本次增量無關。
 
 **file_type**：code 2511／document 693／concept 35／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
 **edge confidence**：EXTRACTED 3974／INFERRED 79／AMBIGUOUS 0

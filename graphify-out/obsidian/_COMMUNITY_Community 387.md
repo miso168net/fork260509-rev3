@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[index.vue_17]] - code - base-web/src/layouts/modules/theme-drawer/modules/layout/index.vue
+- [[global-settings.vue]] - code - base-web/src/layouts/modules/theme-drawer/modules/general/modules/global-settings.vue
 
 ## Live Query (requires Dataview plugin)
 

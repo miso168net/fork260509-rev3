@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/index.ts"
 type: "code"
-community: "Router & Menu Store"
+community: "Auth & Locale Service"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router__Menu_Store
+  - community/Auth__Locale_Service
 ---
 
 # setupRouter()
@@ -17,4 +17,4 @@ tags:
 - [[main.ts]] - `imports` [EXTRACTED]
 - [[setupApp()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store
+#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service

@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[index.vue_31]] - code - base-web/src/views/manage/menu/index.vue
-- [[label]] - code - base-web/src/views/manage/menu/index.vue
+- [[data.ts_3]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
+- [[ganttTasks]] - code - base-web/src/views/plugin/gantt/dhtmlx/data.ts
 
 ## Live Query (requires Dataview plugin)
 

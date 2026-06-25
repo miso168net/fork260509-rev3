@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/locales/langs/zh-cn.ts"
 type: "concept"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # zh-cn backend.* message keys
@@ -14,4 +14,4 @@ tags:
 - [[App.I18n.Schema (i18n key schema)]] - `shares_data_with` [INFERRED]
 - [[zh-cn.ts locale messages]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/concept #graphify/EXTRACTED #community/Community_5

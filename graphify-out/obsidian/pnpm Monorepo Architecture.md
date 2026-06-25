@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "rationale"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # pnpm Monorepo Architecture
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin README (EN)]] - `references` [EXTRACTED]
 - [[base-web pnpm-workspace.yaml]] - `implements` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/rationale #graphify/EXTRACTED #community/Community_22

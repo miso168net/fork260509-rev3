@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[Cast Icon (Feather screen-cast glyph)]] - image - base-web/src/assets/svg-icon/cast.svg
+- [[reset-pwd.vue]] - code - base-web/src/views/_builtin/login/modules/reset-pwd.vue
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/expectation.svg"
 type: "image"
-community: "Community 323"
+community: "Community 302"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Community_323
+  - community/Community_302
 ---
 
 # Expectation Illustration (expectation.svg)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[LookForward component]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_323
+#graphify/image #graphify/EXTRACTED #community/Community_302

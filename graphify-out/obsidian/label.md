@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/manage/menu/index.vue"
 type: "code"
-community: "Community 299"
+community: "index.vue"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_299
+  - community/indexvue
 ---
 
 # label
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_31]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_299
+#graphify/code #graphify/EXTRACTED #community/indexvue

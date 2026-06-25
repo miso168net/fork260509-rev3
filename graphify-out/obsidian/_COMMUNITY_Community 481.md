@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 481
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[Alova Logo SVG Icon]] - image - base-web/src/assets/svg-icon/alova.svg
-- [[Alova Request Strategy Library]] - concept - base-web/src/assets/svg-icon/alova.svg
+- [[pushgateway compose service (short-lived job metrics, profilesmetrics)]] - code - docker-compose.yml
 
 ## Live Query (requires Dataview plugin)
 

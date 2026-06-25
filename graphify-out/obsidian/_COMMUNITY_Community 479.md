@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 479
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index_19]] - document - fork260509-soybean-admin-docs/src/zh/standard/index.md
-- [[代码规范]] - document - fork260509-soybean-admin-docs/src/zh/standard/index.md
+- [[postgres_exporter compose service (PG metrics, profilesmetrics)]] - code - docker-compose.yml
 
 ## Live Query (requires Dataview plugin)
 

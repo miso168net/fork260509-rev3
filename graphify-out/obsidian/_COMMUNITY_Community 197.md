@@ -8,11 +8,11 @@ members: 5
 **Members:** 5 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_22]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🎨 Styles_6]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_19]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_16]] - document - base-web/CHANGELOG.md
-- [[v1.3.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.0...v1.3.1) (2024-07-22)]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_48]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_39]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_40]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_14]] - document - base-web/CHANGELOG.md
+- [[v1.0.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.1...v1.0.2) (2024-04-08)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,7 +22,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
+- 1 edge to [[_COMMUNITY_Community 18]]
 
 ## Top bridge nodes
-- [[v1.3.1(httpsgithub.comhonghuangdcsoybean-admincomparev1.3.0...v1.3.1) (2024-07-22)]] - degree 5, connects to 1 community
+- [[v1.0.2(httpsgithub.comsoybeanjssoybean-admincomparev1.0.1...v1.0.2) (2024-04-08)]] - degree 5, connects to 1 community

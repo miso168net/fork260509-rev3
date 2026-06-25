@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/_builtin/403/index.vue"
 type: "code"
-community: "Community 442"
+community: "index.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_442
+  - community/indexvue
 ---
 
 # index.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_442
+#graphify/code #graphify/EXTRACTED #community/indexvue

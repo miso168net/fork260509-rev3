@@ -1,15 +1,14 @@
 ---
 type: community
-members: 2
+members: 1
 ---
 
 # Community 478
 
-**Members:** 2 nodes
+**Members:** 1 nodes
 
 ## Members
-- [[index_9]] - document - fork260509-soybean-admin-docs/src/jp/standard/index.md
-- [[コーディング規約]] - document - fork260509-soybean-admin-docs/src/jp/standard/index.md
+- [[menuIconTypeRecord (business constants)]] - code - base-web/src/constants/business.ts
 
 ## Live Query (requires Dataview plugin)
 

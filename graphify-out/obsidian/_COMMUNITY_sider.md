@@ -1,22 +1,20 @@
 ---
 type: community
-cohesion: 0.29
 members: 7
 ---
 
 # sider
 
-**Cohesion:** 0.29 - loosely connected
 **Members:** 7 nodes
 
 ## Members
-- [[collapsedWidth (2)]] - code - base-web/src/theme/preset/dark.json
-- [[inverted (3)]] - code - base-web/src/theme/preset/dark.json
-- [[mixChildMenuWidth (2)]] - code - base-web/src/theme/preset/dark.json
-- [[mixCollapsedWidth (2)]] - code - base-web/src/theme/preset/dark.json
-- [[mixWidth (2)]] - code - base-web/src/theme/preset/dark.json
-- [[sider (3)]] - code - base-web/src/theme/preset/dark.json
-- [[width (2)]] - code - base-web/src/theme/preset/dark.json
+- [[collapsedWidth_1]] - code - base-web/src/theme/preset/dark.json
+- [[inverted_2]] - code - base-web/src/theme/preset/dark.json
+- [[mixChildMenuWidth_1]] - code - base-web/src/theme/preset/dark.json
+- [[mixCollapsedWidth_1]] - code - base-web/src/theme/preset/dark.json
+- [[mixWidth_1]] - code - base-web/src/theme/preset/dark.json
+- [[sider_2]] - code - base-web/src/theme/preset/dark.json
+- [[width_1]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,7 +24,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_dark.json]]
+- 1 edge to [[_COMMUNITY_Community 68]]
 
 ## Top bridge nodes
-- [[sider (3)]] - degree 7, connects to 1 community
+- [[sider_2]] - degree 7, connects to 1 community

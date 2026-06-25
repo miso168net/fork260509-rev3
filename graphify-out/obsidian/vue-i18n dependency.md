@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/package.json"
 type: "concept"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # vue-i18n dependency
@@ -14,4 +14,4 @@ tags:
 - [[base-web package.json (soybean-admin deps)]] - `depends_on` [EXTRACTED]
 - [[localesindex.ts ($t, setupI18n)]] - `depends_on` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/concept #graphify/EXTRACTED #community/Community_5

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # Api.SystemManage.LoginAttemptItem DTO
@@ -14,4 +14,4 @@ tags:
 - [[Api.SystemManage.IpConfidence seven-state literal union]] - `references` [EXTRACTED]
 - [[Api.SystemManage.LoginAttemptList (PageRes wrapper)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_8

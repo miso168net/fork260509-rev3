@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "rev3 User/Role Service Wrappers"
+community: "Community 12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_User/Role_Service_Wrappers
+  - community/Community_12
 ---
 
 # Api.SystemManage.UserListItemRev3 DTO (honest user list item)
@@ -15,4 +15,4 @@ tags:
 - [[Api.SystemManage.SessionPolicy literal union]] - `references` [EXTRACTED]
 - [[fetchGetUserListRev3 (honest user list read, nullable fields)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_User/Role_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_12

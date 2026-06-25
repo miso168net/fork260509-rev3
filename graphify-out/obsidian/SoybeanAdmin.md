@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "concept"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # SoybeanAdmin
@@ -18,4 +18,4 @@ tags:
 - [[index.html (Vite SPA entry)]] - `conceptually_related_to` [INFERRED]
 - [[rev3-admin-base-web Branch Origin Record]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/concept #graphify/EXTRACTED #community/Community_22

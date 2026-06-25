@@ -1,18 +1,17 @@
 ---
 type: community
-members: 5
+members: 4
 ---
 
 # Community 218
 
-**Members:** 5 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[Rust axum + Casbin backend (planned)]] - concept - rust-api/x_fork.branch-origin.md
-- [[miso168netfork260509-rev2-anew-rust-api repo]] - concept - rust-api/x_fork.branch-origin.md
-- [[rev3-admin-root umbrella repo (fork260509-rev3)]] - concept - rust-api/x_fork.branch-origin.md
-- [[rev3-admin-rust-api branch]] - concept - rust-api/x_fork.branch-origin.md
-- [[rev3-admin-rust-api 分支來源紀錄_1]] - document - rust-api/x_fork.branch-origin.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_57]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_48]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_42]] - document - base-web/CHANGELOG.md
+- [[v0.10.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.0...v0.10.1) (2023-05-31)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,3 +19,9 @@ members: 5
 TABLE source_file, type FROM #community/Community_218
 SORT file.name ASC
 ```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Community 18]]
+
+## Top bridge nodes
+- [[v0.10.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.0...v0.10.1) (2023-05-31)]] - degree 4, connects to 1 community

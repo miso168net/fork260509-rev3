@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[currentColor theme adaptation in network-error.svg]] - rationale - base-web/src/assets/svg-icon/network-error.svg
-- [[network-error.svg (network error illustration)]] - image - base-web/src/assets/svg-icon/network-error.svg
+- [[Chrome Icon]] - image - base-web/src/assets/svg-icon/chrome.svg
+- [[Google Chrome Browser]] - concept - base-web/src/assets/svg-icon/chrome.svg
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,18 +1,16 @@
 ---
 type: community
-cohesion: 0.67
 members: 3
 ---
 
 # layout
 
-**Cohesion:** 0.67 - moderately connected
 **Members:** 3 nodes
 
 ## Members
-- [[layout (2)]] - code - base-web/src/theme/preset/dark.json
-- [[mode (2)]] - code - base-web/src/theme/preset/dark.json
-- [[scrollMode]] - code - base-web/src/theme/preset/dark.json
+- [[layout_3]] - code - base-web/src/theme/preset/default.json
+- [[mode_3]] - code - base-web/src/theme/preset/default.json
+- [[scrollMode_1]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,7 +20,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_dark.json]]
+- 1 edge to [[_COMMUNITY_Community 67]]
 
 ## Top bridge nodes
-- [[layout (2)]] - degree 3, connects to 1 community
+- [[layout_3]] - degree 3, connects to 1 community

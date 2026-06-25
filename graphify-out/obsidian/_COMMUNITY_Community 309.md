@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[Bug Report Issue Template (CN)]] - document - base-web/.github/ISSUE_TEMPLATE/bug-report_cn.yaml
-- [[Bug Report Issue Template (EN)]] - document - base-web/.github/ISSUE_TEMPLATE/bug-report_en.yaml
+- [[icons]] - code - base-web/src/views/plugin/icon/icons.ts
+- [[icons.ts]] - code - base-web/src/views/plugin/icon/icons.ts
 
 ## Live Query (requires Dataview plugin)
 

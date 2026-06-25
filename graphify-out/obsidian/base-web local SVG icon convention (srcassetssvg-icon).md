@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/custom-icon.svg"
 type: "concept"
-community: "Community 322"
+community: "Community 326"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/Community_322
+  - community/Community_326
 ---
 
 # base-web local SVG icon convention (src/assets/svg-icon)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[custom-icon.svg Local Icon]] - `conceptually_related_to` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/Community_322
+#graphify/concept #graphify/INFERRED #community/Community_326

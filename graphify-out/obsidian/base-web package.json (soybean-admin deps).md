@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # base-web package.json (soybean-admin deps)
@@ -17,4 +17,4 @@ tags:
 - [[vue-router dependency]] - `depends_on` [EXTRACTED]
 - [[xlsx dependency]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

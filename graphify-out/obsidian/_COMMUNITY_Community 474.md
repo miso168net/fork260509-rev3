@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[fetchBatchDeleteUser (rev3 user batch soft-delete wrapper)]] - code - base-web/src/service/api/rev3-system-manage.ts
+- [[lib.rs_3]] - code - rust-api/xdb/src/lib.rs
 
 ## Live Query (requires Dataview plugin)
 

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/release.yml"
 type: "document"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # Release GitHub Actions Workflow
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[githublogen Changelog Generator]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/CI_Workflows__Issue_Templates
+#graphify/document #graphify/EXTRACTED #community/Community_22

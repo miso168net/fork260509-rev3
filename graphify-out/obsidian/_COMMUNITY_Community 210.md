@@ -8,11 +8,11 @@ members: 5
 **Members:** 5 nodes
 
 ## Members
-- [[fixed_1]] - code - base-web/src/theme/preset/default.json
-- [[footer_2]] - code - base-web/src/theme/preset/default.json
-- [[height_7]] - code - base-web/src/theme/preset/default.json
-- [[right_1]] - code - base-web/src/theme/preset/default.json
-- [[visible_15]] - code - base-web/src/theme/preset/default.json
+- [[404 Not Found page view (_builtin404)]] - code - base-web/src/views/_builtin/404/index.vue
+- [[ExceptionBase component]] - code - base-web/src/components/common/exception-base.vue
+- [[no-permission.svg (403 Illustration)]] - image - base-web/src/assets/svg-icon/no-permission.svg
+- [[not-found.svg (404 Page Not Found Illustration)]] - image - base-web/src/assets/svg-icon/not-found.svg
+- [[service-error.svg (500 Illustration)]] - image - base-web/src/assets/svg-icon/service-error.svg
 
 ## Live Query (requires Dataview plugin)
 
@@ -20,9 +20,3 @@ members: 5
 TABLE source_file, type FROM #community/Community_210
 SORT file.name ASC
 ```
-
-## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 67]]
-
-## Top bridge nodes
-- [[footer_2]] - degree 5, connects to 1 community

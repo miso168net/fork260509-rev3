@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/tsconfig.json"
 type: "code"
-community: "Community 43"
+community: "TSConfig Compiler Options"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_43
+  - community/TSConfig_Compiler_Options
 ---
 
 # allowSyntheticDefaultImports
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_43
+#graphify/code #graphify/EXTRACTED #community/TSConfig_Compiler_Options

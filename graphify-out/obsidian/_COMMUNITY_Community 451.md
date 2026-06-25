@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[activity.svg — pulseheartbeat zigzag line icon]] - image - base-web/src/assets/svg-icon/activity.svg
+- [[register.vue]] - code - base-web/src/views/_builtin/login/modules/register.vue
 
 ## Live Query (requires Dataview plugin)
 

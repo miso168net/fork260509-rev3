@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/user/modules/user-operate-drawer.vue"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # user-operate-drawer.vue (user add/edit drawer)
@@ -18,4 +18,4 @@ tags:
 - [[sessionPolicyRecord (business constants)]] - `references` [EXTRACTED]
 - [[userGenderRecord (business constants)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

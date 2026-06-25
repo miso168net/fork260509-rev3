@@ -1,18 +1,17 @@
 ---
 type: community
-members: 5
+members: 4
 ---
 
 # base-web CHANGELOG
 
-**Members:** 5 nodes
+**Members:** 4 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_75]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_66]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;💅 Refactors_33]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📦 Build_14]] - document - base-web/CHANGELOG.md
-- [[v0.0.3(httpsgithub.comhonghuangdcsoybean-admincomparev0.0.2...v0.0.3) (2021-11-23)]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_57]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_48]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_42]] - document - base-web/CHANGELOG.md
+- [[v0.10.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.0...v0.10.1) (2023-05-31)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,4 +24,4 @@ SORT file.name ASC
 - 1 edge to [[_COMMUNITY_base-web CHANGELOG]]
 
 ## Top bridge nodes
-- [[v0.0.3(httpsgithub.comhonghuangdcsoybean-admincomparev0.0.2...v0.0.3) (2021-11-23)]] - degree 5, connects to 1 community
+- [[v0.10.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.0...v0.10.1) (2023-05-31)]] - degree 4, connects to 1 community

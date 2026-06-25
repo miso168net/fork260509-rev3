@@ -2,7 +2,7 @@
 source_file: "rust-api/cleanup-job/src/main.rs"
 type: "code"
 community: "Community 268"
-location: "L68"
+location: "L105"
 tags:
   - graphify/code
   - graphify/EXTRACTED

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/components/advanced/table-header-operation.vue"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # TableHeaderOperation component
@@ -14,4 +14,4 @@ tags:
 - [[localesindex.ts ($t, setupI18n)]] - `calls` [EXTRACTED]
 - [[manageuserindex.vue (user list page)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

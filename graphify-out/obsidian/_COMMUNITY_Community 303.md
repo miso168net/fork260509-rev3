@@ -8,8 +8,8 @@ members: 2
 **Members:** 2 nodes
 
 ## Members
-- [[index.vue_43]] - code - base-web/src/views/plugin/excel/index.vue
-- [[label_3]] - code - base-web/src/views/plugin/excel/index.vue
+- [[darkColor]] - code - base-web/src/components/custom/wave-bg.vue
+- [[wave-bg.vue]] - code - base-web/src/components/custom/wave-bg.vue
 
 ## Live Query (requires Dataview plugin)
 

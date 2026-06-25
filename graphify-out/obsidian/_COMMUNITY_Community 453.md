@@ -8,7 +8,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[About page (base-websrcviewsaboutindex.vue)]] - code - base-web/src/views/about/index.vue
+- [[activity.svg — pulseheartbeat zigzag line icon]] - image - base-web/src/assets/svg-icon/activity.svg
 
 ## Live Query (requires Dataview plugin)
 

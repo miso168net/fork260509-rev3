@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # transformElegantRoutesToVueRoutes + routeMap
@@ -15,4 +15,4 @@ tags:
 - [[elegantimports.ts (layouts + views map)]] - `depends_on` [INFERRED]
 - [[useRouteStore (route pinia store)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

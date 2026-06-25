@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/locales/langs/en-us.ts"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # en-us.ts locale messages
@@ -15,4 +15,4 @@ tags:
 - [[en-us backend. message keys]] - `references` [EXTRACTED]
 - [[translate-backend-msg.spec.ts (i18n boundary test)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

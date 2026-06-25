@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/pnpm-workspace.yaml"
 type: "document"
-community: "CI Workflows & Issue Templates"
+community: "Community 22"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/CI_Workflows__Issue_Templates
+  - community/Community_22
 ---
 
 # base-web pnpm-workspace.yaml
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[pnpm Monorepo Architecture]] - `implements` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/CI_Workflows__Issue_Templates
+#graphify/document #graphify/INFERRED #community/Community_22

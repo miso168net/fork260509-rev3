@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/banner.svg"
 type: "image"
-community: "Community 264"
+community: "Community 266"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Community_264
+  - community/Community_266
 ---
 
 # banner.svg — flat-style hero illustration: a person presenting a large analyt…
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[CreativityBanner (home module component, creativity-banner.vue)]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_264
+#graphify/image #graphify/EXTRACTED #community/Community_266

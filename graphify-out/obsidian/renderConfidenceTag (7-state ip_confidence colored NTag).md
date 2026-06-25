@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/audit/modules/ip-confidence-tag.tsx"
 type: "code"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # renderConfidenceTag (7-state ip_confidence colored NTag)
@@ -16,4 +16,4 @@ tags:
 - [[LoginAttemptTable (login attempt audit table + filters + CSV export)]] - `calls` [EXTRACTED]
 - [[OperationLogTable (operation audit table + payload expand + CSV export)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_8

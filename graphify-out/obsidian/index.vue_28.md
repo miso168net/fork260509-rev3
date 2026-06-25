@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/function/tab/index.vue"
 type: "code"
-community: "Community 407"
+community: "index.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_407
+  - community/indexvue
 ---
 
 # index.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_407
+#graphify/code #graphify/EXTRACTED #community/indexvue

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/audit/modules/access-log-table.vue"
 type: "code"
-community: "rev3 Menu Service Wrappers"
+community: "Community 8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/rev3_Menu_Service_Wrappers
+  - community/Community_8
 ---
 
 # AccessLogTable (API access audit table + filters + CSV export)
@@ -18,4 +18,4 @@ tags:
 - [[fetchGetAccessLog (API access audit read)]] - `calls` [EXTRACTED]
 - [[renderConfidenceTag (7-state ip_confidence colored NTag)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/rev3_Menu_Service_Wrappers
+#graphify/code #graphify/EXTRACTED #community/Community_8

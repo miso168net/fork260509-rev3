@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/user/index.vue"
 type: "code"
-community: "App Bootstrap & Service Stack"
+community: "Community 5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Bootstrap__Service_Stack
+  - community/Community_5
 ---
 
 # manage/user/index.vue (user list page)
@@ -21,4 +21,4 @@ tags:
 - [[user-operate-drawer.vue (user addedit drawer)]] - `references` [EXTRACTED]
 - [[userGenderRecord (business constants)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Bootstrap__Service_Stack
+#graphify/code #graphify/EXTRACTED #community/Community_5

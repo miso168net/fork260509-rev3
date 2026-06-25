@@ -1,20 +1,18 @@
 ---
 type: community
-cohesion: 0.40
 members: 5
 ---
 
 # footer
 
-**Cohesion:** 0.40 - moderately connected
 **Members:** 5 nodes
 
 ## Members
-- [[fixed]] - code - base-web/src/theme/preset/dark.json
-- [[footer (2)]] - code - base-web/src/theme/preset/dark.json
-- [[height (5)]] - code - base-web/src/theme/preset/dark.json
-- [[right]] - code - base-web/src/theme/preset/dark.json
-- [[visible (10)]] - code - base-web/src/theme/preset/dark.json
+- [[fixed_1]] - code - base-web/src/theme/preset/default.json
+- [[footer_2]] - code - base-web/src/theme/preset/default.json
+- [[height_7]] - code - base-web/src/theme/preset/default.json
+- [[right_1]] - code - base-web/src/theme/preset/default.json
+- [[visible_15]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,7 +22,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_dark.json]]
+- 1 edge to [[_COMMUNITY_Community 67]]
 
 ## Top bridge nodes
-- [[footer (2)]] - degree 5, connects to 1 community
+- [[footer_2]] - degree 5, connects to 1 community

@@ -8,13 +8,13 @@ members: 7
 **Members:** 7 nodes
 
 ## Members
-- [[OperationLogFilter]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[audit_query_oplog_access_login_filters()]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[ilike()_2]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[ip_host_like()]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[list()_3]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[sys_operation_log.rs_1]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
-- [[write_in_txn()]] - code - rust-api/server/src/model/facade/sys_operation_log.rs
+- [[alloy compose service (obs-min docker-SD log collector, profilesobs, userroot)]] - code - docker-compose.yml
+- [[alloy_data volume]] - concept - docker-compose.yml
+- [[grafana compose service (obs UI, profilesobs,metrics, $__file admin pw)]] - code - docker-compose.yml
+- [[grafana_admin_password secret]] - concept - docker-compose.yml
+- [[grafana_data volume]] - concept - docker-compose.yml
+- [[loki compose service (obs-min log storage, profilesobs, 72h retention)]] - code - docker-compose.yml
+- [[loki_data volume]] - concept - docker-compose.yml
 
 ## Live Query (requires Dataview plugin)
 
