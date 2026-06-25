@@ -9,15 +9,15 @@
 
 ## 1. Current Focus
 
-**階段**:**波 4 observability ✅ 全完成（2026-06-25）— 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert〕、rust 埋点 RUSTAPI-SOURCE-ISOLATION〔json log+trace_id 關聯／/metrics+casbin counter／cleanup push〕、零 base-web/零 migration/零新 crate、MSRV 1.86 確證。波 3 ✅（014/015/016）＋pre-波4 017 ✅（merge `c7f5936`）＋波 2 ✅（009-012）＋D11 013 ✅ 已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
+**階段**:**019-login-lockout ✅ 收刀（2026-06-25、波 4 後獨立刀＝⚠️w 登入失敗節流落地、merge `dbc5902f`、feature branch 保留、目前無 active feature）；波 4 observability ✅ 全完成（2026-06-25）— 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert〕、rust 埋点 RUSTAPI-SOURCE-ISOLATION〔json log+trace_id 關聯／/metrics+casbin counter／cleanup push〕、零 base-web/零 migration/零新 crate、MSRV 1.86 確證。波 3 ✅（014/015/016）＋pre-波4 017 ✅（merge `c7f5936`）＋波 2 ✅（009-012）＋D11 013 ✅ 已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
+- **2026-06-25 019-login-lockout ✅ 全綠收刀：merge `dbc5902f`（波 4 後獨立刀＝⚠️w 落地）**：登入失敗節流 gate、對既有 `sys_login_attempt` 唯讀消費、login 前置滑動 15 分窗 count、per-user 5／per-ip 20 任一達門檻短路擋（既有 2222+key `auth.login.locked`）、gated 列匯流既有單寫點＝sticky+審計、滑動窗自動解、fail-OPEN。2 執行單元 Workflow 驅動（U1 rust gate `5cec936`／U2 base-web i18n `5e667f9d`）、主線逐單元邊界獨立自驗+bump pin。C-V-0~9 全綠〔含 CDP zh-cn/en-us 雙語在地化 toast〔★抓到+修正 vite stale-locale〕、EXPLAIN 索引相容、零回歸 171 passed〕、final holistic PASS 無 blocker。0 schema/migration/新 crate/新 route、Constitution 9/9。詳 [DECISIONS §1 ⚠️w](INTEGRATION-DECISIONS.md)／[MILESTONES `dbc5902f`](INTEGRATION-MILESTONES.md)
 - **2026-06-25 波 4 observability ✅ 全綠收刀：018-observability merge `c1a3224`**：一刀三執行單元（U0 MSRV→U1 obs-min log→U2 obs-full metrics→U3 dashboard→Polish）;rust json log+trace_id 關聯〔fields_trace_id join sys_access_log〕／`/metrics`+casbin_enforce_total{decision}+cleanup pushgateway／6 grafana dashboard〔CDP 實渲染〕／3 alert〔5xx idle false-firing 修〕。4 Workflow 驅動+整體 holistic CONCERNS 無 BLOCK;C-V-0~8+prod build+MSRV 全綠;零 base-web/migration/新 crate、Constitution 9/9。詳 [DECISIONS §2](INTEGRATION-DECISIONS.md)／[REVIEW-018](REVIEW-018-observability.md)
-- **2026-06-24 波 4 啟動：018-observability Phase 0 brainstorm 落地**：一刀 018＋三執行單元 obs-min→obs-full→dashboard（D1）、rev2 對等+hindsight、defer 同 rev2（D2）；act-on-code 接地（axum 0.7／無 log-side trace_id span→U1 含小 rust 單元／nginx 404+JSON 已就緒不動／`grafana_admin_password` DESIGN:706 落差須補／★MSRV 1.86 必檢）。spec-design `676b13be`、pending 手動 `/speckit-specify`。詳 [018 spec-design](superpowers/018-observability.md)
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **波 4 observability ✅ 全完成、目前無 active feature**（018-observability merge `c1a3224`、feature branch 保留）。下一波 roadmap 見 [DESIGN §8.4](INTEGRATION-DESIGN.md);候選遞延項＝alt-login 4 流程 stub〔⚠️m post-波3 v1-completeness slot、§4.2〕／audit scale 兩項〔pg_trgm／archive purge、§4.2〕／log retention purge〔⚠️n、§4.2〕。018 自身遞延 backlog 見 §3.I。Auth 島／治理島 §4.2／三維 RBAC runtime 編輯／觀測層皆已閉口
+**下一步**: **019-login-lockout ✅ 收刀、目前無 active feature**（merge `dbc5902f`、feature branch 保留；波 4 observability 亦已全完成 merge `c1a3224`）。下一波 roadmap 見 [DESIGN §8.4](INTEGRATION-DESIGN.md);候選遞延項＝alt-login 4 流程 stub〔⚠️m post-波3 v1-completeness slot、§4.2〕／audit scale 兩項〔pg_trgm／archive purge、§4.2〕／log retention purge〔⚠️n、§4.2〕。018 自身遞延 backlog 見 §3.I。Auth 島／治理島 §4.2／三維 RBAC runtime 編輯／觀測層皆已閉口
 
 ---
 

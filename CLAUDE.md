@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 波 0~4 全完成**（最近收刀 018-observability＝2026-06-25；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯／**observability 觀測層**（001-018）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md)、候選遞延見 [CHECKLIST §4.2／§3.I](docs/INTEGRATION-CHECKLIST.md)（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 波 0~4 全完成＋019 收刀**（最近收刀 019-login-lockout＝2026-06-25〔波4 後獨立刀＝⚠️w 登入失敗節流落地、merge `dbc5902f`〕；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯／**observability 觀測層**／**登入失敗節流 gate**（001-019）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md)、候選遞延見 [CHECKLIST §4.2／§3.I](docs/INTEGRATION-CHECKLIST.md)（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **019-login-lockout**（spec-kit 設計鏈：specify→clarify〔0 critical ambiguity〕→**plan ✅**）。登入失敗節流 gate＝⚠️w 落地：對既有 `sys_login_attempt` 唯讀消費、login 前置滑動 15 分窗 count，per-user 5／per-ip 20 任一達門檻即短路擋（既有 2222 + i18n key `auth.login.locked`）；gated 列匯流既有單一寫點＝sticky+審計留痕、滑動窗自動解、fail-OPEN（count DbErr→放行）。0 schema／0 migration／0 新 crate／0 新 route；base-web 僅 1 i18n key（BASE-WEB-I18N-WIRING ★ (ii)(iii)、login form/攔截器零改）。Constitution 9/9 乾淨（無破例）。plan＝[plan.md](specs/019-login-lockout/plan.md)（research/data-model/contracts/quickstart 齊）。
-下一步: `/speckit-tasks` → `/speckit-analyze` → 階段 2 `executing-plans`（2 執行單元：U1 rust gate〔facade ×2 count + handler gate + 純函式〕／U2 base-web i18n key）。⚠️w 收刀時回填 DECISIONS §1（含 D3 靜態訊息 supersede「N 分鐘」措辭）。
+Active feature: **無**（**019-login-lockout ✅ 收刀 2026-06-25**、merge `dbc5902f`、feature branch 保留）。登入失敗節流 gate＝⚠️w 落地：對既有 `sys_login_attempt` 唯讀消費、login 前置滑動 15 分窗 count，per-user 5／per-ip 20 任一達門檻即短路擋（既有 2222 + i18n key `auth.login.locked`）；gated 列匯流既有單一寫點＝sticky+審計留痕、滑動窗自動解、fail-OPEN。2 執行單元 Workflow 驅動：U1 rust gate（rust-api `5cec936`/outer pin `21805e55`、facade ×2 count〔★D-04 IpNetwork::from 寫讀一致〕+is_locked_out 純函式+gate 插點+live smoke ×4）／U2 base-web i18n（base-web `5e667f9d`/outer pin `0cb43fb4`、`backend.auth.login.locked` Schema+雙語 locale）。C-V-0~9 全綠〔CDP zh-cn/en-us 雙語在地化 toast〔★抓+修 vite stale-locale〕、EXPLAIN 索引相容、零回歸 171 passed〕、final holistic PASS。0 schema/migration/新 crate/新 route、Constitution 9/9。
+下一步: 無 active feature；⚠️w 已回填 [DECISIONS §1](docs/INTEGRATION-DECISIONS.md)（含 D3 靜態訊息 supersede「N 分鐘」措辭）。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md)、候選遞延見 [CHECKLIST](docs/INTEGRATION-CHECKLIST.md)「下一步」。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
