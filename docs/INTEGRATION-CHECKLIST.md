@@ -104,6 +104,7 @@
 ### 3.E test/lint 健壯化（跨刀：007/008/011/013、觸發時加守門）
 
 - [ ] op-log count EntityId-only 隔離脆弱性〔007-era；`op_log_atomic_three_paths` 014 已 trace_id 化；sys_role/menu/casbin 殘留未觀察 flaky、真失敗再統一 trace_id 化〕
+- [x] ✅ **audit_query live 測 snapshot 依賴**〔012、2026-06-25 修 `a86dc60`〕：`audit_query_oplog_access_login_filters` 原依賴特定 dev DB snapshot（op-log≥41/access≥744/login≥214/casbin==2/created_at 06-17~19/id=12 等）、reset/fresh DB 全垮 → 重寫為 **marker-isolated 自備 seed（state-independent）**：uuid marker 經生產寫路徑 seed 三表、斷言改 marker-isolated 計數+relational+結構不變式。全 live 套件 28/1 → 29/0、主線獨立連跑兩次驗 GREEN（ambient op-log=1 通過）
 - [ ] `endpoint_coverage_lint` `first_string_after` 抽取假設字面字串〔008；引入 `.route(CONST,…)`/`require_policy(CONST,…)` 須加守門或 self-test〕
 - [ ] `validate_value_type` 非 enum 型保守放行〔008；新值型 seed 須補驗證分支＋守恆斷言〕
 - [x] ✅ pre-existing dead〔pre-波4 2026-06-23 重構順手清〕：`sys_casbin_rule.rs` ConnectionTrait unused import〔011 起〕已刪／`RequestContext.operator_id` never-read〔007 起〕已移除欄位+賦值
