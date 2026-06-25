@@ -79,8 +79,7 @@
 ## 修復建議優先序
 
 1. ✅ **H-1~H-4 全閉合（2026-06-25）**＝CSV injection／self-lock 繞過／watcher deny-all／date off-by-one；TDD +8 rust 單元測、179 passed 零回歸、主線獨立自驗。rust-api `6017732`+`cda07e9`、base-web `f334feec`、outer pin `55dec914`。
-2. **M-1~M-5**＝correctness medium、逐項小修 → 登 [CHECKLIST §3.E](INTEGRATION-CHECKLIST.md) 本版觸發時做。
-3. **M-6~M-9**＝security/prod 硬化 → 登 [CHECKLIST §3.A／§4.2](INTEGRATION-CHECKLIST.md)（部分與既有 prod 硬化合併）。
-4. 🟡 區登記可見性、依合規/部署需求排程（含新登 timing oracle／op-log PII／trace_id log-injection）。
+2. ✅ **M-1~M-9 全閉合（2026-06-25）**：**M-1~M-6** rust correctness/authz（TDD +5 測、184 passed 零回歸、主線獨立自驗 M-6 authz；rust-api `3bfab71`+`46cce39`+`4eb710c`、pin `0c14abdb`；M-1/M-6 新增 2 biz key 補 base-web locale `28029fa5`/pin `d5dd55c7`）。**M-6** 加 no-escalation 守門〔user 拍板〕：非 R_SUPER operator desired⊄effective→2222、R_SUPER bypass。**M-7** CF 偽造＝prod rust-api internal-only 已緩解〔文件化〕。**M-8/M-9** nginx prod 安全 header（Referrer/Permissions/結構性 CSP）+ public auth 速率限制（limit_req 5r/s burst40）〔deploy `8e636891`、nginx -t 綠+runtime sanity〕。
+3. 🟡 區登記可見性、依合規/部署需求排程（含新登 timing oracle／op-log PII／trace_id log-injection／完整資源 CSP 待 prod CDP 驗）。
 
 > 註：本兩輪為**靜態審查**（不跑 cargo/CDP）；修復後須各以對應測試/CDP 驗。findings 全文（含 PLAUSIBLE 完整 reasoning）見 workflow 輸出。spec-compliance 視角見 [REVIEW-001-019](REVIEW-001-019.md)。
