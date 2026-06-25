@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **（無）**——波 4 observability ✅ 全完成（018-observability merge `c1a3224`、feature branch 保留;一刀三執行單元 obs-min→obs-full→dashboard、完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert＋rust RUSTAPI-SOURCE-ISOLATION 埋点：json log+trace_id 關聯〔fields_trace_id〕／/metrics+casbin_enforce_total{decision}／cleanup pushgateway push〕、零 base-web/零 migration/零新 crate、MSRV 1.86 確證、Constitution 9/9）。3 攔截真缺陷皆經驗修〔FR-006 explicit completion event／grafana `$__file{}` provider／5xx alert noDataState=OK〕。C-V-0~8+prod build+MSRV 全綠、final holistic CONCERNS 無 BLOCK。as-built 詳 [DECISIONS §2](docs/INTEGRATION-DECISIONS.md)／[REVIEW-018](docs/REVIEW-018-observability.md)。
-下一步: 目前無 active feature。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md);候選遞延＝alt-login stub〔⚠️m〕／audit scale〔pg_trgm·archive purge〕／log retention purge〔⚠️n〕（[CHECKLIST §4.2](docs/INTEGRATION-CHECKLIST.md)）;018 自身遞延 backlog 見 [CHECKLIST §3.I](docs/INTEGRATION-CHECKLIST.md)。
+Active feature: **019-login-lockout**（spec-kit 設計鏈：specify→clarify〔0 critical ambiguity〕→**plan ✅**）。登入失敗節流 gate＝⚠️w 落地：對既有 `sys_login_attempt` 唯讀消費、login 前置滑動 15 分窗 count，per-user 5／per-ip 20 任一達門檻即短路擋（既有 2222 + i18n key `auth.login.locked`）；gated 列匯流既有單一寫點＝sticky+審計留痕、滑動窗自動解、fail-OPEN（count DbErr→放行）。0 schema／0 migration／0 新 crate／0 新 route；base-web 僅 1 i18n key（BASE-WEB-I18N-WIRING ★ (ii)(iii)、login form/攔截器零改）。Constitution 9/9 乾淨（無破例）。plan＝[plan.md](specs/019-login-lockout/plan.md)（research/data-model/contracts/quickstart 齊）。
+下一步: `/speckit-tasks` → `/speckit-analyze` → 階段 2 `executing-plans`（2 執行單元：U1 rust gate〔facade ×2 count + handler gate + 純函式〕／U2 base-web i18n key）。⚠️w 收刀時回填 DECISIONS §1（含 D3 靜態訊息 supersede「N 分鐘」措辭）。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
