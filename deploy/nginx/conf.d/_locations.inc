@@ -14,6 +14,9 @@ location = /api/metrics {
 }
 
 location /api/ {
+    # M-9（§3.J）：速率限制（auth_limit zone 定義於 nginx.conf http；burst 大到不破 dev lockout 測〔5-6 次〕
+    #   與正常 admin 操作、擋 prod 未認證洪水暴打 /api/auth/login·refreshToken）。nodelay＝burst 內不延遲。
+    limit_req zone=auth_limit burst=40 nodelay;
     proxy_pass http://rust-api:31081/;   # ★ 末尾 / 必要:strip /api 前綴
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
