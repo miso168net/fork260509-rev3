@@ -40,7 +40,7 @@ description: "Task list — 018-observability"
 **Goal**: 全容器 stdout 集中可查，且 log 行可經 `trace_id` join DB 審計列。
 **Independent Test**: `--profile obs` 起，發請求 → loki LogQL `{compose_project="rev3-admin"}` 查到 log；`| json | fields_trace_id="<x>"` 與 `sys_access_log.trace_id` 同值。
 
-- [ ] T005 [US1] rust log span：`rust-api/server/src/audit_ctx.rs` audit_mw 於 `next.run(req).await`（~L364）改 `.instrument(info_span!("request", trace_id = %trace_id, method = %method, path = %path))`（async-aware、trace_id 已於 ~L348 算出；勿用 sync `_enter` 跨 await）
+- [ ] T005 [US1] rust log span：`rust-api/server/src/audit_ctx.rs` audit_mw 於 `next.run(req).await`（~L364）改 `.instrument(info_span!("request", trace_id = %trace_id, method = %method, path = %path))`（async-aware、trace_id 已於 ~L348 算出；勿用 sync `_enter` 跨 await）　★ **as-built（rust `56f8d01`）**：span 單獨對無 in-span event 的請求（/health）不輸出 log 行、span 欄位落 JSON `span`/`spans` 非 `fields`→ audit_mw 於 `next.run` 回來後**另補 explicit event** `tracing::info!(trace_id=%…, method, path, http_status, "request completed")`，使 trace_id 落 event `fields`→loki `fields_trace_id`（FR-006 join key）並帶 http_status；entry span 保留供 context（詳 data-model §1.2 as-built）
 - [ ] T006 [US1] rust json subscriber：`rust-api/server/src/main.rs`（~L55-59）`fmt()` 鏈於 `.with_env_filter(...)` 與 `.init()` 間插 `.json()`（tracing-subscriber json feature 已於 T002；event 欄位巢狀 `fields.trace_id`）→ worktree commit（U1 rust）＋ **bump rust-api pin**（§4.1）
 - [ ] T007 [P] [US1] 新建 `deploy/loki-config.yml`（filesystem TSDB schema v13、`retention 72h`、`auth_enabled: false`、http :3100）
 - [ ] T008 [P] [US1] 新建 `deploy/alloy-config.alloy`（`discovery.docker` 讀 docker.sock、★ relabel **keep `__meta_docker_container_label_com_docker_compose_project == "rev3-admin"`**、compose-service→`service`／container→`container`／project→`compose_project`、`loki.write` → loki:3100）
@@ -76,7 +76,7 @@ description: "Task list — 018-observability"
 **Independent Test**: prometheus/grafana 見 3 rule；停 postgres_exporter → infra-exporter-down 經 2m Alerting。
 **Depends**: US2（指標 + prometheus datasource）。
 
-- [ ] T019 [US3] 新建 `deploy/grafana-provisioning/alerting/rules.yml`（group `obs-full-baseline`、interval 1m、datasourceUid prometheus、noData/execErr=Alerting）：`obsfull-rustapi-down`(`up{job="rust-api"}`<1,for 2m,critical)／`obsfull-infra-exporter-down`(`up{job=~"postgres|redis"}`<1,2m,critical)／`obsfull-rustapi-high-5xx`(`sum(rate(axum_http_requests_total{status=~"5.."}[5m]))/clamp_min(sum(rate(axum_http_requests_total[5m])),1)`>0.05,5m,warning)；**不** provision contact point/notification policy（D3）
+- [ ] T019 [US3] 新建 `deploy/grafana-provisioning/alerting/rules.yml`（group `obs-full-baseline`、interval 1m、datasourceUid prometheus、noData/execErr=Alerting）：`obsfull-rustapi-down`(`up{job="rust-api"}`<1,for 2m,critical)／`obsfull-infra-exporter-down`(`up{job=~"postgres|redis"}`<1,2m,critical)／`obsfull-rustapi-high-5xx`(`sum(rate(axum_http_requests_total{status=~"5.."}[5m]))/clamp_min(sum(rate(axum_http_requests_total[5m])),1)`>0.05,5m,warning)；**不** provision contact point/notification policy（D3）　★ **as-built（`fdca7bf2`）**：5xx rule 改 `noDataState=OK`（非 Alerting；idle 零 5xx 時 ratio 回空向量、noData=Alerting 會誤 firing）＋expr 兩端加 `or vector(0)`（healthy 恆 0）；down 2 rule 維持 noDataState=Alerting（詳 data-model §1.3 as-built）
 
 **Checkpoint US3**: 跑 [C-V-4](contracts/verification-commands.md)（3 rule + 模擬 down 轉 Alerting）
 

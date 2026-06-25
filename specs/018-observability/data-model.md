@@ -18,6 +18,7 @@
 subscriber `.json()` 後每行為合法 JSON；request span 帶 structured field：
 - `fields_trace_id`（巢狀於 `fields`、非 top-level）＝ trace_id（honor `x-request-id` trim≤64 else uuid-v4），**log↔DB 審計列關聯鍵**（join `sys_access_log.trace_id`／`sys_operation_log.trace_id`）。
 - 本刀 request span 實放欄位＝`trace_id`／`method`／`path`（T005）。`http_status`（回應狀態、`next.run().await` 回來後才有、`.instrument()` 進入點放不進）／`ip_confidence`／`client_ip`／`peer_ip` **非本 entry-span field、仍只進 `sys_access_log`**（勿嘗試塞進進入點 span）。
+- ★ **as-built 修正（FR-006、rust commit `56f8d01`）**：`.instrument(span)` 單獨對【無 in-span event 的請求】（如 /health）**不輸出任何 log 行**、且 span 欄位在 JSON 落 `span`/`spans` 非 `fields`。故 audit_mw 於 `next.run` 回來後另補一筆 explicit event `tracing::info!(trace_id=%…, method, path, http_status, "request completed")`——**`fields_trace_id` 實際來自此 event 的 `fields`（非 entry span），且此 event 帶得了 `http_status`**（上一點「http_status 放不進」僅針對 entry span）。entry span 保留供 in-request event 繼承 trace_id context。詳 DECISIONS §2 波4。
 
 ### 1.3 Alert rule（3，U2、rules-only D3）
 | uid | expr | for | severity |
@@ -27,6 +28,8 @@ subscriber `.json()` 後每行為合法 JSON；request span 帶 structured field
 | `obsfull-rustapi-high-5xx` | `sum(rate(axum_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(axum_http_requests_total[5m])),1)` > 0.05 | 5m | warning |
 
 > job 名（`rust-api`/`postgres`/`redis`）＝ prometheus.yml `job_name`，**不可漂**（up selector rot）。
+
+> ★ **as-built 修正（5xx rule、commit `fdca7bf2`）**：原設「3 rule 一律 noDataState=Alerting」，但高-5xx 的 ratio query 在 idle/零 5xx 時回【空向量】、被 noData=Alerting 誤升 Firing（healthy 卻告警＝false positive、違 FR-015/016 意圖）。as-built 改：**5xx rule `noDataState: OK`**（無 5xx 資料＝健康；down 2 rule 維持 Alerting＝「無 up 資料＝target 沒了」語意正確）＋expr 兩端加 `or vector(0)` 使 ratio 在 healthy 恆 0：`(sum(rate(...5xx...[5m])) or vector(0)) / clamp_min(sum(rate(...all...[5m])) or vector(0), 1)`。實證 idle 後 3 rule 全 inactive。詳 DECISIONS §2 波4。
 
 ### 1.4 Dashboard（6，U3）
 | json | title | uid | 主要消費訊號 |

@@ -126,7 +126,7 @@
 
 - [ ] **postgres dashboard docker 空態**〔018 U3、low/cosmetic〕：community 板 grafana 9628 的 `release`／`instance` template var 依賴 k8s label（kubernetes_namespace/release）、docker 下 postgres_exporter v0.19.1 不 emit→該類 filter 面板空態〔核心 pg_up/連線/DB stats 仍出圖、spec C-V-6「panel 有資料/正確空態」容許〕。欲消空面板：改 docker 友善板（grafana 12485）或重寫變數 query（`label_values(pg_up,instance)`）。
 - **request-completion 無認證請求 log 噪音**〔018 U1、by-design 非待辦〕：FR-006「每請求一行」使所有無認證請求亦輸出一行 INFO log——尤其 `/health`（docker healthcheck）與 `/metrics`（prometheus scrape、metrics profile 啟用時每 15s）〔loki 72h+opt-in 已界範圍〕;如噪音過大可選 subscriber path 過濾〔權衡 trace_id join 完整性〕。
-- [ ] **spec as-built 全面校正**〔018、doc〕：data-model §1.3 noDataState（5xx as-built=OK）／tasks T019／C-V-4 contract（已部分校正會假失敗的命令）留 `/speckit-analyze` 批次對齊 as-built。
+- [x] ✅ **spec as-built 校正**〔018、doc、2026-06-25、commit `0d4ad94c`〕：data-model §1.2/§1.3 ＋ tasks T005/T019 補 ★as-built 標註（5xx noDataState=OK＋expr `or vector(0)`／FR-006 explicit completion event→`fields_trace_id`）；C-V-1/3/4 contract 已於 `ed6beb3a` 校正。★ 方法＝**直接 as-built 標註（非 `/speckit-analyze`——analyze 是 spec.md↔plan↔tasks【內部】一致性、不比對 as-built code；018 spec-internal analyze 早於實作前 `b7a18789` 跑過）**。（未做＝tasks 28 checkbox 補勾／T012 lint collateral 註，屬可選、非 as-built 內容偏離。）
 
 ---
 
