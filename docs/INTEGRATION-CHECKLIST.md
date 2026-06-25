@@ -57,10 +57,14 @@
 
 > as-built 詳帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md);commit 史見 [MILESTONES §1](INTEGRATION-MILESTONES.md);018 遞延 backlog 見 §3.I。
 
+### 波4 後獨立刀 — 019-login-lockout ✅ 全完成+已歸檔 (2026-06-25)
+
+> 單一 feature（非波次、無 DECISIONS §2 實施帳）;as-built/commit 見 [MILESTONES §1 `dbc5902f`](INTEGRATION-MILESTONES.md);拍板見 [DECISIONS §1 ⚠️w](INTEGRATION-DECISIONS.md);019 future-version 遞延見 §4.2。
+
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 **2026-06-25**〔3284 nodes/4062 edges/482 community、見 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)〕：008-017 rust 已於 2026-06-24 同步、**018 obs 已於 2026-06-25 增量入圖**〔rust 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job push_metrics＋master compose obs 7 service/4 卷/1 secret 手刻;`request` 升 god node 18 edges〕。圖反映 rust-api worktree `6871907`＋base-web `134ddcc2`＋master compose 現碼;只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`、不入圖、GRAPHIFY-NOTES §4）。下次大改後再 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 **2026-06-25**〔3284 nodes/4062 edges/482 community、見 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)〕：008-017 rust 已於 2026-06-24 同步、**018 obs 已於 2026-06-25 增量入圖**〔rust 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job push_metrics＋master compose obs 7 service/4 卷/1 secret 手刻;`request` 升 god node 18 edges〕。圖反映 rust-api worktree `6871907`＋base-web `134ddcc2`＋master compose 現碼;只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`、不入圖、GRAPHIFY-NOTES §4）。**019-login-lockout 未入圖**〔小改、worktree 已 rust `5cec936`／base-web `5e667f9d`、依「大改後再 update」政策延後、待下次大改一併〕。下次大改後再 update）
 
 ---
 
@@ -145,6 +149,7 @@
 - [ ] **審計 scale 兩項**〔012/015/017〕：模糊 LIKE seq-scan→`pg_trgm` GIN（C-2、需 CREATE EXTENSION+migration、規模增長再做）／archive 表 retention/purge（C-5、purge spec 明示不做、log-retention ⚠️n 家族、obs波或量大時）
 - [ ] **alt-login 4 流程 stub**（排程 future feature、⚠️m、post-波3 v1-completeness slot）〔原 §3.D〕：code-login／register／reset-pwd 後端 stub（service+handler+route、復用 hash/JWT）／bind-wechat（前端空殼＋真 OAuth、最低 v1 價值）／⚠️c alova-demo 完整包（sendCaptcha/verifyCaptcha/`/auth/error`、排前確認真缺端點）；前端 3 表單已完整、後端 4 全缺；接地見 [DECISIONS §1](INTEGRATION-DECISIONS.md) ⚠️m
 - [ ] **obs alert notification 投遞 channel**（FR-017 v1 明確排除、future feature）〔018〕：波 4 已 provision 3 baseline grafana alert rule（rules-only、條件成立轉 Alerting、僅介面狀態可見）;v1 **不投遞**通知。未來版本加 grafana contact point + notification policy（需 channel creds：email SMTP／webhook／IM bot）;brainstorm §5／spec Out-of-Scope defer，與 alt-login 同屬 v1-completeness 後排程 feature
+- [ ] **019 login-lockout per-ip 強化 + v2 enhancements**（future security review／future feature）〔019〕：★ **IPv6 per-ip 規避**＝v1 以 exact `real_ip` 計數、IPv6 來源可輪替 /64 內前綴規避 per-ip（per-user 為 IP-independent 主防線、admin 帳號數少 per-user 主導）→ 未來加 IPv6 前綴鍵（/64 group）;research.md clarify 已登記**供日後 security review**。其餘 v1-defer（spec Assumptions、純 future enhancement）＝runtime 可調門檻（settings 島）／per-IP 信任白名單（免誤鎖 NAT/共用對外 IP）／鎖後 CAPTCHA／admin 手動解鎖介面／reset-on-success／鎖定專屬審計欄（區分 lockout-blocked vs 真 auth-fail 及觸發維度）。接地見 `specs/019-login-lockout/spec.md` Assumptions ＋ `research.md`（/speckit-clarify Outstanding）。
 
 ---
 
