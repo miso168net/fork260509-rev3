@@ -12,8 +12,8 @@
 **階段**:**019-login-lockout ✅ 收刀（2026-06-25、波 4 後獨立刀＝⚠️w 登入失敗節流落地、merge `dbc5902f`、feature branch 保留、目前無 active feature）；波 4 observability ✅ 全完成（2026-06-25）— 一刀 018-observability、三執行單元 obs-min→obs-full→dashboard（merge `c1a3224`、feature branch 保留）＝完全 opt-in 維運觀測層〔loki/alloy/grafana log＋prometheus/exporter/pushgateway metrics＋6 dashboard＋3 alert〕、rust 埋点 RUSTAPI-SOURCE-ISOLATION〔json log+trace_id 關聯／/metrics+casbin counter／cleanup push〕、零 base-web/零 migration/零新 crate、MSRV 1.86 確證。波 3 ✅（014/015/016）＋pre-波4 017 ✅（merge `c7f5936`）＋波 2 ✅（009-012）＋D11 013 ✅ 已收**（as-built 帳見 [DECISIONS §2](INTEGRATION-DECISIONS.md)）
 
 **最新進展**(滾動最近 2 條;完整歷史見 [`docs/INTEGRATION-MILESTONES.md`](INTEGRATION-MILESTONES.md)):
-- **2026-06-25 019-login-lockout ✅ 全綠收刀：merge `dbc5902f`（波 4 後獨立刀＝⚠️w 落地）**：登入失敗節流 gate、對既有 `sys_login_attempt` 唯讀消費、login 前置滑動 15 分窗 count、per-user 5／per-ip 20 任一達門檻短路擋（既有 2222+key `auth.login.locked`）、gated 列匯流既有單寫點＝sticky+審計、滑動窗自動解、fail-OPEN。2 執行單元 Workflow 驅動（U1 rust gate `5cec936`／U2 base-web i18n `5e667f9d`）、主線逐單元邊界獨立自驗+bump pin。C-V-0~9 全綠〔含 CDP zh-cn/en-us 雙語在地化 toast〔★抓到+修正 vite stale-locale〕、EXPLAIN 索引相容、零回歸 171 passed〕、final holistic PASS 無 blocker。0 schema/migration/新 crate/新 route、Constitution 9/9。詳 [DECISIONS §1 ⚠️w](INTEGRATION-DECISIONS.md)／[MILESTONES `dbc5902f`](INTEGRATION-MILESTONES.md)
-- **2026-06-25 波 4 observability ✅ 全綠收刀：018-observability merge `c1a3224`**：一刀三執行單元（U0 MSRV→U1 obs-min log→U2 obs-full metrics→U3 dashboard→Polish）;rust json log+trace_id 關聯〔fields_trace_id join sys_access_log〕／`/metrics`+casbin_enforce_total{decision}+cleanup pushgateway／6 grafana dashboard〔CDP 實渲染〕／3 alert〔5xx idle false-firing 修〕。4 Workflow 驅動+整體 holistic CONCERNS 無 BLOCK;C-V-0~8+prod build+MSRV 全綠;零 base-web/migration/新 crate、Constitution 9/9。詳 [DECISIONS §2](INTEGRATION-DECISIONS.md)／[REVIEW-018](REVIEW-018-observability.md)
+- **2026-06-25 全 feature 回溯審查三連發（spec-compliance + correctness + security）**：① **001~019 spec-compliance 稽核 19/19 PASS、0 真缺陷**（Workflow fan-out 19 reviewer+對抗式 verify、supersession map 證差異全為合法演進；`0bddc499`／[REVIEW-001-019](INTEGRATION-MILESTONES.md)）。② **correctness+security 兩輪審查**（13+9 區 fan-out、17 CONFIRMED）→ **4 高優先全修閉合**（H-1 CSV formula injection〔未認證可注入〕／H-2 self-lock 字面比對繞過／H-3 watcher 'fail-OPEN' 實為 deny-all／H-4 審計日期 end-of-day；TDD+8 測、179 passed 零回歸、主線獨立 git 復核+容器自驗）。pins rust-api `cda07e9`+base-web `f334feec`+outer `55dec914`。M/🟡 中低登 [§3.J](INTEGRATION-CHECKLIST.md)。詳 [REVIEW-correctness-security-rev3](REVIEW-correctness-security-rev3.md)
+- **2026-06-25 019-login-lockout ✅ 全綠收刀：merge `dbc5902f`（波 4 後獨立刀＝⚠️w 落地）**：登入失敗節流 gate、對既有 `sys_login_attempt` 唯讀消費、per-user 5／per-ip 20 滑動窗短路擋、gated 列匯流既有單寫點＝sticky+審計、fail-OPEN。2 執行單元 Workflow 驅動、C-V-0~9 全綠〔含 CDP 雙語在地化 toast〕、final holistic PASS。詳 [DECISIONS §1 ⚠️w](INTEGRATION-DECISIONS.md)／[MILESTONES `dbc5902f`](INTEGRATION-MILESTONES.md)
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
@@ -131,6 +131,15 @@
 - [ ] **postgres dashboard docker 空態**〔018 U3、low/cosmetic〕：community 板 grafana 9628 的 `release`／`instance` template var 依賴 k8s label（kubernetes_namespace/release）、docker 下 postgres_exporter v0.19.1 不 emit→該類 filter 面板空態〔核心 pg_up/連線/DB stats 仍出圖、spec C-V-6「panel 有資料/正確空態」容許〕。欲消空面板：改 docker 友善板（grafana 12485）或重寫變數 query（`label_values(pg_up,instance)`）。
 - **request-completion 無認證請求 log 噪音**〔018 U1、by-design 非待辦〕：FR-006「每請求一行」使所有無認證請求亦輸出一行 INFO log——尤其 `/health`（docker healthcheck）與 `/metrics`（prometheus scrape、metrics profile 啟用時每 15s）〔loki 72h+opt-in 已界範圍〕;如噪音過大可選 subscriber path 過濾〔權衡 trace_id join 完整性〕。
 - [x] ✅ **spec as-built 校正**〔018、doc、2026-06-25、commit `0d4ad94c`〕：data-model §1.2/§1.3 ＋ tasks T005/T019 補 ★as-built 標註（5xx noDataState=OK＋expr `or vector(0)`／FR-006 explicit completion event→`fields_trace_id`）；C-V-1/3/4 contract 已於 `ed6beb3a` 校正。★ 方法＝**直接 as-built 標註（非 `/speckit-analyze`——analyze 是 spec.md↔plan↔tasks【內部】一致性、不比對 as-built code；018 spec-internal analyze 早於實作前 `b7a18789` 跑過）**。（未做＝tasks 28 checkbox 補勾／T012 lint collateral 註，屬可選、非 as-built 內容偏離。）
+
+### 3.J correctness/security review M/🟡（[REVIEW-correctness-security-rev3](REVIEW-correctness-security-rev3.md)、2026-06-25）
+
+> 兩輪靜態審查（correctness 13 CONFIRMED／security 4 CONFIRMED、對抗式查證）的中/低優先 findings。**H-tier 4 項已修閉合**（H-1 CSV injection／H-2 self-lock 繞過／H-3 watcher deny-all／H-4 date off-by-one；見報告＋MILESTONES `55dec914`）。詳情/威脅模型/修向全在報告，本處留可追蹤指標、不重述。
+
+- [ ] **M correctness（本版觸發時做）**：M-1 `set_role_endpoints` method 大小寫→orphan 列（normalize/驗證 method）／M-2 `sys_user::soft_delete` 對已刪 user 重刪覆蓋（守 `deleted_at`）／M-3 `updateUser` status `Set(None)`→NULL（改 Some-only）／M-4 redis `subscribe_pubsub` 無 timeout→SYN-blackhole hang（包 5s）／M-5 prometheus 裸 `::pair()` endpoint label 基數膨脹（group_patterns）
+- [ ] **M-6 security authz hardening**：三維 RBAC grant 無 no-escalation 守門（持編輯端點之角色可自授任意端點→提權；現僅靠 seed 慣例非程式不變量）——加 grant 守門或明示登記信任邊界
+- [ ] **M-7~M-9 prod 硬化（併 §3.A／§4.2）**：CF-Connecting-IP/X-CF-Verified 偽造（確保 backend port 不對外+文件化信任邊界）／nginx prod 缺 CSP·Referrer-Policy·Permissions-Policy／nginx edge 無 `limit_req` rate-limit（lockout 之外的網路層防線）
+- 🟡 新登記（low/可見性）：login timing oracle（not-found 跑 dummy argon2 拉平）／op-log payload PII（phone/email 未 redact、視合規）／trace_id 未濾控制字元（log injection 上游、CSV sink 已由 H-1 斷）／CONFIRMED-low correctness（Tier-1 CDN 錨不驗 untrusted／XFF `take(32)` 含空 token／lockout count 非原子 race／m004 down 非對稱 casbin DELETE）
 
 ---
 

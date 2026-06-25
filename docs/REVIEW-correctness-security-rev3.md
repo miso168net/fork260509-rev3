@@ -23,21 +23,25 @@
 - **問題**：`csv_escape_field` 只做 RFC4180 quote-escaping（包 `"`、`"`→`""`），**未中和試算表公式觸發字元** `= + - @`、leading TAB/CR。攻擊者可控欄位原樣寫入 CSV cell。
 - **威脅**：★ **未認證可注入**——`attempted_user_name`（login 失敗即寫、未認證可控）、`X-Forwarded-For` header（逐字存鑑識）、`trace_id`、`region` 皆流入三審計表 CSV。admin 匯出後用 Excel/Sheets 開啟 → 公式執行（資料外洩 / DDE 命令）。
 - **修**：cell 若以 `= + - @ \t \r` 開頭，前綴單引號 `'`（OWASP CSV injection 標準緩解）後再 RFC4180 quote。單一 helper 修一處覆蓋三表。
+- **狀態（2026-06-25 已閉合）**：`csv_escape_field` 首字 ∈ `{= + - @ \t \r}` 前綴 `'` 再走既有 RFC4180 quote（單一 helper 覆三表 export）。單元測 `csv_escape_field_neutralizes_formula_triggers` 綠。rust-api `6017732`。
 
 ### H-2 [COR, CONFIRMED high] self-lock 守門可繞過（representation 不一致）
 - **檔**：`rust-api/server/src/handler/system_manage.rs:631-632`（`self_lock_violation`）+ `:974`（update_user）
 - **問題**：守門用字面字串 `new_status == Some("2")` 比對，但持久化 status 走 `i16::parse`（接受 `"02"/"002"/"+2"`）。超管送 `{status:"02"}` 可繞過防自鎖、自我停用。
 - **修**：守門前先 parse-normalize（與持久化同款 `i16` 解析）再比對，而非字面字串。
+- **狀態（2026-06-25 已閉合）**：`self_lock_violation` 改 `normalize_enum_filter(new_status)==Ok(Some(2))`（與持久化 `map_enum` 同款 i16 normalize）；`"02"/"002"/"+2"` 皆擋、畸形值 normalize 失敗→與持久化端一致放行。單元測 ×3 綠。rust-api `6017732`。
 
 ### H-3 [COR, CONFIRMED high] policy watcher「fail-OPEN」實為 fail-CLOSED deny-all
 - **檔**：`rust-api/server/src/main.rs:714-728`（`spawn_policy_watcher` reload）
 - **問題**：casbin `Enforcer::load_policy()` **先 clear in-memory model 再讀 adapter**；adapter DB 暫錯時 model 已清空、未重填 → enforcer 變【空策略＝全拒】。但程式註解寫「fail-OPEN 忽略」——語意與實效相反（實為 deny-all）。invalidate 訊息來時若 DB 抖動 → 全站授權暫時全拒，直到下次成功 reload。
 - **修**：reload 失敗時保留舊 policy（先 load 到暫存 enforcer 成功才 swap，或失敗時觸發重試/不 clear）；至少修正註解並加 retry。
+- **狀態（2026-06-25 已閉合）**：新增 `reload_enforcer_preserving`——先 `build_fresh().await?`（失敗早退、現役 enforcer 不取 write lock、live model 從未被 clear）、成功才 `*guard=fresh` 整顆原子替換；watcher reconnect 補 reload 與收 invalidate 兩處皆改經 helper；註解校正為實情。單元測 `auth_reload_preserving_{failure_keeps_old_policy,success_swaps_policy}`（MemoryAdapter、無 DB）綠、主線二次自驗確認 failure 後 R_SUPER 仍允許。rust-api `cda07e9`。
 
 ### H-4 [COR, CONFIRMED high] 審計日期範圍 end-of-day off-by-one（前後端同病）
 - **檔**：base-web `views/manage/audit/modules/{login-attempt,access-log,operation-log}-table.vue` 的 `onDateRangeChange`；rust `system_manage.rs:453-471`（`parse_audit_date`）
 - **問題**：daterange 結束時戳直接 `new Date(value[1]).toISOString()` / `parse_audit_date` 把 `createdTo` date 解析成當日 **00:00:00**，`CreatedAt.lte(created_to)` → 排除結束當天全部紀錄；單日選取 → 0 筆。
 - **修**：`createdTo` 補到當日 23:59:59.999（或改 `< 隔日 00:00`）；前端 NDatePicker 設 `:default-time` 或後端 parse 補 end-of-day。
+- **狀態（2026-06-25 已閉合）**：後端 `parse_audit_date` 對 date-only `End` 補 23:59:59.999999999、對完整 RFC3339 as-is（已修）；前端三 `*-table.vue` `onDateRangeChange` 對 `createdTo` 補 `setHours(23,59,59,999)`（已修，與後端 RFC3339-as-is 不重複調整）。前後端兩半皆閉合。
 
 ---
 
@@ -74,10 +78,9 @@
 
 ## 修復建議優先序
 
-1. **H-1 CSV injection**（未認證可注入、單 helper 一處修、影響三表）＝**性價比最高、最該先修**。
-2. **H-2 self-lock 繞過 / H-3 watcher deny-all / H-4 date off-by-one**＝correctness 真 bug、各自獨立小修。
-3. **M-1~M-5**＝correctness medium、逐項小修。
-4. **M-6~M-9**＝security/prod 硬化，部分與 [CHECKLIST §3.A／§4.2](INTEGRATION-CHECKLIST.md) prod 硬化合併。
-5. 🟡 區登記可見性、依合規/部署需求排程。
+1. ✅ **H-1~H-4 全閉合（2026-06-25）**＝CSV injection／self-lock 繞過／watcher deny-all／date off-by-one；TDD +8 rust 單元測、179 passed 零回歸、主線獨立自驗。rust-api `6017732`+`cda07e9`、base-web `f334feec`、outer pin `55dec914`。
+2. **M-1~M-5**＝correctness medium、逐項小修 → 登 [CHECKLIST §3.E](INTEGRATION-CHECKLIST.md) 本版觸發時做。
+3. **M-6~M-9**＝security/prod 硬化 → 登 [CHECKLIST §3.A／§4.2](INTEGRATION-CHECKLIST.md)（部分與既有 prod 硬化合併）。
+4. 🟡 區登記可見性、依合規/部署需求排程（含新登 timing oracle／op-log PII／trace_id log-injection）。
 
 > 註：本兩輪為**靜態審查**（不跑 cargo/CDP）；修復後須各以對應測試/CDP 驗。findings 全文（含 PLAUSIBLE 完整 reasoning）見 workflow 輸出。spec-compliance 視角見 [REVIEW-001-019](REVIEW-001-019.md)。
