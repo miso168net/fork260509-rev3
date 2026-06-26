@@ -142,6 +142,10 @@
 - [x] ✅ **M-7~M-9 prod 硬化（2026-06-25）**：M-7 CF 偽造＝prod rust-api internal-only〔無 ports:〕已緩解+文件化（無需改碼）／M-8 nginx prod 補 Referrer/Permissions/結構性 CSP／M-9 nginx limit_req（auth_limit 5r/s burst40）。deploy `8e636891`、nginx -t 綠+runtime sanity。**仍 open（low、登 🟡）**：完整資源 CSP（script/style/connect-src）需 prod-mode CDP 逐源驗證後再緊
 - 🟡 新登記（low/可見性）：login timing oracle（not-found 跑 dummy argon2 拉平）／op-log payload PII（phone/email 未 redact、視合規）／trace_id 未濾控制字元（log injection 上游、CSV sink 已由 H-1 斷）／CONFIRMED-low correctness（Tier-1 CDN 錨不驗 untrusted／XFF `take(32)` 含空 token／lockout count 非原子 race／m004 down 非對稱 casbin DELETE）
 
+### 3.K 角色軟刪 + code 重用 → casbin 授權靜默繼承（2026-06-26 CDP 第2輪全測發現、待拍板）
+
+- [ ] 🔴 **P-011-1（HIGH、拍板級）**:`deleteRole` 只軟刪 `sys_role` 列、不清該 code 的 casbin_rule;partial unique index `sys_role_code_active_uniq (code) WHERE deleted_at IS NULL` 允許重用 code、casbin 以 role **code**（v0）為 key → 重建同 code 的新角色靜默繼承舊（軟刪）角色的選單/按鈕/端點授權（016 維度＝API 存取權繼承）。實測:建 code X 授 [home,manage_role]→軟刪→重建同 code→`getRoleMenu` 回該選單集而非空。`specs/011-role-management/data-model.md` 將軟刪殘留 v2=menu policy 列為波3 治理清理、理由「可刪角色必無人用」——此前提在 code 重用路徑下不成立（重建的 active 角色可指派 user）。**待拍板修向**（涉行為/可能 migration、與 §4.2 archive-purge「波3 治理清」家族合議）:(a) deleteRole 時 purge/archive 該 code 全維 casbin 列｜(b) 阻擋 code 重用（移 partial 條件或軟刪改名 code）｜(c) addRole 重用 code 時清殘留。緩解:僅 Super 能建/刪角色、需重用完全相同 code。
+
 ---
 
 ## 4. 跨 feature 待驗證項 / 未來版本實現
