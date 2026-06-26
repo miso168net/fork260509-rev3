@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/router.ts"
 type: "code"
-community: "Router & Menu Store"
+community: "index"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router__Menu_Store
+  - community/index
 ---
 
 # useRouterPush()
@@ -18,4 +18,4 @@ tags:
 - [[router.ts_1]] - `contains` [EXTRACTED]
 - [[useMixMenu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store
+#graphify/code #graphify/EXTRACTED #community/index

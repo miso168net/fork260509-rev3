@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/home/modules/line-chart.vue"
 type: "code"
-community: "Community 297"
+community: "line-chart"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_297
+  - community/line-chart
 ---
 
 # line-chart.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[originOpts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_297
+#graphify/code #graphify/EXTRACTED #community/line-chart

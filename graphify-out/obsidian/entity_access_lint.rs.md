@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/tests/entity_access_lint.rs"
 type: "code"
-community: "Community 135"
+community: "entity_access_lint"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_135
+  - community/entity_access_lint
 ---
 
 # entity_access_lint.rs
@@ -20,4 +20,4 @@ tags:
 - [[server_src()]] - `contains` [EXTRACTED]
 - [[whiten()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_135
+#graphify/code #graphify/EXTRACTED #community/entity_access_lint

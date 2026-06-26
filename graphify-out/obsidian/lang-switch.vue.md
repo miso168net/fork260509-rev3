@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/components/common/lang-switch.vue"
 type: "code"
-community: "Community 348"
+community: "lang-switch"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_348
+  - community/lang-switch
 ---
 
 # lang-switch.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_348
+#graphify/code #graphify/EXTRACTED #community/lang-switch

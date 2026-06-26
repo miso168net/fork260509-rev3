@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/components/setting-item.vue"
 type: "code"
-community: "Community 378"
+community: "setting-item"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_378
+  - community/setting-item
 ---
 
 # setting-item.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_378
+#graphify/code #graphify/EXTRACTED #community/setting-item

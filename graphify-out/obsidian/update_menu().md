@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 186"
-location: "L1591"
+community: "menu_write_from_req"
+location: "L1689"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_186
+  - community/menu_write_from_req
 ---
 
 # update_menu()
@@ -17,4 +17,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[value_to_opt_i64()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_186
+#graphify/code #graphify/EXTRACTED #community/menu_write_from_req

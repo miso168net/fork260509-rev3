@@ -10,15 +10,15 @@ members: 9
 **Members:** 9 nodes
 
 ## Members
-- [[base-text (2)]] - code - base-web/src/theme/preset/dark.json
-- [[colors (3)]] - code - base-web/src/theme/preset/dark.json
-- [[colors (4)]] - code - base-web/src/theme/preset/dark.json
-- [[container (2)]] - code - base-web/src/theme/preset/dark.json
-- [[dark (3)]] - code - base-web/src/theme/preset/dark.json
-- [[inverted (4)]] - code - base-web/src/theme/preset/dark.json
-- [[layout (3)]] - code - base-web/src/theme/preset/dark.json
-- [[light (3)]] - code - base-web/src/theme/preset/dark.json
-- [[tokens (2)]] - code - base-web/src/theme/preset/dark.json
+- [[base-text_2]] - code - base-web/src/theme/preset/default.json
+- [[colors_5]] - code - base-web/src/theme/preset/default.json
+- [[colors_4]] - code - base-web/src/theme/preset/default.json
+- [[container_2]] - code - base-web/src/theme/preset/default.json
+- [[dark_3]] - code - base-web/src/theme/preset/default.json
+- [[inverted_5]] - code - base-web/src/theme/preset/default.json
+- [[layout_4]] - code - base-web/src/theme/preset/default.json
+- [[light_3]] - code - base-web/src/theme/preset/default.json
+- [[tokens_2]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,9 +28,9 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_dark.json]]
+- 1 edge to [[_COMMUNITY_default]]
 - 1 edge to [[_COMMUNITY_boxShadow]]
 
 ## Top bridge nodes
-- [[tokens (2)]] - degree 3, connects to 1 community
-- [[light (3)]] - degree 3, connects to 1 community
+- [[tokens_2]] - degree 3, connects to 1 community
+- [[light_3]] - degree 3, connects to 1 community

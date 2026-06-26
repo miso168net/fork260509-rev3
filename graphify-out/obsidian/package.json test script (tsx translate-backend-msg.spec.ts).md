@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/package.json"
 type: "concept"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # package.json test script (tsx translate-backend-msg.spec.ts)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[translate-backend-msg.spec.ts (i18n boundary test)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_5
+#graphify/concept #graphify/EXTRACTED #community/User_Management_Views

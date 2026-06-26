@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Community 48"
-location: "L137"
+community: "Auth & Casbin Enforce"
+location: "L161"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_48
+  - community/Auth__Casbin_Enforce
 ---
 
 # buttons_for_roles()
@@ -16,4 +16,4 @@ tags:
 - [[enforce.rs]] - `contains` [EXTRACTED]
 - [[get_user_info()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_48
+#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce

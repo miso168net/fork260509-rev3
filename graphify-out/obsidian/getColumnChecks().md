@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "table"
 location: "L256"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Axios_Request_Factory
+  - community/table
 ---
 
 # getColumnChecks()
@@ -15,4 +15,4 @@ tags:
 - [[table.ts]] - `contains` [EXTRACTED]
 - [[useTable()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Axios_Request_Factory
+#graphify/code #graphify/INFERRED #community/table

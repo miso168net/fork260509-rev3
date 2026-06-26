@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
-community: "Community 93"
+community: "system_settings"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_93
+  - community/system_settings
 ---
 
 # find_by_key()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_settings.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_93
+#graphify/code #graphify/EXTRACTED #community/system_settings

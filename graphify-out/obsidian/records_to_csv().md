@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 185"
-location: "L560"
+community: "records_to_csv"
+location: "L590"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_185
+  - community/records_to_csv
 ---
 
 # records_to_csv()
@@ -22,4 +22,4 @@ tags:
 - [[records_to_csv_zero_rows_header_only()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_185
+#graphify/code #graphify/EXTRACTED #community/records_to_csv

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/index.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/index
 ---
 
 # index.ts
@@ -34,4 +34,4 @@ tags:
 - [[type.ts_1]] - `re_exports` [EXTRACTED]
 - [[use-request.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/index

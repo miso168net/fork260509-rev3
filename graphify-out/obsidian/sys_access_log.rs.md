@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/sys_access_log.rs"
 type: "code"
-community: "Community 269"
+community: "sys_access_log"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_269
+  - community/sys_access_log
 ---
 
 # sys_access_log.rs
@@ -15,4 +15,4 @@ tags:
 - [[Model_1]] - `contains` [EXTRACTED]
 - [[Relation_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_269
+#graphify/code #graphify/EXTRACTED #community/sys_access_log

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/shared.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "index"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/index
 ---
 
 # transformArrayBufferToJson()
@@ -15,4 +15,4 @@ tags:
 - [[shared.ts]] - `contains` [EXTRACTED]
 - [[transformResponse()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/index

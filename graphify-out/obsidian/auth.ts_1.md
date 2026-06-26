@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/api/auth.ts"
 type: "code"
-community: "Community 38"
+community: "request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/request
 ---
 
 # auth.ts
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_28]] - `re_exports` [EXTRACTED]
 - [[request]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/request

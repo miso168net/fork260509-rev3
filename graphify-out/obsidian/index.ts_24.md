@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/index.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "App Plugins & Bootstrap"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/App_Plugins__Bootstrap
 ---
 
 # index.ts
@@ -20,4 +20,4 @@ tags:
 - [[main.ts]] - `imports_from` [EXTRACTED]
 - [[nprogress.ts]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap

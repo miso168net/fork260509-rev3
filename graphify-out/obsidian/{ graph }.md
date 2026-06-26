@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/antv/modules/antv-flow.vue"
 type: "code"
-community: "Community 311"
+community: "antv-flow"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_311
+  - community/antv-flow
 ---
 
 # { graph }
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[antv-flow.vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_311
+#graphify/code #graphify/EXTRACTED #community/antv-flow

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/package.json"
 type: "code"
-community: "Community 64"
+community: "package"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_64
+  - community/package
 ---
 
 # typesVersions
@@ -15,4 +15,4 @@ tags:
 - [[unnamed]] - `contains` [EXTRACTED]
 - [[package.json_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_64
+#graphify/code #graphify/EXTRACTED #community/package

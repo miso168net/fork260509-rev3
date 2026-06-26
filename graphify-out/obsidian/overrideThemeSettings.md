@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/settings.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "shared"
 location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/shared
 ---
 
 # overrideThemeSettings
@@ -15,4 +15,4 @@ tags:
 - [[settings.ts]] - `contains` [EXTRACTED]
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/shared

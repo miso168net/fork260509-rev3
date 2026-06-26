@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/route.ts"
 type: "code"
-community: "Router & Menu Store"
+community: "route"
 location: "L64"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router__Menu_Store
+  - community/route
 ---
 
 # initRoute()
@@ -16,4 +16,4 @@ tags:
 - [[route.ts]] - `contains` [EXTRACTED]
 - [[useRouteStore]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store
+#graphify/code #graphify/EXTRACTED #community/route

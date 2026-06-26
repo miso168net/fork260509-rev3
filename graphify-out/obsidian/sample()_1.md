@@ -1,20 +1,19 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
+source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Community 79"
-location: "L124"
+community: "menu_recycle_unified_list_and_restore_orphan"
+location: "L1562"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/menu_recycle_unified_list_and_restore_orphan
 ---
 
 # sample()
 
 ## Connections
-- [[login_attempt_active_model_failed_pre_identity_shape()]] - `calls` [EXTRACTED]
-- [[login_attempt_active_model_maps_ipv4_to_32_success_shape()]] - `calls` [EXTRACTED]
-- [[login_attempt_active_model_maps_ipv6_to_128()]] - `calls` [EXTRACTED]
-- [[sys_login_attempt.rs_1]] - `contains` [EXTRACTED]
+- [[menu_crud_create_soft_delete_restore_roundtrip()]] - `calls` [EXTRACTED]
+- [[menu_crud_create_update_roundtrip_and_dup()]] - `calls` [EXTRACTED]
+- [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/menu_recycle_unified_list_and_restore_orphan

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/vchart/data.ts"
 type: "code"
-community: "Community 77"
+community: "data"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/data
 ---
 
 # data.ts
@@ -23,4 +23,4 @@ tags:
 - [[shapeWordCloudSpec]] - `contains` [EXTRACTED]
 - [[stackedDashAreaSpec]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/data

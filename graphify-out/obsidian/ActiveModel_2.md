@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/entity/src/sys_casbin_policy_archive.rs"
 type: "code"
-community: "Community 457"
+community: "ActiveModel"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_457
+  - community/ActiveModel
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_457
+#graphify/code #graphify/EXTRACTED #community/ActiveModel

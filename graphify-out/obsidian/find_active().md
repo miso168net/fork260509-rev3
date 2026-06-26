@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 10"
+community: "Role Entity Facade"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_10
+  - community/Role_Entity_Facade
 ---
 
 # find_active()
@@ -14,7 +14,7 @@ tags:
 ## Connections
 - [[find_active_by_id()_1]] - `calls` [EXTRACTED]
 - [[home_of_roles()]] - `calls` [EXTRACTED]
-- [[list()_4]] - `calls` [EXTRACTED]
+- [[list()_2]] - `calls` [EXTRACTED]
 - [[sys_role.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_10
+#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade

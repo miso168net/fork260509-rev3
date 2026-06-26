@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/src/constant.ts"
 type: "code"
-community: "Alova Request Layer"
+community: "Alova API Service Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_Request_Layer
+  - community/Alova_API_Service_Layer
 ---
 
 # constant.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer

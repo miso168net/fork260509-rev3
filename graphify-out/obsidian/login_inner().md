@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "Community 58"
-location: "L66"
+community: "Auth & Casbin Enforce"
+location: "L92"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_58
+  - community/Auth__Casbin_Enforce
 ---
 
 # login_inner()
@@ -14,6 +14,5 @@ tags:
 ## Connections
 - [[auth.rs]] - `contains` [EXTRACTED]
 - [[login()]] - `calls` [EXTRACTED]
-- [[resolve_policy()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce

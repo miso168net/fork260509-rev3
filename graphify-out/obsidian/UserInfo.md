@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/auth.d.ts"
 type: "code"
-community: "Community 245"
+community: "auth"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_245
+  - community/auth
 ---
 
 # UserInfo
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[auth.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_245
+#graphify/code #graphify/EXTRACTED #community/auth

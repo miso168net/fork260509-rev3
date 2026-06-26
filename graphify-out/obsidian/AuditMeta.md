@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/audit.rs"
 type: "code"
-community: "Community 72"
+community: "audit"
 location: "L49"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/audit
 ---
 
 # AuditMeta
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[audit.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/audit

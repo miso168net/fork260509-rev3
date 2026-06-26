@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "base-web Runtime Deps"
+community: "Frontend Dependencies"
 location: "L52"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/base-web_Runtime_Deps
+  - community/Frontend_Dependencies
 ---
 
 # @sa/alova
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[dependencies]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/base-web_Runtime_Deps
+#graphify/code #graphify/EXTRACTED #community/Frontend_Dependencies

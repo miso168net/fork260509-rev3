@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "Community 3"
+community: "shared"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_3
+  - community/shared
 ---
 
 # addColorAlpha()
@@ -19,4 +19,4 @@ tags:
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 - [[transformColorWithOpacity()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_3
+#graphify/code #graphify/EXTRACTED #community/shared

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "SysManage Handler & DTOs (rust)"
-location: "L2454"
+community: "System Manage Handlers"
+location: "L2573"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysManage_Handler__DTOs_rust
+  - community/System_Manage_Handlers
 ---
 
 # self_lock_self_remove_super_and_disable_true()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysManage_Handler__DTOs_rust
+#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers

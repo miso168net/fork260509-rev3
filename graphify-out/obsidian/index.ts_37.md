@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/index.ts"
 type: "code"
-community: "Router & Menu Store"
+community: "shared"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router__Menu_Store
+  - community/shared
 ---
 
 # index.ts
@@ -35,4 +35,4 @@ tags:
 - [[useThemeStore]] - `contains` [EXTRACTED]
 - [[vchart.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store
+#graphify/code #graphify/EXTRACTED #community/shared

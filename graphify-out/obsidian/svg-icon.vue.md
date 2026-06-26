@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/components/custom/svg-icon.vue"
 type: "code"
-community: "Common Hooks & Store"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Hooks__Store
+  - community/index
 ---
 
 # svg-icon.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[icon.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store
+#graphify/code #graphify/EXTRACTED #community/index

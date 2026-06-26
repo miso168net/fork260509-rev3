@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-context.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "index"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/index
 ---
 
 # ContextProvider
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[use-context.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/index

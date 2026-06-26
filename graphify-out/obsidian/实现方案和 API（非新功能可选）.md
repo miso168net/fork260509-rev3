@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md"
 type: "document"
-community: "Community 128"
+community: "pr_cn"
 location: "L25"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_128
+  - community/pr_cn
 ---
 
 # 实现方案和 API（非新功能可选）
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[pr_cn]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_128
+#graphify/document #graphify/EXTRACTED #community/pr_cn

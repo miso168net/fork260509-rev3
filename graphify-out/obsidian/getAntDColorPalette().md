@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "recommend"
 location: "L71"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/recommend
 ---
 
 # getAntDColorPalette()
@@ -16,4 +16,4 @@ tags:
 - [[getColorPalette()]] - `calls` [EXTRACTED]
 - [[index.ts_4]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/recommend

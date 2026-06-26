@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-settings.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # service/api/rev3-system-settings.ts (settings wrappers)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[system-settingsindex.vue (KV settings page)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

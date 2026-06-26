@@ -1,17 +1,19 @@
 ---
 type: community
+cohesion: 0.50
 members: 4
 ---
 
 # boxShadow
 
+**Cohesion:** 0.50 - moderately connected
 **Members:** 4 nodes
 
 ## Members
-- [[boxShadow_1]] - code - base-web/src/theme/preset/dark.json
-- [[header_3]] - code - base-web/src/theme/preset/dark.json
-- [[sider_3]] - code - base-web/src/theme/preset/dark.json
-- [[tab_3]] - code - base-web/src/theme/preset/dark.json
+- [[boxShadow_2]] - code - base-web/src/theme/preset/default.json
+- [[header_5]] - code - base-web/src/theme/preset/default.json
+- [[sider_5]] - code - base-web/src/theme/preset/default.json
+- [[tab_5]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -21,7 +23,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 110]]
+- 1 edge to [[_COMMUNITY_colors]]
 
 ## Top bridge nodes
-- [[boxShadow_1]] - degree 4, connects to 1 community
+- [[boxShadow_2]] - degree 4, connects to 1 community

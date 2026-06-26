@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # service/api/rev3-system-manage.ts (honest user wrappers)
@@ -17,4 +17,4 @@ tags:
 - [[servicerequestindex.ts (createFlatRequest axios layer)]] - `depends_on` [INFERRED]
 - [[user-operate-drawer.vue (user addedit drawer)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

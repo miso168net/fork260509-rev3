@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "Community 30"
+community: "Color Utilities Package"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_30
+  - community/Color_Utilities_Package
 ---
 
 # getHsv()
@@ -16,4 +16,4 @@ tags:
 - [[colord.ts]] - `contains` [EXTRACTED]
 - [[getAntDPaletteColorByIndex()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_30
+#graphify/code #graphify/EXTRACTED #community/Color_Utilities_Package

@@ -1,18 +1,18 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
+source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 79"
-location: "L62"
+community: "Role Entity Facade"
+location: "L86"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/Role_Entity_Facade
 ---
 
 # ilike()
 
 ## Connections
 - [[list()_2]] - `calls` [EXTRACTED]
-- [[sys_login_attempt.rs_1]] - `contains` [EXTRACTED]
+- [[sys_role.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade

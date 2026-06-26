@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/common.d.ts"
 type: "code"
-community: "Community 161"
+community: "common"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_161
+  - community/common
 ---
 
 # common.d.ts
@@ -18,4 +18,4 @@ tags:
 - [[PaginatingCommonParams]] - `contains` [EXTRACTED]
 - [[PaginatingQueryRecord]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_161
+#graphify/code #graphify/EXTRACTED #community/common

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/package.json"
 type: "code"
-community: "Community 80"
+community: "package"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_80
+  - community/package
 ---
 
 # typesVersions
@@ -15,4 +15,4 @@ tags:
 - [[unnamed_4]] - `contains` [EXTRACTED]
 - [[package.json_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_80
+#graphify/code #graphify/EXTRACTED #community/package

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/union-key.d.ts"
 type: "code"
-community: "Community 136"
+community: "union-key"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_136
+  - community/union-key
 ---
 
 # union-key.d.ts
@@ -20,4 +20,4 @@ tags:
 - [[ThemeTabMode]] - `contains` [EXTRACTED]
 - [[UnoCssAnimateKey]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_136
+#graphify/code #graphify/EXTRACTED #community/union-key

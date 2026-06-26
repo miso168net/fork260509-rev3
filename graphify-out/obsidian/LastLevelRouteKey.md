@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/app.d.ts"
+source_file: "base-web/src/typings/elegant-router.d.ts"
 type: "code"
-community: "App Theme Type Decls"
-location: "L193"
+community: "Elegant Router Typings"
+location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Theme_Type_Decls
+  - community/Elegant_Router_Typings
 ---
 
 # LastLevelRouteKey
 
 ## Connections
-- [[app.d.ts]] - `contains` [EXTRACTED]
+- [[elegant-router.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls
+#graphify/code #graphify/EXTRACTED #community/Elegant_Router_Typings

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/git-commit.ts"
 type: "code"
-community: "@sa/scripts CLI"
+community: "Build Scripts Package"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sa/scripts_CLI
+  - community/Build_Scripts_Package
 ---
 
 # git-commit.ts
@@ -21,4 +21,4 @@ tags:
 - [[index.ts_16]] - `imports_from` [EXTRACTED]
 - [[index.ts_14]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI
+#graphify/code #graphify/EXTRACTED #community/Build_Scripts_Package

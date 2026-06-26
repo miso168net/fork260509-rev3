@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/package.json"
 type: "code"
-community: "Community 65"
+community: "package"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_65
+  - community/package
 ---
 
 # *
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[typesVersions_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_65
+#graphify/code #graphify/EXTRACTED #community/package

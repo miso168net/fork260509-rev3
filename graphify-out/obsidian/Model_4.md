@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/sys_menu.rs"
 type: "code"
-community: "Community 281"
+community: "sys_menu"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_281
+  - community/sys_menu
 ---
 
 # Model
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_menu.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_281
+#graphify/code #graphify/EXTRACTED #community/sys_menu

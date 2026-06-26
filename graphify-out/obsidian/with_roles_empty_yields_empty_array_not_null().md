@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/audit.rs"
 type: "code"
-community: "Community 72"
+community: "audit"
 location: "L130"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_72
+  - community/audit
 ---
 
 # with_roles_empty_yields_empty_array_not_null()
@@ -15,4 +15,4 @@ tags:
 - [[audit.rs]] - `contains` [EXTRACTED]
 - [[with_roles()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_72
+#graphify/code #graphify/EXTRACTED #community/audit

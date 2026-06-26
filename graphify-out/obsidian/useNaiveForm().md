@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/form.ts"
 type: "code"
-community: "Common Hooks & Store"
+community: "useLoading"
 location: "L81"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Hooks__Store
+  - community/useLoading
 ---
 
 # useNaiveForm()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[form.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store
+#graphify/code #graphify/EXTRACTED #community/useLoading

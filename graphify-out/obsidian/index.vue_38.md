@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/echarts/index.vue"
 type: "code"
-community: "Community 261"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_261
+  - community/index
 ---
 
 # index.vue
@@ -15,4 +15,4 @@ tags:
 - [[date]] - `contains` [EXTRACTED]
 - [[second]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_261
+#graphify/code #graphify/EXTRACTED #community/index

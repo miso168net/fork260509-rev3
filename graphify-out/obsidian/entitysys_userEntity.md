@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "Community 306"
+community: "entity::sys_user::Entity"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_306
+  - community/entitysys_userEntity
 ---
 
 # entity::sys_user::Entity
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.deleted_at_column()_2]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_306
+#graphify/code #graphify/EXTRACTED #community/entitysys_userEntity

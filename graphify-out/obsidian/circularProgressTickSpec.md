@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/vchart/data.ts"
 type: "code"
-community: "Community 77"
+community: "data"
 location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_77
+  - community/data
 ---
 
 # circularProgressTickSpec
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[data.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_77
+#graphify/code #graphify/EXTRACTED #community/data

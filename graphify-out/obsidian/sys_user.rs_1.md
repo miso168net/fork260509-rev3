@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "SysUser Facade (rust)"
+community: "User Entity Facade"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysUser_Facade_rust
+  - community/User_Entity_Facade
 ---
 
 # sys_user.rs
@@ -18,8 +18,9 @@ tags:
 - [[audit_json_redacts_password()]] - `contains` [EXTRACTED]
 - [[build_create_active_model()_2]] - `contains` [EXTRACTED]
 - [[build_create_active_model_sets_create_fields()_1]] - `contains` [EXTRACTED]
-- [[build_update_active_model()_2]] - `contains` [EXTRACTED]
+- [[build_update_active_model()_3]] - `contains` [EXTRACTED]
 - [[build_update_active_model_pairs_and_preserves_identity()]] - `contains` [EXTRACTED]
+- [[build_update_active_model_status_none_preserves_existing()]] - `contains` [EXTRACTED]
 - [[clear_pointer()]] - `contains` [EXTRACTED]
 - [[create()_2]] - `contains` [EXTRACTED]
 - [[delete_user_soft_delete_and_idempotent_missing()]] - `contains` [EXTRACTED]
@@ -41,4 +42,4 @@ tags:
 - [[update()_2]] - `contains` [EXTRACTED]
 - [[update_user_preserves_identity_and_replaces_roles()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysUser_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/User_Entity_Facade

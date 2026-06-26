@@ -1,13 +1,13 @@
 ---
 source_file: "docker-compose.yml"
 type: "code"
-community: "Community 481"
+community: "pushgateway compose service"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_481
+  - community/pushgateway_compose_service
 ---
 
 # pushgateway compose service (short-lived job metrics, profiles:[metrics])
 
-#graphify/code #graphify/EXTRACTED #community/Community_481
+#graphify/code #graphify/EXTRACTED #community/pushgateway_compose_service

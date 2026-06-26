@@ -1,22 +1,21 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "Community 58"
-location: "L298"
+community: "Auth & Casbin Enforce"
+location: "L357"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Community_58
+  - graphify/EXTRACTED
+  - community/Auth__Casbin_Enforce
 ---
 
 # refresh_token()
 
 ## Connections
 - [[auth.rs]] - `contains` [EXTRACTED]
-- [[decide_rotation()]] - `calls` [INFERRED]
 - [[denylist_gate()]] - `calls` [INFERRED]
 - [[is_current()]] - `calls` [INFERRED]
 - [[revoke_chain_and_logout()]] - `calls` [EXTRACTED]
 - [[rotate_locked_or_revoke()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_58
+#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce

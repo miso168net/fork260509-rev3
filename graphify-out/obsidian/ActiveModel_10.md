@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/entity/src/system_settings.rs"
 type: "code"
-community: "Community 465"
+community: "ActiveModel"
 location: "L25"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_465
+  - community/ActiveModel
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Community_465
+#graphify/code #graphify/EXTRACTED #community/ActiveModel

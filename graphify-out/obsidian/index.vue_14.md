@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/index.vue"
 type: "code"
-community: "Community 376"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_376
+  - community/index
 ---
 
 # index.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_376
+#graphify/code #graphify/EXTRACTED #community/index

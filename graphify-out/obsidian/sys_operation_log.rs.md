@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/sys_operation_log.rs"
 type: "code"
-community: "Community 272"
+community: "sys_operation_log"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_272
+  - community/sys_operation_log
 ---
 
 # sys_operation_log.rs
@@ -15,4 +15,4 @@ tags:
 - [[Model_5]] - `contains` [EXTRACTED]
 - [[Relation_5]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_272
+#graphify/code #graphify/EXTRACTED #community/sys_operation_log

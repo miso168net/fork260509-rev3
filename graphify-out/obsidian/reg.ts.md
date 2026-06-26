@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/reg.ts"
 type: "code"
-community: "Common Hooks & Store"
+community: "useLoading"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Hooks__Store
+  - community/useLoading
 ---
 
 # reg.ts
@@ -15,4 +15,4 @@ tags:
 - [[captcha.ts]] - `imports_from` [EXTRACTED]
 - [[form.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store
+#graphify/code #graphify/EXTRACTED #community/useLoading

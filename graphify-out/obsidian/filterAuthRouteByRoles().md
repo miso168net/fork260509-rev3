@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/route/shared.ts"
 type: "code"
-community: "Common Hooks & Store"
+community: "index"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Hooks__Store
+  - community/index
 ---
 
 # filterAuthRouteByRoles()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[shared.ts_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store
+#graphify/code #graphify/EXTRACTED #community/index

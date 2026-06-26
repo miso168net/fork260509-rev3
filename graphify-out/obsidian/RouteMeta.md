@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/router.d.ts"
 type: "code"
-community: "Community 294"
+community: "router"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_294
+  - community/router
 ---
 
 # RouteMeta
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[router.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_294
+#graphify/code #graphify/EXTRACTED #community/router

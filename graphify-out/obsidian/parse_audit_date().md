@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 20"
-location: "L453"
+community: "Audit Log Handlers"
+location: "L464"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_20
+  - community/Audit_Log_Handlers
 ---
 
 # parse_audit_date()
@@ -17,4 +17,4 @@ tags:
 - [[get_operation_log()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_20
+#graphify/code #graphify/EXTRACTED #community/Audit_Log_Handlers

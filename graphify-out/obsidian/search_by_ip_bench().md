@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/benches/search.rs"
 type: "code"
-community: "Community 47"
+community: "searcher"
 location: "L7"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_47
+  - community/searcher
 ---
 
 # search_by_ip_bench()
@@ -16,4 +16,4 @@ tags:
 - [[search_by_ip()]] - `calls` [INFERRED]
 - [[searcher_init()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_47
+#graphify/code #graphify/INFERRED #community/searcher

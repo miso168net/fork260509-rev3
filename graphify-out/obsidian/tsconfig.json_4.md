@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/tsconfig.json"
 type: "code"
-community: "Community 45"
+community: "compilerOptions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_45
+  - community/compilerOptions
 ---
 
 # tsconfig.json
@@ -16,4 +16,4 @@ tags:
 - [[exclude_4]] - `contains` [EXTRACTED]
 - [[include_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_45
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

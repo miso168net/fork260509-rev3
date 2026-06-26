@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/main.rs"
 type: "code"
-community: "Community 134"
-location: "L757"
+community: "main"
+location: "L781"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_134
+  - community/main
 ---
 
 # shutdown_signal()
@@ -15,4 +15,4 @@ tags:
 - [[main()_2]] - `calls` [EXTRACTED]
 - [[main.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_134
+#graphify/code #graphify/EXTRACTED #community/main

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Community 31"
+community: "Package Metadata"
 location: "L125"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_31
+  - community/Package_Metadata
 ---
 
 # simple-git-hooks
@@ -16,4 +16,4 @@ tags:
 - [[package.json]] - `contains` [EXTRACTED]
 - [[pre-commit]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_31
+#graphify/code #graphify/EXTRACTED #community/Package_Metadata

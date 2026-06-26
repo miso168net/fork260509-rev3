@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/router/elegant/imports.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # elegant/imports.ts (layouts + views map)
@@ -20,4 +20,4 @@ tags:
 - [[system-settingsindex.vue (KV settings page)]] - `references` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes + routeMap]] - `depends_on` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

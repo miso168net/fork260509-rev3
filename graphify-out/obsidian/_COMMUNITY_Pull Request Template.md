@@ -1,0 +1,21 @@
+---
+type: community
+cohesion: 1.00
+members: 2
+---
+
+# Pull Request Template
+
+**Cohesion:** 1.00 - tightly connected
+**Members:** 2 nodes
+
+## Members
+- [[Pull Request Template (CN)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md
+- [[Pull Request Template (EN)]] - document - base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/Pull_Request_Template
+SORT file.name ASC
+```

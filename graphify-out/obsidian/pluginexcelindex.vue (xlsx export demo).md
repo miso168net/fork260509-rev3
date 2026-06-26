@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/plugin/excel/index.vue"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # plugin/excel/index.vue (xlsx export demo)
@@ -17,4 +17,4 @@ tags:
 - [[userGenderRecord (business constants)]] - `references` [EXTRACTED]
 - [[xlsx dependency]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

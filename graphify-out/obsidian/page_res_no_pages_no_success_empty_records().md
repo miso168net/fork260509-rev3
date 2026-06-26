@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/envelope.rs"
 type: "code"
-community: "Community 159"
+community: "envelope"
 location: "L104"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_159
+  - community/envelope
 ---
 
 # page_res_no_pages_no_success_empty_records()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[envelope.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_159
+#graphify/code #graphify/EXTRACTED #community/envelope

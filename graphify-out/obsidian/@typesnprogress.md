@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "base-web Dev Deps"
+community: "Frontend Dev Dependencies"
 location: "L101"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/base-web_Dev_Deps
+  - community/Frontend_Dev_Dependencies
 ---
 
 # @types/nprogress
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[devDependencies]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/base-web_Dev_Deps
+#graphify/code #graphify/EXTRACTED #community/Frontend_Dev_Dependencies

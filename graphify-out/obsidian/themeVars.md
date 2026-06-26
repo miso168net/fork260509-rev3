@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/vars.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "vars"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/vars
 ---
 
 # themeVars
@@ -16,4 +16,4 @@ tags:
 - [[uno.config.ts]] - `imports` [EXTRACTED]
 - [[vars.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/vars

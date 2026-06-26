@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 130"
-location: "L959"
+community: "user_write_from_req"
+location: "L996"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_130
+  - community/user_write_from_req
 ---
 
 # update_user()
@@ -16,4 +16,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[user_write_from_req()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_130
+#graphify/code #graphify/EXTRACTED #community/user_write_from_req

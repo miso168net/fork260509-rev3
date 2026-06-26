@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/app.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "App Plugins & Bootstrap"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/App_Plugins__Bootstrap
 ---
 
 # app.ts
@@ -18,4 +18,4 @@ tags:
 - [[setupAppErrorHandle()]] - `contains` [EXTRACTED]
 - [[setupAppVersionNotification()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap

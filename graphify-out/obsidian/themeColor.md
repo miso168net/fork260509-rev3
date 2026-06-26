@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/app.d.ts"
+source_file: "base-web/src/typings/naive-ui.d.ts"
 type: "code"
-community: "App Theme Type Decls"
-location: "L145"
+community: "naive-ui"
+location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Theme_Type_Decls
+  - community/naive-ui
 ---
 
 # ThemeColor
 
 ## Connections
-- [[app.d.ts]] - `contains` [EXTRACTED]
+- [[naive-ui.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls
+#graphify/code #graphify/EXTRACTED #community/naive-ui

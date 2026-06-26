@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "table"
 location: "L76"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/table
 ---
 
 # useNaivePaginatedTable()
@@ -16,4 +16,4 @@ tags:
 - [[useAppStore]] - `calls` [EXTRACTED]
 - [[useTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/table

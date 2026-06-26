@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Menu/Route Facade (rust)"
+community: "now"
 location: "L1440"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu/Route_Facade_rust
+  - community/now
 ---
 
 # now()
@@ -22,4 +22,4 @@ tags:
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 - [[update()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/now

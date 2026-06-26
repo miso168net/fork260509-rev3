@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/agent.ts"
 type: "code"
-community: "Community 329"
+community: "agent"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_329
+  - community/agent
 ---
 
 # isPC()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[agent.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_329
+#graphify/code #graphify/EXTRACTED #community/agent

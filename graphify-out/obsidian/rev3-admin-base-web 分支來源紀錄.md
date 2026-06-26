@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/x_fork.branch-origin.md"
 type: "document"
-community: "Community 184"
+community: "rev3-admin-base-web 分支來源紀錄"
 location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_184
+  - community/rev3-admin-base-web_
 ---
 
 # rev3-admin-base-web 分支來源紀錄
@@ -17,4 +17,4 @@ tags:
 - [[歷史說明]] - `contains` [EXTRACTED]
 - [[注意事項]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_184
+#graphify/document #graphify/EXTRACTED #community/rev3-admin-base-web_

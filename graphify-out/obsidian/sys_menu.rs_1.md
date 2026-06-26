@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Menu/Route Facade (rust)"
+community: "Menu Tree Facade"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu/Route_Facade_rust
+  - community/Menu_Tree_Facade
 ---
 
 # sys_menu.rs
@@ -84,7 +84,7 @@ tags:
 - [[route_id_string()]] - `contains` [EXTRACTED]
 - [[route_name_exists()]] - `contains` [EXTRACTED]
 - [[route_names_for_ids()]] - `contains` [EXTRACTED]
-- [[sample()_2]] - `contains` [EXTRACTED]
+- [[sample()_1]] - `contains` [EXTRACTED]
 - [[sample_fields()]] - `contains` [EXTRACTED]
 - [[soft_delete()]] - `contains` [EXTRACTED]
 - [[upd()]] - `contains` [EXTRACTED]
@@ -92,4 +92,4 @@ tags:
 - [[visible_set()]] - `contains` [EXTRACTED]
 - [[would_cycle()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/Menu_Tree_Facade

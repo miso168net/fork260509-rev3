@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "Community 50"
+community: "error"
 location: "L230"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_50
+  - community/error
 ---
 
 # into_response_http_mapping()
@@ -17,4 +17,4 @@ tags:
 - [[all_emittable()]] - `calls` [EXTRACTED]
 - [[error.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_50
+#graphify/code #graphify/EXTRACTED #community/error

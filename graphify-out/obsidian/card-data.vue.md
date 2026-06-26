@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/home/modules/card-data.vue"
 type: "code"
-community: "Community 410"
+community: "card-data"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_410
+  - community/card-data
 ---
 
 # card-data.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_410
+#graphify/code #graphify/EXTRACTED #community/card-data

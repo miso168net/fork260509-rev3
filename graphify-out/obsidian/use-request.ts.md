@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-request.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "type"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/type
 ---
 
 # use-request.ts
@@ -26,4 +26,4 @@ tags:
 - [[index.ts_1]] - `imports_from` [EXTRACTED]
 - [[use-loading.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/type

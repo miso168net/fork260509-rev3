@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/_builtin/iframe-page/[url].vue"
 type: "code"
-community: "Community 445"
+community: "[url]"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_445
+  - community/url
 ---
 
 # [url].vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_445
+#graphify/code #graphify/EXTRACTED #community/url

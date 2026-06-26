@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "concept"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/concept
   - graphify/INFERRED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # front_nginx_certs volume
@@ -14,4 +14,4 @@ tags:
 - [[acme compose service (prod profile cert skeleton)]] - `depends_on` [EXTRACTED]
 - [[front-nginx compose service]] - `depends_on` [INFERRED]
 
-#graphify/concept #graphify/INFERRED #community/Community_5
+#graphify/concept #graphify/INFERRED #community/User_Management_Views

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/index.html"
 type: "code"
-community: "Community 22"
+community: "Project README & Docs"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_22
+  - community/Project_README__Docs
 ---
 
 # index.html (Vite SPA entry)
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin]] - `conceptually_related_to` [INFERRED]
 - [[favicon.svg (SoybeanAdmin browser tab icon)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_22
+#graphify/code #graphify/INFERRED #community/Project_README__Docs

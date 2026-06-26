@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/opencode.yml"
 type: "concept"
-community: "Community 22"
+community: "Project README & Docs"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_22
+  - community/Project_README__Docs
 ---
 
 # opencode AI Agent (anomalyco/opencode)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[opencode AI Comment Workflow]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_22
+#graphify/concept #graphify/EXTRACTED #community/Project_README__Docs

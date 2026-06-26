@@ -1,13 +1,13 @@
 ---
 source_file: "base-web/src/views/about/index.vue"
 type: "code"
-community: "Community 455"
+community: "About page"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_455
+  - community/About_page
 ---
 
 # About page (base-web/src/views/about/index.vue)
 
-#graphify/code #graphify/EXTRACTED #community/Community_455
+#graphify/code #graphify/EXTRACTED #community/About_page

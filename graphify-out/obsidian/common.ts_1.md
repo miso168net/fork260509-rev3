@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/common.ts"
 type: "code"
-community: "Community 60"
+community: "loading"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_60
+  - community/loading
 ---
 
 # common.ts
@@ -22,4 +22,4 @@ tags:
 - [[transformRecordToOption()]] - `contains` [EXTRACTED]
 - [[translateOptions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_60
+#graphify/code #graphify/EXTRACTED #community/loading

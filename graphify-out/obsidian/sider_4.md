@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "Community 153"
+community: "sider"
 location: "L48"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_153
+  - community/sider
 ---
 
 # sider
@@ -20,4 +20,4 @@ tags:
 - [[mixWidth_2]] - `contains` [EXTRACTED]
 - [[width_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_153
+#graphify/code #graphify/EXTRACTED #community/sider

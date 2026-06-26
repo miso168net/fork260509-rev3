@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/elegant-router.d.ts"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Community 17"
-location: "L17"
+community: "App Type Definitions"
+location: "L191"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_17
+  - community/App_Type_Definitions
 ---
 
 # RouteMap
 
 ## Connections
-- [[elegant-router.d.ts]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_17
+#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions

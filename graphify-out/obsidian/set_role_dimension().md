@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_rule.rs"
 type: "code"
-community: "Casbin Rule Facade (rust)"
+community: "Casbin Rule & RBAC Gating"
 location: "L51"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Casbin_Rule_Facade_rust
+  - community/Casbin_Rule__RBAC_Gating
 ---
 
 # set_role_dimension()
@@ -17,4 +17,4 @@ tags:
 - [[run_loop_body()]] - `calls` [EXTRACTED]
 - [[sys_casbin_rule.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Casbin_Rule_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/Casbin_Rule__RBAC_Gating

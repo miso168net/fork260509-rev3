@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "table"
 location: "L174"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Axios_Request_Factory
+  - community/table
 ---
 
 # useTableOperate()
@@ -15,4 +15,4 @@ tags:
 - [[table.ts]] - `contains` [EXTRACTED]
 - [[useBoolean()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Axios_Request_Factory
+#graphify/code #graphify/INFERRED #community/table

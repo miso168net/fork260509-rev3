@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/shared.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "shared"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/shared
 ---
 
 # shared.ts
@@ -42,4 +42,4 @@ tags:
 - [[toggleHtmlClass()]] - `imports` [EXTRACTED]
 - [[vars.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/shared

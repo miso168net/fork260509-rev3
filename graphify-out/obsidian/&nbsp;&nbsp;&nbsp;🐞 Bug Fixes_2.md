@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "base-web CHANGELOG"
+community: "Soybean Changelog"
 location: "L123"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/base-web_CHANGELOG
+  - community/Soybean_Changelog
 ---
 
 # &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v2.0.2(httpsgithub.comsoybeanjssoybean-admincomparev2.0.1...v2.0.2) (2025-12-23)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/base-web_CHANGELOG
+#graphify/document #graphify/EXTRACTED #community/Soybean_Changelog

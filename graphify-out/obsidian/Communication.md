@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "Community 28"
+community: "README Usage Guide"
 location: "L226"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_28
+  - community/README_Usage_Guide
 ---
 
 # Communication
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[README.en_US]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_28
+#graphify/document #graphify/EXTRACTED #community/README_Usage_Guide

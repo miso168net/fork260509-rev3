@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/typings/swiper.d.ts"
 type: "code"
-community: "Community 394"
+community: "swiper"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_394
+  - community/swiper
 ---
 
 # swiper.d.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_394
+#graphify/code #graphify/EXTRACTED #community/swiper

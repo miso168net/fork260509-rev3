@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/index.vue"
 type: "code"
-community: "Community 12"
+community: "Role Authorization Modals"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_12
+  - community/Role_Authorization_Modals
 ---
 
 # ManageRole view (role list + CRUD + RBAC gating)
@@ -16,4 +16,4 @@ tags:
 - [[fetchDeleteRole (rev3 role soft-delete wrapper)]] - `calls` [EXTRACTED]
 - [[fetchGetRoleListRev3 (honest role list read, roleDesc nullable)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_12
+#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals

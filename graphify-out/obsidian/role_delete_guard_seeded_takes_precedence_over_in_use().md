@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "SysManage Handler & DTOs (rust)"
-location: "L2626"
+community: "System Manage Handlers"
+location: "L2783"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysManage_Handler__DTOs_rust
+  - community/System_Manage_Handlers
 ---
 
 # role_delete_guard_seeded_takes_precedence_over_in_use()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysManage_Handler__DTOs_rust
+#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers

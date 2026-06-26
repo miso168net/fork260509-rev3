@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 20"
+community: "Audit Log Handlers"
 location: "L412"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_20
+  - community/Audit_Log_Handlers
 ---
 
 # normalize_str_filter()
@@ -21,4 +21,4 @@ tags:
 - [[resolve_operator_ids()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_20
+#graphify/code #graphify/EXTRACTED #community/Audit_Log_Handlers

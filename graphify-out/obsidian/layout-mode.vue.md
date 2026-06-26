@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/layout/modules/layout-mode.vue"
 type: "code"
-community: "Community 390"
+community: "layout-mode"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_390
+  - community/layout-mode
 ---
 
 # layout-mode.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_390
+#graphify/code #graphify/EXTRACTED #community/layout-mode

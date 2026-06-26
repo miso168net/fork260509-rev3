@@ -1,26 +1,25 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "SysUser Facade (rust)"
-location: "L312"
+community: "User Entity Facade"
+location: "L321"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysUser_Facade_rust
+  - community/User_Entity_Facade
 ---
 
 # update()
 
 ## Connections
-- [[.audit_json()_2]] - `calls` [EXTRACTED]
-- [[build_update_active_model()_2]] - `calls` [EXTRACTED]
+- [[.audit_json()_3]] - `calls` [EXTRACTED]
+- [[build_update_active_model()_3]] - `calls` [EXTRACTED]
 - [[clear_pointer()]] - `calls` [EXTRACTED]
 - [[find_active_by_id()_2]] - `calls` [EXTRACTED]
-- [[mutate_in_txn()]] - `calls` [INFERRED]
 - [[now()_3]] - `calls` [EXTRACTED]
 - [[set_pointer()]] - `calls` [EXTRACTED]
 - [[soft_delete()_2]] - `calls` [EXTRACTED]
 - [[sys_user.rs_1]] - `contains` [EXTRACTED]
 - [[update_user_preserves_identity_and_replaces_roles()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysUser_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/User_Entity_Facade

@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/storage.d.ts"
+source_file: "base-web/src/locales/langs/en-us.ts"
 type: "code"
-community: "Community 252"
-location: "L12"
+community: "locale"
+location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_252
+  - community/locale
 ---
 
-# Local
+# local
 
 ## Connections
-- [[storage.d.ts]] - `contains` [EXTRACTED]
+- [[en-us.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_252
+#graphify/code #graphify/EXTRACTED #community/locale

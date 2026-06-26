@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/app.d.ts"
+source_file: "base-web/src/typings/api/system-manage.d.ts"
 type: "code"
-community: "App Theme Type Decls"
-location: "L213"
+community: "system-manage"
+location: "L105"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Theme_Type_Decls
+  - community/system-manage
 ---
 
 # Menu
 
 ## Connections
-- [[app.d.ts]] - `contains` [EXTRACTED]
+- [[system-manage.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls
+#graphify/code #graphify/EXTRACTED #community/system-manage

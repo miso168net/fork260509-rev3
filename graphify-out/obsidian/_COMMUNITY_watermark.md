@@ -1,10 +1,12 @@
 ---
 type: community
+cohesion: 0.33
 members: 6
 ---
 
 # watermark
 
+**Cohesion:** 0.33 - loosely connected
 **Members:** 6 nodes
 
 ## Members
@@ -23,7 +25,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Community 67]]
+- 1 edge to [[_COMMUNITY_default]]
 
 ## Top bridge nodes
 - [[watermark_1]] - degree 6, connects to 1 community

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/system-manage.d.ts"
 type: "code"
-community: "Community 37"
+community: "system-manage"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/system-manage
 ---
 
 # system-manage.d.ts
@@ -15,7 +15,7 @@ tags:
 - [[AllRole]] - `contains` [EXTRACTED]
 - [[CommonSearchParams_1]] - `contains` [EXTRACTED]
 - [[IconType]] - `contains` [EXTRACTED]
-- [[Menu_1]] - `contains` [EXTRACTED]
+- [[Menu]] - `contains` [EXTRACTED]
 - [[MenuButton]] - `contains` [EXTRACTED]
 - [[MenuList]] - `contains` [EXTRACTED]
 - [[MenuPropsOfRoute]] - `contains` [EXTRACTED]
@@ -29,4 +29,4 @@ tags:
 - [[UserList]] - `contains` [EXTRACTED]
 - [[UserSearchParams]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/system-manage

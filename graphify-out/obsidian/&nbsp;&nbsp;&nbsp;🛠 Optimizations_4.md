@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Community 89"
+community: "[v2.0.0-beta.1]"
 location: "L399"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_89
+  - community/v200-beta1
 ---
 
 # &nbsp;&nbsp;&nbsp;🛠 Optimizations
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v2.0.0-beta.1(httpsgithub.comsoybeanjssoybean-admincomparev1.3.15...v2.0.0-beta.1) (2025-10-25)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_89
+#graphify/document #graphify/EXTRACTED #community/v200-beta1

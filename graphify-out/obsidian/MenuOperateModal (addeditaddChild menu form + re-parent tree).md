@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/menu/modules/menu-operate-modal.vue"
 type: "code"
-community: "Community 8"
+community: "Menu & Policy Admin UI"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_8
+  - community/Menu__Policy_Admin_UI
 ---
 
 # MenuOperateModal (add/edit/addChild menu form + re-parent tree)
@@ -16,4 +16,4 @@ tags:
 - [[fetchAddMenu (rev3 menu write wrapper)]] - `calls` [EXTRACTED]
 - [[fetchUpdateMenu (rev3 menu write+reparent wrapper)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_8
+#graphify/code #graphify/EXTRACTED #community/Menu__Policy_Admin_UI

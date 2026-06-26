@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "Community 3"
+community: "shared"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_3
+  - community/shared
 ---
 
 # transformColorWithOpacity()
@@ -17,4 +17,4 @@ tags:
 - [[createTabCssVars()]] - `calls` [EXTRACTED]
 - [[shared.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_3
+#graphify/code #graphify/EXTRACTED #community/shared

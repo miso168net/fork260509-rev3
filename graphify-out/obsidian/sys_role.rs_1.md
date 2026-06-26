@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 10"
+community: "Role Entity Facade"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_10
+  - community/Role_Entity_Facade
 ---
 
 # sys_role.rs
@@ -22,8 +22,8 @@ tags:
 - [[find_active_by_id()_1]] - `contains` [EXTRACTED]
 - [[guard_for()]] - `contains` [EXTRACTED]
 - [[home_of_roles()]] - `contains` [EXTRACTED]
-- [[ilike()_3]] - `contains` [EXTRACTED]
-- [[list()_4]] - `contains` [EXTRACTED]
+- [[ilike()_1]] - `contains` [EXTRACTED]
+- [[list()_2]] - `contains` [EXTRACTED]
 - [[now()_2]] - `contains` [EXTRACTED]
 - [[role_active_model_create_sets_create_fields()]] - `contains` [EXTRACTED]
 - [[role_active_model_update_pairs_and_preserves_identity()]] - `contains` [EXTRACTED]
@@ -35,4 +35,4 @@ tags:
 - [[soft_delete()_1]] - `contains` [EXTRACTED]
 - [[update()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_10
+#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade

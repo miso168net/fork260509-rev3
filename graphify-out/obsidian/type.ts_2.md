@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/request/type.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "Auth Store & Storage"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/Auth_Store__Storage
 ---
 
 # type.ts
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_29]] - `imports_from` [EXTRACTED]
 - [[shared.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/Auth_Store__Storage

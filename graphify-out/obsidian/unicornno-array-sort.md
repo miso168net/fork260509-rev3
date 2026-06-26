@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.oxlintrc.json"
 type: "code"
-community: "Community 75"
+community: "rules"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_75
+  - community/rules
 ---
 
 # unicorn/no-array-sort
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[rules]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_75
+#graphify/code #graphify/EXTRACTED #community/rules

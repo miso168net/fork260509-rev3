@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/enum/index.ts"
 type: "code"
-community: "Router & Menu Store"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router__Menu_Store
+  - community/index
 ---
 
 # index.ts
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_37]] - `imports_from` [EXTRACTED]
 - [[index.ts_38]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store
+#graphify/code #graphify/EXTRACTED #community/index

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/page-tab/shared.ts"
 type: "code"
-community: "Community 3"
+community: "shared"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_3
+  - community/shared
 ---
 
 # shared.ts
@@ -21,4 +21,4 @@ tags:
 - [[index.ts_12]] - `imports_from` [EXTRACTED]
 - [[transformColorWithOpacity()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_3
+#graphify/code #graphify/EXTRACTED #community/shared

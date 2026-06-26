@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/src/ip_value.rs"
 type: "code"
-community: "Community 133"
+community: "ip_value"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_133
+  - community/ip_value
 ---
 
 # ip_value.rs
@@ -18,4 +18,4 @@ tags:
 - [[test_ip_u32()]] - `contains` [EXTRACTED]
 - [[test_ip_u32_str()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_133
+#graphify/code #graphify/EXTRACTED #community/ip_value

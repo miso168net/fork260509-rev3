@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/mocks/feature-users-20241014.ts"
 type: "code"
-community: "Alova Request Layer"
+community: "Alova API Service Layer"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_Request_Layer
+  - community/Alova_API_Service_Layer
 ---
 
 # feature-users-20241014.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts_31]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_Request_Layer
+#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer

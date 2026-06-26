@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/api/system-manage.ts"
 type: "code"
-community: "Community 38"
+community: "request"
 location: "L42"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/request
 ---
 
 # fetchGetAllPages()
@@ -15,4 +15,4 @@ tags:
 - [[request]] - `calls` [EXTRACTED]
 - [[system-manage.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/request

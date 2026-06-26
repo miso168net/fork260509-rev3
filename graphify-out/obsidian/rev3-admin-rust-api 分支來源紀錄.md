@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/x_fork.branch-origin.md"
 type: "document"
-community: "Community 189"
+community: "rev3-admin-rust-api 分支來源紀錄"
 location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_189
+  - community/rev3-admin-rust-api_
 ---
 
 # rev3-admin-rust-api 分支來源紀錄
@@ -17,4 +17,4 @@ tags:
 - [[歷史說明_1]] - `contains` [EXTRACTED]
 - [[注意事項_1]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_189
+#graphify/document #graphify/EXTRACTED #community/rev3-admin-rust-api_

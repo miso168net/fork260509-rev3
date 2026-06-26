@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "App Theme Type Decls"
-location: "L851"
+community: "App Type Definitions"
+location: "L1017"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Theme_Type_Decls
+  - community/App_Type_Definitions
 ---
 
 # GetI18nKey
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls
+#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions

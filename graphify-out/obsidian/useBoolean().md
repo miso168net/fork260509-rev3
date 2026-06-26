@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-boolean.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "table"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/table
 ---
 
 # useBoolean()
@@ -17,4 +17,4 @@ tags:
 - [[useTable()]] - `calls` [EXTRACTED]
 - [[useTableOperate()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/table

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 10"
+community: "Role Entity Facade"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_10
+  - community/Role_Entity_Facade
 ---
 
 # RoleFilter
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_role.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_10
+#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade

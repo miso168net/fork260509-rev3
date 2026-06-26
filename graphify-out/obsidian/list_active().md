@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Menu/Route Facade (rust)"
+community: "mutate_in_txn"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu/Route_Facade_rust
+  - community/mutate_in_txn
 ---
 
 # list_active()
@@ -18,4 +18,4 @@ tags:
 - [[soft_delete()]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/mutate_in_txn

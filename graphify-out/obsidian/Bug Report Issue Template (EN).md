@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/ISSUE_TEMPLATE/bug-report_en.yaml"
 type: "document"
-community: "Community 310"
+community: "Bug Report Issue Template"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Community_310
+  - community/Bug_Report_Issue_Template
 ---
 
 # Bug Report Issue Template (EN)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Bug Report Issue Template (CN)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Community_310
+#graphify/document #graphify/INFERRED #community/Bug_Report_Issue_Template

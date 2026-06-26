@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/gantt/vtable/index.vue"
 type: "code"
-community: "Community 108"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_108
+  - community/index
 ---
 
 # index.vue
@@ -21,4 +21,4 @@ tags:
 - [[initVTableGantt()]] - `contains` [EXTRACTED]
 - [[stopHandle]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_108
+#graphify/code #graphify/EXTRACTED #community/index

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/update-pkg.ts"
 type: "code"
-community: "@sa/scripts CLI"
+community: "Build Scripts Package"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sa/scripts_CLI
+  - community/Build_Scripts_Package
 ---
 
 # update-pkg.ts
@@ -17,4 +17,4 @@ tags:
 - [[index.ts_17]] - `imports_from` [EXTRACTED]
 - [[updatePkg()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI
+#graphify/code #graphify/EXTRACTED #community/Build_Scripts_Package

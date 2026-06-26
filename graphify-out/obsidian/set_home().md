@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 10"
+community: "Role Entity Facade"
 location: "L259"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_10
+  - community/Role_Entity_Facade
 ---
 
 # set_home()
@@ -20,4 +20,4 @@ tags:
 - [[sys_role.rs_1]] - `contains` [EXTRACTED]
 - [[update()_1]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_10
+#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/store/modules/route/index.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # useRouteStore (route pinia store)
@@ -15,4 +15,4 @@ tags:
 - [[serviceapi (barrel fetchGetAllRoles, fetchGetUserRoutes etc.)]] - `calls` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes + routeMap]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

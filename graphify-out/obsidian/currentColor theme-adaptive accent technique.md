@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/empty-data.svg"
 type: "rationale"
-community: "Community 286"
+community: "empty-data.svg — empty-state illustration"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Community_286
+  - community/empty-datasvg__empty-state_illustration
 ---
 
 # currentColor theme-adaptive accent technique
@@ -14,4 +14,4 @@ tags:
 - [[Empty-state UI illustration pattern]] - `conceptually_related_to` [INFERRED]
 - [[empty-data.svg — empty-state illustration]] - `implements` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Community_286
+#graphify/rationale #graphify/EXTRACTED #community/empty-datasvg__empty-state_illustration

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/elegant-router.d.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # elegant-router.d.ts (RouteMap/RouteKey types)
@@ -16,4 +16,4 @@ tags:
 - [[transformElegantRoutesToVueRoutes + routeMap]] - `references` [EXTRACTED]
 - [[useRouteStore (route pinia store)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

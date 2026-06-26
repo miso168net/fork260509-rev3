@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "table"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/table
 ---
 
 # table.ts
@@ -35,4 +35,4 @@ tags:
 - [[useTable()]] - `imports` [EXTRACTED]
 - [[useTableOperate()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/table

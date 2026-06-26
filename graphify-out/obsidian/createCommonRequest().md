@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/index.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "index"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/index
 ---
 
 # createCommonRequest()
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_1]] - `contains` [EXTRACTED]
 - [[transformResponse()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/index

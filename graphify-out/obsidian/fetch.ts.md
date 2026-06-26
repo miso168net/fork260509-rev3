@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/packages/alova/src/fetch.ts"
 type: "code"
-community: "Community 332"
+community: "fetch"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_332
+  - community/fetch
 ---
 
 # fetch.ts
 
-#graphify/code #graphify/EXTRACTED #community/Community_332
+#graphify/code #graphify/EXTRACTED #community/fetch

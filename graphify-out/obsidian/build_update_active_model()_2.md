@@ -1,19 +1,19 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_user.rs"
+source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
-community: "SysUser Facade (rust)"
-location: "L244"
+community: "system_settings"
+location: "L39"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysUser_Facade_rust
+  - community/system_settings
 ---
 
 # build_update_active_model()
 
 ## Connections
-- [[build_update_active_model_pairs_and_preserves_identity()]] - `calls` [EXTRACTED]
-- [[sys_user.rs_1]] - `contains` [EXTRACTED]
-- [[update()_2]] - `calls` [EXTRACTED]
+- [[system_settings.rs_2]] - `contains` [EXTRACTED]
+- [[update_by_key()]] - `calls` [EXTRACTED]
+- [[update_by_key_active_model_sets_value_and_audit_cols()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysUser_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/system_settings

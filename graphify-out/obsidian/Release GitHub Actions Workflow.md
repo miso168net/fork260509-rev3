@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/release.yml"
 type: "document"
-community: "Community 22"
+community: "Project README & Docs"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Community_22
+  - community/Project_README__Docs
 ---
 
 # Release GitHub Actions Workflow
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[githublogen Changelog Generator]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Community_22
+#graphify/document #graphify/EXTRACTED #community/Project_README__Docs

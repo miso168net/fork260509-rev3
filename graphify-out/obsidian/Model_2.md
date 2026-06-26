@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/sys_casbin_policy_archive.rs"
 type: "code"
-community: "Community 270"
+community: "sys_casbin_policy_archive"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_270
+  - community/sys_casbin_policy_archive
 ---
 
 # Model
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_casbin_policy_archive.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_270
+#graphify/code #graphify/EXTRACTED #community/sys_casbin_policy_archive

@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/global-menu/modules/vertical-menu.vue"
 type: "code"
-community: "Community 371"
+community: "vertical-menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_371
+  - community/vertical-menu
 ---
 
 # vertical-menu.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_371
+#graphify/code #graphify/EXTRACTED #community/vertical-menu

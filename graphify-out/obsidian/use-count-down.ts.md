@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-count-down.ts"
 type: "code"
-community: "Common Hooks & Store"
+community: "useLoading"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Common_Hooks__Store
+  - community/useLoading
 ---
 
 # use-count-down.ts
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_7]] - `imports_from` [EXTRACTED]
 - [[useCountDown()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Common_Hooks__Store
+#graphify/code #graphify/EXTRACTED #community/useLoading

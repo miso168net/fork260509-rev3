@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/state.rs"
 type: "code"
-community: "Community 277"
+community: "state"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_277
+  - community/state
 ---
 
 # state.rs
@@ -15,4 +15,4 @@ tags:
 - [[AppState]] - `contains` [EXTRACTED]
 - [[JwtConfig]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_277
+#graphify/code #graphify/EXTRACTED #community/state

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/no-permission.svg"
 type: "image"
-community: "Community 213"
+community: "ExceptionBase component"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Community_213
+  - community/ExceptionBase_component
 ---
 
 # no-permission.svg (403 Illustration)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[ExceptionBase component]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_213
+#graphify/image #graphify/EXTRACTED #community/ExceptionBase_component

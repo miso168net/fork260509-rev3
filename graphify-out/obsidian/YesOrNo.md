@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/common.d.ts"
 type: "code"
-community: "Community 212"
+community: "common"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_212
+  - community/common
 ---
 
 # YesOrNo
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[common.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_212
+#graphify/code #graphify/EXTRACTED #community/common

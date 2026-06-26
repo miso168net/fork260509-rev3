@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/heart.svg"
 type: "image"
-community: "Community 327"
+community: "Heart Icon"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/Community_327
+  - community/Heart_Icon
 ---
 
 # Heart Icon (svg-icon asset)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[base-web Local SVG Icon Set (srcassetssvg-icon)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Community_327
+#graphify/image #graphify/INFERRED #community/Heart_Icon

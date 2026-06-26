@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "code"
-community: "Community 304"
+community: "prometheus compose service"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_304
+  - community/prometheus_compose_service
 ---
 
 # prometheus compose service (metrics scrape+storage, profiles:[metrics], 15d retention)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[prometheus_data volume]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_304
+#graphify/code #graphify/EXTRACTED #community/prometheus_compose_service

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "Community 188"
+community: "watermark"
 location: "L62"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_188
+  - community/watermark
 ---
 
 # watermark
@@ -19,4 +19,4 @@ tags:
 - [[timeFormat]] - `contains` [EXTRACTED]
 - [[visible_10]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_188
+#graphify/code #graphify/EXTRACTED #community/watermark

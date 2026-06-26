@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "Router & Menu Store"
+community: "route"
 location: "L259"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Router__Menu_Store
+  - community/route
 ---
 
 # getRouteName()
@@ -17,4 +17,4 @@ tags:
 - [[route.ts]] - `imports` [EXTRACTED]
 - [[transform.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Router__Menu_Store
+#graphify/code #graphify/EXTRACTED #community/route

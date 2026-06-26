@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/src/crypto.ts"
 type: "code"
-community: "Community 61"
+community: "index"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/index
 ---
 
 # Crypto
@@ -17,4 +17,4 @@ tags:
 - [[.encrypt()]] - `method` [EXTRACTED]
 - [[crypto.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/index

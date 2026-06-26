@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/langs/zh-cn.ts"
 type: "code"
-community: "Community 162"
+community: "locale"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_162
+  - community/locale
 ---
 
 # zh-cn.ts
@@ -15,4 +15,4 @@ tags:
 - [[local_1]] - `contains` [EXTRACTED]
 - [[locale.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_162
+#graphify/code #graphify/EXTRACTED #community/locale

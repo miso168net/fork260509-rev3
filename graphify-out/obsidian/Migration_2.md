@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/m003_user_role_fk.rs"
 type: "code"
-community: "Community 156"
+community: "m003_user_role_fk"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_156
+  - community/m003_user_role_fk
 ---
 
 # Migration
@@ -16,4 +16,4 @@ tags:
 - [[.up()_2]] - `method` [EXTRACTED]
 - [[m003_user_role_fk.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_156
+#graphify/code #graphify/EXTRACTED #community/m003_user_role_fk

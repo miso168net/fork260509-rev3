@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/options.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "index"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/index
 ---
 
 # createRetryOptions()
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_1]] - `imports` [EXTRACTED]
 - [[options.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/index

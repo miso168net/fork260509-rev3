@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/tsconfig.json"
 type: "code"
-community: "Community 49"
+community: "compilerOptions"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_49
+  - community/compilerOptions
 ---
 
 # target
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_49
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

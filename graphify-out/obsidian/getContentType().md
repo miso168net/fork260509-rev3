@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/shared.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "index"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/index
 ---
 
 # getContentType()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[shared.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/index

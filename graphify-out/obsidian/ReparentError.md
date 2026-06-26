@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Menu/Route Facade (rust)"
+community: "ReparentError"
 location: "L588"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu/Route_Facade_rust
+  - community/ReparentError
 ---
 
 # ReparentError
@@ -15,4 +15,4 @@ tags:
 - [[.from()_1]] - `method` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu/Route_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/ReparentError

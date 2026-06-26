@@ -1,20 +1,20 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_role.rs"
+source_file: "rust-api/server/src/model/facade/sys_operation_log.rs"
 type: "code"
-community: "Community 10"
-location: "L96"
+community: "sys_operation_log"
+location: "L91"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_10
+  - community/sys_operation_log
 ---
 
 # list()
 
 ## Connections
-- [[find_active()]] - `calls` [EXTRACTED]
+- [[audit_query_oplog_access_login_filters()]] - `calls` [EXTRACTED]
 - [[ilike()_3]] - `calls` [EXTRACTED]
-- [[role_crud_roundtrip_and_dup_and_filter()]] - `calls` [EXTRACTED]
-- [[sys_role.rs_1]] - `contains` [EXTRACTED]
+- [[ip_host_like()]] - `calls` [EXTRACTED]
+- [[sys_operation_log.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_10
+#graphify/code #graphify/EXTRACTED #community/sys_operation_log

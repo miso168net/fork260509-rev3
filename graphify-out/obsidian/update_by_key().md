@@ -1,21 +1,21 @@
 ---
 source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
-community: "Community 93"
+community: "system_settings"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_93
+  - community/system_settings
 ---
 
 # update_by_key()
 
 ## Connections
-- [[.audit_json()_3]] - `calls` [EXTRACTED]
-- [[build_update_active_model()_3]] - `calls` [EXTRACTED]
+- [[.audit_json()_2]] - `calls` [EXTRACTED]
+- [[build_update_active_model()_2]] - `calls` [EXTRACTED]
 - [[mutate_in_txn()]] - `calls` [INFERRED]
 - [[system_settings.rs_2]] - `contains` [EXTRACTED]
 - [[system_settings_update_oplog_inet_roundtrip()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_93
+#graphify/code #graphify/EXTRACTED #community/system_settings

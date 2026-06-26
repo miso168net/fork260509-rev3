@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/main.rs"
 type: "code"
-community: "Community 310"
+community: "main"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_310
+  - community/main
 ---
 
 # main.rs
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[main()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_310
+#graphify/code #graphify/EXTRACTED #community/main

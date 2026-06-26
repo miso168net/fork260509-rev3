@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/package.json"
 type: "concept"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # xlsx dependency
@@ -14,4 +14,4 @@ tags:
 - [[base-web package.json (soybean-admin deps)]] - `depends_on` [EXTRACTED]
 - [[pluginexcelindex.vue (xlsx export demo)]] - `depends_on` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_5
+#graphify/concept #graphify/EXTRACTED #community/User_Management_Views

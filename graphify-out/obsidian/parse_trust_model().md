@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Community 19"
+community: "Server Config & Secrets"
 location: "L124"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_19
+  - community/Server_Config__Secrets
 ---
 
 # parse_trust_model()
@@ -20,4 +20,4 @@ tags:
 - [[parse_trust_model_full_valid()]] - `calls` [EXTRACTED]
 - [[parse_trust_model_invalid_toml_returns_default()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_19
+#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets

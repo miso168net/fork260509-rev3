@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Community 113"
+community: "build_user_route_tree"
 location: "L1123"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_113
+  - community/build_user_route_tree
 ---
 
 # visible_set()
@@ -20,4 +20,4 @@ tags:
 - [[menu_tree_wire_meta_mapping()]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_113
+#graphify/code #graphify/EXTRACTED #community/build_user_route_tree

@@ -1,19 +1,20 @@
 ---
-source_file: "rust-api/server/src/model/facade/system_settings.rs"
+source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "Community 93"
-location: "L39"
+community: "User Entity Facade"
+location: "L248"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_93
+  - community/User_Entity_Facade
 ---
 
 # build_update_active_model()
 
 ## Connections
-- [[system_settings.rs_2]] - `contains` [EXTRACTED]
-- [[update_by_key()]] - `calls` [EXTRACTED]
-- [[update_by_key_active_model_sets_value_and_audit_cols()]] - `calls` [EXTRACTED]
+- [[build_update_active_model_pairs_and_preserves_identity()]] - `calls` [EXTRACTED]
+- [[build_update_active_model_status_none_preserves_existing()]] - `calls` [EXTRACTED]
+- [[sys_user.rs_1]] - `contains` [EXTRACTED]
+- [[update()_2]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_93
+#graphify/code #graphify/EXTRACTED #community/User_Entity_Facade

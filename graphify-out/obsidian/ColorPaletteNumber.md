@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/types/index.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "recommend"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/recommend
 ---
 
 # ColorPaletteNumber
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_6]] - `contains` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/recommend

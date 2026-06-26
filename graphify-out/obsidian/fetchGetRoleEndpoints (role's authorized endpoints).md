@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "Community 12"
+community: "Role Authorization Modals"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_12
+  - community/Role_Authorization_Modals
 ---
 
 # fetchGetRoleEndpoints (role's authorized endpoints)
@@ -14,4 +14,4 @@ tags:
 - [[Api.SystemManage.Endpoint DTO (path + method)]] - `references` [EXTRACTED]
 - [[EndpointAuthModal (role x API endpoint authorization tree)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_12
+#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals

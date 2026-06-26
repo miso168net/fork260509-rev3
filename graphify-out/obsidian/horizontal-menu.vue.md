@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/global-menu/modules/horizontal-menu.vue"
 type: "code"
-community: "Community 367"
+community: "horizontal-menu"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_367
+  - community/horizontal-menu
 ---
 
 # horizontal-menu.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_367
+#graphify/code #graphify/EXTRACTED #community/horizontal-menu

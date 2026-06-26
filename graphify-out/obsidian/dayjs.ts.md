@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/dayjs.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/index
 ---
 
 # dayjs.ts
@@ -18,4 +18,4 @@ tags:
 - [[setDayjsLocale()]] - `contains` [EXTRACTED]
 - [[storage.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/index

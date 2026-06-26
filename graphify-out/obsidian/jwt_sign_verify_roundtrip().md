@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/jwt.rs"
 type: "code"
-community: "Community 74"
+community: "jwt"
 location: "L78"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_74
+  - community/jwt
 ---
 
 # jwt_sign_verify_roundtrip()
@@ -18,4 +18,4 @@ tags:
 - [[sign()]] - `calls` [EXTRACTED]
 - [[verify()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_74
+#graphify/code #graphify/EXTRACTED #community/jwt

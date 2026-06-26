@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/empty-data.svg"
 type: "image"
-community: "Community 286"
+community: "empty-data.svg — empty-state illustration"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Community_286
+  - community/empty-datasvg__empty-state_illustration
 ---
 
 # empty-data.svg — empty-state illustration
@@ -14,4 +14,4 @@ tags:
 - [[Empty-state UI illustration pattern]] - `implements` [INFERRED]
 - [[currentColor theme-adaptive accent technique]] - `implements` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Community_286
+#graphify/image #graphify/EXTRACTED #community/empty-datasvg__empty-state_illustration

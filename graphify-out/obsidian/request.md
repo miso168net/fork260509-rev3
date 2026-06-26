@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/request/index.ts"
 type: "code"
-community: "Community 38"
+community: "request"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_38
+  - community/request
 ---
 
 # request
@@ -31,4 +31,4 @@ tags:
 - [[route.ts_1]] - `imports` [EXTRACTED]
 - [[system-manage.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_38
+#graphify/code #graphify/EXTRACTED #community/request

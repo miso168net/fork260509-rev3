@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/global-search/components/search-result.vue"
 type: "code"
-community: "Community 375"
+community: "search-result"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_375
+  - community/search-result
 ---
 
 # search-result.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_375
+#graphify/code #graphify/EXTRACTED #community/search-result

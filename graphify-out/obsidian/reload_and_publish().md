@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 155"
-location: "L837"
+community: "reload_and_publish"
+location: "L874"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/reload_and_publish
 ---
 
 # reload_and_publish()
@@ -19,4 +19,4 @@ tags:
 - [[update_role_endpoints()]] - `calls` [EXTRACTED]
 - [[update_role_menu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/reload_and_publish

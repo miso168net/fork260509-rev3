@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.oxfmtrc.json"
 type: "code"
-community: "Community 104"
+community: ".oxfmtrc"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_104
+  - community/oxfmtrc
 ---
 
 # arrowParens
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.oxfmtrc.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_104
+#graphify/code #graphify/EXTRACTED #community/oxfmtrc

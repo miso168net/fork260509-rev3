@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "SysUser Facade (rust)"
-location: "L124"
+community: "User Entity Facade"
+location: "L128"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysUser_Facade_rust
+  - community/User_Entity_Facade
 ---
 
 # UserFilter
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_user.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysUser_Facade_rust
+#graphify/code #graphify/EXTRACTED #community/User_Entity_Facade

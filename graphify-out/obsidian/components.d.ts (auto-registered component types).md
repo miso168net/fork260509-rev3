@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/components.d.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # components.d.ts (auto-registered component types)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[manageuserindex.vue (user list page)]] - `references` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Community_5
+#graphify/code #graphify/INFERRED #community/User_Management_Views

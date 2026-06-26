@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/adapter.rs"
 type: "code"
-community: "Community 33"
+community: "SeaOrmAdapter<C>"
 location: "L10"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_33
+  - community/SeaOrmAdapterC
 ---
 
 # SeaOrmAdapter
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[adapter.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_33
+#graphify/code #graphify/EXTRACTED #community/SeaOrmAdapterC

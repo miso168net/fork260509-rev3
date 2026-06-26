@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/alova/scenes/modules/network-toggle-request.vue"
 type: "code"
-community: "Community 400"
+community: "network-toggle-request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_400
+  - community/network-toggle-request
 ---
 
 # network-toggle-request.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_400
+#graphify/code #graphify/EXTRACTED #community/network-toggle-request

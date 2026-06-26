@@ -1,17 +1,16 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
-  - graphify/INFERRED
-  - community/Community_5
+  - graphify/EXTRACTED
+  - community/User_Management_Views
 ---
 
 # sessionPolicyRecord (business constants)
 
 ## Connections
-- [[App.I18n.Schema (i18n key schema)]] - `references` [INFERRED]
 - [[user-operate-drawer.vue (user addedit drawer)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/INFERRED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

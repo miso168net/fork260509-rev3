@@ -1,17 +1,17 @@
 ---
 source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
-community: "Community 93"
+community: "system_settings"
 location: "L99"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_93
+  - community/system_settings
 ---
 
 # entity::system_settings::Model
 
 ## Connections
-- [[.audit_json()_3]] - `method` [EXTRACTED]
+- [[.audit_json()_2]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_93
+#graphify/code #graphify/EXTRACTED #community/system_settings

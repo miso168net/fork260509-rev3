@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/antv/modules/status.ts"
 type: "code"
-community: "Community 63"
+community: "antv-g6-flow"
 location: "L6"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_63
+  - community/antv-g6-flow
 ---
 
 # NodeStatusConfig
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[status.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_63
+#graphify/code #graphify/EXTRACTED #community/antv-g6-flow

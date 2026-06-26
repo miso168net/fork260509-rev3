@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 263"
-location: "L1140"
+community: "role_write_from_req"
+location: "L1177"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_263
+  - community/role_write_from_req
 ---
 
 # update_role()
@@ -15,4 +15,4 @@ tags:
 - [[role_write_from_req()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_263
+#graphify/code #graphify/EXTRACTED #community/role_write_from_req

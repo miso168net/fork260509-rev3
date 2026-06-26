@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "base-web CHANGELOG"
+community: "Soybean Changelog"
 location: "L2314"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/base-web_CHANGELOG
+  - community/Soybean_Changelog
 ---
 
 # &nbsp;&nbsp;&nbsp;🏡 Chore
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v0.10.1(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.0...v0.10.1) (2023-05-31)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/base-web_CHANGELOG
+#graphify/document #graphify/EXTRACTED #community/Soybean_Changelog

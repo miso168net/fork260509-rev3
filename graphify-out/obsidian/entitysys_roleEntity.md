@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 305"
+community: "entity::sys_role::Entity"
 location: "L12"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_305
+  - community/entitysys_roleEntity
 ---
 
 # entity::sys_role::Entity
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.deleted_at_column()_1]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_305
+#graphify/code #graphify/EXTRACTED #community/entitysys_roleEntity

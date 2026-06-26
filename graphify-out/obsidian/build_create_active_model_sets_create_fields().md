@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "Community 158"
+community: "now"
 location: "L1472"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_158
+  - community/now
 ---
 
 # build_create_active_model_sets_create_fields()
@@ -17,4 +17,4 @@ tags:
 - [[sample_fields()]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_158
+#graphify/code #graphify/EXTRACTED #community/now

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/user/modules/user-operate-drawer.vue"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # user-operate-drawer.vue (user add/edit drawer)
@@ -18,4 +18,4 @@ tags:
 - [[sessionPolicyRecord (business constants)]] - `references` [EXTRACTED]
 - [[userGenderRecord (business constants)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

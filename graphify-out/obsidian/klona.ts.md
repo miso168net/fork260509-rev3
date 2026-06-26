@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/src/klona.ts"
 type: "code"
-community: "Community 61"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_61
+  - community/index
 ---
 
 # klona.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts_20]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_61
+#graphify/code #graphify/EXTRACTED #community/index

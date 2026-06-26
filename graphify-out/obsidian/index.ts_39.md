@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/map/components/index.ts"
 type: "code"
-community: "Community 235"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_235
+  - community/index
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[gaode-map.vue]] - `imports_from` [EXTRACTED]
 - [[tencent-map.vue]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_235
+#graphify/code #graphify/EXTRACTED #community/index

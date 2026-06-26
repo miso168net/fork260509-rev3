@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "concept"
-community: "Community 154"
+community: "grafana compose service"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/grafana_compose_service
 ---
 
 # grafana_data volume
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[grafana compose service (obs UI, profilesobs,metrics, $__file admin pw)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Community_154
+#graphify/concept #graphify/EXTRACTED #community/grafana_compose_service

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "Community 30"
+community: "Color Utilities Package"
 location: "L125"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_30
+  - community/Color_Utilities_Package
 ---
 
 # getSaturation()
@@ -15,4 +15,4 @@ tags:
 - [[antd.ts]] - `contains` [EXTRACTED]
 - [[getAntDPaletteColorByIndex()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_30
+#graphify/code #graphify/EXTRACTED #community/Color_Utilities_Package

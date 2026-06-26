@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/app/index.ts"
 type: "code"
-community: "Axios Request Factory"
+community: "table"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Axios_Request_Factory
+  - community/table
 ---
 
 # useAppStore
@@ -17,4 +17,4 @@ tags:
 - [[useNaivePaginatedTable()]] - `calls` [EXTRACTED]
 - [[useNaiveTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Axios_Request_Factory
+#graphify/code #graphify/EXTRACTED #community/table

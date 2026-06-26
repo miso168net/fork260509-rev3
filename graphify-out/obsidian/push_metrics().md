@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/cleanup-job/src/main.rs"
 type: "code"
-community: "Community 268"
+community: "main"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_268
+  - community/main
 ---
 
 # push_metrics()
@@ -15,4 +15,4 @@ tags:
 - [[main()]] - `calls` [EXTRACTED]
 - [[main.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_268
+#graphify/code #graphify/EXTRACTED #community/main

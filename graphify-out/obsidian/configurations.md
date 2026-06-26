@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/launch.json"
 type: "code"
-community: "Community 259"
+community: "launch"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_259
+  - community/launch
 ---
 
 # configurations
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[launch.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_259
+#graphify/code #graphify/EXTRACTED #community/launch

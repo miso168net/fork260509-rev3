@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 262"
-location: "L683"
+community: "role_delete_guard"
+location: "L720"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_262
+  - community/role_delete_guard
 ---
 
 # role_delete_guard()
@@ -17,4 +17,4 @@ tags:
 - [[guard_for()]] - `calls` [INFERRED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_262
+#graphify/code #graphify/EXTRACTED #community/role_delete_guard

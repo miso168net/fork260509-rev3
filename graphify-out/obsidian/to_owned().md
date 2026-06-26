@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/adapter.rs"
 type: "code"
-community: "Community 33"
+community: "SeaOrmAdapter<C>"
 location: "L200"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_33
+  - community/SeaOrmAdapterC
 ---
 
 # to_owned()
@@ -17,4 +17,4 @@ tags:
 - [[round_trip_live()]] - `calls` [EXTRACTED]
 - [[test_adapter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_33
+#graphify/code #graphify/EXTRACTED #community/SeaOrmAdapterC

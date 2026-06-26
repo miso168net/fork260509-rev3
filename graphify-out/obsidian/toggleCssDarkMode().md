@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/shared.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "shared"
 location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/shared
 ---
 
 # toggleCssDarkMode()
@@ -16,4 +16,4 @@ tags:
 - [[shared.ts_8]] - `contains` [EXTRACTED]
 - [[toggleHtmlClass()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/shared

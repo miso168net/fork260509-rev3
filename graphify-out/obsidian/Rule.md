@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/action.rs"
 type: "code"
-community: "Community 53"
+community: "action"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_53
+  - community/action
 ---
 
 # Rule
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[action.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_53
+#graphify/code #graphify/EXTRACTED #community/action

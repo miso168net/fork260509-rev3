@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/api/system-manage.d.ts"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Community 37"
-location: "L105"
+community: "App Type Definitions"
+location: "L213"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_37
+  - community/App_Type_Definitions
 ---
 
 # Menu
 
 ## Connections
-- [[system-manage.d.ts]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_37
+#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions

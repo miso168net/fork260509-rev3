@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/common.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "loading"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/loading
 ---
 
 # toggleHtmlClass()
@@ -18,4 +18,4 @@ tags:
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 - [[toggleCssDarkMode()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/loading

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/manage/user/index.vue"
 type: "code"
-community: "Community 328"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_328
+  - community/index
 ---
 
 # index.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[label_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_328
+#graphify/code #graphify/EXTRACTED #community/index

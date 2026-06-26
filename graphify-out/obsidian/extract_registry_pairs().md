@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/tests/endpoint_coverage_lint.rs"
 type: "code"
-community: "Community 73"
+community: "endpoint_coverage_lint"
 location: "L275"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_73
+  - community/endpoint_coverage_lint
 ---
 
 # extract_registry_pairs()
@@ -17,4 +17,4 @@ tags:
 - [[first_string_after()]] - `calls` [EXTRACTED]
 - [[scan_self_test()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/EXTRACTED #community/endpoint_coverage_lint

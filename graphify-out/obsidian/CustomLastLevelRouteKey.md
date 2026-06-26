@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/elegant-router.d.ts"
 type: "code"
-community: "Community 17"
+community: "Elegant Router Typings"
 location: "L230"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_17
+  - community/Elegant_Router_Typings
 ---
 
 # CustomLastLevelRouteKey
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[elegant-router.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_17
+#graphify/code #graphify/EXTRACTED #community/Elegant_Router_Typings

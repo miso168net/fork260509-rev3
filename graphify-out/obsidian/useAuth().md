@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/business/auth.ts"
 type: "code"
-community: "Auth & Locale Service"
+community: "Auth Store & Storage"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Locale_Service
+  - community/Auth_Store__Storage
 ---
 
 # useAuth()
@@ -15,4 +15,4 @@ tags:
 - [[auth.ts]] - `contains` [EXTRACTED]
 - [[useAuthStore]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Locale_Service
+#graphify/code #graphify/EXTRACTED #community/Auth_Store__Storage

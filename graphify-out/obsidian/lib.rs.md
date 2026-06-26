@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/entity/src/lib.rs"
 type: "code"
-community: "Community 455"
+community: "lib"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_455
+  - community/lib
 ---
 
 # lib.rs
 
-#graphify/code #graphify/EXTRACTED #community/Community_455
+#graphify/code #graphify/EXTRACTED #community/lib

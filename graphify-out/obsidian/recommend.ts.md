@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/recommend.ts"
 type: "code"
-community: "Theme Palette & UnoCSS"
+community: "recommend"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Palette__UnoCSS
+  - community/recommend
 ---
 
 # recommend.ts
@@ -32,4 +32,4 @@ tags:
 - [[isValidColor()]] - `imports` [EXTRACTED]
 - [[transformHslToHex()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Palette__UnoCSS
+#graphify/code #graphify/EXTRACTED #community/recommend

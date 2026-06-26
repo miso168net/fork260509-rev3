@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/menu/index.vue"
 type: "code"
-community: "Community 8"
+community: "Menu & Policy Admin UI"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_8
+  - community/Menu__Policy_Admin_UI
 ---
 
 # ManageMenu view (unified menu list with recycle bin + RBAC gating)
@@ -19,4 +19,4 @@ tags:
 - [[fetchGetMenuListV2 (rev3 unified menu list, bare array tree)]] - `calls` [EXTRACTED]
 - [[fetchRestoreMenu (rev3 menu restore wrapper)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_8
+#graphify/code #graphify/EXTRACTED #community/Menu__Policy_Admin_UI

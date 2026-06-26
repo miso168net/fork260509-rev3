@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/system-settings/index.vue"
 type: "code"
-community: "Community 5"
+community: "User Management Views"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_5
+  - community/User_Management_Views
 ---
 
 # system-settings/index.vue (KV settings page)
@@ -15,4 +15,4 @@ tags:
 - [[localesindex.ts ($t, setupI18n)]] - `calls` [EXTRACTED]
 - [[serviceapirev3-system-settings.ts (settings wrappers)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_5
+#graphify/code #graphify/EXTRACTED #community/User_Management_Views

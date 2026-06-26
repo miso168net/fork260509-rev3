@@ -1,13 +1,13 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "Community 477"
+community: "menuTypeRecord"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_477
+  - community/menuTypeRecord
 ---
 
 # menuTypeRecord (business constants)
 
-#graphify/code #graphify/EXTRACTED #community/Community_477
+#graphify/code #graphify/EXTRACTED #community/menuTypeRecord

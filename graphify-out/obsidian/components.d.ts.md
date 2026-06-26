@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/components.d.ts"
 type: "code"
-community: "Community 327"
+community: "components"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_327
+  - community/components
 ---
 
 # components.d.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[GlobalComponents]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_327
+#graphify/code #graphify/EXTRACTED #community/components

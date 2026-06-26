@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/layouts/modules/theme-drawer/modules/layout/modules/header-settings.vue"
 type: "code"
-community: "Community 389"
+community: "header-settings"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_389
+  - community/header-settings
 ---
 
 # header-settings.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_389
+#graphify/code #graphify/EXTRACTED #community/header-settings

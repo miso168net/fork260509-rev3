@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/tests/endpoint_coverage_lint.rs"
 type: "code"
-community: "Community 73"
+community: "endpoint_coverage_lint"
 location: "L307"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_73
+  - community/endpoint_coverage_lint
 ---
 
 # endpoint_authz_coverage()
@@ -21,4 +21,4 @@ tags:
 - [[main_rs()]] - `calls` [EXTRACTED]
 - [[whiten_comments()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_73
+#graphify/code #graphify/EXTRACTED #community/endpoint_coverage_lint

@@ -1,20 +1,18 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_operation_log.rs"
+source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
 type: "code"
-community: "Community 154"
-location: "L91"
+community: "sys_login_attempt"
+location: "L128"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_154
+  - community/sys_login_attempt
 ---
 
 # list()
 
 ## Connections
-- [[audit_query_oplog_access_login_filters()]] - `calls` [EXTRACTED]
 - [[ilike()_2]] - `calls` [EXTRACTED]
-- [[ip_host_like()]] - `calls` [EXTRACTED]
-- [[sys_operation_log.rs_1]] - `contains` [EXTRACTED]
+- [[sys_login_attempt.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_154
+#graphify/code #graphify/EXTRACTED #community/sys_login_attempt

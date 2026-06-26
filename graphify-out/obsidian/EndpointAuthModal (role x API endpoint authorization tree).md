@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/endpoint-auth-modal.vue"
 type: "code"
-community: "Community 12"
+community: "Role Authorization Modals"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_12
+  - community/Role_Authorization_Modals
 ---
 
 # EndpointAuthModal (role x API endpoint authorization tree)
@@ -17,4 +17,4 @@ tags:
 - [[fetchGetRoleEndpoints (role's authorized endpoints)]] - `calls` [EXTRACTED]
 - [[fetchUpdateRoleEndpoints (DB-first casbin endpoint policy write)]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_12
+#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals

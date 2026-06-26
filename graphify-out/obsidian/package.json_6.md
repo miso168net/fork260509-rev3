@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/package.json"
 type: "code"
-community: "@sa/scripts CLI"
+community: "Build Scripts Package"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sa/scripts_CLI
+  - community/Build_Scripts_Package
 ---
 
 # package.json
@@ -20,4 +20,4 @@ tags:
 - [[typesVersions_5]] - `contains` [EXTRACTED]
 - [[version_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sa/scripts_CLI
+#graphify/code #graphify/EXTRACTED #community/Build_Scripts_Package

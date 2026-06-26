@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-settings.ts"
 type: "code"
-community: "Community 289"
+community: "fetchGetSystemSettings"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_289
+  - community/fetchGetSystemSettings
 ---
 
 # fetchGetSystemSettings (read all system settings KV)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Api.SystemManage.SystemSetting DTO (KV setting)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_289
+#graphify/code #graphify/EXTRACTED #community/fetchGetSystemSettings

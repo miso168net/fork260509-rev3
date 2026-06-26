@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/_builtin/login/index.vue"
 type: "code"
-community: "Community 254"
+community: "index"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_254
+  - community/index
 ---
 
 # index.vue
@@ -15,4 +15,4 @@ tags:
 - [[bgColor]] - `contains` [EXTRACTED]
 - [[bgThemeColor]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_254
+#graphify/code #graphify/EXTRACTED #community/index

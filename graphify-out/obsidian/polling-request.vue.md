@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/alova/scenes/modules/polling-request.vue"
 type: "code"
-community: "Community 401"
+community: "polling-request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_401
+  - community/polling-request
 ---
 
 # polling-request.vue
 
-#graphify/code #graphify/EXTRACTED #community/Community_401
+#graphify/code #graphify/EXTRACTED #community/polling-request

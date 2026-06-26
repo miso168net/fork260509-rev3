@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
 type: "code"
-community: "Community 79"
-location: "L71"
+community: "sys_login_attempt"
+location: "L114"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_79
+  - community/sys_login_attempt
 ---
 
 # LoginAttemptFilter
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_login_attempt.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_79
+#graphify/code #graphify/EXTRACTED #community/sys_login_attempt

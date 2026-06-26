@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Community 10"
+community: "Role Entity Facade"
 location: "L144"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_10
+  - community/Role_Entity_Facade
 ---
 
 # build_create_active_model()
@@ -16,4 +16,4 @@ tags:
 - [[role_active_model_create_sets_create_fields()]] - `calls` [EXTRACTED]
 - [[sys_role.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_10
+#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade

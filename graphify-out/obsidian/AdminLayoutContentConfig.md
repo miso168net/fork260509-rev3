@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/types/index.ts"
 type: "code"
-community: "Community 3"
+community: "UI Materials Package"
 location: "L80"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_3
+  - community/UI_Materials_Package
 ---
 
 # AdminLayoutContentConfig
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_3
+#graphify/code #graphify/EXTRACTED #community/UI_Materials_Package

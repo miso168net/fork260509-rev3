@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "Community 50"
+community: "error"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_50
+  - community/error
 ---
 
 # AppError
@@ -19,4 +19,4 @@ tags:
 - [[.key()]] - `method` [EXTRACTED]
 - [[error.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_50
+#graphify/code #graphify/EXTRACTED #community/error

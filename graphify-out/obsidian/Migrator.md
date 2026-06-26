@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/lib.rs"
 type: "code"
-community: "Community 280"
+community: "Migrator"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_280
+  - community/Migrator
 ---
 
 # Migrator
@@ -15,4 +15,4 @@ tags:
 - [[.migrations()]] - `method` [EXTRACTED]
 - [[lib.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_280
+#graphify/code #graphify/EXTRACTED #community/Migrator

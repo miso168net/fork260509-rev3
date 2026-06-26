@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/settings.json"
 type: "code"
-community: "Community 29"
+community: "settings"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_29
+  - community/settings
 ---
 
 # i18n-ally.parsers.typescript.compilerOptions
@@ -18,4 +18,4 @@ tags:
 - [[rootDir]] - `contains` [EXTRACTED]
 - [[settings.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_29
+#graphify/code #graphify/EXTRACTED #community/settings

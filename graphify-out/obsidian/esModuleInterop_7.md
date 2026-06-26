@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/uno-preset/tsconfig.json"
 type: "code"
-community: "Community 42"
+community: "compilerOptions"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_42
+  - community/compilerOptions
 ---
 
 # esModuleInterop
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_42
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

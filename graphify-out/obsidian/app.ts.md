@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/app.ts"
 type: "code"
-community: "Community 69"
+community: "app"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_69
+  - community/app
 ---
 
 # app.ts
@@ -29,4 +29,4 @@ tags:
 - [[transformRecordToOption()]] - `imports` [EXTRACTED]
 - [[watermarkTimeFormatOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_69
+#graphify/code #graphify/EXTRACTED #community/app

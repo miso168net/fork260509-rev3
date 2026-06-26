@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 155"
-location: "L2720"
+community: "reload_and_publish"
+location: "L2919"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/reload_and_publish
 ---
 
 # reload_publish_roundtrip_binds_correct_channel()
@@ -15,4 +15,4 @@ tags:
 - [[reload_publish_roundtrip()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/reload_and_publish

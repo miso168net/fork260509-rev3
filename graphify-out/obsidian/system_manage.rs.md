@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "SysManage Handler & DTOs (rust)"
+community: "System Manage Handlers"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/SysManage_Handler__DTOs_rust
+  - community/System_Manage_Handlers
 ---
 
 # system_manage.rs
@@ -17,6 +17,7 @@ tags:
 - [[AllRoleItem]] - `contains` [EXTRACTED]
 - [[ArchivedPolicyItem]] - `contains` [EXTRACTED]
 - [[ArchivedPolicySearchQuery]] - `contains` [EXTRACTED]
+- [[DateBound]] - `contains` [EXTRACTED]
 - [[Endpoint]] - `contains` [EXTRACTED]
 - [[ExportCsv]] - `contains` [EXTRACTED]
 - [[IdReq]] - `contains` [EXTRACTED]
@@ -42,6 +43,8 @@ tags:
 - [[add_menu()]] - `contains` [EXTRACTED]
 - [[add_role()]] - `contains` [EXTRACTED]
 - [[add_user()]] - `contains` [EXTRACTED]
+- [[audit_date_parse_end_bound_dateonly_is_end_of_day_inclusive()]] - `contains` [EXTRACTED]
+- [[audit_date_parse_end_bound_rfc3339_passes_through()]] - `contains` [EXTRACTED]
 - [[audit_date_parse_independent_from_and_to()]] - `contains` [EXTRACTED]
 - [[audit_date_parse_none_empty_rfc3339_dateonly_malformed()]] - `contains` [EXTRACTED]
 - [[audit_entity_id_parse()]] - `contains` [EXTRACTED]
@@ -59,6 +62,7 @@ tags:
 - [[codes()]] - `contains` [EXTRACTED]
 - [[csv_escape_field()]] - `contains` [EXTRACTED]
 - [[csv_escape_field_always_quotes_and_doubles_quote()]] - `contains` [EXTRACTED]
+- [[csv_escape_field_neutralizes_formula_triggers()]] - `contains` [EXTRACTED]
 - [[date_ok()]] - `contains` [EXTRACTED]
 - [[delete_menu()]] - `contains` [EXTRACTED]
 - [[delete_role()]] - `contains` [EXTRACTED]
@@ -97,10 +101,13 @@ tags:
 - [[map_write_err_non_unique_to_internal()]] - `contains` [EXTRACTED]
 - [[menu_write_from_req()]] - `contains` [EXTRACTED]
 - [[normalize_current()]] - `contains` [EXTRACTED]
+- [[normalize_endpoint_method()]] - `contains` [EXTRACTED]
 - [[normalize_enum_filter()]] - `contains` [EXTRACTED]
 - [[normalize_enum_filter_blank_to_none_and_parse()]] - `contains` [EXTRACTED]
 - [[normalize_escape_like_metachars()]] - `contains` [EXTRACTED]
+- [[normalize_lowercase_and_mixed_to_upper()]] - `contains` [EXTRACTED]
 - [[normalize_page_defaults_and_clamp()]] - `contains` [EXTRACTED]
+- [[normalize_rejects_non_whitelisted()]] - `contains` [EXTRACTED]
 - [[normalize_size()]] - `contains` [EXTRACTED]
 - [[normalize_str_filter()]] - `contains` [EXTRACTED]
 - [[normalize_str_filter_empty_to_none()]] - `contains` [EXTRACTED]
@@ -134,7 +141,10 @@ tags:
 - [[role_write_from_req()]] - `contains` [EXTRACTED]
 - [[roles_cell()]] - `contains` [EXTRACTED]
 - [[self_lock_not_self_always_false()]] - `contains` [EXTRACTED]
+- [[self_lock_self_disable_normalized_status_variants_true()]] - `contains` [EXTRACTED]
 - [[self_lock_self_disable_true()]] - `contains` [EXTRACTED]
+- [[self_lock_self_disable_unparseable_status_false()]] - `contains` [EXTRACTED]
+- [[self_lock_self_enable_normalized_status_variants_false()]] - `contains` [EXTRACTED]
 - [[self_lock_self_keep_super_enabled_false()]] - `contains` [EXTRACTED]
 - [[self_lock_self_keep_super_status_none_false()]] - `contains` [EXTRACTED]
 - [[self_lock_self_remove_super_and_disable_true()]] - `contains` [EXTRACTED]
@@ -160,4 +170,4 @@ tags:
 - [[wire_opt_i64()]] - `contains` [EXTRACTED]
 - [[wire_opt_i64_to_string_or_empty()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/SysManage_Handler__DTOs_rust
+#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers

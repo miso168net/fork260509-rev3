@@ -1,17 +1,17 @@
 ---
-source_file: "base-web/src/typings/naive-ui.d.ts"
+source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "Community 70"
-location: "L2"
+community: "App Type Definitions"
+location: "L145"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_70
+  - community/App_Type_Definitions
 ---
 
 # ThemeColor
 
 ## Connections
-- [[naive-ui.d.ts]] - `contains` [EXTRACTED]
+- [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_70
+#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions

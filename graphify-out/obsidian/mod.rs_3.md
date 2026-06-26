@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/server/src/model/mod.rs"
 type: "code"
-community: "Community 471"
+community: "mod"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_471
+  - community/mod
 ---
 
 # mod.rs
 
-#graphify/code #graphify/EXTRACTED #community/Community_471
+#graphify/code #graphify/EXTRACTED #community/mod

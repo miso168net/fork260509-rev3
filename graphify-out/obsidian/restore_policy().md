@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Community 155"
-location: "L1785"
+community: "reload_and_publish"
+location: "L1883"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Community_155
+  - community/reload_and_publish
 ---
 
 # restore_policy()
@@ -15,4 +15,4 @@ tags:
 - [[reload_and_publish()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Community_155
+#graphify/code #graphify/EXTRACTED #community/reload_and_publish

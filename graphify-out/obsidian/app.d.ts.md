@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "App Theme Type Decls"
+community: "App Type Definitions"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Theme_Type_Decls
+  - community/App_Type_Definitions
 ---
 
 # app.d.ts
@@ -26,17 +26,17 @@ tags:
 - [[I18nRouteKey]] - `contains` [EXTRACTED]
 - [[LangOption]] - `contains` [EXTRACTED]
 - [[LangType]] - `contains` [EXTRACTED]
-- [[LastLevelRouteKey]] - `contains` [EXTRACTED]
-- [[Menu]] - `contains` [EXTRACTED]
+- [[LastLevelRouteKey_1]] - `contains` [EXTRACTED]
+- [[Menu_1]] - `contains` [EXTRACTED]
 - [[NaiveUIThemeOverride]] - `contains` [EXTRACTED]
 - [[OtherBaseURLKey]] - `contains` [EXTRACTED]
 - [[OtherColor]] - `contains` [EXTRACTED]
 - [[OtherServiceConfigItem]] - `contains` [EXTRACTED]
 - [[Response]] - `contains` [EXTRACTED]
-- [[RouteKey]] - `contains` [EXTRACTED]
+- [[RouteKey_1]] - `contains` [EXTRACTED]
 - [[RouteLocationNormalizedLoaded]] - `contains` [EXTRACTED]
-- [[RouteMap]] - `contains` [EXTRACTED]
-- [[RoutePath]] - `contains` [EXTRACTED]
+- [[RouteMap_1]] - `contains` [EXTRACTED]
+- [[RoutePath_1]] - `contains` [EXTRACTED]
 - [[RouterPushOptions]] - `contains` [EXTRACTED]
 - [[Schema]] - `contains` [EXTRACTED]
 - [[ServiceConfig]] - `contains` [EXTRACTED]
@@ -44,7 +44,7 @@ tags:
 - [[SimpleServiceConfig]] - `contains` [EXTRACTED]
 - [[Tab]] - `contains` [EXTRACTED]
 - [[TabRoute]] - `contains` [EXTRACTED]
-- [[ThemeColor]] - `contains` [EXTRACTED]
+- [[ThemeColor_1]] - `contains` [EXTRACTED]
 - [[ThemeColorKey]] - `contains` [EXTRACTED]
 - [[ThemePaletteColor]] - `contains` [EXTRACTED]
 - [[ThemeSetting]] - `contains` [EXTRACTED]
@@ -56,4 +56,4 @@ tags:
 - [[TranslateOptions]] - `contains` [EXTRACTED]
 - [[VNode]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Theme_Type_Decls
+#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions
