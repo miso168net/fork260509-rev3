@@ -8,28 +8,28 @@
 
 ---
 
-## 1. 圖譜現況統計（2026-06-25、018 obs 增量後）
+## 1. 圖譜現況統計（2026-06-26、audit/019 code 增量後）
 
 | 指標 | 值 |
 |---|---|
-| 節點 | **3284** |
-| 邊 | **4062** |
-| 社群 | **482**（最大 88、中位數 4） |
+| 節點 | **3311** |
+| 邊 | **4084** |
+| 社群 | **485**（最大 95、中位數 4） |
 
 **節點來源組成**：
 
 | 來源 | 節點數 | 說明 |
 |---|---|---|
-| `base-web/` | 2425 | Vue 前端 worktree（AST + semantic subagent） |
-| `rust-api/` | 836 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job `push_metrics` 已入圖、`request` 升 god node 18 edges） |
+| `base-web/` | 2419 | Vue 前端 worktree（AST + semantic subagent） |
+| `rust-api/` | 869 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job `push_metrics` 已入圖、`request` 升 god node 18 edges） |
 | `docker-compose.yml` | 23 | compose service 拓撲（018 obs 加 7 service＋4 卷＋1 secret，手刻入圖、profiles opt-in） |
 
 > docs 源倉 `fork260509-soybean-admin-docs/`（~1856 noise 節點）已於 2026-06-24 prune 出圖並加入 `.graphifyignore`（見 §2.4）；圖現只含 base-web/rust-api worktree 真碼 + master compose。
-> **2026-06-25 018 obs 增量**（外科式 `dedup=False` 配方、見 §4）：rust AST 4 變更檔 + 手刻 master compose obs 節點，3271→3284（+13）、成長閘 PASS；community ID 重分群後置換、以 membership-overlap 由 git HEAD obsidian frontmatter 重對齊 hand-label（非按 ID）。★ obsidian vault 有 ~3300 stale orphan note（2026-06-24 docs prune 後未清、export 不刪舊檔）、屬已知 cruft、與本次增量無關。
+> **2026-06-26 audit/019 code 增量**（外科式配方、見 §4）：14 個變更 code 檔重抽（8 rust audit/auth/enforce/facade + 6 base-web audit views/locales/app.d.ts），純 AST、**0 LLM token**；手動 prune 舊圖 14 變更檔 source 節點 → `dedup=False` 嫁接，3284→3311（+27）、成長閘 PASS；graph_diff 僅 37 new/10 removed（全真實 feature 符號）。★ **避開 fuzzy-dedup 陷阱**：照 skill 文件的 `build_merge(dedup=True)` 會把圖砍到 2610（誤刪 ~701 真節點、165 fuzzy）；外科式 `dedup=False` 才得正確 3311（見 §4）。community ID 重分群後置換、hand-label 以 membership-overlap 重對齊（非按 ID）。★ obsidian vault stale orphan note **已清**（2026-06-26：`find -name '*.md' -delete` + 重生 export → 3630 實檔、0 docs 孤兒；先前 ~3194 cruft 來自 2026-06-24 docs prune 未清、export 不刪舊檔）。
 
-**file_type**：code 2511／document 693／concept 35／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
-**edge confidence**：EXTRACTED 3974／INFERRED 79／AMBIGUOUS 0
-**edge relation（top）**：contains 2570／calls 769／imports 226／imports_from 196／references 136／method 63／re_exports 38／depends_on 21／conceptually_related_to 16／semantically_similar_to 8
+**file_type**：code 2549／document 693／concept 37／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
+**edge confidence**：EXTRACTED 4019／INFERRED 65／AMBIGUOUS 0
+**edge relation（top）**：contains 2604／calls 781／imports 226／imports_from 196／references 123／method 63／re_exports 38／depends_on 23／conceptually_related_to 16／semantically_similar_to 7／implements 5／shares_data_with 1
 
 > **★ 關鍵觀察**：98% 的邊是 EXTRACTED（AST 結構事實）、INFERRED 僅 2%、AMBIGUOUS 0。所以本圖的風險 **不是「畫錯邊」**（虛構關係極少）、**而是「漏畫邊」**（§2 盲點）。推論時主要防「圖沒抓到 ⇒ 誤判無關係」、而非防「圖亂連」。
 
