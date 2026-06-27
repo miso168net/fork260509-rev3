@@ -28,11 +28,14 @@
 
 > 本刀最關鍵設計點。FR-012（Q1 拍板「完整封閉 restore-path」）撞 constitution §I.6 archetype D（archive＝insert＋restore 硬刪移回、**不 mutate**）。
 
-- **Decision**：**不**在刪除時 mutate 任何 archive 列；改以**讀時衍生** `restorable`：
-  > `restorable(row)` = `row.archive_reason ∈ {role_dimension_revoke, role_button_revoke, role_endpoint_revoke}` **AND** `∃ active sys_role（code = row.v0）其 created_at < row.archived_at`
-  - 撤銷類列且其 code 當前對應的 active 角色實例「早於該歸檔」→ 可復原（屬當前角色實例的撤銷）。
+- **Decision**：**不**在刪除時 mutate 任何 archive 列；改以**讀時衍生** `restorable`（**denylist 形、C3 校正**）：
+  > `restorable(row)` = `row.archive_reason != "role_soft_delete"` **AND** `∃ active sys_role（code = row.v0）其 created_at < row.archived_at`
+  - 撤銷類列（`role_soft_delete` 以外）且其 code 當前對應的 active 角色實例「早於該歸檔」→ 可復原（屬當前角色實例的撤銷）。
   - 角色已刪（無 active 角色）→ 不可復原；重用同 code（新角色 created_at 晚於舊歸檔）→ 不可復原（屬舊角色實例）。
-  - `role_soft_delete` 列（reason 非撤銷類）→ 永不可復原。
+  - `role_soft_delete` 列 → 永不可復原（denylist；亦由 created_at 檢查獨立成立——其 archived_at=刪除時刻、重用後新角色 created_at 必晚之）。
+- **★ C3 reason-set 接地校正**：實際 codebase 只發出 **2** 種撤銷 reason —— `role_dimension_revoke`（menu **與 button**：016 button reuse `set_role_dimension`，`sys_casbin_rule.rs:125`）／`role_endpoint_revoke`（endpoint：`set_role_endpoints`，`sys_casbin_rule.rs:343`）。**`role_button_revoke` 全 codebase 不存在**（原假設誤）。採 denylist `!= role_soft_delete` 即免列舉撤銷 reason、未來新增撤銷 reason 自動正確、且消 C3 風險。
+- **★ C2=A 時鐘假設（user 拍板 A、明記）**：唯一角色實例判別子＝`created_at < archived_at`（皆 `Utc::now()`）。**假設 delete→recreate 之間時鐘單調**；archive 列存 `v0=code` **不存 `role_id`** → 無序列 tiebreak（除非動 schema、本刀不做）。極窄風險窗：NTP 向後跳錶 > delete→recreate 間隔 **且** 同時有人工復原舊撤銷列才中（spec Assumptions 已記）。同-µs `created_at==archived_at` strict `<` errs **closed**（安全向）。
+- **★ C1 並發安全（見 D9）**：本衍生 + 刪除路徑須在 `sys_role` 列鎖下重判（lock-then-redecide），否則 restore-during-delete TOCTOU 可留 orphan live 授權。
 - **此規則同時滿足 FR-005（role_soft_delete 不可復原）與 FR-012（既有撤銷列於角色刪除/重用後不可復原）——刪除時【無需】mutate 既有列**（衍生自然成立：刪後無 active 角色、重用後 created_at 不符）。
 - **Rationale**：(1) 完全遵守 §I.6 archetype D——archive 列維持 write-once（只 insert／restore-硬刪），無 in-place UPDATE；(2) 零 migration（用既有 `sys_role.created_at` + `archive.archived_at`）；(3) forensically honest——不竄改既有撤銷列的 reason；(4) 把 FR-005+FR-012 統一為單一可測規則。
 - **Alternatives（已評估、否決）**：
@@ -54,7 +57,7 @@
 ## D7 — base-web 回收桶 UI + i18n（MODAL-WIRING + ⚠️aa I18N-WIRING）
 
 - **Decision**：`views/manage/policy-archive/modules/policy-archive-table.vue`——
-  - `archiveReason` 欄（render @73-79）改 i18n 友善 label map（`role_dimension_revoke`/`role_button_revoke`/`role_endpoint_revoke`/`role_soft_delete` → 各譯文）。
+  - `archiveReason` 欄（render @73-79）改 i18n 友善 label map（實際 3 值：`role_dimension_revoke`/`role_endpoint_revoke`/`role_soft_delete` → 各譯文；C3：無 role_button_revoke）。
   - `operate` 欄（render @80-100，現 NPopconfirm+`复原` NButton）條件化：`row.restorable===false` → 顯「不可復原」停用態（無復原鈕）；`true` → 維持現有復原鈕。
 - **i18n**：`backend.biz.policy.notRestorable`（toast key、攔截器自動 `$t('backend.'+msg)`）＋ `page.manage.policyArchive.*`（reason 標籤 + 「不可復原」指示）；同步擴 `app.d.ts` `App.I18n.Schema`（`backend.biz.policy` @329 區 + `page.manage.policyArchive` @963 區）＋ `locales/langs/{zh-cn,en-us}.ts` 雙語（先 Schema 後 locale、同 commit、memory gotcha）。
 - **接地**：app.d.ts backend.biz @329（已有 user/menu/role、加 policy.notRestorable）；policyArchive locale @963；restore 鈕現呼 `fetchRestorePolicy`（`service/api/rev3-system-manage.ts:401`）、2222 經既有 request 攔截器 i18n 出 toast（⚠️aa／3.G 已備）。
@@ -65,6 +68,20 @@
 - prod build gate 仍跑（無新 crate、但驗 multi-stage 無破口）。`entity_access_lint`／`endpoint_coverage_lint` 預期綠（無新 route、casbin 存取走新 facade helper）。
 
 ---
+
+## D9 — ★ 並發安全：lock-then-redecide（C1、analyze HIGH）
+
+- **Decision**：`restore_policy` 的 restorability 重判與 `delete_role`/`batch_delete_role` 的「移除 active 授權」須在**同一把 `sys_role` 列鎖**下重判（鏡像 memory 014 U2 SC-002 lock-then-redecide）：
+  - `delete_role`/`batch_delete_role` txn **起手** `SELECT … FOR UPDATE` 該 role 列（既有 `find_active_by_id` 改鎖讀／或新增鎖讀），守門與 archive-move 全程持鎖。
+  - `restore_policy` txn 內、判 restorability 前，對該 archive 列 `v0` 的 active `sys_role` 列 `SELECT … FOR UPDATE`（無 active→不可復原）；持鎖再 insert 回 casbin_rule。
+- **Rationale（不做的後果）**：restore re-check 以**非鎖** SELECT 讀 `sys_role` active，與 delete 交錯（restore 讀到 active → delete commit〔soft-delete+archive-all+delete casbin v0=code〕→ restore insert casbin v0=code commit）→ **已刪角色殘留 live 授權** → 重用 code → getMenu 繼承（破 SC-001/SC-007）。對稱 grant-during-delete 窗同理（delete 的 delete_many 讀 vs 晚到的 `set_role_dimension` insert）。FR-012 要殺的漏洞經並發窗回滲。
+- **接地**：`mutate_in_txn`（`audit.rs:84`）READ COMMITTED；`find_active_by_id`（`sys_role.rs:121`）目前非鎖讀；sea-orm `lock_exclusive()` 加 `FOR UPDATE`。
+- **驗收**：live 測注入交錯（或以鎖等待序證 restore 在 delete 後重判得「無 active→拒」）；C-V 加並發註記。
+
+## D10 — active-role created_at 讀法（C4）
+
+- **Decision**：新 facade 讀 `sys_role::active_created_at_by_codes(conn, &[code]) -> HashMap<String, DateTimeWithTimeZone>`（鏡像 `home_of_roles` 的 `find_active().filter(Code.is_in(codes))` 範式、`sys_role.rs:32-40`），供 `get_archived_policies` 批次套衍生；`restore_policy` 單列以 `find_active().filter(Code.eq(v0)).lock_exclusive().one()`（C1 同列鎖、回 created_at 或 None）。
+- **接地**：`sys_role` facade 既有 `find_active`(20)／`home_of_roles`(32，Code.is_in 範式)／`find_active_by_id`(121)；**無**現成 created_at-by-code 讀 → 本刀新增（落 facade、不破 entity_access_lint）。
 
 ## 接地事實速查（file:line）
 

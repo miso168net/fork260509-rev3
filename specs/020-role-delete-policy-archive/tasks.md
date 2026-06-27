@@ -25,10 +25,10 @@
 
 ---
 
-## Phase 2: Foundational（阻斷前置 — US1 FR-012 與 US2 共用）
+## Phase 2: Foundational（阻斷前置 — US2 restorability 衍生；US1 不依賴）
 
 - [ ] T002 [test-first] restorability 衍生**純函式**單元測試 in `rust-api/server/src/handler/system_manage.rs`（`#[cfg(test)]`）：`restorable(reason:&str, active_role_created_at:Option<DateTimeWithTimeZone>, archived_at:DateTimeWithTimeZone)->bool`，覆蓋 data-model.md 真值表 5 情境（live 撤銷=true／role_soft_delete=false／已刪無active=false／重用 created_at>archived=false／重用後新撤銷=true）
-- [ ] T003 實作純函式 `restorable(...)`（make T002 pass）in `rust-api/server/src/handler/system_manage.rs`（撤銷類 reason 集＝role_dimension_revoke/role_button_revoke/role_endpoint_revoke；AND active_created_at.is_some() AND active_created_at < archived_at）
+- [ ] T003 實作純函式 `restorable(...)`（make T002 pass）in `rust-api/server/src/handler/system_manage.rs`（**denylist（C3）**：`reason != "role_soft_delete"` AND `active_created_at.is_some()` AND `active_created_at < archived_at`；★ C3 接地：實際撤銷 reason 僅 `role_dimension_revoke`〔menu+button〕／`role_endpoint_revoke`、**無 role_button_revoke**，故用 denylist 免列舉、未來新撤銷 reason 自動正確）
 
 ---
 
@@ -42,10 +42,10 @@
 - [ ] T005 [US1] soft_delete 整合 live 測 in `rust-api/server/src/model/facade/sys_role.rs`（`#[ignore]`）：soft_delete 後同 txn casbin 全消+archive 增（單筆與 batch 變體）；rollback 隔離（外層 txn）
 
 ### Implementation for User Story 1（rust serial）
-- [ ] T006 [US1] 新 facade helper `archive_all_role_policies(txn,&role_code,operator_id)->Result<usize,DbErr>` in `rust-api/server/src/model/facade/sys_casbin_rule.rs`（讀 `ptype='p' AND v0=code` 全維 Model→`sys_casbin_policy_archive::insert_archived(txn,&rows,Some(op_id),"role_soft_delete")`→`casbin_rule::delete_many` 同條件→回列數；走 facade、不破 entity_access_lint）
-- [ ] T007 [US1] extend `sys_role::soft_delete` in `rust-api/server/src/model/facade/sys_role.rs`：mutate_in_txn closure 內設 deleted_at/by 後呼 `archive_all_role_policies(&txn, &before.code, operator.id)`（同 txn）；簽名/呼叫端取得 role_code（自 before Model）；回傳補 archived 數供 handler 判 reload
-- [ ] T008 [US1] extend `sys_role::batch_soft_delete` in `rust-api/server/src/model/facade/sys_role.rs`：單 txn 迴圈內每角色呼 archive helper；累計 archived 總數回傳
-- [ ] T009 [US1] handler `delete_role`(1208)/`batch_delete_role`(1239) in `rust-api/server/src/handler/system_manage.rs`：守門（seeded/in-use/self）**後**走擴充 soft_delete；txn commit 後 `archived>0 → reload_and_publish(&state).await?`（archived==0 skip、PolicyMutated gate）
+- [ ] T006 [US1] 新 facade helper `archive_all_role_policies(txn,&role_code,operator_id)->Result<usize,DbErr>` in `rust-api/server/src/model/facade/sys_casbin_rule.rs`（讀 `ptype='p' AND v0=code` **全維（含 protected——FR-008 vacuous-by-design：可刪角色實務 0 protected 列、C5）** Model→`sys_casbin_policy_archive::insert_archived(txn,&rows,Some(op_id),"role_soft_delete")`→`casbin_rule::delete_many` 同條件→回列數；走 facade、不破 entity_access_lint）
+- [ ] T007 [US1] extend `sys_role::soft_delete` in `rust-api/server/src/model/facade/sys_role.rs`：mutate_in_txn closure **起手以鎖讀**（`find_active_by_id` 改 `lock_exclusive()` FOR UPDATE、★ C1 lock-then-redecide）取該 role 列 → 設 deleted_at/by → 呼 `archive_all_role_policies(&txn, &before.code, operator.id)`（同 txn）；role_code 自 before Model；回傳補 archived 數供 handler 判 reload
+- [ ] T008 [US1] extend `sys_role::batch_soft_delete` in `rust-api/server/src/model/facade/sys_role.rs`：單 txn 迴圈內每角色**鎖讀**（FOR UPDATE、★ C1）後呼 archive helper；累計 archived 總數回傳
+- [ ] T009 [US1] handler `delete_role`(1208)/`batch_delete_role`(1239) in `rust-api/server/src/handler/system_manage.rs`：守門（seeded/in-use/self）**後**走擴充 soft_delete（角色列鎖於 facade soft_delete txn 內、C1）；txn commit 後 `archived>0 → reload_and_publish(&state).await?`（archived==0 skip、PolicyMutated gate）
 - [ ] T010 [US1] acceptance（rust 容器 curl/psql）：C-V-1（delete→重建同 code→getRoleMenu/Button/Endpoints 皆 []、casbin v0=code＝0）+ C-V-2（archive role_soft_delete 列）+ C-V-8（reload）+ C-V-10（batch 變體 + 守門整批拒零歸檔）
 
 **Checkpoint US1**：重建同 code 無 getMenu 繼承（MVP 達成）；主線 bump rust-api submodule pin。
@@ -58,13 +58,13 @@
 **Independent Test**：回收桶顯 role_soft_delete 列 restorable=false + 來源譯文 + 復原鈕停用；restorePolicy 打不可復原列→2222；FR-012 既有撤銷列刪後/重用後 restorable=false。
 
 ### Tests for User Story 2 ⚠️（live）
-- [ ] T011 [US2] live 測 in `rust-api/server/src/handler/system_manage.rs`（`#[ignore]`）或 facade：getArchivedPolicies restorable 衍生（live 角色撤銷列=true／role_soft_delete=false／FR-012 既有撤銷列刪後=false、重用後=false）+ restorePolicy 守門（不可復原列→NotRestorable→2222）
+- [ ] T011 [US2] live 測 in `rust-api/server/src/handler/system_manage.rs`（`#[ignore]`）或 facade：getArchivedPolicies restorable 衍生（live 角色撤銷列=true／role_soft_delete=false／FR-012 既有撤銷列刪後=false、重用後=false）+ restorePolicy 守門（不可復原列→NotRestorable→2222）+ **★ C1 lock-then-redecide 驗**（restore 在 delete 後重判得無 active→拒；證並發不留 orphan live 授權）
 
 ### Implementation for User Story 2
-- [ ] T012 [US2] `ArchivedPolicyItem`(387) +`restorable: bool` + `get_archived_policies`(1844) 衍生 in `rust-api/server/src/handler/system_manage.rs`：批次取 page rows 的 distinct v0 → 查 active `sys_role` code→created_at map（新 facade 讀 `sys_role::active_created_at_by_codes` 或既有）→ per row 套 `restorable()`（T003）；不過濾 role_soft_delete
-- [ ] T013 [US2] facade `sys_casbin_policy_archive::restore` 加 `RestoreOutcome::NotRestorable`（載列後套 restorability 衍生、不 mutate）+ handler `restore_policy`(1888) map → `AppError::Biz("biz.policy.notRestorable")`（2222）in `rust-api/server/src/{model/facade/sys_casbin_policy_archive.rs, handler/system_manage.rs}`
+- [ ] T012 [US2] `ArchivedPolicyItem`(387) +`restorable: bool` + `get_archived_policies`(1844) 衍生 in `rust-api/server/src/handler/system_manage.rs`：批次取 page rows 的 distinct v0 → **新 facade `sys_role::active_created_at_by_codes(conn,&[code])->HashMap<String,DateTimeWithTimeZone>`（C4、鏡像 home_of_roles 的 `find_active().filter(Code.is_in)` 範式、`sys_role.rs:32-40`、走 facade）** → per row 套 `restorable()`（T003 denylist）；不過濾 role_soft_delete
+- [ ] T013 [US2] facade `sys_casbin_policy_archive::restore` 加 `RestoreOutcome::NotRestorable`：載列後 **對該列 v0 的 active sys_role `find_active().filter(Code.eq(v0)).lock_exclusive().one()`（★ C1 FOR UPDATE + C4 取 created_at／None）** → 持鎖套 restorability 衍生（denylist + created_at、不 mutate）；不可復原 → handler `restore_policy`(1888) map `AppError::Biz("biz.policy.notRestorable")`（2222）in `rust-api/server/src/{model/facade/sys_casbin_policy_archive.rs, handler/system_manage.rs}`
 - [ ] T014 [P] [US2] base-web `ArchivedPolicy` 型 +`restorable: boolean` in `base-web/src/typings/api/rev3-system-manage.d.ts:285-294`（rev3 wrapper、ADAPT 軌、rev3-inline 標記）
-- [ ] T015 [P] [US2] base-web i18n Schema in `base-web/src/typings/app.d.ts`：`backend.biz.policy.notRestorable`（@329 區 backend.biz 加 policy）+ `page.manage.policyArchive.*`（reason labels：roleDimensionRevoke/roleButtonRevoke/roleEndpointRevoke/roleSoftDelete + notRestorable 指示）（@963 區）（I18N-WIRING iii、先 Schema）
+- [ ] T015 [P] [US2] base-web i18n Schema in `base-web/src/typings/app.d.ts`：`backend.biz.policy.notRestorable`（@329 區 backend.biz 加 policy）+ `page.manage.policyArchive.*`（reason labels 實際 3 值：roleDimensionRevoke/roleEndpointRevoke/roleSoftDelete + notRestorable 指示；C3 無 roleButtonRevoke）（@963 區）（I18N-WIRING iii、先 Schema）
 - [ ] T016 [US2] base-web locales 雙語 in `base-web/src/locales/langs/{zh-cn,en-us}.ts`：對應 T015 鍵的 zh-cn/en-us 譯文（policyArchive reason labels + notRestorable）（I18N-WIRING ii、後 locale；depends T015）
 - [ ] T017 [US2] base-web `policy-archive-table.vue` in `base-web/src/views/manage/policy-archive/modules/policy-archive-table.vue`：archiveReason 欄(73-79)→`$t` 友善 label map；operate 欄(80-100)→`row.restorable===false` 顯「不可復原」停用態（無復原鈕）/ `true` 維持復原鈕（MODAL-WIRING、rev3-inline；depends T014,T016）
 - [ ] T018 [US2] acceptance/CDP：C-V-4（restorable 旗標）+ C-V-5（FR-012 既有撤銷列刪後/重用後 restorable=false + restorePolicy→2222 未裝回）+ C-V-6（role_soft_delete 列 restorePolicy→2222）+ C-V-9（CDP 回收桶顯示+來源譯文+復原鈕停用、雙語、restart base-web 後驗 toast 非 raw key）
@@ -90,7 +90,7 @@
 ## Phase 6: Polish & Cross-Cutting
 
 - [ ] T022 清理 throwaway（soft-delete 角色 / psql 清其 casbin_rule + archive 列）→ DB 回 baseline（archive 與 §T001 一致、無殘留 active 角色/casbin/user_role）
-- [ ] T023 final holistic review：spec FR-001~012 / SC-001~007 逐項對照 + Constitution 9/9 複核 + 全 rust 測 run（零回歸）+ data-model.md:87 stale 勘誤評估（收尾刀時）
+- [ ] T023 final holistic review：spec FR-001~012 / SC-001~007 逐項對照 + Constitution 9/9 複核 + 全 rust 測 run（零回歸）+ **011 `specs/011-role-management/data-model.md`「軟刪殘留 v2=menu policy 無害」deferral 段**（依 section 描述、非行號）stale 勘誤評估（收尾刀時）
 - [ ] T024 收尾準備（交 finishing-a-development-branch）：擬多段式 commit + 進度回填清單（MILESTONES append、CHECKLIST §3.K 勾掉/歸檔、DECISIONS §1 登拍板〔修向 + Q1 FR-012 created_at 衍生〕、§6 marker）—— **push/merge 需 user 同意**
 
 ---
@@ -98,10 +98,10 @@
 ## Dependencies & Story Completion Order
 
 - **Setup（T001）** → **Foundational（T002-T003）** → **US1（T004-T010）** → **US2（T011-T018）** → **US3（T019-T021）** → **Polish（T022-T024）**。
-- Foundational `restorable()`（T003）阻斷 US1 的 FR-012 驗（T010 重建路徑）與 US2（T012/T013）。
+- Foundational `restorable()`（T003）阻斷 **US2**（T012/T013/T018）；US1 getMenu 路徑（T004-T010）**不**用 restorable()（FR-012 的 restore-path 驗＝C-V-5＝T018 屬 US2；US1 核心＝archive-on-delete 移除 active 列）。
 - US1（archive-on-delete）為 US2 顯示的前提（要有 role_soft_delete 列才驗回收桶）。
 - US3 原子/回歸/gate 依賴 US1+US2 已落地。
-- rust 全程 serial（T002-T013,T019,T021 共用 target）；base-web T014/T015 可 [P]（不同檔），T016 依 T015、T017 依 T014+T016。
+- rust 全程 serial（T002-T009,T011-T013,T019,T021 共用 cargo target）；base-web T014/T015 可 [P]（不同檔），T016 依 T015、T017 依 T014+T016。
 
 ## Parallel opportunities
 - base-web：T014（型）與 T015（Schema）可平行；其餘 rust serial。
@@ -113,6 +113,6 @@
 - 每 phase checkpoint：主線復核 + load-bearing 自驗（容器 cargo build/test）+ bump submodule pin（§4.1 逐單元）。
 
 ## 執行單元對映（交 階段 2 Workflow 驅動）
-- **U1 rust**＝T002-T013,T019,T021（Foundational + US1 + US2-rust + US3-rust）serial 一支。
+- **U1 rust**＝T002-T009,T011-T013,T019,T021（Foundational + US1 + US2-rust + US3-rust）serial 一支（T010/T018/T020 acceptance＝主線、不在單元）。
 - **U2 base-web**＝T014-T017（US2-base-web）一支。
 - acceptance/CDP（T010/T018/T020）+ Polish（T022-T024）＝主線邊界 checkpoint。

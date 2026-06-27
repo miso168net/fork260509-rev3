@@ -17,7 +17,7 @@
 **Target Platform**: Linux container stack（dev compose）
 **Project Type**: web（rust-api 後端 + base-web 前端）
 **Performance Goals**: N/A（治理操作、非熱路徑；getArchivedPolicies 加 active-role created_at 批次查＝per-page 一次、可忽略）
-**Constraints**: 零 migration／零新 crate／零新 route；對 base-web 僅授權軌道 inline；§I.6 archive archetype D 不 mutate
+**Constraints**: 零 migration／零新 crate／零新 route；對 base-web 僅授權軌道 inline；§I.6 archive archetype D 不 mutate；**並發＝lock-then-redecide**（restore/delete 同 `sys_role` 列 `FOR UPDATE`、C1）；**時鐘單調假設**（created_at 衍生實例判別、C2=A、spec Assumptions 已記）
 **Scale/Scope**: 2 執行單元（U1 rust：archive-on-delete + 回收桶後端衍生／守門；U2 base-web：回收桶顯示/不可復原 + i18n）；rust-api ~3 動點（facade helper、soft_delete/batch 擴充、getArchivedPolicies/restorePolicy 衍生+守門）+ base-web 1 view + i18n
 
 ## Constitution Check
@@ -32,7 +32,7 @@
 6. **§II 拍板 #1~#13？**：✅ 無抵觸。
 7. **§III ★ 軌道？邊界內？**：✅ MODAL-WIRING（回收桶頁 restore 控制 + reason 顯示）＋ BASE-WEB-I18N-WIRING（`backend.biz.policy.notRestorable` + `page.manage.policyArchive.*` 標籤、Schema+locale 雙語）。皆授權內、循 fork-delta 紀律。
 8. **新建業務表 (migration)？**：✅ **無**（零 migration）。archive/casbin/sys_role 皆既有；FR-012 刻意採 D4 讀時衍生（非加欄/mutate）正為避免動 §I.6 archetype D 與 schema。
-9. **§I.7 行為島（policy governance §4.2）？invariants 保持？**：✅ DB-first（寫 DB→reload）✓；reload＝`load_policy()`+PUBLISH（復用 `reload_and_publish`）✓；PolicyMutated gate（archived==0 skip reload）✓；revoke 與審計同 txn（archive 於 soft_delete 同 txn、角色 SoftDelete op-log + archive 列 archived_at/by 為 forensic）✓。**protected 注記**：role-delete archive「全維含 protected」**不違** §4.2「protected 列拒撤→Rejected」——該 invariant 治理的是 **live 角色的逐條 UI revoke 流程**（防誤鎖核心存取）；角色刪除為**另一獨立、且另有守門（seeded/in-use/self）**的整角色操作。且**可刪（非種子）角色實務上不持有 protected 列**（protected 僅 seed 於不可刪的種子角色、runtime grant 一律 protected=false）→ 實際 archive 零 protected 列、invariant 未被觸動、無反轉。
+9. **§I.7 行為島（policy governance §4.2）？invariants 保持？**：✅ DB-first（寫 DB→reload）✓；reload＝`load_policy()`+PUBLISH（復用 `reload_and_publish`）✓；PolicyMutated gate（archived==0 skip reload）✓；revoke 與審計同 txn（archive 於 soft_delete 同 txn、角色 SoftDelete op-log + archive 列 archived_at/by 為 forensic）✓。**protected 注記**：role-delete archive「全維含 protected」**不違** §4.2「protected 列拒撤→Rejected」——該 invariant 治理的是 **live 角色的逐條 UI revoke 流程**（防誤鎖核心存取）；角色刪除為**另一獨立、且另有守門（seeded/in-use/self）**的整角色操作。且**可刪（非種子）角色實務上不持有 protected 列**（protected 僅 seed 於不可刪的種子角色、runtime grant 一律 protected=false）→ 實際 archive 零 protected 列、invariant 未被觸動、無反轉。**最強理由（C11）**：唯一 protected 持有者 `R_SUPER` ∈ `SEEDED_ROLE_CODES`、`role_delete_guard` 直接 2222 拒刪 → archive helper **從不跑在 protected 持有者上**（雙重不觸 §4.2）。**並發（C1）**：restore/delete 同 `sys_role` 列 `FOR UPDATE`（lock-then-redecide）維持 §I.7「revoke 與審計同 txn 原子」於並發下不破（防 restore-during-delete TOCTOU 留 orphan live 授權）。
 
 **結論：9/9 PASS、0 Amendment 需求、0 Complexity Tracking 違規。**（base-web inline 屬 MODAL-WIRING/I18N-WIRING 授權內；FR-012 採零-mutation 衍生避開 §I.6/migration。）
 

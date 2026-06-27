@@ -55,5 +55,10 @@
 - 容器內：`cargo test -p server --test entity_access_lint` 綠（casbin 存取走 facade）／`cargo test -p server --test endpoint_coverage_lint` 綠（無新 route）。
 - prod image build：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 綠（無新 crate、驗 multi-stage 無破口）。
 
+## C-V-12 — ★ 並發 lock-then-redecide（C1、analyze HIGH）
+- **rust live 測（容器內、首選驗證）**：模擬 restore-during-delete 交錯——對一個有可復原撤銷歸檔列的 throwaway 角色，令 `restore_policy` 與 `delete_role` 並發（或以 `FOR UPDATE` 鎖等待序強制 restore 在 delete 後重判）→ 斷言 restore 重判得「無 active 角色」→ 拒（NotRestorable/2222）→ psql `casbin_rule WHERE v0=code`＝**0**（無 orphan live 授權）。對稱 grant-during-delete 同理（晚到 grant 不留 live 列）。
+- **碼面驗**：`delete_role`/`batch`/`restore_policy`/`soft_delete` 的 `sys_role` 讀皆 `lock_exclusive()`（FOR UPDATE）；grep 確認無非鎖 active-role 讀於這些寫端決策路徑。
+- **真並發交錯**（多 client 同微秒）難於 curl 穩定復現 → 以「鎖序 live 測 + 碼面 FOR UPDATE 斷言」覆蓋；純壓力交錯 defer（rationale：lock-then-redecide 由 DB 列鎖保證、非靠時序）。
+
 ## 清理
 - 所有 throwaway 角色 soft-delete／psql 清其 casbin_rule + archive 列；archive 回 baseline；無殘留 active 角色/casbin/user_role。
