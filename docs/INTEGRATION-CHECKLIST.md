@@ -61,10 +61,14 @@
 
 > 單一 feature（非波次、無 DECISIONS §2 實施帳）;as-built/commit 見 [MILESTONES §1 `dbc5902f`](INTEGRATION-MILESTONES.md);拍板見 [DECISIONS §1 ⚠️w](INTEGRATION-DECISIONS.md);019 future-version 遞延見 §4.2。
 
+### 波4 後獨立刀 — 020-role-delete-policy-archive ✅ 全完成+已歸檔 (2026-06-27)
+
+> 單一 feature（非波次、無 DECISIONS §2 實施帳）;修 P-011-1（HIGH 提權）＝角色軟刪 archive-on-delete + 回收桶讀時衍生/守門 + grant-during-delete 鎖序;as-built/commit 見 [MILESTONES §1 `ebbd6c2c`](INTEGRATION-MILESTONES.md);拍板見 [DECISIONS §1 P-011-1](INTEGRATION-DECISIONS.md);020 future-version 遞延見 §4.2。
+
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 **2026-06-25**〔3284 nodes/4062 edges/482 community、見 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)〕：008-017 rust 已於 2026-06-24 同步、**018 obs 已於 2026-06-25 增量入圖**〔rust 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job push_metrics＋master compose obs 7 service/4 卷/1 secret 手刻;`request` 升 god node 18 edges〕。圖反映 rust-api worktree `6871907`＋base-web `134ddcc2`＋master compose 現碼;只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`、不入圖、GRAPHIFY-NOTES §4）。**019-login-lockout 未入圖**〔小改、worktree 已 rust `5cec936`／base-web `5e667f9d`、依「大改後再 update」政策延後、待下次大改一併〕。下次大改後再 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 **2026-06-25**〔3284 nodes/4062 edges/482 community、見 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)〕：008-017 rust 已於 2026-06-24 同步、**018 obs 已於 2026-06-25 增量入圖**〔rust 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job push_metrics＋master compose obs 7 service/4 卷/1 secret 手刻;`request` 升 god node 18 edges〕。圖反映 rust-api worktree `6871907`＋base-web `134ddcc2`＋master compose 現碼;只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`、不入圖、GRAPHIFY-NOTES §4）。**019-login-lockout（小改）＋020-role-delete-policy-archive（大改＝角色刪除授權歸檔 archive-on-delete+grant-lock+回收桶 UI/i18n、rust ~1103 insert+新 facade helper〔worktree rust `67ff2bd`／base-web `fec0a6d`〕）未入圖**〔依「大改後再 update」政策延後、待下次 graphify update 一併納入;020 屬大改、下次優先〕。下次大改後再 update）
 
 ---
 
@@ -108,6 +112,7 @@
 - [ ] `endpoint_coverage_lint` `first_string_after` 抽取假設字面字串〔008；引入 `.route(CONST,…)`/`require_policy(CONST,…)` 須加守門或 self-test〕
 - [ ] `validate_value_type` 非 enum 型保守放行〔008；新值型 seed 須補驗證分支＋守恆斷言〕
 - [x] ✅ pre-existing dead〔pre-波4 2026-06-23 重構順手清〕：`sys_casbin_rule.rs` ConnectionTrait unused import〔011 起〕已刪／`RequestContext.operator_id` never-read〔007 起〕已移除欄位+賦值
+- [ ] **sys_role.rs live-test helper 重複**〔020、low/OWN-CUT〕：`role_soft_delete_archive_live_tests`（:993）與 `role_delete_atomic_live_tests`（:1126）各自定義近乎相同的 `meta`/`grant`/`casbin_count`/`archive_count`/`make_role`（後者泛型化 `<C: ConnectionTrait>`）;可抽共用 test helper、併下次 role 治理刀（U1 quality review 標 LOW、非阻擋）
 
 ### 3.F policy-seed 對齊校正 ✅ 翻案結案+已歸檔 (2026-06-23、維持現狀)
 
@@ -164,6 +169,7 @@
 - [ ] **alt-login 4 流程 stub**（排程 future feature、⚠️m、post-波3 v1-completeness slot）〔原 §3.D〕：code-login／register／reset-pwd 後端 stub（service+handler+route、復用 hash/JWT）／bind-wechat（前端空殼＋真 OAuth、最低 v1 價值）／⚠️c alova-demo 完整包（sendCaptcha/verifyCaptcha/`/auth/error`、排前確認真缺端點）；前端 3 表單已完整、後端 4 全缺；接地見 [DECISIONS §1](INTEGRATION-DECISIONS.md) ⚠️m
 - [ ] **obs alert notification 投遞 channel**（FR-017 v1 明確排除、future feature）〔018〕：波 4 已 provision 3 baseline grafana alert rule（rules-only、條件成立轉 Alerting、僅介面狀態可見）;v1 **不投遞**通知。未來版本加 grafana contact point + notification policy（需 channel creds：email SMTP／webhook／IM bot）;brainstorm §5／spec Out-of-Scope defer，與 alt-login 同屬 v1-completeness 後排程 feature
 - [ ] **019 login-lockout per-ip 強化 + v2 enhancements**（future security review／future feature）〔019〕：★ **IPv6 per-ip 規避**＝v1 以 exact `real_ip` 計數、IPv6 來源可輪替 /64 內前綴規避 per-ip（per-user 為 IP-independent 主防線、admin 帳號數少 per-user 主導）→ 未來加 IPv6 前綴鍵（/64 group）;research.md clarify 已登記**供日後 security review**。其餘 v1-defer（spec Assumptions、純 future enhancement）＝runtime 可調門檻（settings 島）／per-IP 信任白名單（免誤鎖 NAT/共用對外 IP）／鎖後 CAPTCHA／admin 手動解鎖介面／reset-on-success／鎖定專屬審計欄（區分 lockout-blocked vs 真 auth-fail 及觸發維度）。接地見 `specs/019-login-lockout/spec.md` Assumptions ＋ `research.md`（/speckit-clarify Outstanding）。
+- [ ] **020 role-delete-archive future enhancements**（非 v1、long-term）〔020〕：**回收桶依來源過濾器**（reason filter/分頁器、spec v1-defer、本刀僅欄位標示+不可復原、UX future feature）／**C2 時鐘單調窄窗硬化**（restorability 依 `created_at`/`archived_at` 牆鐘判角色實例、假設 delete→recreate 間時鐘單調;極窄風險＝NTP 向後跳錶 > 重建間隔 **且** 同時人工復原舊撤銷列、spec Assumptions 明示 v1 接受不另防;欲硬化須 archive 存 `role_id` 作序列 tiebreak＝migration）。接地見 `specs/020-role-delete-policy-archive/spec.md` Assumptions/「v1 不做」。
 
 ---
 
