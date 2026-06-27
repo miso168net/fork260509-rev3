@@ -84,7 +84,7 @@ update_role_home(...Json<RoleHomeReq>)->Res<()>       // sys_role.home entity �
 - 2^53 fail-loud guard（沿 010 wire_id）。
 
 ## 8. delete guards（research R5、D3；handler 前置、跨 entity ⚠️o）
-deleteRole(id)／batchDeleteRole(ids) 軟刪前逐項驗（任一失敗→整筆/整批拒 2222、DB 無變）：① `find_active_by_id` None→`biz.role.notFound`；② `role.code ∈ {R_SUPER,R_ADMIN,R_USER_COMMON}`（hardcode）→`biz.role.seededProtected`；③ `count_users_by_role_id(id)>0`→`biz.role.inUse`；④ `roles_of_user(claims.uid)` codes contains role.code→`biz.role.cannotDeleteSelfRole`。batch 同 txn 先全檢查、整批拒 no-partial（沿 010）。軟刪角色殘留 v2='menu' policy 無害（可刪角色必無人用；波3 治理清）。
+deleteRole(id)／batchDeleteRole(ids) 軟刪前逐項驗（任一失敗→整筆/整批拒 2222、DB 無變）：① `find_active_by_id` None→`biz.role.notFound`；② `role.code ∈ {R_SUPER,R_ADMIN,R_USER_COMMON}`（hardcode）→`biz.role.seededProtected`；③ `count_users_by_role_id(id)>0`→`biz.role.inUse`；④ `roles_of_user(claims.uid)` codes contains role.code→`biz.role.cannotDeleteSelfRole`。batch 同 txn 先全檢查、整批拒 no-partial（沿 010）。軟刪角色殘留 v2='menu' policy 無害（可刪角色必無人用；波3 治理清）。〔**as-built 勘誤 (2026-06-27、020-role-delete-policy-archive)**：此前提「可刪角色必無人用」於 **code 重用路徑**下被推翻（P-011-1 HIGH）——重建同 code 的 active 角色可指派 user、會靜默繼承殘留之選單/按鈕/端點授權（提權）。020 已落地修正：角色軟刪（單筆/批次）同交易 archive-move 該 code **全維** casbin 授權（reason=`role_soft_delete`）+ 移除，不再殘留；回收桶讀時 `created_at` 衍生 restorable（不可手動復原）+ grant-during-delete FOR-UPDATE 鎖序。拍板＋as-built 詳 [DECISIONS §1 P-011-1](../../docs/INTEGRATION-DECISIONS.md)。〕
 
 ## 9. i18n keys（BASE-WEB-I18N-WIRING、⚠️y；wire msg＝key 去 backend.）
 - **locale**：`backend.biz.role.{duplicateRoleCode, notFound, seededProtected, inUse, cannotDeleteSelfRole, menuProtected}`（**6 鍵**、含 ★ `menuProtected`＝受保護選單可見性不可移除〔②protected-reject〕）——zh-cn(简体)/en-us，加於既有 `backend.biz`（009/010 之後）。
