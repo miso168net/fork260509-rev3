@@ -51,7 +51,7 @@
 - 被封段持續請求→rust-api log（→loki）出 `target=security.ipgate`、含 `matched_cidr`/`blocked=N`、**節流 ≤1/60s/規則**（同窗多次只出 1 筆）。`docker compose logs rust-api --since 90s | grep security.ipgate` 計數 ≤ ceil(秒/60)。
 
 ## C-V-11 — FR-008/SC-002：CRUD UI（CDP browser、curl≠modal）
-- CDP 開 `/manage/ip-rule`：列表**顯示全部含已刪**、Deleted 欄 NTag 二態；搜索（cidr/rule_type/description）+分頁；active 列 編輯/刪除、已刪列 **復原鈕**。
+- CDP 開 `/manage/ip-rule`：列表**顯示全部含已刪**、Deleted 欄 NTag 二態；搜索（cidr/ruleType；**注**：U3 `IpRuleFilter` 僅 cidr+ruleType、無 description 搜索）+分頁；active 列 編輯/刪除、已刪列 **復原鈕**。
 - 復原一條已刪規則→active；復原與既有同 (cidr,rule_type) active 衝突→**2222 toast**（在地化、非 raw key）。
 - 寫端自鎖拒（加自己 ip deny）→**2222 toast** 在地化。手動解鎖 modal（dimension+value）→成功 toast。
 - ★ 加 i18n 鍵後 `restart base-web` 防 vite stale-locale；斷言 toast 非 raw key。
