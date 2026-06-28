@@ -33,7 +33,7 @@
 *GATE：Phase 0 前必過；Phase 1 後複檢。對照 constitution v1.1.2 §IV 九問。*
 
 1. **§I.1 base-web 為權威**：✅ 新管理頁＝base-web view，rust-api 提供其消費的 6 新 endpoint（wire 由 base-web 契約定、rust 對齊）。
-2. **動 base-web inline？MODAL-WIRING？**：✅ 新 view + add/edit/unlock modal＝MODAL-WIRING (e 新管理頁)＋(c 新權限 modal)；service wrapper＝BASE-WEB-WRAPPER（`rev3-system-manage.ts` 新檔）；i18n＝BASE-WEB-I18N-WIRING（`backend.*` biz key + `page.manage.ipRule.*` + `route.*`）；typings＝BASE-WEB-ADAPT。皆授權軌道內。
+2. **動 base-web inline？MODAL-WIRING？**：✅ 新 view + add/edit/unlock modal＝MODAL-WIRING **(e) 新管理頁＋其 modules/***（**非 (c)**——(c) 嚴限「角色×權限 runtime 編輯器」鏡像 menu/button-auth-modal；本刀 modal〔dimension+value／cidr+rule_type〕非此物）；service wrapper＝BASE-WEB-WRAPPER（`rev3-system-manage.ts` 新檔）；i18n＝**`backend.*` biz key＝BASE-WEB-I18N-WIRING、`page.manage.ipRule.*`＋`route.manage_ip-rule`＝MODAL-WIRING (e)**；typings＝BASE-WEB-ADAPT。皆授權軌道內。
 3. **menu Casbin enforce／⚠️p**：✅ 新管理頁 menu policy seed `('p','R_SUPER','manage_ip-rule','menu',...)`（⚠️p R_SUPER）；hasAuth gating；6 route `require_policy` 守門。
 4. **§I.3 wire 對齊**：✅ 6 新 endpoint〔envelope `{data,code,msg}`〕；**blocked＝reuse `AppError::PermissionDenied`（5003/HTTP 403/`system.forbidden`）、非新 13-碼**（不破 ⚠️f）。CRUD 三端對齊（rust DTO↔base-web service+typings↔view）由 research §wire 釘。
 5. **rev2 拷貝？**：✅ 無；全新寫（RUSTAPI-SOURCE-ISOLATION）。

@@ -11,7 +11,7 @@
 ## Execution notes（交 階段 2 superpowers:executing-plans + Workflow）
 - rust build/test 在 rust-api 容器內 `docker exec`（host 無 cargo）；live `#[ignore]` 測帶 `DATABASE_URL`+`REDIS_URL`〔/run/secrets〕+`--test-threads=1`；改 `.rs` 後 force-touch 防 /mnt/d stale-mtime；rust 全程 serial。
 - base-web commit `--no-verify`（dev alpine pre-commit 必失敗、§memory）；加 i18n 鍵後 `restart base-web` 防 vite stale-locale。
-- **★ 絕不 push/merge**（worktree commit 只 local、收尾才 finishing-a-development-branch）；逐單元邊界 bump submodule pin（§4.1 S9）。
+- **★ 絕不 push/merge**（worktree commit 只 local、收尾才 finishing-a-development-branch）；**pin bump 依【執行單元邊界 U1／U2／U3 rust／U4 base-web】、非 Phase 檢查點**（§4.1 S9：每 outer pin 對應可重現邊界、勿在半成品/紅-lint 中繼點 bump；下方 Phase「Checkpoint」僅 user-story 敘事里程碑、非 pin 點）。
 - **1 migration（m007）/ 6 新 route / 0 新 workspace crate（arc-swap 提升既有 transitive）**；blocked reuse `PermissionDenied`(5003/403)、不新增 13-碼。
 
 ---
@@ -24,16 +24,18 @@
 
 ## Phase 2: Foundational（阻斷全 US — U1 rust 地基：013 real_ip + sys_ip_rule + RuleSet/ArcSwap/watcher）
 
-- [ ] T002 [test-first] 純函式測 in `rust-api/server/src/audit_ctx.rs`（`#[cfg(test)]`）：`resolve_client_ip` **tunnel fallback**（`conf==Fallback` + `peer ∈ tunnel` + `CF-Connecting-IP` → real_ip=cf_cip）＋**★ 反偽造（B2）**（peer ∈ internal 但 ∉ tunnel + 偽 cf_cip → real_ip ≠ cf_cip）；**既有 `resolve_cases_*`/`apply_cf_overlay` 測不動＝零回歸**（C-V-1/9）
+- [ ] T002 [test-first] 純函式測 in `rust-api/server/src/audit_ctx.rs`（`#[cfg(test)]`）：**新 pure fn `apply_tunnel_fallback`** 的 tunnel fallback（`base_conf==Fallback` + `peer ∈ tunnel` + `CF-Connecting-IP` → real_ip=cf_cip、**回傳 conf==Fallback 不變**）＋**★ 反偽造（B2）**（peer ∈ internal 但 ∉ tunnel + 偽 cf_cip → 原值透傳、real_ip ≠ cf_cip）；只測新 fn、**`resolve_client_ip` 簽名與其 10 既有測〔`resolve_cases_*`〕/`apply_cf_overlay` 全不動＝零回歸**（C-V-1/9）
 - [ ] T003 `TrustModel` 加 `tunnel: Vec<IpNetwork>` 欄 in `rust-api/server/src/config.rs`（仿 `internal_default` parse）＋ `deploy/trust-model.toml` 加 `[[tunnel]]` 範例（窄 cloudflared origin〔127.0.0.1/::1〕、註解「繞 nginx 直連 ingress、非整個內網、B2」）
-- [ ] T004 `resolve_client_ip` tunnel fallback impl in `rust-api/server/src/audit_ctx.rs`（make T002 pass）：在現有 peer-gate→Tier-1→Tier-2 後，`conf==Fallback && peer∈tunnel && cf_cip 合法` → real_ip=cf_cip；**現有 nginx+CF 路徑（XFF 有 client）零改、零回歸**（D5）
+- [ ] T004 **新 pure fn `apply_tunnel_fallback(client_ip, base_conf, peer, cf_cip, &tm) -> (IpAddr, Confidence)`** in `rust-api/server/src/audit_ctx.rs`（make T002 pass）+ 在 **handler 呼 `resolve_client_ip` 之後、`apply_cf_overlay` 之前** 插入呼叫：`base_conf==Fallback && peer∈tm.tunnel && cf_cip 合法` → real_ip=cf_cip〔conf 維持 Fallback、不新增 enum〕，否則透傳；**★ 不改 `resolve_client_ip` 簽名**〔避撞 ~12 呼叫點〕；現有 nginx+CF 路徑（XFF 有 client、非 Fallback）零改、零回歸（D5）
 - [ ] T005 entity `entity::sys_ip_rule` in `rust-api/entity/src/sys_ip_rule.rs`（`id` bigserial／`cidr: IpNetwork`／`rule_type: String`／`order: Option<i32>`〔`column_name="order"`〕／`description: Option<String>`／created_at·by·updated·deleted 稽核+soft-del；+`AuditSerialize`）
 - [ ] T006 migration `m007_create_sys_ip_rule` in `rust-api/migration/src/`（+ 註冊 `lib.rs`）：`execute_unprepared` CREATE TABLE + **partial unique** `(cidr,rule_type) WHERE deleted_at IS NULL`（沿 m001:753-766）+ casbin seed **6 p-policy**〔`('p','R_SUPER',path,method,'','','',false)` × getIpRuleList/addIpRule/updateIpRule/deleteIpRule/restoreIpRule/unlockLogin〕+ menu policy `('p','R_SUPER','manage_ip-rule','menu',...)`；`down` 反序（DROP TABLE + 移 casbin seed）；up→down→up 綠（C-V-12）
-- [ ] T007 [test-first] 純函式測 in `rust-api/server/src/ipgate.rs`（`#[cfg(test)]`）：`decide(ip,&RuleSet)`（白>黑>default-allow、**白優先即使黑亦命中**）／`in_set(ip,STRUCTURAL_EXEMPT)`（loopback/私網 v4/v6→true、公網→false）／`should_flush(flushed_exists)`／restore 衝突守門／寫端自鎖判定（C-V-1）
+- [ ] T007 [test-first] 純函式測 in `rust-api/server/src/ipgate.rs`（`#[cfg(test)]`）：`decide(ip,&RuleSet)`（白>黑>default-allow、**白優先即使黑亦命中**、**★ 含 IPv6 CIDR 規則實際命中 v6 ip〔G1、非僅型別支援〕**）／`in_set(ip,STRUCTURAL_EXEMPT)`（loopback/私網 v4/v6→true、公網→false）／`should_flush(flushed_exists)`／restore 衝突守門／寫端自鎖判定（C-V-1）
 - [ ] T008 facade `sys_ip_rule` in `rust-api/server/src/model/facade/sys_ip_rule.rs`：`load_active()→(Vec<IpNetwork> allow, deny)`〔`find_active()` 分兩袋、閘用〕／`list(page,size,filter)→(records,total)`〔**hybrid `find()` 含已刪 + 分頁/filter + `ORDER BY (deleted_at IS NULL) DESC, order ASC, id ASC` + 每列 `deleted` bool**〕／`create/update/soft_delete/restore(...,AuditMeta)`〔同 txn op-log、沿 sys_menu〕；CIDR 模糊搜尋沿 `ip_host_like`
 - [ ] T009 `rust-api/server/src/ipgate.rs`：`pub struct RuleSet{allow,deny:Vec<IpNetwork>}` + `STRUCTURAL_EXEMPT: &[IpNetwork]` const〔127/8·::1·10/8·172.16/12·192.168/16·fc00::/7〕 + `load_ruleset(db)→RuleSet`（DB 錯→空集 fail-OPEN）+ `decide()`（make T007 pass）
 - [ ] T010 `AppState` 加 `ip_rules: Arc<ArcSwap<RuleSet>>` in `rust-api/server/src/state.rs` + boot `load_ruleset`→`ArcSwap::from_pointee` in `rust-api/server/src/main.rs`
 - [ ] T011 `spawn_ipgate_watcher` in `rust-api/server/src/main.rs`（**鏡像 `spawn_settings_watcher`**：sub `ipgate:invalidate`→重讀 DB `load_ruleset`→`ip_rules.store`、斷線 backoff、redis-down 不啟）
+
+**Checkpoint U1（Foundational 末、敘事里程碑）**：013 real_ip + sys_ip_rule entity/facade/migration + RuleSet/ArcSwap/watcher 地基齊。〔**U1＝T002-T011 此處收口 → bump rust-api pin**〕
 
 ---
 
@@ -45,10 +47,10 @@
 - [ ] T012 [US1] `ipgate_mw` middleware in `rust-api/server/src/ipgate.rs`：path∈{/health,/metrics}→放行；`ip=req.extensions().get::<RequestContext>()`〔**.get() Option、無 ctx→fail-OPEN 放行；★絕不用 mandatory `Extension` extractor**〕；`in_set(ip,STRUCTURAL_EXEMPT)`→放行；`rules=ip_rules.load()`；`allow.any(contains)`→放行；`deny.any(contains)`→§T013+`Err(AppError::PermissionDenied)`〔5003/403〕；else default-allow
 - [ ] T013 [US1] ②c blocked 節流 obs in `rust-api/server/src/ipgate.rs`（T012 deny 路徑內）：`incr("ipgate:blocked:{matched_cidr}",ttl)`→`should_flush(get(ipgate:flushed:{cidr}).is_none())`→`take_suppressed`+`tracing::warn!(target:"security.ipgate",matched_cidr,blocked=n,...)`→loki+`set_ex(flushed,60)`（**復用 021 redis incr/take_suppressed**）
 - [ ] T014 [US1] wire `.layer(ipgate_mw).layer(audit_mw)` in `rust-api/server/src/main.rs`（ipgate_mw audit_mw 內側、router 外、全請求 cover）
-- [ ] T015 [US1] live `#[ignore]` 測 in `rust-api/server/src/ipgate.rs`（需 DB+Redis、`--test-threads=1`）：load_active/watcher 重載 + 閘對真 ruleset（deny→Block、allow→Allow、default-allow、結構豁免放行、②c 節流 ≤1/60s）
-- [ ] T016 [US1] acceptance C-V-2/4/10（curl/psql/redis-cli + logs）：deny→403/5003、default-allow、loopback·私網·/health·/metrics 豁免、②c `security.ipgate` 節流、**未認證被擋 0 DB 寫**（psql sys_access_log 不成長 proxy）
+- [ ] T015 [US1] live `#[ignore]` 測 in `rust-api/server/src/ipgate.rs`（需 DB+Redis、`--test-threads=1`）：load_active/watcher 重載 + 閘對真 ruleset（deny→Block、allow→Allow、default-allow、結構豁免放行、②c 節流 ≤1/60s）+ **★ watcher 重載 ≤5s 計時〔SC-003/C-V-6：`publish ipgate:invalidate`→ruleset 反映新規則之時界〕**
+- [ ] T016 [US1] acceptance C-V-2/4/10（curl/psql/redis-cli + logs）：deny→403/5003、default-allow、loopback·私網·/health·/metrics 豁免、②c `security.ipgate` 節流、**未認證被擋 0 DB 寫**（psql sys_access_log 不成長 proxy）+ **★ 1 條 IPv6 deny 規則命中→403〔G1、v6 端到端〕**
 
-**Checkpoint US1**：黑名單封鎖 + default-allow + 結構豁免 + ②c（MVP）；主線 bump rust-api pin。
+**Checkpoint US1**（敘事里程碑）：黑名單封鎖 + default-allow + 結構豁免 + ②c（MVP）。〔此處在 U2 中段、**勿 bump pin**、見上 ★ 註〕
 
 ---
 
@@ -57,10 +59,10 @@
 **Goal**：白名單優先放行（gate 已含、US1）+ 白名單來源跳 021 lockout（L0 seam）。
 **Independent Test**：白>黑同段放行；白名單來源 >5 失敗不鎖。
 
-- [ ] T017 [US2] L0 seam in `rust-api/server/src/handler/auth.rs`（:271 seam）：login 起手 `if let Some(h)... state.ip_rules.allow.any(contains ctx.client_ip) → 跳過 021 L1/L2 lockout`（白名單同源 `state.ip_rules`、兌現 FR-012）
+- [ ] T017 [US2] L0 seam in `rust-api/server/src/handler/auth.rs`（:271 seam）：login 起手 `if let Some(h)... state.ip_rules.allow.any(contains ctx.client_ip) → 跳過 021 L1/L2 lockout`（白名單同源 `state.ip_rules`、兌現 **022-FR-004**〔白名單免鎖〕、接 021 預留 L0 seam〔021 FR-012〕）
 - [ ] T018 [US2] acceptance C-V-3（curl/redis-cli）：白>黑同段放行；白名單來源連送 >5 失敗→仍可嘗試（不鎖、`lockout:user` 未設）；非白名單對照→第6次 2222（021 不變）
 
-**Checkpoint US2**：信任來源免被 account-DoS 鎖死；主線 bump pin。
+**Checkpoint US2**：信任來源免被 account-DoS 鎖死。〔**U2＝T012-T018 此處收口 → bump rust-api pin**〕
 
 ---
 
@@ -75,9 +77,9 @@
 - [ ] T022 [P] [US3] base-web service wrapper in `base-web/src/service/api/rev3-system-manage.ts`：6 fetch wrapper（含 unlock、對接 T026）（BASE-WEB-WRAPPER 新檔、view 直接路徑 import）
 - [ ] T023 [US3] base-web view `base-web/src/views/manage/ip-rule/index.vue`：列表〔cidr/rule_type tag/order/description/**Deleted NTag**/時戳、搜索 比照 user、分頁、active 列 編輯/刪除、已刪列 **復原鈕** 比照 menu〕+ add/edit modal〔cidr 驗證/rule_type 下拉/order/description〕（MODAL-WIRING；**elegant-router 新 view 重生 4 route 檔**、commit 含 `components.d.ts`/route 檔）
 - [ ] T024 [US3] base-web i18n in `base-web/src/locales/langs/{zh-cn,en-us}.ts` + `typings/app.d.ts` Schema：`backend.biz.ipRule.{selfLock,conflict,notFound}` + `page.manage.ipRule.*` + `route.manage_ip-rule`（**Schema 先後 locale、同 commit**、沿 memory base-web-i18n-schema-iii）
-- [ ] T025 [US3] acceptance C-V-7/11（CDP browser、curl≠modal）：列表含已刪+Deleted欄+搜索分頁+復原（衝突→2222 toast）+ 寫端自鎖（加自己 ip deny→2222 toast 在地化）；**restart base-web 防 vite stale-locale、斷言 toast 非 raw key**
+- [ ] T025 [US3] acceptance C-V-6/7/11（CDP browser、curl≠modal）：列表含已刪+Deleted欄+搜索分頁+復原（衝突→2222 toast）+ 寫端自鎖（加自己 ip deny→2222 toast 在地化）+ **★ 規則 CRUD→gate ≤5s 反映〔SC-003/C-V-6 端到端：addIpRule→publish→watcher→gate〕**；**restart base-web 防 vite stale-locale、斷言 toast 非 raw key**
 
-**Checkpoint US3**：CRUD 管理頁可用；主線 bump rust-api + base-web pin。
+**Checkpoint US3**（敘事里程碑）：CRUD 管理頁可用（US3 切片）。〔U3 rust 尚缺 T026-T028、U4 base-web 尚缺 T029 → **此處勿 bump pin**、待 US4 收口〕
 
 ---
 
@@ -92,7 +94,7 @@
 - [ ] T029 [US4] base-web 解鎖 modal in `base-web/src/views/manage/ip-rule/index.vue`：dimension(user/ip)+value（both-dims 提示）+ i18n（`page.manage.ipRule.unlock.*`）
 - [ ] T030 [US4] live `#[ignore]`/acceptance C-V-8：reset-marker per-dim 解鎖→被鎖 user 下次正確密碼即 0000；**per-dim 獨立**（解 user 維不動 ip 維）；both-dims 鎖須兩維皆解
 
-**Checkpoint US4**：手動解鎖 + per-dim；主線 bump pin。
+**Checkpoint US4**：手動解鎖 + per-dim。〔**U3 rust（T028）+ U4 base-web（T029）此處收口 → bump rust-api + base-web pin**〕
 
 ---
 
@@ -131,7 +133,7 @@
 ## Implementation Strategy（MVP first）
 - **MVP＝US1（Phase 1-3）**：黑名單封鎖 + default-allow + 結構豁免 + ②c —— 獨立可交付、封住惡意來源、DoS-resilient。
 - 增量：US2（白名單+跳鎖）→ US3（CRUD 管理頁）→ US4（手動解鎖）→ US5（韌性/安全/零回歸驗）。
-- 每 phase checkpoint：主線復核 + load-bearing 自驗（容器 cargo build/全 live 測 + acceptance）+ bump submodule pin（§4.1）。
+- **pin bump 僅在執行單元邊界**（U1=Foundational 末／U2=US2 末／U3+U4=US4 末、見開頭 ★ 註與各 Checkpoint 標註）、**非每 phase checkpoint**；各單元邊界＝主線復核 + load-bearing 自驗（容器 cargo build/全 live 測 + acceptance）+ bump submodule pin（§4.1）。
 
 ## 執行單元對映（交 階段 2 Workflow 驅動）
 - **U1 rust 地基** = T002-T011（013 tunnel fallback + sys_ip_rule entity/facade/migration m007 + RuleSet/ArcSwap/load/watcher）serial 一支。

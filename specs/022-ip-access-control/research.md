@@ -35,12 +35,12 @@
 
 ## D5 — 013 強化：窄 `tunnel` 信任 + CF-Connecting-IP fallback（cold-review B2 收窄）
 
-- **Decision**：`TrustModel` 加**窄欄 `tunnel: Vec<IpNetwork>`**（trust-model.toml `[[tunnel]]`、**只含實際 cloudflared origin**〔如 `127.0.0.1/32`/`::1/128`〕、非整個 `internal_default`）。`resolve_client_ip`：當結果 `conf==Fallback`〔XFF 沒解出外部 client〕**且 `peer ∈ tunnel`** → 採信 `CF-Connecting-IP` 為 real_ip。
-- **接地**：`audit_ctx.rs:34-63 Confidence`（7 態、`Fallback`＝整鏈受信/無錨點、回於 `:166`〔Tier-1 無左錨〕/`:206`〔Tier-2 全 skip〕）；`:144-207 resolve_client_ip`（peer-gate `:146-148` 未受信→Direct）；`:264-284 apply_cf_overlay`（既有僅 `X-CF-Verified==1` 採信、**從不覆蓋 real_ip**）；`config.rs:32-59 TrustModel`（+`tunnel` 仿 `internal_default: Vec<IpNetwork>` parse）；`deploy/nginx/nginx.conf:46-80` geo+map（CF 邊緣段∪loopback→`X-CF-Verified`，**reuse、無需改 nginx**）。
+- **Decision**：`TrustModel` 加**窄欄 `tunnel: Vec<IpNetwork>`**（trust-model.toml `[[tunnel]]`、**只含實際 cloudflared origin**〔如 `127.0.0.1/32`/`::1/128`〕、非整個 `internal_default`）。**新 pure fn `apply_tunnel_fallback(client_ip, base_conf, peer, cf_cip, &tm) -> (IpAddr, Confidence)`**〔插在 handler 呼 `resolve_client_ip` 之後、`apply_cf_overlay` 之前〕：當 `base_conf==Fallback`〔XFF 沒解出外部 client〕**且 `peer ∈ tm.tunnel`** → 採信 `CF-Connecting-IP` 為 real_ip〔**override 分支回 `Confidence::Fallback` 不變**：tunnel 提供、未位置交叉驗證、不新增 enum variant〕；否則原值原 conf 透傳。**★ 不改 `resolve_client_ip(peer,xff,tm)` 簽名**〔無 cf_cip 入參、改它撞 ~12 既有呼叫點+測〔1 prod + 10 resolve_cases + 1 helper〕〕。
+- **接地**：`audit_ctx.rs:34-63 Confidence`（7 態、`Fallback`＝整鏈受信/無錨點、回於 `:166`〔Tier-1 無左錨〕/`:206`〔Tier-2 全 skip〕）；`:144-207 resolve_client_ip`（peer-gate `:146-148` 未受信→Direct）；`:264-284 apply_cf_overlay`（既有僅 `X-CF-Verified==1` 採信、**從不覆蓋 real_ip**、gate 在 `{CdnAnchored,ProxyClean,ProxySoft}`〔**非 Fallback**、故 tunnel fallback 不可塞此 fn〕）；**handler `~:324` 呼 `resolve_client_ip`、`~:329-332` 自 header 取 cf_cip → 新 fn 插在 cf_cip 取出後〔~:332〕、`apply_cf_overlay`〔~:338〕前、`resolve_client_ip` 與其既有測〔10 `resolve_cases_*` `:506~611` + helper `:722`〕全不動**；`config.rs:32-59 TrustModel`（+`tunnel` 仿 `internal_default: Vec<IpNetwork>` parse）；`deploy/nginx/nginx.conf:46-80` geo+map（CF 邊緣段∪loopback→`X-CF-Verified`，**reuse、無需改 nginx**）。
 - **Rationale（反偽造、B2）**：`peer ∈ tunnel`〔窄、只 cloudflared origin、配 :31081 internal-only〕即驗證——內網非 tunnel-origin 位置自帶偽 CF-CIP **不滿足** peer∈tunnel、不被採信。現有 nginx+CF 路徑（XFF 有 client、非 Fallback）**零改變、零回歸**。屬對 013「CF-CIP 不覆蓋 real_ip」不變式的**刻意、窄範圍**反轉（收尾加 013 as-built 註記）。
 - **Alternatives**：reuse `CdnEntry`+verify——否決（CDN≠Tunnel 語義混淆）；blanket `is_trusted(peer)`——**否決（B2：整個內網可偽造）**；強制 cloudflared 注入 shared-secret header——defense-in-depth 可選加（plan tasks 評），但窄 peer 已足。
 
-## D6 — 白名單 → 021 L0 seam（兌現 FR-012）
+## D6 — 白名單 → 021 L0 seam（兌現 022-FR-004〔白名單免鎖〕、接 021 預留 seam〔021 FR-012〕）
 
 - **Decision**：`auth.rs:271` L0 seam：login 起手 `if state.ip_rules.allow.any(contains client_ip) → 跳 021 L1/L2 lockout`。白名單同源 `state.ip_rules`（閘與 lockout-bypass 讀同份）。
 - **接地**：`auth.rs:271 // L0 trusted-ip bypass seam（FR-012、未實作）`。
