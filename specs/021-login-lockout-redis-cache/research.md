@@ -42,12 +42,13 @@
 - **Rationale**：facade 現有 get/set_ex/del/publish 已是 fail-OPEN 範式（:64-118），新增循同款（`let mut conn=self.conn.clone(); match conn.incr(...).await { Ok→.., Err→warn+降級 }`）。
 - **接地**：`RedisHandle{client,conn:MultiplexedConnection}`（:27-32）、`AsyncCommands`（:19）；既有 method 全 `#[allow(dead_code)]`+fail-OPEN（:63-93）；`set_revoked`/`revoked_at_of`（:98-110）為「語意包薄封 set_ex/get」範例 → lockout 語意包同款。
 
-## D7 — ★ 有意識反轉 019 FR-004/FR-008（as-built、非違憲）
+## D7 — ★ 有意識反轉 007 FR-004/SC-002 ＋ 019 FR-008（as-built、非違憲；★ 原誤標「019 FR-004」已勘誤）
 
-- **Decision**：019 FR-004（每終局結果 exactly-one 列）/FR-008（gated 列 sticky 審計）於「L1 快取命中短路」情形**不成立**——鎖後不逐筆寫、改 ②c 節流摘要。**非** constitution 不變式（§I.6 archetype B 只規範 append-only/不可竄改、未規範「每嘗試必寫」）→ 不違憲。
-- **Rationale**：019 的「gated 也寫」在洪水下變負債（見 D4）。屬 019 spec-level 演進。
-- **收尾處理**：比照 020 對 011 data-model 的 as-built 勘誤——`specs/019-login-lockout/spec.md` FR-004/008 加 forward-pointing as-built 註記（保留原文）、權威更正登 DECISIONS §1（plan/收尾時）。
-- **接地**：019 FR-004/008 措辭見 `specs/019-login-lockout/spec.md`；單一寫點 `auth.rs:256`「含 gated」註解（:244/:255）即被本刀 L1 早-return 覆寫於鎖後。
+- **Decision**：「每終局結果 exactly-one 列」（**＝007-audit-overlay FR-004/SC-002**）與「gated 列 sticky 審計痕跡」（**＝019 FR-008** 後半）於「L1 快取命中短路」情形**不成立**——鎖後不逐筆寫、改 ②c 節流摘要。**非** constitution 不變式（§I.6 archetype B 只規範 append-only/不可竄改、未規範「每嘗試必寫」）→ 不違憲。
+- **★ 歸屬勘誤（2026-06-28、收尾時 3 獨立 reviewer grep 實證修正）**：本 D7（與 plan/tasks/checklists）原將反轉標的誤寫為「**019 FR-004**」；實證 **019 FR-004＝真實 client IP 防偽**（`specs/019-login-lockout/spec.md:80`、021 完全未碰），「exactly-one per terminal result」之擁有者實為 **007-audit-overlay FR-004（:108）＋ SC-002（:137）**。故本刀真正反轉＝**007 FR-004/SC-002 ＋ 019 FR-008**（審計痕跡那半）；as-built 註記已加於該三處（非 019 FR-004）。
+- **Rationale**：007「每終端結果恰一筆」＋019「gated 也寫」在洪水下變負債（見 D4）。屬 007/019 spec-level 演進。
+- **收尾處理**：比照 020 對 011 data-model 的 as-built 勘誤——於 `specs/007-audit-overlay/spec.md` FR-004/SC-002 與 `specs/019-login-lockout/spec.md` FR-008 加 forward-pointing as-built 註記（保留原文）、權威更正登 DECISIONS §1（收尾時）。
+- **接地**：007 FR-004/SC-002 措辭見 `specs/007-audit-overlay/spec.md`、019 FR-008 見 `specs/019-login-lockout/spec.md`；單一寫點 `auth.rs:256`「含 gated」註解即被本刀 L1 早-return 覆寫於鎖後。
 
 ## D8 — fail-OPEN 降級鏈（Redis-down → L2 既有 DB gate）
 

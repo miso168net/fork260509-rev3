@@ -14,7 +14,7 @@
 ## Execution notes（交 階段 2 superpowers:executing-plans + Workflow）
 - rust build/test 在 rust-api 容器內 `docker exec`（host 無 cargo）；live `#[ignore]` 測帶 `DATABASE_URL=$(cat /run/secrets/database_url)` ＋ `REDIS_URL=$(cat /run/secrets/redis_url)` + `--test-threads=1`；改 `.rs` 後 force-touch 防 /mnt/d stale-mtime；rust 全程 serial。
 - **★ 絕不 push/merge**（worktree commit 只 local，收尾才 finishing-a-development-branch）；執行單元邊界 bump submodule pin（§4.1）。
-- 全程 fail-OPEN（沿 §I.7／019）；reuse 019 政策值（5/20/900）；**0 migration/crate/route/wire**；**有意識反轉 019 FR-004/008**（鎖後不逐筆寫、收尾加 019 as-built 註記）。
+- 全程 fail-OPEN（沿 §I.7／019）；reuse 019 政策值（5/20/900）；**0 migration/crate/route/wire**；**有意識反轉 007 FR-004/SC-002 ＋ 019 FR-008**（鎖後不逐筆寫、收尾加 007/019 as-built 註記；★ 原誤標 019 FR-004、見 research D7）。
 
 ---
 
@@ -82,10 +82,10 @@
 ## Phase 6: Polish & Cross-Cutting
 
 - [ ] T015 lint + prod gate（rust 容器 + docker）：`cargo test -p server --test entity_access_lint` 綠 / `--test endpoint_coverage_lint` 綠（無新 route）/ `docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api` 綠（無新 crate、驗 multi-stage 無破口）（C-V-9）
-- [ ] T016 **019 FR-004/008 as-built 勘誤**（收尾刀時）：`specs/019-login-lockout/spec.md` FR-004（exactly-one per terminal result）/FR-008（gated 列 sticky 審計）加 **forward-pointing as-built 註記**（保留原文、指 021 鎖後改 ②c 節流摘要）；權威更正登 DECISIONS §1（比照 020 對 011 data-model 的處理）
+- [x] T016 **007 FR-004/SC-002 ＋ 019 FR-008 as-built 勘誤**（收尾刀時）：於 `specs/007-audit-overlay/spec.md` FR-004（exactly-one per terminal result）/SC-002 與 `specs/019-login-lockout/spec.md` FR-008（gated 列 sticky 審計痕跡）加 **forward-pointing as-built 註記**（保留原文、指 021 鎖後改 ②c 節流摘要）；權威更正登 DECISIONS §1（比照 020 對 011 data-model 的處理）。**★ 歸屬勘誤**：原誤標「019 FR-004」、實則 019 FR-004＝真實 IP 防偽（021 未碰）、exactly-one 之擁有者為 007 FR-004（3 獨立 reviewer grep 實證、見 research D7）
 - [ ] T017 清理 throwaway：psql `DELETE FROM sys_login_attempt WHERE attempted_user_name LIKE 'zz021_%';` + redis `DEL lockout:*`（zz021 相關）→ 回 baseline（無殘留列/key）
 - [ ] T018 final holistic review：spec FR-001~012 / SC-001~007 逐項對照 + Constitution 9/9 複核 + 全 rust 測 run（零回歸）+ §I.7 §4.3 非權威快取/fail-OPEN 一致性確認
-- [ ] T019 收尾準備（交 finishing-a-development-branch）：擬多段式 commit + 進度回填清單（MILESTONES append、CHECKLIST 收尾、DECISIONS §1 登拍板〔本刀 + 019 FR-004/008 反轉〕、§6 marker、019 §4.2「per-IP 白名單」緊接 future 提醒）—— **push/merge 需 user 同意**
+- [ ] T019 收尾準備（交 finishing-a-development-branch）：擬多段式 commit + 進度回填清單（MILESTONES append、CHECKLIST 收尾、DECISIONS §1 登拍板〔本刀 + 007 FR-004/SC-002＋019 FR-008 反轉（★ 原誤標 019 FR-004）〕、§6 marker、019 §4.2「per-IP 白名單」緊接 future 提醒）—— **push/merge 需 user 同意**
 
 ---
 

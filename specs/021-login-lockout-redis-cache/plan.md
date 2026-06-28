@@ -6,7 +6,7 @@
 
 ## Summary
 
-硬化 019-login-lockout：對「已生效鎖定」在 login gate 最前端加一層 **Redis 負快取（deny 層）**，使分散式打單帳號（per-user 維度）下「已鎖定嘗試」的評估成本由「隨窗成長的無-LIMIT COUNT＋每次 INSERT」降為 **O(1)**（1-2 個 Redis GET），堵掉 DB 讀取/寫入放大與稽核表被灌。**DB 維持鎖定真相**（既有滑動窗失敗計數），Redis 為非權威加速層、掛了退回 019 既有 DB gate（fail-OPEN）。**技術途徑**：login 起手查 `lockout:ip:{ip}` / `lockout:user:{name}`（D1 雙維度）→ 命中即拒（②b 不寫稽核 + ②c 節流麵包屑→loki log）；miss 走既有 DB gate、達門檻則 `set_ex` 觸發維度的 key（D2 固定 TTL=900s 不 refresh→攻擊停自癒）。**clarify firm**：鑑識麵包屑必需「壓制次數」（distinct-source 可選/遞延）、本刀只發可告警訊號（告警規則配置遞延 ops/obs）。**0 migration／0 新 crate／0 新 route**；redis facade 小幅加 `incr`（+ 計數讀取/重置）；**有意識反轉 019 FR-004/FR-008**（鎖後不逐筆寫稽核、改節流摘要）。
+硬化 019-login-lockout：對「已生效鎖定」在 login gate 最前端加一層 **Redis 負快取（deny 層）**，使分散式打單帳號（per-user 維度）下「已鎖定嘗試」的評估成本由「隨窗成長的無-LIMIT COUNT＋每次 INSERT」降為 **O(1)**（1-2 個 Redis GET），堵掉 DB 讀取/寫入放大與稽核表被灌。**DB 維持鎖定真相**（既有滑動窗失敗計數），Redis 為非權威加速層、掛了退回 019 既有 DB gate（fail-OPEN）。**技術途徑**：login 起手查 `lockout:ip:{ip}` / `lockout:user:{name}`（D1 雙維度）→ 命中即拒（②b 不寫稽核 + ②c 節流麵包屑→loki log）；miss 走既有 DB gate、達門檻則 `set_ex` 觸發維度的 key（D2 固定 TTL=900s 不 refresh→攻擊停自癒）。**clarify firm**：鑑識麵包屑必需「壓制次數」（distinct-source 可選/遞延）、本刀只發可告警訊號（告警規則配置遞延 ops/obs）。**0 migration／0 新 crate／0 新 route**；redis facade 小幅加 `incr`（+ 計數讀取/重置）；**有意識反轉 007 FR-004/SC-002 ＋ 019 FR-008**（鎖後不逐筆寫稽核、改節流摘要；★ 原誤標「019 FR-004」、實為 007 FR-004＝exactly-one、見 research D7 歸屬勘誤）。
 
 ## Technical Context
 
@@ -24,7 +24,7 @@
 
 **Performance Goals**: 鎖後每嘗試評估＝**O(1)**（1-2 Redis GET、無 DB query/write）；②c 寫入有上限（≤1 摘要 log/60s/key）；DB COUNT 結構性永遠只掃近乎空窗
 
-**Constraints**: 0 migration／0 新 crate／0 新 route；對 base-web 零改動（login wire 不變、reuse `auth.login.locked`）；全程 **fail-OPEN**（沿 §I.7／019）；reuse 019 政策值（per-user 5／per-ip 20／窗 900s＝TTL）；redis facade +`incr`；**有意識反轉 019 FR-004/FR-008**（鎖後不逐筆寫稽核）
+**Constraints**: 0 migration／0 新 crate／0 新 route；對 base-web 零改動（login wire 不變、reuse `auth.login.locked`）；全程 **fail-OPEN**（沿 §I.7／019）；reuse 019 政策值（per-user 5／per-ip 20／窗 900s＝TTL）；redis facade +`incr`；**有意識反轉 007 FR-004/SC-002 ＋ 019 FR-008**（鎖後不逐筆寫稽核；★ 原誤標「019 FR-004」、見 research D7）
 
 **Scale/Scope**: 1 rust 執行單元（login gate L1 cache 層 + redis facade `incr`/計數 helper + ②c obs log）；動點＝`handler/auth.rs`（login gate 分層）+ `server/src/redis.rs`（+`incr`/take-suppressed）+（可能）`model/facade/sys_login_attempt.rs` 不變（L2 既有 count 沿用）
 
@@ -40,9 +40,9 @@
 6. **§II 拍板 #1~#13？**：✅ 無抵觸（2222 reuse 對齊 #10；不動 alt-login/captcha #2/#13）。
 7. **§III ★ 軌道？邊界內？**：✅ 僅 **RUSTAPI-SOURCE-ISOLATION**（rust 整棵樹）；**無** ★ base-web 軌道（無 UI／i18n inline）。obs log 為 rust 端。
 8. **新建業務表 (migration)？**：✅ **無**（零 migration）。reuse 既有 `sys_login_attempt`（archetype B append-only）＋兩既有索引；Redis key 非 DB；②c 落 obs log 非 DB 列（避免動 schema 與污染鎖定 COUNT）。
-9. **§I.7 行為島？invariants 保持？**：✅ login lockout **非** §I.7 三台狀態機（token rotation／policy governance／single-session）之一、不動其 invariants。**對齊 §I.7 哲學**：(a) **fail-OPEN** 全程保持（FR-008、Redis/DB 抖動降級放行、沿 §I.7／019/007）；(b) **§4.3 persist-then-cache 範式**——鎖定真相在 DB（滑動窗 count）、Redis 為**非權威快取**（掛了退回 DB gate、lazy 重建），與 single-session pointer「真相在 DB、Redis 僅快取、可失憶」同構。**§I.6 archetype B 不破**：`sys_login_attempt` 仍只 INSERT（append-only、不可竄改）、本刀只是**鎖後 INSERT 更少列**（非加 update/delete 欄、非竄改）→ archetype B 規則維持。**★ 注**：本刀**有意識反轉 019 spec 的 FR-004（exactly-one per terminal result）/FR-008（gated 列 sticky 審計）**——此二者為 **019 spec 設計選擇、非 constitution 不變式**，反轉不違憲；屬對 019 的 as-built 演進（見 research D7、收尾比照 020 對 011 加 as-built 註記）。
+9. **§I.7 行為島？invariants 保持？**：✅ login lockout **非** §I.7 三台狀態機（token rotation／policy governance／single-session）之一、不動其 invariants。**對齊 §I.7 哲學**：(a) **fail-OPEN** 全程保持（FR-008、Redis/DB 抖動降級放行、沿 §I.7／019/007）；(b) **§4.3 persist-then-cache 範式**——鎖定真相在 DB（滑動窗 count）、Redis 為**非權威快取**（掛了退回 DB gate、lazy 重建），與 single-session pointer「真相在 DB、Redis 僅快取、可失憶」同構。**§I.6 archetype B 不破**：`sys_login_attempt` 仍只 INSERT（append-only、不可竄改）、本刀只是**鎖後 INSERT 更少列**（非加 update/delete 欄、非竄改）→ archetype B 規則維持。**★ 注**：本刀**有意識反轉「exactly-one per terminal result」（＝007-audit-overlay FR-004/SC-002）＋「gated 列 sticky 審計痕跡」（＝019 FR-008 後半）**——此二者為 **007/019 spec 設計選擇、非 constitution 不變式**，反轉不違憲；屬對 007/019 的 as-built 演進（見 research D7、收尾比照 020 對 011 加 as-built 註記）。**★ 歸屬勘誤**：原誤標為「019 FR-004」，實則 019 FR-004＝真實 IP 防偽（021 未碰）、exactly-one 之擁有者為 007 FR-004（見 research D7）。
 
-**結論：9/9 PASS、0 Amendment 需求、0 Complexity Tracking 違規。**（無 base-web／無 migration／無新 crate／無新 route／無新 wire；Redis 用對齊 §I.7 §4.3 非權威快取＋fail-OPEN；019 FR-004/008 反轉為 spec-level as-built、非憲法面。）
+**結論：9/9 PASS、0 Amendment 需求、0 Complexity Tracking 違規。**（無 base-web／無 migration／無新 crate／無新 route／無新 wire；Redis 用對齊 §I.7 §4.3 非權威快取＋fail-OPEN；007 FR-004/SC-002 ＋ 019 FR-008 反轉為 spec-level as-built、非憲法面〔★ 原誤標 019 FR-004、見 research D7〕。）
 
 ## Project Structure
 
