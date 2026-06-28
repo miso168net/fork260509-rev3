@@ -126,5 +126,5 @@ login(ip, name):
 - Constitution 9 問：auth 島行為改 ＋ redis 用 ＋ obs log——確認無 §I.7/§4.2/migration 違規；**②b 反轉 019 FR 須在 spec 明記為刻意**。
 
 ## 9. 與 019 的落差/勘誤紀錄（act-on-code 接住、供勘誤評估）
-- 本刀**反轉 019 FR-004（每終局結果 exactly-one 列）/ FR-008（gated 列 sticky 審計）** 於「Redis 快取命中短路」情形（鎖後不逐筆寫、改 ②c 節流摘要）。019 spec 該兩 FR 於本刀落地後屬 **as-built 勘誤候選**（同 020 對 011 的處理：加 forward-pointing as-built 註記、保留原文、權威更正登 DECISIONS §1）。`/speckit-plan` 時評估。
+- 本刀**反轉 019 FR-004（每終局結果 exactly-one 列）/ FR-008（gated 列 sticky 審計）** 於「Redis 快取命中短路」情形（鎖後不逐筆寫、改 ②c 節流摘要）。019 spec 該兩 FR 於本刀落地後屬 **as-built 勘誤候選**（同 020 對 011 的處理：加 forward-pointing as-built 註記、保留原文、權威更正登 DECISIONS §1）。`/speckit-plan` 時評估。〔**收尾勘誤 (2026-06-28、3 獨立 reviewer grep 實證)**：「exactly-one per terminal result」之擁有者為 **007-audit-overlay FR-004（:108）/SC-002（:137）**、**非** 019 FR-004（019 FR-004＝真實 client IP 防偽、021 未碰）；本刀真正反轉＝**007 FR-004/SC-002 ＋ 019 FR-008**，as-built 註記已加於該三處、權威詳 [DECISIONS §1（021）](../INTEGRATION-DECISIONS.md)。本 Phase 0 brainstorm 為史料、不改正文、僅附此勘誤指標。〕
 - 帳號-DoS 緩解（IP 白名單/CAPTCHA）為 019 §4.2 既登記 future；本刀把鎖做硬後，緩解需求升高、宜緊接排程（見 §5 註）。
