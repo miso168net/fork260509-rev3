@@ -22,6 +22,12 @@ internal_default = [
   "fc00::/7",
 ]
 
+# 022 D5（B2 收窄）：CF Tunnel 繞 nginx 直連 ingress 的【窄】cloudflared origin 段。
+# ★ 只含實際 cloudflared 本機 origin（loopback）、非整個內網——apply_tunnel_fallback 僅當直連
+#   peer ∈ tunnel 時才採信 CF-Connecting-IP 為 real_ip（反偽造 B2：內網非 tunnel-origin 位置帶偽
+#   CF-CIP 不被採信）。tunnel 亦為 root scalar、須排在所有 [[...]] table 之前（同 internal_default）。
+tunnel = ["127.0.0.1/32", "::1/128"]
+
 # ── Tier-1 CDN 位置錨（operator 自填官方 IP list、自行更新；空集＝無 Tier-1 錨）──
 # 已啟用 Cloudflare（U5 / 013）：networks＝cloudflare.com/ips-v4 + ips-v6 全段（operator 自更新）。
 # Tier-1 盲剝 CF 邊緣右側、錨出左一非 CF IP 為 real_ip；connecting_ip_header 供交叉驗證。
