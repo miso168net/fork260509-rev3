@@ -26,8 +26,8 @@
 
 ## Phase 2: Foundational（阻斷前置 — US1+US2 共用 infra：純函式決策 + redis facade）
 
-- [ ] T002 [test-first] 純函式單元測 in `rust-api/server/src/handler/auth.rs`（`#[cfg(test)]`）：`lockout_keys(ip,name)`（組 `lockout:ip:{ip}`/`lockout:user:{name}`）／`tripped_keys(ip_fails,user_fails,ip,name)`（門檻 20/5、各維度 set 哪些 key、兩維皆觸發各 set）／`should_flush(flushed_exists)`（不存在才 true）；`is_locked_out` 不變（沿 019 既有測）（C-V-1）
-- [ ] T003 實作純函式 `lockout_keys`/`tripped_keys`/`should_flush`（make T002 pass）in `rust-api/server/src/handler/auth.rs`（不碰 IO；`is_locked_out`(:68) 不動）
+- [ ] T002 [test-first] 純函式單元測 in `rust-api/server/src/handler/auth.rs`（`#[cfg(test)]`）：`lockout_keys(ip,name)`（組 `lockout:ip:{ip}`/`lockout:user:{name}`）／`tripped_keys(ip_fails,user_fails,ip,name)`（門檻 20/5、各維度 set 哪些 key、兩維皆觸發各 set）／`should_flush(flushed_exists)`（不存在才 true）；**★ key-string 一致性（G1）：斷言 `tripped_keys` 對同 `(ip,name)` 產生的 key 字串與 `lockout_keys` 完全相同（含 IPv6 渲染、防 L1-read≠L2-write 靜默失效）**；`is_locked_out` 不變（沿 019 既有測）（C-V-1）
+- [ ] T003 實作純函式 `lockout_keys`/`tripped_keys`/`should_flush`（make T002 pass）in `rust-api/server/src/handler/auth.rs`：**★ `tripped_keys` 與 `lockout_keys` 的 key 字串必由共用 `ip_key(ip)`/`user_key(name)` helper 導出（保 L1-read==L2-write、G1、防 D-04-class 渲染分歧）**；**`tripped_keys` 門檻引用既有 `PER_IP_THRESHOLD(20)`/`PER_USER_THRESHOLD(5)` 常數、不硬編（G3、FR-010 政策值單一來源）**；不碰 IO；`is_locked_out`(:68) 不動
 - [ ] T004 redis facade 加 `incr(key)`（INCR + 確保 TTL）/`take_suppressed(key)->i64`（GETDEL 讀+清、miss→0）+ lockout 語意薄包 `mark_locked(key,ttl)`/`is_locked(key)->bool`（薄封 set_ex/get）in `rust-api/server/src/redis.rs`；**全 fail-OPEN 鏡像既有範式**（:64-118、error 吞成降級值 + `tracing::warn!(key,error=%e,..)`）
 
 ---
@@ -38,12 +38,12 @@
 **Independent Test**：5 fail→第6觸發鎖→後續 L1 短路；psql 該 user 行數不隨壓制成長（0 DB 寫）；per-user 鎖短路任意來源（`lockout:user` 存在、`lockout:ip` 不存）。
 
 ### Tests for User Story 1 ⚠️（live、in-crate `#[ignore]`+env-gate）
-- [ ] T005 [US1] live 測 in `rust-api/server/src/handler/auth.rs`（`#[cfg(test)]#[ignore]`、需 `DATABASE_URL`+`REDIS_URL`）：對 throwaway `zz021_x` 5 fail→第6 L2 觸發鎖（set `lockout:user:zz021_x`、寫第6列）→ 後續 L1 短路（psql 行數**仍=6**＝0 DB 寫、②b/FR-004）+ **per-user 維度**短路（`lockout:user` 存在、`lockout:ip` 不存、FR-002；注入不同 `real_ip` 仍短路）（C-V-2/3/8）
+- [ ] T005 [US1] live 測 in `rust-api/server/src/handler/auth.rs`（`#[cfg(test)]#[ignore]`、需 `DATABASE_URL`+`REDIS_URL`）：對 throwaway `zz021_x` 5 fail→第6 L2 觸發鎖（set `lockout:user:zz021_x`、寫第6列）→ 後續 L1 短路（psql 行數**仍=6**＝0 DB 寫、②b/FR-004）+ **per-user 維度**短路（`lockout:user` 存在、`lockout:ip` 不存、FR-002；注入不同 `real_ip` 仍短路）＋**★ per-ip 維度變體（G1/FR-002）：同一 `real_ip` 跨多帳號（每帳號 <5）送 ≥20 fail → L2 set `lockout:ip:{ip}` → 同 IP 下一發任意帳號 L1 命中短路（行數不增）、證 per-ip 軌道亦接地且 L1-read key 命中 L2-write key**（C-V-2/3/8）
 
 ### Implementation for User Story 1（rust serial）
-- [ ] T006 [US1] login gate **L1 短路** in `rust-api/server/src/handler/auth.rs`：`login`(:211) 起手、`since`(:226) 計算**之前** → `if let Some(h)=state.redis.as_ref().as_ref()`（fail-open：None 跳過退 L2）內查 `get(lockout:ip:{ip})`/`get(lockout:user:{name})` 命中任一 → `return Err((None, AppError::Biz("auth.login.locked".into())))`（**②b：早 return、不到寫點 :256**）；miss → 續 L2（既有 :226-256 完全不動）
+- [ ] T006 [US1] login gate **L1 短路** in `rust-api/server/src/handler/auth.rs`：`login`(:211) 起手、`since`(:226) 計算**之前** → **★ 落一行 greppable seam marker `// L0 trusted-ip bypass seam（FR-012、未實作、未來白名單插入點）` 於 gate 最頂端（G2/FR-012）** → `if let Some(h)=state.redis.as_ref().as_ref()`（fail-open：None 跳過退 L2）內查 `get(lockout:ip:{ip})`/`get(lockout:user:{name})`（key 字串用 T003 共用 helper）命中任一 → `return Err((None, AppError::Biz("auth.login.locked".into())))`（**②b：早 return、不到寫點 :256**）；miss → 續 L2（既有 :226-256 完全不動）
 - [ ] T007 [US1] L2 **觸發 set_ex** in `rust-api/server/src/handler/auth.rs`：既有 `is_locked_out`(:245) 為 true 時，依 `tripped_keys`（`ip_fails>=20`→`lockout:ip:{ip}`／`user_fails>=5`→`lockout:user:{name}`）`set_ex(key,"1",900)`（**D2/D3 固定 TTL、不 refresh**）；L2 其餘（count/login_inner/write）不動
-- [ ] T008 [US1] acceptance（curl/psql/redis-cli）：C-V-2（鎖後短路、行數不隨壓制成長）+ C-V-3（per-user 短路任意來源、`lockout:ip` 未設）+ C-V-8（鎖後 0 DB query 量測 / 行數不變 proxy）
+- [ ] T008 [US1] acceptance（curl/psql/redis-cli）：C-V-2（鎖後短路、行數不隨壓制成長）+ C-V-3（per-user 短路任意來源、`lockout:ip` 未設）+ **C-V-3b per-ip 軌道（G1）：跨帳號同 IP 達 20 → `RCLI EXISTS lockout:ip:<ip>`=1 → 同 IP 下發 L1 短路、行數不增** + C-V-8（鎖後 0 DB query 量測 / 行數不變 proxy）
 
 **Checkpoint US1**：鎖後 O(1) 短路 + 0 DB 寫（MVP 達成、封住放大）；主線 bump rust-api submodule pin。
 

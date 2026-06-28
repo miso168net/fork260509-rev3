@@ -30,7 +30,7 @@
 
 抽純函式供 test-first（不碰 IO）：
 - `lockout_keys(ip, name) -> (String, String)`：組 `lockout:ip:{ip}` / `lockout:user:{name}`（key 組裝、可測）。
-- `tripped_keys(ip_fails, user_fails, ip, name) -> Vec<String>`：L2 達門檻時要 set 哪些 key（`ip_fails>=20` → ip key；`user_fails>=5` → user key；可同時）。對齊 `is_locked_out`（:68-69）。
+- `tripped_keys(ip_fails, user_fails, ip, name) -> Vec<String>`：L2 達門檻時要 set 哪些 key（`ip_fails>=20` → ip key；`user_fails>=5` → user key；可同時）。對齊 `is_locked_out`（:68-69）。**★（G1/G3）key 字串必與 `lockout_keys`（L1-read）共用 `ip_key(ip)`/`user_key(name)` helper 導出（保 L1==L2、防 D-04-class 渲染分歧靜默失效）；門檻引用 `PER_IP_THRESHOLD`/`PER_USER_THRESHOLD` 常數、不硬編。**
 - `should_flush(flushed_exists: bool) -> bool`：節流判定（不存在才 flush）。
 （鎖定真相判定 `is_locked_out` 不變、已有 `is_locked_out_for_test`。）
 

@@ -19,6 +19,7 @@
 
 ## C-V-3 — FR-002：per-user 維度短路任意來源（分散式打單帳號）
 - C-V-2 後（`zz021_x` per-user 鎖、但僅 5-6 次 < per-ip 20 → **per-ip 未鎖**）：`RCLI EXISTS lockout:user:zz021_x`＝1、`RCLI EXISTS lockout:ip:<本機ip>`＝**0**。→ 證鎖由 **user 維度** 短路（與來源 IP 無關）；live 測補：注入不同 `real_ip` 的該帳號嘗試仍被 `lockout:user` 短路（不重新觸發 per-user COUNT）。
+- **per-ip 軌道（G1）**：另對**多個** throwaway userName（跨帳號、每帳號 <5 不觸 per-user）自**同一來源**送 ≥20 次失敗 → L2 達 per-ip 門檻 set `lockout:ip:<ip>`（`RCLI EXISTS lockout:ip:<ip>`＝1）→ 同 IP 下一發任意帳號 L1 命中短路（psql 該批行數不再增）。**前提＝`tripped_keys`(L2-write) 與 `lockout_keys`(L1-read) 的 ip key 字串一致**（共用 helper、防 D-04-class IPv6 渲染分歧使 per-ip cache 靜默永不命中）。
 
 ## C-V-4 — FR-007/D3：固定 TTL、命中不 refresh、自癒
 - `RCLI TTL lockout:user:zz021_x` ≈ **900**（D3）；再送幾次壓制嘗試後 `RCLI TTL ...` **持續下降、不回彈至 900**（命中不 refresh）。
