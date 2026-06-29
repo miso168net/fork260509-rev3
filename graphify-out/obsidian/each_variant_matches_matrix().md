@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "error"
+community: "error.rs"
 location: "L190"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/error
+  - community/errorrs
 ---
 
 # each_variant_matches_matrix()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[error.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/error
+#graphify/code #graphify/EXTRACTED #community/errorrs

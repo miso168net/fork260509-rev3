@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L554"
+community: "auth.rs"
+location: "L725"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/authrs
 ---
 
 # is_locked_out_or_semantics()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[auth.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/authrs

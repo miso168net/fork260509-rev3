@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md"
 type: "document"
-community: "pr_en"
+community: "pr en.md"
 location: "L37"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/pr_en
+  - community/pr_enmd
 ---
 
 # Changelog description (Optional if not new feature)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[pr_en]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/pr_en
+#graphify/document #graphify/EXTRACTED #community/pr_enmd

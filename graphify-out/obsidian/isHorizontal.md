@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/index.vue"
 type: "code"
-community: "UI Materials Package"
+community: "index.vue"
 location: "L70"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UI_Materials_Package
+  - community/indexvue
 ---
 
 # isHorizontal
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UI_Materials_Package
+#graphify/code #graphify/EXTRACTED #community/indexvue

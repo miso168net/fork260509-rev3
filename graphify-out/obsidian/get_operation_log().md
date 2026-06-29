@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Audit Log Handlers"
-location: "L1948"
+community: "get access log()"
+location: "L2124"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Audit_Log_Handlers
+  - community/get_access_log
 ---
 
 # get_operation_log()
@@ -25,4 +25,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[wire_id()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Audit_Log_Handlers
+#graphify/code #graphify/EXTRACTED #community/get_access_log

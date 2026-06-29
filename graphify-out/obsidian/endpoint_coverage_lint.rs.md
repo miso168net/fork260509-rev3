@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/tests/endpoint_coverage_lint.rs"
 type: "code"
-community: "endpoint_coverage_lint"
+community: "endpoint coverage lint.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/endpoint_coverage_lint
+  - community/endpoint_coverage_lintrs
 ---
 
 # endpoint_coverage_lint.rs
@@ -24,4 +24,4 @@ tags:
 - [[scan_self_test()]] - `contains` [EXTRACTED]
 - [[whiten_comments()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/endpoint_coverage_lint
+#graphify/code #graphify/EXTRACTED #community/endpoint_coverage_lintrs

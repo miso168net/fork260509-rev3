@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
 type: "code"
-community: "sys_login_attempt"
+community: "sys login attempt.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_login_attempt
+  - community/sys_login_attemptrs
 ---
 
 # sys_login_attempt.rs
@@ -31,4 +31,4 @@ tags:
 - [[write()_1]] - `contains` [EXTRACTED]
 - [[write_attempt()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_login_attempt
+#graphify/code #graphify/EXTRACTED #community/sys_login_attemptrs

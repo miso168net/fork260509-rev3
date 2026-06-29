@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/global-header/components/user-avatar.vue"
 type: "code"
-community: "user-avatar"
+community: "user-avatar.vue"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/user-avatar
+  - community/user-avatarvue
 ---
 
 # logout()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[user-avatar.vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/user-avatar
+#graphify/code #graphify/EXTRACTED #community/user-avatarvue

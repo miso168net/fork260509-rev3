@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/request/shared.ts"
 type: "code"
-community: "Auth Store & Storage"
+community: "index.ts"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Storage
+  - community/indexts
 ---
 
 # handleRefreshToken()
@@ -15,4 +15,4 @@ tags:
 - [[shared.ts_4]] - `contains` [EXTRACTED]
 - [[useAuthStore]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Storage
+#graphify/code #graphify/EXTRACTED #community/indexts

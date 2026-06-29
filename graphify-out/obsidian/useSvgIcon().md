@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/icon.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # useSvgIcon()
@@ -17,4 +17,4 @@ tags:
 - [[shared.ts_6]] - `imports` [EXTRACTED]
 - [[useSvgIconRender()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

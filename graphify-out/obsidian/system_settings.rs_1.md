@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_settings.rs"
 type: "code"
-community: "system_settings"
+community: "system settings.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/system_settings
+  - community/system_settingsrs
 ---
 
 # system_settings.rs
@@ -20,4 +20,4 @@ tags:
 - [[validate_value_type_enum_accepts_members()]] - `contains` [EXTRACTED]
 - [[validate_value_type_enum_rejects_nonmember()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/system_settings
+#graphify/code #graphify/EXTRACTED #community/system_settingsrs

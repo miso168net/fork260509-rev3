@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/action.rs"
 type: "code"
-community: "RuleWithType<'a>"
+community: "Rule With Type<'a>"
 location: "L40"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/RuleWithTypea
+  - community/Rule_With_Typea
 ---
 
 # RuleWithType<'a>
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.from_rule()]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/RuleWithTypea
+#graphify/code #graphify/EXTRACTED #community/Rule_With_Typea

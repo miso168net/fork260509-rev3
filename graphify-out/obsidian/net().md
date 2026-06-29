@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Server Config & Secrets"
-location: "L340"
+community: "config.rs"
+location: "L350"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Server_Config__Secrets
+  - community/configrs
 ---
 
 # net()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[config.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets
+#graphify/code #graphify/EXTRACTED #community/configrs

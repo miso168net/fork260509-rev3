@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/constant/name.ts"
 type: "code"
-community: "name"
+community: "colord.ts"
 location: "L1576"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/name
+  - community/colordts
 ---
 
 # colorNameMap
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[name.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/name
+#graphify/code #graphify/EXTRACTED #community/colordts

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "error"
+community: "error.rs"
 location: "L296"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/error
+  - community/errorrs
 ---
 
 # is_cjk()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[error.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/error
+#graphify/code #graphify/EXTRACTED #community/errorrs

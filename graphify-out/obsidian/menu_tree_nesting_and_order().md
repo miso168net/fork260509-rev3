@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "build_user_route_tree"
+community: "build user route tree()"
 location: "L1161"
 tags:
   - graphify/code

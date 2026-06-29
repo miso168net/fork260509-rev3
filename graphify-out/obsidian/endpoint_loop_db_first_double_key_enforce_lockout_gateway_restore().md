@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_rule.rs"
 type: "code"
-community: "Casbin Rule & RBAC Gating"
-location: "L1370"
+community: "sys casbin rule.rs"
+location: "L1495"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Casbin_Rule__RBAC_Gating
+  - community/sys_casbin_rulers
 ---
 
 # endpoint_loop_db_first_double_key_enforce_lockout_gateway_restore()
@@ -19,4 +19,4 @@ tags:
 - [[run_body()_1]] - `calls` [EXTRACTED]
 - [[sys_casbin_rule.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Casbin_Rule__RBAC_Gating
+#graphify/code #graphify/EXTRACTED #community/sys_casbin_rulers

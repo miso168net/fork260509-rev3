@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/app.ts"
 type: "code"
-community: "app"
+community: "app.ts"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/app
+  - community/appts
 ---
 
 # watermarkTimeFormatOptions
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[app.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/app
+#graphify/code #graphify/EXTRACTED #community/appts

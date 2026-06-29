@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/recommend.ts"
 type: "code"
-community: "Color Utilities Package"
+community: "colord.ts"
 location: "L57"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utilities_Package
+  - community/colordts
 ---
 
 # getRecommendedColorPaletteFamily()
@@ -19,4 +19,4 @@ tags:
 - [[isValidColor()]] - `calls` [EXTRACTED]
 - [[recommend.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utilities_Package
+#graphify/code #graphify/EXTRACTED #community/colordts

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/tables/vtable/index.vue"
 type: "code"
-community: "index"
+community: "index.vue"
 location: "L93"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexvue
 ---
 
 # color()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_52]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexvue

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/icon.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # icon.ts
@@ -17,4 +17,4 @@ tags:
 - [[svg-icon.vue]] - `imports_from` [EXTRACTED]
 - [[useSvgIcon()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

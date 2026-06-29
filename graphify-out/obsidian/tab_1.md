@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/compact.json"
 type: "code"
-community: "Theme Layout Config"
+community: "compact.json"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Layout_Config
+  - community/compactjson
 ---
 
 # tab
@@ -19,4 +19,4 @@ tags:
 - [[mode]] - `contains` [EXTRACTED]
 - [[visible_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Layout_Config
+#graphify/code #graphify/EXTRACTED #community/compactjson

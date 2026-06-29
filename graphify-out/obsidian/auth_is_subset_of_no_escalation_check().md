@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L725"
+community: "enforce.rs"
+location: "L731"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/enforcers
 ---
 
 # auth_is_subset_of_no_escalation_check()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[enforce.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/enforcers

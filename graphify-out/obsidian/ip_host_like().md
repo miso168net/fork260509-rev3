@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_operation_log.rs"
 type: "code"
-community: "sys_operation_log"
-location: "L48"
+community: "sys operation log.rs"
+location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_operation_log
+  - community/sys_operation_logrs
 ---
 
 # ip_host_like()
@@ -15,4 +15,4 @@ tags:
 - [[list()_4]] - `calls` [EXTRACTED]
 - [[sys_operation_log.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_operation_log
+#graphify/code #graphify/EXTRACTED #community/sys_operation_logrs

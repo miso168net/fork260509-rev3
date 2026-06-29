@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/shared.ts"
 type: "code"
-community: "index"
+community: "table.ts"
 location: "L47"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/tablets
 ---
 
 # transformBlobToJson()
@@ -15,4 +15,4 @@ tags:
 - [[shared.ts]] - `contains` [EXTRACTED]
 - [[transformResponse()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/tablets

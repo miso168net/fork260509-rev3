@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "App Type Definitions"
+community: "app.d.ts"
 location: "L138"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Type_Definitions
+  - community/appdts
 ---
 
 # OtherColor
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[app.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions
+#graphify/code #graphify/EXTRACTED #community/appdts

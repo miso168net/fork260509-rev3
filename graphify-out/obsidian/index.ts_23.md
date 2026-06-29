@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/index.ts"
 type: "code"
-community: "App Plugins & Bootstrap"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Plugins__Bootstrap
+  - community/indexts
 ---
 
 # index.ts
@@ -34,4 +34,4 @@ tags:
 - [[table.ts]] - `imports_from` [EXTRACTED]
 - [[title.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_access_log.rs"
 type: "code"
-community: "sys_access_log"
+community: "sys access log.rs"
 location: "L151"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_access_log
+  - community/sys_access_logrs
 ---
 
 # access_log_active_model_maps_ipv4_to_32()
@@ -16,4 +16,4 @@ tags:
 - [[sample()]] - `calls` [EXTRACTED]
 - [[sys_access_log.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_access_log
+#graphify/code #graphify/EXTRACTED #community/sys_access_logrs

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/vars.ts"
 type: "code"
-community: "vars"
+community: "vars.ts"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vars
+  - community/varsts
 ---
 
 # themeVars
@@ -16,4 +16,4 @@ tags:
 - [[uno.config.ts]] - `imports` [EXTRACTED]
 - [[vars.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vars
+#graphify/code #graphify/EXTRACTED #community/varsts

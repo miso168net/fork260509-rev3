@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/utils/download.ts"
 type: "code"
-community: "User Management Views"
+community: "manage user index.vue (user list"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/User_Management_Views
+  - community/manage_user_indexvue_user_list
 ---
 
 # downloadCsv (CSV export util)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[serviceapirev3-system-manage.ts (honest user wrappers)]] - `conceptually_related_to` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/User_Management_Views
+#graphify/code #graphify/INFERRED #community/manage_user_indexvue_user_list

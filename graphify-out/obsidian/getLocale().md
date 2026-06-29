@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/index.ts"
 type: "code"
-community: "App Plugins & Bootstrap"
+community: "index.ts"
 location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Plugins__Bootstrap
+  - community/indexts
 ---
 
 # getLocale()
@@ -16,4 +16,4 @@ tags:
 - [[main.ts]] - `imports` [EXTRACTED]
 - [[setupApp()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap
+#graphify/code #graphify/EXTRACTED #community/indexts

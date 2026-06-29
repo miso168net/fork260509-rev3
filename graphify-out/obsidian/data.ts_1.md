@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/echarts/data.ts"
 type: "code"
-community: "data"
+community: "use Theme Store"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/data
+  - community/use_Theme_Store
 ---
 
 # data.ts
@@ -22,4 +22,4 @@ tags:
 - [[pieOptions]] - `contains` [EXTRACTED]
 - [[radarOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/data
+#graphify/code #graphify/EXTRACTED #community/use_Theme_Store

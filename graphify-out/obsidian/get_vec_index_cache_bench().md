@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/benches/search.rs"
 type: "code"
-community: "searcher"
+community: "searcher.rs"
 location: "L36"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/searcher
+  - community/searcherrs
 ---
 
 # get_vec_index_cache_bench()
@@ -15,4 +15,4 @@ tags:
 - [[get_vector_index_cache()]] - `calls` [INFERRED]
 - [[search.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/searcher
+#graphify/code #graphify/EXTRACTED #community/searcherrs

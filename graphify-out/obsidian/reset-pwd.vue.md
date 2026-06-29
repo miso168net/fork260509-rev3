@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/_builtin/login/modules/reset-pwd.vue"
 type: "code"
-community: "reset-pwd"
+community: "reset-pwd.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/reset-pwd
+  - community/reset-pwdvue
 ---
 
 # reset-pwd.vue
 
-#graphify/code #graphify/EXTRACTED #community/reset-pwd
+#graphify/code #graphify/EXTRACTED #community/reset-pwdvue

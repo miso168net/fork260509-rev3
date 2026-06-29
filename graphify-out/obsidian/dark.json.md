@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "dark"
+community: "dark.json"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/dark
+  - community/darkjson
 ---
 
 # dark.json
@@ -34,4 +34,4 @@ tags:
 - [[version_12]] - `contains` [EXTRACTED]
 - [[watermark]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/dark
+#graphify/code #graphify/EXTRACTED #community/darkjson

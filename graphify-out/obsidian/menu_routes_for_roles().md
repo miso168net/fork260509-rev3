@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L300"
+community: "route.rs"
+location: "L306"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/Auth__Casbin_Enforce
+  - community/routers
 ---
 
 # menu_routes_for_roles()
@@ -17,4 +17,4 @@ tags:
 - [[get_user_routes()]] - `calls` [INFERRED]
 - [[user_visible_route_names()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/INFERRED #community/routers

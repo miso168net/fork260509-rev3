@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/echarts.ts"
 type: "code"
-community: "data"
+community: "use Theme Store"
 location: "L83"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/data
+  - community/use_Theme_Store
 ---
 
 # useEcharts()
@@ -15,4 +15,4 @@ tags:
 - [[echarts.ts]] - `contains` [EXTRACTED]
 - [[useThemeStore]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/data
+#graphify/code #graphify/EXTRACTED #community/use_Theme_Store

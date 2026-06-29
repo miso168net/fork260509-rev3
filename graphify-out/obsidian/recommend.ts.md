@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/recommend.ts"
 type: "code"
-community: "recommend"
+community: "recommend.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recommend
+  - community/recommendts
 ---
 
 # recommend.ts
@@ -32,4 +32,4 @@ tags:
 - [[isValidColor()]] - `imports` [EXTRACTED]
 - [[transformHslToHex()]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recommend
+#graphify/code #graphify/EXTRACTED #community/recommendts

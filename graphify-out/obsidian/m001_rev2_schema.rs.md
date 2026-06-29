@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/migration/src/m001_rev2_schema.rs"
 type: "code"
-community: "m001_rev2_schema"
+community: "m001 rev2 schema.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/m001_rev2_schema
+  - community/m001_rev2_schemars
 ---
 
 # m001_rev2_schema.rs
@@ -25,4 +25,4 @@ tags:
 - [[SysUserRole]] - `contains` [EXTRACTED]
 - [[SystemSettings]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/m001_rev2_schema
+#graphify/code #graphify/EXTRACTED #community/m001_rev2_schemars

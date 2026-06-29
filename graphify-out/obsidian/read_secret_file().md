@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Server Config & Secrets"
-location: "L314"
+community: "config.rs"
+location: "L324"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Server_Config__Secrets
+  - community/configrs
 ---
 
 # read_secret_file()
@@ -18,4 +18,4 @@ tags:
 - [[load_secret_file_first()]] - `calls` [EXTRACTED]
 - [[load_xdb_filepath()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets
+#graphify/code #graphify/EXTRACTED #community/configrs

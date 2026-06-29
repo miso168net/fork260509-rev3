@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.oxfmtrc.json"
 type: "code"
-community: ".oxfmtrc"
+community: ".oxfmtrc.json"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/oxfmtrc
+  - community/oxfmtrcjson
 ---
 
 # trailingComma
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.oxfmtrc.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/oxfmtrc
+#graphify/code #graphify/EXTRACTED #community/oxfmtrcjson

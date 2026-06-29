@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "User Entity Facade"
+community: "sys user.rs"
 location: "L191"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Entity_Facade
+  - community/sys_userrs
 ---
 
 # find_active_by_id()
@@ -17,4 +17,4 @@ tags:
 - [[update()_2]] - `calls` [EXTRACTED]
 - [[update_user_preserves_identity_and_replaces_roles()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Entity_Facade
+#graphify/code #graphify/EXTRACTED #community/sys_userrs

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/App.vue"
 type: "code"
-community: "App Plugins & Bootstrap"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Plugins__Bootstrap
+  - community/indexts
 ---
 
 # App.vue
@@ -16,4 +16,4 @@ tags:
 - [[naiveDateLocale]] - `contains` [EXTRACTED]
 - [[naiveLocale]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap
+#graphify/code #graphify/EXTRACTED #community/indexts

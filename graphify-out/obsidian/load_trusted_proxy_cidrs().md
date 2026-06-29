@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Server Config & Secrets"
-location: "L251"
+community: "config.rs"
+location: "L261"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Server_Config__Secrets
+  - community/configrs
 ---
 
 # load_trusted_proxy_cidrs()
@@ -15,4 +15,4 @@ tags:
 - [[config.rs]] - `contains` [EXTRACTED]
 - [[trust_model_fallback()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets
+#graphify/code #graphify/EXTRACTED #community/configrs

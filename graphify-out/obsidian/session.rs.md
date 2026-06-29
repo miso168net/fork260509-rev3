@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/session.rs"
 type: "code"
-community: "Session & Token Rotation"
+community: "session.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session__Token_Rotation
+  - community/sessionrs
 ---
 
 # session.rs
@@ -30,4 +30,4 @@ tags:
 - [[resolve_policy_inherit_follows_global_true()]] - `contains` [EXTRACTED]
 - [[resolve_policy_unknown_follows_global()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session__Token_Rotation
+#graphify/code #graphify/EXTRACTED #community/sessionrs

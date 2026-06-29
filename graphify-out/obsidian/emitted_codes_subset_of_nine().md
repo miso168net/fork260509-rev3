@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "error"
+community: "error.rs"
 location: "L211"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/error
+  - community/errorrs
 ---
 
 # emitted_codes_subset_of_nine()
@@ -15,4 +15,4 @@ tags:
 - [[all_emittable()]] - `calls` [EXTRACTED]
 - [[error.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/error
+#graphify/code #graphify/EXTRACTED #community/errorrs

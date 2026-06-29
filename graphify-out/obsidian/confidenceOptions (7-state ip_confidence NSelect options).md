@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/audit/modules/ip-confidence-options.ts"
 type: "code"
-community: "Menu & Policy Admin UI"
+community: "Api.System Manage.Ip Confidence seven-state literal"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu__Policy_Admin_UI
+  - community/ApiSystem_ManageIp_Confidence_seven-state_literal
 ---
 
 # confidenceOptions (7-state ip_confidence NSelect options)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Api.SystemManage.IpConfidence seven-state literal union]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu__Policy_Admin_UI
+#graphify/code #graphify/EXTRACTED #community/ApiSystem_ManageIp_Confidence_seven-state_literal

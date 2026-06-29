@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-boolean.ts"
 type: "code"
-community: "table"
+community: "table.ts"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/table
+  - community/tablets
 ---
 
 # useBoolean()
@@ -17,4 +17,4 @@ tags:
 - [[useTable()]] - `calls` [EXTRACTED]
 - [[useTableOperate()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/table
+#graphify/code #graphify/EXTRACTED #community/tablets

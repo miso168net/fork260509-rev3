@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/package.d.ts"
 type: "code"
-community: "package"
+community: "package.d.ts"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/package
+  - community/packagedts
 ---
 
 # Window
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[package.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/package
+#graphify/code #graphify/EXTRACTED #community/packagedts

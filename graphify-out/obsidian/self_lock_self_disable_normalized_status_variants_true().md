@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "System Manage Handlers"
-location: "L2594"
+community: "system manage.rs"
+location: "L3030"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/System_Manage_Handlers
+  - community/system_managers
 ---
 
 # self_lock_self_disable_normalized_status_variants_true()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers
+#graphify/code #graphify/EXTRACTED #community/system_managers

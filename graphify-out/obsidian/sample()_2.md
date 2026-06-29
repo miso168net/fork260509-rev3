@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
 type: "code"
-community: "sys_login_attempt"
+community: "sys login attempt.rs"
 location: "L167"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_login_attempt
+  - community/sys_login_attemptrs
 ---
 
 # sample()
@@ -17,4 +17,4 @@ tags:
 - [[login_attempt_active_model_maps_ipv6_to_128()]] - `calls` [EXTRACTED]
 - [[sys_login_attempt.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_login_attempt
+#graphify/code #graphify/EXTRACTED #community/sys_login_attemptrs

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-loading.ts"
 type: "code"
-community: "useLoading"
+community: "table.ts"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/useLoading
+  - community/tablets
 ---
 
 # useLoading()
@@ -18,4 +18,4 @@ tags:
 - [[useCaptcha()]] - `calls` [INFERRED]
 - [[useTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/useLoading
+#graphify/code #graphify/EXTRACTED #community/tablets

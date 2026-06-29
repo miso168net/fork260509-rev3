@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/pdf/index.vue"
 type: "code"
-community: "index"
+community: "index.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexvue
 ---
 
 # index.vue
@@ -22,4 +22,4 @@ tags:
 - [[showAllPages]] - `contains` [EXTRACTED]
 - [[showAllPagesChange()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexvue

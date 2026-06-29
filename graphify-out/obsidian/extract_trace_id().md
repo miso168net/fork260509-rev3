@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/audit_ctx.rs"
 type: "code"
-community: "Audit Context & Client IP"
-location: "L288"
+community: "audit ctx.rs"
+location: "L312"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Audit_Context__Client_IP
+  - community/audit_ctxrs
 ---
 
 # extract_trace_id()
@@ -18,4 +18,4 @@ tags:
 - [[extract_trace_id_falls_back_to_uuid()]] - `calls` [EXTRACTED]
 - [[extract_trace_id_truncates_to_64()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Audit_Context__Client_IP
+#graphify/code #graphify/EXTRACTED #community/audit_ctxrs

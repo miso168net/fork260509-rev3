@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/sys_casbin_policy_archive.rs"
 type: "code"
-community: "sys_casbin_policy_archive"
+community: "sys casbin policy archive.rs"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_casbin_policy_archive
+  - community/sys_casbin_policy_archivers
 ---
 
 # Relation
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_casbin_policy_archive.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_casbin_policy_archive
+#graphify/code #graphify/EXTRACTED #community/sys_casbin_policy_archivers

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/global-search/components/search-modal.vue"
 type: "code"
-community: "search-modal"
+community: "search-modal.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/search-modal
+  - community/search-modalvue
 ---
 
 # search-modal.vue
@@ -23,4 +23,4 @@ tags:
 - [[registerShortcut()]] - `contains` [EXTRACTED]
 - [[search()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/search-modal
+#graphify/code #graphify/EXTRACTED #community/search-modalvue

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/jwt.rs"
 type: "code"
-community: "jwt"
+community: "jwt.rs"
 location: "L58"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/jwt
+  - community/jwtrs
 ---
 
 # now()
@@ -20,4 +20,4 @@ tags:
 - [[jwt_wrong_secret_rejected()]] - `calls` [EXTRACTED]
 - [[sample_claims()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/jwt
+#graphify/code #graphify/EXTRACTED #community/jwtrs

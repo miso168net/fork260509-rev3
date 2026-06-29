@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/service.ts"
 type: "code"
-community: "Alova API Service Layer"
+community: "index.ts"
 location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_API_Service_Layer
+  - community/indexts
 ---
 
 # createProxyPattern()
@@ -16,4 +16,4 @@ tags:
 - [[getServiceBaseURL()]] - `calls` [EXTRACTED]
 - [[service.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer
+#graphify/code #graphify/EXTRACTED #community/indexts

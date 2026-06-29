@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/routes/builtin.ts"
 type: "code"
-community: "builtin"
+community: "builtin.ts"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/builtin
+  - community/builtints
 ---
 
 # NOT_FOUND_ROUTE
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[builtin.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/builtin
+#graphify/code #graphify/EXTRACTED #community/builtints

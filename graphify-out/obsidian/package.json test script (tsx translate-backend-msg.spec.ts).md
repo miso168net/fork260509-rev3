@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/package.json"
 type: "concept"
-community: "User Management Views"
+community: "manage user index.vue (user list"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/User_Management_Views
+  - community/manage_user_indexvue_user_list
 ---
 
 # package.json test script (tsx translate-backend-msg.spec.ts)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[translate-backend-msg.spec.ts (i18n boundary test)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/User_Management_Views
+#graphify/concept #graphify/EXTRACTED #community/manage_user_indexvue_user_list

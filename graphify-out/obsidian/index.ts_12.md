@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/types/index.ts"
 type: "code"
-community: "UI Materials Package"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UI_Materials_Package
+  - community/indexts
 ---
 
 # index.ts
@@ -33,4 +33,4 @@ tags:
 - [[shared.ts_1]] - `imports_from` [EXTRACTED]
 - [[shared.ts_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UI_Materials_Package
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/gantt/dhtmlx/data.ts"
 type: "code"
-community: "data"
+community: "data.ts"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/data
+  - community/datats
 ---
 
 # ganttTasks
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[data.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/data
+#graphify/code #graphify/EXTRACTED #community/datats

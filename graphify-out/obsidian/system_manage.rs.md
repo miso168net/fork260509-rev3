@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "System Manage Handlers"
+community: "system manage.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/System_Manage_Handlers
+  - community/system_managers
 ---
 
 # system_manage.rs
@@ -22,6 +22,9 @@ tags:
 - [[ExportCsv]] - `contains` [EXTRACTED]
 - [[IdReq]] - `contains` [EXTRACTED]
 - [[IdsReq]] - `contains` [EXTRACTED]
+- [[IpRuleListItem_1]] - `contains` [EXTRACTED]
+- [[IpRuleSearchQuery]] - `contains` [EXTRACTED]
+- [[IpRuleUpsertReq]] - `contains` [EXTRACTED]
 - [[LoginAttemptItem]] - `contains` [EXTRACTED]
 - [[LoginAttemptQuery]] - `contains` [EXTRACTED]
 - [[MenuUpsertReq]] - `contains` [EXTRACTED]
@@ -36,10 +39,12 @@ tags:
 - [[RoleMenuReq]] - `contains` [EXTRACTED]
 - [[RoleSearchQuery]] - `contains` [EXTRACTED]
 - [[RoleUpsertReq]] - `contains` [EXTRACTED]
+- [[UnlockReq]] - `contains` [EXTRACTED]
 - [[UserListItem]] - `contains` [EXTRACTED]
 - [[UserSearchQuery]] - `contains` [EXTRACTED]
 - [[UserUpsertReq]] - `contains` [EXTRACTED]
 - [[access_log_csv_row()]] - `contains` [EXTRACTED]
+- [[add_ip_rule()]] - `contains` [EXTRACTED]
 - [[add_menu()]] - `contains` [EXTRACTED]
 - [[add_role()]] - `contains` [EXTRACTED]
 - [[add_user()]] - `contains` [EXTRACTED]
@@ -64,10 +69,12 @@ tags:
 - [[csv_escape_field_always_quotes_and_doubles_quote()]] - `contains` [EXTRACTED]
 - [[csv_escape_field_neutralizes_formula_triggers()]] - `contains` [EXTRACTED]
 - [[date_ok()]] - `contains` [EXTRACTED]
+- [[delete_ip_rule()]] - `contains` [EXTRACTED]
 - [[delete_menu()]] - `contains` [EXTRACTED]
 - [[delete_role()]] - `contains` [EXTRACTED]
 - [[delete_user()]] - `contains` [EXTRACTED]
 - [[dimension_display()]] - `contains` [EXTRACTED]
+- [[dt()]] - `contains` [EXTRACTED]
 - [[enrich_operator_names()]] - `contains` [EXTRACTED]
 - [[escape_like()]] - `contains` [EXTRACTED]
 - [[export_csv_serializes_camelcase()]] - `contains` [EXTRACTED]
@@ -78,6 +85,7 @@ tags:
 - [[get_all_pages()]] - `contains` [EXTRACTED]
 - [[get_all_roles()]] - `contains` [EXTRACTED]
 - [[get_archived_policies()]] - `contains` [EXTRACTED]
+- [[get_ip_rule_list()]] - `contains` [EXTRACTED]
 - [[get_login_attempt()]] - `contains` [EXTRACTED]
 - [[get_menu_list_v2()]] - `contains` [EXTRACTED]
 - [[get_menu_tree()]] - `contains` [EXTRACTED]
@@ -90,6 +98,7 @@ tags:
 - [[get_user_list()]] - `contains` [EXTRACTED]
 - [[is_export_truncated()]] - `contains` [EXTRACTED]
 - [[login_attempt_csv_row()]] - `contains` [EXTRACTED]
+- [[map_ip_rule_write_err()]] - `contains` [EXTRACTED]
 - [[map_menu_delete_err()]] - `contains` [EXTRACTED]
 - [[map_menu_delete_err_db_to_internal()]] - `contains` [EXTRACTED]
 - [[map_menu_delete_err_has_active_children_to_biz()]] - `contains` [EXTRACTED]
@@ -100,6 +109,7 @@ tags:
 - [[map_write_err()]] - `contains` [EXTRACTED]
 - [[map_write_err_non_unique_to_internal()]] - `contains` [EXTRACTED]
 - [[menu_write_from_req()]] - `contains` [EXTRACTED]
+- [[normalize_cidr()]] - `contains` [EXTRACTED]
 - [[normalize_current()]] - `contains` [EXTRACTED]
 - [[normalize_endpoint_method()]] - `contains` [EXTRACTED]
 - [[normalize_enum_filter()]] - `contains` [EXTRACTED]
@@ -126,10 +136,19 @@ tags:
 - [[records_to_csv_payload_json_cell_no_field_misalign()]] - `contains` [EXTRACTED]
 - [[records_to_csv_zero_rows_header_only()]] - `contains` [EXTRACTED]
 - [[reload_and_publish()]] - `contains` [EXTRACTED]
+- [[reload_and_publish_ipgate()]] - `contains` [EXTRACTED]
 - [[reload_publish_roundtrip()]] - `contains` [EXTRACTED]
 - [[reload_publish_roundtrip_binds_correct_channel()]] - `contains` [EXTRACTED]
 - [[req_with_policy()]] - `contains` [EXTRACTED]
 - [[resolve_operator_ids()]] - `contains` [EXTRACTED]
+- [[restorable()]] - `contains` [EXTRACTED]
+- [[restorable_deleted_no_active_is_false()]] - `contains` [EXTRACTED]
+- [[restorable_live_revoke_is_true()]] - `contains` [EXTRACTED]
+- [[restorable_reused_newer_role_is_false()]] - `contains` [EXTRACTED]
+- [[restorable_reused_role_own_revoke_is_true()]] - `contains` [EXTRACTED]
+- [[restorable_role_soft_delete_is_false()]] - `contains` [EXTRACTED]
+- [[restorable_same_instant_is_false_errs_closed()]] - `contains` [EXTRACTED]
+- [[restore_ip_rule()]] - `contains` [EXTRACTED]
 - [[restore_menu()]] - `contains` [EXTRACTED]
 - [[restore_policy()]] - `contains` [EXTRACTED]
 - [[role_delete_guard()]] - `contains` [EXTRACTED]
@@ -151,6 +170,8 @@ tags:
 - [[self_lock_self_remove_super_true()]] - `contains` [EXTRACTED]
 - [[self_lock_violation()]] - `contains` [EXTRACTED]
 - [[str_enum_to_i16()]] - `contains` [EXTRACTED]
+- [[unlock_login()]] - `contains` [EXTRACTED]
+- [[update_ip_rule()]] - `contains` [EXTRACTED]
 - [[update_menu()]] - `contains` [EXTRACTED]
 - [[update_role()]] - `contains` [EXTRACTED]
 - [[update_role_button()]] - `contains` [EXTRACTED]
@@ -162,6 +183,7 @@ tags:
 - [[user_write_from_req_accepts_valid_session_policy()]] - `contains` [EXTRACTED]
 - [[user_write_from_req_none_session_policy_is_none()]] - `contains` [EXTRACTED]
 - [[user_write_from_req_rejects_invalid_session_policy()]] - `contains` [EXTRACTED]
+- [[validate_rule_type()]] - `contains` [EXTRACTED]
 - [[value_to_opt_i64()]] - `contains` [EXTRACTED]
 - [[wire_enum()]] - `contains` [EXTRACTED]
 - [[wire_enum_i16_to_string_or_null()]] - `contains` [EXTRACTED]
@@ -170,4 +192,4 @@ tags:
 - [[wire_opt_i64()]] - `contains` [EXTRACTED]
 - [[wire_opt_i64_to_string_or_empty()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers
+#graphify/code #graphify/EXTRACTED #community/system_managers

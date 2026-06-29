@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "Color Utilities Package"
+community: "antd.ts"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utilities_Package
+  - community/antdts
 ---
 
 # isValidColor()
@@ -18,4 +18,4 @@ tags:
 - [[getRecommendedColorPaletteFamily()]] - `calls` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utilities_Package
+#graphify/code #graphify/EXTRACTED #community/antdts

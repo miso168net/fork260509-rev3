@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/routes/builtin.ts"
 type: "code"
-community: "builtin"
+community: "builtin.ts"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/builtin
+  - community/builtints
 ---
 
 # createBuiltinVueRoutes()
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_25]] - `imports` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/builtin
+#graphify/code #graphify/EXTRACTED #community/builtints

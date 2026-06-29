@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/locales/locale.ts"
 type: "code"
-community: "locale"
+community: "locale.ts"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/locale
+  - community/localets
 ---
 
 # locales
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[locale.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/locale
+#graphify/code #graphify/EXTRACTED #community/localets

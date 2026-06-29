@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/layouts/modules/global-sider/index.vue"
 type: "code"
-community: "index"
+community: "index.vue"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexvue
 ---
 
 # showLogo
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexvue

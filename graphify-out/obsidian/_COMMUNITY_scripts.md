@@ -35,7 +35,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Package Metadata]]
+- 1 edge to [[_COMMUNITY_package.json]]
 
 ## Top bridge nodes
 - [[scripts]] - degree 16, connects to 1 community

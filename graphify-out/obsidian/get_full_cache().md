@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/src/searcher.rs"
 type: "code"
-community: "searcher"
+community: "searcher.rs"
 location: "L124"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/searcher
+  - community/searcherrs
 ---
 
 # get_full_cache()
@@ -20,4 +20,4 @@ tags:
 - [[searcher.rs]] - `contains` [EXTRACTED]
 - [[searcher_init()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/searcher
+#graphify/code #graphify/EXTRACTED #community/searcherrs

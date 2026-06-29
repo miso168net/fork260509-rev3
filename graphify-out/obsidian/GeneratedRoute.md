@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/elegant-router.d.ts"
 type: "code"
-community: "Elegant Router Typings"
-location: "L387"
+community: "elegant-router.d.ts"
+location: "L395"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Elegant_Router_Typings
+  - community/elegant-routerdts
 ---
 
 # GeneratedRoute
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[elegant-router.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Elegant_Router_Typings
+#graphify/code #graphify/EXTRACTED #community/elegant-routerdts

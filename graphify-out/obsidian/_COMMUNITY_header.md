@@ -28,7 +28,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_default]]
+- 1 edge to [[_COMMUNITY_default.json]]
 
 ## Top bridge nodes
 - [[header_4]] - degree 5, connects to 1 community

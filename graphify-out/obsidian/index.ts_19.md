@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/uno-preset/src/index.ts"
 type: "code"
-community: "vars"
+community: "vars.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vars
+  - community/varsts
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 - [[presetSoybeanAdmin()]] - `contains` [EXTRACTED]
 - [[uno.config.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vars
+#graphify/code #graphify/EXTRACTED #community/varsts

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_token.rs"
 type: "code"
-community: "Session & Token Rotation"
+community: "session.rs"
 location: "L75"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session__Token_Rotation
+  - community/sessionrs
 ---
 
 # mark_used()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_token.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session__Token_Rotation
+#graphify/code #graphify/EXTRACTED #community/sessionrs

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_token.rs"
 type: "code"
-community: "Session & Token Rotation"
+community: "session.rs"
 location: "L151"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session__Token_Rotation
+  - community/sessionrs
 ---
 
 # toctou_revoked_chain_locks_to_reuse_no_rebake()
@@ -19,4 +19,4 @@ tags:
 - [[revoke_chain()]] - `calls` [EXTRACTED]
 - [[sys_token.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session__Token_Rotation
+#graphify/code #graphify/EXTRACTED #community/sessionrs

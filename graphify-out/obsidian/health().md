@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/main.rs"
 type: "code"
-community: "main"
-location: "L770"
+community: "main.rs"
+location: "L924"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/main
+  - community/mainrs
 ---
 
 # health()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[main.rs_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/main
+#graphify/code #graphify/EXTRACTED #community/mainrs

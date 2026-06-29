@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # SoybeanAdmin CHANGELOG (EN)
@@ -16,4 +16,4 @@ tags:
 - [[githublogen Changelog Generator]] - `conceptually_related_to` [INFERRED]
 - [[opencode AI Comment Workflow]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_README__Docs
+#graphify/document #graphify/EXTRACTED #community/Soybean_Admin

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-svg-icon-render.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # useSvgIconRender()
@@ -15,4 +15,4 @@ tags:
 - [[use-svg-icon-render.ts]] - `contains` [EXTRACTED]
 - [[useSvgIcon()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

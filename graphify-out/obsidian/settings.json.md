@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/settings.json"
 type: "code"
-community: "settings"
+community: "settings.json"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/settings
+  - community/settingsjson
 ---
 
 # settings.json
@@ -26,4 +26,4 @@ tags:
 - [[oxc.fmt.configPath]] - `contains` [EXTRACTED]
 - [[unocss.root]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/settings
+#graphify/code #graphify/EXTRACTED #community/settingsjson

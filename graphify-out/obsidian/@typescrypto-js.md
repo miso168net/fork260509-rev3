@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/package.json"
 type: "code"
-community: "package"
+community: "package.json"
 location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/package
+  - community/packagejson
 ---
 
 # @types/crypto-js
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[devDependencies_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/package
+#graphify/code #graphify/EXTRACTED #community/packagejson

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/types/index.ts"
 type: "code"
-community: "UI Materials Package"
+community: "index.ts"
 location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UI_Materials_Package
+  - community/indexts
 ---
 
 # AdminLayoutFooterConfig
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts_12]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UI_Materials_Package
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/views/manage/role/index.vue"
 type: "code"
-community: "Role Authorization Modals"
+community: "Manage Role view (role list"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Authorization_Modals
+  - community/Manage_Role_view_role_list
 ---
 
 # ManageRole view (role list + CRUD + RBAC gating)
 
 ## Connections
 - [[RoleOperateDrawer (role addedit form, hosts 3 auth modals)]] - `references` [EXTRACTED]
-- [[fetchBatchDeleteRole (rev3 role batch soft-delete wrapper)]] - `calls` [EXTRACTED]
-- [[fetchDeleteRole (rev3 role soft-delete wrapper)]] - `calls` [EXTRACTED]
-- [[fetchGetRoleListRev3 (honest role list read, roleDesc nullable)]] - `calls` [EXTRACTED]
+- [[fetchBatchDeleteRole()]] - `calls` [EXTRACTED]
+- [[fetchDeleteRole()]] - `calls` [EXTRACTED]
+- [[fetchGetRoleListRev3()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals
+#graphify/code #graphify/EXTRACTED #community/Manage_Role_view_role_list

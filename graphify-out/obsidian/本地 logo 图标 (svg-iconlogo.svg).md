@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/logo.svg"
 type: "image"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # 本地 logo 图标 (svg-icon/logo.svg)
@@ -15,4 +15,4 @@ tags:
 - [[SoybeanAdmin Logo]] - `conceptually_related_to` [INFERRED]
 - [[favicon.svg (SoybeanAdmin browser tab icon)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Project_README__Docs
+#graphify/image #graphify/INFERRED #community/Soybean_Admin

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/main.ts"
 type: "code"
-community: "App Plugins & Bootstrap"
+community: "index.ts"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Plugins__Bootstrap
+  - community/indexts
 ---
 
 # setupApp()
@@ -24,4 +24,4 @@ tags:
 - [[setupRouter()]] - `calls` [EXTRACTED]
 - [[setupStore()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L68"
+community: "auth.rs"
+location: "L69"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/authrs
 ---
 
 # is_locked_out()
@@ -16,4 +16,4 @@ tags:
 - [[is_locked_out_for_test()]] - `calls` [EXTRACTED]
 - [[login()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/authrs

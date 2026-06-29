@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/sys_user.rs"
 type: "code"
-community: "sys_user"
+community: "sys user.rs"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_user
+  - community/sys_userrs
 ---
 
 # Relation
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_user.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_user
+#graphify/code #graphify/EXTRACTED #community/sys_userrs

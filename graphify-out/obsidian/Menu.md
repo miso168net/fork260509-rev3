@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/api/system-manage.d.ts"
 type: "code"
-community: "system-manage"
+community: "system-manage.d.ts"
 location: "L105"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/system-manage
+  - community/system-managedts
 ---
 
 # Menu
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system-manage.d.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/system-manage
+#graphify/code #graphify/EXTRACTED #community/system-managedts

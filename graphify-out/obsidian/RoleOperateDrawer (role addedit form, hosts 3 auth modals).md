@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/role-operate-drawer.vue"
 type: "code"
-community: "Role Authorization Modals"
+community: "Role Operate Drawer (role add"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Authorization_Modals
+  - community/Role_Operate_Drawer_role_add
 ---
 
 # RoleOperateDrawer (role add/edit form, hosts 3 auth modals)
@@ -16,7 +16,7 @@ tags:
 - [[EndpointAuthModal (role x API endpoint authorization tree)]] - `references` [EXTRACTED]
 - [[ManageRole view (role list + CRUD + RBAC gating)]] - `references` [EXTRACTED]
 - [[MenuAuthModal (role x menu authorization tree + home select)]] - `references` [EXTRACTED]
-- [[fetchAddRole (rev3 role write wrapper)]] - `calls` [EXTRACTED]
-- [[fetchUpdateRole (rev3 role write wrapper)]] - `calls` [EXTRACTED]
+- [[fetchAddRole()]] - `calls` [EXTRACTED]
+- [[fetchUpdateRole()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals
+#graphify/code #graphify/EXTRACTED #community/Role_Operate_Drawer_role_add

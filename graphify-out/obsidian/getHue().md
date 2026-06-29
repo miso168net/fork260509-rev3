@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "Color Utilities Package"
+community: "antd.ts"
 location: "L96"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Color_Utilities_Package
+  - community/antdts
 ---
 
 # getHue()
@@ -15,4 +15,4 @@ tags:
 - [[antd.ts]] - `contains` [EXTRACTED]
 - [[getAntDPaletteColorByIndex()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Color_Utilities_Package
+#graphify/code #graphify/EXTRACTED #community/antdts

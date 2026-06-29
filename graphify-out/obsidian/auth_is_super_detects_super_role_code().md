@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L706"
+community: "enforce.rs"
+location: "L712"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/enforcers
 ---
 
 # auth_is_super_detects_super_role_code()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[enforce.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/enforcers

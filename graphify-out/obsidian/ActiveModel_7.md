@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/entity/src/sys_token.rs"
 type: "code"
-community: "ActiveModel"
+community: "Active Model"
 location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/ActiveModel
+  - community/Active_Model
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/ActiveModel
+#graphify/code #graphify/EXTRACTED #community/Active_Model

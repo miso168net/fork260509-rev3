@@ -2,7 +2,7 @@
 source_file: "rust-api/migration/src/lib.rs"
 type: "code"
 community: "Migrator"
-location: "L21"
+location: "L22"
 tags:
   - graphify/code
   - graphify/EXTRACTED

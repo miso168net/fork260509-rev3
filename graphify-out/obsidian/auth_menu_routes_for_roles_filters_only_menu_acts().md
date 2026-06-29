@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L590"
+community: "route.rs"
+location: "L596"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/routers
 ---
 
 # auth_menu_routes_for_roles_filters_only_menu_acts()
@@ -15,4 +15,4 @@ tags:
 - [[enforce.rs]] - `contains` [EXTRACTED]
 - [[menu_routes_for_roles()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/routers

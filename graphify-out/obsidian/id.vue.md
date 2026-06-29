@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/manage/user-detail/[id].vue"
 type: "code"
-community: "[id]"
+community: "[id].vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/id
+  - community/idvue
 ---
 
 # [id].vue
 
-#graphify/code #graphify/EXTRACTED #community/id
+#graphify/code #graphify/EXTRACTED #community/idvue

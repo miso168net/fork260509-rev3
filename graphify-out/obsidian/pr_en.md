@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.github/PULL_REQUEST_TEMPLATE/pr_en.md"
 type: "document"
-community: "pr_en"
+community: "pr en.md"
 location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/pr_en
+  - community/pr_enmd
 ---
 
 # pr_en.md
@@ -20,4 +20,4 @@ tags:
 - [[What's the background]] - `contains` [EXTRACTED]
 - [[What's the effect (Optional if not new feature)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/pr_en
+#graphify/document #graphify/EXTRACTED #community/pr_enmd

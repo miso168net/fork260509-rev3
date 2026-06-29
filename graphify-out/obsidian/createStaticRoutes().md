@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/routes/index.ts"
 type: "code"
-community: "builtin"
+community: "builtin.ts"
 location: "L207"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/builtin
+  - community/builtints
 ---
 
 # createStaticRoutes()
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_27]] - `contains` [EXTRACTED]
 - [[index.ts_35]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/builtin
+#graphify/code #graphify/EXTRACTED #community/builtints

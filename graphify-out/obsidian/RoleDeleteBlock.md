@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "System Manage Handlers"
-location: "L707"
+community: "system manage.rs"
+location: "L791"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/System_Manage_Handlers
+  - community/system_managers
 ---
 
 # RoleDeleteBlock
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers
+#graphify/code #graphify/EXTRACTED #community/system_managers

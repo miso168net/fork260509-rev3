@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Role Entity Facade"
+community: "sys role.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Entity_Facade
+  - community/sys_rolers
 ---
 
 # sys_role.rs
@@ -14,16 +14,26 @@ tags:
 ## Connections
 - [[RoleFilter]] - `contains` [EXTRACTED]
 - [[RoleWrite]] - `contains` [EXTRACTED]
+- [[active_created_at_by_code_for_update()]] - `contains` [EXTRACTED]
+- [[active_created_at_by_codes()]] - `contains` [EXTRACTED]
+- [[archive_count()]] - `contains` [EXTRACTED]
+- [[archive_move_rolls_back_atomically()]] - `contains` [EXTRACTED]
 - [[batch_soft_delete()_1]] - `contains` [EXTRACTED]
+- [[batch_soft_delete_archives_each_role()]] - `contains` [EXTRACTED]
 - [[build_create_active_model()_1]] - `contains` [EXTRACTED]
 - [[build_update_active_model()_1]] - `contains` [EXTRACTED]
+- [[casbin_count()_2]] - `contains` [EXTRACTED]
 - [[create()_1]] - `contains` [EXTRACTED]
 - [[find_active()]] - `contains` [EXTRACTED]
 - [[find_active_by_id()_1]] - `contains` [EXTRACTED]
+- [[find_active_by_id_for_update()]] - `contains` [EXTRACTED]
+- [[grant()_1]] - `contains` [EXTRACTED]
 - [[guard_for()]] - `contains` [EXTRACTED]
 - [[home_of_roles()]] - `contains` [EXTRACTED]
 - [[ilike()_1]] - `contains` [EXTRACTED]
 - [[list()_2]] - `contains` [EXTRACTED]
+- [[make_role()_1]] - `contains` [EXTRACTED]
+- [[meta()_2]] - `contains` [EXTRACTED]
 - [[now()_2]] - `contains` [EXTRACTED]
 - [[role_active_model_create_sets_create_fields()]] - `contains` [EXTRACTED]
 - [[role_active_model_update_pairs_and_preserves_identity()]] - `contains` [EXTRACTED]
@@ -33,6 +43,8 @@ tags:
 - [[sample_fields()_1]] - `contains` [EXTRACTED]
 - [[set_home()]] - `contains` [EXTRACTED]
 - [[soft_delete()_1]] - `contains` [EXTRACTED]
+- [[soft_delete_couples_three_effects()]] - `contains` [EXTRACTED]
+- [[soft_delete_single_archives_all_dims()]] - `contains` [EXTRACTED]
 - [[update()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade
+#graphify/code #graphify/EXTRACTED #community/sys_rolers

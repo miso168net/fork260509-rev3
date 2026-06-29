@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/index.ts"
 type: "code"
-community: "UI Materials Package"
+community: "index.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UI_Materials_Package
+  - community/indexvue
 ---
 
 # index.ts
@@ -16,4 +16,4 @@ tags:
 - [[index.vue]] - `imports_from` [EXTRACTED]
 - [[shared.ts_1]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UI_Materials_Package
+#graphify/code #graphify/EXTRACTED #community/indexvue

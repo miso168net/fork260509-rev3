@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # SoybeanAdmin README (EN)
@@ -17,4 +17,4 @@ tags:
 - [[SoybeanUI]] - `references` [EXTRACTED]
 - [[pnpm Monorepo Architecture]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_README__Docs
+#graphify/document #graphify/EXTRACTED #community/Soybean_Admin

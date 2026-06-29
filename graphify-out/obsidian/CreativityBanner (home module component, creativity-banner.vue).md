@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/home/modules/creativity-banner.vue"
 type: "code"
-community: "CreativityBanner"
+community: "Creativity Banner (home module component,"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/CreativityBanner
+  - community/Creativity_Banner_home_module_component
 ---
 
 # CreativityBanner (home module component, creativity-banner.vue)
@@ -14,4 +14,4 @@ tags:
 - [[Home page view (viewshomeindex.vue)]] - `references` [EXTRACTED]
 - [[banner.svg — flat-style hero illustration a person presenting a large analyt…]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/CreativityBanner
+#graphify/code #graphify/EXTRACTED #community/Creativity_Banner_home_module_component

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/enum/index.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # SetupStoreId
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_37]] - `imports` [EXTRACTED]
 - [[index.ts_38]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

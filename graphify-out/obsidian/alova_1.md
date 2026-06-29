@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/request/index.ts"
 type: "code"
-community: "Alova API Service Layer"
+community: "index.ts"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_API_Service_Layer
+  - community/indexts
 ---
 
 # alova
@@ -17,4 +17,4 @@ tags:
 - [[route.ts_2]] - `imports` [EXTRACTED]
 - [[system-manage.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer
+#graphify/code #graphify/EXTRACTED #community/indexts

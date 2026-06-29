@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/index.ts"
 type: "code"
-community: "index"
+community: "table.ts"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/tablets
 ---
 
 # createCommonRequest()
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_1]] - `contains` [EXTRACTED]
 - [[transformResponse()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/tablets

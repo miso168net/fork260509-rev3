@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
-community: "App Type Definitions"
+community: "app.d.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Type_Definitions
+  - community/appdts
 ---
 
 # app.d.ts
@@ -56,4 +56,4 @@ tags:
 - [[TranslateOptions]] - `contains` [EXTRACTED]
 - [[VNode]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Type_Definitions
+#graphify/code #graphify/EXTRACTED #community/appdts

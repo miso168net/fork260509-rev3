@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/route.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
+community: "route.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/routers
 ---
 
 # route.rs
@@ -20,4 +20,4 @@ tags:
 - [[live_get_user_routes_per_role_filtering()]] - `contains` [EXTRACTED]
 - [[user_visible_route_names()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/routers

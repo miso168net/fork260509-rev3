@@ -28,8 +28,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_default]]
-- 1 edge to [[_COMMUNITY_boxShadow]]
+- 1 edge to [[_COMMUNITY_default.json]]
+- 1 edge to [[_COMMUNITY_box Shadow]]
 
 ## Top bridge nodes
 - [[tokens_2]] - degree 3, connects to 1 community

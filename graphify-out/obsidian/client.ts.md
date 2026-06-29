@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/packages/alova/src/client.ts"
 type: "code"
-community: "client"
+community: "client.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/client
+  - community/clientts
 ---
 
 # client.ts
 
-#graphify/code #graphify/EXTRACTED #community/client
+#graphify/code #graphify/EXTRACTED #community/clientts

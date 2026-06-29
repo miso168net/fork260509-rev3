@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/src/config/index.ts"
 type: "code"
-community: "Build Scripts Package"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Build_Scripts_Package
+  - community/indexts
 ---
 
 # index.ts
@@ -18,4 +18,4 @@ tags:
 - [[index.ts_18]] - `imports_from` [EXTRACTED]
 - [[loadCliOptions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Build_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/indexts

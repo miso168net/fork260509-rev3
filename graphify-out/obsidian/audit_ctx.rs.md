@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/audit_ctx.rs"
 type: "code"
-community: "Audit Context & Client IP"
+community: "audit ctx.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Audit_Context__Client_IP
+  - community/audit_ctxrs
 ---
 
 # audit_ctx.rs
@@ -18,6 +18,11 @@ tags:
 - [[apply_cf_overlay_match_upgrades_verified()]] - `contains` [EXTRACTED]
 - [[apply_cf_overlay_mismatch_flags()]] - `contains` [EXTRACTED]
 - [[apply_cf_overlay_noop_cases()]] - `contains` [EXTRACTED]
+- [[apply_tunnel_fallback()]] - `contains` [EXTRACTED]
+- [[apply_tunnel_fallback_adopts_cf_cip_on_tunnel_peer()]] - `contains` [EXTRACTED]
+- [[apply_tunnel_fallback_noop_when_cf_cip_absent()]] - `contains` [EXTRACTED]
+- [[apply_tunnel_fallback_noop_when_not_fallback()]] - `contains` [EXTRACTED]
+- [[apply_tunnel_fallback_rejects_spoof_from_non_tunnel_internal()]] - `contains` [EXTRACTED]
 - [[audit_mw()]] - `contains` [EXTRACTED]
 - [[best_effort_audit()]] - `contains` [EXTRACTED]
 - [[cfg_full_trust()]] - `contains` [EXTRACTED]
@@ -68,5 +73,6 @@ tags:
 - [[resolve_with_overlay()]] - `contains` [EXTRACTED]
 - [[strip_port_and_parse()]] - `contains` [EXTRACTED]
 - [[tm_internal()]] - `contains` [EXTRACTED]
+- [[tm_tunnel()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Audit_Context__Client_IP
+#graphify/code #graphify/EXTRACTED #community/audit_ctxrs

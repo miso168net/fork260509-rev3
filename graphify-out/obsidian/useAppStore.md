@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/app/index.ts"
 type: "code"
-community: "table"
+community: "table.ts"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/table
+  - community/tablets
 ---
 
 # useAppStore
@@ -17,4 +17,4 @@ tags:
 - [[useNaivePaginatedTable()]] - `calls` [EXTRACTED]
 - [[useNaiveTable()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/table
+#graphify/code #graphify/EXTRACTED #community/tablets

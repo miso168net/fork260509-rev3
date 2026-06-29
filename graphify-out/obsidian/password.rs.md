@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/password.rs"
 type: "code"
-community: "password"
+community: "password.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/password
+  - community/passwordrs
 ---
 
 # password.rs
@@ -21,4 +21,4 @@ tags:
 - [[password_verify_wrong_false()]] - `contains` [EXTRACTED]
 - [[verify()_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/password
+#graphify/code #graphify/EXTRACTED #community/passwordrs

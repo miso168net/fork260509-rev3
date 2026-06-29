@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Server Config & Secrets"
-location: "L440"
+community: "config.rs"
+location: "L486"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Server_Config__Secrets
+  - community/configrs
 ---
 
 # parse_trust_model_empty_is_default()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[config.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets
+#graphify/code #graphify/EXTRACTED #community/configrs

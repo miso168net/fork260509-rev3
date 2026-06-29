@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
+community: "enforce.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/enforcers
 ---
 
 # enforce.rs
@@ -41,4 +41,4 @@ tags:
 - [[require_policy()]] - `contains` [EXTRACTED]
 - [[revoke_user_sessions()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/enforcers

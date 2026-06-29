@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/settings.json"
 type: "code"
-community: "settings"
+community: "settings.json"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/settings
+  - community/settingsjson
 ---
 
 # editor.codeActionsOnSave
@@ -16,4 +16,4 @@ tags:
 - [[source.fixAll.eslint]] - `contains` [EXTRACTED]
 - [[source.fixAll.oxc]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/settings
+#graphify/code #graphify/EXTRACTED #community/settingsjson

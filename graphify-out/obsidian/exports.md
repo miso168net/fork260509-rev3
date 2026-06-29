@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/alova/package.json"
 type: "code"
-community: "package"
+community: "package.json"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/package
+  - community/packagejson
 ---
 
 # exports
@@ -17,4 +17,4 @@ tags:
 - [[.mock]] - `contains` [EXTRACTED]
 - [[package.json_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/package
+#graphify/code #graphify/EXTRACTED #community/packagejson

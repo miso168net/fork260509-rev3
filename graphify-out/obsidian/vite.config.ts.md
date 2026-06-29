@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/vite.config.ts"
 type: "code"
-community: "vite.config"
+community: "vite.config.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/viteconfig
+  - community/viteconfigts
 ---
 
 # vite.config.ts
@@ -15,4 +15,4 @@ tags:
 - [[buildTime]] - `contains` [EXTRACTED]
 - [[viteEnv]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/viteconfig
+#graphify/code #graphify/EXTRACTED #community/viteconfigts

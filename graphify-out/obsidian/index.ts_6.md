@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/types/index.ts"
 type: "code"
-community: "recommend"
+community: "recommend.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recommend
+  - community/recommendts
 ---
 
 # index.ts
@@ -25,4 +25,4 @@ tags:
 - [[palette.ts]] - `imports_from` [EXTRACTED]
 - [[recommend.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recommend
+#graphify/code #graphify/EXTRACTED #community/recommendts

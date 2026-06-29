@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/session.rs"
 type: "code"
-community: "Session & Token Rotation"
+community: "session.rs"
 location: "L172"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session__Token_Rotation
+  - community/sessionrs
 ---
 
 # decide_rotation_used_with_null_used_at_is_reuse_fail_closed()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[session.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session__Token_Rotation
+#graphify/code #graphify/EXTRACTED #community/sessionrs

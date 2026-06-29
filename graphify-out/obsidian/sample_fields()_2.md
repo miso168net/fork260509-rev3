@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "User Entity Facade"
+community: "sys user.rs"
 location: "L659"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Entity_Facade
+  - community/sys_userrs
 ---
 
 # sample_fields()
@@ -17,4 +17,4 @@ tags:
 - [[build_update_active_model_status_none_preserves_existing()]] - `calls` [EXTRACTED]
 - [[sys_user.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Entity_Facade
+#graphify/code #graphify/EXTRACTED #community/sys_userrs

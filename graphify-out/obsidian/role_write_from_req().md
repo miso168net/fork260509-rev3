@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "role_write_from_req"
-location: "L748"
+community: "normalize enum filter()"
+location: "L832"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/role_write_from_req
+  - community/normalize_enum_filter
 ---
 
 # role_write_from_req()
@@ -17,4 +17,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[update_role()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/role_write_from_req
+#graphify/code #graphify/EXTRACTED #community/normalize_enum_filter

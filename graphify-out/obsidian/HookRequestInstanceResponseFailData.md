@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-request.ts"
 type: "code"
-community: "type"
+community: "table.ts"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/type
+  - community/tablets
 ---
 
 # HookRequestInstanceResponseFailData
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[use-request.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/type
+#graphify/code #graphify/EXTRACTED #community/tablets

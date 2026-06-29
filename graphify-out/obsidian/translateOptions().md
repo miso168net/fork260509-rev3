@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/common.ts"
 type: "code"
-community: "loading"
+community: "app.ts"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/loading
+  - community/appts
 ---
 
 # translateOptions()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[common.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/loading
+#graphify/code #graphify/EXTRACTED #community/appts

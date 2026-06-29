@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L345"
+community: "refresh token()"
+location: "L351"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/refresh_token
 ---
 
 # denylist_gate()
@@ -16,4 +16,4 @@ tags:
 - [[enforce_mw()]] - `calls` [EXTRACTED]
 - [[refresh_token()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/refresh_token

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "README Usage Guide"
+community: "README.en US.md"
 location: "L115"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/README_Usage_Guide
+  - community/READMEen_USmd
 ---
 
 # Example Images
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[README.en_US]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/README_Usage_Guide
+#graphify/document #graphify/EXTRACTED #community/READMEen_USmd

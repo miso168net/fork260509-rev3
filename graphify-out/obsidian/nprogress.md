@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Frontend Dependencies"
+community: "dependencies"
 location: "L74"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Frontend_Dependencies
+  - community/dependencies
 ---
 
 # nprogress
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[dependencies]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Frontend_Dependencies
+#graphify/code #graphify/EXTRACTED #community/dependencies

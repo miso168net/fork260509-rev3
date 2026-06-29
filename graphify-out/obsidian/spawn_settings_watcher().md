@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/main.rs"
 type: "code"
-community: "main"
-location: "L645"
+community: "main.rs"
+location: "L742"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/main
+  - community/mainrs
 ---
 
 # spawn_settings_watcher()
@@ -16,4 +16,4 @@ tags:
 - [[main.rs_2]] - `contains` [EXTRACTED]
 - [[read_single_session_default()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/main
+#graphify/code #graphify/EXTRACTED #community/mainrs

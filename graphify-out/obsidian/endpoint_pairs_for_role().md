@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/enforce.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L254"
+community: "enforce.rs"
+location: "L260"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/enforcers
 ---
 
 # endpoint_pairs_for_role()
@@ -17,4 +17,4 @@ tags:
 - [[enforce.rs]] - `contains` [EXTRACTED]
 - [[is_endpoint_method()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/enforcers

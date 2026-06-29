@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/compact.json"
 type: "code"
-community: "Theme Layout Config"
+community: "compact.json"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Layout_Config
+  - community/compactjson
 ---
 
 # name
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compact.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Layout_Config
+#graphify/code #graphify/EXTRACTED #community/compactjson

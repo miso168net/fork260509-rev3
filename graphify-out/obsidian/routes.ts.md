@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/routes.ts"
 type: "code"
-community: "builtin"
+community: "builtin.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/builtin
+  - community/builtints
 ---
 
 # routes.ts
@@ -15,4 +15,4 @@ tags:
 - [[generatedRoutes]] - `contains` [EXTRACTED]
 - [[index.ts_27]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/builtin
+#graphify/code #graphify/EXTRACTED #community/builtints

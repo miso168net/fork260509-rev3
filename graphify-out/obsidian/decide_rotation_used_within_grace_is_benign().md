@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/session.rs"
 type: "code"
-community: "Session & Token Rotation"
+community: "session.rs"
 location: "L133"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Session__Token_Rotation
+  - community/sessionrs
 ---
 
 # decide_rotation_used_within_grace_is_benign()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[session.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Session__Token_Rotation
+#graphify/code #graphify/EXTRACTED #community/sessionrs

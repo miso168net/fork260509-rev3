@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/uno-preset/package.json"
 type: "code"
-community: "package"
+community: "package.json"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/package
+  - community/packagejson
 ---
 
 # typesVersions
@@ -15,4 +15,4 @@ tags:
 - [[unnamed_6]] - `contains` [EXTRACTED]
 - [[package.json_7]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/package
+#graphify/code #graphify/EXTRACTED #community/packagejson

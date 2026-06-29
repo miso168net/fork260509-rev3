@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "Role Entity Facade"
-location: "L392"
+community: "sys role.rs"
+location: "L463"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Entity_Facade
+  - community/sys_rolers
 ---
 
 # sample_fields()
@@ -16,4 +16,4 @@ tags:
 - [[role_active_model_update_pairs_and_preserves_identity()]] - `calls` [EXTRACTED]
 - [[sys_role.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Entity_Facade
+#graphify/code #graphify/EXTRACTED #community/sys_rolers

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/index.ts"
 type: "code"
-community: "route"
+community: "route.ts"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/route
+  - community/routets
 ---
 
 # createRouterGuard()
@@ -19,4 +19,4 @@ tags:
 - [[index.ts_26]] - `contains` [EXTRACTED]
 - [[setupRouter()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/route
+#graphify/code #graphify/EXTRACTED #community/routets

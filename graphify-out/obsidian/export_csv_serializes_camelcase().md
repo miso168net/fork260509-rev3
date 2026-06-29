@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "System Manage Handlers"
-location: "L2405"
+community: "system manage.rs"
+location: "L2841"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/System_Manage_Handlers
+  - community/system_managers
 ---
 
 # export_csv_serializes_camelcase()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/System_Manage_Handlers
+#graphify/code #graphify/EXTRACTED #community/system_managers

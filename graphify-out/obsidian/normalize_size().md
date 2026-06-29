@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "Audit Log Handlers"
-location: "L443"
+community: "get access log()"
+location: "L527"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Audit_Log_Handlers
+  - community/get_access_log
 ---
 
 # normalize_size()
@@ -14,10 +14,11 @@ tags:
 ## Connections
 - [[get_access_log()]] - `calls` [EXTRACTED]
 - [[get_archived_policies()]] - `calls` [EXTRACTED]
+- [[get_ip_rule_list()]] - `calls` [EXTRACTED]
 - [[get_login_attempt()]] - `calls` [EXTRACTED]
 - [[get_operation_log()]] - `calls` [EXTRACTED]
 - [[get_role_list()]] - `calls` [EXTRACTED]
 - [[get_user_list()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Audit_Log_Handlers
+#graphify/code #graphify/EXTRACTED #community/get_access_log

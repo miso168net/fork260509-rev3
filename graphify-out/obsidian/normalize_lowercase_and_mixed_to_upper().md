@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "reload_and_publish"
-location: "L2862"
+community: "reload and publish()"
+location: "L3388"
 tags:
   - graphify/code
   - graphify/EXTRACTED

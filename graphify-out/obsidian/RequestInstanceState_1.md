@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/request/type.ts"
 type: "code"
-community: "Alova API Service Layer"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_API_Service_Layer
+  - community/indexts
 ---
 
 # RequestInstanceState
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[type.ts_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer
+#graphify/code #graphify/EXTRACTED #community/indexts

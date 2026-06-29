@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/storage.ts"
 type: "code"
-community: "Auth Store & Storage"
+community: "index.ts"
 location: "L5"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Storage
+  - community/indexts
 ---
 
 # localStg
@@ -27,4 +27,4 @@ tags:
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 - [[storage.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Storage
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Server Config & Secrets"
-location: "L421"
+community: "config.rs"
+location: "L467"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Server_Config__Secrets
+  - community/configrs
 ---
 
 # parse_trust_model_bad_binding_public_dropped()
@@ -15,4 +15,4 @@ tags:
 - [[config.rs]] - `contains` [EXTRACTED]
 - [[parse_trust_model()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets
+#graphify/code #graphify/EXTRACTED #community/configrs

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "table"
+community: "table.ts"
 location: "L318"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/table
+  - community/tablets
 ---
 
 # isTableColumnHasKey()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[table.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/table
+#graphify/code #graphify/EXTRACTED #community/tablets

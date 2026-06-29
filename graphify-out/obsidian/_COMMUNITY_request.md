@@ -36,11 +36,12 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 7 edges to [[_COMMUNITY_Auth Store & Storage]]
-- 1 edge to [[_COMMUNITY_useLoading]]
+- 7 edges to [[_COMMUNITY_index.ts]]
+- 1 edge to [[_COMMUNITY_table.ts]]
+- 1 edge to [[_COMMUNITY_rev3-system-manage.ts]]
 
 ## Top bridge nodes
-- [[request]] - degree 18, connects to 2 communities
+- [[request]] - degree 19, connects to 3 communities
 - [[system-manage.ts]] - degree 9, connects to 1 community
 - [[auth.ts_1]] - degree 7, connects to 1 community
 - [[route.ts_1]] - degree 6, connects to 1 community

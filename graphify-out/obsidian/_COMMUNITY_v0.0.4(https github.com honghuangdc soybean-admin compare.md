@@ -1,0 +1,32 @@
+---
+type: community
+cohesion: 0.29
+members: 7
+---
+
+# [v0.0.4](https: github.com honghuangdc soybean-admin compare
+
+**Cohesion:** 0.29 - loosely connected
+**Members:** 7 nodes
+
+## Members
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_74]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_65]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_62]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_32]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_55]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_43]] - document - base-web/CHANGELOG.md
+- [[v0.0.4(httpsgithub.comhonghuangdcsoybean-admincomparev0.0.3...v0.0.4) (2021-11-25)]] - document - base-web/CHANGELOG.md
+
+## Live Query (requires Dataview plugin)
+
+```dataview
+TABLE source_file, type FROM #community/v004https_githubcom_honghuangdc_soybean-admin_compare
+SORT file.name ASC
+```
+
+## Connections to other communities
+- 1 edge to [[_COMMUNITY_Changelog]]
+
+## Top bridge nodes
+- [[v0.0.4(httpsgithub.comhonghuangdcsoybean-admincomparev0.0.3...v0.0.4) (2021-11-25)]] - degree 7, connects to 1 community

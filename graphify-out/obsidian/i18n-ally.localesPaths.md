@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/settings.json"
 type: "code"
-community: "settings"
+community: "settings.json"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/settings
+  - community/settingsjson
 ---
 
 # i18n-ally.localesPaths
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[settings.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/settings
+#graphify/code #graphify/EXTRACTED #community/settingsjson

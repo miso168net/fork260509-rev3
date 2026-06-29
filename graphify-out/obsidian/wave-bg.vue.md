@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/components/custom/wave-bg.vue"
 type: "code"
-community: "wave-bg"
+community: "wave-bg.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/wave-bg
+  - community/wave-bgvue
 ---
 
 # wave-bg.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[darkColor]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/wave-bg
+#graphify/code #graphify/EXTRACTED #community/wave-bgvue

@@ -8,28 +8,29 @@
 
 ---
 
-## 1. 圖譜現況統計（2026-06-26、audit/019 code 增量後）
+## 1. 圖譜現況統計（2026-06-29、020/021/022 code 增量後）
 
 | 指標 | 值 |
 |---|---|
-| 節點 | **3311** |
-| 邊 | **4084** |
-| 社群 | **485**（最大 95、中位數 4） |
+| 節點 | **3499** |
+| 邊 | **4413** |
+| 社群 | **502**（最大 106、中位數 4） |
 
 **節點來源組成**：
 
 | 來源 | 節點數 | 說明 |
 |---|---|---|
-| `base-web/` | 2419 | Vue 前端 worktree（AST + semantic subagent） |
-| `rust-api/` | 869 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job `push_metrics` 已入圖、`request` 升 god node 18 edges） |
+| `base-web/` | 2469 | Vue 前端 worktree（AST + semantic subagent；022 ip-rule 管理頁 view/modules/service/typings 增量、.vue 語意盲點限制見 §2.2） |
+| `rust-api/` | 1007 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点已入圖；**022 ipgate 全域閘新 module＋sys_ip_rule entity/facade＋m007＋auth/handler per-dim·CRUD·unlock 入圖**、`ip()`/`resolve_client_ip()`/`cfg_full_trust()`/`mutate_in_txn()` 為 god node） |
 | `docker-compose.yml` | 23 | compose service 拓撲（018 obs 加 7 service＋4 卷＋1 secret，手刻入圖、profiles opt-in） |
 
 > docs 源倉 `fork260509-soybean-admin-docs/`（~1856 noise 節點）已於 2026-06-24 prune 出圖並加入 `.graphifyignore`（見 §2.4）；圖現只含 base-web/rust-api worktree 真碼 + master compose。
 > **2026-06-26 audit/019 code 增量**（外科式配方、見 §4）：14 個變更 code 檔重抽（8 rust audit/auth/enforce/facade + 6 base-web audit views/locales/app.d.ts），純 AST、**0 LLM token**；手動 prune 舊圖 14 變更檔 source 節點 → `dedup=False` 嫁接，3284→3311（+27）、成長閘 PASS；graph_diff 僅 37 new/10 removed（全真實 feature 符號）。★ **避開 fuzzy-dedup 陷阱**：照 skill 文件的 `build_merge(dedup=True)` 會把圖砍到 2610（誤刪 ~701 真節點、165 fuzzy）；外科式 `dedup=False` 才得正確 3311（見 §4）。community ID 重分群後置換、hand-label 以 membership-overlap 重對齊（非按 ID）。★ obsidian vault stale orphan note **已清**（2026-06-26：`find -name '*.md' -delete` + 重生 export → 3630 實檔、0 docs 孤兒；先前 ~3194 cruft 來自 2026-06-24 docs prune 未清、export 不刪舊檔）。
+> **2026-06-29 020/021/022 code 增量**（外科式配方、見 §4）：39 個變更 code 檔重抽（rust auth/redis/ipgate/entity/facade/migration m007/handler/enforce + base-web ip-rule view·modules·service·typings·locales·app.d.ts·router），純 AST、**0 LLM token**；★ 再次踩到並避開 fuzzy-dedup 陷阱——skill 預設 `build_merge(dedup=True)` 砍到 **2782**（540 exact＋**171 fuzzy 誤併 distinct**），改 `dedup=False` 才得正確 **3499**（3311→+188：rust-api +138 ipgate/sys_ip_rule/m007/handler、base-web +50 ip-rule 管理頁）、成長閘 PASS。174「deleted」全＝docs 源倉舊 manifest 殘留〔圖內早無此節點、prune no-op〕、本輪 manifest 已校正消除。worktree rust-api `cb2767f`／base-web `aa2f57bc`；obsidian 重生 4001 note。
 
-**file_type**：code 2549／document 693／concept 37／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
-**edge confidence**：EXTRACTED 4019／INFERRED 65／AMBIGUOUS 0
-**edge relation（top）**：contains 2604／calls 781／imports 226／imports_from 196／references 123／method 63／re_exports 38／depends_on 23／conceptually_related_to 16／semantically_similar_to 7／implements 5／shares_data_with 1
+**file_type**：code 2737／document 693／concept 37／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
+**edge confidence**：EXTRACTED 4345／INFERRED 68／AMBIGUOUS 0
+**edge relation（top）**：contains 2801／calls 902／imports 227／imports_from 196／references 123／method 73／re_exports 38／depends_on 23／conceptually_related_to 16／semantically_similar_to 7／implements 5／shares_data_with 1
 
 > **★ 關鍵觀察**：98% 的邊是 EXTRACTED（AST 結構事實）、INFERRED 僅 2%、AMBIGUOUS 0。所以本圖的風險 **不是「畫錯邊」**（虛構關係極少）、**而是「漏畫邊」**（§2 盲點）。推論時主要防「圖沒抓到 ⇒ 誤判無關係」、而非防「圖亂連」。
 

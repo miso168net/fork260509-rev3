@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/src/ip_value.rs"
 type: "code"
-community: "ip_value"
+community: "ip value.rs"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/ip_value
+  - community/ip_valuers
 ---
 
 # ToUIntIP
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[ip_value.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/ip_value
+#graphify/code #graphify/EXTRACTED #community/ip_valuers

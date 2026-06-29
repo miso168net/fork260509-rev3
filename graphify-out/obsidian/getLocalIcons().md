@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/utils/icon.ts"
 type: "code"
-community: "icon"
+community: "icon.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/icon
+  - community/iconts
 ---
 
 # getLocalIcons()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[icon.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/icon
+#graphify/code #graphify/EXTRACTED #community/iconts

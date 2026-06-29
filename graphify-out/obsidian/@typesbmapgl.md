@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Frontend Dev Dependencies"
+community: "dev Dependencies"
 location: "L99"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Frontend_Dev_Dependencies
+  - community/dev_Dependencies
 ---
 
 # @types/bmapgl
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[devDependencies]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Frontend_Dev_Dependencies
+#graphify/code #graphify/EXTRACTED #community/dev_Dependencies

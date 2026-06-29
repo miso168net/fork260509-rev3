@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/api/auth.ts"
 type: "code"
-community: "Alova API Service Layer"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_API_Service_Layer
+  - community/indexts
 ---
 
 # auth.ts
@@ -22,4 +22,4 @@ tags:
 - [[sendCaptcha()]] - `contains` [EXTRACTED]
 - [[verifyCaptcha()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer
+#graphify/code #graphify/EXTRACTED #community/indexts

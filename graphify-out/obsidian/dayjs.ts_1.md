@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/dayjs.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # dayjs.ts
@@ -17,4 +17,4 @@ tags:
 - [[setDayjsLocale()]] - `imports` [EXTRACTED]
 - [[setupDayjs()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

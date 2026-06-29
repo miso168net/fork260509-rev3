@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/tab/shared.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # shared.ts
@@ -34,4 +34,4 @@ tags:
 - [[updateTabsByI18nKey()]] - `contains` [EXTRACTED]
 - [[updateTabsLabel()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

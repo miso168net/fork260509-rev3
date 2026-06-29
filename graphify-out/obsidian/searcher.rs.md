@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/src/searcher.rs"
 type: "code"
-community: "searcher"
+community: "searcher.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/searcher
+  - community/searcherrs
 ---
 
 # searcher.rs
@@ -24,4 +24,4 @@ tags:
 - [[test_multi_thread_only_load_xdb_once()]] - `contains` [EXTRACTED]
 - [[test_multi_type_ip()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/searcher
+#graphify/code #graphify/EXTRACTED #community/searcherrs

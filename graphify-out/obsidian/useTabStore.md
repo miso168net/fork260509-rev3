@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/tab/index.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # useTabStore
@@ -17,4 +17,4 @@ tags:
 - [[index.ts_35]] - `imports` [EXTRACTED]
 - [[index.ts_36]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

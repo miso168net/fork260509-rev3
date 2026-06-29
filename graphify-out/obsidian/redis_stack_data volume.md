@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "concept"
-community: "User Management Views"
+community: "manage user index.vue (user list"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/User_Management_Views
+  - community/manage_user_indexvue_user_list
 ---
 
 # redis_stack_data volume
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[redis-stack compose service]] - `depends_on` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/User_Management_Views
+#graphify/concept #graphify/EXTRACTED #community/manage_user_indexvue_user_list

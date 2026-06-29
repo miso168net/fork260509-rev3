@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/table.ts"
 type: "code"
-community: "table"
+community: "table.ts"
 location: "L256"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/table
+  - community/tablets
 ---
 
 # getColumnChecks()
@@ -15,4 +15,4 @@ tags:
 - [[table.ts]] - `contains` [EXTRACTED]
 - [[useTable()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/table
+#graphify/code #graphify/INFERRED #community/tablets

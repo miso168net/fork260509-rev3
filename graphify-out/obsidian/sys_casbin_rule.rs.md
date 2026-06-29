@@ -1,25 +1,29 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_rule.rs"
 type: "code"
-community: "Casbin Rule & RBAC Gating"
+community: "sys casbin rule.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Casbin_Rule__RBAC_Gating
+  - community/sys_casbin_rulers
 ---
 
 # sys_casbin_rule.rs
 
 ## Connections
+- [[GrantReject]] - `contains` [EXTRACTED]
 - [[SetDimensionError]] - `contains` [EXTRACTED]
 - [[SetDimensionOutcome]] - `contains` [EXTRACTED]
 - [[SetEndpointsError]] - `contains` [EXTRACTED]
 - [[SetEndpointsOutcome]] - `contains` [EXTRACTED]
+- [[archive_all_role_policies()]] - `contains` [EXTRACTED]
+- [[archive_all_role_policies_moves_all_dims_and_noop_on_empty()]] - `contains` [EXTRACTED]
 - [[archive_endpoint_count()]] - `contains` [EXTRACTED]
 - [[button_loop_db_first_revoke_archive_grant_restore()]] - `contains` [EXTRACTED]
 - [[button_rows_of()]] - `contains` [EXTRACTED]
 - [[button_rows_of_in()]] - `contains` [EXTRACTED]
+- [[casbin_count()_1]] - `contains` [EXTRACTED]
 - [[cleanup()_2]] - `contains` [EXTRACTED]
 - [[diff_double_key_distinguishes_same_path_diff_method()]] - `contains` [EXTRACTED]
 - [[diff_empty_when_desired_equals_current()]] - `contains` [EXTRACTED]
@@ -32,8 +36,13 @@ tags:
 - [[endpoint_rows_of()]] - `contains` [EXTRACTED]
 - [[endpoint_rows_of_in()]] - `contains` [EXTRACTED]
 - [[gate_precision_button_endpoint_empty_diff_applied_rejected_skip()]] - `contains` [EXTRACTED]
+- [[grant()]] - `contains` [EXTRACTED]
+- [[grant_during_delete_lock_then_redecide()]] - `contains` [EXTRACTED]
+- [[insert_synth_active_role()]] - `contains` [EXTRACTED]
+- [[make_role()]] - `contains` [EXTRACTED]
 - [[menu_rows_of()_1]] - `contains` [EXTRACTED]
 - [[menu_rows_of_in()]] - `contains` [EXTRACTED]
+- [[meta()_1]] - `contains` [EXTRACTED]
 - [[meta_for()_1]] - `contains` [EXTRACTED]
 - [[restore_button_rows()]] - `contains` [EXTRACTED]
 - [[restore_endpoint_rows()]] - `contains` [EXTRACTED]
@@ -49,4 +58,4 @@ tags:
 - [[set_role_dimension_empty_diff_is_applied_changed_false()]] - `contains` [EXTRACTED]
 - [[set_role_endpoints()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Casbin_Rule__RBAC_Gating
+#graphify/code #graphify/EXTRACTED #community/sys_casbin_rulers

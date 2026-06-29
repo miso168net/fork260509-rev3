@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_rule.rs"
 type: "code"
-community: "Casbin Rule & RBAC Gating"
-location: "L229"
+community: "sys casbin rule.rs"
+location: "L258"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Casbin_Rule__RBAC_Gating
+  - community/sys_casbin_rulers
 ---
 
 # diff_endpoints()
@@ -19,4 +19,4 @@ tags:
 - [[set_role_endpoints()]] - `calls` [EXTRACTED]
 - [[sys_casbin_rule.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Casbin_Rule__RBAC_Gating
+#graphify/code #graphify/EXTRACTED #community/sys_casbin_rulers

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/progress.ts"
 type: "code"
-community: "route"
+community: "route.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/route
+  - community/routets
 ---
 
 # progress.ts
@@ -15,4 +15,4 @@ tags:
 - [[createProgressGuard()]] - `contains` [EXTRACTED]
 - [[index.ts_26]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/route
+#graphify/code #graphify/EXTRACTED #community/routets

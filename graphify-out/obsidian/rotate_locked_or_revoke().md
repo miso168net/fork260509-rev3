@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
-location: "L443"
+community: "refresh token()"
+location: "L614"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/refresh_token
 ---
 
 # rotate_locked_or_revoke()
@@ -17,4 +17,4 @@ tags:
 - [[refresh_token()]] - `calls` [EXTRACTED]
 - [[revoke_chain_and_logout()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/refresh_token

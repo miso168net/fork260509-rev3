@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/audit.rs"
 type: "code"
-community: "audit"
+community: "sys role.rs"
 location: "L59"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/audit
+  - community/sys_rolers
 ---
 
 # AuditEvent
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[audit.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/audit
+#graphify/code #graphify/EXTRACTED #community/sys_rolers

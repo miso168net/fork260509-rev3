@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Menu & Policy Admin UI"
+community: "prune Null Params()"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu__Policy_Admin_UI
+  - community/prune_Null_Params
 ---
 
 # Api.SystemManage.AuditCsvExport DTO (csv + truncated)
 
 ## Connections
-- [[fetchExportAccessLog (access log CSV export)]] - `references` [EXTRACTED]
-- [[fetchExportLoginAttempt (login attempt CSV export)]] - `references` [EXTRACTED]
-- [[fetchExportOperationLog (operation log CSV export)]] - `references` [EXTRACTED]
+- [[fetchExportAccessLog()]] - `references` [EXTRACTED]
+- [[fetchExportLoginAttempt()]] - `references` [EXTRACTED]
+- [[fetchExportOperationLog()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu__Policy_Admin_UI
+#graphify/code #graphify/EXTRACTED #community/prune_Null_Params

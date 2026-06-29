@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/app.ts"
 type: "code"
-community: "App Plugins & Bootstrap"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Plugins__Bootstrap
+  - community/indexts
 ---
 
 # app.ts
@@ -18,4 +18,4 @@ tags:
 - [[setupAppErrorHandle()]] - `contains` [EXTRACTED]
 - [[setupAppVersionNotification()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap
+#graphify/code #graphify/EXTRACTED #community/indexts

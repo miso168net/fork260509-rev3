@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/entity.rs"
 type: "code"
-community: "entity"
+community: "entity.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/entity
+  - community/entityrs
 ---
 
 # entity.rs
@@ -15,4 +15,4 @@ tags:
 - [[Model_11]] - `contains` [EXTRACTED]
 - [[Relation_11]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/entity
+#graphify/code #graphify/EXTRACTED #community/entityrs

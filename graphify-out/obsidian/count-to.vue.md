@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/components/custom/count-to.vue"
 type: "code"
-community: "count-to"
+community: "count-to.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/count-to
+  - community/count-tovue
 ---
 
 # count-to.vue
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[start()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/count-to
+#graphify/code #graphify/EXTRACTED #community/count-tovue

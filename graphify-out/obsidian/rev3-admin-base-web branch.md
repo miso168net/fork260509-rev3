@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/x_fork.branch-origin.md"
 type: "concept"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # rev3-admin-base-web branch
@@ -14,4 +14,4 @@ tags:
 - [[rev3-admin-base-web Branch Origin Record]] - `references` [EXTRACTED]
 - [[rev3-admin-root umbrella repo]] - `conceptually_related_to` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_README__Docs
+#graphify/concept #graphify/EXTRACTED #community/Soybean_Admin

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Frontend Dependencies"
+community: "dependencies"
 location: "L46"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Frontend_Dependencies
+  - community/dependencies
 ---
 
 # dependencies
@@ -58,4 +58,4 @@ tags:
 - [[xgplayer]] - `contains` [EXTRACTED]
 - [[xlsx]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Frontend_Dependencies
+#graphify/code #graphify/EXTRACTED #community/dependencies

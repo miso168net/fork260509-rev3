@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/common.ts"
 type: "code"
-community: "loading"
+community: "app.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/loading
+  - community/appts
 ---
 
 # common.ts
@@ -17,4 +17,4 @@ tags:
 - [[yesOrNoOptions]] - `contains` [EXTRACTED]
 - [[yesOrNoRecord]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/loading
+#graphify/code #graphify/EXTRACTED #community/appts

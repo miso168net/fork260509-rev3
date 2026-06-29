@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Role Authorization Modals"
+community: "Manage Role view (role list"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Authorization_Modals
+  - community/Manage_Role_view_role_list
 ---
 
 # Api.SystemManage.SessionPolicy literal union
@@ -14,4 +14,4 @@ tags:
 - [[Api.SystemManage.UserListItemRev3 DTO (honest user list item)]] - `references` [EXTRACTED]
 - [[Api.SystemManage.UserUpsertModel DTO]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals
+#graphify/code #graphify/EXTRACTED #community/Manage_Role_view_role_list

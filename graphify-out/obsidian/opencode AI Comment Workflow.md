@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/opencode.yml"
 type: "document"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # opencode AI Comment Workflow
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin CHANGELOG (EN)]] - `references` [EXTRACTED]
 - [[opencode AI Agent (anomalycoopencode)]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Project_README__Docs
+#graphify/document #graphify/EXTRACTED #community/Soybean_Admin

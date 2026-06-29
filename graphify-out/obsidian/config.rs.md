@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/config.rs"
 type: "code"
-community: "Server Config & Secrets"
+community: "config.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Server_Config__Secrets
+  - community/configrs
 ---
 
 # config.rs
@@ -37,7 +37,9 @@ tags:
 - [[parse_trust_model_empty_is_default()]] - `contains` [EXTRACTED]
 - [[parse_trust_model_full_valid()]] - `contains` [EXTRACTED]
 - [[parse_trust_model_invalid_toml_returns_default()]] - `contains` [EXTRACTED]
+- [[parse_trust_model_tunnel_absent_defaults_empty()]] - `contains` [EXTRACTED]
+- [[parse_trust_model_tunnel_flat_scalar()]] - `contains` [EXTRACTED]
 - [[read_secret_file()]] - `contains` [EXTRACTED]
 - [[trust_model_fallback()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Server_Config__Secrets
+#graphify/code #graphify/EXTRACTED #community/configrs

@@ -1,19 +1,19 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Role Authorization Modals"
+community: "Endpoint Auth Modal (role x"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Authorization_Modals
+  - community/Endpoint_Auth_Modal_role_x
 ---
 
 # Api.SystemManage.Endpoint DTO (path + method)
 
 ## Connections
 - [[EndpointAuthModal (role x API endpoint authorization tree)]] - `references` [EXTRACTED]
-- [[fetchGetAllEndpoints (all authorizable API endpoints registry)]] - `references` [EXTRACTED]
-- [[fetchGetRoleEndpoints (role's authorized endpoints)]] - `references` [EXTRACTED]
-- [[fetchUpdateRoleEndpoints (DB-first casbin endpoint policy write)]] - `references` [EXTRACTED]
+- [[fetchGetAllEndpoints()]] - `references` [EXTRACTED]
+- [[fetchGetRoleEndpoints()]] - `references` [EXTRACTED]
+- [[fetchUpdateRoleEndpoints()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Authorization_Modals
+#graphify/code #graphify/EXTRACTED #community/Endpoint_Auth_Modal_role_x

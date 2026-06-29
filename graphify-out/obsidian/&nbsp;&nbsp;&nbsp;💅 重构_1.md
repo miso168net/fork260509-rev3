@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.zh_CN.md"
 type: "document"
-community: "[v1.2.8]"
+community: "[v1.2.8](https: github.com soybeanjs soybean-admin compare"
 location: "L194"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/v128
+  - community/v128https_githubcom_soybeanjs_soybean-admin_compare
 ---
 
 # &nbsp;&nbsp;&nbsp;💅 重构
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.2.8(httpsgithub.comsoybeanjssoybean-admincomparev1.2.7...v1.2.8) (2024-07-20)_1]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/v128
+#graphify/document #graphify/EXTRACTED #community/v128https_githubcom_soybeanjs_soybean-admin_compare

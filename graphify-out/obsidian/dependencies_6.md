@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/package.json"
 type: "code"
-community: "package"
+community: "package.json"
 location: "L14"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/package
+  - community/packagejson
 ---
 
 # dependencies
@@ -19,4 +19,4 @@ tags:
 - [[nanoid]] - `contains` [EXTRACTED]
 - [[package.json_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/package
+#graphify/code #graphify/EXTRACTED #community/packagejson

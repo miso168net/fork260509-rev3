@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/components/advanced/table-header-operation.vue"
 type: "code"
-community: "User Management Views"
+community: "manage user index.vue (user list"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Management_Views
+  - community/manage_user_indexvue_user_list
 ---
 
 # TableHeaderOperation component
@@ -14,4 +14,4 @@ tags:
 - [[localesindex.ts ($t, setupI18n)]] - `calls` [EXTRACTED]
 - [[manageuserindex.vue (user list page)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Management_Views
+#graphify/code #graphify/EXTRACTED #community/manage_user_indexvue_user_list

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/vars.ts"
 type: "code"
-community: "vars"
+community: "vars.ts"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/vars
+  - community/varsts
 ---
 
 # colorPaletteVars
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[vars.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/vars
+#graphify/code #graphify/EXTRACTED #community/varsts

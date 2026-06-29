@@ -1,16 +1,16 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Menu & Policy Admin UI"
+community: "prune Null Params()"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu__Policy_Admin_UI
+  - community/prune_Null_Params
 ---
 
 # Api.SystemManage.OperationLogSearchParams DTO
 
 ## Connections
-- [[fetchGetOperationLog (operation audit read)]] - `references` [EXTRACTED]
+- [[fetchGetOperationLog()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu__Policy_Admin_UI
+#graphify/code #graphify/EXTRACTED #community/prune_Null_Params

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/launch.json"
 type: "code"
-community: "launch"
+community: "launch.json"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/launch
+  - community/launchjson
 ---
 
 # launch.json
@@ -15,4 +15,4 @@ tags:
 - [[configurations]] - `contains` [EXTRACTED]
 - [[version_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/launch
+#graphify/code #graphify/EXTRACTED #community/launchjson

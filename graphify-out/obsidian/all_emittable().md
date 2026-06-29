@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/error.rs"
 type: "code"
-community: "error"
+community: "error.rs"
 location: "L126"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/error
+  - community/errorrs
 ---
 
 # all_emittable()
@@ -18,4 +18,4 @@ tags:
 - [[keys_are_semantic_no_cjk()]] - `calls` [EXTRACTED]
 - [[keys_conform_grammar_four_roots()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/error
+#graphify/code #graphify/EXTRACTED #community/errorrs

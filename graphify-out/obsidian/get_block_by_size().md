@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/xdb/src/searcher.rs"
 type: "code"
-community: "searcher"
+community: "searcher.rs"
 location: "L38"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/searcher
+  - community/searcherrs
 ---
 
 # get_block_by_size()
@@ -16,4 +16,4 @@ tags:
 - [[search_by_ip()]] - `calls` [EXTRACTED]
 - [[searcher.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/searcher
+#graphify/code #graphify/EXTRACTED #community/searcherrs

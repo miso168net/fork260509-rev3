@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "mutate_in_txn"
+community: "update()"
 location: "L1813"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/mutate_in_txn
+  - community/update
 ---
 
 # id_of()
@@ -15,4 +15,4 @@ tags:
 - [[menu_guard_delete_protected_children_and_batch_reject()]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/mutate_in_txn
+#graphify/code #graphify/EXTRACTED #community/update

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/shared.ts"
 type: "code"
-community: "UI Materials Package"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/UI_Materials_Package
+  - community/indexts
 ---
 
 # shared.ts
@@ -20,4 +20,4 @@ tags:
 - [[index.ts_9]] - `re_exports` [EXTRACTED]
 - [[index.ts_12]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/UI_Materials_Package
+#graphify/code #graphify/EXTRACTED #community/indexts

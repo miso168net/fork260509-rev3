@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/cleanup.ts"
 type: "code"
-community: "Build Scripts Package"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Build_Scripts_Package
+  - community/indexts
 ---
 
 # cleanup.ts
@@ -15,4 +15,4 @@ tags:
 - [[cleanup()]] - `contains` [EXTRACTED]
 - [[index.ts_14]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Build_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.github/PULL_REQUEST_TEMPLATE/pr_cn.md"
 type: "document"
-community: "pr_cn"
+community: "pr cn.md"
 location: "L1"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/pr_cn
+  - community/pr_cnmd
 ---
 
 # pr_cn.md
@@ -20,4 +20,4 @@ tags:
 - [[这个变动的性质是]] - `contains` [EXTRACTED]
 - [[需求背景]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/pr_cn
+#graphify/document #graphify/EXTRACTED #community/pr_cnmd

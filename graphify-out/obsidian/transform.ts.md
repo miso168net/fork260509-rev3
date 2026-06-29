@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "builtin"
+community: "builtin.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/builtin
+  - community/builtints
 ---
 
 # transform.ts
@@ -23,4 +23,4 @@ tags:
 - [[transformElegantRouteToVueRoute()]] - `contains` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/builtin
+#graphify/code #graphify/EXTRACTED #community/builtints

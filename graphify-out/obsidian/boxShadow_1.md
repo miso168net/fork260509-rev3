@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/dark.json"
 type: "code"
-community: "boxShadow"
+community: "box Shadow"
 location: "L77"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/boxShadow
+  - community/box_Shadow
 ---
 
 # boxShadow
@@ -17,4 +17,4 @@ tags:
 - [[sider_3]] - `contains` [EXTRACTED]
 - [[tab_3]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/boxShadow
+#graphify/code #graphify/EXTRACTED #community/box_Shadow

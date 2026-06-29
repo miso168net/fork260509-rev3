@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/entity/src/system_settings.rs"
 type: "code"
-community: "system_settings"
+community: "system settings.rs"
 location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/system_settings
+  - community/system_settingsrs
 ---
 
 # Relation
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[system_settings.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/system_settings
+#graphify/code #graphify/EXTRACTED #community/system_settingsrs

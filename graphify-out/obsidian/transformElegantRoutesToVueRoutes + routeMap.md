@@ -1,18 +1,18 @@
 ---
 source_file: "base-web/src/router/elegant/transform.ts"
 type: "code"
-community: "User Management Views"
+community: "manage user index.vue (user list"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Management_Views
+  - community/manage_user_indexvue_user_list
 ---
 
 # transformElegantRoutesToVueRoutes + routeMap
 
 ## Connections
 - [[elegant-router.d.ts (RouteMapRouteKey types)]] - `references` [EXTRACTED]
-- [[elegantimports.ts (layouts + views map)]] - `depends_on` [INFERRED]
 - [[useRouteStore (route pinia store)]] - `calls` [EXTRACTED]
+- [[views]] - `depends_on` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Management_Views
+#graphify/code #graphify/EXTRACTED #community/manage_user_indexvue_user_list

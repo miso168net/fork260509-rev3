@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/business/auth.ts"
 type: "code"
-community: "Auth Store & Storage"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Storage
+  - community/indexts
 ---
 
 # auth.ts
@@ -16,4 +16,4 @@ tags:
 - [[useAuth()]] - `contains` [EXTRACTED]
 - [[useAuthStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Storage
+#graphify/code #graphify/EXTRACTED #community/indexts

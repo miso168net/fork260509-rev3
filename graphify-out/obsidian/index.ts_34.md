@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/auth/index.ts"
 type: "code"
-community: "Auth Store & Storage"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth_Store__Storage
+  - community/indexts
 ---
 
 # index.ts
@@ -37,4 +37,4 @@ tags:
 - [[useRouterPush()]] - `imports` [EXTRACTED]
 - [[useTabStore]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth_Store__Storage
+#graphify/code #graphify/EXTRACTED #community/indexts

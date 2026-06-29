@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/index.ts"
 type: "code"
-community: "index"
+community: "table.ts"
 location: "L107"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/tablets
 ---
 
 # createRequest()
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_1]] - `contains` [EXTRACTED]
 - [[index.ts_29]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/tablets

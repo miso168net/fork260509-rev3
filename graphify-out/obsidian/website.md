@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "Package Metadata"
+community: "package.json"
 location: "L133"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Package_Metadata
+  - community/packagejson
 ---
 
 # website
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[package.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Package_Metadata
+#graphify/code #graphify/EXTRACTED #community/packagejson

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/.vscode/extensions.json"
 type: "code"
-community: "extensions"
+community: "extensions.json"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/extensions
+  - community/extensionsjson
 ---
 
 # recommendations
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[extensions.json]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/extensions
+#graphify/code #graphify/EXTRACTED #community/extensionsjson

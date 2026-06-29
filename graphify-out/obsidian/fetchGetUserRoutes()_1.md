@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service-alova/api/route.ts"
 type: "code"
-community: "Alova API Service Layer"
+community: "index.ts"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Alova_API_Service_Layer
+  - community/indexts
 ---
 
 # fetchGetUserRoutes()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[route.ts_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Alova_API_Service_Layer
+#graphify/code #graphify/EXTRACTED #community/indexts

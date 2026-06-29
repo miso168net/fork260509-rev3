@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/src/commands/release.ts"
 type: "code"
-community: "Build Scripts Package"
+community: "index.ts"
 location: "L3"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Build_Scripts_Package
+  - community/indexts
 ---
 
 # release()
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_13]] - `imports` [EXTRACTED]
 - [[release.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Build_Scripts_Package
+#graphify/code #graphify/EXTRACTED #community/indexts

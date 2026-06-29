@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/audit_ctx.rs"
 type: "code"
-community: "Audit Context & Client IP"
-location: "L412"
+community: "audit ctx.rs"
+location: "L443"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Audit_Context__Client_IP
+  - community/audit_ctxrs
 ---
 
 # ip()
@@ -15,6 +15,10 @@ tags:
 - [[apply_cf_overlay_match_upgrades_verified()]] - `calls` [EXTRACTED]
 - [[apply_cf_overlay_mismatch_flags()]] - `calls` [EXTRACTED]
 - [[apply_cf_overlay_noop_cases()]] - `calls` [EXTRACTED]
+- [[apply_tunnel_fallback_adopts_cf_cip_on_tunnel_peer()]] - `calls` [EXTRACTED]
+- [[apply_tunnel_fallback_noop_when_cf_cip_absent()]] - `calls` [EXTRACTED]
+- [[apply_tunnel_fallback_noop_when_not_fallback()]] - `calls` [EXTRACTED]
+- [[apply_tunnel_fallback_rejects_spoof_from_non_tunnel_internal()]] - `calls` [EXTRACTED]
 - [[audit_ctx.rs]] - `contains` [EXTRACTED]
 - [[audit_mw()]] - `calls` [EXTRACTED]
 - [[resolve_all_trusted_falls_back_to_peer()]] - `calls` [EXTRACTED]
@@ -29,4 +33,4 @@ tags:
 - [[resolve_untrusted_peer_ignores_spoofed_xff()]] - `calls` [EXTRACTED]
 - [[resolve_with_overlay()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Audit_Context__Client_IP
+#graphify/code #graphify/EXTRACTED #community/audit_ctxrs

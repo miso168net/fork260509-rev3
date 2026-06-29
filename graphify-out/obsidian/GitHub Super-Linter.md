@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/linter.yml"
 type: "concept"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # GitHub Super-Linter
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Lint Code GitHub Actions Workflow]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Project_README__Docs
+#graphify/concept #graphify/EXTRACTED #community/Soybean_Admin

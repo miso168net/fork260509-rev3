@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
 type: "code"
-community: "sys_login_attempt"
+community: "sys login attempt.rs"
 location: "L276"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_login_attempt
+  - community/sys_login_attemptrs
 ---
 
 # lockout_live_per_user_count_and_decide()
@@ -17,4 +17,4 @@ tags:
 - [[sys_login_attempt.rs_1]] - `contains` [EXTRACTED]
 - [[write_attempt()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_login_attempt
+#graphify/code #graphify/EXTRACTED #community/sys_login_attemptrs

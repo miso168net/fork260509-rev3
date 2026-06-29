@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "default"
+community: "default.json"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/default
+  - community/defaultjson
 ---
 
 # default.json
@@ -34,4 +34,4 @@ tags:
 - [[version_13]] - `contains` [EXTRACTED]
 - [[watermark_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/default
+#graphify/code #graphify/EXTRACTED #community/defaultjson

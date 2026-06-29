@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "[v1.3.13]"
+community: "[v1.3.13](https: github.com soybeanjs soybean-admin compare"
 location: "L560"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/v1313
+  - community/v1313https_githubcom_soybeanjs_soybean-admin_compare
 ---
 
 # &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.3.13(httpsgithub.comsoybeanjssoybean-admincomparev1.3.12...v1.3.13) (2025-03-19)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/v1313
+#graphify/document #graphify/EXTRACTED #community/v1313https_githubcom_soybeanjs_soybean-admin_compare

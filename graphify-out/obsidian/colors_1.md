@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/azir.json"
 type: "code"
-community: "Theme Color Config"
+community: "azir.json"
 location: "L31"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Theme_Color_Config
+  - community/azirjson
 ---
 
 # colors
@@ -17,4 +17,4 @@ tags:
 - [[dark_1]] - `contains` [EXTRACTED]
 - [[layout]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Theme_Color_Config
+#graphify/code #graphify/EXTRACTED #community/azirjson

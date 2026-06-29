@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/route.rs"
 type: "code"
-community: "Auth & Casbin Enforce"
+community: "route.rs"
 location: "L63"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Auth__Casbin_Enforce
+  - community/routers
 ---
 
 # get_constant_routes()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[route.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Auth__Casbin_Enforce
+#graphify/code #graphify/EXTRACTED #community/routers

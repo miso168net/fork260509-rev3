@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "code"
-community: "User Management Views"
+community: "manage user index.vue (user list"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/User_Management_Views
+  - community/manage_user_indexvue_user_list
 ---
 
 # rust-api compose service
@@ -16,4 +16,4 @@ tags:
 - [[postgres compose service]] - `depends_on` [EXTRACTED]
 - [[redis-stack compose service]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/User_Management_Views
+#graphify/code #graphify/EXTRACTED #community/manage_user_indexvue_user_list

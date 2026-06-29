@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/jwt.rs"
 type: "code"
-community: "jwt"
+community: "jwt.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/jwt
+  - community/jwtrs
 ---
 
 # jwt.rs
@@ -23,4 +23,4 @@ tags:
 - [[sign()]] - `contains` [EXTRACTED]
 - [[verify()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/jwt
+#graphify/code #graphify/EXTRACTED #community/jwtrs

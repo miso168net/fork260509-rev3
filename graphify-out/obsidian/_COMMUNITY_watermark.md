@@ -25,7 +25,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_default]]
+- 1 edge to [[_COMMUNITY_default.json]]
 
 ## Top bridge nodes
 - [[watermark_1]] - degree 6, connects to 1 community

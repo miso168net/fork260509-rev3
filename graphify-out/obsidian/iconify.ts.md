@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/iconify.ts"
 type: "code"
-community: "App Plugins & Bootstrap"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/App_Plugins__Bootstrap
+  - community/indexts
 ---
 
 # iconify.ts
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_24]] - `re_exports` [EXTRACTED]
 - [[setupIconifyOffline()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/App_Plugins__Bootstrap
+#graphify/code #graphify/EXTRACTED #community/indexts

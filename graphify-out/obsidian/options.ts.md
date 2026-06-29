@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/options.ts"
 type: "code"
-community: "index"
+community: "table.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/tablets
 ---
 
 # options.ts
@@ -21,4 +21,4 @@ tags:
 - [[shared.ts]] - `imports_from` [EXTRACTED]
 - [[type.ts_1]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/tablets

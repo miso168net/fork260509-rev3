@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/types/index.ts"
 type: "code"
-community: "recommend"
+community: "recommend.ts"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recommend
+  - community/recommendts
 ---
 
 # ColorPaletteFamily
@@ -16,4 +16,4 @@ tags:
 - [[palette.ts]] - `imports` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recommend
+#graphify/code #graphify/EXTRACTED #community/recommendts

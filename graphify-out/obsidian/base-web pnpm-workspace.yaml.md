@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/pnpm-workspace.yaml"
 type: "document"
-community: "Project README & Docs"
+community: "Soybean Admin"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Project_README__Docs
+  - community/Soybean_Admin
 ---
 
 # base-web pnpm-workspace.yaml
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[pnpm Monorepo Architecture]] - `implements` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Project_README__Docs
+#graphify/document #graphify/INFERRED #community/Soybean_Admin

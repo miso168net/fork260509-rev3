@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.zh_CN.md"
 type: "document"
-community: "[v1.2.2]"
+community: "[v1.2.2](https: github.com honghuangdc soybean-admin compare"
 location: "L343"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/v122
+  - community/v122https_githubcom_honghuangdc_soybean-admin_compare
 ---
 
 # &nbsp;&nbsp;&nbsp;📖 文档
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.2.2(httpsgithub.comhonghuangdcsoybean-admincomparev1.2.1...v1.2.2) (2024-06-12)_1]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/v122
+#graphify/document #graphify/EXTRACTED #community/v122https_githubcom_honghuangdc_soybean-admin_compare

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/auth/jwt.rs"
 type: "code"
-community: "jwt"
+community: "jwt.rs"
 location: "L110"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/jwt
+  - community/jwtrs
 ---
 
 # jwt_wrong_aud_rejected()
@@ -17,4 +17,4 @@ tags:
 - [[sample_claims()]] - `calls` [EXTRACTED]
 - [[sign()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/jwt
+#graphify/code #graphify/EXTRACTED #community/jwtrs

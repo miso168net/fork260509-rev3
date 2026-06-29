@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "mutate_in_txn"
+community: "update()"
 location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/mutate_in_txn
+  - community/update
 ---
 
 # entity::sys_menu::Model
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.audit_json()]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/mutate_in_txn
+#graphify/code #graphify/EXTRACTED #community/update

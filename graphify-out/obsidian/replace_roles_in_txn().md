@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user_role.rs"
 type: "code"
-community: "sys_user_role"
+community: "sys user role.rs"
 location: "L117"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_user_role
+  - community/sys_user_rolers
 ---
 
 # replace_roles_in_txn()
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[sys_user_role.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_user_role
+#graphify/code #graphify/EXTRACTED #community/sys_user_rolers

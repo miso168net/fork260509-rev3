@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "records_to_csv"
-location: "L3063"
+community: "records to csv()"
+location: "L3592"
 tags:
   - graphify/code
   - graphify/EXTRACTED

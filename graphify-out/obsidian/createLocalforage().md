@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/src/storage.ts"
 type: "code"
-community: "index"
+community: "index.ts"
 location: "L65"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/indexts
 ---
 
 # createLocalforage()
@@ -15,4 +15,4 @@ tags:
 - [[storage.ts]] - `contains` [EXTRACTED]
 - [[storage.ts_1]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/options.ts"
 type: "code"
-community: "index"
+community: "table.ts"
 location: "L33"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/index
+  - community/tablets
 ---
 
 # createRetryOptions()
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_1]] - `imports` [EXTRACTED]
 - [[options.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/index
+#graphify/code #graphify/EXTRACTED #community/tablets
