@@ -39,7 +39,7 @@
 【目的】先讓讀者知道「這系統要做什麼」與「系統長什麼樣」。對 rev3 而言 FR 高度壓縮 = 「對齊 base-web 既有功能」+ constitution；架構大圖（§1.5 依賴序 DAG + §1.6 技術棧）前置於此、不再埋在交付章。
 
 ### §1.0 系統敘述與 rev3 目標（先讀這個）
-- **這是什麼**：一套自架的後台管理系統（admin console）。前端 **base-web** = fork 自開源 Vue 3 模板 **soybean-admin** 的 example 分支（naive-ui + 動態路由；fork 身分是「不動 inline、保 upstream rebase」鐵紀律之源）；後端 **rust-api** = axum + SeaORM + Casbin **全新自寫**；PostgreSQL + Redis；nginx 單一入口；docker compose 部署。
+- **這是什麼**：一套自架的後台管理系統（admin console）。前端 **base-web** = fork 自開源 Vue 3 模板 **soybean-admin** 的 example 分支（naive-ui + 動態路由；fork 身分是「不動 inline、保 upstream rebase」鐵紀律之源）；後端 **rust-api** = axum + SeaORM + Casbin **全新自寫**；PostgreSQL + Redis；nginx 入口〔**勘誤（022）**：非唯一入口，自 022 起另支援第 3 ingress＝CF Tunnel 繞 nginx 直連 rust-api，見 §11.5〕；docker compose 部署。
 - **給誰用**：系統管理者。三種預設角色（`Super`/`Admin`/`User`）登入後管理使用者、角色、選單與三維權限（endpoint／menu／button，RBAC），維護系統設定，全程留審計軌。
 - **專名錨**：**mock** = soybean-admin 官方 ApiFox mock（wire 形狀的 ground truth，§I.3）；**constitution** = 凍結權威文件（rev2 版快照見 §9；rev3 於波 -1 重鑄自己的一份，§8.4）；**rev1** = rev2 之前的首輪整合（無任何材料隨書，僅作歷史對照名）。
 - **rev3 為什麼存在**：rev2（前一輪整合，35 個 work item、功能可跑）證明了設計、也付清了方法論學費——schema retrofit 債、行為島誤排程、文件膨脹（實證＝附錄 B）。rev3 = **同 wire、同 12 表的 clean-slate 重建**：用 §0.2 四原則第一輪就做對，外加待決⑥ 的新能力選配。**rev3 v1（首版）成功的定義 = §8.8 DoD**。
@@ -724,7 +724,7 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 【目的】部署 as-built 總覽；細節引用 compose / `deploy/` 檔與他章，不重複內容。
 
 ### §11.1 拓撲 / port / secret
-- 單入口 front-nginx（TLS 終止 §10.2；`location /api/` 剝前綴轉 rust-api、`= /api/metrics` 擋 404，`deploy/nginx/conf.d/_locations.inc`）；其餘 service 不對外（0.0.0.0）暴露——dev 經 `127.0.0.1` loopback 直連，postgres / redis-stack 的 loopback 映射在 prod 仍保留（host 管理用）。compose project name：rev2=`rev2-admin`、rev3=`rev3-admin`（附錄 A.3；卷名 auto-prefix 規約沿用）。
+- 單入口 front-nginx〔**勘誤（022）**：非唯一，自 022 起另有 CF Tunnel 繞 nginx 直連 rust-api 之第 3 ingress、見 §11.5〕（TLS 終止 §10.2；`location /api/` 剝前綴轉 rust-api、`= /api/metrics` 擋 404，`deploy/nginx/conf.d/_locations.inc`）；其餘 service 不對外（0.0.0.0）暴露——dev 經 `127.0.0.1` loopback 直連，postgres / redis-stack 的 loopback 映射在 prod 仍保留（host 管理用）。compose project name：rev2=`rev2-admin`、rev3=`rev3-admin`（附錄 A.3；卷名 auto-prefix 規約沿用）。
 - port（host 映射；rev2 用 2XXXX 前綴與 rev1 並存，**rev3 改名觸點見附錄 A**；port 號是否沿用 2XXXX 由 rev3 workspace 另定）：
 
 | service | host port | 備註 |
@@ -752,6 +752,20 @@ rev3 若加 user-facing dashboard / reporting（待決⑥、§2）→ 屆時補�
 - **migrate service**（rev2 010；`docker-compose.yml` 內 one-shot service、`restart: "no"`）：rust-api `depends_on: migrate: service_completed_successfully` → **stack 起即套 migration；server 自身不自動 migrate**（rev2 007 FR-009）。
 - override 分工：dev = `entrypoint: ["cargo","run","--bin","migration"]` + `command: ["up"]`（dev image ENTRYPOINT 是 cargo-watch、須整段換）；prod = runtime image `command: ["migration","up"]` 經 `deploy/entrypoint.rust-api.sh` dispatcher 派發。
 - `migration/` crate 35 個 migration、每個有對稱 `down()`（rev2 實況）；rev3 沿用「migrate one-shot service＋每 migration 對稱 `down()`」**結構**（migration 內容重寫、條數另計，§3.4；檔名方案見 ⚠️k），目標**零事後 ALTER**（建表即帶全審計欄 + 治理欄）。
+
+### §11.5 部署入口拓樸 / 信任邊界（3 ingress；022 ⚠️ae as-built、勘誤「nginx 單一入口」）
+
+> rev3 自 022 起 real_ip 來源依 ingress 拓樸而異；判定 / 審計 / IP 閘皆以 `resolve_client_ip`（+022 新 `apply_tunnel_fallback`）+`apply_cf_overlay` 解析後的真實 client IP 為準。**「nginx 單一入口」（§1.0／§10.2／§11.1）需勘誤**：rev3 另支援第 3 ingress＝CF Tunnel 繞 nginx 直連 rust-api。完整拍板與 as-built 詳 [DECISIONS §1 ⚠️ae](INTEGRATION-DECISIONS.md)、CLAUDE.md §8.2、`deploy/trust-model.toml`。
+
+| # | ingress 拓樸 | 直連 peer | real_ip 來源 | 信任邊界 |
+|---|---|---|---|---|
+| ① | client → **front-nginx**（標準反向代理） | nginx（∈ internal_default） | XFF rightmost-untrusted（trusted-proxy 鏈、§5.9） | nginx 受信、XFF 由其產 |
+| ② | client → **Cloudflare → front-nginx** | nginx | XFF ＋ `CF-Connecting-IP` overlay 交叉驗證（相符升 CdnVerified） | CF 邊緣 ∈ cdn 集、nginx 注 `X-CF-Verified` |
+| ③ | client → **Cloudflare Tunnel → rust-api 直連（繞 nginx）** | cloudflared origin（**∈ `TrustModel.tunnel` 窄集**） | `base_conf==Fallback && peer∈tunnel` → 採信 `CF-Connecting-IP`（`apply_tunnel_fallback`、conf 維持 Fallback、不升信） | **窄 tunnel-origin**（非 blanket internal）；★ B2 反偽造：內網非 tunnel-origin 位置偽造 CF-CIP **不採信** |
+
+- **窄 TUNNEL_ORIGIN**：`TrustModel.tunnel`（`deploy/trust-model.toml` 的 `tunnel=`）只含實際 cloudflared 本機 origin（loopback）、非整個內網——使「採信通道提供之來源標頭」限於明確配置的窄通道入口並具驗證（FR-014 收窄）。
+- **★ footgun（022 final-review #8）**：tunnel origin 必須**同時涵蓋於 `internal_default`**（或 cdn／my_public／bindings 任一 trusted 集），否則 `is_trusted(peer)=false` → `resolve_client_ip` 回 (peer,Direct) → `apply_tunnel_fallback` 不觸發（其前提＝`base_conf==Fallback`、而 Fallback 需 peer 受信）→ real_ip 誤採 cloudflared origin（全部外部流量看似單一 IP、SC-007 靜默破）。部署前提（cloudflared internal-only 連 rust-api `:31081`＝來自 loopback／私網）天然滿足、範例 config 正確；勿配置「不在 internal_default」的 public tunnel origin。
+- rust-api 服務埠（`:31081`）**不對外（0.0.0.0）公開**（僅經 ① nginx 或 ③ cloudflared 達）＝來源標頭可信之前提（spec Assumptions、§10.2）。
 
 ---
 

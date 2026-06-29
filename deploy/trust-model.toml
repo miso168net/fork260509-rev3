@@ -26,6 +26,12 @@ internal_default = [
 # ★ 只含實際 cloudflared 本機 origin（loopback）、非整個內網——apply_tunnel_fallback 僅當直連
 #   peer ∈ tunnel 時才採信 CF-Connecting-IP 為 real_ip（反偽造 B2：內網非 tunnel-origin 位置帶偽
 #   CF-CIP 不被採信）。tunnel 亦為 root scalar、須排在所有 [[...]] table 之前（同 internal_default）。
+# ★★ 依賴鐵則（022 final-review #8 footgun）：tunnel origin 必須【同時】涵蓋於 internal_default
+#   （或 cdn/my_public/bindings 任一 trusted 集）。否則 is_trusted(peer)=false → resolve_client_ip 對該
+#   peer 回 (peer,Direct) → apply_tunnel_fallback 不觸發（其前提是 base_conf==Fallback、而 Fallback 需
+#   peer 受信＋XFF 鏈全 skip）→ real_ip 會誤採 cloudflared origin、全部外部流量看似單一 IP（SC-007 靜默破）。
+#   部署前提（cloudflared internal-only 連 rust-api :31081）下 origin 必為 loopback/私網＝本來就在
+#   internal_default、天然滿足；★勿配置「不在 internal_default」的 public tunnel origin。
 tunnel = ["127.0.0.1/32", "::1/128"]
 
 # ── Tier-1 CDN 位置錨（operator 自填官方 IP list、自行更新；空集＝無 Tier-1 錨）──
