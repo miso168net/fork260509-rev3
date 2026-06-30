@@ -35,7 +35,7 @@
 | # | 檢查 | 裁定 |
 |---|---|---|
 | 1 | §I.1 base-web 權威：rust-api 是否未提供 base-web 用到的 endpoint？ | ✅ PASS — sort 為前後端**同刀新增**；每個 base-web 排序的列表，rust-api 對應端點都加 `sort` 參數、無缺口 |
-| 2 | §IV.2 動 base-web inline？屬 MODAL-WIRING (a)~(e)？ | ⚠️ **GATE — 需 Amendment**：動 `views/manage/**` inline 掛排序（column `sorter` props／`@update:sorter`／`useRoute`／`searchParams.sort`／`#suffix` 清除鈕）＝**(a)~(e) 未涵蓋的新用途** → 提 **MODAL-WIRING ★ (f) Amendment**（user 親決、§V.2）。詳 Complexity Tracking |
+| 2 | §IV.2 動 base-web inline？屬 MODAL-WIRING (a)~(f)？ | ✅ **已授權（⚠️af）**：動 `views/manage/**` inline 掛排序＝(a)~(e) 未涵蓋 → **user 親決 MODAL-WIRING ★ (f) Amendment**（constitution v1.2.0、commit `ef070468`）。gate CLEARED |
 | 3 | §I.2 menu Casbin enforce？ | ✅ PASS / N/A — menu 為樹狀、**排除**；無 menu 顯示/enforce 改動 |
 | 4 | §I.3 wire 對齊 typings 權威序與不變式？ | ✅ PASS — `sort` 為**新增** query 欄；envelope/`PageRes`/id 序列化不變；非法排序→**`2222`**（業務碼、HTTP 200 信封）、msg＝i18n key `biz.common.invalidSort`；13 碼矩陣不擴張 |
 | 5 | §I.5 從 rev2 拷貝 code？ | ✅ PASS — rust 全新寫（parse/resolver/facade 改），無拷貝、無帶回已推翻行為 |
@@ -44,7 +44,7 @@
 | 8 | §I.6 新建業務表（migration）含六審計欄？ | ✅ PASS / N/A — `m008` 為 **index-only**（非新表、非加欄、僅加索引）→ 審計欄 archetype 規則不適用 |
 | 9 | §I.7 行為島（token/policy/single-session）invariants 保持？ | ✅ PASS — `login_attempt` 加索引純讀路徑加速、**不改 lockout 行為**；archive/log 唯讀被排序；無 invariant 觸動 |
 
-**Initial Gate 結論**：8/9 PASS；**1 項（#2/#7 MODAL-WIRING）為 gate、待 user 親決 Amendment (f)**。其餘無違反。**實作（/speckit-tasks → executing-plans）阻擋於 Amendment (f) 親決前**。
+**Initial Gate 結論**：8/9 PASS；**第 1 項（#2/#7 MODAL-WIRING）原為 gate、已 user 親決 Amendment (f)**（⚠️af、constitution v1.1.2→**v1.2.0**、commit `ef070468`）→ **gate CLEARED**。**9/9 通過、可進 /speckit-tasks**。
 
 **Post-Design 複查（Phase 1 後）**：設計未引入額外違反 —— 新檔（`useTableSort`/`rev3-extra` typings/可選 `SortClearButton`）皆 additive、落 ADAPT/WRAPPER；shared `table-header-operation.vue` **元件本體不改**（僅用既有 `#suffix` slot）；migration 維持 index-only。Gate 狀態不變（仍待 (f) 親決）。
 
@@ -100,4 +100,4 @@ base-web/                                    ← worktree（submodule pin）
 
 ---
 
-> **★ 阻擋 gate（待 user 親決）**：本 plan 通過 Constitution Check 除 MODAL-WIRING ★ (f) 一項 —— 該 Amendment（§V.2）須 user 親決後方可進 /speckit-tasks 與實作。提案全文見完成報告。
+> **★ gate 已解除**：MODAL-WIRING ★ (f) Amendment 已 user 親決（⚠️af、constitution v1.2.0、commit `ef070468`、MILESTONES `c1fb99f3`）。**Constitution Check 9/9 通過、可進 `/speckit-tasks`**。
