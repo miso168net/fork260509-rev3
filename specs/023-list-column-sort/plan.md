@@ -40,7 +40,7 @@
 | 4 | §I.3 wire 對齊 typings 權威序與不變式？ | ✅ PASS — `sort` 為**新增** query 欄；envelope/`PageRes`/id 序列化不變；非法排序→**`2222`**（業務碼、HTTP 200 信封）、msg＝i18n key `biz.common.invalidSort`；13 碼矩陣不擴張 |
 | 5 | §I.5 從 rev2 拷貝 code？ | ✅ PASS — rust 全新寫（parse/resolver/facade 改），無拷貝、無帶回已推翻行為 |
 | 6 | §II 拍板 #1~#13 抵觸？ | ✅ PASS — 無拍板反轉（#12 brainstorm 位置已循；#3 MODAL-WIRING 為**擴用途 (f)**、非撤回）|
-| 7 | §III ★ 軌道？授權邊界內？ | ⚠️ 同 #2（MODAL-WIRING ★ 需 (f) Amendment）；另 backend msg key `backend.common.invalidSort` 譯文走**既授權** BASE-WEB-I18N-WIRING ★ (ii)(iii)；新檔（composable/wrapper/typings）落 ADAPT/WRAPPER |
+| 7 | §III ★ 軌道？授權邊界內？ | ⚠️ 同 #2（MODAL-WIRING ★ 需 (f) Amendment）；另非法排序 wire msg `biz.common.invalidSort` → 前端 `backend.biz.common.invalidSort` 譯文走**既授權** BASE-WEB-I18N-WIRING ★ (ii)(iii)（analyze F2）；新檔（composable/wrapper/typings）落 ADAPT/WRAPPER |
 | 8 | §I.6 新建業務表（migration）含六審計欄？ | ✅ PASS / N/A — `m008` 為 **index-only**（非新表、非加欄、僅加索引）→ 審計欄 archetype 規則不適用 |
 | 9 | §I.7 行為島（token/policy/single-session）invariants 保持？ | ✅ PASS — `login_attempt` 加索引純讀路徑加速、**不改 lockout 行為**；archive/log 唯讀被排序；無 invariant 觸動 |
 
@@ -78,12 +78,12 @@ rust-api/                                   ← worktree（submodule pin）
 
 base-web/                                    ← worktree（submodule pin）
 ├── src/hooks/…/use-table-sort.ts            # 新：useTableSort composable（受控排序+點擊序+持久化）
-├── src/views/manage/{user,role,ip-rule,audit/*,policy-archive}/index.vue(+modules/*-table.vue)  # column sorter props、@update:sorter、#suffix 清除鈕、useRoute、searchParams.sort  ★MODAL-WIRING (f)
-├── src/components/.../sort-clear-button.vue # 可選新：清除鈕（避 7 頁重複；shared table-header-operation.vue 不改）
+├── src/views/manage/{user,role,ip-rule,audit/*,policy-archive}/index.vue(+modules/*-table.vue)  # column sorter props、@update:sorter、清除鈕（3 頁 #suffix／4 表既有工具列 F1）、useRoute+storageKey（audit 加 tab 辨識 F3）、searchParams.sort  ★MODAL-WIRING (f)
+├── src/components/.../sort-clear-button.vue # 新：清除鈕共用元件（3 頁掛 TableHeaderOperation #suffix／4 審計·archive 表掛各自既有 NSpace 工具列，analyze F1；shared table-header-operation.vue 本體不改）
 ├── src/service/api/rev3-system-manage.ts    # sort 參數透傳（多半免改、params 整包送）  ★WRAPPER
 ├── src/typings/api/rev3-*.d.ts              # search params +sort?: string  ★ADAPT（新檔、不改 frozen system-manage.d.ts）
 ├── src/typings/app.d.ts                     # Schema.common.clearSort  ★(f)/I18N
-└── src/locales/langs/{zh-cn,en-us}.ts       # common.clearSort（+ backend.common.invalidSort）  ★I18N-WIRING
+└── src/locales/langs/{zh-cn,en-us}.ts       # common.clearSort（+ backend.biz.common.invalidSort，analyze F2）  ★I18N-WIRING
 ```
 
 **Structure Decision**：沿用既有 worktree+submodule 結構（§1）。後端集中改 `system_manage.rs`（helper+resolver+DTO+接線）+ 7 facade + 1 migration；前端以 `useTableSort` 收斂排序邏輯、各 view 最小接線。逐頁可排序欄＝data-model §3 白名單。

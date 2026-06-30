@@ -18,7 +18,7 @@ GET /systemManage/getUserList?current=1&size=10&userName=&sort=userName:asc,stat
 
 ## 回應（不變）
 
-- 成功：既有 `PageRes<T>` = `{current,size,total,records}`（envelope `{data,code:"0000",msg}`）。排序後 `records` 順序反映 `sort`、tie-break by id。
+- 成功：既有 `PageRes<T>` = `{current,size,total,records}`（envelope `{data,code:"0000",msg}`）。排序後 `records` 順序反映 `sort`、tie-break by id（**方向依各表既有預設、data-model §4**；analyze F7）；**ip_rule 另保留領頭 `deleted_at IS NULL` 群組**（已刪沉底、analyze F4）。
 - 排序非法（未白名單欄 / 非 asc·desc 方向 / 重複欄）：**business error `2222`**（HTTP 200 信封、`msg` = 穩定 i18n key `biz.common.invalidSort`）。**絕不** 5000、絕不回錯排資料。
 
 ## 匯出（FR-016）

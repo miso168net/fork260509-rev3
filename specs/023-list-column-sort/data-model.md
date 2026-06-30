@@ -24,10 +24,10 @@
 
 | 欄位 | 型別 | 說明 |
 |---|---|---|
-| (key) | routeName | elegant-router route.name、per 列表頁唯一 |
+| (key) | storageKey | `route.name`（單表頁）或 `` `${route.name}:${tab}` ``（多表共用 route 的頁，analyze F3）|
 | (value) | sort 字串 | 同 wire 格式 `field:dir,...` |
 
-- 容器：單一 localStorage key（`StorageType.Local` 註冊）存 `Record<routeName, string>`（仿 tab store `cacheTabs`）。
+- 容器：單一 localStorage key（`StorageType.Local` 註冊）存 `Record<storageKey, string>`（仿 tab store `cacheTabs`）。**storageKey 須避碰撞（analyze F3）**：`/manage/audit`＝1 route（`manage_audit`）含 operation/access/login 3 tab 表，各表須 `` `${route.name}:${tab}` ``，否則 3 表共用 route.name 互相覆寫（`createTime` 三表都有→還原污染）。單表頁（user/role/ip-rule/policy-archive）用 `route.name` 即可。
 - 生命週期：sort 變更時寫；mount 時讀回還原；clear-all 時刪該 route key。還原時防禦性丟棄非白名單/不存在欄（FR-015）。登出不清（無害 UI 偏好、clarify Outstanding）。
 
 ### SortableColumn（可排序欄）— 設定，非 DB
@@ -74,4 +74,4 @@
 | sys_role | `order_by_asc(Id)` | Id asc |
 | sys_operation_log / access_log / login_attempt | `order_by_desc(CreatedAt, Id)` | Id desc |
 | sys_casbin_policy_archive | `order_by_desc(ArchivedAt, Id)` | Id desc |
-| sys_ip_rule | 多鍵（deleted/Order/Id）| Id（保留現邏輯）|
+| sys_ip_rule | `deleted_at IS NULL` desc → Order asc → Id asc（回收桶、已刪沉底）| **保留領頭 `deleted_at IS NULL` desc 群組**（已刪恆沉底）→ user sort cols → Id（analyze F4：避使用者排序時已刪列混入 active）|

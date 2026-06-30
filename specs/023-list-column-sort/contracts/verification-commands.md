@@ -53,7 +53,8 @@ curl -fsS "localhost:31081/systemManage/getUserList?sort=password:asc" -H "Autho
 curl -fsS "localhost:31081/systemManage/getUserList?sort=userName:sideways" -H "Authorization: Bearer $TOKEN" | jq '.code'  # 非法方向
 curl -fsS "localhost:31081/systemManage/getUserList?sort=userName:asc,userName:desc" -H "Authorization: Bearer $TOKEN" | jq '.code'  # 重複欄
 ```
-期望：三者皆 `code=="2222"`、`msg=="biz.common.invalidSort"`、HTTP 200、無錯排資料、無 5000。
+期望：三者皆 `code=="2222"`、wire `msg=="biz.common.invalidSort"`、HTTP 200、無錯排資料、無 5000。
+**CDP（analyze F2）**：瀏覽器主動觸發非法排序（或直接渲染該 wire error），驗 toast 顯**在地化文字**（譯自 `backend.biz.common.invalidSort`）、**非 raw key**（restart base-web 後驗）—— curl 只驗 wire msg、不抓前端鍵錯位。
 
 ## C-V-6 · 匯出反映排序（curl，僅審計頁）
 
@@ -72,6 +73,10 @@ curl -fsS "localhost:31081/systemManage/getOperationLogList?export=true&sort=ope
 4. `#suffix`「清除排序」鈕：label 文字非 raw key（`PAGE_HAS_RAWKEY:false`、斷言顯「清除排序」）；按下 → 全清、回預設。
 5. **持久化**：排序後 navigate 離開再回 `/manage/user` → 排序與箭頭還原。
 6. 至少再抽一個審計頁（access_log）驗多欄 + 清除。
+7. **FR-006/analyze F5**：在非第 1 頁時點欄頭 → pagination 跳回第 1 頁。
+8. **FR-015/analyze F6**：注入含失效（非白名單）欄的 persisted sort → 返回該頁 → 其餘有效排序生效、失效欄被丟棄、**無 error**。
+9. **FR-014/analyze F9**：多欄排序時 header **無優先序號碼 badge**（框架保證、順手斷言）。
+10. **analyze F3（audit tab 持久化獨立）**：`/manage/audit` 排序某 tab（如 operation by createTime）→ 切另一 tab → 切回 → 各 tab 排序**獨立保留**、不互相污染（驗複合 storageKey `manage_audit:<tab>`）。
 
 ## C-V-8 · migration up→down→up（m008 可逆）
 

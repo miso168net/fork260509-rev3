@@ -18,7 +18,7 @@ Phase 0 研究。解析 spec 與 brainstorm 的開放項，固化技術決策。
   - 每 entity 一個 `resolve_<entity>_sort(Vec<(String,Order)>) -> Result<Vec<(Column,Order)>, AppError>`：`match field { "userName" => Column::UserName, …, _ => Err(Biz) }`。**match 即白名單、擋注入**（無字串落進動態 SQL；repo 現無 `Column::from_str`、刻意維持）。
   - 錯誤碼＝**`2222`**（業務驗證、§I.3）；msg 用穩定 i18n key `biz.common.invalidSort`（沿用 `normalize_endpoint_method`→`biz.role.invalidEndpointMethod` 範式 `system_manage.rs` 測 `:3405-3417`）。
 - **Rationale**：白名單 + 去重天然把排序深度卡在「該表可排欄位數」，無需數字 cap。防注入由 match 強制。
-- **i18n 註**：`biz.common.invalidSort` 為 backend msg key；前端正常不觸發（只送白名單欄），但為 §I.3 一致性，前端 `backend.common.invalidSort` 譯文循既有 **BASE-WEB-I18N-WIRING ★** 軌道（ii/iii）補（既授權、非新 amendment）。
+- **i18n 註（analyze F2 校正）**：rust 回 wire msg `biz.common.invalidSort`；前端攔截器 `translateBackendMsg`=`$t('backend.'+msg)`（`src/locales/index.ts:25`）→ 查 **`backend.biz.common.invalidSort`**（既有 biz 錯誤皆 `backend.biz.<domain>.<cond>`）。故前端在 `backend.biz` 下加 `common.invalidSort` 譯文 + Schema（**非** `backend.common.invalidSort`、少 `biz.` 層→raw key），循既授權 **BASE-WEB-I18N-WIRING ★** (ii/iii)。前端正常不觸發（只送白名單欄）→ 須 CDP 主動觸發驗 toast 非 raw key。
 
 ## R3 — 逐頁可排序欄白名單（權威清單）
 
@@ -40,7 +40,8 @@ Phase 0 研究。解析 spec 與 brainstorm 的開放項，固化技術決策。
 
 - **Decision**：每個 list facade `list*` 簽章多收 `sort: Vec<(Column, Order)>`：
   - `sort` 空 → **走原本寫死的預設排序那行**（byte-identical 現況）。
-  - `sort` 非空 → `for (col,ord) in sort { q = q.order_by(col,ord); }` 後接 `Id` tie-breaker（方向＝該表既有 Id 預設向：user desc/role asc/logs desc/archive desc/ip-rule 多鍵）。取代預設內容排序、保留穩定分頁。
+  - `sort` 非空 → `for (col,ord) in sort { q = q.order_by(col,ord); }` 後接 `Id` tie-breaker（方向＝該表既有 Id 預設向：user desc/role asc/logs desc/archive desc）。取代預設內容排序、保留穩定分頁。
+  - ⚠️ **ip_rule 特例（analyze F4）**：`sys_ip_rule::list` 是回收桶（含已刪、領頭 `deleted_at IS NULL DESC` 把已刪沉底＋badge/restore）。sort 非空時**保留該領頭群組鍵**（已刪恆沉底）再接 user sort cols + Id，避免使用者排 cidr 時已刪列混入 active 列。其餘 6 facade 無此領頭群組、不受影響。
 - 受影響 facade：`sys_user::list_active`(`sys_user.rs:156`)、`sys_role::list`(`sys_role.rs:99`)、`sys_operation_log::list`、`sys_access_log::list`、`sys_login_attempt::list`、`sys_casbin_policy_archive::list`、`sys_ip_rule::list`（7 支）。
 
 ## R5 — 前端：受控排序 + 自維護點擊序
@@ -53,7 +54,7 @@ Phase 0 研究。解析 spec 與 brainstorm 的開放項，固化技術決策。
 
 ## R6 — 持久化（localStorage、per route.name）
 
-- **Decision**：沿用 `localStg`（`src/utils/storage.ts:5`、auto-JSON、有 prefix）。新 key（`StorageType.Local` 註冊、`src/typings/storage.d.ts`）存 `Record<routeName, sort字串>`，仿 tab store `cacheTabs`（`store/modules/tab/index.ts:349-352`）。key＝`route.name`（elegant-router 唯一穩定）。
+- **Decision**：沿用 `localStg`（`src/utils/storage.ts:5`、auto-JSON、有 prefix）。新 key（`StorageType.Local` 註冊、`src/typings/storage.d.ts`）存 `Record<storageKey, sort字串>`，仿 tab store `cacheTabs`（`store/modules/tab/index.ts:349-352`）。**storageKey（analyze F3）**：單表頁＝`route.name`（elegant-router 唯一穩定）；**多表共用單一 route 的頁須加 per-table 辨識** —— `/manage/audit`＝1 route（`manage_audit`、`routes.ts:254`）含 operation/access/login 3 tab 表，各表 storageKey＝`` `${route.name}:${tab}` ``，否則 3 表共用 route.name 互相覆寫（`createTime` 三表都有→還原污染、last-writer-wins）。
 - 還原：mount 讀回 → 解析有序 `{columnKey,order}` → 設受控 `sortOrder` + `searchParams.sort` → 首次 fetch 已排好。防禦性丟棄「已不存在/不在白名單」欄（FR-015）。
 - 排序變更 reset 回第 1 頁（FR-006）。clear-all（`tableRef.clearSorter()` `DataTable.mjs:281` → `@update:sorter(null)`）清狀態 + 清該 route key + 重抓。
 

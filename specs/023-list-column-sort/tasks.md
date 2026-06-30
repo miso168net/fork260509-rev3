@@ -37,9 +37,9 @@ description: "Task list — 列表欄位排序（023-list-column-sort）"
 - [ ] T004 寫 7 個 `resolve_<entity>_sort` 白名單測試（red）於 `system_manage.rs`：每 entity 白名單欄命中→正確 `Column`、未白名單欄→`Err`（對照 data-model §3）
 - [ ] T005 實作 7 個 `resolve_<entity>_sort(Vec<(String,Order)>) -> Result<Vec<(Column,Order)>, AppError>`（green）於 `system_manage.rs`：`match` 白名單映 Column（user/role/ip_rule/operation_log/access_log/login_attempt/casbin_policy_archive；**grep entity `Column` 真實變體名對齊**，⚠️ `sys_ip_rule.Column::Order` 對應保留字欄）
 - [ ] T006 7 個 list query DTO inline 加 `sort: Option<String>`（camelCase）於 `system_manage.rs`：`UserSearchQuery`/`RoleSearchQuery`/`OperationLogQuery`/`AccessLogQuery`/`LoginAttemptQuery`/`ArchivedPolicySearchQuery`/`IpRuleSearchQuery`
-- [ ] T007 7 個 facade `list*` 簽章加 `sort: Vec<(Column, Order)>` 並 apply（`sort` 空→走原預設那行 byte-identical；非空→`for (c,o) in sort { q=q.order_by(c,o) }` + Id tie-break）於 `rust-api/server/src/model/facade/sys_{user,role,ip_rule,operation_log,access_log,login_attempt,casbin_policy_archive}.rs`（data-model §4）
+- [ ] T007 7 個 facade `list*` 簽章加 `sort: Vec<(Column, Order)>` 並 apply（`sort` 空→走原預設那行 byte-identical；非空→`for (c,o) in sort { q=q.order_by(c,o) }` + Id tie-break、方向依各表既有 Id 預設）於 `rust-api/server/src/model/facade/sys_{user,role,ip_rule,operation_log,access_log,login_attempt,casbin_policy_archive}.rs`（data-model §4）。⚠️ **ip_rule 特例（analyze F4）**：sort 非空時仍**保留領頭 `deleted_at IS NULL DESC` 群組鍵**（回收桶語意、已刪恆沉底）再接 user sort cols + Id，避免已刪列混入
 - [ ] T008 7 handler 接線（`parse_sort_spec` → `resolve_<entity>_sort` → 傳入 facade `list`；3 審計頁 export 分支共用同一呼叫→自動反映排序 FR-016）於 `system_manage.rs`；非法 sort 由 `?` 冒泡成 `2222`
-- [ ] T009 後端非法排序 i18n key：base-web 加 `backend.common.invalidSort` 譯文（`src/locales/langs/{zh-cn,en-us}.ts` 的 `backend` 命名空間 + `src/typings/app.d.ts` Schema，**先 Schema 後 locale**，循 BASE-WEB-I18N-WIRING ★ (ii)(iii)）—— 防禦性（前端正常不觸發、只送白名單欄）
+- [ ] T009 後端非法排序 i18n key（analyze F2）：rust 回 wire msg `biz.common.invalidSort`（T003）；攔截器 `translateBackendMsg`=`$t('backend.'+msg)`（`base-web/src/locales/index.ts:25`）→ 查 **`backend.biz.common.invalidSort`**。故 base-web 在 **`backend.biz` 下新增 `common.invalidSort`** 譯文（`src/locales/langs/{zh-cn,en-us}.ts` + `src/typings/app.d.ts` Schema，**先 Schema 後 locale**，循 BASE-WEB-I18N-WIRING ★ (ii)(iii)）—— **絕不**用 `backend.common.invalidSort`（少 `biz.` 層→raw key）。防禦性（前端正常不觸發、只送白名單欄；故須 CDP 主動觸發驗 toast 非 raw key、見 C-V-5）
 
 ### 前端引擎（base-web，可與 rust [P]）
 
@@ -59,8 +59,8 @@ description: "Task list — 列表欄位排序（023-list-column-sort）"
 **Independent Test**：user 頁多頁資料點欄頭，第一列為全表極值（非僅當前頁）。
 
 - [ ] T014 [US1] wire `base-web/src/views/manage/user/index.vue`：import `useTableSort`+`useRoute`、可排序欄（userName/userGender/nickName/userPhone/userEmail/status，data-model §3）spread 排序 props、`<NDataTable>` 綁 `@update:sorter`、`sort` 併進 `searchParams`
-- [ ] T015 [US1] curl acceptance（C-V-2/4/5）：getUserList `?sort=userName:asc` 順序對整資料集（psql 比對）、空 sort→id desc 等同現況、`?sort=password:asc`/`:sideways`/重複欄→`code==2222`+`biz.common.invalidSort`
-- [ ] T016 [US1] CDP acceptance（C-V-7.1-2、先 restart base-web）：user 欄頭點擊 3-state（▼降→▲升→取消）、list 重抓、第一列變
+- [ ] T015 [US1] curl acceptance（C-V-2/4/5）：getUserList `?sort=userName:asc` 順序對整資料集（psql 比對）、空 sort→id desc 等同現況、`?sort=password:asc`（非白名單欄）/`?sort=userRoles:asc`（衍生欄、F8）/`:sideways`（非法方向）/重複欄→`code==2222`+wire msg `biz.common.invalidSort`
+- [ ] T016 [US1] CDP acceptance（C-V-7.1-2、先 restart base-web）：user 欄頭點擊 3-state（▼降→▲升→取消）、list 重抓、第一列變；**在非第 1 頁時點欄頭 → pagination 跳回第 1 頁（FR-006/analyze F5）**
 
 **Checkpoint**：單欄 server-side 排序在 user 頁可用（MVP）。
 
@@ -78,7 +78,7 @@ description: "Task list — 列表欄位排序（023-list-column-sort）"
 - [ ] T020 [P] [US2] wire `base-web/src/views/manage/policy-archive/modules/policy-archive-table.vue` 可排序欄（roleCode/target/archivedTime/createdTime/archivedBy/archiveReason；dimension 排除）
 - [ ] T021 [US2] curl acceptance（C-V-3）：`?sort=status:asc,userName:desc` 主/次序正確；抽驗各頁端點 empty→預設等同現況（C-V-4 擴及 7 端點）
 - [ ] T022 [US2] 匯出反映排序（C-V-6）：3 審計頁 `?export=true&sort=...` CSV 列序依排序（共用 facade、應自動；驗證）
-- [ ] T023 [US2] CDP 多欄 acceptance（C-V-7.3）：user + 一審計頁實點多欄、驗 DOM 主/次列序
+- [ ] T023 [US2] CDP 多欄 acceptance（C-V-7.3）：user + 一審計頁實點多欄、驗 DOM 主/次列序；**順手斷言多欄 header 無優先序號碼 badge（FR-014、框架保證、analyze F9）**
 
 **Checkpoint**：7 頁全可排、多欄點擊序、匯出反映。
 
@@ -91,7 +91,7 @@ description: "Task list — 列表欄位排序（023-list-column-sort）"
 **Independent Test**：多欄排序後按「清除排序」→ 回預設、指示消失。
 
 - [ ] T024 [US3] `useTableSort` 加 `clearAll()`（`tableRef.clearSorter()` → `@update:sorter(null)` → 清狀態+清儲存+重抓）於 `src/hooks/common/use-table-sort.ts`
-- [ ] T025 [US3] 7 頁工具列 `TableHeaderOperation` 的 `#suffix` slot 掛「清除排序」鈕（label `common.clearSort`、綁 `clearAll`；建議抽小元件 `src/components/.../sort-clear-button.vue` 避 7 頁重複、**不改 `table-header-operation.vue` 本體**）
+- [ ] T025 [US3] 掛「清除排序」鈡（label `common.clearSort`、綁 `clearAll`；抽共用元件 `src/components/.../sort-clear-button.vue` 避重複）—— **逐頁掛點（analyze F1：僅 3 頁有 `TableHeaderOperation`）**：user/role/ip-rule 用 `TableHeaderOperation` 的 `#suffix` slot；**3 審計表（operation/access/login-attempt-table.vue）+ policy-archive-table.vue 用各自既有 `NSpace` 工具列 inline 加鈕**（無 `TableHeaderOperation`）。**不改 `table-header-operation.vue` 元件本體**；每改一處記 file:line + `rev3-inline` 標記（§III）
 - [ ] T026 [US3] CDP acceptance（C-V-7.4，先 restart base-web）：清除鈕 label 非 raw key（`PAGE_HAS_RAWKEY:false`）、按下全清回預設
 
 **Checkpoint**：一鍵清除可用。
@@ -104,9 +104,9 @@ description: "Task list — 列表欄位排序（023-list-column-sort）"
 
 **Independent Test**：排序 → 導航離開 → 返回 → 排序+箭頭還原。
 
-- [ ] T027 [US4] `useTableSort` 加持久化於 `src/hooks/common/use-table-sort.ts`：`localStg` 存 `Record<routeName, sort字串>`（`StorageType.Local` 註冊新 key 於 `src/typings/storage.d.ts`，仿 tab store `cacheTabs`）+ mount 還原（解析→受控 sortOrder + searchParams.sort）+ 防禦性丟棄非白名單/不存在欄（FR-015）
-- [ ] T028 [US4] 7 頁傳 `route.name`（`useRoute()`）給 composable 作 per-page 持久化 key（user 頁 T014 已引入；其餘頁補）
-- [ ] T029 [US4] CDP acceptance（C-V-7.5）：排序 → navigate 離開 → 返回 → 資料順序+箭頭還原
+- [ ] T027 [US4] `useTableSort` 加持久化於 `src/hooks/common/use-table-sort.ts`：composable 收一個 `storageKey: string`（caller 給）、`localStg` 存 `Record<storageKey, sort字串>`（`StorageType.Local` 註冊新 key 於 `src/typings/storage.d.ts`，仿 tab store `cacheTabs`）+ mount 還原（解析→受控 sortOrder + searchParams.sort）+ **防禦性丟棄非白名單/不存在欄（FR-015）**。⚠️ **storageKey 非僅 route.name（analyze F3）**：多表共用單一 route 的頁（`/manage/audit`＝1 route 3 tab 表）須加 per-table 辨識（見 T028）
+- [ ] T028 [US4] 各表傳 `storageKey` 給 composable：單表頁（user/role/ip-rule/policy-archive）= `route.name`；**`/manage/audit` 的 3 表各傳 `` `${route.name}:${tab}` ``（tab∈operation/access/login）避免共用 route.name 互相覆寫（analyze F3）**（user 頁 T014 已引入 useRoute；其餘頁補）
+- [ ] T029 [US4] CDP acceptance（C-V-7.5）：排序 → navigate 離開 → 返回 → 資料順序+箭頭還原；**(a) FR-015/analyze F6**：手動注入含失效（非白名單）欄的 persisted sort → 返回 → 驗其餘有效排序生效且**無 error**、失效欄被丟棄；**(b) analyze F3**：`/manage/audit` 排序某 tab → 切另一 tab → 切回 → 各 tab 排序**獨立保留**（不互相污染）
 
 **Checkpoint**：持久化可用。
 
@@ -179,3 +179,4 @@ US1（MVP）→ US2（全頁+多欄+匯出）→ US3（清除）→ US4（持久
 - 測試：純函式 test-first（T002/T004 red→green）；wiring 由 C-V acceptance 覆蓋。
 - 每執行單元邊界主線復核 + bump pin；**push/merge 留收尾、需 user 同意**。
 - 可排序欄白名單權威＝data-model §3；wire 契約＝contracts/sort-wire-contract.md；驗收＝contracts/verification-commands.md。
+- **§III fork-delta（analyze F10）**：每處 base-web inline 改動（MODAL-WIRING (f) 範圍）記 file:line + 改動內容 + upstream 衝突風險 + `rev3-inline` 標記（修改型保留原行註解、新增型圈界）。
