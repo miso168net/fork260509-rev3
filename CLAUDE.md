@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **023-list-column-sort**（spec+clarify+plan 已產、feature branch `023-list-column-sort`；**MODAL-WIRING ★ (f) Amendment 已親決〔⚠️af、constitution v1.2.0、`ef070468`〕、Constitution Check 9/9、可進 tasks**）。**列表欄位排序**：7 個分頁列表（user/role + 5 審計/治理頁、menu 排除）支援點欄頭 **server-side 多欄排序**〔點擊序＝優先序、naive-ui 原生 3-state 反序起手〕＋一鍵清除＋localStorage per-route 持久化。後端每端點 +單一 `sort` query 字串〔`field:dir,...`〕→ `parse_sort_spec`＋per-entity `match` 白名單〔防注入、非法→2222〕→ facade `list` 依序 order_by＋Id tie-break〔未指定逐列等同現況〕；匯出 3 審計頁共用 facade 自動反映排序（FR-016）。前端 `useTableSort` composable〔受控排序＋自維護點擊序＋持久化〕。資料層唯一改動＝index-only migration `m008`〔補 `idx_login_attempt_created_at`、clarify Q1 拍板取捨、推翻 0-migration〕。plan 見 [specs/023-list-column-sort/plan.md](specs/023-list-column-sort/plan.md)、Constitution Check 8/9 PASS〔唯 (f) gate〕。
-下一步: **`/speckit-tasks`** → `superpowers:executing-plans`（Workflow 驅動、不用 /speckit-implement）。〔(f) Amendment 已親決、Constitution gate 已清〕
+Active feature: **023-list-column-sort**（spec+clarify+plan+tasks+analyze 全產〔analyze 3 HIGH+F4 remediation 已套〕、feature branch `023-list-column-sort`；**MODAL-WIRING ★ (f) Amendment 已親決〔⚠️af、constitution v1.2.0、`ef070468`〕、Constitution Check 9/9、可進實作**）。**列表欄位排序**：7 個分頁列表（user/role + 5 審計/治理頁、menu 排除）支援點欄頭 **server-side 多欄排序**〔點擊序＝優先序、naive-ui 原生 3-state 反序起手〕＋一鍵清除＋localStorage per-route 持久化。後端每端點 +單一 `sort` query 字串〔`field:dir,...`〕→ `parse_sort_spec`＋per-entity `match` 白名單〔防注入、非法→2222〕→ facade `list` 依序 order_by＋Id tie-break〔未指定逐列等同現況〕；匯出 3 審計頁共用 facade 自動反映排序（FR-016）。前端 `useTableSort` composable〔受控排序＋自維護點擊序＋持久化〕。資料層唯一改動＝index-only migration `m008`〔補 `idx_login_attempt_created_at`、clarify Q1 拍板取捨、推翻 0-migration〕。plan 見 [specs/023-list-column-sort/plan.md](specs/023-list-column-sort/plan.md)、Constitution Check 8/9 PASS〔唯 (f) gate〕。
+下一步: **進實作 —— 貼 §3 驅動提示詞起 `superpowers:executing-plans`（Workflow 驅動、不用 /speckit-implement）**。〔SDD 鏈 specify→clarify→plan→tasks→analyze 全完成、analyze remediation 已套〕
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
