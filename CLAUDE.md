@@ -3,7 +3,7 @@
 > 此檔覆寫並補充全域 Claude Code 設定。專案特定規則優先；通用規則沿用全域。
 > 本工作區是 `fork260509-rev2` 的 **rev3 重建**：相同設計骨幹、不同命名（短名 base-web/rust-api、長名 rev3-）。
 > 帶有 ⏳ 符號的說明，是檔案或內容尚未落地；user 問及此檔狀態時請列出 ⏳ 項目提醒。
-> ⏳ **rev3 波 0~4 全完成＋019/020/021/022 收刀**（最近收刀 022-ip-access-control＝2026-06-29〔波4 後獨立刀＝通用 IP 白/黑名單存取控制閘 `ipgate_mw`＋CF Tunnel real_ip 窄 fallback＋手動解鎖、merge `d9c809e6`〕；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯／**observability 觀測層**／**登入失敗節流 gate**／**角色刪除治理（020）**／**lockout redis 快取（021）**／**IP 存取控制閘（022）**（001-022）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md)、候選遞延見 [CHECKLIST §4.2／§3.I](docs/INTEGRATION-CHECKLIST.md)（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
+> ⏳ **rev3 波 0~4 全完成＋019/020/021/022/023 收刀**（最近收刀 023-list-column-sort＝2026-07-01〔波4 後獨立刀＝列表欄位排序：7 個分頁列表 server-side 多欄排序〔點擊序＝優先序、naive-ui 原生 3-state〕＋一鍵清除＋localStorage per-route 持久化、merge `009901fa`〕；當前無 active feature）：infra/foundational／system-settings 打樋／data islands／治理島＋三維 RBAC runtime 編輯／**observability 觀測層**／**登入失敗節流 gate**／**角色刪除治理（020）**／**lockout redis 快取（021）**／**IP 存取控制閘（022）**／**列表欄位排序（023）**（001-023）均已收刀，波次→刀對映詳 [MILESTONES §1](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §2](docs/INTEGRATION-DECISIONS.md)、active snapshot 見 §6 marker。下一波 roadmap 見 [DESIGN §8.4](docs/INTEGRATION-DESIGN.md)、候選遞延見 [CHECKLIST §4.2／§3.I](docs/INTEGRATION-CHECKLIST.md)（rev2 研究三檔為史料、不移植不重作，見 §7.1）。
 
 ---
 
@@ -382,8 +382,8 @@ cd ..
 > 下面 `<!-- SPECKIT START / END -->` marker 區為當前 feature 的 active spec/plan 快照，Claude 在 feature 啟動/收尾時手動維護（**只用簡潔描述、不擴張內容**；marker 名稱保留供 spec-kit 將來自動同步、**勿刪**）。
 
 <!-- SPECKIT START -->
-Active feature: **023-list-column-sort**（spec+clarify+plan+tasks+analyze 全產〔analyze 3 HIGH+F4 remediation 已套〕、feature branch `023-list-column-sort`；**MODAL-WIRING ★ (f) Amendment 已親決〔⚠️af、constitution v1.2.0、`ef070468`〕、Constitution Check 9/9、可進實作**）。**列表欄位排序**：7 個分頁列表（user/role + 5 審計/治理頁、menu 排除）支援點欄頭 **server-side 多欄排序**〔點擊序＝優先序、naive-ui 原生 3-state 反序起手〕＋一鍵清除＋localStorage per-route 持久化。後端每端點 +單一 `sort` query 字串〔`field:dir,...`〕→ `parse_sort_spec`＋per-entity `match` 白名單〔防注入、非法→2222〕→ facade `list` 依序 order_by＋Id tie-break〔未指定逐列等同現況〕；匯出 3 審計頁共用 facade 自動反映排序（FR-016）。前端 `useTableSort` composable〔受控排序＋自維護點擊序＋持久化〕。資料層唯一改動＝index-only migration `m008`〔補 `idx_login_attempt_created_at`、clarify Q1 拍板取捨、推翻 0-migration〕。plan 見 [specs/023-list-column-sort/plan.md](specs/023-list-column-sort/plan.md)、Constitution Check 8/9 PASS〔唯 (f) gate〕。
-下一步: **進實作 —— 貼 §3 驅動提示詞起 `superpowers:executing-plans`（Workflow 驅動、不用 /speckit-implement）**。〔SDD 鏈 specify→clarify→plan→tasks→analyze 全完成、analyze remediation 已套〕
+Active feature: **（無 active feature — 023-list-column-sort 已收刀 2026-07-01、merge `009901fa`、feature branch 保留、pins rust-api `2591efe`/base-web `78791b33`）**。023＝列表欄位排序（7 個分頁列表 server-side 多欄排序〔點擊序＝優先序、naive-ui 原生 3-state〕＋一鍵清除＋localStorage per-route 持久化；後端 `parse_sort_spec`＋per-entity `resolve_sort` 白名單〔防注入、relocate facade 模組〕＋7 facade sort apply〔空 byte-identical、ip_rule 保留 `deleted_at IS NULL` 領頭群組〕＋export 共用 facade FR-016＋**m008** 索引〔clarify Q1〕；前端 `useTableSort`〔受控+點擊序+clearAll+持久化+FR-015〕＋`SortClearButton`＋`WithSort` typings＋i18n〔common.clearSort+新建 backend.biz.common.invalidSort〕）。Constitution 9/9〔MODAL-WIRING (f) v1.2.0 ⚠️af〕、final holistic review fresh-agent 冷讀 PASS、rust 235 測+lint+migration up→down→up+typecheck+tsx 22+各單元 CDP 全綠。詳 [MILESTONES §1 `009901fa`](docs/INTEGRATION-MILESTONES.md)／[DECISIONS §1 ⚠️af](docs/INTEGRATION-DECISIONS.md)。
+下一步: **下一刀待定（當前無 active feature）**。候選見 [DESIGN §8.4 roadmap](docs/INTEGRATION-DESIGN.md)、遞延見 [CHECKLIST §4.2／§3.I](docs/INTEGRATION-CHECKLIST.md)。
 <!-- SPECKIT END -->
 
 ## 7. 整合設計文件職責分工
