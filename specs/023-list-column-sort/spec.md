@@ -8,6 +8,13 @@
 
 **Input**: Phase 0 brainstorm — `docs/superpowers/023-list-column-sort.md`（多欄 server-side 列表排序 ＋ 一鍵清除 ＋ 本機持久化；範圍 7 個分頁列表、menu 排除）
 
+## Clarifications
+
+### Session 2026-06-30
+
+- Q: 大型列表（尤其日誌類）對非預設、未建索引欄位排序的效能取捨？ → A: 接受 best-effort —— 不加索引、不新增 migration（維持 brainstorm 決定）；大表冷門欄排序可能較慢，屬可接受取捨，日後特定欄證實慢再單獨補索引（不在本刀範圍）。
+- Q: 有 CSV 匯出的頁面，匯出資料是否反映當前排序？ → A: 是 —— 匯出反映使用者當前排序（與畫面一致）；重用同一 list 查詢路徑帶入 sort。
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - 依單一欄位排序整個列表 (Priority: P1)
@@ -99,6 +106,7 @@
 - **FR-013**: 本功能 MUST 套用於下列列表頁：使用者、角色、操作日誌、存取日誌、登入嘗試、政策封存、IP 規則。選單管理（樹狀檢視）明確排除。
 - **FR-014**: 目前有排序的欄位 MUST 顯示排序方向指示；多欄排序時 MUST NOT 顯示優先序號碼。
 - **FR-015**: 還原已保留的排序時，系統 MUST 防禦性忽略「已不存在或已不可排序」的欄位。
+- **FR-016**: 對於具備 CSV 匯出的列表頁（如審計／日誌類），匯出的資料 MUST 反映使用者當前的排序（與畫面顯示一致）。
 
 ### Key Entities
 
@@ -125,7 +133,7 @@
 - 排序保留為 per-瀏覽器（本機）、跨頁面導航與瀏覽器重啟皆保留；不跨裝置／使用者同步；登出時不清除（視為無害 UI 偏好；planning 可重議）。
 - 點擊循環以「降冪」起手（沿用平台內建表格行為——使用者拍板採原生、最簡，不自訂循環）。
 - 各列表「確切可排序欄位清單」於 `/speckit-plan` 與 spec-review 定案（預設：對應單一資料欄的純量欄位；排除 join／衍生／操作欄）。
-- 後端不新增資料表／migration（僅就既有資料欄排序）、不新增 workspace crate。
+- 後端不新增資料表／migration（僅就既有資料欄排序）、不新增 workspace crate。**排序效能為 best-effort**：不為可排序欄另建索引；大型日誌表對非預設／未索引欄排序可能較慢，屬可接受取捨，日後特定欄證實慢再單獨補索引（不在本刀範圍）。
 - **治理依賴（待 Constitution Check 裁決）**：本功能須修改既有 base-web 列表檢視（inline）以掛載排序互動與「清除排序」控制項。依專案 constitution §I.1／§III 軌道授權，此屬 base-web inline 變更；現行 MODAL-WIRING ★ 授權用途 (a)~(e) 未涵蓋「列表排序掛載」。需於 `/speckit-plan` 的 Constitution Check 確認軌道授權，**很可能需 MODAL-WIRING ★ 新用途 (f) 之 Amendment（user 親決，§V.2）**。新增之 composable／service wrapper／typings 等新檔則落 ADAPT／WRAPPER 既有軌道。
 
 ## Dependencies
@@ -133,3 +141,4 @@
 - 既有 7 個分頁列表頁與其後端列表查詢端點（使用者／角色／操作日誌／存取日誌／登入嘗試／政策封存／IP 規則）。
 - 既有分頁機制（每頁 `current`／`size`）與既有空字串篩選守門慣例（未設參數序列化為空 → 視為未設）。
 - 既有業務驗證錯誤通道（wire `2222`／i18n key）作為「無效排序」的拒絕載體（細節於 planning 對齊 §I.3 wire 契約）。
+- 既有 CSV 匯出路徑（017）：須將當前排序帶入匯出查詢，使匯出順序與畫面一致（FR-016）。
