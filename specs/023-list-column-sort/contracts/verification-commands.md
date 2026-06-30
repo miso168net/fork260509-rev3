@@ -59,7 +59,7 @@ curl -fsS "localhost:31081/systemManage/getUserList?sort=userName:asc,userName:d
 ## C-V-6 · 匯出反映排序（curl，僅審計頁）
 
 ```
-curl -fsS "localhost:31081/systemManage/getOperationLogList?export=true&sort=operation:asc" -H "Authorization: Bearer $TOKEN" | jq -r '.data.csv' | head -3
+curl -fsS "localhost:31081/systemManage/getOperationLog?export=true&sort=operation:asc" -H "Authorization: Bearer $TOKEN" | jq -r '.data.csv' | head -3
 ```
 期望：CSV 內容列序依 `sort`（operation 升冪）。user/role/ip-rule 無匯出、不驗。
 

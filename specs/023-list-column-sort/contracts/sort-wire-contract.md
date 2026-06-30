@@ -14,7 +14,7 @@ GET /systemManage/getUserList?current=1&size=10&userName=&sort=userName:asc,stat
 - `dir` ∈ `asc` | `desc`。`field` ∈ 該端點白名單（data-model §3）。
 - 未設 / 空字串 / 全空白 → 無排序（回該端點既有預設排序）。沿用空字串守門（`normalize_str_filter`）。
 
-涉及端點：`getUserList` / `getRoleList` / `getOperationLogList` / `getAccessLogList` / `getLoginAttemptList` / `getArchivedPolicyList` / `getIpRuleList`（實際 route 名以 `main.rs` 註冊為準、plan 對齊）。
+涉及端點：`getUserList` / `getRoleList` / `getOperationLog` / `getAccessLog` / `getLoginAttempt` / `getArchivedPolicies` / `getIpRuleList`（route 名以 `main.rs` 註冊為準）。
 
 ## 回應（不變）
 
