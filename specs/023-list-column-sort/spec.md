@@ -12,7 +12,7 @@
 
 ### Session 2026-06-30
 
-- Q: 大型列表（尤其日誌類）對非預設、未建索引欄位排序的效能取捨？ → A: 接受 best-effort —— 不加索引、不新增 migration（維持 brainstorm 決定）；大表冷門欄排序可能較慢，屬可接受取捨，日後特定欄證實慢再單獨補索引（不在本刀範圍）。
+- Q: 大型列表（尤其日誌類）對非預設、未建索引欄位排序的效能取捨？ → A: 大多 best-effort，但**補 1 條索引**修唯一真缺口 —— `idx_login_attempt_created_at`（`sys_login_attempt.created_at`：高基數、為該表預設排序欄、現無專屬索引，異於 operation/access 已有）。其餘高基數欄排序少見、低基數欄（success 布林等）加索引對排序無益，皆維持 best-effort。**→ 本刀含一支 index-only migration。**（初判曾傾向全 best-effort；查清 4 表〔operation_log/access_log/login_attempt/casbin_policy_archive，皆 append-only 無 retention〕索引現況後改判補此單一缺口。）
 - Q: 有 CSV 匯出的頁面，匯出資料是否反映當前排序？ → A: 是 —— 匯出反映使用者當前排序（與畫面一致）；重用同一 list 查詢路徑帶入 sort。
 
 ## User Scenarios & Testing *(mandatory)*
@@ -133,8 +133,8 @@
 - 排序保留為 per-瀏覽器（本機）、跨頁面導航與瀏覽器重啟皆保留；不跨裝置／使用者同步；登出時不清除（視為無害 UI 偏好；planning 可重議）。
 - 點擊循環以「降冪」起手（沿用平台內建表格行為——使用者拍板採原生、最簡，不自訂循環）。
 - 各列表「確切可排序欄位清單」於 `/speckit-plan` 與 spec-review 定案（預設：對應單一資料欄的純量欄位；排除 join／衍生／操作欄）。
-- 後端不新增資料表／migration（僅就既有資料欄排序）、不新增 workspace crate。**排序效能為 best-effort**：不為可排序欄另建索引；大型日誌表對非預設／未索引欄排序可能較慢，屬可接受取捨，日後特定欄證實慢再單獨補索引（不在本刀範圍）。
-- **治理依賴（待 Constitution Check 裁決）**：本功能須修改既有 base-web 列表檢視（inline）以掛載排序互動與「清除排序」控制項。依專案 constitution §I.1／§III 軌道授權，此屬 base-web inline 變更；現行 MODAL-WIRING ★ 授權用途 (a)~(e) 未涵蓋「列表排序掛載」。需於 `/speckit-plan` 的 Constitution Check 確認軌道授權，**很可能需 MODAL-WIRING ★ 新用途 (f) 之 Amendment（user 親決，§V.2）**。新增之 composable／service wrapper／typings 等新檔則落 ADAPT／WRAPPER 既有軌道。
+- 後端不新增資料表、不新增 workspace crate。**本刀含一支 index-only migration**：補 `sys_login_attempt.created_at` 的缺失索引（高基數、該表預設排序欄；operation/access 已有對應索引、login_attempt 漏補）。其餘排序效能為 **best-effort**：不為一般可排序欄另建索引（高基數欄排序少見、低基數欄加索引對排序無益），大型日誌表對非索引欄排序可能較慢，屬可接受取捨、日後個別欄證實慢再補。
+- **治理依賴（待 Constitution Check 裁決）**：本功能須修改既有 base-web 列表檢視（inline）以掛載排序互動與「清除排序」控制項。依專案 constitution §I.1／§III 軌道授權，此屬 base-web inline 變更；現行 MODAL-WIRING ★ 授權用途 (a)~(e) 未涵蓋「列表排序掛載」。需於 `/speckit-plan` 的 Constitution Check 確認軌道授權，**很可能需 MODAL-WIRING ★ 新用途 (f) 之 Amendment（user 親決，§V.2）**。新增之 composable／service wrapper／typings 等新檔則落 ADAPT／WRAPPER 既有軌道。**另**：本刀含一支 index-only migration（補 `login_attempt.created_at`），屬 schema 變更、亦列 `/speckit-plan` Constitution Check —— §I.6 審計欄規則不適用（非新表、非加欄、僅加索引）。
 
 ## Dependencies
 
