@@ -76,7 +76,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`;最近一輪 **2026-06-29**〔3499 nodes/4413 edges/502 community、見 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)〕：008-017 rust 已於 2026-06-24 同步、**018 obs 已於 2026-06-25 增量入圖**〔rust 埋点 audit_ctx span/event＋main.rs /metrics+json subscriber＋enforce.rs casbin counter＋cleanup-job push_metrics＋master compose obs 7 service/4 卷/1 secret 手刻;`request` 升 god node 18 edges〕。圖反映 rust-api worktree `cb2767f`＋base-web `aa2f57bc`＋master compose 現碼;只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`、不入圖、GRAPHIFY-NOTES §4）。**019/020/021/022 已於 2026-06-29 增量入圖**〔39 變更 code 檔重抽、純 AST 0 LLM；★ `build_merge(dedup=False)` 避 fuzzy-label dedup 誤併 distinct〔skill 預設 dedup=True 砍到 2782、171 fuzzy 誤併〕→ 3311→3499（+188：rust-api +138 ipgate/sys_ip_rule/m007/handler、base-web +50 ip-rule 管理頁）；174「deleted」全＝docs 源倉舊 manifest 殘留〔圖內早無此節點、prune no-op〕、manifest 已校正；詳 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)〕。下次大改後再 update）
+- [ ] graphify 圖譜更新（大改後 `graphify update`）：最近一輪 **2026-06-29**〔**3499** nodes／**4413** edges／**502** community；008-022 全已入圖；圖反映 rust-api `cb2767f`＋base-web `aa2f57bc`＋master compose〕、現況統計與增量史詳 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)。只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`）。★ **本 corpus 必用 `build_merge(dedup=False)`**——skill 預設 `dedup=True` 全域 fuzzy-label dedup 會誤併 distinct 節點（再三實證砍圖、最近一次砍 3499→2782）；外科式配方見 [GRAPHIFY-NOTES §4](GRAPHIFY-NOTES.md)。下次大改後再 update。
 
 ---
 

@@ -43,7 +43,7 @@ pub/sub channel、redis key、event bus、動態 config key 這類**靠執行期
 
 **實證（2026-06-24）**：casbin 跨副本失效廣播 `reload_and_publish`（publisher）與 `spawn_policy_watcher`（subscriber）靠 redis channel `"casbin:policy:invalidate"` 耦合，但在圖上：
 
-- 兩者**分屬不同社群**（240 vs 211）、**彼此零邊**；
+- 兩者**分屬不同社群**、**彼此零邊**（社群 ID 隨每次重分群變動、不列舉）；
 - channel 常數 `CASBIN_INVALIDATE_CHANNEL` **根本不是節點**（`graphify explain` 回 "No node matching..."）。
 
 → 問「誰會因這個寫入被通知／重載」「事件 X 的訂閱者是誰」這類問題，**圖必漏**，直接 `grep` channel 字串兩端。同類受害：`settings:invalidate`、`revoked:user:{uid}` denylist key 等。
@@ -53,7 +53,7 @@ pub/sub channel、redis key、event bus、動態 config key 這類**靠執行期
 → 問 Vue SFC 之間 wiring（哪個 view 用哪個 component／composable）**直接讀 SFC**、別只信圖。
 
 ### 2.3 rust = AST-only：結構完整、概念邊稀疏
-rust 後端走 AST（`calls`/`contains`/`imports` 完整），但**幾乎沒有 LLM semantic 概念邊**：實測 rust 涉入的 `semantically_similar_to`/`conceptually_related_to`/`shares_data_with` 概念邊僅 **5 條**（base-web 有 177 條）。
+rust 後端走 AST（`calls`/`contains`/`imports` 完整），但**幾乎沒有 LLM semantic 概念邊**：實測 rust 涉入的 `semantically_similar_to`/`conceptually_related_to`/`shares_data_with` 概念邊僅 **1 條**（base-web 涉入 23 條；全圖 concept 邊共 24、2026-06-29）。
 → rust 的「結構」可信（誰呼叫誰、誰 import 誰），但「跨檔概念關聯／同類設計」圖上幾乎空白；要這類洞察須讀碼、或對 rust 另跑 semantic pass。
 
 ### 2.4 docs 源倉過度索引（噪音）— ✅ 已 prune（2026-06-24）
@@ -63,9 +63,9 @@ rust 後端走 AST（`calls`/`contains`/`imports` 完整），但**幾乎沒有 
 ### 2.5 `const`／字面值不成節點
 AST 不把 `const`/字串字面值抽成節點（如 §2.1 的 `CASBIN_INVALIDATE_CHANNEL`）。靠常數耦合的關係因此**雙重隱形**（既無節點、又無邊）。
 
-### 2.6 社群碎片化 + 標籤多為 placeholder
-661 社群、中位數僅 5 節點、234 個 thin（<3）。手寫精準標籤僅 top ~35 個，其餘 **626 個是 `Community N` placeholder**（無語意）。
-→ 「社群」邊界**不等於**模組真實邊界；placeholder 標籤別據以推論。
+### 2.6 社群碎片化 + 標籤為 top-node 自動衍生
+**502** 社群、中位數 **4** 節點、**206** 個 thin（<3）。標籤自 **2026-06-29 起全 502 個由【該社群最高 degree 節點的 label】自動衍生**（top-node-derived，如 `system manage.rs`／`ipgate.rs`／`audit ctx.rs`；非手寫精準語意、**0** 個 `Community N` placeholder）。
+→ 「社群」邊界**不等於**模組真實邊界；標籤僅供導覽（file-name-ish、非策展模組名）、別據以推論模組歸屬。
 
 ### 2.7 `calls` 邊 confidence 標記不一致（小坑）
 同為 AST `calls` 邊，`explain` 有時標 `[EXTRACTED]` 有時 `[INFERRED]`（實測 `mutate_in_txn` 的 caller 多標 INFERRED、`reload_and_publish` 的 caller 標 EXTRACTED）。
@@ -83,7 +83,7 @@ AST 解析得了 **unqualified call**（`use` import 後直呼 `f(...)`、`super
 | `revoke_chain` | `revoke_chain_and_logout`（qualified） | 只有 toctou 測試（`super::`）、**缺 handler** |
 | `insert_token` | login + rotate ×2（皆 qualified） | 只有 toctou 測試（`super::`） |
 
-對照：`mutate_in_txn` 被各 facade 以 **import 後 unqualified** 呼叫（`use crate::model::audit::mutate_in_txn`）→ 18 條 caller 邊全抓到。差別純在**呼叫寫法**（qualified vs unqualified）、不在關係真假。
+對照：`mutate_in_txn` 被各 facade 以 **import 後 unqualified** 呼叫（`use crate::model::audit::mutate_in_txn`）→ **14** 條 caller 邊全抓到（`explain` degree 15＝14 `calls`＋1 `contains`；2026-06-29）。差別純在**呼叫寫法**（qualified vs unqualified）、不在關係真假。
 → 問「誰呼叫某 facade fn」「誰寫某 entity」「某 facade fn 的重要性（in-degree）」→ 圖會把你導向**測試**、漏掉 production handler；一律回 `grep` fn 名。此盲點與 §2.3（rust facade AST-only）疊加：facade 層 call graph 系統性偏向測試 caller。
 
 ---
@@ -93,7 +93,7 @@ AST 解析得了 **unqualified call**（`use` import 後直呼 `f(...)`、`super
 1. **圖沒邊 ≠ 沒關係**：runtime 耦合（pub/sub、redis key、event）、`.vue` wiring、rust 概念關聯，圖會漏——這些一律回去 `grep`/讀碼。
 2. **結構問題信圖、語意問題存疑**：「誰呼叫誰／誰 import 誰」（EXTRACTED）可信；「同類/相關/概念橋」在 rust 端幾乎空白。
 3. **濾掉 docs 噪音**：god node / 社群分析自動排除 `fork260509-soybean-admin-docs/`。
-4. **社群與標籤僅供導覽**：碎片化 + 多 placeholder，別當模組真相。
+4. **社群與標籤僅供導覽**：碎片化 + 標籤為 top-node 自動衍生（file-name-ish、非手寫語意），別當模組真相。
 5. **想知道一個「橋節點」為何連兩群**：先看它是不是真 call-edge 橋（如 `mutate_in_txn`，圖有實邊、可信）；若兩端在圖上無邊卻你知道有關係（如 pub/sub），那是 §2.1 盲點、回去讀碼。
 6. **facade 層 caller / in-degree 信不過**：rev3 用全路徑 `facade::X::fn(...)` 呼 facade、AST 漏邊 → facade fn 的 caller 在圖上多半只剩 `super::` 測試；問「誰呼叫／誰寫 entity／哪個 facade 重要」直接 grep fn 名（§2.8）。
 
