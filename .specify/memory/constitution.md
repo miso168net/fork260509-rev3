@@ -166,7 +166,7 @@
 
 ### III.2 ★ 需 constitution 顯式授權軌道（本檔已授權）
 
-#### MODAL-WIRING ★ — **本檔授權五用途 (a)~(e)**（⚠️i-1：rev2 經 v1.0→v1.6 五次擴邊驗證過的邊界，rev3 一次全授；**新用途 (f) 起仍走 Amendment**）
+#### MODAL-WIRING ★ — **本檔授權六用途 (a)~(f)**（⚠️i-1：(a)~(e) rev2 經 v1.0→v1.6 五次擴邊驗證過的邊界、rev3 一次全授；**(f)＝⚠️af、v1.2.0 amend（列表排序掛載）**；**新用途 (g) 起仍走 Amendment**）
 
 **邊界**：`base-web/src/views/manage/**` 內的——
 - **(a)** `// request` placeholder 接線：`modules/*-operate-{modal,drawer}.vue`（create/update）與 `index.vue` 的 delete/batchDelete handler
@@ -174,9 +174,10 @@
 - **(c)** 同模式新權限 modal＋trigger：`role-operate-drawer.vue` 的 `v-if="isEdit"` 授權編輯區新增 `*-auth-modal.vue`（鏡像 menu/button-auth-modal）＋觸發 NButton＋對應 i18n key——嚴格限「角色 × 某權限維度」runtime 編輯介面
 - **(d)** 選單復原／re-parent 維運控制：`menu-operate-modal.vue` edit 模式 parentId selector（種子父固定、僅自訂可搬）＋`index.vue`「顯示已刪除」toggle＋restore 鈕（孤兒父已刪擋下）＋對應 i18n key——嚴格限「選單樹復原／父層級調整」
 - **(e)** 同 manage 範式新管理頁：`views/manage/<page>/index.vue`＋可選 `modules/*`（嚴格鏡像既有 user/role/menu 結構）、消費 rust-api 端點、含 `route.manage_<page>`＋`page.manage.<page>.*` i18n key——不擴張到任意新 UI／非 manage 頁／自訂佈局；route 由 elegant-router 自動生成、可見性走 §I.2
+- **(f)** 列表欄位排序掛載（⚠️af、023-list-column-sort）：column 定義加 naive-ui `sorter` props（`sorter:{multiple:N}`＋受控 `sortOrder`）＋`<NDataTable>` 綁 `@update:sorter`＋補 `useRoute()`／`searchParams.sort`；經共用元件 `table-header-operation.vue` 既有 `#suffix` slot 掛「清除排序」控制（鈕＋UI label key `common.clearSort`：locale＋`App.I18n.Schema` 同步）——嚴格限「列表排序」用途、不擴張其他 inline；**不改 `table-header-operation.vue` 元件本體**（僅用既有 slot）。配套新檔（`useTableSort`／`SortClearButton`／`rev3-extra` typings）循 ADAPT/WRAPPER；非法排序 `2222` 的 `backend.common.invalidSort` 譯文循 BASE-WEB-I18N-WIRING ★
 
 **紀律**：
-- **嚴格限五用途，絕不擴張到其他 inline 邏輯**；第 (f) 種用途 → §V.2 Amendment
+- **嚴格限六用途，絕不擴張到其他 inline 邏輯**；第 (g) 種用途 → §V.2 Amendment
 - 每改一處在 spec 內紀錄（file:line ＋ 改動內容 ＋ upstream 衝突風險評估）
 - 共用元件改動 MUST 用附加 prop ＋ 安全預設（不變既有呼叫端行為）
 
@@ -242,4 +243,4 @@ DESIGN 仍為「核心事實」（設計契約＋詳細軌道定義＋行為島�
 
 ---
 
-**Version**: 1.1.2 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-21（v1.1.0：§III 新增 BASE-WEB-I18N-WIRING ★ 軌道〔⚠️aa、MINOR〕；v1.1.1：§I.3 釐清 `msg` 載 i18n key 對齊 ⚠️y〔⚠️ab、PATCH＝釐清〕；v1.1.2：§I.6 釐清「無 retrofit」標的＝archetype 審計欄、既有表 domain forensic 之刻意可逆演進不在此限〔⚠️ac、PATCH＝釐清〕）
+**Version**: 1.2.0 | **Ratified**: 2026-06-12 | **Last Amended**: 2026-06-30（v1.1.0：§III 新增 BASE-WEB-I18N-WIRING ★ 軌道〔⚠️aa、MINOR〕；v1.1.1：§I.3 釐清 `msg` 載 i18n key 對齊 ⚠️y〔⚠️ab、PATCH＝釐清〕；v1.1.2：§I.6 釐清「無 retrofit」標的＝archetype 審計欄、既有表 domain forensic 之刻意可逆演進不在此限〔⚠️ac、PATCH＝釐清〕；v1.2.0：§III.2 MODAL-WIRING ★ 新增用途 (f) 列表排序掛載〔⚠️af、MINOR〕）
