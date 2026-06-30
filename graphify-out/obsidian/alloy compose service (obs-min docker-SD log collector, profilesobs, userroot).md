@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "code"
-community: "grafana compose service (obs UI,"
+community: "grafana compose service (obs UI, profile"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/grafana_compose_service_obs_UI
+  - community/grafana_compose_service_obs_UI_profile
 ---
 
 # alloy compose service (obs-min docker-SD log collector, profiles:[obs], user:root)
@@ -14,4 +14,4 @@ tags:
 - [[alloy_data volume]] - `references` [EXTRACTED]
 - [[loki compose service (obs-min log storage, profilesobs, 72h retention)]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/grafana_compose_service_obs_UI
+#graphify/code #graphify/EXTRACTED #community/grafana_compose_service_obs_UI_profile

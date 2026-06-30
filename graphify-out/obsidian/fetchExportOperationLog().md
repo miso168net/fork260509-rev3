@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "prune Null Params()"
-location: "L343"
+community: "pruneNullParams()"
+location: "L347"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/prune_Null_Params
+  - community/pruneNullParams
 ---
 
 # fetchExportOperationLog()
@@ -16,4 +16,4 @@ tags:
 - [[pruneNullParams()]] - `calls` [EXTRACTED]
 - [[rev3-system-manage.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/prune_Null_Params
+#graphify/code #graphify/EXTRACTED #community/pruneNullParams

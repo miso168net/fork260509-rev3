@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/theme/preset/default.json"
 type: "code"
-community: "box Shadow"
+community: "boxShadow"
 location: "L79"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/box_Shadow
+  - community/boxShadow
 ---
 
 # sider
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[boxShadow_2]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/box_Shadow
+#graphify/code #graphify/EXTRACTED #community/boxShadow

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-context.ts"
 type: "code"
-community: "use-context.ts"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/use-contextts
+  - community/indexts
 ---
 
 # use-context.ts
@@ -19,4 +19,4 @@ tags:
 - [[index.ts_7]] - `imports_from` [EXTRACTED]
 - [[useContext()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/use-contextts
+#graphify/code #graphify/EXTRACTED #community/indexts

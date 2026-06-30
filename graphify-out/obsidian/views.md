@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/imports.ts"
 type: "code"
-community: "manage user index.vue (user list"
+community: "manage/user/index.vue (user list page)"
 location: "L17"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/manage_user_indexvue_user_list
+  - community/manage/user/indexvue_user_list_page
 ---
 
 # views
@@ -21,4 +21,4 @@ tags:
 - [[system-settingsindex.vue (KV settings page)]] - `references` [EXTRACTED]
 - [[transformElegantRoutesToVueRoutes + routeMap]] - `depends_on` [INFERRED]
 
-#graphify/code #graphify/EXTRACTED #community/manage_user_indexvue_user_list
+#graphify/code #graphify/EXTRACTED #community/manage/user/indexvue_user_list_page

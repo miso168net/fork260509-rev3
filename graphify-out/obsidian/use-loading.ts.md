@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-loading.ts"
 type: "code"
-community: "table.ts"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/indexts
 ---
 
 # use-loading.ts
@@ -18,4 +18,4 @@ tags:
 - [[use-table.ts]] - `imports_from` [EXTRACTED]
 - [[useLoading()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/build/plugins/unplugin.ts"
 type: "code"
-community: "setup Unplugin"
+community: "setupUnplugin"
 location: "12"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/setup_Unplugin
+  - community/setupUnplugin
 ---
 
 # setupUnplugin
@@ -15,4 +15,4 @@ tags:
 - [[Avatar SVG Icon]] - `references` [INFERRED]
 - [[Copy SVG Icon]] - `references` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/setup_Unplugin
+#graphify/code #graphify/INFERRED #community/setupUnplugin

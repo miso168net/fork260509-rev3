@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/type.ts"
 type: "code"
-community: "table.ts"
+community: "type.ts"
 location: "L84"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/typets
 ---
 
 # CustomAxiosRequestConfig
@@ -16,4 +16,4 @@ tags:
 - [[type.ts_1]] - `contains` [EXTRACTED]
 - [[use-request.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/typets

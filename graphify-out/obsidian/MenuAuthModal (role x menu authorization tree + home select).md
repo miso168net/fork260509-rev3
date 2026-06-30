@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/menu-auth-modal.vue"
 type: "code"
-community: "Role Operate Drawer (role add"
+community: "rev3-system-manage.ts"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Operate_Drawer_role_add
+  - community/rev3-system-managets
 ---
 
 # MenuAuthModal (role x menu authorization tree + home select)
@@ -17,4 +17,4 @@ tags:
 - [[fetchUpdateRoleHome()]] - `calls` [EXTRACTED]
 - [[fetchUpdateRoleMenu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Operate_Drawer_role_add
+#graphify/code #graphify/EXTRACTED #community/rev3-system-managets

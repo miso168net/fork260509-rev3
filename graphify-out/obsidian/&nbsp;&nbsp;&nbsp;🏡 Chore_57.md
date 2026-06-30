@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "[v0.9.3](https: github.com honghuangdc soybean-admin compare"
+community: "[v0.9.3](https://github.com/honghuangdc/"
 location: "L3047"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/v093https_githubcom_honghuangdc_soybean-admin_compare
+  - community/v093https//githubcom/honghuangdc/
 ---
 
 # &nbsp;&nbsp;&nbsp;🏡 Chore
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v0.9.3(httpsgithub.comhonghuangdcsoybean-admincompareold-version...v0.9.3) (2022-03-12)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/v093https_githubcom_honghuangdc_soybean-admin_compare
+#graphify/document #graphify/EXTRACTED #community/v093https//githubcom/honghuangdc/

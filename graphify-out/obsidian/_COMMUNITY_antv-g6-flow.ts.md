@@ -1,13 +1,13 @@
 ---
 type: community
-cohesion: 0.23
-members: 15
+cohesion: 0.25
+members: 14
 ---
 
 # antv-g6-flow.ts
 
-**Cohesion:** 0.23 - loosely connected
-**Members:** 15 nodes
+**Cohesion:** 0.25 - loosely connected
+**Members:** 14 nodes
 
 ## Members
 - [[AntFlowConfig]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
@@ -24,7 +24,6 @@ members: 15
 - [[nodeStatus]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
 - [[status.ts]] - code - base-web/src/views/plugin/charts/antv/modules/status.ts
 - [[types.ts]] - code - base-web/src/views/plugin/charts/antv/modules/types.ts
-- [[useAntFlow()]] - code - base-web/src/views/plugin/charts/antv/modules/antv-g6-flow.ts
 
 ## Live Query (requires Dataview plugin)
 
@@ -34,9 +33,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 2 edges to [[_COMMUNITY_use Theme Store]]
-- 1 edge to [[_COMMUNITY_shared.ts]]
+- 3 edges to [[_COMMUNITY_index.ts]]
 
 ## Top bridge nodes
-- [[antv-g6-flow.ts]] - degree 11, connects to 2 communities
-- [[useAntFlow()]] - degree 2, connects to 1 community
+- [[antv-g6-flow.ts]] - degree 11, connects to 1 community

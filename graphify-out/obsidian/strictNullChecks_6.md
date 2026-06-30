@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/scripts/tsconfig.json"
 type: "code"
-community: "compiler Options"
+community: "compilerOptions"
 location: "L11"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/compiler_Options
+  - community/compilerOptions
 ---
 
 # strictNullChecks
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_6]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/compiler_Options
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

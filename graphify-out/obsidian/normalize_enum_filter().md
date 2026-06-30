@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "normalize enum filter()"
-location: "L513"
+community: "get_access_log()"
+location: "L528"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_enum_filter
+  - community/get_access_log
 ---
 
 # normalize_enum_filter()
@@ -19,4 +19,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[user_write_from_req()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_enum_filter
+#graphify/code #graphify/EXTRACTED #community/get_access_log

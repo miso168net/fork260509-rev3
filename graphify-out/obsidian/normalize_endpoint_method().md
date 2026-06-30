@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "reload and publish()"
-location: "L1710"
+community: "ok()"
+location: "L1779"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/reload_and_publish
+  - community/ok
 ---
 
 # normalize_endpoint_method()
@@ -17,4 +17,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[update_role_endpoints()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/reload_and_publish
+#graphify/code #graphify/EXTRACTED #community/ok

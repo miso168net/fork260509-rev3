@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/entity/src/sys_role.rs"
 type: "code"
-community: "sys role.rs"
+community: "sys_role.rs"
 location: "L1"
 tags:
   - graphify/code

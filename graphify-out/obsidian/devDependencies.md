@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "dev Dependencies"
+community: "devDependencies"
 location: "L92"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/dev_Dependencies
+  - community/devDependencies
 ---
 
 # devDependencies
@@ -45,4 +45,4 @@ tags:
 - [[vue-eslint-parser]] - `contains` [EXTRACTED]
 - [[vue-tsc]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/dev_Dependencies
+#graphify/code #graphify/EXTRACTED #community/devDependencies

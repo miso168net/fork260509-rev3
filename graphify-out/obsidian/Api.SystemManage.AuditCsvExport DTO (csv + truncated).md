@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "prune Null Params()"
+community: "pruneNullParams()"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/prune_Null_Params
+  - community/pruneNullParams
 ---
 
 # Api.SystemManage.AuditCsvExport DTO (csv + truncated)
@@ -15,4 +15,4 @@ tags:
 - [[fetchExportLoginAttempt()]] - `references` [EXTRACTED]
 - [[fetchExportOperationLog()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/prune_Null_Params
+#graphify/code #graphify/EXTRACTED #community/pruneNullParams

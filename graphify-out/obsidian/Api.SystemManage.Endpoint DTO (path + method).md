@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Endpoint Auth Modal (role x"
+community: "EndpointAuthModal (role x API endpoint a"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Endpoint_Auth_Modal_role_x
+  - community/EndpointAuthModal_role_x_API_endpoint_a
 ---
 
 # Api.SystemManage.Endpoint DTO (path + method)
@@ -16,4 +16,4 @@ tags:
 - [[fetchGetRoleEndpoints()]] - `references` [EXTRACTED]
 - [[fetchUpdateRoleEndpoints()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Endpoint_Auth_Modal_role_x
+#graphify/code #graphify/EXTRACTED #community/EndpointAuthModal_role_x_API_endpoint_a

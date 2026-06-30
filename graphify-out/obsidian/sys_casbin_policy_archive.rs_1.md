@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_policy_archive.rs"
 type: "code"
-community: "sys casbin policy archive.rs"
+community: "sys_casbin_policy_archive.rs"
 location: "L1"
 tags:
   - graphify/code
@@ -17,11 +17,15 @@ tags:
 - [[archive_restore_move_noop_applied_notfound_coerce_protected()]] - `contains` [EXTRACTED]
 - [[casbin_count()]] - `contains` [EXTRACTED]
 - [[cleanup()_1]] - `contains` [EXTRACTED]
+- [[col_of()_1]] - `contains` [EXTRACTED]
 - [[insert_archived()]] - `contains` [EXTRACTED]
 - [[list()_1]] - `contains` [EXTRACTED]
 - [[menu_rows_of()]] - `contains` [EXTRACTED]
 - [[meta()]] - `contains` [EXTRACTED]
 - [[meta_for()]] - `contains` [EXTRACTED]
+- [[resolve_sort()_1]] - `contains` [EXTRACTED]
+- [[resolve_sort_rejects_non_whitelist()_1]] - `contains` [EXTRACTED]
+- [[resolve_sort_whitelist_exact_mapping()_1]] - `contains` [EXTRACTED]
 - [[restorability_guard_derives_and_blocks_restore()]] - `contains` [EXTRACTED]
 - [[restore()]] - `contains` [EXTRACTED]
 - [[restore_menu_rows()]] - `contains` [EXTRACTED]

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/business/captcha.ts"
 type: "code"
-community: "index.ts"
+community: "useLoading()"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/useLoading
 ---
 
 # captcha.ts
@@ -17,4 +17,4 @@ tags:
 - [[reg.ts]] - `imports_from` [EXTRACTED]
 - [[useCaptcha()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/useLoading

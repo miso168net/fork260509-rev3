@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/sea-orm-adapter/src/adapter.rs"
 type: "code"
-community: "Sea Orm Adapter<C>"
+community: "SeaOrmAdapter<C>"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Sea_Orm_AdapterC
+  - community/SeaOrmAdapterC
 ---
 
 # SeaOrmAdapter<C>
@@ -26,4 +26,4 @@ tags:
 - [[.save_policy()]] - `method` [EXTRACTED]
 - [[.transform_policy_line()]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Sea_Orm_AdapterC
+#graphify/code #graphify/EXTRACTED #community/SeaOrmAdapterC

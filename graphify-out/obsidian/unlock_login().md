@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
 community: "auth.rs"
-location: "L2638"
+location: "L2717"
 tags:
   - graphify/code
   - graphify/INFERRED
@@ -14,6 +14,7 @@ tags:
 ## Connections
 - [[lockout_dim_key()]] - `calls` [INFERRED]
 - [[lockout_reset_key()]] - `calls` [INFERRED]
+- [[ok()]] - `calls` [EXTRACTED]
 - [[suppressed_key()]] - `calls` [INFERRED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 

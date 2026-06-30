@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "colord.ts"
+community: "antd.ts"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/colordts
+  - community/antdts
 ---
 
 # getDeltaE()
@@ -16,4 +16,4 @@ tags:
 - [[getNearestColorPaletteFamily()]] - `calls` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/colordts
+#graphify/code #graphify/EXTRACTED #community/antdts

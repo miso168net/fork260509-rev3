@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_casbin_policy_archive.rs"
 type: "code"
-community: "sys casbin policy archive.rs"
-location: "L319"
+community: "sys_casbin_policy_archive.rs"
+location: "L356"
 tags:
   - graphify/code
   - graphify/EXTRACTED

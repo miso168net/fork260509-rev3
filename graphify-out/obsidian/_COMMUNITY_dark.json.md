@@ -32,7 +32,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_other Color]]
+- 1 edge to [[_COMMUNITY_otherColor]]
 - 1 edge to [[_COMMUNITY_layout]]
 - 1 edge to [[_COMMUNITY_page]]
 - 1 edge to [[_COMMUNITY_header]]

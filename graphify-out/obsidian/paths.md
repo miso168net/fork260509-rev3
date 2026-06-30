@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/tsconfig.json"
 type: "code"
-community: "compiler Options"
+community: "compilerOptions"
 location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/compiler_Options
+  - community/compilerOptions
 ---
 
 # paths
@@ -15,4 +15,4 @@ tags:
 - [[@]] - `contains` [EXTRACTED]
 - [[compilerOptions]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/compiler_Options
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

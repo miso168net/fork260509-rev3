@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
-community: "sys role.rs"
+community: "system_settings.rs"
 location: "L99"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_rolers
+  - community/system_settingsrs
 ---
 
 # entity::system_settings::Model
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[.audit_json()_2]] - `method` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_rolers
+#graphify/code #graphify/EXTRACTED #community/system_settingsrs

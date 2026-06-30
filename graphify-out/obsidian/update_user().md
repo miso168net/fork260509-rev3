@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "user write from req()"
-location: "L1127"
+community: "user_write_from_req()"
+location: "L1195"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -12,6 +12,7 @@ tags:
 # update_user()
 
 ## Connections
+- [[ok()]] - `calls` [EXTRACTED]
 - [[self_lock_violation()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[user_write_from_req()]] - `calls` [EXTRACTED]

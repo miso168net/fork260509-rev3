@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/admin-layout/index.vue"
 type: "code"
-community: "index.vue"
+community: "index.ts"
 location: "L97"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/indexts
 ---
 
 # siderPaddingClass
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.vue]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/indexts

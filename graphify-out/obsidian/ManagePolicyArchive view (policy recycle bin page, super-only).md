@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/policy-archive/index.vue"
 type: "code"
-community: "fetch Get Archived Policies()"
+community: "fetchGetArchivedPolicies()"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/fetch_Get_Archived_Policies
+  - community/fetchGetArchivedPolicies
 ---
 
 # ManagePolicyArchive view (policy recycle bin page, super-only)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[PolicyArchiveTable (archived policy list + restore)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/fetch_Get_Archived_Policies
+#graphify/code #graphify/EXTRACTED #community/fetchGetArchivedPolicies

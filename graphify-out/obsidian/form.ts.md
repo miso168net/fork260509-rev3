@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/form.ts"
 type: "code"
-community: "index.ts"
+community: "useLoading()"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/useLoading
 ---
 
 # form.ts
@@ -17,4 +17,4 @@ tags:
 - [[useFormRules()]] - `contains` [EXTRACTED]
 - [[useNaiveForm()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/useLoading

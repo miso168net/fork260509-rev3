@@ -1,14 +1,14 @@
 ---
 source_file: "base-web/src/views/pro-naive/ConfigProvider.vue"
 type: "code"
-community: "Config Provider.vue"
+community: "ConfigProvider.vue"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Config_Providervue
+  - community/ConfigProvidervue
 ---
 
 # ConfigProvider.vue
 
-#graphify/code #graphify/EXTRACTED #community/Config_Providervue
+#graphify/code #graphify/EXTRACTED #community/ConfigProvidervue

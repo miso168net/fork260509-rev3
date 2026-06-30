@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "colord.ts"
+community: "antd.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/colordts
+  - community/antdts
 ---
 
 # colord.ts
@@ -26,4 +26,4 @@ tags:
 - [[transformColorWithOpacity()]] - `contains` [EXTRACTED]
 - [[transformHslToHex()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/colordts
+#graphify/code #graphify/EXTRACTED #community/antdts

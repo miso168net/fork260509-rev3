@@ -37,7 +37,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 7 edges to [[_COMMUNITY_index.ts]]
-- 1 edge to [[_COMMUNITY_table.ts]]
+- 1 edge to [[_COMMUNITY_useLoading()]]
 - 1 edge to [[_COMMUNITY_rev3-system-manage.ts]]
 
 ## Top bridge nodes

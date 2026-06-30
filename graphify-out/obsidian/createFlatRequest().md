@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/index.ts"
 type: "code"
-community: "table.ts"
+community: "index.ts"
 location: "L142"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/indexts
 ---
 
 # createFlatRequest()
@@ -18,4 +18,4 @@ tags:
 - [[index.ts_29]] - `imports` [EXTRACTED]
 - [[use-request.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/indexts

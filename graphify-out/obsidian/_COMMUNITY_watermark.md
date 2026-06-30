@@ -10,12 +10,12 @@ members: 6
 **Members:** 6 nodes
 
 ## Members
-- [[enableTime_1]] - code - base-web/src/theme/preset/default.json
-- [[enableUserName_1]] - code - base-web/src/theme/preset/default.json
-- [[text_1]] - code - base-web/src/theme/preset/default.json
-- [[timeFormat_1]] - code - base-web/src/theme/preset/default.json
-- [[visible_16]] - code - base-web/src/theme/preset/default.json
-- [[watermark_1]] - code - base-web/src/theme/preset/default.json
+- [[enableTime]] - code - base-web/src/theme/preset/dark.json
+- [[enableUserName]] - code - base-web/src/theme/preset/dark.json
+- [[text]] - code - base-web/src/theme/preset/dark.json
+- [[timeFormat]] - code - base-web/src/theme/preset/dark.json
+- [[visible_10]] - code - base-web/src/theme/preset/dark.json
+- [[watermark]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -25,7 +25,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_default.json]]
+- 1 edge to [[_COMMUNITY_dark.json]]
 
 ## Top bridge nodes
-- [[watermark_1]] - degree 6, connects to 1 community
+- [[watermark]] - degree 6, connects to 1 community

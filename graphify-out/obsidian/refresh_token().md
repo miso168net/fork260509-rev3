@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "refresh token()"
+community: "refresh_token()"
 location: "L528"
 tags:
   - graphify/code

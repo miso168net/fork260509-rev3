@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/icon/index.vue"
 type: "code"
-community: "local Icons demo list (plugin"
+community: "localIcons demo list (plugin/icon view)"
 location: "line 7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/local_Icons_demo_list_plugin
+  - community/localIcons_demo_list_plugin/icon_view
 ---
 
 # localIcons demo list (plugin/icon view)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[At-Sign Icon (Feather @ symbol, local SVG asset)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/local_Icons_demo_list_plugin
+#graphify/code #graphify/EXTRACTED #community/localIcons_demo_list_plugin/icon_view

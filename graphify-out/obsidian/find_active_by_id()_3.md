@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_ip_rule.rs"
 type: "code"
-community: "sys ip rule.rs"
-location: "L105"
+community: "sys_ip_rule.rs"
+location: "L141"
 tags:
   - graphify/code
   - graphify/EXTRACTED

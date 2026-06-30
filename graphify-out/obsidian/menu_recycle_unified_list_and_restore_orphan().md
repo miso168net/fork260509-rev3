@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "update()"
+community: "menu_recycle_unified_list_and_restore_or"
 location: "L1954"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/update
+  - community/menu_recycle_unified_list_and_restore_or
 ---
 
 # menu_recycle_unified_list_and_restore_orphan()
@@ -21,4 +21,4 @@ tags:
 - [[soft_delete()]] - `calls` [EXTRACTED]
 - [[sys_menu.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/update
+#graphify/code #graphify/EXTRACTED #community/menu_recycle_unified_list_and_restore_or

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/index.vue"
 type: "code"
-community: "Manage Role view (role list"
+community: "RoleOperateDrawer (role add/edit form, h"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Manage_Role_view_role_list
+  - community/RoleOperateDrawer_role_add/edit_form_h
 ---
 
 # ManageRole view (role list + CRUD + RBAC gating)
@@ -16,4 +16,4 @@ tags:
 - [[fetchDeleteRole()]] - `calls` [EXTRACTED]
 - [[fetchGetRoleListRev3()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Manage_Role_view_role_list
+#graphify/code #graphify/EXTRACTED #community/RoleOperateDrawer_role_add/edit_form_h

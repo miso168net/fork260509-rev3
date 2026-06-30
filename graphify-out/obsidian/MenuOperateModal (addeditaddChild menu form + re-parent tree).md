@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/menu/modules/menu-operate-modal.vue"
 type: "code"
-community: "Menu Operate Modal (add edit"
+community: "ManageMenu view (unified menu list with "
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Menu_Operate_Modal_add_edit
+  - community/ManageMenu_view_unified_menu_list_with_
 ---
 
 # MenuOperateModal (add/edit/addChild menu form + re-parent tree)
@@ -16,4 +16,4 @@ tags:
 - [[fetchAddMenu()]] - `calls` [EXTRACTED]
 - [[fetchUpdateMenu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Menu_Operate_Modal_add_edit
+#graphify/code #graphify/EXTRACTED #community/ManageMenu_view_unified_menu_list_with_

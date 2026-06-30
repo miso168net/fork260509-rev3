@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/libs/simple-scrollbar/index.ts"
 type: "code"
-community: "index.vue"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexvue
+  - community/indexts
 ---
 
 # index.ts
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_8]] - `imports_from` [EXTRACTED]
 - [[index.vue_2]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexvue
+#graphify/code #graphify/EXTRACTED #community/indexts

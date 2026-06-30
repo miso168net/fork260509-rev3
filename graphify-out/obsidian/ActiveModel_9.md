@@ -1,14 +1,14 @@
 ---
 source_file: "rust-api/entity/src/sys_user_role.rs"
 type: "code"
-community: "Active Model"
+community: "ActiveModel"
 location: "L18"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Active_Model
+  - community/ActiveModel
 ---
 
 # ActiveModel
 
-#graphify/code #graphify/EXTRACTED #community/Active_Model
+#graphify/code #graphify/EXTRACTED #community/ActiveModel

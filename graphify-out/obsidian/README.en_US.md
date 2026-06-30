@@ -1,7 +1,7 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "document"
-community: "README.en US.md"
+community: "README.en_US.md"
 location: "L1"
 tags:
   - graphify/document

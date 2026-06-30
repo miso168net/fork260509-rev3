@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/public/favicon.svg"
 type: "image"
-community: "Soybean Admin"
+community: "SoybeanAdmin"
 tags:
   - graphify/image
   - graphify/INFERRED
-  - community/Soybean_Admin
+  - community/SoybeanAdmin
 ---
 
 # favicon.svg (SoybeanAdmin browser tab icon)
@@ -15,4 +15,4 @@ tags:
 - [[index.html (Vite SPA entry)]] - `references` [EXTRACTED]
 - [[本地 logo 图标 (svg-iconlogo.svg)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/image #graphify/INFERRED #community/Soybean_Admin
+#graphify/image #graphify/INFERRED #community/SoybeanAdmin

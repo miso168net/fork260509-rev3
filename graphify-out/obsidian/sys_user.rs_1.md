@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "sys user.rs"
+community: "sys_user.rs"
 location: "L1"
 tags:
   - graphify/code
@@ -22,6 +22,7 @@ tags:
 - [[build_update_active_model_pairs_and_preserves_identity()]] - `contains` [EXTRACTED]
 - [[build_update_active_model_status_none_preserves_existing()]] - `contains` [EXTRACTED]
 - [[clear_pointer()]] - `contains` [EXTRACTED]
+- [[col_of()_6]] - `contains` [EXTRACTED]
 - [[create()_2]] - `contains` [EXTRACTED]
 - [[delete_user_soft_delete_and_idempotent_missing()]] - `contains` [EXTRACTED]
 - [[find_active_by_id()_2]] - `contains` [EXTRACTED]
@@ -35,6 +36,9 @@ tags:
 - [[now()_3]] - `contains` [EXTRACTED]
 - [[op_log_atomic_three_paths()]] - `contains` [EXTRACTED]
 - [[op_log_oplog_threading_ip_trace()]] - `contains` [EXTRACTED]
+- [[resolve_sort()_6]] - `contains` [EXTRACTED]
+- [[resolve_sort_rejects_non_whitelist_and_preserves_order()]] - `contains` [EXTRACTED]
+- [[resolve_sort_whitelist_exact_mapping()_6]] - `contains` [EXTRACTED]
 - [[sample_fields()_2]] - `contains` [EXTRACTED]
 - [[session_gate_of()]] - `contains` [EXTRACTED]
 - [[set_pointer()]] - `contains` [EXTRACTED]

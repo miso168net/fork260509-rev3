@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/handler/system_settings.rs"
 type: "code"
-community: "system settings.rs"
+community: "system_settings.rs"
 location: "L32"
 tags:
   - graphify/code

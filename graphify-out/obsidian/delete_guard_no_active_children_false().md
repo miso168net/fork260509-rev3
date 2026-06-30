@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "sys menu.rs"
+community: "sys_menu.rs"
 location: "L1297"
 tags:
   - graphify/code

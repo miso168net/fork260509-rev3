@@ -10,9 +10,9 @@ members: 3
 **Members:** 3 nodes
 
 ## Members
-- [[layout_3]] - code - base-web/src/theme/preset/default.json
-- [[mode_3]] - code - base-web/src/theme/preset/default.json
-- [[scrollMode_1]] - code - base-web/src/theme/preset/default.json
+- [[layout_1]] - code - base-web/src/theme/preset/dark.json
+- [[mode_1]] - code - base-web/src/theme/preset/dark.json
+- [[scrollMode]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -22,7 +22,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_default.json]]
+- 1 edge to [[_COMMUNITY_dark.json]]
 
 ## Top bridge nodes
-- [[layout_3]] - degree 3, connects to 1 community
+- [[layout_1]] - degree 3, connects to 1 community

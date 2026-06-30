@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/tests/endpoint_coverage_lint.rs"
 type: "code"
-community: "endpoint coverage lint.rs"
+community: "endpoint_coverage_lint.rs"
 location: "L1"
 tags:
   - graphify/code

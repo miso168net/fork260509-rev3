@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/common/vchart.ts"
 type: "code"
-community: "use Theme Store"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/use_Theme_Store
+  - community/indexts
 ---
 
 # vchart.ts
@@ -17,4 +17,4 @@ tags:
 - [[useThemeStore]] - `imports` [EXTRACTED]
 - [[useVChart()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/use_Theme_Store
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "concept"
-community: "prometheus compose service (metrics scrape+storage,"
+community: "prometheus compose service (metrics scra"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/prometheus_compose_service_metrics_scrapestorage
+  - community/prometheus_compose_service_metrics_scra
 ---
 
 # prometheus_data volume
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[prometheus compose service (metrics scrape+storage, profilesmetrics, 15d retention)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/prometheus_compose_service_metrics_scrapestorage
+#graphify/concept #graphify/EXTRACTED #community/prometheus_compose_service_metrics_scra

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/utils/tsconfig.json"
 type: "code"
-community: "compiler Options"
+community: "compilerOptions"
 location: "L2"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/compiler_Options
+  - community/compilerOptions
 ---
 
 # compilerOptions
@@ -27,4 +27,4 @@ tags:
 - [[tsconfig.json_8]] - `contains` [EXTRACTED]
 - [[types_8]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/compiler_Options
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

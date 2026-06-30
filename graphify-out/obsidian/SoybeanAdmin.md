@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "concept"
-community: "Soybean Admin"
+community: "SoybeanAdmin"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Soybean_Admin
+  - community/SoybeanAdmin
 ---
 
 # SoybeanAdmin
@@ -18,4 +18,4 @@ tags:
 - [[index.html (Vite SPA entry)]] - `conceptually_related_to` [INFERRED]
 - [[rev3-admin-base-web Branch Origin Record]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Soybean_Admin
+#graphify/concept #graphify/EXTRACTED #community/SoybeanAdmin

@@ -1,13 +1,13 @@
 ---
 source_file: "base-web/src/constants/business.ts"
 type: "code"
-community: "menu Icon Type Record (business"
+community: "menuIconTypeRecord (business constants)"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/menu_Icon_Type_Record_business
+  - community/menuIconTypeRecord_business_constants
 ---
 
 # menuIconTypeRecord (business constants)
 
-#graphify/code #graphify/EXTRACTED #community/menu_Icon_Type_Record_business
+#graphify/code #graphify/EXTRACTED #community/menuIconTypeRecord_business_constants

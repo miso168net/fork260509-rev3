@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "get access log()"
-location: "L527"
+community: "get_access_log()"
+location: "L542"
 tags:
   - graphify/code
   - graphify/EXTRACTED

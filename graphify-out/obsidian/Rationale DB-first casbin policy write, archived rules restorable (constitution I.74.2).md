@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "rationale"
-community: "Button Auth Modal (role x"
+community: "rev3-system-manage.ts"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Button_Auth_Modal_role_x
+  - community/rev3-system-managets
 ---
 
 # Rationale: DB-first casbin policy write, archived rules restorable (constitution I.7/4.2)
@@ -15,4 +15,4 @@ tags:
 - [[fetchUpdateRoleEndpoints()]] - `references` [EXTRACTED]
 - [[fetchUpdateRoleMenu()]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Button_Auth_Modal_role_x
+#graphify/rationale #graphify/EXTRACTED #community/rev3-system-managets

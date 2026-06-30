@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/entity/src/sys_ip_rule.rs"
 type: "code"
-community: "sys ip rule.rs"
+community: "sys_ip_rule.rs"
 location: "L1"
 tags:
   - graphify/code

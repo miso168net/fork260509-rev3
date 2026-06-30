@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/role-operate-drawer.vue"
 type: "code"
-community: "Role Operate Drawer (role add"
+community: "RoleOperateDrawer (role add/edit form, h"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Operate_Drawer_role_add
+  - community/RoleOperateDrawer_role_add/edit_form_h
 ---
 
 # RoleOperateDrawer (role add/edit form, hosts 3 auth modals)
@@ -19,4 +19,4 @@ tags:
 - [[fetchAddRole()]] - `calls` [EXTRACTED]
 - [[fetchUpdateRole()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Operate_Drawer_role_add
+#graphify/code #graphify/EXTRACTED #community/RoleOperateDrawer_role_add/edit_form_h

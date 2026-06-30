@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/policy-archive/modules/policy-archive-table.vue"
 type: "code"
-community: "fetch Get Archived Policies()"
+community: "fetchGetArchivedPolicies()"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/fetch_Get_Archived_Policies
+  - community/fetchGetArchivedPolicies
 ---
 
 # PolicyArchiveTable (archived policy list + restore)
@@ -17,4 +17,4 @@ tags:
 - [[fetchGetArchivedPolicies()]] - `calls` [EXTRACTED]
 - [[fetchRestorePolicy()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/fetch_Get_Archived_Policies
+#graphify/code #graphify/EXTRACTED #community/fetchGetArchivedPolicies

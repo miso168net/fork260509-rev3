@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-table.ts"
 type: "code"
-community: "table.ts"
+community: "index.ts"
 location: "L15"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/indexts
 ---
 
 # Transform
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[use-table.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,17 +1,18 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "system manage.rs"
-location: "L1530"
+community: "ok()"
+location: "L1599"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/system_managers
+  - community/ok
 ---
 
 # update_role_home()
 
 ## Connections
+- [[ok()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/system_managers
+#graphify/code #graphify/EXTRACTED #community/ok

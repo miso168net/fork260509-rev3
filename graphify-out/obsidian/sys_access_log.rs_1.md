@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_access_log.rs"
 type: "code"
-community: "sys access log.rs"
+community: "sys_access_log.rs"
 location: "L1"
 tags:
   - graphify/code
@@ -17,8 +17,12 @@ tags:
 - [[access_log_active_model()]] - `contains` [EXTRACTED]
 - [[access_log_active_model_maps_ipv4_to_32()]] - `contains` [EXTRACTED]
 - [[access_log_active_model_maps_ipv6_to_128()]] - `contains` [EXTRACTED]
+- [[col_of()]] - `contains` [EXTRACTED]
 - [[ilike()]] - `contains` [EXTRACTED]
 - [[list()]] - `contains` [EXTRACTED]
+- [[resolve_sort()]] - `contains` [EXTRACTED]
+- [[resolve_sort_rejects_non_whitelist()]] - `contains` [EXTRACTED]
+- [[resolve_sort_whitelist_exact_mapping()]] - `contains` [EXTRACTED]
 - [[sample()]] - `contains` [EXTRACTED]
 - [[write()]] - `contains` [EXTRACTED]
 

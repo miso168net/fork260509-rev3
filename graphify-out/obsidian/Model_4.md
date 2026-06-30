@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/entity/src/sys_menu.rs"
 type: "code"
-community: "sys menu.rs"
+community: "sys_menu.rs"
 location: "L8"
 tags:
   - graphify/code

@@ -21,7 +21,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_Menu Tree Facade]]
+- 1 edge to [[_COMMUNITY_sys_menu.rs]]
 
 ## Top bridge nodes
 - [[ReparentError]] - degree 2, connects to 1 community

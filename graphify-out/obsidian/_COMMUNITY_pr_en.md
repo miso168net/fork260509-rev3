@@ -4,7 +4,7 @@ cohesion: 0.25
 members: 8
 ---
 
-# pr_en
+# pr_en.md
 
 **Cohesion:** 0.25 - loosely connected
 **Members:** 8 nodes
@@ -22,6 +22,6 @@ members: 8
 ## Live Query (requires Dataview plugin)
 
 ```dataview
-TABLE source_file, type FROM #community/pr_en
+TABLE source_file, type FROM #community/pr_enmd
 SORT file.name ASC
 ```

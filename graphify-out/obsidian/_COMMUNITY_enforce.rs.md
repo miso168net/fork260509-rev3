@@ -42,7 +42,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 4 edges to [[_COMMUNITY_refresh token()]]
+- 4 edges to [[_COMMUNITY_refresh_token()]]
 - 3 edges to [[_COMMUNITY_route.rs]]
 - 1 edge to [[_COMMUNITY_auth.rs]]
 

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/index.ts"
 type: "code"
-community: "use Theme Store"
+community: "index.ts"
 location: "L19"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/use_Theme_Store
+  - community/indexts
 ---
 
 # useThemeStore
@@ -24,4 +24,4 @@ tags:
 - [[useVChart()]] - `calls` [EXTRACTED]
 - [[vchart.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/use_Theme_Store
+#graphify/code #graphify/EXTRACTED #community/indexts

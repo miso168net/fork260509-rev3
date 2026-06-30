@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
-community: "sys role.rs"
+community: "system_settings.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_rolers
+  - community/system_settingsrs
 ---
 
 # system_settings.rs
@@ -20,4 +20,4 @@ tags:
 - [[update_by_key()]] - `contains` [EXTRACTED]
 - [[update_by_key_active_model_sets_value_and_audit_cols()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_rolers
+#graphify/code #graphify/EXTRACTED #community/system_settingsrs

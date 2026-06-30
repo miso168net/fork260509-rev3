@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "reload and publish()"
-location: "L804"
+community: "ok()"
+location: "L869"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/reload_and_publish
+  - community/ok
 ---
 
 # role_delete_guard()
@@ -17,4 +17,4 @@ tags:
 - [[guard_for()]] - `calls` [INFERRED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/reload_and_publish
+#graphify/code #graphify/EXTRACTED #community/ok

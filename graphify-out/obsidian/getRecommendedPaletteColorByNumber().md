@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/recommend.ts"
 type: "code"
-community: "recommend.ts"
+community: "loading.ts"
 location: "L44"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recommendts
+  - community/loadingts
 ---
 
 # getRecommendedPaletteColorByNumber()
@@ -15,4 +15,4 @@ tags:
 - [[getRecommendedColorPalette()]] - `calls` [EXTRACTED]
 - [[recommend.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recommendts
+#graphify/code #graphify/EXTRACTED #community/loadingts

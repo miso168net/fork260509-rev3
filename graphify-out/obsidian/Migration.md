@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/migration/src/m001_rev2_schema.rs"
 type: "code"
-community: "m001 rev2 schema.rs"
+community: "m001_rev2_schema.rs"
 location: "L20"
 tags:
   - graphify/code

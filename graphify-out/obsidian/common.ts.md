@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/constants/common.ts"
 type: "code"
-community: "app.ts"
+community: "business.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/appts
+  - community/businessts
 ---
 
 # common.ts
@@ -17,4 +17,4 @@ tags:
 - [[yesOrNoOptions]] - `contains` [EXTRACTED]
 - [[yesOrNoRecord]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/appts
+#graphify/code #graphify/EXTRACTED #community/businessts

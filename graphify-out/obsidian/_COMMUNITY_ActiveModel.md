@@ -10,7 +10,7 @@ members: 1
 **Members:** 1 nodes
 
 ## Members
-- [[ActiveModel_11]] - code - rust-api/sea-orm-adapter/src/entity.rs
+- [[ActiveModel_12]] - code - rust-api/entity/src/sys_ip_rule.rs
 
 ## Live Query (requires Dataview plugin)
 

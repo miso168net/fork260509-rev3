@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/components/custom/look-forward.vue"
 type: "code"
-community: "Look Forward component"
+community: "LookForward component"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Look_Forward_component
+  - community/LookForward_component
 ---
 
 # LookForward component
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[Expectation Illustration (expectation.svg)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Look_Forward_component
+#graphify/code #graphify/EXTRACTED #community/LookForward_component

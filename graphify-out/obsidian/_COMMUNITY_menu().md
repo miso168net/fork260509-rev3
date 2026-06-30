@@ -29,10 +29,10 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 10 edges to [[_COMMUNITY_sys menu.rs]]
+- 10 edges to [[_COMMUNITY_sys_menu.rs]]
 - 2 edges to [[_COMMUNITY_now()]]
-- 1 edge to [[_COMMUNITY_update()]]
-- 1 edge to [[_COMMUNITY_build user route tree()]]
+- 1 edge to [[_COMMUNITY_menu_recycle_unified_list_and_restore_or]]
+- 1 edge to [[_COMMUNITY_build_user_route_tree()]]
 
 ## Top bridge nodes
 - [[menu()]] - degree 7, connects to 3 communities

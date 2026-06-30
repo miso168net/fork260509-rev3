@@ -26,5 +26,6 @@ tags:
 - [[shared.ts_5]] - `imports` [EXTRACTED]
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 - [[storage.ts_1]] - `contains` [EXTRACTED]
+- [[use-table-sort.ts]] - `imports` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/indexts

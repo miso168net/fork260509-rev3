@@ -10,10 +10,10 @@ members: 4
 **Members:** 4 nodes
 
 ## Members
-- [[boxShadow_2]] - code - base-web/src/theme/preset/default.json
-- [[header_5]] - code - base-web/src/theme/preset/default.json
-- [[sider_5]] - code - base-web/src/theme/preset/default.json
-- [[tab_5]] - code - base-web/src/theme/preset/default.json
+- [[boxShadow_1]] - code - base-web/src/theme/preset/dark.json
+- [[header_3]] - code - base-web/src/theme/preset/dark.json
+- [[sider_3]] - code - base-web/src/theme/preset/dark.json
+- [[tab_3]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -26,4 +26,4 @@ SORT file.name ASC
 - 1 edge to [[_COMMUNITY_colors]]
 
 ## Top bridge nodes
-- [[boxShadow_2]] - degree 4, connects to 1 community
+- [[boxShadow_1]] - degree 4, connects to 1 community

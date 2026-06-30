@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_menu.rs"
 type: "code"
-community: "update()"
+community: "mutate_in_txn()"
 location: "L653"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/update
+  - community/mutate_in_txn
 ---
 
 # reparent_check()
@@ -18,4 +18,4 @@ tags:
 - [[update()]] - `calls` [EXTRACTED]
 - [[would_cycle()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/update
+#graphify/code #graphify/EXTRACTED #community/mutate_in_txn

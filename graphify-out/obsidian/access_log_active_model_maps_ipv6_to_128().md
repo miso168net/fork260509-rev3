@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_access_log.rs"
 type: "code"
-community: "sys access log.rs"
-location: "L167"
+community: "sys_access_log.rs"
+location: "L206"
 tags:
   - graphify/code
   - graphify/EXTRACTED

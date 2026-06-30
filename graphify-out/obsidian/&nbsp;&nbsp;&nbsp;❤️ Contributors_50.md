@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/CHANGELOG.md"
 type: "document"
-community: "[v1.0.0](https: github.com soybeanjs soybean-admin compare"
+community: "[v1.0.0](https://github.com/soybeanjs/so"
 location: "L1891"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/v100https_githubcom_soybeanjs_soybean-admin_compare
+  - community/v100https//githubcom/soybeanjs/so
 ---
 
 # &nbsp;&nbsp;&nbsp;❤️ Contributors
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[v1.0.0(httpsgithub.comsoybeanjssoybean-admincomparev0.10.4...v1.0.0) (2024-03-31)]] - `contains` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/v100https_githubcom_soybeanjs_soybean-admin_compare
+#graphify/document #graphify/EXTRACTED #community/v100https//githubcom/soybeanjs/so

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-table.ts"
 type: "code"
-community: "table.ts"
+community: "index.ts"
 location: "L29"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/indexts
 ---
 
 # UseTableOptions
@@ -15,4 +15,4 @@ tags:
 - [[table.ts]] - `imports` [EXTRACTED]
 - [[use-table.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/indexts

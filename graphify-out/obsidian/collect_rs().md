@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/tests/entity_access_lint.rs"
 type: "code"
-community: "entity access lint.rs"
+community: "entity_access_lint.rs"
 location: "L33"
 tags:
   - graphify/code

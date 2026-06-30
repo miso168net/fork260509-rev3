@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/entity/src/sys_access_log.rs"
 type: "code"
-community: "sys access log.rs"
+community: "sys_access_log.rs"
 location: "L26"
 tags:
   - graphify/code

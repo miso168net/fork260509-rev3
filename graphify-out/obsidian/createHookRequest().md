@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/src/use-request.ts"
 type: "code"
-community: "table.ts"
+community: "useLoading()"
 location: "L45"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/useLoading
 ---
 
 # createHookRequest()
@@ -17,4 +17,4 @@ tags:
 - [[use-request.ts]] - `contains` [EXTRACTED]
 - [[useLoading()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/useLoading

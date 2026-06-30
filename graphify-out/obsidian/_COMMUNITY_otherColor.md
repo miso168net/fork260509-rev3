@@ -10,11 +10,11 @@ members: 5
 **Members:** 5 nodes
 
 ## Members
-- [[error_2]] - code - base-web/src/theme/preset/default.json
-- [[info_2]] - code - base-web/src/theme/preset/default.json
-- [[otherColor_2]] - code - base-web/src/theme/preset/default.json
-- [[success_2]] - code - base-web/src/theme/preset/default.json
-- [[warning_2]] - code - base-web/src/theme/preset/default.json
+- [[error_1]] - code - base-web/src/theme/preset/dark.json
+- [[info_1]] - code - base-web/src/theme/preset/dark.json
+- [[otherColor_1]] - code - base-web/src/theme/preset/dark.json
+- [[success_1]] - code - base-web/src/theme/preset/dark.json
+- [[warning_1]] - code - base-web/src/theme/preset/dark.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,7 +24,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_default]]
+- 1 edge to [[_COMMUNITY_dark.json]]
 
 ## Top bridge nodes
-- [[otherColor_2]] - degree 5, connects to 1 community
+- [[otherColor_1]] - degree 5, connects to 1 community

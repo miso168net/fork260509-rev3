@@ -8,29 +8,30 @@
 
 ---
 
-## 1. 圖譜現況統計（2026-06-29、020/021/022 code 增量後）
+## 1. 圖譜現況統計（2026-07-01、023 code 增量後）
 
 | 指標 | 值 |
 |---|---|
-| 節點 | **3499** |
-| 邊 | **4413** |
-| 社群 | **502**（最大 106、中位數 4） |
+| 節點 | **3558** |
+| 邊 | **4547** |
+| 社群 | **506**（最大 99、中位數 4） |
 
 **節點來源組成**：
 
 | 來源 | 節點數 | 說明 |
 |---|---|---|
-| `base-web/` | 2469 | Vue 前端 worktree（AST + semantic subagent；022 ip-rule 管理頁 view/modules/service/typings 增量、.vue 語意盲點限制見 §2.2） |
-| `rust-api/` | 1007 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点已入圖；**022 ipgate 全域閘新 module＋sys_ip_rule entity/facade＋m007＋auth/handler per-dim·CRUD·unlock 入圖**、`ip()`/`resolve_client_ip()`/`cfg_full_trust()`/`mutate_in_txn()` 為 god node） |
+| `base-web/` | 2486 | Vue 前端 worktree（AST + semantic subagent；**023 列表排序 `useTableSort`/`SortClearButton`/`rev3-extra` typings/7 view 接線增量**、.vue 語意盲點限制見 §2.2） |
+| `rust-api/` | 1049 | Rust 後端 worktree（**AST-only**、見 §2.3；018 obs 埋点已入圖；022 ipgate 全域閘已入圖；**023 `parse_sort_spec`＋7×`resolve_sort` 白名單＋7 facade list sort apply＋m008 入圖**、`ip()`/`resolve_client_ip()`/`cfg_full_trust()`/`mutate_in_txn()` 為 god node） |
 | `docker-compose.yml` | 23 | compose service 拓撲（018 obs 加 7 service＋4 卷＋1 secret，手刻入圖、profiles opt-in） |
 
 > docs 源倉 `fork260509-soybean-admin-docs/`（~1856 noise 節點）已於 2026-06-24 prune 出圖並加入 `.graphifyignore`（見 §2.4）；圖現只含 base-web/rust-api worktree 真碼 + master compose。
 > **2026-06-26 audit/019 code 增量**（外科式配方、見 §4）：14 個變更 code 檔重抽（8 rust audit/auth/enforce/facade + 6 base-web audit views/locales/app.d.ts），純 AST、**0 LLM token**；手動 prune 舊圖 14 變更檔 source 節點 → `dedup=False` 嫁接，3284→3311（+27）、成長閘 PASS；graph_diff 僅 37 new/10 removed（全真實 feature 符號）。★ **避開 fuzzy-dedup 陷阱**：照 skill 文件的 `build_merge(dedup=True)` 會把圖砍到 2610（誤刪 ~701 真節點、165 fuzzy）；外科式 `dedup=False` 才得正確 3311（見 §4）。community ID 重分群後置換、hand-label 以 membership-overlap 重對齊（非按 ID）。★ obsidian vault stale orphan note **已清**（2026-06-26：`find -name '*.md' -delete` + 重生 export → 3630 實檔、0 docs 孤兒；先前 ~3194 cruft 來自 2026-06-24 docs prune 未清、export 不刪舊檔）。
 > **2026-06-29 020/021/022 code 增量**（外科式配方、見 §4）：39 個變更 code 檔重抽（rust auth/redis/ipgate/entity/facade/migration m007/handler/enforce + base-web ip-rule view·modules·service·typings·locales·app.d.ts·router），純 AST、**0 LLM token**；★ 再次踩到並避開 fuzzy-dedup 陷阱——skill 預設 `build_merge(dedup=True)` 砍到 **2782**（540 exact＋**171 fuzzy 誤併 distinct**），改 `dedup=False` 才得正確 **3499**（3311→+188：rust-api +138 ipgate/sys_ip_rule/m007/handler、base-web +50 ip-rule 管理頁）、成長閘 PASS。174「deleted」全＝docs 源倉舊 manifest 殘留〔圖內早無此節點、prune no-op〕、本輪 manifest 已校正消除。worktree rust-api `cb2767f`／base-web `aa2f57bc`；obsidian 重生 4001 note。
+> **2026-07-01 023 code 增量**（外科式配方、見 §4）：28 個變更 code 檔重抽（10 rust：7 facade＋handler＋migration m008＋lib；18 base-web：composable/core/component/typings/locales/7 view），純 AST、**0 LLM token**；`dedup=False` 外科式併入、成長閘 PASS（3499→**3558**、**+59**：rust-api +42〔parse_sort_spec＋7×resolve_sort＋各純測＋m008〕、base-web +17〔useTableSort 純函式群＋SortClearButton＋WithSort＋types〕）；174「deleted」仍全＝docs 源倉舊 manifest 殘留〔圖內無節點、prune no-op、已知無害、再 save_manifest 仍顯示〕。worktree rust-api `2591efe`／base-web `78791b33`；obsidian 重生 4064 note。
 
-**file_type**：code 2737／document 693／concept 37／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
-**edge confidence**：EXTRACTED 4345／INFERRED 68／AMBIGUOUS 0
-**edge relation（top）**：contains 2801／calls 902／imports 227／imports_from 196／references 123／method 73／re_exports 38／depends_on 23／conceptually_related_to 16／semantically_similar_to 7／implements 5／shares_data_with 1
+**file_type**：code 2796／document 693／concept 37／rationale 9／image 23（document 693＝base-web 內含 README/CHANGELOG/.github 等 `.md`、非 docs 源倉）
+**edge confidence**：EXTRACTED 4479／INFERRED 68／AMBIGUOUS 0
+**edge relation（top）**：contains 2852／calls 967／imports 234／imports_from 197／references 123／method 75／re_exports 46／depends_on 23／conceptually_related_to 16／semantically_similar_to 7／implements 5／shares_data_with 1
 
 > **★ 關鍵觀察**：98% 的邊是 EXTRACTED（AST 結構事實）、INFERRED 僅 2%、AMBIGUOUS 0。所以本圖的風險 **不是「畫錯邊」**（虛構關係極少）、**而是「漏畫邊」**（§2 盲點）。推論時主要防「圖沒抓到 ⇒ 誤判無關係」、而非防「圖亂連」。
 
@@ -64,7 +65,7 @@ rust 後端走 AST（`calls`/`contains`/`imports` 完整），但**幾乎沒有 
 AST 不把 `const`/字串字面值抽成節點（如 §2.1 的 `CASBIN_INVALIDATE_CHANNEL`）。靠常數耦合的關係因此**雙重隱形**（既無節點、又無邊）。
 
 ### 2.6 社群碎片化 + 標籤為 top-node 自動衍生
-**502** 社群、中位數 **4** 節點、**206** 個 thin（<3）。標籤自 **2026-06-29 起全 502 個由【該社群最高 degree 節點的 label】自動衍生**（top-node-derived，如 `system manage.rs`／`ipgate.rs`／`audit ctx.rs`；非手寫精準語意、**0** 個 `Community N` placeholder）。
+**506** 社群、中位數 **4** 節點、**207** 個 thin（<3）。標籤自 **2026-06-29 起全部由【該社群最高 degree 節點的 label】自動衍生**（top-node-derived，如 `system manage.rs`／`ipgate.rs`／`audit ctx.rs`；非手寫精準語意、**0** 個 `Community N` placeholder）。
 → 「社群」邊界**不等於**模組真實邊界；標籤僅供導覽（file-name-ish、非策展模組名）、別據以推論模組歸屬。
 
 ### 2.7 `calls` 邊 confidence 標記不一致（小坑）

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/hooks/tsconfig.json"
 type: "code"
-community: "compiler Options"
+community: "compilerOptions"
 location: "L4"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/compiler_Options
+  - community/compilerOptions
 ---
 
 # jsx
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[compilerOptions_4]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/compiler_Options
+#graphify/code #graphify/EXTRACTED #community/compilerOptions

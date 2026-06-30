@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/constant.ts"
 type: "code"
-community: "table.ts"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/indexts
 ---
 
 # constant.ts
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[index.ts_1]] - `re_exports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/audit.rs"
 type: "code"
-community: "sys role.rs"
+community: "audit.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_rolers
+  - community/auditrs
 ---
 
 # audit.rs
@@ -24,4 +24,4 @@ tags:
 - [[with_roles_preserves_existing_keys()]] - `contains` [EXTRACTED]
 - [[with_roles_sorts_role_codes()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_rolers
+#graphify/code #graphify/EXTRACTED #community/auditrs

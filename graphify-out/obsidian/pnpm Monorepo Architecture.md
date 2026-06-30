@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "rationale"
-community: "Soybean Admin"
+community: "SoybeanAdmin"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Soybean_Admin
+  - community/SoybeanAdmin
 ---
 
 # pnpm Monorepo Architecture
@@ -14,4 +14,4 @@ tags:
 - [[SoybeanAdmin README (EN)]] - `references` [EXTRACTED]
 - [[base-web pnpm-workspace.yaml]] - `implements` [INFERRED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Soybean_Admin
+#graphify/rationale #graphify/EXTRACTED #community/SoybeanAdmin

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "code"
-community: "prune Null Params()"
-location: "L300"
+community: "Api.SystemManage.IpConfidence seven-stat"
+location: "L301"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/prune_Null_Params
+  - community/ApiSystemManageIpConfidence_seven-stat
 ---
 
 # fetchGetOperationLog()
@@ -17,4 +17,4 @@ tags:
 - [[pruneNullParams()]] - `calls` [EXTRACTED]
 - [[rev3-system-manage.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/prune_Null_Params
+#graphify/code #graphify/EXTRACTED #community/ApiSystemManageIpConfidence_seven-stat

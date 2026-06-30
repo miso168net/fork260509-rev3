@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/views/manage/role/modules/button-auth-modal.vue"
 type: "code"
-community: "Button Auth Modal (role x"
+community: "ButtonAuthModal (role x button authoriza"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Button_Auth_Modal_role_x
+  - community/ButtonAuthModal_role_x_button_authoriza
 ---
 
 # ButtonAuthModal (role x button authorization tree)
@@ -17,4 +17,4 @@ tags:
 - [[fetchGetRoleButton()]] - `calls` [EXTRACTED]
 - [[fetchUpdateRoleButton()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Button_Auth_Modal_role_x
+#graphify/code #graphify/EXTRACTED #community/ButtonAuthModal_role_x_button_authoriza

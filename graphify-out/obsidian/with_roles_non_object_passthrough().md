@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/audit.rs"
 type: "code"
-community: "sys role.rs"
+community: "audit.rs"
 location: "L144"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_rolers
+  - community/auditrs
 ---
 
 # with_roles_non_object_passthrough()
@@ -15,4 +15,4 @@ tags:
 - [[audit.rs]] - `contains` [EXTRACTED]
 - [[with_roles()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_rolers
+#graphify/code #graphify/EXTRACTED #community/auditrs

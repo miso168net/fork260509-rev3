@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/entity/src/sys_operation_log.rs"
 type: "code"
-community: "sys operation log.rs"
+community: "sys_operation_log.rs"
 location: "L9"
 tags:
   - graphify/code

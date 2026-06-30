@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/README.en_US.md"
 type: "concept"
-community: "Soybean Admin"
+community: "SoybeanAdmin"
 tags:
   - graphify/concept
   - graphify/EXTRACTED
-  - community/Soybean_Admin
+  - community/SoybeanAdmin
 ---
 
 # Elegant Router
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin README (EN)]] - `references` [EXTRACTED]
 
-#graphify/concept #graphify/EXTRACTED #community/Soybean_Admin
+#graphify/concept #graphify/EXTRACTED #community/SoybeanAdmin

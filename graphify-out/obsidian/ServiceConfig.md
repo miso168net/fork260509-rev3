@@ -2,7 +2,7 @@
 source_file: "base-web/src/typings/app.d.ts"
 type: "code"
 community: "app.d.ts"
-location: "L1123"
+location: "L1126"
 tags:
   - graphify/code
   - graphify/EXTRACTED

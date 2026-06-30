@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_login_attempt.rs"
 type: "code"
-community: "sys login attempt.rs"
-location: "L242"
+community: "sys_login_attempt.rs"
+location: "L280"
 tags:
   - graphify/code
   - graphify/EXTRACTED

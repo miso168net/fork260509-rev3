@@ -1,11 +1,11 @@
 ---
 source_file: "docker-compose.yml"
 type: "code"
-community: "manage user index.vue (user list"
+community: "manage/user/index.vue (user list page)"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/manage_user_indexvue_user_list
+  - community/manage/user/indexvue_user_list_page
 ---
 
 # acme compose service (prod profile cert skeleton)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[front_nginx_certs volume]] - `depends_on` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/manage_user_indexvue_user_list
+#graphify/code #graphify/EXTRACTED #community/manage/user/indexvue_user_list_page

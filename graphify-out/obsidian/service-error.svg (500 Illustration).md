@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/assets/svg-icon/service-error.svg"
 type: "image"
-community: "Exception Base component"
+community: "ExceptionBase component"
 tags:
   - graphify/image
   - graphify/EXTRACTED
-  - community/Exception_Base_component
+  - community/ExceptionBase_component
 ---
 
 # service-error.svg (500 Illustration)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[ExceptionBase component]] - `references` [EXTRACTED]
 
-#graphify/image #graphify/EXTRACTED #community/Exception_Base_component
+#graphify/image #graphify/EXTRACTED #community/ExceptionBase_component

@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/.github/workflows/release.yml"
 type: "document"
-community: "Soybean Admin"
+community: "SoybeanAdmin"
 tags:
   - graphify/document
   - graphify/EXTRACTED
-  - community/Soybean_Admin
+  - community/SoybeanAdmin
 ---
 
 # Release GitHub Actions Workflow
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[githublogen Changelog Generator]] - `references` [EXTRACTED]
 
-#graphify/document #graphify/EXTRACTED #community/Soybean_Admin
+#graphify/document #graphify/EXTRACTED #community/SoybeanAdmin

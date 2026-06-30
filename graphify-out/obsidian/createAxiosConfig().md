@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/options.ts"
 type: "code"
-community: "table.ts"
+community: "index.ts"
 location: "L43"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/tablets
+  - community/indexts
 ---
 
 # createAxiosConfig()
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_1]] - `imports` [EXTRACTED]
 - [[options.ts]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/tablets
+#graphify/code #graphify/EXTRACTED #community/indexts

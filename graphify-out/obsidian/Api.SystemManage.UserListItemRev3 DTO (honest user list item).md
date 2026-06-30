@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Manage Role view (role list"
+community: "RoleOperateDrawer (role add/edit form, h"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Manage_Role_view_role_list
+  - community/RoleOperateDrawer_role_add/edit_form_h
 ---
 
 # Api.SystemManage.UserListItemRev3 DTO (honest user list item)
@@ -15,4 +15,4 @@ tags:
 - [[Api.SystemManage.SessionPolicy literal union]] - `references` [EXTRACTED]
 - [[fetchGetUserListRev3()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Manage_Role_view_role_list
+#graphify/code #graphify/EXTRACTED #community/RoleOperateDrawer_role_add/edit_form_h

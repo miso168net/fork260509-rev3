@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/views/plugin/charts/echarts/data.ts"
 type: "code"
-community: "use Theme Store"
+community: "data.ts"
 location: "L424"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/use_Theme_Store
+  - community/datats
 ---
 
 # radarOptions
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[data.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/use_Theme_Store
+#graphify/code #graphify/EXTRACTED #community/datats

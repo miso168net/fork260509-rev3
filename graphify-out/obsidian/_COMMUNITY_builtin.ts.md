@@ -38,7 +38,7 @@ SORT file.name ASC
 
 ## Connections to other communities
 - 6 edges to [[_COMMUNITY_index.ts]]
-- 3 edges to [[_COMMUNITY_manage user index.vue (user list]]
+- 3 edges to [[_COMMUNITY_manageuserindex.vue (user list page)]]
 - 3 edges to [[_COMMUNITY_index.ts]]
 - 2 edges to [[_COMMUNITY_index.ts]]
 - 2 edges to [[_COMMUNITY_route.ts]]

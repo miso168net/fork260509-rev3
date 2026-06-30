@@ -1,8 +1,8 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "get access log()"
-location: "L1991"
+community: "get_access_log()"
+location: "L2060"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -16,6 +16,8 @@ tags:
 - [[normalize_current()]] - `calls` [EXTRACTED]
 - [[normalize_size()]] - `calls` [EXTRACTED]
 - [[normalize_str_filter()]] - `calls` [EXTRACTED]
+- [[ok()]] - `calls` [EXTRACTED]
+- [[parse_sort_spec()]] - `calls` [EXTRACTED]
 - [[restorable()]] - `calls` [EXTRACTED]
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[wire_id()]] - `calls` [EXTRACTED]

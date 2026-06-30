@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/entity/src/casbin_rule.rs"
 type: "code"
-community: "casbin rule.rs"
+community: "casbin_rule.rs"
 location: "L25"
 tags:
   - graphify/code

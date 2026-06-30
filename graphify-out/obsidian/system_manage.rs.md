@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "system manage.rs"
+community: "system_manage.rs"
 location: "L1"
 tags:
   - graphify/code
@@ -96,6 +96,7 @@ tags:
 - [[get_role_list()]] - `contains` [EXTRACTED]
 - [[get_role_menu()]] - `contains` [EXTRACTED]
 - [[get_user_list()]] - `contains` [EXTRACTED]
+- [[invalid_sort()]] - `contains` [EXTRACTED]
 - [[is_export_truncated()]] - `contains` [EXTRACTED]
 - [[login_attempt_csv_row()]] - `contains` [EXTRACTED]
 - [[map_ip_rule_write_err()]] - `contains` [EXTRACTED]
@@ -121,6 +122,7 @@ tags:
 - [[normalize_size()]] - `contains` [EXTRACTED]
 - [[normalize_str_filter()]] - `contains` [EXTRACTED]
 - [[normalize_str_filter_empty_to_none()]] - `contains` [EXTRACTED]
+- [[ok()]] - `contains` [EXTRACTED]
 - [[operation_log_csv_row()]] - `contains` [EXTRACTED]
 - [[parse_audit_date()]] - `contains` [EXTRACTED]
 - [[parse_entity_id()]] - `contains` [EXTRACTED]
@@ -128,6 +130,14 @@ tags:
 - [[parse_export_truthy_only_true_and_one()]] - `contains` [EXTRACTED]
 - [[parse_http_status()]] - `contains` [EXTRACTED]
 - [[parse_http_status_class()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_duplicate_field_err()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_empty_none_blank_to_empty()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_err_key_is_invalid_sort()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_invalid_direction_err()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_malformed_token_err()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_multi_ordered()]] - `contains` [EXTRACTED]
+- [[parse_sort_spec_trims_whitespace()]] - `contains` [EXTRACTED]
 - [[parse_success()]] - `contains` [EXTRACTED]
 - [[payload_cell()]] - `contains` [EXTRACTED]
 - [[push_csv_line()]] - `contains` [EXTRACTED]

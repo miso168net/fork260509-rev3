@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/typings/api/rev3-system-manage.d.ts"
 type: "code"
-community: "Role Operate Drawer (role add"
+community: "RoleOperateDrawer (role add/edit form, h"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Role_Operate_Drawer_role_add
+  - community/RoleOperateDrawer_role_add/edit_form_h
 ---
 
 # Api.SystemManage.RoleUpsertModel DTO
@@ -15,4 +15,4 @@ tags:
 - [[fetchAddRole()]] - `references` [EXTRACTED]
 - [[fetchUpdateRole()]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Role_Operate_Drawer_role_add
+#graphify/code #graphify/EXTRACTED #community/RoleOperateDrawer_role_add/edit_form_h

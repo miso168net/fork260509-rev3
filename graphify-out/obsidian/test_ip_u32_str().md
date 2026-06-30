@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/xdb/src/ip_value.rs"
 type: "code"
-community: "ip value.rs"
+community: "ip_value.rs"
 location: "L43"
 tags:
   - graphify/code

@@ -48,13 +48,14 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 12 edges to [[_COMMUNITY_lockout keys()]]
-- 4 edges to [[_COMMUNITY_refresh token()]]
+- 12 edges to [[_COMMUNITY_lockout_keys()]]
+- 4 edges to [[_COMMUNITY_refresh_token()]]
 - 1 edge to [[_COMMUNITY_enforce.rs]]
-- 1 edge to [[_COMMUNITY_system manage.rs]]
+- 1 edge to [[_COMMUNITY_system_manage.rs]]
+- 1 edge to [[_COMMUNITY_ok()]]
 
 ## Top bridge nodes
 - [[auth.rs]] - degree 39, connects to 3 communities
-- [[unlock_login()]] - degree 4, connects to 2 communities
+- [[unlock_login()]] - degree 5, connects to 3 communities
 - [[login()]] - degree 10, connects to 1 community
 - [[lockout_cache_per_user_and_per_ip_g1()]] - degree 4, connects to 1 community

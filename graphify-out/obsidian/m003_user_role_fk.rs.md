@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/migration/src/m003_user_role_fk.rs"
 type: "code"
-community: "m003 user role fk.rs"
+community: "m003_user_role_fk.rs"
 location: "L1"
 tags:
   - graphify/code

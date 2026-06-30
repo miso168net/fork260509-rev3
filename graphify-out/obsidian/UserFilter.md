@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "sys user.rs"
+community: "sys_user.rs"
 location: "L128"
 tags:
   - graphify/code

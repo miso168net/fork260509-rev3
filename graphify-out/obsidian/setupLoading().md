@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/plugins/loading.ts"
 type: "code"
-community: "index.ts"
+community: "loading.ts"
 location: "L8"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/loadingts
 ---
 
 # setupLoading()
@@ -20,4 +20,4 @@ tags:
 - [[setupApp()]] - `calls` [EXTRACTED]
 - [[toggleHtmlClass()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/loadingts

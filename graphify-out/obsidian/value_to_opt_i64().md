@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/handler/system_manage.rs"
 type: "code"
-community: "normalize enum filter()"
-location: "L871"
+community: "menu_write_from_req()"
+location: "L936"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/normalize_enum_filter
+  - community/menu_write_from_req
 ---
 
 # value_to_opt_i64()
@@ -16,4 +16,4 @@ tags:
 - [[system_manage.rs]] - `contains` [EXTRACTED]
 - [[update_menu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/normalize_enum_filter
+#graphify/code #graphify/EXTRACTED #community/menu_write_from_req

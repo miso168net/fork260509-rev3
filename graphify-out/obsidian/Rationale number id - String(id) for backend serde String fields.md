@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/src/service/api/rev3-system-manage.ts"
 type: "rationale"
-community: "Role Operate Drawer (role add"
+community: "RoleOperateDrawer (role add/edit form, h"
 tags:
   - graphify/rationale
   - graphify/EXTRACTED
-  - community/Role_Operate_Drawer_role_add
+  - community/RoleOperateDrawer_role_add/edit_form_h
 ---
 
 # Rationale: number id -> String(id) for backend serde String fields
@@ -14,4 +14,4 @@ tags:
 - [[Api.SystemManage.RoleUpsertModel DTO]] - `references` [EXTRACTED]
 - [[fetchUpdateUser()]] - `references` [EXTRACTED]
 
-#graphify/rationale #graphify/EXTRACTED #community/Role_Operate_Drawer_role_add
+#graphify/rationale #graphify/EXTRACTED #community/RoleOperateDrawer_role_add/edit_form_h

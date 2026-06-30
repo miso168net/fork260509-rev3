@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_role.rs"
 type: "code"
-community: "sys role.rs"
+community: "sys_role.rs"
 location: "L1"
 tags:
   - graphify/code
@@ -23,6 +23,7 @@ tags:
 - [[build_create_active_model()_1]] - `contains` [EXTRACTED]
 - [[build_update_active_model()_1]] - `contains` [EXTRACTED]
 - [[casbin_count()_2]] - `contains` [EXTRACTED]
+- [[col_of()_5]] - `contains` [EXTRACTED]
 - [[create()_1]] - `contains` [EXTRACTED]
 - [[find_active()]] - `contains` [EXTRACTED]
 - [[find_active_by_id()_1]] - `contains` [EXTRACTED]
@@ -35,6 +36,9 @@ tags:
 - [[make_role()_1]] - `contains` [EXTRACTED]
 - [[meta()_2]] - `contains` [EXTRACTED]
 - [[now()_2]] - `contains` [EXTRACTED]
+- [[resolve_sort()_5]] - `contains` [EXTRACTED]
+- [[resolve_sort_rejects_non_whitelist()_5]] - `contains` [EXTRACTED]
+- [[resolve_sort_whitelist_exact_mapping()_5]] - `contains` [EXTRACTED]
 - [[role_active_model_create_sets_create_fields()]] - `contains` [EXTRACTED]
 - [[role_active_model_update_pairs_and_preserves_identity()]] - `contains` [EXTRACTED]
 - [[role_crud_roundtrip_and_dup_and_filter()]] - `contains` [EXTRACTED]

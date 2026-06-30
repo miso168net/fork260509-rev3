@@ -1,11 +1,11 @@
 ---
 source_file: "base-web/CHANGELOG.zh_CN.md"
 type: "document"
-community: "Soybean Admin"
+community: "SoybeanAdmin"
 tags:
   - graphify/document
   - graphify/INFERRED
-  - community/Soybean_Admin
+  - community/SoybeanAdmin
 ---
 
 # SoybeanAdmin CHANGELOG (zh_CN)
@@ -13,4 +13,4 @@ tags:
 ## Connections
 - [[SoybeanAdmin CHANGELOG (EN)]] - `semantically_similar_to` [INFERRED]
 
-#graphify/document #graphify/INFERRED #community/Soybean_Admin
+#graphify/document #graphify/INFERRED #community/SoybeanAdmin

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/elegant/routes.ts"
 type: "code"
-community: "Vis Actor logo icon (visactor.svg)"
+community: "VisActor logo icon (visactor.svg)"
 location: "lines 417-426"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Vis_Actor_logo_icon_visactorsvg
+  - community/VisActor_logo_icon_visactorsvg
 ---
 
 # Route: plugin_charts_vchart (VChart demo page)
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[VisActor logo icon (visactor.svg)]] - `references` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/Vis_Actor_logo_icon_visactorsvg
+#graphify/code #graphify/EXTRACTED #community/VisActor_logo_icon_visactorsvg

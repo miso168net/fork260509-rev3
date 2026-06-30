@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/index.ts"
 type: "code"
-community: "recommend.ts"
+community: "loading.ts"
 location: "L13"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/recommendts
+  - community/loadingts
 ---
 
 # getColorPalette()
@@ -22,4 +22,4 @@ tags:
 - [[setupLoading()]] - `calls` [EXTRACTED]
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/recommendts
+#graphify/code #graphify/EXTRACTED #community/loadingts

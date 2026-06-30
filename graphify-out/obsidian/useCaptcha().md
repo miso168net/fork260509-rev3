@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/hooks/business/captcha.ts"
 type: "code"
-community: "index.ts"
+community: "useLoading()"
 location: "L6"
 tags:
   - graphify/code
   - graphify/INFERRED
-  - community/indexts
+  - community/useLoading
 ---
 
 # useCaptcha()
@@ -16,4 +16,4 @@ tags:
 - [[useCountDown()]] - `calls` [INFERRED]
 - [[useLoading()]] - `calls` [INFERRED]
 
-#graphify/code #graphify/INFERRED #community/indexts
+#graphify/code #graphify/INFERRED #community/useLoading

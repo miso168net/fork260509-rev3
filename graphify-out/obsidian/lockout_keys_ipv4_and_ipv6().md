@@ -1,7 +1,7 @@
 ---
 source_file: "rust-api/server/src/handler/auth.rs"
 type: "code"
-community: "lockout keys()"
+community: "lockout_keys()"
 location: "L740"
 tags:
   - graphify/code
