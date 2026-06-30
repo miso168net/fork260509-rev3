@@ -17,7 +17,7 @@
 
 > 以下為預計`下一步` (不要合到`最新進展`)
 
-**下一步**: **當前無 active feature**（022-ip-access-control 已收刀、merge `d9c809e6`）。下一刀候選見 [DESIGN §8.4 roadmap](INTEGRATION-DESIGN.md);遞延項＝alt-login 4 流程 stub〔⚠️m post-波3 v1-completeness slot、§4.2〕／audit scale 兩項〔pg_trgm／archive purge、§4.2〕／log retention purge〔⚠️n、§4.2〕／帳號-DoS 緩解〔**IP 信任白名單部分已由 022 白名單兌現**、CAPTCHA 仍 future、019 §4.2〕。018 自身遞延 backlog 見 §3.I。Auth 島／治理島 §4.2／三維 RBAC runtime 編輯／觀測層／**IP 存取控制閘（022）**皆已閉口
+**下一步**: **下一刀＝023-list-column-sort（brainstorm 已定稿 `1b523201`、待 `/speckit-specify` 起設計鏈、尚無 feature branch）**＝多欄 server-side 列表排序＋3-state〔naive-ui 原生循環〕＋一鍵清除＋localStorage 持久化（per route.name）、範圍 7 個分頁列表（menu 排除、樹狀）；brainstorm 見 [docs/superpowers/023-list-column-sort.md](superpowers/023-list-column-sort.md)。022-ip-access-control 已收刀（merge `d9c809e6`）。其他下一刀候選見 [DESIGN §8.4 roadmap](INTEGRATION-DESIGN.md);遞延項＝alt-login 4 流程 stub〔⚠️m post-波3 v1-completeness slot、§4.2〕／audit scale 兩項〔pg_trgm／archive purge、§4.2〕／log retention purge〔⚠️n、§4.2〕／帳號-DoS 緩解〔**IP 信任白名單部分已由 022 白名單兌現**、CAPTCHA 仍 future、019 §4.2〕。018 自身遞延 backlog 見 §3.I。Auth 島／治理島 §4.2／三維 RBAC runtime 編輯／觀測層／**IP 存取控制閘（022）**皆已閉口
 
 ---
 
