@@ -1,6 +1,7 @@
 # Verification Commands (C-V): 024-password-policy
 
 > 約定：rust 命令一律容器內（host 無 toolchain）；live 測 `--test-threads=1` serial。
+> **★ `server` 為 bin-only crate（無 `lib.rs`）**：unit 測（in-crate `#[cfg(test)] mod`）跑 `cargo test -p server --bin server <filter>`（**非 `--lib`**——`--lib` 硬錯 `no library targets found`）；integration 測（`server/tests/*.rs`）跑 `--test <name>`（見 010 範式）。
 > `DC="docker compose -f docker-compose.yml -f docker-compose.dev.yml"`；`EXEC="$DC exec -T rust-api"`。
 > 改 `.rs` 後先 `$EXEC sh -c 'cd /app && find server/src -name "*.rs" -exec touch {} +'`（避 WSL2 stale-mtime 假綠）。
 > 具體 DB 連線 / token 取得由 implementer 依 `deploy/secrets/*` 與既有 CDP 腳本（`tests/000-.../scripts/`）填實。
@@ -8,7 +9,7 @@
 ## C-V-1 · `validate_password_complexity` 純測（TDD 核心）→ FR-006 / SC-003
 
 ```bash
-$EXEC sh -c 'cd /app && cargo test -p server --lib password_policy -- --nocapture'
+$EXEC sh -c 'cd /app && cargo test -p server --bin server password_policy -- --nocapture'
 ```
 - 逐 knob red→green：長度下界（`chars().count() < min`→TooShort）、上界（>max→TooLong）、缺各字元類（require_* on 但無對應類→NeedX）、密碼＝帳號（大小寫不敏感→SameAsUsername）、全通過（Ok）、**回全部違規非短路**（min>max ⇒ 同時 TooShort+TooLong）。
 - 特殊符號（R1）：`"abc!"` 含 special、`"abcd"` 不含（require_special on 時後者 NeedSpecial）。
@@ -20,7 +21,7 @@ $EXEC sh -c 'cd /app && cargo test -p server --lib password_policy -- --nocaptur
 ## C-V-3 · `validate_value_type` number 分支純測（擴既有 `value_type_tests`）→ FR-004 / SC-002
 
 ```bash
-$EXEC sh -c 'cd /app && cargo test -p server --lib value_type_tests'
+$EXEC sh -c 'cd /app && cargo test -p server --bin server value_type_tests'
 ```
 - 用 bare `"number"` value_type：合法 `"12"/"1"/"1024"`→ok；`"abc"/"0"/"-1"/"1025"/"9999"/""`→Err、`err.code()=="2222"`、`err.key().as_ref()=="biz.systemSettings.invalidValue"`。（`"1025"`＝max+1 上界邊界）
 

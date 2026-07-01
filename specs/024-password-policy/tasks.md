@@ -75,7 +75,7 @@ description: "Task list for 024-password-policy"
 ### Implementation for User Story 2
 
 - [ ] T008 [US2] 實作 `validate_value_type` `number` 驗證於 `rust-api/server/src/handler/system_settings.rs`：**seed value_type 為 bare `"number"`（無冒號）、`"number".split_once(':')` 回 `None`**，故 number **走整串比對、不可用 `Some(("number", _))` arm**（對無冒號 `"number"` 永不命中、落 `_ => Ok(())` 靜默放行）。於函式開頭（既有 `match value_type.split_once(':')` **之前**）加 early-return：`if value_type == "number" { return match value.parse::<u32>() { Ok(n) if (1..=1024).contains(&n) => Ok(()), _ => Err(AppError::Biz(Cow::Borrowed("biz.systemSettings.invalidValue"))) }; }`。既有 enum `split_once` match 不動。→ T007 轉綠。（依賴 T007）
-- [ ] T009 [US2] 驗 US2（容器內 + live）：`cargo test -p server --lib value_type_tests`（含 number）綠（C-V-3）；curl POST update `password_min_length` 值 `abc/-1/0/9999` → `2222`、psql 值不變；合法 `12` → 持久（C-V-4c）。（依賴 T008、T004）
+- [ ] T009 [US2] 驗 US2（容器內 + live）：`cargo test -p server --bin server value_type_tests`（含 number）綠（C-V-3；**★ server bin-only→`--bin server`、非 `--lib`**）；curl POST update `password_min_length` 值 `abc/-1/0/9999` → `2222`、psql 值不變；合法 `12` → 持久（C-V-4c）。（依賴 T008、T004）
 
 **Checkpoint**: US1 + US2 皆可獨立運作 —— 政策可設且非法數值被守門。
 
@@ -85,7 +85,7 @@ description: "Task list for 024-password-policy"
 
 **Goal**: 純函式 `validate_password_complexity` 能就「一組政策 + 候選密碼」判定符合性、回**全部**未滿足條件（本刀 dormant、供刀2 025-user-center 接線）。
 
-**Independent Test**: `cargo test -p server --lib password_policy` 全綠（逐 knob）；與 US1/US2 無耦合（純模組、synthetic 資料測）。
+**Independent Test**: `cargo test -p server --bin server password_policy` 全綠（逐 knob）；與 US1/US2 無耦合（純模組、synthetic 資料測）。
 
 ### Tests for User Story 3 (TDD — 先寫、預期紅) ⚠️
 
@@ -94,7 +94,7 @@ description: "Task list for 024-password-policy"
 ### Implementation for User Story 3
 
 - [ ] T011 [US3] 實作 `rust-api/server/src/auth/password_policy.rs`：`from_settings`（`value=="on"`→true / 其餘含缺鍵→false；`parse::<usize>().unwrap_or(<預設>)`；**零 DB、零 `entity::`**、吃 `&[(&str,&str)]`）＋`validate_password_complexity`（長度用 `plain.chars().count()` 含邊界 `>=min && <=max`；特殊符號 `c.is_ascii_graphic() && !c.is_ascii_alphanumeric()`〔R1〕；禁同帳號 `plain.eq_ignore_ascii_case(user_name)`；逐條收集 `Vec<PolicyViolation>`、空則 `Ok(())`）。→ T010 測轉綠。（依賴 T010）
-- [ ] T012 [US3] 驗 US3（容器內、force-touch）：`cargo test -p server --lib password_policy` 全綠（C-V-1/C-V-2）。（依賴 T011）
+- [ ] T012 [US3] 驗 US3（容器內、force-touch）：`cargo test -p server --bin server password_policy` 全綠（C-V-1/C-V-2）。（依賴 T011）
 
 **Checkpoint**: 三 story 皆可獨立驗收；驗證原語就緒待刀2 接線。
 
