@@ -10,7 +10,7 @@
 
 ## R2 — `number` 型驗證範圍（spec FR-004 deferred 定案）
 
-- **Decision**：`validate_value_type` `number` 分支＝`value.parse::<u32>()` 成功且 **`1..=1024`** → `Ok`；否則 `Err(AppError::Biz(Cow::Borrowed("biz.systemSettings.invalidValue")))`（2222）。前端 `NInputNumber :min="1" :max="1024"`。
+- **Decision**：`validate_value_type` 對 **bare `"number"`**（seed value_type 無冒號）以**整串比對** early-return（**不經 `split_once`**——否則 `Some(("number", _))` arm 對無冒號的 `"number"` 永不命中、靜默放行非法值）：`value.parse::<u32>()` 成功且 **`1..=1024`** → `Ok`；否則 `Err(AppError::Biz(Cow::Borrowed("biz.systemSettings.invalidValue")))`（2222）。前端 `NInputNumber :min="1" :max="1024"`。
 - **Rationale**：正整數下限 1（長度/次數無 0 意義）；上限 1024 遠寬於任何合理密碼長度、純防呆。復用既有 biz 碼＝零新 i18n key。補掉 008 明文承認的 `number` passthrough 缺口（`handler/system_settings.rs` 註解「其他型…保守放行」）。
 - **Alternatives**：無上限 → 失防呆；`i64`/負數容忍 → 長度負值無意義；每 key 專屬範圍（min 6..64 / max …）→ 跨欄語意、per-key 驗證拿不到 context（見 R3），YAGNI。
 

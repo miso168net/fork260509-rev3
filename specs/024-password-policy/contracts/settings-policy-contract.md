@@ -36,6 +36,7 @@
 | `enum:on,off` | `on` / `off` | ✅（既有 enum 分支、不改）|
 
 - 錯誤 wire：HTTP 200 信封 `{code:"2222", msg:"biz.systemSettings.invalidValue", data:null}`（沿 008 既有 pattern，前端攔截器 `$t('backend.biz.systemSettings.invalidValue')`）。
+- **實作註**：`number` 為 bare value_type（無冒號）→ 以**整串比對**判定（`value_type == "number"` early-return）、**不經 `split_once`**（否則 `Some(("number",_))` arm 永不命中、靜默放行）。
 
 ## 3. `password_policy` 純函式契約（本刀 dormant、供刀2）
 

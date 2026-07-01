@@ -77,11 +77,11 @@ enum PolicyViolation {
 - 空違規集 → `Ok(())`；非空 → `Err(violations)`。
 - **min>max**（R3）：`TooShort` 與 `TooLong` 可能同時觸發（任何長度無法同時滿足）→ 一律不符（安全 fallback、不當機）。
 
-## 5. `validate_value_type` number 分支（`handler/system_settings.rs`，R2）
+## 5. `validate_value_type` number 驗證（`handler/system_settings.rs`，R2）
 
-- 於既有 `match value_type.split_once(':')` 加 arm（enum arm 後、`_ => Ok(())` fallback 前）：
-  - `Some(("number", _))` → `value.parse::<u32>()` 成功且 `(1..=1024).contains(&n)` → `Ok(())`；否則 `Err(AppError::Biz(Cow::Borrowed("biz.systemSettings.invalidValue")))`。
-- 其餘型維持保守放行（`_ => Ok(())`）。
+- **⚠️ seed value_type ＝ bare `"number"`（無冒號）**：`"number".split_once(':')` 回 `None`，故**不可**用 `Some(("number", _))` arm（永不命中、落 `_ => Ok(())` 靜默放行非法值）。**number 走整串比對**：
+  - 於函式開頭（既有 `match value_type.split_once(':')` **之前**）early-return：`if value_type == "number" { return match value.parse::<u32>() { Ok(n) if (1..=1024).contains(&n) => Ok(()), _ => Err(AppError::Biz(Cow::Borrowed("biz.systemSettings.invalidValue"))) }; }`。
+- 既有 enum `split_once` match 與 `_ => Ok(())` 保守放行不動。
 
 ## 6. 狀態轉移 / 生命週期
 
