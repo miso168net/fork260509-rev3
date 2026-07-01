@@ -11,8 +11,8 @@
 
 ## 1. Migration（m009 seed 7 列）
 
-- migrate gate 自動套（`migration up`）；或手動 `docker compose … exec -T rust-api migration up`。
-- **可逆驗（三守恆）**：`migration down`（退 1 步）→ `migration up`。
+- migrate gate 自動套（`migration up`）；或手動 `docker compose … exec -T rust-api sh -c 'cd /app && cargo run -p migration -- up'`（★ `migration` 不在容器 PATH、走 `cargo run -p migration --`）。
+- **可逆驗（三守恆）**：`cargo run -p migration -- down`（sea-orm 預設退 1 步＝m009）→ `cargo run -p migration -- up`。
 - 驗：`psql … -c "SELECT setting_key,setting_value,value_type FROM system_settings WHERE setting_key LIKE 'password_%' ORDER BY setting_key"` → **7 列**（2 number + 5 enum:on,off、值＝保守預設）。
 
 ## 2. 單元測試（rust、容器內）— TDD 核心

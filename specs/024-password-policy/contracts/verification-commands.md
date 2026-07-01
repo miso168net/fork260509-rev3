@@ -58,7 +58,9 @@ done      # 每筆期望 {"code":"2222","msg":"biz.systemSettings.invalidValue",
 ```bash
 $EXEC sh -c 'cd /app && cargo test -p server --test entity_access_lint'      # password_policy.rs 零 entity::
 $EXEC sh -c 'cd /app && cargo test -p server --test endpoint_coverage_lint'  # 零新 route、registry 不變
-$EXEC migration down && $EXEC migration up                                   # m009 up→down→up 可逆（SC-006）
+$EXEC sh -c 'cd /app && cargo run -p migration -- down'   # m009 退 1 步（sea-orm down 預設只退最後 1 支＝m009、m001-m008 不動）
+$EXEC sh -c 'cd /app && cargo run -p migration -- up'     # 重套 m009；up→down→up 可逆（SC-006）
+# ★ 註：容器內 `migration` 不在 PATH（binary 在 /app/target/debug/migration）；用 `cargo run -p migration -- <cmd>` 確保重編最新碼
 $DC exec -T base-web sh -c 'cd /app && pnpm typecheck'
 ```
 
