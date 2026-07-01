@@ -168,14 +168,14 @@
 
 #### MODAL-WIRING ★ — **本檔授權七用途 (a)~(g)**（⚠️i-1：(a)~(e) rev2 經 v1.0→v1.6 五次擴邊驗證過的邊界、rev3 一次全授；**(f)＝⚠️af、v1.2.0 amend（列表排序掛載）**；**(g)＝⚠️ah、v1.3.0 amend（非-manage user-center 自助頁）**；**新用途 (h) 起仍走 Amendment**）
 
-**邊界**：`base-web/src/views/manage/**` 內的——
+**邊界**：`base-web/src/views/manage/**` 內的〔(a)~(f)；**(g) 為 `views/manage/**` 樹外例外**、見該項〕——
 - **(a)** `// request` placeholder 接線：`modules/*-operate-{modal,drawer}.vue`（create/update）與 `index.vue` 的 delete/batchDelete handler
 - **(b)** 業務頁操作按鈕 `hasAuth(<button_code>)` 可見性 gating：`index.vue` 操作鈕 `v-if` 與共用元件 `table-header-operation.vue` 的附加顯隱 prop
 - **(c)** 同模式新權限 modal＋trigger：`role-operate-drawer.vue` 的 `v-if="isEdit"` 授權編輯區新增 `*-auth-modal.vue`（鏡像 menu/button-auth-modal）＋觸發 NButton＋對應 i18n key——嚴格限「角色 × 某權限維度」runtime 編輯介面
 - **(d)** 選單復原／re-parent 維運控制：`menu-operate-modal.vue` edit 模式 parentId selector（種子父固定、僅自訂可搬）＋`index.vue`「顯示已刪除」toggle＋restore 鈕（孤兒父已刪擋下）＋對應 i18n key——嚴格限「選單樹復原／父層級調整」
 - **(e)** 同 manage 範式新管理頁：`views/manage/<page>/index.vue`＋可選 `modules/*`（嚴格鏡像既有 user/role/menu 結構）、消費 rust-api 端點、含 `route.manage_<page>`＋`page.manage.<page>.*` i18n key——不擴張到任意新 UI／非 manage 頁／自訂佈局；route 由 elegant-router 自動生成、可見性走 §I.2
 - **(f)** 列表欄位排序掛載（⚠️af、023-list-column-sort）：column 定義加 naive-ui `sorter` props（`sorter:{multiple:N}`＋受控 `sortOrder`）＋`<NDataTable>` 綁 `@update:sorter`＋補 `useRoute()`／`searchParams.sort`；**於列表 view 工具列掛「清除排序」控制**（有 `TableHeaderOperation` 的頁〔user/role/ip-rule〕用其既有 `#suffix` slot；審計/封存等自有 `NSpace` 工具列的頁則於該既有工具列 inline）＋ UI label key `common.clearSort`（locale＋`App.I18n.Schema` 同步）——嚴格限「列表排序」用途、不擴張其他 inline；**不改 `table-header-operation.vue` 元件本體**。配套新檔（`useTableSort`／`SortClearButton`／`rev3-extra` typings）循 ADAPT/WRAPPER；非法排序 `2222`〔wire msg `biz.common.invalidSort`〕的 `backend.biz.common.invalidSort` 譯文循 BASE-WEB-I18N-WIRING ★
-- **(g)** 非-manage 頂層自助頁（⚠️ah、025-user-center）：授權於 `base-web/src/views/manage/**` **之外**新增登入者自助頁 `views/user-center/index.vue`＋可選 `modules/*`——profile 自助檢視/編輯（帳號/角色唯讀、性別/昵稱/手機/郵箱可改）＋改密碼（消費密碼政策 024）＋手機/郵箱驗證 UI 佔位，消費 rust-api 自助端點（auth-only、operator=登入者本人），含 `route.user-center`＋`page.userCenter.*` i18n key；route 由 elegant-router 自動生成、可見性走 §I.2——**嚴格限「登入者本人自助（profile／改密碼／手機郵箱驗證佔位）」用途、不擴張到管理他人資料／任意新 UI／自訂佈局**。配套新檔（wrapper／typings）循 ADAPT/WRAPPER；後端 biz 訊息譯文循 BASE-WEB-I18N-WIRING ★
+- **(g)** 非-manage 頂層自助頁（⚠️ah、025-user-center）：授權於 `base-web/src/views/manage/**` **之外**新增登入者自助頁 `views/user-center/index.vue`＋可選 `modules/*`——profile 自助檢視/編輯（帳號/角色唯讀、性別/昵稱/手機/郵箱可改）＋改密碼（消費密碼政策 024）＋手機/郵箱驗證 UI 佔位，消費 rust-api 自助端點（auth-only、operator=登入者本人），含 `route.user-center`＋`page.userCenter.*` i18n key；route 由 elegant-router 自動生成（`hideInMenu:true`、經頭像下拉入口進入、**非** Casbin menu、不涉 §I.2 menu enforce）——**嚴格限「登入者本人自助（profile／改密碼／手機郵箱驗證佔位）」用途、不擴張到管理他人資料／任意新 UI／自訂佈局**。配套新檔（wrapper／typings）循 ADAPT/WRAPPER；後端 biz 訊息譯文循 BASE-WEB-I18N-WIRING ★
 
 **紀律**：
 - **嚴格限七用途，絕不擴張到其他 inline 邏輯**；第 (h) 種用途 → §V.2 Amendment
@@ -204,7 +204,7 @@
 `/speckit-plan` 步必須對照本 constitution 跑 Constitution Check，逐項 yes/no：
 
 1. **此 plan 是否違反 §I.1 base-web 為權威紀律？** rust-api 是否未提供 base-web 用到的對應 endpoint？
-2. **此 plan 是否動到 base-web inline？** 若是、屬 MODAL-WIRING ★ 哪個用途 (a)~(e)？授權邊界內？是否依 §III fork-delta 紀律（修改型原行註解保留／新增型標記圈界、`rev3-inline` token）？
+2. **此 plan 是否動到 base-web inline？** 若是、屬 MODAL-WIRING ★ 哪個用途 (a)~(g)？授權邊界內？是否依 §III fork-delta 紀律（修改型原行註解保留／新增型標記圈界、`rev3-inline` token）？
 3. **此 plan 涉及 menu 顯示是否走 Casbin enforce？**（§I.2；demo menu 是否依 ⚠️p 進 seed 而非隱藏？）
 4. **此 plan 的 wire 設計是否對齊 §I.3 typings 權威序與不變式？**（envelope／逐欄位 id 型／13 碼矩陣／enum；mock 僅作補充 fixture）
 5. **此 plan 是否從 rev2 source 拷貝 code？** 若是、屬 §I.5 例外清單嗎？參照處是否觸發防回歸條款（帶回已推翻行為）？

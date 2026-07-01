@@ -224,7 +224,7 @@
 | BASE-WEB-ADAPT | L1+L2 預設可動 | `.env*`＋typings 新檔（新增為主、禁刪既有 type/field） |
 | BASE-WEB-WRAPPER | L3 預設可動 | `service/api/rev3-*.ts` 一律新檔;不改既有 auth/route/system-manage.ts |
 | BASE-WEB-BUILD-CONFIG ★ | L4 已授、未動用 | `build/plugins/router.ts` pageExcludePatterns、嚴格限隱藏 demo menu（⚠️p 拍板後議題消解） |
-| MODAL-WIRING ★ | L4 六用途 (a)~(f) | `views/manage/**` inline:接線/hasAuth gating/新權限 modal/復原控制/新管理頁/列表排序掛載;**絕不擴張到其他 inline** |
+| MODAL-WIRING ★ | L4 七用途 (a)~(g) | `views/manage/**` inline〔(a)~(f)〕:接線/hasAuth gating/新權限 modal/復原控制/新管理頁/列表排序掛載;**(g)＝`views/manage/**` 樹外 user-center 自助頁**(profile 自助檢視/編輯+改密碼+手機郵箱驗證佔位、`page.userCenter.*`、auth-only);**絕不擴張到其他 inline** |
 | RUSTAPI-SOURCE-ISOLATION | rust-api 整棵樹 | 全新寫;設計繼承、code 不拷貝;research 不准 grep rev1 source |
 
 ---
