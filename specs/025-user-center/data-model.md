@@ -44,7 +44,7 @@
 1. `find_active_by_id(claims.uid)` → 無 → `biz.user.notFound`。
 2. `confirmPassword == newPassword`（前端攔 ＋ 後端驗）→ 否 → `biz.password.mismatch`。
 3. `password::verify(oldPassword, user.password)` → false → `biz.password.oldMismatch`。
-4. 載政策（R2）→ `validate_password_complexity(&policy, newPassword, &user.user_name)` → Err → `biz.password.tooWeak`（複用）。
+4. 載政策（R2）→ `validate_password_complexity(&policy, newPassword, &user.user_name)` → Err → `biz.password.tooWeak`（淨新）。
 5. `password::hash_password(newPassword)` → `change_own_password(uid, hash, meta)`。
 
 ## 6. updateProfile 規則

@@ -2,7 +2,7 @@
 
 > rust 命令一律容器內；live 測 `--test-threads=1` serial。`DC="docker compose -f docker-compose.yml -f docker-compose.dev.yml"`；`EXEC="$DC exec -T rust-api"`。改 `.rs` 後 force-touch（避 stale-mtime）。加 i18n 鍵後 CDP 前先 `$DC restart base-web`（vite stale-locale）。DB 連線 `postgres://soybean:***@…/soybean_admin_rust`（`deploy/secrets/database_url`）。token 由 Super/123456 或既有 CDP 腳本取。設 `API=http://127.0.0.1:31080/api`、`T=<token>`。
 
-## C-V-1 · live changePassword（消費 024）→ FR-004~009 / SC-002/003
+## C-V-1 · live changePassword（消費 024）→ FR-005~009 / SC-002/003
 ```bash
 # happy：舊密對 + 新密合規（先確認政策放行）→ 200、psql password PHC 變、新密可 login
 curl -fsS "$API/userCenter/changePassword" -H "Authorization: Bearer $T" -H 'Content-Type: application/json' \
@@ -11,7 +11,7 @@ curl -fsS "$API/userCenter/changePassword" -H "Authorization: Bearer $T" -H 'Con
 # psql 驗 password 欄變、sys_operation_log 末列 operator_id=自己、payload password=<redacted>
 ```
 
-## C-V-2 · live updateProfile → FR-002/003 / SC-001
+## C-V-2 · live updateProfile → FR-002/003/004 / SC-001/007（operator=claims.uid、不信 body id）
 ```bash
 curl -fsS "$API/userCenter/updateProfile" -H "Authorization: Bearer $T" -H 'Content-Type: application/json' \
   -d '{"userGender":1,"nickName":"我的昵称","userPhone":"13800000000","userEmail":"me@x.com"}'

@@ -37,7 +37,7 @@
 | 1 | §I.1 base-web 權威（rust-api 缺 endpoint？）| ✅ PASS — 3 個新 self 端點前後端**同刀新增**、無缺口 |
 | 2 | §IV.2 動 base-web inline？MODAL-WIRING (a)~(g)？| ✅ **gate CLEARED** — 改 `views/user-center/index.vue`（非-manage）＝**新用途 (g)**；**amendment 已落**（constitution v1.2.0→v1.3.0、§III.2 加 (g)、⚠️ah、commit `63d35179`、025 feature branch、user 親決 A）。`page.userCenter.*` 綁 (g)。實質不同於 024 ⚠️ag〔既授 (e) 頁內、不 bump〕：本刀跨出 `views/manage/**` 邊界、故 MINOR amend |
 | 3 | §I.2 menu Casbin enforce？| ✅ N/A — `route.user-center` `hideInMenu:true`、無 menu 顯示/enforce 改 |
-| 4 | §I.3 wire 對齊 typings？| ✅ PASS — 3 新 wire（新 typings 循 ADAPT declaration-merge）；biz 訊息 2222+i18n key（複用 `biz.password.tooWeak/mismatch`＋新 `oldMismatch`＋`biz.user.notFound`）、**13 碼矩陣不擴張**；`password` 永不上 wire |
+| 4 | §I.3 wire 對齊 typings？| ✅ PASS — 3 新 wire（新 typings 循 ADAPT declaration-merge）；biz 訊息 2222+i18n key（`biz.password.{tooWeak,mismatch,oldMismatch}` **淨新**〔全庫零命中〕＋`biz.user.notFound` 複用）、**13 碼矩陣不擴張**；`password` 永不上 wire |
 | 5 | §I.5 從 rev2 拷貝 code？| ✅ PASS — handler/facade/前端全新寫；喚醒 024 dormant（自家碼）|
 | 6 | §II 拍板 #1~#13 抵觸？| ✅ PASS — 無反轉（#12 brainstorm 落 `docs/superpowers/025-user-center.md`）|
 | 7 | §III ★ 軌道？授權邊界內？| ✅ PASS — MODAL-WIRING (g)（#2 已 amend）；`backend.biz.password.*`→BASE-WEB-I18N-WIRING(⚠️aa)；新 typings→ADAPT／新 `rev3-user-center.ts` wrapper→WRAPPER／新 handler·facade→RUSTAPI-SOURCE-ISOLATION |

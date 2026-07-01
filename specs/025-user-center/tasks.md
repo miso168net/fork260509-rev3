@@ -35,7 +35,7 @@ description: "Task list for 025-user-center"
 
 **Purpose**: 3 story 共用的前後端骨架（先於 US 填充）
 
-- [ ] T002 後端骨架：建 `rust-api/server/src/handler/user_center.rs`（3 wire DTO：`GetProfileRes`/`UpdateProfileReq`/`ChangePwdReq`〔camelCase、data-model §2〕 + 3 handler fn 簽名〔`Extension<Claims>`、auth-only〕，body 暫 minimal）＋`handler/mod.rs` `+mod user_center`＋`main.rs` 掛 `user_center` router（仿 `route_auth` main.rs:190、`.layer(enforce_mw)`、無 `require_policy`、3 route：getProfile GET / updateProfile POST / changePassword POST）＋`server/tests/endpoint_coverage_lint.rs` `AS_BUILT_ROUTES` **50→53**（加 3 路徑、陣列容量）。
+- [ ] T002 後端骨架：建 `rust-api/server/src/handler/user_center.rs`（3 wire DTO：`GetProfileRes`〔**US1 子集 6 欄；`createdAt`/`createdBy`/`adminUpdatedAt` 3 欄由 US3 T014 擴**〕/`UpdateProfileReq`/`ChangePwdReq`〔camelCase、data-model §2〕 + 3 handler fn 簽名〔`Extension<Claims>`、auth-only〕，body 暫 minimal）＋`handler/mod.rs` `+mod user_center`＋`main.rs` 掛 `user_center` router（仿 `route_auth` main.rs:190、`.layer(enforce_mw)`、無 `require_policy`、3 route：getProfile GET / updateProfile POST / changePassword POST）＋`server/tests/endpoint_coverage_lint.rs` `AS_BUILT_ROUTES` **50→53**（加 3 路徑、陣列容量）。
 - [ ] T003 [P] 前端骨架：`base-web/src/views/user-center/index.vue` 換 `<LookForward/>` → 4 卡容器（root `flex-col-stretch gap-16px` **修 overflow**、DECISIONS ⚠️ag 範式）＋建 `views/user-center/modules/`（`basic-info-card`/`phone-card`/`email-card`/`password-card` 佔位）＋`src/service/api/rev3-user-center.ts`（`fetchGetProfile`/`fetchUpdateProfile`/`fetchChangePassword` skeleton、直接路徑 import 慣例）＋`src/typings/api/rev3-user-center.d.ts`（3 DTO 型、declaration-merge）。**★MODAL-WIRING (g)**。
 - [ ] T004 [P] i18n scaffold：`src/typings/app.d.ts` App.I18n.Schema `page.userCenter.*`（區塊標題/欄位/按鈕/改密碼標籤＋`createdAt`/`updatedAt`＋`origin.system`/`origin.adminCreated`/`origin.selfCreated`/`origin.adminUpdated`＋`verify.comingSoon`）＋`backend.biz.password.*` 命名空間 → `src/locales/langs/{zh-cn,en-us}.ts` 對應（**先 Schema 後 locale**；zh-CN 為主）。
 
@@ -54,7 +54,7 @@ description: "Task list for 025-user-center"
 - [ ] T005 [US1] facade `update_own_profile` 於 `rust-api/server/src/model/facade/sys_user.rs`：仿 `update`/`build_update_active_model`（sys_user.rs:359/286）的 `mutate_in_txn`——`into_active_model` 只 `Set` nick/gender/phone/email ＋ `updated_at`/`updated_by`（§I.6 成對、operator=`meta.operator.id`）；user_name/password/status/roles **Unchanged**；op-log **不套 `with_roles`**。
 - [ ] T006 [US1] handler `getProfile` + `updateProfile` 於 `rust-api/server/src/handler/user_center.rs`：getProfile→`find_active_by_id(claims.uid)`＋`roles_of_user(claims.uid)`〔code〕→回 userName/roles/gender/nick/phone/email〔created/updated 欄留 US3〕；updateProfile→`ctx.to_audit_meta(claims.uid)`→`update_own_profile`（operator=自己、不信 body id）。（依賴 T005）
 - [ ] T007 [P] [US1] 前端 `base-web/src/views/user-center/modules/basic-info-card.vue`（userName/roles 唯讀顯示＋gender `NRadioGroup`〔`userGenderOptions`〕＋nick `NInput`＋保存→`fetchUpdateProfile`）＋`phone-card.vue`/`email-card.vue` 的**值 input＋保存**（共用 updateProfile 送全 model；rule 用 `patternRules.phone/email`）。
-- [ ] T008 [US1] 驗 US1（容器內 + CDP）：curl getProfile 回 profile；curl updateProfile 改 4 欄→psql 持久、user_name/password 不變；CDP `/user-center` 見基本资料/手机/邮箱卡可改可存 → FR-001/002/003、SC-001。（依賴 T006、T007）
+- [ ] T008 [US1] 驗 US1（容器內 + CDP）：curl getProfile 回 profile；curl updateProfile 改 4 欄→psql 持久、user_name/password 不變＋斷言 operator=`claims.uid`（body 無 target-id、self-only 結構驗）；CDP `/user-center` 見基本资料/手机/邮箱卡可改可存 → FR-001/002/003/004、SC-001/007。（依賴 T006、T007）
 
 **Checkpoint**: US1 可獨立驗收（自助檢視/編輯 profile＝MVP）。
 
@@ -67,9 +67,9 @@ description: "Task list for 025-user-center"
 **Independent Test**: happy→新密可 login；舊密錯/確認不符/違政策→2222；op-log password redact；CDP 動態 rule 隨政策。
 
 - [ ] T009 [US2] facade `change_own_password` 於 `sys_user.rs`（只 `Set` password ＋ `updated_at`/`updated_by`、`mutate_in_txn` op-log redact）＋喚醒 `rust-api/server/src/auth/password_policy.rs`（移除檔頭 `#![allow(dead_code)]`）。
-- [ ] T010 [US2] handler `changePassword` 於 `handler/user_center.rs`（順序：`find_active_by_id`→無`biz.user.notFound`；`confirm==new`否`biz.password.mismatch`；`verify(old,phc)`false`biz.password.oldMismatch`；載政策`find_all`→pairs→`from_settings`→`validate_password_complexity(&policy,new,&user_name)`Err`biz.password.tooWeak`；`hash_password(new)`→`change_own_password`）＋補 `biz.password.oldMismatch` i18n（其餘複用既有 tooWeak/mismatch/notFound）。（依賴 T009）
-- [ ] T011 [P] [US2] 前端 `password-card.vue`（舊/新/確認 `NInput`＋`createConfirmPwdRule(newPwd)`＋`onMounted fetchGetSystemSettings()` 組動態密碼 rule＋改密码→`fetchChangePassword`）＋`backend.biz.password.*` 譯文補（zh-cn/en-us）。
-- [ ] T012 [US2] 驗 US2（容器內 + CDP）：curl changePassword happy→psql PHC 變、新密 login；舊密錯/確認不符/違政策→2222 對應碼；op-log password `<redacted>`；CDP 改 admin 政策 min_length 後前端 rule 反映 → FR-004~009、SC-002/003/004。（依賴 T010、T011）
+- [ ] T010 [US2] handler `changePassword` 於 `handler/user_center.rs`（順序：`find_active_by_id`→無`biz.user.notFound`；`confirm==new`否`biz.password.mismatch`；`verify(old,phc)`false`biz.password.oldMismatch`；載政策`find_all`→pairs→`from_settings`→`validate_password_complexity(&policy,new,&user_name)`Err`biz.password.tooWeak`；`hash_password(new)`→`change_own_password`）＋**新建** `biz.password.{tooWeak,mismatch,oldMismatch}` 三碼〔★ 全庫零命中＝淨新：後端 `AppError::Biz` 發射 + 前端 `backend.biz.password.*` locale 三鍵、勿誤為複用〕；唯 `biz.user.notFound` 複用既有。（依賴 T009）
+- [ ] T011 [P] [US2] 前端 `password-card.vue`（舊/新/確認 `NInput`＋`createConfirmPwdRule(newPwd)`〔與 `patternRules` 皆取自 `hooks/common/form.ts` 的 `useFormRules()` composable：`const { createConfirmPwdRule, patternRules } = useFormRules()`、非裸 import〕＋`onMounted fetchGetSystemSettings()` 組動態密碼 rule＋改密码→`fetchChangePassword`）＋`backend.biz.password.*` 譯文補（zh-cn/en-us）。
+- [ ] T012 [US2] 驗 US2（容器內 + CDP）：curl changePassword happy→psql PHC 變、新密 login；舊密錯/確認不符/違政策→2222 對應碼；op-log password `<redacted>`；CDP 改 admin 政策 min_length 後前端 rule 反映 → FR-005~009、SC-002/003/004。（依賴 T010、T011）
 
 **Checkpoint**: US1 + US2 皆可獨立驗收。
 
@@ -87,7 +87,7 @@ description: "Task list for 025-user-center"
 
 ### Implementation for US3
 
-- [ ] T014 [US3] 實作語意解析 fn（純、data-model §3）＋擴 `getProfile` DTO 加 `createdAt`（rfc3339）/`createdBy`（enum）/`adminUpdatedAt`（Option）——**不 join、不回 operator uid/name**。→ T013 綠。（依賴 T014 上游 T006 的 getProfile）
+- [ ] T014 [US3] 實作語意解析 fn（純、data-model §3）＋擴 `getProfile` DTO 加 `createdAt`（rfc3339）/`createdBy`（enum）/`adminUpdatedAt`（Option）——**不 join、不回 operator uid/name**。→ T013 綠。（依賴 T013 test-first 先紅、且擴 US1 之 T006 getProfile）
 - [ ] T015 [P] [US3] 前端 `basic-info-card.vue` 加**唯讀資訊列**：`创建时间 <createdAt>（<origin 訊息>）`；`adminUpdatedAt` 非 null 才顯示 `更新时间 …（由管理员更新）`、否則整列不顯示（本人/未更新隱藏）＋ `origin.*` i18n 已於 T004 scaffold。
 - [ ] T016 [US3] 驗 US3（curl + CDP）：種子帳號→`createdBy:"system"`、admin-建→`"admin"`、被 admin 改過→`adminUpdatedAt` 有值+CDP「由管理员更新」、本人改過/未改→null+無更新列；回應不含 operator 身分 → FR-011/012/013、SC-006。（依賴 T014、T015）
 

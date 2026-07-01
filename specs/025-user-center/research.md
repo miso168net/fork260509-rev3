@@ -29,9 +29,9 @@
 - **Decision**：getProfile 回 `createdAt`（rfc3339）、`createdBy: "system"|"self"|"admin"`（後端 `match created_by { None→system, Some(u) if u==claims.uid→self, Some(_)→admin }`）、`adminUpdatedAt: Option<String>`（`match updated_by { Some(u) if u != claims.uid → Some(updated_at?.to_rfc3339()), _ → None }`——本人/未更新→None）。**不回 operator uid/name、不 join**。
 - **Rationale**：user 拍板（只 surface「管理員動過我帳號」、本人更新/未更新隱藏）；隱私不洩露哪個 admin；`DateTimeWithTimeZone.to_rfc3339()`（沿 AuditSerialize 範式）。
 
-## R7 — changePassword wire 碼（複用既有、少建）
-- **Decision**：grep 確認 `biz.password.tooWeak`／`biz.password.mismatch`／`biz.password.sameAsOld`／`biz.user.notFound` **既存**。changePassword：新密違政策→**`biz.password.tooWeak`（複用）**、確認不符→前端攔＋後端 `biz.password.mismatch`、舊密不符→`biz.password.oldMismatch`（既有無此鍵、新增；或既有 mismatch 語意細分——impl grep 定）、查無自己→`biz.user.notFound`。皆 2222 信封、13 碼矩陣不擴張。前端 locale 補缺鍵（BASE-WEB-I18N-WIRING）。
-- **Rationale**：複用既有碼、最小新 i18n key（比 brainstorm 假設「全新 backend.biz.password.*」更省）。
+## R7 — changePassword wire 碼（3 個 password 碼淨新、僅 notFound 複用）
+- **Decision（025 analyze C1 校正）**：全庫 grep 確認 `biz.password.*` **零命中**（後端 `AppError::Biz` 無、前端 `backend.biz` 無 password 子節點）→ `biz.password.{tooWeak,mismatch,oldMismatch}` 皆**淨新**（需新建後端發射 ＋ 前端 `backend.biz.password.*` locale 三鍵）；**唯 `biz.user.notFound` 真既存**（後端 `system_manage.rs` + 前端 `backend.biz.user.notFound` locale）可複用。changePassword：新密違政策→`biz.password.tooWeak`、確認不符→`biz.password.mismatch`、舊密不符→`biz.password.oldMismatch`、查無自己→`biz.user.notFound`。皆 2222 信封、13 碼矩陣不擴張。
+- **Rationale**：早期 grounding 誤報「biz.password.* 既有」，經 analyze code-truth reviewer 徹底 grep 證偽——3 碼淨新、與 T004「新建 `backend.biz.password.*` 命名空間」一致（避免 implementer 略過建鍵致 2222 raw key）。
 
 ## R8 — 前端動態密碼 rule
 - **Decision**：改密碼卡 `onMounted` `fetchGetSystemSettings()` 取 7 政策 → 組 naive rule（min/max length、字元類別 require）；確認欄用既有 `createConfirmPwdRule(newPwd)`（form.ts）；後端 `validate_password_complexity` 權威把關（雙保險）。
@@ -54,5 +54,5 @@
 - **Rationale**：純寫既有欄；驗證無 verified flag（未來）。
 
 ## R13 — i18n
-- **Decision**：新 `page.userCenter.*`（區塊標題/欄位/按鈕/改密碼標籤 ＋ `createdAt`/`updatedAt` label ＋ `origin.system`/`origin.adminCreated`/`origin.selfCreated`/`origin.adminUpdated` ＋ `verify.comingSoon`，綁 (g)）；`backend.biz.password.*` 補缺（複用 tooWeak/mismatch ＋ 新 oldMismatch）。`App.I18n.Schema` **先擴 Schema 後加 locale**（zh-cn/en-us）。zh-CN 為主（zh-TW 未來）。
+- **Decision**：新 `page.userCenter.*`（區塊標題/欄位/按鈕/改密碼標籤 ＋ `createdAt`/`updatedAt` label ＋ `origin.system`/`origin.adminCreated`/`origin.selfCreated`/`origin.adminUpdated` ＋ `verify.comingSoon`，綁 (g)）；`backend.biz.password.*` 新建（3 碼皆淨新：tooWeak/mismatch/oldMismatch、全庫零命中；見 R7）。`App.I18n.Schema` **先擴 Schema 後加 locale**（zh-cn/en-us）。zh-CN 為主（zh-TW 未來）。
 - **Rationale**：(g) 綁 page key；backend key 走 BASE-WEB-I18N-WIRING(⚠️aa)。

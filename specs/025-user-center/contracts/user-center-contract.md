@@ -33,12 +33,12 @@
 1. `find_active_by_id(claims.uid)` 無 → `biz.user.notFound`。
 2. `confirm==new` 否 → `biz.password.mismatch`。
 3. `verify(old, phc)` false → `biz.password.oldMismatch`。
-4. 載政策（`find_all`→pairs→`from_settings`）→ `validate_password_complexity(&policy, new, &user_name)` Err → `biz.password.tooWeak`（複用）。
+4. 載政策（`find_all`→pairs→`from_settings`）→ `validate_password_complexity(&policy, new, &user_name)` Err → `biz.password.tooWeak`（淨新）。
 5. `hash_password(new)` → `change_own_password(uid, hash, meta)`。
 
-## 4. biz 碼 / i18n（複用為主）
+## 4. biz 碼 / i18n（3 個 password 碼淨新、僅 notFound 複用）
 
-- 複用既有：`biz.password.tooWeak`、`biz.password.mismatch`、`biz.user.notFound`。新增：`biz.password.oldMismatch`。皆 **2222 信封、13 碼矩陣不擴張**。
+- **淨新**（★ 全庫零命中、實碼確認：需**新建**後端 `AppError::Biz(Cow::Borrowed(...))` 發射 ＋ 前端 `backend.biz.password.*` locale 三鍵）：`biz.password.tooWeak`／`biz.password.mismatch`／`biz.password.oldMismatch`。**唯一複用**：`biz.user.notFound`（後端 `system_manage.rs` 既有 + 前端 locale 既有）。皆 **2222 信封、13 碼矩陣不擴張**。
 - i18n：`backend.biz.password.*` 補缺鍵（BASE-WEB-I18N-WIRING ⚠️aa）＋`page.userCenter.*`（含 `origin.*`／`createdAt`／`updatedAt`／`verify.comingSoon`，綁 (g)）；`App.I18n.Schema` 先 Schema 後 locale。
 
 ## 5. 授權 / 安全
