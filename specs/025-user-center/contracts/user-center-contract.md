@@ -1,22 +1,26 @@
 # Contract: 025-user-center
 
-> 3 個**新 auth-only** 端點（`enforce_mw` 注 Claims、**無 `require_policy`**、operator=`claims.uid`、**免 casbin seed**）。零新 numeric 碼（2222＋i18n key）。
+> 4 個**新 auth-only** 端點（`enforce_mw` 注 Claims、**無 `require_policy`**、operator=`claims.uid`、**免 casbin seed**）。零新 numeric 碼（2222＋i18n key）。
+>
+> **〔as-built 校正 · U2〕** 原計畫 3 端點＋前端直讀 `getSystemSettings` 取政策；實作發現 `/systemManage/getSystemSettings` 是 **R_SUPER-only**（m002 casbin seed 只給 R_SUPER→非-super 讀撞 403、動態 rule 靜默退化、違 FR-009/FR-014）。故【新增第 4 端點 `/userCenter/getPasswordPolicy`】（auth-only、allowlist 只回 7 個 `password_*` 鍵、不洩露 session/IP 等其他設定），前端改讀此端點。`AS_BUILT_ROUTES` 因此 **50→54**（非原 50→53）。
 
-## 0. 端點（3 新、auth-only）
+## 0. 端點（4 新、auth-only）
 
 | 端點 | method | 授權 | 說明 |
 |---|---|---|---|
 | `/userCenter/getProfile` | GET | auth-only | 讀自己 profile ＋ created/updated 語意 |
 | `/userCenter/updateProfile` | POST | auth-only | 寫自己 gender/nick/phone/email |
 | `/userCenter/changePassword` | POST | auth-only | 舊密 verify → 套 024 政策 → hash → 窄寫 password |
+| `/userCenter/getPasswordPolicy` | GET | auth-only | 回 7 個 `password_*` 政策鍵（allowlist、供改密卡動態 rule；避 super-only `getSystemSettings` 403） |
 
-- 註冊：`route_auth` 範式（main.rs:190）、`.layer(enforce_mw)`、merge 進 app（main.rs:661）；`endpoint_coverage_lint` `AS_BUILT_ROUTES` **50→53**；**無 casbin p-policy seed**（斷言 A 只對 `require_policy` route 要 seed；auth-only 免）。
+- 註冊：`route_auth` 範式（main.rs:190）、`.layer(enforce_mw)`、merge 進 app（main.rs:661）；`endpoint_coverage_lint` `AS_BUILT_ROUTES` **50→54**；**無 casbin p-policy seed**（斷言 A 只對 `require_policy` route 要 seed；auth-only 免）。
 
 ## 1. DTO（camelCase）
 
 - **GetProfileRes**：`{ userName, roles: string[]〔code〕, userGender?, nickName?, userPhone?, userEmail?, createdAt〔rfc3339〕, createdBy: "system"|"self"|"admin", adminUpdatedAt: string|null }`。
 - **UpdateProfileReq**：`{ userGender?, nickName?, userPhone?, userEmail? }`（各卡保存共用、送全 model；不含 user_name/roles/password/status）。
 - **ChangePwdReq**：`{ oldPassword, newPassword, confirmPassword }`。
+- **PasswordPolicyItem**〔as-built U2、`getPasswordPolicy` 回 `[]`〕：`{ settingKey, settingValue }`（allowlist 7 個 `password_*` 鍵；前端 `buildPolicyRules` 消費組動態 rule）。
 
 ## 2. created/updated 語意契約（不洩露 operator、R6）
 

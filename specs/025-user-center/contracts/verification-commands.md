@@ -37,7 +37,7 @@ curl -fsS "$API/userCenter/getProfile" -H "Authorization: Bearer $T"
 ## C-V-5 · 三守恆 + AS_BUILT + typecheck → 守恆
 ```bash
 $EXEC sh -c 'cd /app && cargo test -p server --test entity_access_lint'      # facade-only（含 2 窄寫 fn）
-$EXEC sh -c 'cd /app && cargo test -p server --test endpoint_coverage_lint'  # AS_BUILT 53、3 auth-only 無 seed 需求
+$EXEC sh -c 'cd /app && cargo test -p server --test endpoint_coverage_lint'  # AS_BUILT 54、4 auth-only 無 seed 需求
 $EXEC migration down && $EXEC migration up                                   # 零 migration、僅確認未破
 $DC exec -T base-web sh -c 'cd /app && pnpm typecheck'
 ```

@@ -35,7 +35,7 @@ description: "Task list for 025-user-center"
 
 **Purpose**: 3 story 共用的前後端骨架（先於 US 填充）
 
-- [ ] T002 後端骨架：建 `rust-api/server/src/handler/user_center.rs`（3 wire DTO：`GetProfileRes`〔**US1 子集 6 欄；`createdAt`/`createdBy`/`adminUpdatedAt` 3 欄由 US3 T014 擴**〕/`UpdateProfileReq`/`ChangePwdReq`〔camelCase、data-model §2〕 + 3 handler fn 簽名〔`Extension<Claims>`、auth-only〕，body 暫 minimal）＋`handler/mod.rs` `+mod user_center`＋`main.rs` 掛 `user_center` router（仿 `route_auth` main.rs:190、`.layer(enforce_mw)`、無 `require_policy`、3 route：getProfile GET / updateProfile POST / changePassword POST）＋`server/tests/endpoint_coverage_lint.rs` `AS_BUILT_ROUTES` **50→53**（加 3 路徑、陣列容量）。
+- [ ] T002 後端骨架：建 `rust-api/server/src/handler/user_center.rs`（3 wire DTO：`GetProfileRes`〔**US1 子集 6 欄；`createdAt`/`createdBy`/`adminUpdatedAt` 3 欄由 US3 T014 擴**〕/`UpdateProfileReq`/`ChangePwdReq`〔camelCase、data-model §2〕 + 3 handler fn 簽名〔`Extension<Claims>`、auth-only〕，body 暫 minimal）＋`handler/mod.rs` `+mod user_center`＋`main.rs` 掛 `user_center` router（仿 `route_auth` main.rs:190、`.layer(enforce_mw)`、無 `require_policy`、3 route：getProfile GET / updateProfile POST / changePassword POST）＋`server/tests/endpoint_coverage_lint.rs` `AS_BUILT_ROUTES` **50→54**（加 3 路徑、陣列容量）。
 - [ ] T003 [P] 前端骨架：`base-web/src/views/user-center/index.vue` 換 `<LookForward/>` → 4 卡容器（root `flex-col-stretch gap-16px` **修 overflow**、DECISIONS ⚠️ag 範式）＋建 `views/user-center/modules/`（`basic-info-card`/`phone-card`/`email-card`/`password-card` 佔位）＋`src/service/api/rev3-user-center.ts`（`fetchGetProfile`/`fetchUpdateProfile`/`fetchChangePassword` skeleton、直接路徑 import 慣例）＋`src/typings/api/rev3-user-center.d.ts`（3 DTO 型、declaration-merge）。**★MODAL-WIRING (g)**。
 - [ ] T004 [P] i18n scaffold：`src/typings/app.d.ts` App.I18n.Schema `page.userCenter.*`（區塊標題/欄位/按鈕/改密碼標籤＋`createdAt`/`updatedAt`＋`origin.system`/`origin.adminCreated`/`origin.selfCreated`/`origin.adminUpdated`＋`verify.comingSoon`）＋`backend.biz.password.*` 命名空間 → `src/locales/langs/{zh-cn,en-us}.ts` 對應（**先 Schema 後 locale**；zh-CN 為主）。
 
@@ -110,7 +110,7 @@ description: "Task list for 025-user-center"
 
 ## Phase 7: Polish & Cross-Cutting Concerns
 
-- [ ] T019 三守恆（容器內、rust serial）：`cargo test -p server --test entity_access_lint`（2 窄寫 fn facade-only）＋`cargo test -p server --test endpoint_coverage_lint`（AS_BUILT 53、3 auth-only 無 seed）＋`migration down`→`up`（零 migration、僅確認未破）。
+- [ ] T019 三守恆（容器內、rust serial）：`cargo test -p server --test entity_access_lint`（2 窄寫 fn facade-only）＋`cargo test -p server --test endpoint_coverage_lint`（AS_BUILT 54、4 auth-only 無 seed）＋`migration down`→`up`（零 migration、僅確認未破）。
 - [ ] T020 [P] base-web `pnpm typecheck` 綠（容器內）。
 - [ ] T021 零回歸驗（curl/CDP）：`getUserInfo` 仍 4 欄、login/enforce 不變、既有 manage 頁不破、024 system-settings 政策設定仍運作（喚醒 password_policy 後）→ SC-008。
 - [ ] T022 prod image build：`docker compose -f docker-compose.yml -f docker-compose.prod.yml build rust-api`（確認 `handler/user_center.rs`＋2 窄寫 fn＋喚醒 password_policy 編入 prod）。

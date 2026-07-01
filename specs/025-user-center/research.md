@@ -18,7 +18,7 @@
 - **Rationale**：既有 `update` 連 roles/status 處理、需 target id、不契合自助；facade-only 守恆。**Alt**：複用 `update`→會動 roles/status，否決。
 
 ## R4 — auth-only 端點註冊
-- **Decision**：仿 `route_auth`（main.rs:190）：`Router::new().route("/userCenter/getProfile", get(..)).route("/userCenter/updateProfile", post(..)).route("/userCenter/changePassword", post(..)).layer(enforce_mw)`〔**無 require_policy**〕→ merge 進 app（main.rs:661）。`endpoint_coverage_lint` `AS_BUILT_ROUTES` **50→53**（加 3 路徑到陣列 endpoint_coverage_lint.rs:104）。**免 casbin seed**（斷言 A 只對 `require_policy` route 要 seed）。
+- **Decision**：仿 `route_auth`（main.rs:190）：`Router::new().route("/userCenter/getProfile", get(..)).route("/userCenter/updateProfile", post(..)).route("/userCenter/changePassword", post(..)).layer(enforce_mw)`〔**無 require_policy**〕→ merge 進 app（main.rs:661）。`endpoint_coverage_lint` `AS_BUILT_ROUTES` **50→54**（加 3 路徑到陣列 endpoint_coverage_lint.rs:104）。**免 casbin seed**（斷言 A 只對 `require_policy` route 要 seed）。
 - **Rationale**：「操作自己」非 RBAC 資源授權；比照 getUserInfo（auth-only、enforce_mw 注 Claims）。
 
 ## R5 — getProfile roles ＝ CODE
@@ -34,8 +34,8 @@
 - **Rationale**：早期 grounding 誤報「biz.password.* 既有」，經 analyze code-truth reviewer 徹底 grep 證偽——3 碼淨新、與 T004「新建 `backend.biz.password.*` 命名空間」一致（避免 implementer 略過建鍵致 2222 raw key）。
 
 ## R8 — 前端動態密碼 rule
-- **Decision**：改密碼卡 `onMounted` `fetchGetSystemSettings()` 取 7 政策 → 組 naive rule（min/max length、字元類別 require）；確認欄用既有 `createConfirmPwdRule(newPwd)`（form.ts）；後端 `validate_password_complexity` 權威把關（雙保險）。
-- **Rationale**：即時 UX ＋ 後端權威。
+- **Decision（as-built U2 校正）**：改密碼卡 `onMounted` 讀政策 → 組 naive rule（min/max length、字元類別 require）；確認欄用既有 `createConfirmPwdRule(newPwd)`（form.ts）；後端 `validate_password_complexity` 權威把關（雙保險）。★ 原計畫讀 `fetchGetSystemSettings`，實作發現該端點 **R_SUPER-only**（m002 casbin seed→非-super 撞 403、動態 rule 靜默退化、違 FR-009/FR-014）→ 改讀【新增的 auth-only `fetchGetPasswordPolicy`】（`/userCenter/getPasswordPolicy`、allowlist 只回 7 個 `password_*`、不洩露其他設定）。詳 contract §0 as-built 校正。
+- **Rationale**：即時 UX ＋ 後端權威；政策讀端須對「任何登入者」可用（FR-014）故不能借 super-only 的 admin 端點。
 
 ## R9 — 版面（4 卡 ＋ overflow 修）
 - **Decision**：`views/user-center/index.vue` root 用 `flex-col-stretch gap-16px`（讓 main 滾、**去 table 模板 `overflow-hidden`**、見 024 收刀範式 DECISIONS ⚠️ag）；4 個 `NCard` 卡拆 `views/user-center/modules/`（`basic-info-card`/`phone-card`/`email-card`/`password-card`）。基本资料卡 form/basic 風（NForm labels）；手机/邮箱/密码卡 function/request 分區塊風（標題＋控件）。手机/邮箱值在各自卡（A）＋保存（共用 updateProfile 送全 model）＋預留驗證控件。
