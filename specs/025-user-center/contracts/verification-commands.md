@@ -20,18 +20,20 @@ $DC exec -T postgres psql -U soybean -d soybean_admin_rust -tAc \
 # 反證：user_name/password/status 不變（psql 比對）
 ```
 
-## C-V-3 · getProfile（含 created/updated 語意）→ FR-001/011/012 / SC-006
+## C-V-3 · getProfile（含 created/updated 語意；as-built U-polish 校正）→ FR-001/011/012 / SC-006
 ```bash
 curl -fsS "$API/userCenter/getProfile" -H "Authorization: Bearer $T"
-# 回 userName/roles[code]/gender/nick/phone/email/createdAt/createdBy/adminUpdatedAt
-# 種子帳號(Super)→createdBy:"system"；admin-建帳號→"admin"；被 admin 改過→adminUpdatedAt 有值；本人改過/未改→adminUpdatedAt:null
+# 回 userName/roles[code]/gender/nick/phone/email/createdAt/createdBy/updatedAt/updatedBy
+# createdBy/updatedBy 語意（共用 classify_operator）：NULL→"system"；==自己→"self"；其他→"admin"
+# updatedAt＝raw 最後修改時間（rfc3339）；從未修改→null
 # 反證：回應【不含】任何 operator uid/姓名
 ```
 
-## C-V-4 · CDP（4 卡 + 動態 rule + 佔位 + i18n）→ SC-001/004/005/006
-- restart base-web 後 super 登入 → `/user-center`：見 4 卡（基本资料〔含 创建时间/來源、被 admin 改過才見「由管理员更新」〕/手机/邮箱/改密码）。
-- 改昵称/性別 → 保存 → refetch 持久；改密碼卡動態 rule 隨政策（admin 改 min_length 後前端 rule 反映）。
-- 手机/邮箱驗證鈕點擊 → toast「功能建置中」（不接後端）；手机/邮箱值仍可改可存。
+## C-V-4 · CDP（4 塊 + 動態 rule + 佔位 + i18n；as-built U-polish 版面）→ SC-001/004/005/006
+- restart base-web 後 super 登入 → `/user-center`：見 4 塊【修改密码→邮箱→手机→基本资料】（塊狀 2 欄、標題左＋保存右）。
+- 基本资料：账号/角色/创建时间/修改时间＝**唯讀純文字**（非輸入框）；创建/修改时间渲染三情境（見 contract §2 表）：全 NULL→`（系统创建）`+`未修改`、admin→`（管理员创建）`+`（管理员修改）`、self→bare 時間無標註。改昵称/性別 → 該塊保存【只送自己欄位】→ refetch 持久。
+- 修改密码：验证方式 radio（●旧密码／○邮箱验证码／○手机验证码〔佔位〕）；旧密码路徑真改密（動態 rule 隨政策、admin 改 min_length 後前端 rule 反映）；選 邮箱/手机验证码 + 保存 → toast「功能建置中」。
+- 邮箱/手机：值 input（col1）＋發送驗證碼/驗證碼/驗證（col2 佔位、點擊 toast 建置中）；值仍可改可存（各塊保存只送自己欄位）。
 - 斷言 i18n 非 raw key（`page.userCenter.*`、`backend.biz.password.*` 皆譯文）。
 
 ## C-V-5 · 三守恆 + AS_BUILT + typecheck → 守恆

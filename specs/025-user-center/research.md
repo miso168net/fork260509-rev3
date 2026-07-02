@@ -25,9 +25,9 @@
 - **Decision**：getProfile 回 roles 為 **code**（`Vec<String>`）、複用 `sys_user_role::roles_of_user(&state.db, claims.uid)`（sys_user_role.rs:29）；與 getUserInfo（auth.rs:692 回 code）一致。前端唯讀顯示（顯示名映射屬前端 nicety、低優先、可後補）。
 - **Rationale**：契約一致、零新 facade。**Alt**：resolve sys_role name→需 join、與 getUserInfo 不一致，否決（顯示名前端做）。（解掉 clarify deferred「roles code vs name」＝採 code。）
 
-## R6 — created/updated 顯示語意（隱私、user 拍板）
-- **Decision**：getProfile 回 `createdAt`（rfc3339）、`createdBy: "system"|"self"|"admin"`（後端 `match created_by { None→system, Some(u) if u==claims.uid→self, Some(_)→admin }`）、`adminUpdatedAt: Option<String>`（`match updated_by { Some(u) if u != claims.uid → Some(updated_at?.to_rfc3339()), _ → None }`——本人/未更新→None）。**不回 operator uid/name、不 join**。
-- **Rationale**：user 拍板（只 surface「管理員動過我帳號」、本人更新/未更新隱藏）；隱私不洩露哪個 admin；`DateTimeWithTimeZone.to_rfc3339()`（沿 AuditSerialize 範式）。
+## R6 — created/updated 顯示語意（隱私、user 拍板；★as-built U-polish 二次拍板校正）
+- **Decision（as-built）**：getProfile 回 `createdAt`（rfc3339）、`createdBy: "system"|"self"|"admin"`、`updatedAt: Option<String>`（raw `updated_at`、從未修改→null）、`updatedBy: "system"|"self"|"admin"`——`createdBy`/`updatedBy` 共用純函式 `classify_operator`（`None→system / ==uid→self / 其他→admin`）。前端修改时间列【一律顯示】：null→「未修改」、self→bare 時間（無標註）、system→（系统修改）、admin→（管理员修改）；创建时间同構。**不回 operator uid/name、不 join**。
+- **Rationale**：收尾階段 user 直接給渲染範例拍板（推翻原「adminUpdatedAt 僅管理員更新才 surface、本人/未更新隱藏整列」設計——user 要修改时间永遠可見、以來源標註區分）；隱私不變（僅通用類別、不洩露哪個 admin）；`DateTimeWithTimeZone.to_rfc3339()`（沿 AuditSerialize 範式）。
 
 ## R7 — changePassword wire 碼（3 個 password 碼淨新、僅 notFound 複用）
 - **Decision（025 analyze C1 校正）**：全庫 grep 確認 `biz.password.*` **零命中**（後端 `AppError::Biz` 無、前端 `backend.biz` 無 password 子節點）→ `biz.password.{tooWeak,mismatch,oldMismatch}` 皆**淨新**（需新建後端發射 ＋ 前端 `backend.biz.password.*` locale 三鍵）；**唯 `biz.user.notFound` 真既存**（後端 `system_manage.rs` + 前端 `backend.biz.user.notFound` locale）可複用。changePassword：新密違政策→`biz.password.tooWeak`、確認不符→`biz.password.mismatch`、舊密不符→`biz.password.oldMismatch`、查無自己→`biz.user.notFound`。皆 2222 信封、13 碼矩陣不擴張。

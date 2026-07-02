@@ -17,20 +17,23 @@
 
 ## 1. DTO（camelCase）
 
-- **GetProfileRes**：`{ userName, roles: string[]〔code〕, userGender?, nickName?, userPhone?, userEmail?, createdAt〔rfc3339〕, createdBy: "system"|"self"|"admin", adminUpdatedAt: string|null }`。
-- **UpdateProfileReq**：`{ userGender?, nickName?, userPhone?, userEmail? }`（各卡保存共用、送全 model；不含 user_name/roles/password/status）。
+- **GetProfileRes**〔as-built U-polish 校正：`adminUpdatedAt` → `updatedAt`+`updatedBy`、user 拍板〕：`{ userName, roles: string[]〔code〕, userGender?, nickName?, userPhone?, userEmail?, createdAt〔rfc3339〕, createdBy: "system"|"self"|"admin", updatedAt: string|null〔rfc3339、從未修改→null〕, updatedBy: "system"|"self"|"admin" }`。
+- **UpdateProfileReq**〔as-built U-polish 校正：改**部分更新**〕：`{ userGender?, nickName?, userPhone?, userEmail? }`（各區塊保存【只送自己欄位】、後端只 `Set` 有帶（`Some`）的欄、未帶者 Unchanged；不含 user_name/roles/password/status）。
 - **ChangePwdReq**：`{ oldPassword, newPassword, confirmPassword }`。
 - **PasswordPolicyItem**〔as-built U2、`getPasswordPolicy` 回 `[]`〕：`{ settingKey, settingValue }`（allowlist 7 個 `password_*` 鍵；前端 `buildPolicyRules` 消費組動態 rule）。
 
-## 2. created/updated 語意契約（不洩露 operator、R6）
+## 2. created/updated 語意契約（不洩露 operator、R6；as-built U-polish 校正＝user 拍板）
 
-| 情況 | createdBy | 前端訊息 |
+`createdBy` 與 `updatedBy` 共用同一純分類 `classify_operator`（`None`→`system`／`==claims.uid`→`self`／其他→`admin`）；`updatedAt`＝raw `updated_at` rfc3339、從未修改→`null`。**不回 operator uid/name、不 join**。前端渲染（修改时间列【一律顯示、不隱藏】）：
+
+| 情況 | 创建时间 顯示 | 修改时间 顯示 |
 |---|---|---|
-| `created_by=null` | `system` | 系统创建 |
-| `==claims.uid` | `self` | 本人创建（罕見）|
-| `≠自己、非 null` | `admin` | 由管理员创建 |
+| `created_by=null`＋`updated_at=null` | `<ts>（系统创建）` | `未修改` |
+| created=admin＋updated=admin（有值） | `<ts>（管理员创建）` | `<ts>（管理员修改）` |
+| created=self＋updated=self（有值） | `<ts>`（無標註） | `<ts>`（無標註） |
+| updated=system（有值、罕見） | — | `<ts>（系统修改）` |
 
-`adminUpdatedAt`：`updated_by` 非 null 且 ≠ `claims.uid` → `updated_at` rfc3339；否則 **null**（本人更新/未更新→前端不顯示更新列）。**不回 operator uid/name、不 join**。
+〔原設計「只 surface 管理員更新、本人/未更新隱藏整列（adminUpdatedAt）」已被 user 收尾拍板推翻——修改时间列永遠顯示、來源以 system/self/admin 標註、self 不標註。〕
 
 ## 3. changePassword 契約（消費 024、順序固定）
 
