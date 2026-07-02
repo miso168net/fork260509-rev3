@@ -59,7 +59,7 @@ fork260509-rev3/                            ← workspace root（傘狀 repo rev
 │   ├── INTEGRATION-CHECKLIST.md           ← 動態 todo（SOP 注入、不無限膨脹 §7.3）
 │   ├── INTEGRATION-MILESTONES.md          ← commit 里程碑永久紀錄（append-only，不在 SOP 注入 §7.4）
 │   ├── GRAPHIFY-NOTES.md                  ← graphify 圖譜現況統計 + 已知抽取限制（推論前必讀，§8.3）
-│   ├── REVIEW-<NNN>-<NNN>.md   ⏳          ← Claude workflow review 彙整報告（隨 feature 產出）
+│   ├── REVIEW-20260702.md                 ← 歷次 review 統整（單一留存版：4 輪結論＋open findings 修復清單＋supersession 總映射；歷史各輪報告已刪、全文存 git 史）
 │   └── superpowers/                       ← 持久記錄 + brainstorm 決策（§7.4；000 已落地）
 │       └── <NNN>-<feature-name>.md        ← 每個 feature 的 Phase 0 brainstorm
 ├── specs/                                 ← spec-kit feature 規格目錄（001 已落地；每 feature 一個 <NNN>-<feature-name>/；工作流見 §3）

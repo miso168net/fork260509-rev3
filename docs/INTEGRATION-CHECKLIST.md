@@ -161,7 +161,7 @@
 - **request-completion 無認證請求 log 噪音**〔018 U1、by-design 非待辦〕：FR-006「每請求一行」使所有無認證請求亦輸出一行 INFO log——尤其 `/health`（docker healthcheck）與 `/metrics`（prometheus scrape、metrics profile 啟用時每 15s）〔loki 72h+opt-in 已界範圍〕;如噪音過大可選 subscriber path 過濾〔權衡 trace_id join 完整性〕。**★ 022 ipgate 阻擋洪水同理**：`ipgate_mw` 必疊 `audit_mw` 內側（需注入的 `ctx.client_ip`）→ 被擋請求仍出 1 行/請求 completion log（非 ②c 節流摘要那條）;持久稽核 DB 0 列仍守 SC-009、loki 量由 72h+edge/CDN〔spec 明示真洪水邊界〕界範圍;欲降量可選 4xx-from-ipgate completion log down-sample。
 - [x] ✅ **spec as-built 校正**〔018、doc、2026-06-25、commit `0d4ad94c`〕：data-model §1.2/§1.3 ＋ tasks T005/T019 補 ★as-built 標註（5xx noDataState=OK＋expr `or vector(0)`／FR-006 explicit completion event→`fields_trace_id`）；C-V-1/3/4 contract 已於 `ed6beb3a` 校正。★ 方法＝**直接 as-built 標註（非 `/speckit-analyze`——analyze 是 spec.md↔plan↔tasks【內部】一致性、不比對 as-built code；018 spec-internal analyze 早於實作前 `b7a18789` 跑過）**。（未做＝tasks 28 checkbox 補勾／T012 lint collateral 註，屬可選、非 as-built 內容偏離。）
 
-### 3.J correctness/security review M/🟡（[REVIEW-correctness-security-rev3](REVIEW-correctness-security-rev3.md)、2026-06-25）
+### 3.J correctness/security review M/🟡（REVIEW-correctness-security-rev3（併入 [REVIEW-20260702](REVIEW-20260702.md)）、2026-06-25）
 
 > 兩輪靜態審查（correctness 13 CONFIRMED／security 4 CONFIRMED、對抗式查證）的中/低優先 findings。**H-tier 4 項已修閉合**（H-1 CSV injection／H-2 self-lock 繞過／H-3 watcher deny-all／H-4 date off-by-one；見報告＋MILESTONES `55dec914`）。詳情/威脅模型/修向全在報告，本處留可追蹤指標、不重述。
 
