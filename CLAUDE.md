@@ -478,7 +478,7 @@ feature 啟動  →  docs/superpowers/<NNN>-<feature-name>.md(brainstorm)
 
 - **rev3 權威名 = `Super`/`Admin`/`User`**（對齊 base-web mock ground truth + DESIGN 帳號拍板段 ⏳）。soybean 原生 starter 的 `Soybean`/`Administrator`/`GeneralUser` 等舊命名 **不採用**。
 - 3 個 user 共用同一個 **runtime 生成**的 argon2id 雜湊（random salt：每次重跑 migration 雜湊字串不同,但都驗得過 plaintext `123456`）— 非寫死固定 hash。
-- `sys_user` 欄位（已隨 002 建表）：`id` / `user_name` / `password` / `nick_name` / `deleted_at`（soft-delete）。**「對應角色」為目標 DB 資料**：`sys_role` / `sys_user_role` 建表並 seed（`1→R_SUPER`、`2→R_ADMIN`、`3→R_USER_COMMON`，role_id 以 `code` subquery 解析）；getUserInfo 即時 join 組裝 roles + `User → User01` alias（runtime、後續 auth/user 刀）。完整 7-entity schema 已隨 002 落地。
+- `sys_user` 欄位（已隨 002 建表；**16 欄實況**、2026-07-02 psql `\d sys_user` 對過〔REVIEW-20260702 F-3 勘誤：本行曾僅列 5 欄、曾誤導加欄規劃〕）：`id`／`user_name`／`password`／`nick_name`／`user_gender`／`user_phone`／`user_email`／`status`／`session_policy`／`current_session_id`／`created_at`／`created_by`／`updated_at`／`updated_by`／`deleted_at`／`deleted_by`（soft-delete＋審計成對欄）。**「對應角色」為目標 DB 資料**：`sys_role` / `sys_user_role` 建表並 seed（`1→R_SUPER`、`2→R_ADMIN`、`3→R_USER_COMMON`，role_id 以 `code` subquery 解析）；getUserInfo 即時 join 組裝 roles + `User → User01` alias（runtime、後續 auth/user 刀）。完整 7-entity schema 已隨 002 落地。
 
 ### 8.2 容器 endpoint 與 port 配置
 

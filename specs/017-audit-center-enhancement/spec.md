@@ -89,7 +89,7 @@
 
 **審計匯出（US2）**
 - **FR-005**: 系統 MUST 讓使用者將三個審計分頁（操作異動／API 存取／登入嘗試）各自匯出為 CSV。
-- **FR-005a**: 操作異動（op-log）之 CSV 匯出 MUST 額外提供專屬 `roles_before`／`roles_after` 欄（自前後快照抽出），供角色 delta 直接分析；payload 完整內容仍保留為獨立欄（clarification 2026-06-23）。
+- **FR-005a**: 操作異動（op-log）之 CSV 匯出 MUST 額外提供專屬 `roles_before`／`roles_after` 欄（自前後快照抽出），供角色 delta 直接分析；payload 完整內容仍保留為獨立欄（clarification 2026-06-23）。★as-built 勘誤（2026-07-02、REVIEW-20260702 F-11）：CSV 實際表頭為 camelCase `rolesBefore`／`rolesAfter`（與其餘 14 欄 camelCase 慣例一致、data-model 已載）；本 FR 之 snake_case 字面指「專屬兩欄」語意、非表頭字面。
 - **FR-006**: 匯出內容 MUST 反映使用者當前套用的篩選條件（所見即所匯）。
 - **FR-007**: 單次匯出 MUST 上限 1 萬列；當符合列數超過上限時，系統 MUST 告知使用者僅匯出前 1 萬列。
 - **FR-008**: 匯出之 CSV MUST 能於常見試算表軟體正確開啟，且非 ASCII（中文）內容不亂碼。
