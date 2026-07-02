@@ -87,6 +87,7 @@ AST 解析得了 **unqualified call**（`use` import 後直呼 `f(...)`、`super
 
 對照：`mutate_in_txn` 被各 facade 以 **import 後 unqualified** 呼叫（`use crate::model::audit::mutate_in_txn`）→ **14** 條 caller 邊全抓到（`explain` degree 15＝14 `calls`＋1 `contains`；2026-06-29）。差別純在**呼叫寫法**（qualified vs unqualified）、不在關係真假。
 → 問「誰呼叫某 facade fn」「誰寫某 entity」「某 facade fn 的重要性（in-degree）」→ 圖會把你導向**測試**、漏掉 production handler；一律回 `grep` fn 名。此盲點與 §2.3（rust facade AST-only）疊加：facade 層 call graph 系統性偏向測試 caller。
+→ **增量變體（2026-07-02 mutate_in_txn trace 實證）**：①**單檔增量抽取丟 cross-file 邊**——即使 unqualified＋有 `use` import（如 025 `update_own_profile` 呼 `mutate_in_txn`），callee 檔不在本輪抽取檔集時 import 對映斷鏈、邊被丟（實測 mutate_in_txn 圖上 14 caller vs grep 24 真 call site）；②**方法呼叫誤配同名 fn**——閉包內 `am.update(&txn)`（SeaORM ActiveModel method）被 AST 誤配成同檔 `update()` fn 的**假 calls 邊**。→ 被 prune 重抽的檔、其 fn 的 cross-file caller/callee 邊會靜默流失；橋節點（mutate_in_txn 等）的 in-degree 隨增量輪次**單調衰減**、必以 grep 為準。
 
 ### 2.9 ★ 檔名含 password/token 被 detect sensitive 過濾跳過（真碼誤傷）
 graphify `detect`/`detect_incremental` 的 sensitive 過濾以**檔名 pattern** 判定、會把檔名含 `password`/`token` 的**真碼檔**當敏感檔跳過（與 `.env.*` 一同進 `skipped_sensitive`、不進 `new_files`）。實證（2026-07-02）：`auth/password_policy.rs`、`m009_seed_password_policy.rs`、`password-card.vue`（024/025 新檔）＋ `auth/password.rs`、`entity/sys_token.rs`、`facade/sys_token.rs`（**建圖起即缺席**、2026-07-02 已手動補入）。`extract()` 本身**不過濾**（直接餵 Path list 即可抽）。
