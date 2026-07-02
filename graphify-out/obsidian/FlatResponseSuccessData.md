@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/type.ts"
 type: "code"
-community: "type.ts"
+community: "index.ts"
 location: "L106"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/typets
+  - community/indexts
 ---
 
 # FlatResponseSuccessData
@@ -14,4 +14,4 @@ tags:
 ## Connections
 - [[type.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/typets
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.32
 members: 8
 ---
 
 # add_ip_rule()
 
-**Cohesion:** 0.32 - loosely connected
 **Members:** 8 nodes
 
 ## Members

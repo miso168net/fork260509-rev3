@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.09
 members: 46
 ---
 
 # sys_casbin_rule.rs
 
-**Cohesion:** 0.09 - loosely connected
 **Members:** 46 nodes
 
 ## Members

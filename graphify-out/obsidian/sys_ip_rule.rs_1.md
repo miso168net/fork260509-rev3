@@ -16,8 +16,8 @@ tags:
 - [[IpRuleWrite]] - `contains` [EXTRACTED]
 - [[RestoreError]] - `contains` [EXTRACTED]
 - [[col_of()_2]] - `contains` [EXTRACTED]
-- [[create()_3]] - `contains` [EXTRACTED]
-- [[find_active_by_id()_3]] - `contains` [EXTRACTED]
+- [[create()_2]] - `contains` [EXTRACTED]
+- [[find_active_by_id()_2]] - `contains` [EXTRACTED]
 - [[list()_5]] - `contains` [EXTRACTED]
 - [[load_active()]] - `contains` [EXTRACTED]
 - [[resolve_sort()_2]] - `contains` [EXTRACTED]
@@ -25,8 +25,8 @@ tags:
 - [[resolve_sort_whitelist_exact_mapping()_2]] - `contains` [EXTRACTED]
 - [[restore()_2]] - `contains` [EXTRACTED]
 - [[restore_conflict_and_update_noop()]] - `contains` [EXTRACTED]
-- [[soft_delete()_3]] - `contains` [EXTRACTED]
+- [[soft_delete()_2]] - `contains` [EXTRACTED]
 - [[test_meta()_1]] - `contains` [EXTRACTED]
-- [[update()_3]] - `contains` [EXTRACTED]
+- [[update()_2]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

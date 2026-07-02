@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.31
 members: 14
 ---
 
 # use-table-sort.spec.ts
 
-**Cohesion:** 0.31 - loosely connected
 **Members:** 14 nodes
 
 ## Members

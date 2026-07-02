@@ -12,6 +12,6 @@ tags:
 # entity::sys_ip_rule::Model
 
 ## Connections
-- [[.audit_json()_4]] - `method` [EXTRACTED]
+- [[.audit_json()_3]] - `method` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

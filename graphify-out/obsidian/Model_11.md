@@ -1,17 +1,17 @@
 ---
-source_file: "rust-api/sea-orm-adapter/src/entity.rs"
+source_file: "rust-api/entity/src/sys_ip_rule.rs"
 type: "code"
-community: "entity.rs"
-location: "L7"
+community: "sys_ip_rule.rs"
+location: "L9"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/entityrs
+  - community/sys_ip_rulers
 ---
 
 # Model
 
 ## Connections
-- [[entity.rs]] - `contains` [EXTRACTED]
+- [[sys_ip_rule.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/entityrs
+#graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

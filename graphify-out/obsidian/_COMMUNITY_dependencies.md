@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.04
 members: 45
 ---
 
 # dependencies
 
-**Cohesion:** 0.04 - loosely connected
 **Members:** 45 nodes
 
 ## Members

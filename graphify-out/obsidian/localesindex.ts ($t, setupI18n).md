@@ -15,7 +15,6 @@ tags:
 - [[index.ts_23]] - `contains` [EXTRACTED]
 - [[manageuserindex.vue (user list page)]] - `calls` [EXTRACTED]
 - [[servicerequestindex.ts (createFlatRequest axios layer)]] - `calls` [EXTRACTED]
-- [[system-settingsindex.vue (KV settings page)]] - `calls` [EXTRACTED]
 - [[translateBackendMsg (backend. prefix translation boundary)]] - `calls` [EXTRACTED]
 - [[vue-i18n dependency]] - `depends_on` [EXTRACTED]
 

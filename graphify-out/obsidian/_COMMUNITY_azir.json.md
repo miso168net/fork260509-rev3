@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.06
 members: 37
 ---
 
 # azir.json
 
-**Cohesion:** 0.06 - loosely connected
 **Members:** 37 nodes
 
 ## Members
@@ -19,8 +17,8 @@ members: 37
 - [[borderRadius_1]] - code - base-web/src/theme/preset/azir.json
 - [[borderRadiusMedium]] - code - base-web/src/theme/preset/azir.json
 - [[boxShadow]] - code - base-web/src/theme/preset/azir.json
-- [[colors_1]] - code - base-web/src/theme/preset/azir.json
 - [[colors]] - code - base-web/src/theme/preset/azir.json
+- [[colors_1]] - code - base-web/src/theme/preset/azir.json
 - [[container]] - code - base-web/src/theme/preset/azir.json
 - [[dark_1]] - code - base-web/src/theme/preset/azir.json
 - [[desc]] - code - base-web/src/theme/preset/azir.json

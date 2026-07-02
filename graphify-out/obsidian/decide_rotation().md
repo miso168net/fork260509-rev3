@@ -13,6 +13,5 @@ tags:
 
 ## Connections
 - [[session.rs]] - `contains` [EXTRACTED]
-- [[toctou_revoked_chain_locks_to_reuse_no_rebake()]] - `calls` [INFERRED]
 
 #graphify/code #graphify/EXTRACTED #community/sessionrs

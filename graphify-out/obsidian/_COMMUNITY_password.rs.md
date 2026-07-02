@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.36
 members: 9
 ---
 
 # password.rs
 
-**Cohesion:** 0.36 - loosely connected
 **Members:** 9 nodes
 
 ## Members

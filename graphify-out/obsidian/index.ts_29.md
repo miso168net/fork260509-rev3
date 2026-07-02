@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/request/index.ts"
 type: "code"
-community: "index.ts"
+community: "request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/request
 ---
 
 # index.ts
@@ -32,4 +32,4 @@ tags:
 - [[useAuthStore]] - `imports` [EXTRACTED]
 - [[{ baseURL, otherBaseURL }]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/request

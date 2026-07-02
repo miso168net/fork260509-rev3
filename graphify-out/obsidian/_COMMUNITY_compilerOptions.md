@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.12
 members: 17
 ---
 
 # compilerOptions
 
-**Cohesion:** 0.12 - loosely connected
 **Members:** 17 nodes
 
 ## Members

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/materials/src/types/index.ts"
 type: "code"
-community: "shared.ts"
+community: "index.ts"
 location: "L289"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sharedts
+  - community/indexts
 ---
 
 # PageTabCssVars
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_12]] - `contains` [EXTRACTED]
 - [[shared.ts_2]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sharedts
+#graphify/code #graphify/EXTRACTED #community/indexts

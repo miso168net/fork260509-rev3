@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.07
 members: 65
 ---
 
 # audit_ctx.rs
 
-**Cohesion:** 0.07 - loosely connected
 **Members:** 65 nodes
 
 ## Members

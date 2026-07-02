@@ -12,7 +12,7 @@ tags:
 # sys_user_role.rs
 
 ## Connections
-- [[Model_9]] - `contains` [EXTRACTED]
-- [[Relation_9]] - `contains` [EXTRACTED]
+- [[Model_8]] - `contains` [EXTRACTED]
+- [[Relation_8]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_user_rolers

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/service/request/type.ts"
 type: "code"
-community: "index.ts"
+community: "request"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/request
 ---
 
 # type.ts
@@ -16,4 +16,4 @@ tags:
 - [[index.ts_29]] - `imports_from` [EXTRACTED]
 - [[shared.ts_3]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/request

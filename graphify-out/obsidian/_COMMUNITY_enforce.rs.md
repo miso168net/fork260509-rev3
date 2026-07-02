@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.12
 members: 23
 ---
 
 # enforce.rs
 
-**Cohesion:** 0.12 - loosely connected
 **Members:** 23 nodes
 
 ## Members

@@ -1,17 +1,17 @@
 ---
-source_file: "rust-api/entity/src/sys_token.rs"
+source_file: "rust-api/entity/src/sys_user.rs"
 type: "code"
-community: "sys_token.rs"
+community: "sys_user.rs"
 location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_tokenrs
+  - community/sys_userrs
 ---
 
 # Model
 
 ## Connections
-- [[sys_token.rs]] - `contains` [EXTRACTED]
+- [[sys_user.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_tokenrs
+#graphify/code #graphify/EXTRACTED #community/sys_userrs

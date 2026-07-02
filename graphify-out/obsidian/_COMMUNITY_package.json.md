@@ -1,21 +1,27 @@
 ---
 type: community
-cohesion: 0.33
-members: 6
+members: 14
 ---
 
 # package.json
 
-**Cohesion:** 0.33 - loosely connected
-**Members:** 6 nodes
+**Members:** 14 nodes
 
 ## Members
-- [[unnamed_6]] - code - base-web/packages/uno-preset/package.json
-- [[exports_6]] - code - base-web/packages/uno-preset/package.json
-- [[name_8]] - code - base-web/packages/uno-preset/package.json
-- [[package.json_7]] - code - base-web/packages/uno-preset/package.json
-- [[typesVersions_6]] - code - base-web/packages/uno-preset/package.json
-- [[version_8]] - code - base-web/packages/uno-preset/package.json
+- [[unnamed_7]] - code - base-web/packages/utils/package.json
+- [[@typescrypto-js]] - code - base-web/packages/utils/package.json
+- [[colord_1]] - code - base-web/packages/utils/package.json
+- [[crypto-js]] - code - base-web/packages/utils/package.json
+- [[dependencies_6]] - code - base-web/packages/utils/package.json
+- [[devDependencies_4]] - code - base-web/packages/utils/package.json
+- [[exports_7]] - code - base-web/packages/utils/package.json
+- [[klona]] - code - base-web/packages/utils/package.json
+- [[localforage]] - code - base-web/packages/utils/package.json
+- [[name_9]] - code - base-web/packages/utils/package.json
+- [[nanoid]] - code - base-web/packages/utils/package.json
+- [[package.json_8]] - code - base-web/packages/utils/package.json
+- [[typesVersions_7]] - code - base-web/packages/utils/package.json
+- [[version_9]] - code - base-web/packages/utils/package.json
 
 ## Live Query (requires Dataview plugin)
 

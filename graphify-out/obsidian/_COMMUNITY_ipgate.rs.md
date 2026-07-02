@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.10
 members: 28
 ---
 
 # ipgate.rs
 
-**Cohesion:** 0.10 - loosely connected
 **Members:** 28 nodes
 
 ## Members

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.22
 members: 17
 ---
 
 # error.rs
 
-**Cohesion:** 0.22 - loosely connected
 **Members:** 17 nodes
 
 ## Members

@@ -1,18 +1,17 @@
 ---
 source_file: "base-web/src/locales/langs/en-us.ts"
 type: "code"
-community: "locale.ts"
+community: "en-us.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/localets
+  - community/en-usts
 ---
 
 # en-us.ts
 
 ## Connections
 - [[local]] - `contains` [EXTRACTED]
-- [[locale.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/localets
+#graphify/code #graphify/EXTRACTED #community/en-usts

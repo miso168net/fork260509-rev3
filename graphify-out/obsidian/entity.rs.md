@@ -12,7 +12,7 @@ tags:
 # entity.rs
 
 ## Connections
-- [[Model_11]] - `contains` [EXTRACTED]
-- [[Relation_11]] - `contains` [EXTRACTED]
+- [[Model_10]] - `contains` [EXTRACTED]
+- [[Relation_10]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/entityrs

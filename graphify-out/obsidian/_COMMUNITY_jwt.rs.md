@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.47
 members: 11
 ---
 
 # jwt.rs
 
-**Cohesion:** 0.47 - moderately connected
 **Members:** 11 nodes
 
 ## Members

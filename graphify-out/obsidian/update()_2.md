@@ -1,25 +1,22 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_user.rs"
+source_file: "rust-api/server/src/model/facade/sys_ip_rule.rs"
 type: "code"
-community: "sys_user.rs"
-location: "L359"
+community: "sys_ip_rule.rs"
+location: "L221"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_userrs
+  - community/sys_ip_rulers
 ---
 
 # update()
 
 ## Connections
 - [[.audit_json()_3]] - `calls` [EXTRACTED]
-- [[build_update_active_model()_3]] - `calls` [EXTRACTED]
-- [[clear_pointer()]] - `calls` [EXTRACTED]
 - [[find_active_by_id()_2]] - `calls` [EXTRACTED]
-- [[now()_3]] - `calls` [EXTRACTED]
-- [[set_pointer()]] - `calls` [EXTRACTED]
+- [[restore()_2]] - `calls` [EXTRACTED]
+- [[restore_conflict_and_update_noop()]] - `calls` [EXTRACTED]
 - [[soft_delete()_2]] - `calls` [EXTRACTED]
-- [[sys_user.rs_1]] - `contains` [EXTRACTED]
-- [[update_user_preserves_identity_and_replaces_roles()]] - `calls` [EXTRACTED]
+- [[sys_ip_rule.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_userrs
+#graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

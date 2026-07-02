@@ -1,18 +1,22 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+members: 9
 ---
 
 # sys_token.rs
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[Model_7]] - code - rust-api/entity/src/sys_token.rs
-- [[Relation_7]] - code - rust-api/entity/src/sys_token.rs
-- [[sys_token.rs]] - code - rust-api/entity/src/sys_token.rs
+- [[find_by_hash()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[find_by_hash_for_update()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[insert_token()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[mark_used()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[revoke_all_user_chains()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[revoke_chain()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[revoke_other_chains()]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[sys_token.rs_1]] - code - rust-api/server/src/model/facade/sys_token.rs
+- [[toctou_revoked_chain_locks_to_reuse_no_rebake()]] - code - rust-api/server/src/model/facade/sys_token.rs
 
 ## Live Query (requires Dataview plugin)
 

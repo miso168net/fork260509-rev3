@@ -12,11 +12,11 @@ tags:
 # restore_conflict_and_update_noop()
 
 ## Connections
-- [[create()_3]] - `calls` [EXTRACTED]
+- [[create()_2]] - `calls` [EXTRACTED]
 - [[restore()_2]] - `calls` [EXTRACTED]
-- [[soft_delete()_3]] - `calls` [EXTRACTED]
+- [[soft_delete()_2]] - `calls` [EXTRACTED]
 - [[sys_ip_rule.rs_1]] - `contains` [EXTRACTED]
 - [[test_meta()_1]] - `calls` [EXTRACTED]
-- [[update()_3]] - `calls` [EXTRACTED]
+- [[update()_2]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

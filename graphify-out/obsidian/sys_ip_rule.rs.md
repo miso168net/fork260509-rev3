@@ -12,7 +12,7 @@ tags:
 # sys_ip_rule.rs
 
 ## Connections
-- [[Model_12]] - `contains` [EXTRACTED]
-- [[Relation_12]] - `contains` [EXTRACTED]
+- [[Model_11]] - `contains` [EXTRACTED]
+- [[Relation_11]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

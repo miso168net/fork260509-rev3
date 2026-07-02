@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.29
 members: 17
 ---
 
 # searcher.rs
 
-**Cohesion:** 0.29 - loosely connected
 **Members:** 17 nodes
 
 ## Members

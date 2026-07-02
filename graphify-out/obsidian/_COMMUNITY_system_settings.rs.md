@@ -1,18 +1,23 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+members: 10
 ---
 
 # system_settings.rs
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Members:** 10 nodes
 
 ## Members
-- [[Model_10]] - code - rust-api/entity/src/system_settings.rs
-- [[Relation_10]] - code - rust-api/entity/src/system_settings.rs
-- [[system_settings.rs]] - code - rust-api/entity/src/system_settings.rs
+- [[SystemSettingItem]] - code - rust-api/server/src/handler/system_settings.rs
+- [[UpdateReq]] - code - rust-api/server/src/handler/system_settings.rs
+- [[get_system_settings()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[system_settings.rs_2]] - code - rust-api/server/src/handler/system_settings.rs
+- [[update_setting()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[validate_value_type()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[validate_value_type_enum_accepts_members()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[validate_value_type_enum_rejects_nonmember()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[validate_value_type_number_accepts_in_range()]] - code - rust-api/server/src/handler/system_settings.rs
+- [[validate_value_type_number_rejects_invalid()]] - code - rust-api/server/src/handler/system_settings.rs
 
 ## Live Query (requires Dataview plugin)
 

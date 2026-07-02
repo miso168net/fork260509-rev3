@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.33
 members: 7
 ---
 
 # fetchGetArchivedPolicies()
 
-**Cohesion:** 0.33 - loosely connected
 **Members:** 7 nodes
 
 ## Members

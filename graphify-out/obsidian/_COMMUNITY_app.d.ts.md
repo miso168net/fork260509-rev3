@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.05
 members: 44
 ---
 
 # app.d.ts
 
-**Cohesion:** 0.05 - loosely connected
 **Members:** 44 nodes
 
 ## Members

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.25
 members: 14
 ---
 
 # antv-g6-flow.ts
 
-**Cohesion:** 0.25 - loosely connected
 **Members:** 14 nodes
 
 ## Members
@@ -33,7 +31,8 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 3 edges to [[_COMMUNITY_index.ts]]
+- 2 edges to [[_COMMUNITY_useThemeStore]]
+- 1 edge to [[_COMMUNITY_shared.ts]]
 
 ## Top bridge nodes
-- [[antv-g6-flow.ts]] - degree 11, connects to 1 community
+- [[antv-g6-flow.ts]] - degree 11, connects to 2 communities

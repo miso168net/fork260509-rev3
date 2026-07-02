@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.39
 members: 9
 ---
 
 # build_user_route_tree()
 
-**Cohesion:** 0.39 - loosely connected
 **Members:** 9 nodes
 
 ## Members

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.07
 members: 30
 ---
 
 # elegant-router.d.ts
 
-**Cohesion:** 0.07 - loosely connected
 **Members:** 30 nodes
 
 ## Members

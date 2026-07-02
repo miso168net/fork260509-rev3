@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.17
 members: 13
 ---
 
 # Api.SystemManage.IpConfidence seven-stat
 
-**Cohesion:** 0.17 - loosely connected
 **Members:** 13 nodes
 
 ## Members
@@ -36,6 +34,6 @@ SORT file.name ASC
 - 2 edges to [[_COMMUNITY_rev3-system-manage.ts]]
 
 ## Top bridge nodes
-- [[fetchGetAccessLog()]] - degree 4, connects to 2 communities
 - [[fetchGetOperationLog()]] - degree 4, connects to 2 communities
+- [[fetchGetAccessLog()]] - degree 4, connects to 2 communities
 - [[Api.SystemManage.LoginAttemptList (PageRes wrapper)]] - degree 2, connects to 1 community

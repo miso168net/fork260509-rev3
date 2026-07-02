@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/index.ts"
 type: "code"
-community: "loading.ts"
+community: "shared.ts"
 location: "L41"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/loadingts
+  - community/sharedts
 ---
 
 # getPaletteColorByNumber()
@@ -18,4 +18,4 @@ tags:
 - [[index.ts_37]] - `imports` [EXTRACTED]
 - [[shared.ts_8]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/loadingts
+#graphify/code #graphify/EXTRACTED #community/sharedts

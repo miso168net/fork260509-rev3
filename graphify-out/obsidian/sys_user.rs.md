@@ -12,7 +12,7 @@ tags:
 # sys_user.rs
 
 ## Connections
-- [[Model_8]] - `contains` [EXTRACTED]
-- [[Relation_8]] - `contains` [EXTRACTED]
+- [[Model_7]] - `contains` [EXTRACTED]
+- [[Relation_7]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_userrs

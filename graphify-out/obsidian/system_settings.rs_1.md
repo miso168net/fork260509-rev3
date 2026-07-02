@@ -1,5 +1,5 @@
 ---
-source_file: "rust-api/server/src/handler/system_settings.rs"
+source_file: "rust-api/server/src/model/facade/system_settings.rs"
 type: "code"
 community: "system_settings.rs"
 location: "L1"
@@ -12,12 +12,12 @@ tags:
 # system_settings.rs
 
 ## Connections
-- [[SystemSettingItem]] - `contains` [EXTRACTED]
-- [[UpdateReq]] - `contains` [EXTRACTED]
-- [[get_system_settings()]] - `contains` [EXTRACTED]
-- [[update_setting()]] - `contains` [EXTRACTED]
-- [[validate_value_type()]] - `contains` [EXTRACTED]
-- [[validate_value_type_enum_accepts_members()]] - `contains` [EXTRACTED]
-- [[validate_value_type_enum_rejects_nonmember()]] - `contains` [EXTRACTED]
+- [[build_update_active_model()_2]] - `contains` [EXTRACTED]
+- [[find_all()]] - `contains` [EXTRACTED]
+- [[find_by_key()]] - `contains` [EXTRACTED]
+- [[sample_model()]] - `contains` [EXTRACTED]
+- [[system_settings_update_oplog_inet_roundtrip()]] - `contains` [EXTRACTED]
+- [[update_by_key()]] - `contains` [EXTRACTED]
+- [[update_by_key_active_model_sets_value_and_audit_cols()]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/system_settingsrs

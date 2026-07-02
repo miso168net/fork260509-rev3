@@ -12,6 +12,6 @@ tags:
 # SystemSettingItem
 
 ## Connections
-- [[system_settings.rs_1]] - `contains` [EXTRACTED]
+- [[system_settings.rs_2]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/system_settingsrs

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.15
 members: 15
 ---
 
 # business.ts
 
-**Cohesion:** 0.15 - loosely connected
 **Members:** 15 nodes
 
 ## Members

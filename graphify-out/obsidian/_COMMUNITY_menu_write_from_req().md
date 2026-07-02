@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.40
 members: 6
 ---
 
 # menu_write_from_req()
 
-**Cohesion:** 0.40 - moderately connected
 **Members:** 6 nodes
 
 ## Members
@@ -31,7 +29,7 @@ SORT file.name ASC
 
 ## Top bridge nodes
 - [[update_menu()]] - degree 5, connects to 2 communities
-- [[add_menu()]] - degree 3, connects to 2 communities
 - [[str_enum_to_i16()]] - degree 3, connects to 2 communities
+- [[add_menu()]] - degree 3, connects to 2 communities
 - [[menu_write_from_req()]] - degree 5, connects to 1 community
 - [[value_to_opt_i64()]] - degree 3, connects to 1 community

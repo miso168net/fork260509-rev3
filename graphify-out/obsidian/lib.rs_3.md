@@ -1,14 +1,17 @@
 ---
-source_file: "rust-api/xdb/src/lib.rs"
+source_file: "rust-api/migration/src/lib.rs"
 type: "code"
-community: "lib.rs"
+community: "Migrator"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/librs
+  - community/Migrator
 ---
 
 # lib.rs
 
-#graphify/code #graphify/EXTRACTED #community/librs
+## Connections
+- [[Migrator]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Migrator

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.39
 members: 12
 ---
 
 # endpoint_coverage_lint.rs
 
-**Cohesion:** 0.39 - loosely connected
 **Members:** 12 nodes
 
 ## Members

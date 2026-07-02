@@ -1,20 +1,22 @@
 ---
 type: community
-cohesion: 0.40
-members: 5
+members: 9
 ---
 
 # [v0.10.2](https://github.com/honghuangdc
 
-**Cohesion:** 0.40 - moderately connected
-**Members:** 5 nodes
+**Members:** 9 nodes
 
 ## Members
-- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_56]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🏡 Chore_47]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_47]] - document - base-web/CHANGELOG.md
-- [[&nbsp;&nbsp;&nbsp;📖 Documentation_41]] - document - base-web/CHANGELOG.md
-- [[v0.10.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.1...v0.10.2) (2023-06-01)]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;❤️ Contributors_67]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🎨 Styles_15]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🏡 Chore_58]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🐞 Bug Fixes_57]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;💅 Refactors_27]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📖 Documentation_52]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;📦 Build_10]] - document - base-web/CHANGELOG.md
+- [[&nbsp;&nbsp;&nbsp;🚀 Features_37]] - document - base-web/CHANGELOG.md
+- [[v0.10.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.2...old-version) (23-06-07)]] - document - base-web/CHANGELOG.md
 
 ## Live Query (requires Dataview plugin)
 
@@ -27,4 +29,4 @@ SORT file.name ASC
 - 1 edge to [[_COMMUNITY_Changelog]]
 
 ## Top bridge nodes
-- [[v0.10.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.10.1...v0.10.2) (2023-06-01)]] - degree 5, connects to 1 community
+- [[v0.10.2(httpsgithub.comhonghuangdcsoybean-admincomparev0.9.2...old-version) (23-06-07)]] - degree 9, connects to 1 community

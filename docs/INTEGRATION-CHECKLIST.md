@@ -88,7 +88,7 @@
 ### 持續性維護
 
 - [ ] upstream rebase（定期 `git rebase upstream/example`〔base-web〕＋docs 源倉 `upstream/main`;CLAUDE.md §4.6;⚠️s fork-delta 紀律＋zdiff3/rerere 已配套）
-- [ ] graphify 圖譜更新（大改後 `graphify update`）：最近一輪 **2026-06-29**〔**3499** nodes／**4413** edges／**502** community；008-022 全已入圖；圖反映 rust-api `cb2767f`＋base-web `aa2f57bc`＋master compose〕、現況統計與增量史詳 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)。**★ 023/024/025 三刀未入圖**（現碼 rust-api `ef1d21a`＋base-web `f3ad8e23`、圖已 stale 3 刀量）——下次 update 涵蓋。只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`）。★ **本 corpus 必用 `build_merge(dedup=False)`**——skill 預設 `dedup=True` 全域 fuzzy-label dedup 會誤併 distinct 節點（再三實證砍圖、最近一次砍 3499→2782）；外科式配方見 [GRAPHIFY-NOTES §4](GRAPHIFY-NOTES.md)。
+- [ ] graphify 圖譜更新（大改後 `graphify update`）：最近一輪 **2026-07-02**〔**3616** nodes／**4627** edges／**520** community；008-025 全已入圖；圖反映 rust-api `ef1d21a`＋base-web `f3ad8e23`＋master compose；本輪另**手動補入 6 個 sensitive 誤傷檔**（password_policy/m009/password-card＋建圖起即缺席的 password.rs/sys_token ×2）〕、現況統計與增量史詳 [GRAPHIFY-NOTES §1](GRAPHIFY-NOTES.md)。只索引 base-web/rust-api worktree＋master docker-compose.yml（`deploy/`／`specs/`／`docs/`／compose override 在 `.graphifyignore`）。★ **本 corpus 必用 `build_merge(dedup=False)`**——skill 預設 `dedup=True` 全域 fuzzy-label dedup 會誤併 distinct 節點（再三實證砍圖、最近一次砍 3499→2782）；★ **update 必查 `skipped_sensitive`**——detect 按檔名把 password/token 真碼檔跳過（不進 manifest、變更永不自動偵測、[GRAPHIFY-NOTES §2.9](GRAPHIFY-NOTES.md)）；外科式配方見 [GRAPHIFY-NOTES §4](GRAPHIFY-NOTES.md)。下次大改後再 update。
 
 ---
 

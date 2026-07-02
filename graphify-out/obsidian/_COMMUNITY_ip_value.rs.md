@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.36
 members: 8
 ---
 
 # ip_value.rs
 
-**Cohesion:** 0.36 - loosely connected
 **Members:** 8 nodes
 
 ## Members

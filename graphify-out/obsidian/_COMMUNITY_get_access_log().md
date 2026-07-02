@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.11
 members: 35
 ---
 
 # get_access_log()
 
-**Cohesion:** 0.11 - loosely connected
 **Members:** 35 nodes
 
 ## Members
@@ -64,4 +62,4 @@ SORT file.name ASC
 - [[get_access_log()]] - degree 15, connects to 2 communities
 - [[get_operation_log()]] - degree 14, connects to 2 communities
 - [[get_login_attempt()]] - degree 13, connects to 2 communities
-- [[get_role_list()]] - degree 10, connects to 2 communities
+- [[get_user_list()]] - degree 10, connects to 2 communities

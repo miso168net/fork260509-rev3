@@ -1,17 +1,17 @@
 ---
-source_file: "rust-api/entity/src/sys_ip_rule.rs"
+source_file: "rust-api/entity/src/sys_token.rs"
 type: "code"
-community: "sys_ip_rule.rs"
-location: "L9"
+community: "sys_token.rs"
+location: "L7"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_ip_rulers
+  - community/sys_tokenrs
 ---
 
 # Model
 
 ## Connections
-- [[sys_ip_rule.rs]] - `contains` [EXTRACTED]
+- [[sys_token.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_ip_rulers
+#graphify/code #graphify/EXTRACTED #community/sys_tokenrs

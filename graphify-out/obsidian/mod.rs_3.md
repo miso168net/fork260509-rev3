@@ -1,5 +1,5 @@
 ---
-source_file: "rust-api/server/src/model/mod.rs"
+source_file: "rust-api/server/src/handler/mod.rs"
 type: "code"
 community: "mod.rs"
 location: "L1"

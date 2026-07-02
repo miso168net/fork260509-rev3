@@ -1,5 +1,5 @@
 ---
-source_file: "rust-api/sea-orm-adapter/src/lib.rs"
+source_file: "rust-api/xdb/src/lib.rs"
 type: "code"
 community: "lib.rs"
 location: "L1"

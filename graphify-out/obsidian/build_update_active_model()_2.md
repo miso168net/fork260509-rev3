@@ -12,7 +12,7 @@ tags:
 # build_update_active_model()
 
 ## Connections
-- [[system_settings.rs_2]] - `contains` [EXTRACTED]
+- [[system_settings.rs_1]] - `contains` [EXTRACTED]
 - [[update_by_key()]] - `calls` [EXTRACTED]
 - [[update_by_key_active_model_sets_value_and_audit_cols()]] - `calls` [EXTRACTED]
 

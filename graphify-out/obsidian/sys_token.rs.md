@@ -12,7 +12,7 @@ tags:
 # sys_token.rs
 
 ## Connections
-- [[Model_7]] - `contains` [EXTRACTED]
-- [[Relation_7]] - `contains` [EXTRACTED]
+- [[Model_12]] - `contains` [EXTRACTED]
+- [[Relation_12]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_tokenrs

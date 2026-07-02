@@ -12,9 +12,9 @@ tags:
 # restore()
 
 ## Connections
-- [[.audit_json()_4]] - `calls` [EXTRACTED]
+- [[.audit_json()_3]] - `calls` [EXTRACTED]
 - [[restore_conflict_and_update_noop()]] - `calls` [EXTRACTED]
 - [[sys_ip_rule.rs_1]] - `contains` [EXTRACTED]
-- [[update()_3]] - `calls` [EXTRACTED]
+- [[update()_2]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

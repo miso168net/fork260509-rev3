@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.70
 members: 5
 ---
 
 # EndpointAuthModal (role x API endpoint a
 
-**Cohesion:** 0.70 - tightly connected
 **Members:** 5 nodes
 
 ## Members

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.32
 members: 8
 ---
 
 # refresh_token()
 
-**Cohesion:** 0.32 - loosely connected
 **Members:** 8 nodes
 
 ## Members
@@ -34,5 +32,5 @@ SORT file.name ASC
 - [[refresh_token()]] - degree 5, connects to 1 community
 - [[enforce_mw()]] - degree 4, connects to 1 community
 - [[rotate_locked_or_revoke()]] - degree 4, connects to 1 community
-- [[denylist_gate()]] - degree 3, connects to 1 community
 - [[is_current()]] - degree 3, connects to 1 community
+- [[denylist_gate()]] - degree 3, connects to 1 community

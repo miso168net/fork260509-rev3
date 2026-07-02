@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.43
 members: 7
 ---
 
 # lockout_keys()
 
-**Cohesion:** 0.43 - moderately connected
 **Members:** 7 nodes
 
 ## Members
@@ -31,6 +29,6 @@ SORT file.name ASC
 ## Top bridge nodes
 - [[lockout_keys()]] - degree 7, connects to 1 community
 - [[tripped_keys()]] - degree 6, connects to 1 community
-- [[ip_key()]] - degree 4, connects to 1 community
 - [[lockout_dim_key()]] - degree 4, connects to 1 community
+- [[ip_key()]] - degree 4, connects to 1 community
 - [[user_key()]] - degree 4, connects to 1 community

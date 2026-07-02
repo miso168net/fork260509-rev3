@@ -1,28 +1,51 @@
 ---
 type: community
-cohesion: 0.21
-members: 16
+members: 41
 ---
 
 # recommend.ts
 
-**Cohesion:** 0.21 - loosely connected
-**Members:** 16 nodes
+**Members:** 41 nodes
 
 ## Members
+- [[ColorIndex]] - code - base-web/packages/color/src/types/index.ts
 - [[ColorPalette]] - code - base-web/packages/color/src/types/index.ts
 - [[ColorPaletteFamily]] - code - base-web/packages/color/src/types/index.ts
 - [[ColorPaletteFamilyWithNearestPalette]] - code - base-web/packages/color/src/types/index.ts
 - [[ColorPaletteMatch]] - code - base-web/packages/color/src/types/index.ts
 - [[ColorPaletteNumber]] - code - base-web/packages/color/src/types/index.ts
 - [[ColorPaletteWithDelta]] - code - base-web/packages/color/src/types/index.ts
+- [[antd.ts]] - code - base-web/packages/color/src/palette/antd.ts
 - [[colorNameMap]] - code - base-web/packages/color/src/constant/name.ts
 - [[colorNames]] - code - base-web/packages/color/src/constant/name.ts
 - [[colorPalettes]] - code - base-web/packages/color/src/constant/palette.ts
-- [[index.ts_3]] - code - base-web/packages/color/src/constant/index.ts
+- [[colord.ts]] - code - base-web/packages/color/src/shared/colord.ts
+- [[darkColorMap]] - code - base-web/packages/color/src/palette/antd.ts
+- [[getAntDColorPalette()]] - code - base-web/packages/color/src/palette/antd.ts
+- [[getAntDPaletteColorByIndex()]] - code - base-web/packages/color/src/palette/antd.ts
+- [[getColorName()]] - code - base-web/packages/color/src/shared/name.ts
+- [[getColorPalette()]] - code - base-web/packages/color/src/palette/index.ts
+- [[getDeltaE()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[getHex()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[getHsl()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[getHsv()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[getHue()]] - code - base-web/packages/color/src/palette/antd.ts
+- [[getNearestColorPaletteFamily()]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[getRecommendedColorPalette()]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[getRecommendedColorPaletteFamily()]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[getRecommendedPaletteColorByNumber()]] - code - base-web/packages/color/src/palette/recommend.ts
+- [[getSaturation()]] - code - base-web/packages/color/src/palette/antd.ts
+- [[getValue()]] - code - base-web/packages/color/src/palette/antd.ts
 - [[index.ts_2]] - code - base-web/packages/color/src/index.ts
+- [[index.ts_3]] - code - base-web/packages/color/src/constant/index.ts
+- [[index.ts_4]] - code - base-web/packages/color/src/palette/index.ts
+- [[index.ts_5]] - code - base-web/packages/color/src/shared/index.ts
 - [[index.ts_6]] - code - base-web/packages/color/src/types/index.ts
+- [[isValidColor()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[isWhiteColor()]] - code - base-web/packages/color/src/shared/colord.ts
+- [[mixColor()]] - code - base-web/packages/color/src/shared/colord.ts
 - [[name.ts]] - code - base-web/packages/color/src/constant/name.ts
+- [[name.ts_1]] - code - base-web/packages/color/src/shared/name.ts
 - [[palette.ts]] - code - base-web/packages/color/src/constant/palette.ts
 - [[recommend.ts]] - code - base-web/packages/color/src/palette/recommend.ts
 - [[transformHslToHex()]] - code - base-web/packages/color/src/shared/colord.ts
@@ -35,15 +58,13 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 13 edges to [[_COMMUNITY_antd.ts]]
-- 7 edges to [[_COMMUNITY_loading.ts]]
-- 1 edge to [[_COMMUNITY_shared.ts]]
-- 1 edge to [[_COMMUNITY_index.ts]]
-- 1 edge to [[_COMMUNITY_shared.ts]]
+- 6 edges to [[_COMMUNITY_loading.ts]]
+- 6 edges to [[_COMMUNITY_shared.ts]]
+- 3 edges to [[_COMMUNITY_index.ts]]
 
 ## Top bridge nodes
-- [[index.ts_2]] - degree 9, connects to 5 communities
-- [[recommend.ts]] - degree 19, connects to 2 communities
-- [[index.ts_6]] - degree 12, connects to 2 communities
-- [[index.ts_3]] - degree 5, connects to 1 community
-- [[ColorPaletteNumber]] - degree 3, connects to 1 community
+- [[index.ts_2]] - degree 9, connects to 3 communities
+- [[colord.ts]] - degree 13, connects to 2 communities
+- [[getColorPalette()]] - degree 9, connects to 2 communities
+- [[index.ts_4]] - degree 11, connects to 1 community
+- [[name.ts_1]] - degree 8, connects to 1 community

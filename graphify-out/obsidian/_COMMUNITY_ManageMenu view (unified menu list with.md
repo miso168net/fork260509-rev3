@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.27
 members: 10
 ---
 
 # ManageMenu view (unified menu list with 
 
-**Cohesion:** 0.27 - loosely connected
 **Members:** 10 nodes
 
 ## Members
@@ -35,6 +33,6 @@ SORT file.name ASC
 ## Top bridge nodes
 - [[ManageMenu view (unified menu list with recycle bin + RBAC gating)]] - degree 7, connects to 1 community
 - [[fetchAddMenu()]] - degree 3, connects to 1 community
-- [[fetchGetMenuListV2()]] - degree 3, connects to 1 community
 - [[fetchUpdateMenu()]] - degree 3, connects to 1 community
-- [[fetchBatchDeleteMenu()]] - degree 2, connects to 1 community
+- [[fetchGetMenuListV2()]] - degree 3, connects to 1 community
+- [[fetchDeleteMenu()]] - degree 2, connects to 1 community

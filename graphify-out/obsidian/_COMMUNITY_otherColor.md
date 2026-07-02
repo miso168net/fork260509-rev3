@@ -1,20 +1,18 @@
 ---
 type: community
-cohesion: 0.40
 members: 5
 ---
 
 # otherColor
 
-**Cohesion:** 0.40 - moderately connected
 **Members:** 5 nodes
 
 ## Members
-- [[error_1]] - code - base-web/src/theme/preset/dark.json
-- [[info_1]] - code - base-web/src/theme/preset/dark.json
-- [[otherColor_1]] - code - base-web/src/theme/preset/dark.json
-- [[success_1]] - code - base-web/src/theme/preset/dark.json
-- [[warning_1]] - code - base-web/src/theme/preset/dark.json
+- [[error_2]] - code - base-web/src/theme/preset/default.json
+- [[info_2]] - code - base-web/src/theme/preset/default.json
+- [[otherColor_2]] - code - base-web/src/theme/preset/default.json
+- [[success_2]] - code - base-web/src/theme/preset/default.json
+- [[warning_2]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -24,7 +22,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_dark.json]]
+- 1 edge to [[_COMMUNITY_default.json]]
 
 ## Top bridge nodes
-- [[otherColor_1]] - degree 5, connects to 1 community
+- [[otherColor_2]] - degree 5, connects to 1 community

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.43
 members: 8
 ---
 
 # entity_access_lint.rs
 
-**Cohesion:** 0.43 - moderately connected
 **Members:** 8 nodes
 
 ## Members

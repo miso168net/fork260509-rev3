@@ -1,18 +1,33 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+members: 20
 ---
 
 # sys_ip_rule.rs
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Members:** 20 nodes
 
 ## Members
-- [[Model_12]] - code - rust-api/entity/src/sys_ip_rule.rs
-- [[Relation_12]] - code - rust-api/entity/src/sys_ip_rule.rs
-- [[sys_ip_rule.rs]] - code - rust-api/entity/src/sys_ip_rule.rs
+- [[.audit_json()_3]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[.from()_4]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[IpRuleFilter]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[IpRuleWrite]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[RestoreError]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[col_of()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[create()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[entitysys_ip_ruleModel]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[find_active_by_id()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[list()_5]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[load_active()]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[resolve_sort()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[resolve_sort_rejects_non_whitelist()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[resolve_sort_whitelist_exact_mapping()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[restore()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[restore_conflict_and_update_noop()]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[soft_delete()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[sys_ip_rule.rs_1]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[test_meta()_1]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
+- [[update()_2]] - code - rust-api/server/src/model/facade/sys_ip_rule.rs
 
 ## Live Query (requires Dataview plugin)
 

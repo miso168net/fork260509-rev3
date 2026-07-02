@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/package.json"
 type: "code"
-community: "package.json"
+community: "author"
 location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/packagejson
+  - community/author
 ---
 
 # author
@@ -17,4 +17,4 @@ tags:
 - [[package.json]] - `contains` [EXTRACTED]
 - [[url_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/packagejson
+#graphify/code #graphify/EXTRACTED #community/author

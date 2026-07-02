@@ -1,13 +1,11 @@
 ---
 type: community
-cohesion: 0.07
-members: 40
+members: 38
 ---
 
 # manage/user/index.vue (user list page)
 
-**Cohesion:** 0.07 - loosely connected
-**Members:** 40 nodes
+**Members:** 38 nodes
 
 ## Members
 - [[@elegant-routervue dependency]] - concept - base-web/package.json
@@ -36,10 +34,8 @@ members: 40
 - [[rust-api compose service]] - code - docker-compose.yml
 - [[serviceapi (barrel fetchGetAllRoles, fetchGetUserRoutes etc.)]] - code - base-web/src/service/api/index.ts
 - [[serviceapirev3-system-manage.ts (honest user wrappers)]] - code - base-web/src/service/api/rev3-system-manage.ts
-- [[serviceapirev3-system-settings.ts (settings wrappers)]] - code - base-web/src/service/api/rev3-system-settings.ts
 - [[servicerequestindex.ts (createFlatRequest axios layer)]] - code - base-web/src/service/request/index.ts
 - [[sessionPolicyRecord (business constants)]] - code - base-web/src/constants/business.ts
-- [[system-settingsindex.vue (KV settings page)]] - code - base-web/src/views/manage/system-settings/index.vue
 - [[transformElegantRoutesToVueRoutes + routeMap]] - code - base-web/src/router/elegant/transform.ts
 - [[translate-backend-msg.spec.ts (i18n boundary test)]] - code - base-web/src/locales/__tests__/translate-backend-msg.spec.ts
 - [[translateBackendMsg (backend. prefix translation boundary)]] - code - base-web/src/locales/index.ts
@@ -63,5 +59,5 @@ SORT file.name ASC
 - 1 edge to [[_COMMUNITY_index.ts]]
 
 ## Top bridge nodes
-- [[views]] - degree 8, connects to 1 community
-- [[localesindex.ts ($t, setupI18n)]] - degree 7, connects to 1 community
+- [[views]] - degree 7, connects to 1 community
+- [[localesindex.ts ($t, setupI18n)]] - degree 6, connects to 1 community

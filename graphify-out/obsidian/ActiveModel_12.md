@@ -1,8 +1,8 @@
 ---
-source_file: "rust-api/entity/src/sys_ip_rule.rs"
+source_file: "rust-api/entity/src/sys_token.rs"
 type: "code"
 community: "ActiveModel"
-location: "L28"
+location: "L24"
 tags:
   - graphify/code
   - graphify/EXTRACTED

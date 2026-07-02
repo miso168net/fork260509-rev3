@@ -1,5 +1,5 @@
 ---
-source_file: "rust-api/server/src/model/facade/mod.rs"
+source_file: "rust-api/server/src/auth/mod.rs"
 type: "code"
 community: "mod.rs"
 location: "L1"

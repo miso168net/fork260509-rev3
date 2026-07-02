@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.38
 members: 7
 ---
 
 # now()
 
-**Cohesion:** 0.38 - loosely connected
 **Members:** 7 nodes
 
 ## Members

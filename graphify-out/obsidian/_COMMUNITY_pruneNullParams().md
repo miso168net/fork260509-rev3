@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.32
 members: 8
 ---
 
 # pruneNullParams()
 
-**Cohesion:** 0.32 - loosely connected
 **Members:** 8 nodes
 
 ## Members
@@ -34,6 +32,6 @@ SORT file.name ASC
 ## Top bridge nodes
 - [[pruneNullParams()]] - degree 9, connects to 3 communities
 - [[fetchGetLoginAttempt()]] - degree 4, connects to 2 communities
+- [[fetchExportOperationLog()]] - degree 3, connects to 1 community
 - [[fetchExportAccessLog()]] - degree 3, connects to 1 community
 - [[fetchExportLoginAttempt()]] - degree 3, connects to 1 community
-- [[fetchExportOperationLog()]] - degree 3, connects to 1 community

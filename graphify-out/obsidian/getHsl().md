@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/shared/colord.ts"
 type: "code"
-community: "antd.ts"
+community: "recommend.ts"
 location: "L21"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/antdts
+  - community/recommendts
 ---
 
 # getHsl()
@@ -19,4 +19,4 @@ tags:
 - [[name.ts_1]] - `imports` [EXTRACTED]
 - [[recommend.ts]] - `imports` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/antdts
+#graphify/code #graphify/EXTRACTED #community/recommendts

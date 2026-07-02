@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.25
 members: 16
 ---
 
 # mutate_in_txn()
 
-**Cohesion:** 0.25 - loosely connected
 **Members:** 16 nodes
 
 ## Members

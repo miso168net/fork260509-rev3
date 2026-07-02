@@ -12,7 +12,7 @@ tags:
 # system_settings_update_oplog_inet_roundtrip()
 
 ## Connections
-- [[system_settings.rs_2]] - `contains` [EXTRACTED]
+- [[system_settings.rs_1]] - `contains` [EXTRACTED]
 - [[update_by_key()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/system_settingsrs

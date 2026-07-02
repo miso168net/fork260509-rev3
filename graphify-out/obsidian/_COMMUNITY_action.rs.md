@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.17
 members: 16
 ---
 
 # action.rs
 
-**Cohesion:** 0.17 - loosely connected
 **Members:** 16 nodes
 
 ## Members

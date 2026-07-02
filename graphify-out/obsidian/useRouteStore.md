@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/route/index.ts"
 type: "code"
-community: "index.ts"
+community: "route.ts"
 location: "L26"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/indexts
+  - community/routets
 ---
 
 # useRouteStore
@@ -21,4 +21,4 @@ tags:
 - [[route.ts]] - `imports` [EXTRACTED]
 - [[useMixMenu()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/indexts
+#graphify/code #graphify/EXTRACTED #community/routets

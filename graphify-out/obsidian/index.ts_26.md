@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/router/guard/index.ts"
 type: "code"
-community: "route.ts"
+community: "index.ts"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/routets
+  - community/indexts
 ---
 
 # index.ts
@@ -21,4 +21,4 @@ tags:
 - [[route.ts]] - `imports_from` [EXTRACTED]
 - [[title.ts]] - `imports_from` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/routets
+#graphify/code #graphify/EXTRACTED #community/indexts

@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
 community: "sys_user.rs"
-location: "L1077"
+location: "L1195"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -12,8 +12,8 @@ tags:
 # update_user_preserves_identity_and_replaces_roles()
 
 ## Connections
-- [[find_active_by_id()_2]] - `calls` [EXTRACTED]
+- [[find_active_by_id()_3]] - `calls` [EXTRACTED]
 - [[sys_user.rs_1]] - `contains` [EXTRACTED]
-- [[update()_2]] - `calls` [EXTRACTED]
+- [[update()_3]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_userrs

@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
 community: "sys_user.rs"
-location: "L850"
+location: "L968"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -12,7 +12,7 @@ tags:
 # op_log_oplog_threading_ip_trace()
 
 ## Connections
-- [[soft_delete()_2]] - `calls` [EXTRACTED]
+- [[soft_delete()_3]] - `calls` [EXTRACTED]
 - [[sys_user.rs_1]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_userrs

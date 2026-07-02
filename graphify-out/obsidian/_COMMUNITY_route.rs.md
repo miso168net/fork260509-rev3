@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.24
 members: 11
 ---
 
 # route.rs
 
-**Cohesion:** 0.24 - loosely connected
 **Members:** 11 nodes
 
 ## Members
@@ -34,5 +32,5 @@ SORT file.name ASC
 
 ## Top bridge nodes
 - [[menu_routes_for_roles()]] - degree 4, connects to 1 community
-- [[auth_menu_routes_for_roles_filters_only_menu_acts()]] - degree 2, connects to 1 community
 - [[init_enforcer()]] - degree 2, connects to 1 community
+- [[auth_menu_routes_for_roles_filters_only_menu_acts()]] - degree 2, connects to 1 community

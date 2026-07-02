@@ -12,6 +12,6 @@ tags:
 # bgThemeColor
 
 ## Connections
-- [[index.vue_64]] - `contains` [EXTRACTED]
+- [[index.vue_63]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/indexvue

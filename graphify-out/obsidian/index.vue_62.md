@@ -1,5 +1,5 @@
 ---
-source_file: "base-web/src/views/_builtin/404/index.vue"
+source_file: "base-web/src/views/_builtin/500/index.vue"
 type: "code"
 community: "index.vue"
 location: "L1"

@@ -1,17 +1,17 @@
 ---
-source_file: "rust-api/entity/src/sys_user_role.rs"
+source_file: "rust-api/entity/src/system_settings.rs"
 type: "code"
-community: "sys_user_role.rs"
-location: "L16"
+community: "system_settings.rs"
+location: "L23"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_user_rolers
+  - community/system_settingsrs
 ---
 
 # Relation
 
 ## Connections
-- [[sys_user_role.rs]] - `contains` [EXTRACTED]
+- [[system_settings.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_user_rolers
+#graphify/code #graphify/EXTRACTED #community/system_settingsrs

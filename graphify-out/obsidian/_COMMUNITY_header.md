@@ -1,24 +1,22 @@
 ---
 type: community
-cohesion: 0.22
 members: 9
 ---
 
 # header
 
-**Cohesion:** 0.22 - loosely connected
 **Members:** 9 nodes
 
 ## Members
-- [[breadcrumb_1]] - code - base-web/src/theme/preset/dark.json
-- [[globalSearch_1]] - code - base-web/src/theme/preset/dark.json
-- [[header_2]] - code - base-web/src/theme/preset/dark.json
-- [[height_2]] - code - base-web/src/theme/preset/dark.json
-- [[multilingual_1]] - code - base-web/src/theme/preset/dark.json
-- [[showIcon]] - code - base-web/src/theme/preset/dark.json
-- [[visible_5]] - code - base-web/src/theme/preset/dark.json
-- [[visible_7]] - code - base-web/src/theme/preset/dark.json
-- [[visible_6]] - code - base-web/src/theme/preset/dark.json
+- [[breadcrumb_2]] - code - base-web/src/theme/preset/default.json
+- [[globalSearch_2]] - code - base-web/src/theme/preset/default.json
+- [[header_4]] - code - base-web/src/theme/preset/default.json
+- [[height_5]] - code - base-web/src/theme/preset/default.json
+- [[multilingual_2]] - code - base-web/src/theme/preset/default.json
+- [[showIcon_1]] - code - base-web/src/theme/preset/default.json
+- [[visible_11]] - code - base-web/src/theme/preset/default.json
+- [[visible_12]] - code - base-web/src/theme/preset/default.json
+- [[visible_13]] - code - base-web/src/theme/preset/default.json
 
 ## Live Query (requires Dataview plugin)
 
@@ -28,7 +26,7 @@ SORT file.name ASC
 ```
 
 ## Connections to other communities
-- 1 edge to [[_COMMUNITY_dark.json]]
+- 1 edge to [[_COMMUNITY_default.json]]
 
 ## Top bridge nodes
-- [[header_2]] - degree 5, connects to 1 community
+- [[header_4]] - degree 5, connects to 1 community

@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
 community: "sys_user.rs"
-location: "L783"
+location: "L901"
 tags:
   - graphify/code
   - graphify/EXTRACTED

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.11
 members: 29
 ---
 
 # auth.rs
 
-**Cohesion:** 0.11 - loosely connected
 **Members:** 29 nodes
 
 ## Members

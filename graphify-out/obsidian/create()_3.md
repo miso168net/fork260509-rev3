@@ -1,19 +1,21 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_ip_rule.rs"
+source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
-community: "sys_ip_rule.rs"
-location: "L180"
+community: "sys_user.rs"
+location: "L318"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_ip_rulers
+  - community/sys_userrs
 ---
 
 # create()
 
 ## Connections
 - [[.audit_json()_4]] - `calls` [EXTRACTED]
-- [[restore_conflict_and_update_noop()]] - `calls` [EXTRACTED]
-- [[sys_ip_rule.rs_1]] - `contains` [EXTRACTED]
+- [[add_user_create_roundtrip_and_dup()]] - `calls` [EXTRACTED]
+- [[build_create_active_model()_2]] - `calls` [EXTRACTED]
+- [[now()_3]] - `calls` [EXTRACTED]
+- [[sys_user.rs_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_ip_rulers
+#graphify/code #graphify/EXTRACTED #community/sys_userrs

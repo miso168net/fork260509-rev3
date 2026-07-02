@@ -1,5 +1,5 @@
 ---
-source_file: "base-web/src/views/_builtin/500/index.vue"
+source_file: "base-web/src/views/_builtin/login/index.vue"
 type: "code"
 community: "index.vue"
 location: "L1"
@@ -10,5 +10,9 @@ tags:
 ---
 
 # index.vue
+
+## Connections
+- [[bgColor]] - `contains` [EXTRACTED]
+- [[bgThemeColor]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/indexvue

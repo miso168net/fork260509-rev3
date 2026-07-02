@@ -12,8 +12,9 @@ tags:
 # validate_value_type()
 
 ## Connections
-- [[system_settings.rs_1]] - `contains` [EXTRACTED]
+- [[system_settings.rs_2]] - `contains` [EXTRACTED]
 - [[update_setting()]] - `calls` [EXTRACTED]
 - [[validate_value_type_enum_rejects_nonmember()]] - `calls` [EXTRACTED]
+- [[validate_value_type_number_rejects_invalid()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/system_settingsrs

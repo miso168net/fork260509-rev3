@@ -1,17 +1,14 @@
 ---
-source_file: "rust-api/migration/src/lib.rs"
+source_file: "rust-api/sea-orm-adapter/src/lib.rs"
 type: "code"
-community: "Migrator"
+community: "lib.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/Migrator
+  - community/librs
 ---
 
 # lib.rs
 
-## Connections
-- [[Migrator]] - `contains` [EXTRACTED]
-
-#graphify/code #graphify/EXTRACTED #community/Migrator
+#graphify/code #graphify/EXTRACTED #community/librs

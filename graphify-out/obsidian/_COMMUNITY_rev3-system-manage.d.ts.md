@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.06
 members: 33
 ---
 
 # rev3-system-manage.d.ts
 
-**Cohesion:** 0.06 - loosely connected
 **Members:** 33 nodes
 
 ## Members

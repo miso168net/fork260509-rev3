@@ -1,18 +1,18 @@
 ---
 type: community
-cohesion: 0.67
-members: 3
+members: 5
 ---
 
 # sys_user_role.rs
 
-**Cohesion:** 0.67 - moderately connected
-**Members:** 3 nodes
+**Members:** 5 nodes
 
 ## Members
-- [[Model_9]] - code - rust-api/entity/src/sys_user_role.rs
-- [[Relation_9]] - code - rust-api/entity/src/sys_user_role.rs
-- [[sys_user_role.rs]] - code - rust-api/entity/src/sys_user_role.rs
+- [[count_users_by_role_id()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[replace_roles_in_txn()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[roles_for_users()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[roles_of_user()]] - code - rust-api/server/src/model/facade/sys_user_role.rs
+- [[sys_user_role.rs_1]] - code - rust-api/server/src/model/facade/sys_user_role.rs
 
 ## Live Query (requires Dataview plugin)
 

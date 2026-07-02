@@ -1,24 +1,21 @@
 ---
-source_file: "rust-api/server/src/model/facade/sys_user.rs"
+source_file: "rust-api/server/src/model/facade/sys_ip_rule.rs"
 type: "code"
-community: "sys_user.rs"
-location: "L51"
+community: "sys_ip_rule.rs"
+location: "L266"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sys_userrs
+  - community/sys_ip_rulers
 ---
 
 # soft_delete()
 
 ## Connections
 - [[.audit_json()_3]] - `calls` [EXTRACTED]
-- [[delete_user_soft_delete_and_idempotent_missing()]] - `calls` [EXTRACTED]
-- [[find_by_id()]] - `calls` [EXTRACTED]
-- [[now()_3]] - `calls` [EXTRACTED]
-- [[op_log_atomic_three_paths()]] - `calls` [EXTRACTED]
-- [[op_log_oplog_threading_ip_trace()]] - `calls` [EXTRACTED]
-- [[sys_user.rs_1]] - `contains` [EXTRACTED]
+- [[find_active_by_id()_2]] - `calls` [EXTRACTED]
+- [[restore_conflict_and_update_noop()]] - `calls` [EXTRACTED]
+- [[sys_ip_rule.rs_1]] - `contains` [EXTRACTED]
 - [[update()_2]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sys_userrs
+#graphify/code #graphify/EXTRACTED #community/sys_ip_rulers

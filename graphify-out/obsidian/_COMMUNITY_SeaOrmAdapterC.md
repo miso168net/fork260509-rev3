@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.19
 members: 19
 ---
 
 # SeaOrmAdapter<C>
 
-**Cohesion:** 0.19 - loosely connected
 **Members:** 19 nodes
 
 ## Members

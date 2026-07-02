@@ -2,7 +2,7 @@
 source_file: "rust-api/server/src/model/facade/sys_user.rs"
 type: "code"
 community: "sys_user.rs"
-location: "L425"
+location: "L543"
 tags:
   - graphify/code
   - graphify/EXTRACTED
@@ -13,6 +13,6 @@ tags:
 
 ## Connections
 - [[sys_user.rs_1]] - `contains` [EXTRACTED]
-- [[update()_2]] - `calls` [EXTRACTED]
+- [[update()_3]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/sys_userrs

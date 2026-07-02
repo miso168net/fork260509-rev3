@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/axios/src/type.ts"
 type: "code"
-community: "type.ts"
+community: "index.ts"
 location: "L100"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/typets
+  - community/indexts
 ---
 
 # RequestInstance
@@ -15,4 +15,4 @@ tags:
 - [[index.ts_1]] - `imports` [EXTRACTED]
 - [[type.ts_1]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/typets
+#graphify/code #graphify/EXTRACTED #community/indexts

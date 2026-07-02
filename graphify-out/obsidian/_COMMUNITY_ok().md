@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.08
 members: 33
 ---
 
 # ok()
 
-**Cohesion:** 0.08 - loosely connected
 **Members:** 33 nodes
 
 ## Members

@@ -1,8 +1,8 @@
 ---
-source_file: "rust-api/sea-orm-adapter/src/entity.rs"
+source_file: "rust-api/entity/src/sys_ip_rule.rs"
 type: "code"
 community: "ActiveModel"
-location: "L22"
+location: "L28"
 tags:
   - graphify/code
   - graphify/EXTRACTED

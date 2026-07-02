@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.07
 members: 29
 ---
 
 # compact.json
 
-**Cohesion:** 0.07 - loosely connected
 **Members:** 29 nodes
 
 ## Members
@@ -34,10 +32,10 @@ members: 29
 - [[themeRadius]] - code - base-web/src/theme/preset/compact.json
 - [[version_11]] - code - base-web/src/theme/preset/compact.json
 - [[visible]] - code - base-web/src/theme/preset/compact.json
-- [[visible_4]] - code - base-web/src/theme/preset/compact.json
-- [[visible_2]] - code - base-web/src/theme/preset/compact.json
 - [[visible_1]] - code - base-web/src/theme/preset/compact.json
+- [[visible_2]] - code - base-web/src/theme/preset/compact.json
 - [[visible_3]] - code - base-web/src/theme/preset/compact.json
+- [[visible_4]] - code - base-web/src/theme/preset/compact.json
 - [[width]] - code - base-web/src/theme/preset/compact.json
 
 ## Live Query (requires Dataview plugin)

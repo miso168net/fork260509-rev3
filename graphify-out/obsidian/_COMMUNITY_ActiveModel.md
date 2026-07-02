@@ -1,16 +1,14 @@
 ---
 type: community
-cohesion: 1.00
 members: 1
 ---
 
 # ActiveModel
 
-**Cohesion:** 1.00 - tightly connected
 **Members:** 1 nodes
 
 ## Members
-- [[ActiveModel_12]] - code - rust-api/entity/src/sys_ip_rule.rs
+- [[ActiveModel_12]] - code - rust-api/entity/src/sys_token.rs
 
 ## Live Query (requires Dataview plugin)
 

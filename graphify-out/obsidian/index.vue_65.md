@@ -1,5 +1,5 @@
 ---
-source_file: "base-web/src/views/manage/ip-rule/index.vue"
+source_file: "base-web/src/views/manage/policy-archive/index.vue"
 type: "code"
 community: "index.vue"
 location: "L1"

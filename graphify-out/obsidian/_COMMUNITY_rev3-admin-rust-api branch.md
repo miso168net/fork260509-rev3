@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.50
 members: 5
 ---
 
 # rev3-admin-rust-api branch
 
-**Cohesion:** 0.50 - moderately connected
 **Members:** 5 nodes
 
 ## Members

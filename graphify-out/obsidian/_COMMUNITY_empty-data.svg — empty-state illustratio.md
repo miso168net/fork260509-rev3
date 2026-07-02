@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 1.00
 members: 3
 ---
 
 # empty-data.svg — empty-state illustratio
 
-**Cohesion:** 1.00 - tightly connected
 **Members:** 3 nodes
 
 ## Members

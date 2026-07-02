@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.32
 members: 8
 ---
 
 # user_write_from_req()
 
-**Cohesion:** 0.32 - loosely connected
 **Members:** 8 nodes
 
 ## Members

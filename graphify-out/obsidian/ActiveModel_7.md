@@ -1,8 +1,8 @@
 ---
-source_file: "rust-api/entity/src/sys_token.rs"
+source_file: "rust-api/entity/src/sys_user.rs"
 type: "code"
 community: "ActiveModel"
-location: "L24"
+location: "L30"
 tags:
   - graphify/code
   - graphify/EXTRACTED

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.09
 members: 25
 ---
 
 # SoybeanAdmin
 
-**Cohesion:** 0.09 - loosely connected
 **Members:** 25 nodes
 
 ## Members

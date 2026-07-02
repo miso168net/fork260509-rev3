@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.02
 members: 99
 ---
 
 # system_manage.rs
 
-**Cohesion:** 0.02 - loosely connected
 **Members:** 99 nodes
 
 ## Members

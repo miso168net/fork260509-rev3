@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.11
 members: 31
 ---
 
 # config.rs
 
-**Cohesion:** 0.11 - loosely connected
 **Members:** 31 nodes
 
 ## Members

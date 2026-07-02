@@ -1,17 +1,17 @@
 ---
-source_file: "rust-api/entity/src/system_settings.rs"
+source_file: "rust-api/sea-orm-adapter/src/entity.rs"
 type: "code"
-community: "system_settings.rs"
-location: "L23"
+community: "entity.rs"
+location: "L20"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/system_settingsrs
+  - community/entityrs
 ---
 
 # Relation
 
 ## Connections
-- [[system_settings.rs]] - `contains` [EXTRACTED]
+- [[entity.rs]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/system_settingsrs
+#graphify/code #graphify/EXTRACTED #community/entityrs

@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/src/store/modules/theme/shared.ts"
 type: "code"
-community: "loading.ts"
+community: "shared.ts"
 location: "L175"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/loadingts
+  - community/sharedts
 ---
 
 # toggleCssDarkMode()
@@ -16,4 +16,4 @@ tags:
 - [[shared.ts_8]] - `contains` [EXTRACTED]
 - [[toggleHtmlClass()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/loadingts
+#graphify/code #graphify/EXTRACTED #community/sharedts

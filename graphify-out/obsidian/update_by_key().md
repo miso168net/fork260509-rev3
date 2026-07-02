@@ -15,7 +15,7 @@ tags:
 - [[.audit_json()_2]] - `calls` [EXTRACTED]
 - [[build_update_active_model()_2]] - `calls` [EXTRACTED]
 - [[mutate_in_txn()]] - `calls` [INFERRED]
-- [[system_settings.rs_2]] - `contains` [EXTRACTED]
+- [[system_settings.rs_1]] - `contains` [EXTRACTED]
 - [[system_settings_update_oplog_inet_roundtrip()]] - `calls` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/system_settingsrs

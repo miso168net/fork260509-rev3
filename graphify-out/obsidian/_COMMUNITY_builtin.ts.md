@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.16
 members: 18
 ---
 
 # builtin.ts
 
-**Cohesion:** 0.16 - loosely connected
 **Members:** 18 nodes
 
 ## Members

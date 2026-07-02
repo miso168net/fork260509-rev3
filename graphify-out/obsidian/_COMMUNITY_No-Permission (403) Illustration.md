@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.67
 members: 4
 ---
 
 # No-Permission (403) Illustration
 
-**Cohesion:** 0.67 - moderately connected
 **Members:** 4 nodes
 
 ## Members

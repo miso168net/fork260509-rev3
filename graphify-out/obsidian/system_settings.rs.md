@@ -12,7 +12,7 @@ tags:
 # system_settings.rs
 
 ## Connections
-- [[Model_10]] - `contains` [EXTRACTED]
-- [[Relation_10]] - `contains` [EXTRACTED]
+- [[Model_9]] - `contains` [EXTRACTED]
+- [[Relation_9]] - `contains` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/system_settingsrs

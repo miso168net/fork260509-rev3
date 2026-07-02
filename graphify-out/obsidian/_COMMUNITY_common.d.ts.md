@@ -1,20 +1,19 @@
 ---
 type: community
-cohesion: 0.40
-members: 5
+members: 6
 ---
 
 # common.d.ts
 
-**Cohesion:** 0.40 - moderately connected
-**Members:** 5 nodes
+**Members:** 6 nodes
 
 ## Members
-- [[Option]] - code - base-web/src/typings/common.d.ts
-- [[RecordNullable]] - code - base-web/src/typings/common.d.ts
-- [[StrategicPattern]] - code - base-web/src/typings/common.d.ts
-- [[YesOrNo]] - code - base-web/src/typings/common.d.ts
-- [[common.d.ts]] - code - base-web/src/typings/common.d.ts
+- [[CommonRecord]] - code - base-web/src/typings/api/common.d.ts
+- [[CommonSearchParams]] - code - base-web/src/typings/api/common.d.ts
+- [[EnableStatus]] - code - base-web/src/typings/api/common.d.ts
+- [[PaginatingCommonParams]] - code - base-web/src/typings/api/common.d.ts
+- [[PaginatingQueryRecord]] - code - base-web/src/typings/api/common.d.ts
+- [[common.d.ts_1]] - code - base-web/src/typings/api/common.d.ts
 
 ## Live Query (requires Dataview plugin)
 

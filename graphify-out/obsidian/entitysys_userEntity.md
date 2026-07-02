@@ -12,6 +12,6 @@ tags:
 # entity::sys_user::Entity
 
 ## Connections
-- [[.deleted_at_column()_2]] - `method` [EXTRACTED]
+- [[.deleted_at_column()_3]] - `method` [EXTRACTED]
 
 #graphify/code #graphify/EXTRACTED #community/entitysys_userEntity

@@ -1,12 +1,10 @@
 ---
 type: community
-cohesion: 0.15
 members: 16
 ---
 
 # RoleOperateDrawer (role add/edit form, h
 
-**Cohesion:** 0.15 - loosely connected
 **Members:** 16 nodes
 
 ## Members
@@ -41,7 +39,7 @@ SORT file.name ASC
 
 ## Top bridge nodes
 - [[RoleOperateDrawer (role addedit form, hosts 3 auth modals)]] - degree 7, connects to 3 communities
-- [[fetchAddRole()]] - degree 3, connects to 1 community
-- [[fetchGetRoleListRev3()]] - degree 3, connects to 1 community
-- [[fetchUpdateRole()]] - degree 3, connects to 1 community
 - [[fetchUpdateUser()]] - degree 3, connects to 1 community
+- [[fetchAddRole()]] - degree 3, connects to 1 community
+- [[fetchUpdateRole()]] - degree 3, connects to 1 community
+- [[fetchGetRoleListRev3()]] - degree 3, connects to 1 community

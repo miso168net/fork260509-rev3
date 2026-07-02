@@ -1,12 +1,12 @@
 ---
 source_file: "base-web/packages/color/src/palette/antd.ts"
 type: "code"
-community: "antd.ts"
+community: "recommend.ts"
 location: "L27"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/antdts
+  - community/recommendts
 ---
 
 # getAntDPaletteColorByIndex()
@@ -20,4 +20,4 @@ tags:
 - [[getValue()]] - `calls` [EXTRACTED]
 - [[isValidColor()]] - `calls` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/antdts
+#graphify/code #graphify/EXTRACTED #community/recommendts

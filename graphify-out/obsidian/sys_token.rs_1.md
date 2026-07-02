@@ -1,12 +1,12 @@
 ---
 source_file: "rust-api/server/src/model/facade/sys_token.rs"
 type: "code"
-community: "session.rs"
+community: "sys_token.rs"
 location: "L1"
 tags:
   - graphify/code
   - graphify/EXTRACTED
-  - community/sessionrs
+  - community/sys_tokenrs
 ---
 
 # sys_token.rs
@@ -21,4 +21,4 @@ tags:
 - [[revoke_other_chains()]] - `contains` [EXTRACTED]
 - [[toctou_revoked_chain_locks_to_reuse_no_rebake()]] - `contains` [EXTRACTED]
 
-#graphify/code #graphify/EXTRACTED #community/sessionrs
+#graphify/code #graphify/EXTRACTED #community/sys_tokenrs
